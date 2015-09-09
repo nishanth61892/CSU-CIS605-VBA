@@ -27,6 +27,12 @@ Partial Class FrmMain
         Me.tabpInvList = New System.Windows.Forms.TabPage()
         Me.lblInvList = New System.Windows.Forms.Label()
         Me.tabpInvMgmt = New System.Windows.Forms.TabPage()
+        Me.btnRemove = New System.Windows.Forms.Button()
+        Me.grpInvMgmtAdd = New System.Windows.Forms.GroupBox()
+        Me.lblQty = New System.Windows.Forms.Label()
+        Me.updQty = New System.Windows.Forms.NumericUpDown()
+        Me.lblItemList = New System.Windows.Forms.Label()
+        Me.cboInvItem = New System.Windows.Forms.ComboBox()
         Me.lblInvMgr = New System.Windows.Forms.Label()
         Me.btnExit = New System.Windows.Forms.Button()
         Me.mnuOptionFile = New System.Windows.Forms.ToolStripMenuItem()
@@ -44,9 +50,13 @@ Partial Class FrmMain
         Me.mnuOptionHelp = New System.Windows.Forms.ToolStripMenuItem()
         Me.mnuOptionHelpAbout = New System.Windows.Forms.ToolStripMenuItem()
         Me.mnuMainAppl = New System.Windows.Forms.MenuStrip()
+        Me.btnAdd = New System.Windows.Forms.Button()
         lstInvItems = New System.Windows.Forms.ListBox()
         Me.tabInvMgmtSystem.SuspendLayout()
         Me.tabpInvList.SuspendLayout()
+        Me.tabpInvMgmt.SuspendLayout()
+        Me.grpInvMgmtAdd.SuspendLayout()
+        CType(Me.updQty, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.mnuMainAppl.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -54,10 +64,11 @@ Partial Class FrmMain
         '
         lstInvItems.FormattingEnabled = True
         lstInvItems.ImeMode = System.Windows.Forms.ImeMode.Off
-        lstInvItems.Items.AddRange(New Object() {"Air Cleaners", "Air Filter", "Air Freshener", "Anti Freeze", "Batteries", "Brake Pads", "Car Polish", "Car Wax", "Floor Mats", "Foglightis", "Fuel Filter", "Headlights", "Mirrors", "Mufflers", "Oil", "Oil Filter", "Power Steering Fluid", "Radiators", "Spark Plugs", "Taillights", "Tires", "Touchup Paint", "Transmission Fluid", "Wiper Blades"})
+        lstInvItems.ItemHeight = 16
+        lstInvItems.Items.AddRange(New Object() {"Air Cleaners", "Air Filters", "Air Fresheners", "Anti Freeze", "Batteries", "Brake Pads", "Car Polish", "Car Wax", "Floor Mats", "Fogl-ights", "Fuel Filters", "Head-lights", "Mirrors", "Mufflers", "Oil", "Oil Filters", "Power Steering Fluid", "Radiators", "Spark Plugs", "Tail-lights", "Tires", "Touchup Paint", "Transmission Fluid", "Wiper Blades"})
         lstInvItems.Location = New System.Drawing.Point(81, 58)
         lstInvItems.Name = "lstInvItems"
-        lstInvItems.Size = New System.Drawing.Size(309, 264)
+        lstInvItems.Size = New System.Drawing.Size(309, 260)
         lstInvItems.Sorted = True
         lstInvItems.TabIndex = 0
         '
@@ -65,20 +76,21 @@ Partial Class FrmMain
         '
         Me.tabInvMgmtSystem.Controls.Add(Me.tabpInvList)
         Me.tabInvMgmtSystem.Controls.Add(Me.tabpInvMgmt)
-        Me.tabInvMgmtSystem.Location = New System.Drawing.Point(116, 98)
+        Me.tabInvMgmtSystem.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tabInvMgmtSystem.Location = New System.Drawing.Point(97, 98)
         Me.tabInvMgmtSystem.Name = "tabInvMgmtSystem"
         Me.tabInvMgmtSystem.SelectedIndex = 0
-        Me.tabInvMgmtSystem.Size = New System.Drawing.Size(492, 373)
+        Me.tabInvMgmtSystem.Size = New System.Drawing.Size(530, 373)
         Me.tabInvMgmtSystem.TabIndex = 0
         '
         'tabpInvList
         '
         Me.tabpInvList.Controls.Add(Me.lblInvList)
         Me.tabpInvList.Controls.Add(lstInvItems)
-        Me.tabpInvList.Location = New System.Drawing.Point(4, 22)
+        Me.tabpInvList.Location = New System.Drawing.Point(4, 25)
         Me.tabpInvList.Name = "tabpInvList"
         Me.tabpInvList.Padding = New System.Windows.Forms.Padding(3)
-        Me.tabpInvList.Size = New System.Drawing.Size(484, 347)
+        Me.tabpInvList.Size = New System.Drawing.Size(522, 344)
         Me.tabpInvList.TabIndex = 0
         Me.tabpInvList.Text = "Inventory List"
         Me.tabpInvList.UseVisualStyleBackColor = True
@@ -95,29 +107,90 @@ Partial Class FrmMain
         '
         'tabpInvMgmt
         '
-        Me.tabpInvMgmt.Location = New System.Drawing.Point(4, 22)
+        Me.tabpInvMgmt.Controls.Add(Me.btnRemove)
+        Me.tabpInvMgmt.Controls.Add(Me.grpInvMgmtAdd)
+        Me.tabpInvMgmt.Controls.Add(Me.lblItemList)
+        Me.tabpInvMgmt.Controls.Add(Me.cboInvItem)
+        Me.tabpInvMgmt.Location = New System.Drawing.Point(4, 25)
         Me.tabpInvMgmt.Name = "tabpInvMgmt"
         Me.tabpInvMgmt.Padding = New System.Windows.Forms.Padding(3)
-        Me.tabpInvMgmt.Size = New System.Drawing.Size(484, 347)
+        Me.tabpInvMgmt.Size = New System.Drawing.Size(522, 344)
         Me.tabpInvMgmt.TabIndex = 1
         Me.tabpInvMgmt.Text = "Inventory Managment"
         Me.tabpInvMgmt.UseVisualStyleBackColor = True
         '
+        'btnRemove
+        '
+        Me.btnRemove.Location = New System.Drawing.Point(364, 139)
+        Me.btnRemove.Name = "btnRemove"
+        Me.btnRemove.Size = New System.Drawing.Size(75, 32)
+        Me.btnRemove.TabIndex = 4
+        Me.btnRemove.Text = "&Remove"
+        Me.btnRemove.UseVisualStyleBackColor = True
+        '
+        'grpInvMgmtAdd
+        '
+        Me.grpInvMgmtAdd.Controls.Add(Me.btnAdd)
+        Me.grpInvMgmtAdd.Controls.Add(Me.lblQty)
+        Me.grpInvMgmtAdd.Controls.Add(Me.updQty)
+        Me.grpInvMgmtAdd.Location = New System.Drawing.Point(50, 118)
+        Me.grpInvMgmtAdd.Name = "grpInvMgmtAdd"
+        Me.grpInvMgmtAdd.Size = New System.Drawing.Size(276, 150)
+        Me.grpInvMgmtAdd.TabIndex = 2
+        Me.grpInvMgmtAdd.TabStop = False
+        Me.grpInvMgmtAdd.Text = "Add"
+        '
+        'lblQty
+        '
+        Me.lblQty.AutoSize = True
+        Me.lblQty.Location = New System.Drawing.Point(56, 48)
+        Me.lblQty.Name = "lblQty"
+        Me.lblQty.Size = New System.Drawing.Size(34, 17)
+        Me.lblQty.TabIndex = 7
+        Me.lblQty.Text = "&Qty:"
+        '
+        'updQty
+        '
+        Me.updQty.Location = New System.Drawing.Point(96, 46)
+        Me.updQty.Maximum = New Decimal(New Integer() {50, 0, 0, 0})
+        Me.updQty.Name = "updQty"
+        Me.updQty.Size = New System.Drawing.Size(120, 23)
+        Me.updQty.TabIndex = 6
+        '
+        'lblItemList
+        '
+        Me.lblItemList.AutoSize = True
+        Me.lblItemList.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblItemList.Location = New System.Drawing.Point(47, 57)
+        Me.lblItemList.Name = "lblItemList"
+        Me.lblItemList.Size = New System.Drawing.Size(38, 17)
+        Me.lblItemList.TabIndex = 1
+        Me.lblItemList.Text = "Item:"
+        '
+        'cboInvItem
+        '
+        Me.cboInvItem.FormattingEnabled = True
+        Me.cboInvItem.Location = New System.Drawing.Point(95, 54)
+        Me.cboInvItem.Name = "cboInvItem"
+        Me.cboInvItem.Size = New System.Drawing.Size(231, 24)
+        Me.cboInvItem.TabIndex = 0
+        '
         'lblInvMgr
         '
         Me.lblInvMgr.AutoSize = True
-        Me.lblInvMgr.Font = New System.Drawing.Font("Microsoft Sans Serif", 18.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblInvMgr.Font = New System.Drawing.Font("Microsoft Sans Serif", 18.0!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblInvMgr.Location = New System.Drawing.Point(257, 48)
         Me.lblInvMgr.Name = "lblInvMgr"
-        Me.lblInvMgr.Size = New System.Drawing.Size(210, 29)
+        Me.lblInvMgr.Size = New System.Drawing.Size(227, 29)
         Me.lblInvMgr.TabIndex = 1
         Me.lblInvMgr.Text = "Inventory Manager"
         '
         'btnExit
         '
-        Me.btnExit.Location = New System.Drawing.Point(325, 502)
+        Me.btnExit.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnExit.Location = New System.Drawing.Point(325, 508)
         Me.btnExit.Name = "btnExit"
-        Me.btnExit.Size = New System.Drawing.Size(75, 38)
+        Me.btnExit.Size = New System.Drawing.Size(75, 32)
         Me.btnExit.TabIndex = 2
         Me.btnExit.Text = "&Exit"
         Me.btnExit.UseVisualStyleBackColor = True
@@ -132,20 +205,20 @@ Partial Class FrmMain
         'mnuOptionFileLoad
         '
         Me.mnuOptionFileLoad.Name = "mnuOptionFileLoad"
-        Me.mnuOptionFileLoad.Size = New System.Drawing.Size(152, 22)
+        Me.mnuOptionFileLoad.Size = New System.Drawing.Size(132, 22)
         Me.mnuOptionFileLoad.Text = "Load"
         '
         'mnuOptionFileSave
         '
         Me.mnuOptionFileSave.Name = "mnuOptionFileSave"
-        Me.mnuOptionFileSave.Size = New System.Drawing.Size(152, 22)
+        Me.mnuOptionFileSave.Size = New System.Drawing.Size(132, 22)
         Me.mnuOptionFileSave.Text = "Save"
         '
         'mnuOptionFileExit
         '
         Me.mnuOptionFileExit.Name = "mnuOptionFileExit"
         Me.mnuOptionFileExit.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.E), System.Windows.Forms.Keys)
-        Me.mnuOptionFileExit.Size = New System.Drawing.Size(152, 22)
+        Me.mnuOptionFileExit.Size = New System.Drawing.Size(132, 22)
         Me.mnuOptionFileExit.Text = "Exit"
         '
         'mnuOptionEdit
@@ -160,21 +233,21 @@ Partial Class FrmMain
         '
         Me.mnuOptionEditCut.Name = "mnuOptionEditCut"
         Me.mnuOptionEditCut.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.X), System.Windows.Forms.Keys)
-        Me.mnuOptionEditCut.Size = New System.Drawing.Size(152, 22)
+        Me.mnuOptionEditCut.Size = New System.Drawing.Size(144, 22)
         Me.mnuOptionEditCut.Text = "Cut"
         '
         'mnuOptionEditCopy
         '
         Me.mnuOptionEditCopy.Name = "mnuOptionEditCopy"
         Me.mnuOptionEditCopy.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.C), System.Windows.Forms.Keys)
-        Me.mnuOptionEditCopy.Size = New System.Drawing.Size(152, 22)
+        Me.mnuOptionEditCopy.Size = New System.Drawing.Size(144, 22)
         Me.mnuOptionEditCopy.Text = "Copy"
         '
         'mnuOptionEditPaste
         '
         Me.mnuOptionEditPaste.Name = "mnuOptionEditPaste"
         Me.mnuOptionEditPaste.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.V), System.Windows.Forms.Keys)
-        Me.mnuOptionEditPaste.Size = New System.Drawing.Size(152, 22)
+        Me.mnuOptionEditPaste.Size = New System.Drawing.Size(144, 22)
         Me.mnuOptionEditPaste.Text = "Paste"
         '
         'mnuOptionInv
@@ -188,19 +261,19 @@ Partial Class FrmMain
         'mnuOptionInvList
         '
         Me.mnuOptionInvList.Name = "mnuOptionInvList"
-        Me.mnuOptionInvList.Size = New System.Drawing.Size(152, 22)
+        Me.mnuOptionInvList.Size = New System.Drawing.Size(117, 22)
         Me.mnuOptionInvList.Text = "List"
         '
         'mnuOptionInvAdd
         '
         Me.mnuOptionInvAdd.Name = "mnuOptionInvAdd"
-        Me.mnuOptionInvAdd.Size = New System.Drawing.Size(152, 22)
+        Me.mnuOptionInvAdd.Size = New System.Drawing.Size(117, 22)
         Me.mnuOptionInvAdd.Text = "Add"
         '
         'mnuOptionInvRemove
         '
         Me.mnuOptionInvRemove.Name = "mnuOptionInvRemove"
-        Me.mnuOptionInvRemove.Size = New System.Drawing.Size(152, 22)
+        Me.mnuOptionInvRemove.Size = New System.Drawing.Size(117, 22)
         Me.mnuOptionInvRemove.Text = "Remove"
         '
         'mnuOptionHelp
@@ -214,7 +287,7 @@ Partial Class FrmMain
         'mnuOptionHelpAbout
         '
         Me.mnuOptionHelpAbout.Name = "mnuOptionHelpAbout"
-        Me.mnuOptionHelpAbout.Size = New System.Drawing.Size(152, 22)
+        Me.mnuOptionHelpAbout.Size = New System.Drawing.Size(107, 22)
         Me.mnuOptionHelpAbout.Text = "About"
         '
         'mnuMainAppl
@@ -225,6 +298,15 @@ Partial Class FrmMain
         Me.mnuMainAppl.ShowItemToolTips = True
         Me.mnuMainAppl.Size = New System.Drawing.Size(725, 24)
         Me.mnuMainAppl.TabIndex = 3
+        '
+        'btnAdd
+        '
+        Me.btnAdd.Location = New System.Drawing.Point(96, 98)
+        Me.btnAdd.Name = "btnAdd"
+        Me.btnAdd.Size = New System.Drawing.Size(75, 32)
+        Me.btnAdd.TabIndex = 5
+        Me.btnAdd.Text = "&Add"
+        Me.btnAdd.UseVisualStyleBackColor = True
         '
         'FrmMain
         '
@@ -240,6 +322,11 @@ Partial Class FrmMain
         Me.tabInvMgmtSystem.ResumeLayout(False)
         Me.tabpInvList.ResumeLayout(False)
         Me.tabpInvList.PerformLayout()
+        Me.tabpInvMgmt.ResumeLayout(False)
+        Me.tabpInvMgmt.PerformLayout()
+        Me.grpInvMgmtAdd.ResumeLayout(False)
+        Me.grpInvMgmtAdd.PerformLayout()
+        CType(Me.updQty, System.ComponentModel.ISupportInitialize).EndInit()
         Me.mnuMainAppl.ResumeLayout(False)
         Me.mnuMainAppl.PerformLayout()
         Me.ResumeLayout(False)
@@ -268,4 +355,11 @@ Partial Class FrmMain
     Friend WithEvents mnuOptionHelp As ToolStripMenuItem
     Friend WithEvents mnuOptionHelpAbout As ToolStripMenuItem
     Friend WithEvents mnuMainAppl As MenuStrip
+    Friend WithEvents lblItemList As Label
+    Friend WithEvents cboInvItem As ComboBox
+    Friend WithEvents grpInvMgmtAdd As GroupBox
+    Friend WithEvents btnRemove As Button
+    Friend WithEvents lblQty As Label
+    Friend WithEvents updQty As NumericUpDown
+    Friend WithEvents btnAdd As Button
 End Class

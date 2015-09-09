@@ -106,6 +106,42 @@ Public Class FrmMain
 
     '********** Private Non-Shared Behavioral Methods
 
+    '_initializeInvMgmtTabItemList is used to initialize the 
+    'inventory mgmt tab combo box that store inventory items.
+    Private Sub _initializeInvMgmtTabItemList()
+        Debug.Print("Initializing item list combo box")
+
+        'duplicate the same item list as defined in Inventory
+        'List tab
+        cboInvItem.Items.Add("Air Cleaners")
+        cboInvItem.Items.Add("Air Filters")
+        cboInvItem.Items.Add("Air Fresheners")
+        cboInvItem.Items.Add("Anti Freeze")
+        cboInvItem.Items.Add("Batteries")
+        cboInvItem.Items.Add("Brake Pads")
+        cboInvItem.Items.Add("Car Polish")
+        cboInvItem.Items.Add("Car Wax")
+        cboInvItem.Items.Add("Floor Mats")
+        cboInvItem.Items.Add("Fog-lights")
+        cboInvItem.Items.Add("Fuel Filter")
+        cboInvItem.Items.Add("Head-lights")
+        cboInvItem.Items.Add("Mirrors")
+        cboInvItem.Items.Add("Mufflers")
+        cboInvItem.Items.Add("Oil")
+        cboInvItem.Items.Add("Oil Filters")
+        cboInvItem.Items.Add("Power Steering Fluid")
+        cboInvItem.Items.Add("Radiators")
+        cboInvItem.Items.Add("Spark Plugs")
+        cboInvItem.Items.Add("Tail-lights")
+        cboInvItem.Items.Add("Tires")
+        cboInvItem.Items.Add("Touchup Paint")
+        cboInvItem.Items.Add("Transmission Fluid")
+        cboInvItem.Items.Add("Wiper Blades")
+
+        'Set the list index to the first item
+        cboInvItem.SelectedIndex = 0
+
+    End Sub '_initializeInvMgmtTabItemList
 
     '_initializeToolTips to assist the user
     Private Sub _initializeToolTips()
@@ -130,7 +166,7 @@ Public Class FrmMain
     'data/logic to a known good starting state.
     Private Sub _initializeBusinessLogic()
 
-        'Do Nothing For Now
+        'Do Nothing for Now
 
     End Sub '_initializeBusinessLogic()
 
@@ -138,7 +174,8 @@ Public Class FrmMain
     'so it is ready for user interaction.
     Private Sub _initializeUserInterface()
 
-        'Do Nothing for Now
+        'Initialize the inventor item list for the inventory mgmt tab
+        _initializeInvMgmtTabItemList()
 
     End Sub 'initializeUserInterface()
 
@@ -204,6 +241,10 @@ Public Class FrmMain
     End Sub
 
     Private Sub lstInvItems_SelectedIndexChanged(sender As Object, e As EventArgs)
+
+    End Sub
+
+    Private Sub cboInvItem_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboInvItem.SelectedIndexChanged
 
     End Sub
 
