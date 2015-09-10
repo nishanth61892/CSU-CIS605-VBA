@@ -22,17 +22,17 @@ Partial Class FrmMain
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmMain))
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FrmMain))
         Me.lnkBizURL = New System.Windows.Forms.LinkLabel()
         Me.txtOwnerName = New System.Windows.Forms.TextBox()
         Me.lblOwnerName = New System.Windows.Forms.Label()
-        Me.RadioButton1 = New System.Windows.Forms.RadioButton()
+        Me.radCoop = New System.Windows.Forms.RadioButton()
         Me.grbBizType = New System.Windows.Forms.GroupBox()
-        Me.RadioButton3 = New System.Windows.Forms.RadioButton()
-        Me.RadioButton2 = New System.Windows.Forms.RadioButton()
+        Me.radCorp = New System.Windows.Forms.RadioButton()
+        Me.radProprietorship = New System.Windows.Forms.RadioButton()
         Me.grbBizCharacteristics = New System.Windows.Forms.GroupBox()
-        Me.CheckBox2 = New System.Windows.Forms.CheckBox()
-        Me.cbTaxExempt = New System.Windows.Forms.CheckBox()
+        Me.chkIntl = New System.Windows.Forms.CheckBox()
+        Me.chkTaxExempt = New System.Windows.Forms.CheckBox()
         Me.picBizLogo = New System.Windows.Forms.PictureBox()
         Me.btnAccept = New System.Windows.Forms.Button()
         Me.btnExit = New System.Windows.Forms.Button()
@@ -74,23 +74,22 @@ Partial Class FrmMain
         Me.lblOwnerName.TabIndex = 2
         Me.lblOwnerName.Text = "&Owner Name:"
         '
-        'RadioButton1
+        'radCoop
         '
-        Me.RadioButton1.AutoSize = True
-        Me.RadioButton1.Location = New System.Drawing.Point(40, 27)
-        Me.RadioButton1.Margin = New System.Windows.Forms.Padding(4)
-        Me.RadioButton1.Name = "RadioButton1"
-        Me.RadioButton1.Size = New System.Drawing.Size(64, 21)
-        Me.RadioButton1.TabIndex = 5
-        Me.RadioButton1.TabStop = True
-        Me.RadioButton1.Text = "&Co-op"
-        Me.RadioButton1.UseVisualStyleBackColor = True
+        Me.radCoop.AutoSize = True
+        Me.radCoop.Location = New System.Drawing.Point(40, 27)
+        Me.radCoop.Margin = New System.Windows.Forms.Padding(4)
+        Me.radCoop.Name = "radCoop"
+        Me.radCoop.Size = New System.Drawing.Size(64, 21)
+        Me.radCoop.TabIndex = 5
+        Me.radCoop.Text = "&Co-op"
+        Me.radCoop.UseVisualStyleBackColor = True
         '
         'grbBizType
         '
-        Me.grbBizType.Controls.Add(Me.RadioButton3)
-        Me.grbBizType.Controls.Add(Me.RadioButton2)
-        Me.grbBizType.Controls.Add(Me.RadioButton1)
+        Me.grbBizType.Controls.Add(Me.radCorp)
+        Me.grbBizType.Controls.Add(Me.radProprietorship)
+        Me.grbBizType.Controls.Add(Me.radCoop)
         Me.grbBizType.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.grbBizType.Location = New System.Drawing.Point(49, 170)
         Me.grbBizType.Margin = New System.Windows.Forms.Padding(4)
@@ -101,34 +100,34 @@ Partial Class FrmMain
         Me.grbBizType.TabStop = False
         Me.grbBizType.Text = "Type of Business"
         '
-        'RadioButton3
+        'radCorp
         '
-        Me.RadioButton3.AutoSize = True
-        Me.RadioButton3.Location = New System.Drawing.Point(40, 95)
-        Me.RadioButton3.Margin = New System.Windows.Forms.Padding(4)
-        Me.RadioButton3.Name = "RadioButton3"
-        Me.RadioButton3.Size = New System.Drawing.Size(100, 21)
-        Me.RadioButton3.TabIndex = 7
-        Me.RadioButton3.TabStop = True
-        Me.RadioButton3.Text = "Co&rporation"
-        Me.RadioButton3.UseVisualStyleBackColor = True
+        Me.radCorp.AutoSize = True
+        Me.radCorp.Location = New System.Drawing.Point(40, 95)
+        Me.radCorp.Margin = New System.Windows.Forms.Padding(4)
+        Me.radCorp.Name = "radCorp"
+        Me.radCorp.Size = New System.Drawing.Size(100, 21)
+        Me.radCorp.TabIndex = 7
+        Me.radCorp.Text = "Co&rporation"
+        Me.radCorp.UseVisualStyleBackColor = True
         '
-        'RadioButton2
+        'radProprietorship
         '
-        Me.RadioButton2.AutoSize = True
-        Me.RadioButton2.Location = New System.Drawing.Point(40, 61)
-        Me.RadioButton2.Margin = New System.Windows.Forms.Padding(4)
-        Me.RadioButton2.Name = "RadioButton2"
-        Me.RadioButton2.Size = New System.Drawing.Size(115, 21)
-        Me.RadioButton2.TabIndex = 6
-        Me.RadioButton2.TabStop = True
-        Me.RadioButton2.Text = "&Proprietorship"
-        Me.RadioButton2.UseVisualStyleBackColor = True
+        Me.radProprietorship.AutoSize = True
+        Me.radProprietorship.Checked = True
+        Me.radProprietorship.Location = New System.Drawing.Point(40, 61)
+        Me.radProprietorship.Margin = New System.Windows.Forms.Padding(4)
+        Me.radProprietorship.Name = "radProprietorship"
+        Me.radProprietorship.Size = New System.Drawing.Size(115, 21)
+        Me.radProprietorship.TabIndex = 6
+        Me.radProprietorship.TabStop = True
+        Me.radProprietorship.Text = "&Proprietorship"
+        Me.radProprietorship.UseVisualStyleBackColor = True
         '
         'grbBizCharacteristics
         '
-        Me.grbBizCharacteristics.Controls.Add(Me.CheckBox2)
-        Me.grbBizCharacteristics.Controls.Add(Me.cbTaxExempt)
+        Me.grbBizCharacteristics.Controls.Add(Me.chkIntl)
+        Me.grbBizCharacteristics.Controls.Add(Me.chkTaxExempt)
         Me.grbBizCharacteristics.Location = New System.Drawing.Point(299, 170)
         Me.grbBizCharacteristics.Margin = New System.Windows.Forms.Padding(4)
         Me.grbBizCharacteristics.Name = "grbBizCharacteristics"
@@ -138,25 +137,27 @@ Partial Class FrmMain
         Me.grbBizCharacteristics.TabStop = False
         Me.grbBizCharacteristics.Text = "Business Characteristics"
         '
-        'CheckBox2
+        'chkIntl
         '
-        Me.CheckBox2.AutoSize = True
-        Me.CheckBox2.Location = New System.Drawing.Point(35, 64)
-        Me.CheckBox2.Name = "CheckBox2"
-        Me.CheckBox2.Size = New System.Drawing.Size(105, 21)
-        Me.CheckBox2.TabIndex = 10
-        Me.CheckBox2.Text = "&International"
-        Me.CheckBox2.UseVisualStyleBackColor = True
+        Me.chkIntl.AutoSize = True
+        Me.chkIntl.Checked = True
+        Me.chkIntl.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.chkIntl.Location = New System.Drawing.Point(35, 64)
+        Me.chkIntl.Name = "chkIntl"
+        Me.chkIntl.Size = New System.Drawing.Size(105, 21)
+        Me.chkIntl.TabIndex = 10
+        Me.chkIntl.Text = "&International"
+        Me.chkIntl.UseVisualStyleBackColor = True
         '
-        'cbTaxExempt
+        'chkTaxExempt
         '
-        Me.cbTaxExempt.AutoSize = True
-        Me.cbTaxExempt.Location = New System.Drawing.Point(35, 30)
-        Me.cbTaxExempt.Name = "cbTaxExempt"
-        Me.cbTaxExempt.Size = New System.Drawing.Size(100, 21)
-        Me.cbTaxExempt.TabIndex = 9
-        Me.cbTaxExempt.Text = "&Tax Exempt"
-        Me.cbTaxExempt.UseVisualStyleBackColor = True
+        Me.chkTaxExempt.AutoSize = True
+        Me.chkTaxExempt.Location = New System.Drawing.Point(35, 30)
+        Me.chkTaxExempt.Name = "chkTaxExempt"
+        Me.chkTaxExempt.Size = New System.Drawing.Size(100, 21)
+        Me.chkTaxExempt.TabIndex = 9
+        Me.chkTaxExempt.Text = "&Tax Exempt"
+        Me.chkTaxExempt.UseVisualStyleBackColor = True
         '
         'picBizLogo
         '
@@ -171,18 +172,18 @@ Partial Class FrmMain
         '
         'btnAccept
         '
-        Me.btnAccept.Location = New System.Drawing.Point(190, 551)
+        Me.btnAccept.Location = New System.Drawing.Point(190, 561)
         Me.btnAccept.Name = "btnAccept"
-        Me.btnAccept.Size = New System.Drawing.Size(75, 36)
+        Me.btnAccept.Size = New System.Drawing.Size(75, 26)
         Me.btnAccept.TabIndex = 12
         Me.btnAccept.Text = "&Accept"
         Me.btnAccept.UseVisualStyleBackColor = True
         '
         'btnExit
         '
-        Me.btnExit.Location = New System.Drawing.Point(299, 551)
+        Me.btnExit.Location = New System.Drawing.Point(299, 561)
         Me.btnExit.Name = "btnExit"
-        Me.btnExit.Size = New System.Drawing.Size(75, 36)
+        Me.btnExit.Size = New System.Drawing.Size(75, 26)
         Me.btnExit.TabIndex = 13
         Me.btnExit.Text = "&Exit"
         Me.btnExit.UseVisualStyleBackColor = True
@@ -196,7 +197,7 @@ Partial Class FrmMain
         Me.lblLogo.TabIndex = 11
         Me.lblLogo.Text = "Logo"
         '
-        'frmMain
+        'FrmMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
@@ -212,7 +213,7 @@ Partial Class FrmMain
         Me.Controls.Add(Me.lnkBizURL)
         Me.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Margin = New System.Windows.Forms.Padding(4)
-        Me.Name = "frmMain"
+        Me.Name = "FrmMain"
         Me.Text = "Ch02Ex02"
         Me.grbBizType.ResumeLayout(False)
         Me.grbBizType.PerformLayout()
@@ -227,13 +228,13 @@ Partial Class FrmMain
     Friend WithEvents lnkBizURL As LinkLabel
     Friend WithEvents txtOwnerName As TextBox
     Friend WithEvents lblOwnerName As Label
-    Friend WithEvents RadioButton1 As RadioButton
+    Friend WithEvents radCoop As RadioButton
     Friend WithEvents grbBizType As GroupBox
-    Friend WithEvents RadioButton3 As RadioButton
-    Friend WithEvents RadioButton2 As RadioButton
+    Friend WithEvents radCorp As RadioButton
+    Friend WithEvents radProprietorship As RadioButton
     Friend WithEvents grbBizCharacteristics As GroupBox
-    Friend WithEvents CheckBox2 As CheckBox
-    Friend WithEvents cbTaxExempt As CheckBox
+    Friend WithEvents chkIntl As CheckBox
+    Friend WithEvents chkTaxExempt As CheckBox
     Friend WithEvents picBizLogo As PictureBox
     Friend WithEvents btnAccept As Button
     Friend WithEvents btnExit As Button

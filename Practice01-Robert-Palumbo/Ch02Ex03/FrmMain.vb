@@ -159,6 +159,10 @@ Public Class FrmMain
         toolTip.SetToolTip(Me.tabpInvList, "Inventory List Page")
         toolTip.SetToolTip(Me.tabpInvMgmt, "Inventory Management Page")
         toolTip.SetToolTip(Me.btnExit, "Click on button to Exit the program")
+        toolTip.SetToolTip(Me.updQty, "Enter item quantity to add")
+        toolTip.SetToolTip(Me.cboInvItem, "Select item to be added from list")
+        toolTip.SetToolTip(Me.btnAdd, "Click to add item(s) to inventory")
+        toolTip.SetToolTip(Me.btnRemove, "Click to remove item from inventory")
 
     End Sub '_initializeToolTips()
 

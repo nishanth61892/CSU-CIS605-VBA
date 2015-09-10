@@ -29,6 +29,7 @@ Partial Class FrmMain
         Me.tabpInvMgmt = New System.Windows.Forms.TabPage()
         Me.btnRemove = New System.Windows.Forms.Button()
         Me.grpInvMgmtAdd = New System.Windows.Forms.GroupBox()
+        Me.btnAdd = New System.Windows.Forms.Button()
         Me.lblQty = New System.Windows.Forms.Label()
         Me.updQty = New System.Windows.Forms.NumericUpDown()
         Me.lblItemList = New System.Windows.Forms.Label()
@@ -50,7 +51,6 @@ Partial Class FrmMain
         Me.mnuOptionHelp = New System.Windows.Forms.ToolStripMenuItem()
         Me.mnuOptionHelpAbout = New System.Windows.Forms.ToolStripMenuItem()
         Me.mnuMainAppl = New System.Windows.Forms.MenuStrip()
-        Me.btnAdd = New System.Windows.Forms.Button()
         lstInvItems = New System.Windows.Forms.ListBox()
         Me.tabInvMgmtSystem.SuspendLayout()
         Me.tabpInvList.SuspendLayout()
@@ -70,7 +70,7 @@ Partial Class FrmMain
         lstInvItems.Name = "lstInvItems"
         lstInvItems.Size = New System.Drawing.Size(309, 260)
         lstInvItems.Sorted = True
-        lstInvItems.TabIndex = 0
+        lstInvItems.TabIndex = 3
         '
         'tabInvMgmtSystem
         '
@@ -81,7 +81,7 @@ Partial Class FrmMain
         Me.tabInvMgmtSystem.Name = "tabInvMgmtSystem"
         Me.tabInvMgmtSystem.SelectedIndex = 0
         Me.tabInvMgmtSystem.Size = New System.Drawing.Size(530, 373)
-        Me.tabInvMgmtSystem.TabIndex = 0
+        Me.tabInvMgmtSystem.TabIndex = 2
         '
         'tabpInvList
         '
@@ -124,7 +124,7 @@ Partial Class FrmMain
         Me.btnRemove.Location = New System.Drawing.Point(364, 139)
         Me.btnRemove.Name = "btnRemove"
         Me.btnRemove.Size = New System.Drawing.Size(75, 32)
-        Me.btnRemove.TabIndex = 4
+        Me.btnRemove.TabIndex = 8
         Me.btnRemove.Text = "&Remove"
         Me.btnRemove.UseVisualStyleBackColor = True
         '
@@ -136,9 +136,18 @@ Partial Class FrmMain
         Me.grpInvMgmtAdd.Location = New System.Drawing.Point(50, 118)
         Me.grpInvMgmtAdd.Name = "grpInvMgmtAdd"
         Me.grpInvMgmtAdd.Size = New System.Drawing.Size(276, 150)
-        Me.grpInvMgmtAdd.TabIndex = 2
+        Me.grpInvMgmtAdd.TabIndex = 6
         Me.grpInvMgmtAdd.TabStop = False
         Me.grpInvMgmtAdd.Text = "Add"
+        '
+        'btnAdd
+        '
+        Me.btnAdd.Location = New System.Drawing.Point(96, 98)
+        Me.btnAdd.Name = "btnAdd"
+        Me.btnAdd.Size = New System.Drawing.Size(75, 32)
+        Me.btnAdd.TabIndex = 7
+        Me.btnAdd.Text = "&Add"
+        Me.btnAdd.UseVisualStyleBackColor = True
         '
         'lblQty
         '
@@ -146,7 +155,7 @@ Partial Class FrmMain
         Me.lblQty.Location = New System.Drawing.Point(56, 48)
         Me.lblQty.Name = "lblQty"
         Me.lblQty.Size = New System.Drawing.Size(34, 17)
-        Me.lblQty.TabIndex = 7
+        Me.lblQty.TabIndex = 5
         Me.lblQty.Text = "&Qty:"
         '
         'updQty
@@ -173,7 +182,7 @@ Partial Class FrmMain
         Me.cboInvItem.Location = New System.Drawing.Point(95, 54)
         Me.cboInvItem.Name = "cboInvItem"
         Me.cboInvItem.Size = New System.Drawing.Size(231, 24)
-        Me.cboInvItem.TabIndex = 0
+        Me.cboInvItem.TabIndex = 4
         '
         'lblInvMgr
         '
@@ -191,7 +200,7 @@ Partial Class FrmMain
         Me.btnExit.Location = New System.Drawing.Point(325, 508)
         Me.btnExit.Name = "btnExit"
         Me.btnExit.Size = New System.Drawing.Size(75, 32)
-        Me.btnExit.TabIndex = 2
+        Me.btnExit.TabIndex = 9
         Me.btnExit.Text = "&Exit"
         Me.btnExit.UseVisualStyleBackColor = True
         '
@@ -298,15 +307,6 @@ Partial Class FrmMain
         Me.mnuMainAppl.ShowItemToolTips = True
         Me.mnuMainAppl.Size = New System.Drawing.Size(725, 24)
         Me.mnuMainAppl.TabIndex = 3
-        '
-        'btnAdd
-        '
-        Me.btnAdd.Location = New System.Drawing.Point(96, 98)
-        Me.btnAdd.Name = "btnAdd"
-        Me.btnAdd.Size = New System.Drawing.Size(75, 32)
-        Me.btnAdd.TabIndex = 5
-        Me.btnAdd.Text = "&Add"
-        Me.btnAdd.UseVisualStyleBackColor = True
         '
         'FrmMain
         '

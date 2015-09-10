@@ -187,6 +187,10 @@ Public Class FmMain
 
     End Sub '_btnClearClick(sender, e)
 
+    Private Sub lblUserName_Click(sender As Object, e As EventArgs) Handles lblUserName.Click
+
+    End Sub
+
     '********** User-Interface Event Procedures
     '             - Initiated automatically by system
 

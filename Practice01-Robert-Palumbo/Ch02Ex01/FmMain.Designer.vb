@@ -44,11 +44,11 @@ Partial Class FmMain
         '
         Me.lblUserName.AutoSize = True
         Me.lblUserName.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblUserName.Location = New System.Drawing.Point(37, 30)
+        Me.lblUserName.Location = New System.Drawing.Point(85, 27)
         Me.lblUserName.Name = "lblUserName"
-        Me.lblUserName.Size = New System.Drawing.Size(83, 17)
+        Me.lblUserName.Size = New System.Drawing.Size(49, 17)
         Me.lblUserName.TabIndex = 0
-        Me.lblUserName.Text = "User &Name:"
+        Me.lblUserName.Text = "&Name:"
         '
         'dtpBirthdayDate
         '
@@ -61,11 +61,11 @@ Partial Class FmMain
         '
         Me.lblBirthdayDate.AutoSize = True
         Me.lblBirthdayDate.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblBirthdayDate.Location = New System.Drawing.Point(37, 64)
+        Me.lblBirthdayDate.Location = New System.Drawing.Point(70, 62)
         Me.lblBirthdayDate.Name = "lblBirthdayDate"
-        Me.lblBirthdayDate.Size = New System.Drawing.Size(60, 17)
+        Me.lblBirthdayDate.Size = New System.Drawing.Size(64, 17)
         Me.lblBirthdayDate.TabIndex = 0
-        Me.lblBirthdayDate.Text = "&Birthday"
+        Me.lblBirthdayDate.Text = "&Birthday:"
         '
         'btnAccept
         '
@@ -105,7 +105,7 @@ Partial Class FmMain
         Me.lblProgramOutput.Size = New System.Drawing.Size(300, 100)
         Me.lblProgramOutput.TabIndex = 8
         '
-        'frmMain
+        'FmMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
@@ -118,7 +118,7 @@ Partial Class FmMain
         Me.Controls.Add(Me.dtpBirthdayDate)
         Me.Controls.Add(Me.lblUserName)
         Me.Controls.Add(Me.txtUserName)
-        Me.Name = "frmMain"
+        Me.Name = "FmMain"
         Me.Text = "Ch02Ex01"
         Me.ResumeLayout(False)
         Me.PerformLayout()
