@@ -50,7 +50,7 @@ Partial Class FrmMain
         Me.lnkBizURL.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lnkBizURL.Name = "lnkBizURL"
         Me.lnkBizURL.Size = New System.Drawing.Size(241, 50)
-        Me.lnkBizURL.TabIndex = 1
+        Me.lnkBizURL.TabIndex = 0
         Me.lnkBizURL.TabStop = True
         Me.lnkBizURL.Text = "MyBusiness.com"
         '
@@ -71,7 +71,7 @@ Partial Class FrmMain
         Me.lblOwnerName.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblOwnerName.Name = "lblOwnerName"
         Me.lblOwnerName.Size = New System.Drawing.Size(94, 17)
-        Me.lblOwnerName.TabIndex = 2
+        Me.lblOwnerName.TabIndex = 1
         Me.lblOwnerName.Text = "&Owner Name:"
         '
         'radCoop
@@ -81,7 +81,7 @@ Partial Class FrmMain
         Me.radCoop.Margin = New System.Windows.Forms.Padding(4)
         Me.radCoop.Name = "radCoop"
         Me.radCoop.Size = New System.Drawing.Size(64, 21)
-        Me.radCoop.TabIndex = 5
+        Me.radCoop.TabIndex = 0
         Me.radCoop.Text = "&Co-op"
         Me.radCoop.UseVisualStyleBackColor = True
         '
@@ -96,7 +96,7 @@ Partial Class FrmMain
         Me.grbBizType.Name = "grbBizType"
         Me.grbBizType.Padding = New System.Windows.Forms.Padding(4)
         Me.grbBizType.Size = New System.Drawing.Size(216, 137)
-        Me.grbBizType.TabIndex = 4
+        Me.grbBizType.TabIndex = 3
         Me.grbBizType.TabStop = False
         Me.grbBizType.Text = "Type of Business"
         '
@@ -107,7 +107,7 @@ Partial Class FrmMain
         Me.radCorp.Margin = New System.Windows.Forms.Padding(4)
         Me.radCorp.Name = "radCorp"
         Me.radCorp.Size = New System.Drawing.Size(100, 21)
-        Me.radCorp.TabIndex = 7
+        Me.radCorp.TabIndex = 2
         Me.radCorp.Text = "Co&rporation"
         Me.radCorp.UseVisualStyleBackColor = True
         '
@@ -119,7 +119,7 @@ Partial Class FrmMain
         Me.radProprietorship.Margin = New System.Windows.Forms.Padding(4)
         Me.radProprietorship.Name = "radProprietorship"
         Me.radProprietorship.Size = New System.Drawing.Size(115, 21)
-        Me.radProprietorship.TabIndex = 6
+        Me.radProprietorship.TabIndex = 1
         Me.radProprietorship.TabStop = True
         Me.radProprietorship.Text = "&Proprietorship"
         Me.radProprietorship.UseVisualStyleBackColor = True
@@ -133,7 +133,7 @@ Partial Class FrmMain
         Me.grbBizCharacteristics.Name = "grbBizCharacteristics"
         Me.grbBizCharacteristics.Padding = New System.Windows.Forms.Padding(4)
         Me.grbBizCharacteristics.Size = New System.Drawing.Size(207, 137)
-        Me.grbBizCharacteristics.TabIndex = 8
+        Me.grbBizCharacteristics.TabIndex = 4
         Me.grbBizCharacteristics.TabStop = False
         Me.grbBizCharacteristics.Text = "Business Characteristics"
         '
@@ -145,7 +145,7 @@ Partial Class FrmMain
         Me.chkIntl.Location = New System.Drawing.Point(35, 64)
         Me.chkIntl.Name = "chkIntl"
         Me.chkIntl.Size = New System.Drawing.Size(105, 21)
-        Me.chkIntl.TabIndex = 10
+        Me.chkIntl.TabIndex = 1
         Me.chkIntl.Text = "&International"
         Me.chkIntl.UseVisualStyleBackColor = True
         '
@@ -155,7 +155,7 @@ Partial Class FrmMain
         Me.chkTaxExempt.Location = New System.Drawing.Point(35, 30)
         Me.chkTaxExempt.Name = "chkTaxExempt"
         Me.chkTaxExempt.Size = New System.Drawing.Size(100, 21)
-        Me.chkTaxExempt.TabIndex = 9
+        Me.chkTaxExempt.TabIndex = 0
         Me.chkTaxExempt.Text = "&Tax Exempt"
         Me.chkTaxExempt.UseVisualStyleBackColor = True
         '
@@ -175,7 +175,7 @@ Partial Class FrmMain
         Me.btnAccept.Location = New System.Drawing.Point(190, 561)
         Me.btnAccept.Name = "btnAccept"
         Me.btnAccept.Size = New System.Drawing.Size(75, 26)
-        Me.btnAccept.TabIndex = 12
+        Me.btnAccept.TabIndex = 7
         Me.btnAccept.Text = "&Accept"
         Me.btnAccept.UseVisualStyleBackColor = True
         '
@@ -184,7 +184,7 @@ Partial Class FrmMain
         Me.btnExit.Location = New System.Drawing.Point(299, 561)
         Me.btnExit.Name = "btnExit"
         Me.btnExit.Size = New System.Drawing.Size(75, 26)
-        Me.btnExit.TabIndex = 13
+        Me.btnExit.TabIndex = 0
         Me.btnExit.Text = "&Exit"
         Me.btnExit.UseVisualStyleBackColor = True
         '
@@ -194,7 +194,7 @@ Partial Class FrmMain
         Me.lblLogo.Location = New System.Drawing.Point(264, 324)
         Me.lblLogo.Name = "lblLogo"
         Me.lblLogo.Size = New System.Drawing.Size(40, 17)
-        Me.lblLogo.TabIndex = 11
+        Me.lblLogo.TabIndex = 6
         Me.lblLogo.Text = "Logo"
         '
         'FrmMain
