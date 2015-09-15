@@ -178,6 +178,13 @@ Public Class FrmMain
     'so it is ready for user interaction.
     Private Sub _initializeUserInterface()
 
+        'Assign CancelButtons to the form based buttons so the 'Enter'
+        'key will activate the button if the user tabs to it
+        Me.CancelButton = btnExit
+
+        'Center the main form on the display
+        Me.StartPosition = FormStartPosition.CenterScreen
+
         'Initialize the inventor item list for the inventory mgmt tab
         _initializeInvMgmtTabItemList()
 
@@ -202,13 +209,6 @@ Public Class FrmMain
     'logic data to a known good state as well as initializing the user
     'interface to ready it for user interaction.
     Private Sub _frmMain_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
-        'Assign CancelButtons to the form based buttons so the 'Enter'
-        'key will activate the button if the user tabs to it
-        Me.CancelButton = btnExit
-
-        'Center the main form on the display
-        Me.StartPosition = FormStartPosition.CenterScreen
 
         'Initalize tool tips for specific controls
         _initializeToolTips()
