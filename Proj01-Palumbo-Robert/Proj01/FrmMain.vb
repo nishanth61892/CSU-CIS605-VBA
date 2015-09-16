@@ -148,7 +148,7 @@ Public Class FrmMain
     '********** User-Interface Event Procedures
     '             - Initiated explicitly by user
 
-    '_btnExit_Click() is the event procedure that gets called when the
+    '_btnExitFrmMain_Click() is the event procedure that gets called when the
     'user clicks on the Exit button or by using Alt-E hot key sequence.
     'It is used to notify the user and formally terminate the program.
     Private Sub btnExitFrmMain_Click(sender As Object, e As EventArgs) Handles btnExitFrmMain.Click
@@ -156,7 +156,7 @@ Public Class FrmMain
         'Terminate the program
         _closeAppl()
 
-    End Sub 'btnExitFrmMain_Click(sender As Object, e As EventArgs)
+    End Sub '_btnExitFrmMain_Click(sender As Object, e As EventArgs)
 
     '_mnuFileExit() is the event procedure that gets called when the user selects
     'File->Exit from the main menu.
@@ -166,6 +166,17 @@ Public Class FrmMain
         _closeAppl()
 
     End Sub '_mnuExitFileFrmMain_Click(sender As Object, e As EventArgs) 
+
+    '_btnTesttFrmMain_Click() is the event procedure that gets called when the user selects
+    'File->Exit from the main menu.
+    Private Sub _btnTesttFrmMain_Click(sender As Object, e As EventArgs) Handles btnTesttFrmMain.Click
+
+        'Notify the user application is closing
+        MsgBox("Reserved for future test scenarios", MsgBoxStyle.Exclamation)
+
+    End Sub '_btnTesttFrmMain_Click(sender As Object, e As EventArgs)
+
+
 
     '********** User-Interface Event Procedures
     '             - Initiated automatically by system
@@ -186,7 +197,6 @@ Public Class FrmMain
         _initializeUserInterface()
 
     End Sub '_frmMain_Load(sender, e)
-
 
     '********** Business Logic Event Procedures
     '             - Initiated as a result of business logic
