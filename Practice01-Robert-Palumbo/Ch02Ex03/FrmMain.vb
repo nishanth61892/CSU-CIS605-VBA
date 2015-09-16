@@ -178,7 +178,7 @@ Public Class FrmMain
     'so it is ready for user interaction.
     Private Sub _initializeUserInterface()
 
-        'Assign CancelButtons to the form based buttons so the 'Enter'
+        'Assign CancelButtons to the form based buttons so the 'Esc'
         'key will activate the button if the user tabs to it
         Me.CancelButton = btnExit
 
