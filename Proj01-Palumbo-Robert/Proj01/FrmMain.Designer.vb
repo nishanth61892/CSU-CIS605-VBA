@@ -22,36 +22,42 @@ Partial Class FrmMain
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Me.mnuMainApplMenu = New System.Windows.Forms.MenuStrip()
-        Me.mnuOptFile = New System.Windows.Forms.ToolStripMenuItem()
-        Me.mnuOptFileSave = New System.Windows.Forms.ToolStripMenuItem()
-        Me.mnuOptFileImport = New System.Windows.Forms.ToolStripMenuItem()
-        Me.mnuOptFileExport = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ExitToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.mnuOptEdit = New System.Windows.Forms.ToolStripMenuItem()
-        Me.mnuOptEditCut = New System.Windows.Forms.ToolStripMenuItem()
-        Me.mnuOptEditCopy = New System.Windows.Forms.ToolStripMenuItem()
-        Me.mnuOptEditPaste = New System.Windows.Forms.ToolStripMenuItem()
-        Me.mnuOptPassbook = New System.Windows.Forms.ToolStripMenuItem()
-        Me.mnuCreateOptPassbook = New System.Windows.Forms.ToolStripMenuItem()
-        Me.FeaturesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.CreateToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.mnuOptView = New System.Windows.Forms.ToolStripMenuItem()
-        Me.SummaryToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.TransactionLogToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.mnuOptHelp = New System.Windows.Forms.ToolStripMenuItem()
-        Me.mnuOptHelpAbout = New System.Windows.Forms.ToolStripMenuItem()
+        Me.mnuFileFrmMain = New System.Windows.Forms.ToolStripMenuItem()
+        Me.mnuSaveFileFrmMain = New System.Windows.Forms.ToolStripMenuItem()
+        Me.mnuImportFileFrmMain = New System.Windows.Forms.ToolStripMenuItem()
+        Me.mnuExportFileFrmMain = New System.Windows.Forms.ToolStripMenuItem()
+        Me.mnuExitFileFrmMain = New System.Windows.Forms.ToolStripMenuItem()
+        Me.mnuEditFrmMain = New System.Windows.Forms.ToolStripMenuItem()
+        Me.mnuCutEditFrmMain = New System.Windows.Forms.ToolStripMenuItem()
+        Me.mnuCopyEditFrmMain = New System.Windows.Forms.ToolStripMenuItem()
+        Me.mnuPasteEditFrmMain = New System.Windows.Forms.ToolStripMenuItem()
+        Me.mnuPassbooksFrmMain = New System.Windows.Forms.ToolStripMenuItem()
+        Me.mnuPurchasePassbooksFrmMain = New System.Windows.Forms.ToolStripMenuItem()
+        Me.mnuFeaturePassbooksFrmMain = New System.Windows.Forms.ToolStripMenuItem()
+        Me.mnuAddFeaturesPassbooksFrmMain = New System.Windows.Forms.ToolStripMenuItem()
+        Me.mnuUpdateFeaturesPassbooksFrmMain = New System.Windows.Forms.ToolStripMenuItem()
+        Me.mnuViewFrmMain = New System.Windows.Forms.ToolStripMenuItem()
+        Me.mnuSummaryViewFrmMain = New System.Windows.Forms.ToolStripMenuItem()
+        Me.mnuTransLogViewFrmMain = New System.Windows.Forms.ToolStripMenuItem()
+        Me.mnuHelpFrmMain = New System.Windows.Forms.ToolStripMenuItem()
+        Me.mnuAboutHelpFrmMain = New System.Windows.Forms.ToolStripMenuItem()
         Me.lblThemeParkMgmtSys = New System.Windows.Forms.Label()
         Me.tabPassbookFeatureTbcMain = New System.Windows.Forms.TabPage()
         Me.tbcPassbookFeatureMainTbcMain = New System.Windows.Forms.TabControl()
-        Me.TabPage3 = New System.Windows.Forms.TabPage()
-        Me.Label5 = New System.Windows.Forms.Label()
-        Me.Button3 = New System.Windows.Forms.Button()
-        Me.Button4 = New System.Windows.Forms.Button()
-        Me.Label6 = New System.Windows.Forms.Label()
-        Me.Label7 = New System.Windows.Forms.Label()
-        Me.TextBox2 = New System.Windows.Forms.TextBox()
-        Me.Label8 = New System.Windows.Forms.Label()
+        Me.tabAddFeatureTbcPassbookFeatureMainTbcMain = New System.Windows.Forms.TabPage()
+        Me.Button1 = New System.Windows.Forms.Button()
+        Me.btnAddTabAddFeatureTbcPassbookFeatureMainTbcMain = New System.Windows.Forms.Button()
+        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.txtPriceTabAddFeatureTbcPassbookFeatureMainTbcMain = New System.Windows.Forms.TextBox()
+        Me.txtUnitOfMeasAddFeatureTbcPassbookFeatureMainTbcMain = New System.Windows.Forms.TextBox()
+        Me.lblUnitOfMeasTabAddFeatureTbcPassbookFeatureMainTbcMain = New System.Windows.Forms.Label()
+        Me.TextBox3 = New System.Windows.Forms.TextBox()
+        Me.lblFeatureIdTabAddFeatureTbcPassbookFeatureMainTbcMain = New System.Windows.Forms.Label()
+        Me.txtFeatureIdTabAddFeatureTbcPassbookFeatureMainTbcMain = New System.Windows.Forms.TextBox()
+        Me.lblPriceTabAddFeatureTbcPassbookFeatureMainTbcMain = New System.Windows.Forms.Label()
+        Me.lblFeatureNameTabAddFeatureTbcPassbookFeatureMainTbcMain = New System.Windows.Forms.Label()
         Me.tabUpdtFeatureTbcPassbookFeatureMainTbcMain = New System.Windows.Forms.TabPage()
         Me.btnCancelTabUpdtFeatureTbcPassbookFeatureMainTbcMain = New System.Windows.Forms.Button()
         Me.btnUpdateTabUpdtFeatureTbcPassbookFeatureMainTbcMain = New System.Windows.Forms.Button()
@@ -61,15 +67,28 @@ Partial Class FrmMain
         Me.lblUnitOfMeasTabUpdtFeatureTbcPassbookFeatureMainTbcMain = New System.Windows.Forms.Label()
         Me.txtFeatureNameTabUpdtFeatureTbcPassbookFeatureMainTbcMain = New System.Windows.Forms.TextBox()
         Me.lblFeatureIdTabUpdtFeatureTbcPassbookFeatureMainTbcMain = New System.Windows.Forms.Label()
-        Me.txtlblFeatureIdTabUpdtFeatureTbcPassbookFeatureMainTbcMain = New System.Windows.Forms.TextBox()
+        Me.txtFeatureIdTabUpdtFeatureTbcPassbookFeatureMainTbcMain = New System.Windows.Forms.TextBox()
         Me.lblPriceTabUpdtFeatureTbcPassbookFeatureMainTbcMain = New System.Windows.Forms.Label()
         Me.lblFeatureNameTabUpdtFeatureTbcPassbookFeatureMainTbcMain = New System.Windows.Forms.Label()
-        Me.tabPassbookTbcMain = New System.Windows.Forms.TabPage()
-        Me.TabControl1 = New System.Windows.Forms.TabControl()
-        Me.TabPage1 = New System.Windows.Forms.TabPage()
-        Me.TabPage2 = New System.Windows.Forms.TabPage()
+        Me.tabPurchaseTbcMain = New System.Windows.Forms.TabPage()
+        Me.tbcPurchaseMainTabPurchaseTbcMain = New System.Windows.Forms.TabControl()
+        Me.tabPassbookTbcPurchaseMainTabPurchaseTbcMain = New System.Windows.Forms.TabPage()
+        Me.Button2 = New System.Windows.Forms.Button()
+        Me.Button3 = New System.Windows.Forms.Button()
+        Me.grpPassbookIfnoTabPassbookTbcPurchaseMainTabPurchaseTbcMain = New System.Windows.Forms.GroupBox()
+        Me.txtDatePurchasedGrpPassbookIfnoTabPassbookTbcPurchaseMainTabPurchaseTbcMain = New System.Windows.Forms.TextBox()
+        Me.ListBox1 = New System.Windows.Forms.ListBox()
+        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.lblDatePurchasedGrpPassbookIfnoTabPassbookTbcPurchaseMainTabPurchaseTbcMain = New System.Windows.Forms.Label()
+        Me.lblPassbookIdGrpPassbookIfnoTabPassbookTbcPurchaseMainTabPurchaseTbcMain = New System.Windows.Forms.Label()
+        Me.txtPassbookIdGrpPassbookIfnoTabPassbookTbcPurchaseMainTabPurchaseTbcMain = New System.Windows.Forms.TextBox()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.lblCustNameGrpPassbookIfnoTabPassbookTbcPurchaseMainTabPurchaseTbcMain = New System.Windows.Forms.Label()
+        Me.tabFeatureTbcPurchaseMainTabPurchaseTbcMain = New System.Windows.Forms.TabPage()
+        Me.btnCancelTabFeatureTbcPurchaseMainTabPurchaseTbcMain = New System.Windows.Forms.Button()
+        Me.btnAcceptTbcPurchaseMainTabPurchaseTbcMain = New System.Windows.Forms.Button()
         Me.tabCustTbcMain = New System.Windows.Forms.TabPage()
-        Me.grpCustInfoTcbMain = New System.Windows.Forms.GroupBox()
+        Me.grpCustInfoTabCustTcbMain = New System.Windows.Forms.GroupBox()
         Me.btnCancelGrpCustInfoTcbMain = New System.Windows.Forms.Button()
         Me.btnAddGrpCustInfoTcbMain = New System.Windows.Forms.Button()
         Me.txtCustNameGrpCustInfoTcbMain = New System.Windows.Forms.TextBox()
@@ -77,27 +96,34 @@ Partial Class FrmMain
         Me.txtCustIdGrpCustInfoTcbMain = New System.Windows.Forms.TextBox()
         Me.lblCustIdGrpCustInfoTcbMain = New System.Windows.Forms.Label()
         Me.tbcMain = New System.Windows.Forms.TabControl()
-        Me.btnShutdownFrmMain = New System.Windows.Forms.Button()
-        Me.AddToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.UpdateToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.btnExitFrmMain = New System.Windows.Forms.Button()
+        Me.grpTransLogTbcMain = New System.Windows.Forms.GroupBox()
+        Me.btnCLearGrpTransLogTbcFrmMain = New System.Windows.Forms.Button()
+        Me.txtTransLogGrpTransLogTbcMain = New System.Windows.Forms.TextBox()
+        Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
         Me.mnuMainApplMenu.SuspendLayout()
         Me.tabPassbookFeatureTbcMain.SuspendLayout()
         Me.tbcPassbookFeatureMainTbcMain.SuspendLayout()
-        Me.TabPage3.SuspendLayout()
+        Me.tabAddFeatureTbcPassbookFeatureMainTbcMain.SuspendLayout()
+        Me.GroupBox1.SuspendLayout()
         Me.tabUpdtFeatureTbcPassbookFeatureMainTbcMain.SuspendLayout()
         Me.grpUpdtFeatureTbcPassbookFeatureMainTbcMain.SuspendLayout()
-        Me.tabPassbookTbcMain.SuspendLayout()
-        Me.TabControl1.SuspendLayout()
+        Me.tabPurchaseTbcMain.SuspendLayout()
+        Me.tbcPurchaseMainTabPurchaseTbcMain.SuspendLayout()
+        Me.tabPassbookTbcPurchaseMainTabPurchaseTbcMain.SuspendLayout()
+        Me.grpPassbookIfnoTabPassbookTbcPurchaseMainTabPurchaseTbcMain.SuspendLayout()
+        Me.tabFeatureTbcPurchaseMainTabPurchaseTbcMain.SuspendLayout()
         Me.tabCustTbcMain.SuspendLayout()
-        Me.grpCustInfoTcbMain.SuspendLayout()
+        Me.grpCustInfoTabCustTcbMain.SuspendLayout()
         Me.tbcMain.SuspendLayout()
+        Me.grpTransLogTbcMain.SuspendLayout()
         Me.SuspendLayout()
         '
         'mnuMainApplMenu
         '
         Me.mnuMainApplMenu.BackColor = System.Drawing.SystemColors.InactiveCaption
         Me.mnuMainApplMenu.Font = New System.Drawing.Font("Segoe UI Semibold", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.mnuMainApplMenu.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuOptFile, Me.mnuOptEdit, Me.mnuOptPassbook, Me.mnuOptView, Me.mnuOptHelp})
+        Me.mnuMainApplMenu.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuFileFrmMain, Me.mnuEditFrmMain, Me.mnuPassbooksFrmMain, Me.mnuViewFrmMain, Me.mnuHelpFrmMain})
         Me.mnuMainApplMenu.Location = New System.Drawing.Point(0, 0)
         Me.mnuMainApplMenu.Name = "mnuMainApplMenu"
         Me.mnuMainApplMenu.Padding = New System.Windows.Forms.Padding(8, 2, 0, 2)
@@ -105,133 +131,139 @@ Partial Class FrmMain
         Me.mnuMainApplMenu.TabIndex = 0
         Me.mnuMainApplMenu.Text = "MenuStrip1"
         '
-        'mnuOptFile
+        'mnuFileFrmMain
         '
-        Me.mnuOptFile.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuOptFileSave, Me.mnuOptFileImport, Me.mnuOptFileExport, Me.ExitToolStripMenuItem})
-        Me.mnuOptFile.Name = "mnuOptFile"
-        Me.mnuOptFile.Size = New System.Drawing.Size(40, 21)
-        Me.mnuOptFile.Text = "&File"
-        Me.mnuOptFile.ToolTipText = "Save Session"
+        Me.mnuFileFrmMain.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuSaveFileFrmMain, Me.mnuImportFileFrmMain, Me.mnuExportFileFrmMain, Me.mnuExitFileFrmMain})
+        Me.mnuFileFrmMain.Name = "mnuFileFrmMain"
+        Me.mnuFileFrmMain.Size = New System.Drawing.Size(40, 21)
+        Me.mnuFileFrmMain.Text = "&File"
+        Me.mnuFileFrmMain.ToolTipText = "Save Session"
         '
-        'mnuOptFileSave
+        'mnuSaveFileFrmMain
         '
-        Me.mnuOptFileSave.Name = "mnuOptFileSave"
-        Me.mnuOptFileSave.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.S), System.Windows.Forms.Keys)
-        Me.mnuOptFileSave.Size = New System.Drawing.Size(149, 22)
-        Me.mnuOptFileSave.Text = "Save"
-        Me.mnuOptFileSave.ToolTipText = "Save Session"
+        Me.mnuSaveFileFrmMain.Name = "mnuSaveFileFrmMain"
+        Me.mnuSaveFileFrmMain.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.S), System.Windows.Forms.Keys)
+        Me.mnuSaveFileFrmMain.Size = New System.Drawing.Size(152, 22)
+        Me.mnuSaveFileFrmMain.Text = "Save"
+        Me.mnuSaveFileFrmMain.ToolTipText = "Save Session"
         '
-        'mnuOptFileImport
+        'mnuImportFileFrmMain
         '
-        Me.mnuOptFileImport.Name = "mnuOptFileImport"
-        Me.mnuOptFileImport.Size = New System.Drawing.Size(149, 22)
-        Me.mnuOptFileImport.Text = "Import"
-        Me.mnuOptFileImport.ToolTipText = "Import Data"
+        Me.mnuImportFileFrmMain.Name = "mnuImportFileFrmMain"
+        Me.mnuImportFileFrmMain.Size = New System.Drawing.Size(152, 22)
+        Me.mnuImportFileFrmMain.Text = "Import"
+        Me.mnuImportFileFrmMain.ToolTipText = "Import Data"
         '
-        'mnuOptFileExport
+        'mnuExportFileFrmMain
         '
-        Me.mnuOptFileExport.Name = "mnuOptFileExport"
-        Me.mnuOptFileExport.Size = New System.Drawing.Size(149, 22)
-        Me.mnuOptFileExport.Text = "Export"
-        Me.mnuOptFileExport.ToolTipText = "Export Data"
+        Me.mnuExportFileFrmMain.Name = "mnuExportFileFrmMain"
+        Me.mnuExportFileFrmMain.Size = New System.Drawing.Size(152, 22)
+        Me.mnuExportFileFrmMain.Text = "Export"
+        Me.mnuExportFileFrmMain.ToolTipText = "Export Data"
         '
-        'ExitToolStripMenuItem
+        'mnuExitFileFrmMain
         '
-        Me.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem"
-        Me.ExitToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.X), System.Windows.Forms.Keys)
-        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(149, 22)
-        Me.ExitToolStripMenuItem.Text = "Exit"
+        Me.mnuExitFileFrmMain.Name = "mnuExitFileFrmMain"
+        Me.mnuExitFileFrmMain.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.X), System.Windows.Forms.Keys)
+        Me.mnuExitFileFrmMain.Size = New System.Drawing.Size(152, 22)
+        Me.mnuExitFileFrmMain.Text = "Exit"
         '
-        'mnuOptEdit
+        'mnuEditFrmMain
         '
-        Me.mnuOptEdit.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuOptEditCut, Me.mnuOptEditCopy, Me.mnuOptEditPaste})
-        Me.mnuOptEdit.Name = "mnuOptEdit"
-        Me.mnuOptEdit.Size = New System.Drawing.Size(43, 21)
-        Me.mnuOptEdit.Text = "&Edit"
+        Me.mnuEditFrmMain.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuCutEditFrmMain, Me.mnuCopyEditFrmMain, Me.mnuPasteEditFrmMain})
+        Me.mnuEditFrmMain.Name = "mnuEditFrmMain"
+        Me.mnuEditFrmMain.Size = New System.Drawing.Size(43, 21)
+        Me.mnuEditFrmMain.Text = "&Edit"
         '
-        'mnuOptEditCut
+        'mnuCutEditFrmMain
         '
-        Me.mnuOptEditCut.Name = "mnuOptEditCut"
-        Me.mnuOptEditCut.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.X), System.Windows.Forms.Keys)
-        Me.mnuOptEditCut.Size = New System.Drawing.Size(155, 22)
-        Me.mnuOptEditCut.Text = "Cut"
+        Me.mnuCutEditFrmMain.Name = "mnuCutEditFrmMain"
+        Me.mnuCutEditFrmMain.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.X), System.Windows.Forms.Keys)
+        Me.mnuCutEditFrmMain.Size = New System.Drawing.Size(155, 22)
+        Me.mnuCutEditFrmMain.Text = "Cut"
         '
-        'mnuOptEditCopy
+        'mnuCopyEditFrmMain
         '
-        Me.mnuOptEditCopy.Name = "mnuOptEditCopy"
-        Me.mnuOptEditCopy.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.C), System.Windows.Forms.Keys)
-        Me.mnuOptEditCopy.Size = New System.Drawing.Size(155, 22)
-        Me.mnuOptEditCopy.Text = "Copy"
+        Me.mnuCopyEditFrmMain.Name = "mnuCopyEditFrmMain"
+        Me.mnuCopyEditFrmMain.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.C), System.Windows.Forms.Keys)
+        Me.mnuCopyEditFrmMain.Size = New System.Drawing.Size(155, 22)
+        Me.mnuCopyEditFrmMain.Text = "Copy"
         '
-        'mnuOptEditPaste
+        'mnuPasteEditFrmMain
         '
-        Me.mnuOptEditPaste.Name = "mnuOptEditPaste"
-        Me.mnuOptEditPaste.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.V), System.Windows.Forms.Keys)
-        Me.mnuOptEditPaste.Size = New System.Drawing.Size(155, 22)
-        Me.mnuOptEditPaste.Text = "Paste"
+        Me.mnuPasteEditFrmMain.Name = "mnuPasteEditFrmMain"
+        Me.mnuPasteEditFrmMain.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.V), System.Windows.Forms.Keys)
+        Me.mnuPasteEditFrmMain.Size = New System.Drawing.Size(155, 22)
+        Me.mnuPasteEditFrmMain.Text = "Paste"
         '
-        'mnuOptPassbook
+        'mnuPassbooksFrmMain
         '
-        Me.mnuOptPassbook.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuCreateOptPassbook, Me.FeaturesToolStripMenuItem, Me.CreateToolStripMenuItem})
-        Me.mnuOptPassbook.Name = "mnuOptPassbook"
-        Me.mnuOptPassbook.Size = New System.Drawing.Size(84, 21)
-        Me.mnuOptPassbook.Text = "&Passbooks"
-        Me.mnuOptPassbook.ToolTipText = "Purchase Passbook & Features"
+        Me.mnuPassbooksFrmMain.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuPurchasePassbooksFrmMain, Me.mnuFeaturePassbooksFrmMain})
+        Me.mnuPassbooksFrmMain.Name = "mnuPassbooksFrmMain"
+        Me.mnuPassbooksFrmMain.Size = New System.Drawing.Size(84, 21)
+        Me.mnuPassbooksFrmMain.Text = "&Passbooks"
+        Me.mnuPassbooksFrmMain.ToolTipText = "Purchase Passbook & Features"
         '
-        'mnuCreateOptPassbook
+        'mnuPurchasePassbooksFrmMain
         '
-        Me.mnuCreateOptPassbook.Name = "mnuCreateOptPassbook"
-        Me.mnuCreateOptPassbook.Size = New System.Drawing.Size(152, 22)
-        Me.mnuCreateOptPassbook.Text = "Create"
-        Me.mnuCreateOptPassbook.ToolTipText = "Create a new passbook"
+        Me.mnuPurchasePassbooksFrmMain.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right
+        Me.mnuPurchasePassbooksFrmMain.Name = "mnuPurchasePassbooksFrmMain"
+        Me.mnuPurchasePassbooksFrmMain.Size = New System.Drawing.Size(131, 22)
+        Me.mnuPurchasePassbooksFrmMain.Text = "Purchase"
+        Me.mnuPurchasePassbooksFrmMain.ToolTipText = "Purchase a new passbook"
         '
-        'FeaturesToolStripMenuItem
+        'mnuFeaturePassbooksFrmMain
         '
-        Me.FeaturesToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AddToolStripMenuItem, Me.UpdateToolStripMenuItem})
-        Me.FeaturesToolStripMenuItem.Name = "FeaturesToolStripMenuItem"
-        Me.FeaturesToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
-        Me.FeaturesToolStripMenuItem.Text = "Feature"
-        Me.FeaturesToolStripMenuItem.ToolTipText = "Purchase feature for a passbook"
+        Me.mnuFeaturePassbooksFrmMain.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuAddFeaturesPassbooksFrmMain, Me.mnuUpdateFeaturesPassbooksFrmMain})
+        Me.mnuFeaturePassbooksFrmMain.Name = "mnuFeaturePassbooksFrmMain"
+        Me.mnuFeaturePassbooksFrmMain.Size = New System.Drawing.Size(131, 22)
+        Me.mnuFeaturePassbooksFrmMain.Text = "Features"
+        Me.mnuFeaturePassbooksFrmMain.ToolTipText = "Purchase feature for a passbook"
         '
-        'CreateToolStripMenuItem
+        'mnuAddFeaturesPassbooksFrmMain
         '
-        Me.CreateToolStripMenuItem.Name = "CreateToolStripMenuItem"
-        Me.CreateToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
-        Me.CreateToolStripMenuItem.Text = "List"
-        Me.CreateToolStripMenuItem.ToolTipText = "List available passbooks"
+        Me.mnuAddFeaturesPassbooksFrmMain.Name = "mnuAddFeaturesPassbooksFrmMain"
+        Me.mnuAddFeaturesPassbooksFrmMain.Size = New System.Drawing.Size(120, 22)
+        Me.mnuAddFeaturesPassbooksFrmMain.Text = "Add"
         '
-        'mnuOptView
+        'mnuUpdateFeaturesPassbooksFrmMain
         '
-        Me.mnuOptView.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SummaryToolStripMenuItem, Me.TransactionLogToolStripMenuItem})
-        Me.mnuOptView.Name = "mnuOptView"
-        Me.mnuOptView.Size = New System.Drawing.Size(48, 21)
-        Me.mnuOptView.Text = "&View"
+        Me.mnuUpdateFeaturesPassbooksFrmMain.Name = "mnuUpdateFeaturesPassbooksFrmMain"
+        Me.mnuUpdateFeaturesPassbooksFrmMain.Size = New System.Drawing.Size(120, 22)
+        Me.mnuUpdateFeaturesPassbooksFrmMain.Text = "Update"
         '
-        'SummaryToolStripMenuItem
+        'mnuViewFrmMain
         '
-        Me.SummaryToolStripMenuItem.Name = "SummaryToolStripMenuItem"
-        Me.SummaryToolStripMenuItem.Size = New System.Drawing.Size(172, 22)
-        Me.SummaryToolStripMenuItem.Text = "Summary"
+        Me.mnuViewFrmMain.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuSummaryViewFrmMain, Me.mnuTransLogViewFrmMain})
+        Me.mnuViewFrmMain.Name = "mnuViewFrmMain"
+        Me.mnuViewFrmMain.Size = New System.Drawing.Size(48, 21)
+        Me.mnuViewFrmMain.Text = "&View"
         '
-        'TransactionLogToolStripMenuItem
+        'mnuSummaryViewFrmMain
         '
-        Me.TransactionLogToolStripMenuItem.Name = "TransactionLogToolStripMenuItem"
-        Me.TransactionLogToolStripMenuItem.Size = New System.Drawing.Size(172, 22)
-        Me.TransactionLogToolStripMenuItem.Text = "Transaction Log"
+        Me.mnuSummaryViewFrmMain.Name = "mnuSummaryViewFrmMain"
+        Me.mnuSummaryViewFrmMain.Size = New System.Drawing.Size(172, 22)
+        Me.mnuSummaryViewFrmMain.Text = "Summary"
         '
-        'mnuOptHelp
+        'mnuTransLogViewFrmMain
         '
-        Me.mnuOptHelp.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuOptHelpAbout})
-        Me.mnuOptHelp.Name = "mnuOptHelp"
-        Me.mnuOptHelp.Size = New System.Drawing.Size(48, 21)
-        Me.mnuOptHelp.Text = "&Help"
+        Me.mnuTransLogViewFrmMain.Name = "mnuTransLogViewFrmMain"
+        Me.mnuTransLogViewFrmMain.Size = New System.Drawing.Size(172, 22)
+        Me.mnuTransLogViewFrmMain.Text = "Transaction Log"
         '
-        'mnuOptHelpAbout
+        'mnuHelpFrmMain
         '
-        Me.mnuOptHelpAbout.AutoToolTip = True
-        Me.mnuOptHelpAbout.Name = "mnuOptHelpAbout"
-        Me.mnuOptHelpAbout.Size = New System.Drawing.Size(279, 22)
-        Me.mnuOptHelpAbout.Text = "About Theme Park Mgmt System"
+        Me.mnuHelpFrmMain.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuAboutHelpFrmMain})
+        Me.mnuHelpFrmMain.Name = "mnuHelpFrmMain"
+        Me.mnuHelpFrmMain.Size = New System.Drawing.Size(48, 21)
+        Me.mnuHelpFrmMain.Text = "&Help"
+        '
+        'mnuAboutHelpFrmMain
+        '
+        Me.mnuAboutHelpFrmMain.AutoToolTip = True
+        Me.mnuAboutHelpFrmMain.Name = "mnuAboutHelpFrmMain"
+        Me.mnuAboutHelpFrmMain.Size = New System.Drawing.Size(279, 22)
+        Me.mnuAboutHelpFrmMain.Text = "About Theme Park Mgmt System"
         '
         'lblThemeParkMgmtSys
         '
@@ -248,7 +280,7 @@ Partial Class FrmMain
         '
         'tabPassbookFeatureTbcMain
         '
-        Me.tabPassbookFeatureTbcMain.BackColor = System.Drawing.Color.WhiteSmoke
+        Me.tabPassbookFeatureTbcMain.BackColor = System.Drawing.Color.Gainsboro
         Me.tabPassbookFeatureTbcMain.Controls.Add(Me.tbcPassbookFeatureMainTbcMain)
         Me.tabPassbookFeatureTbcMain.Location = New System.Drawing.Point(4, 25)
         Me.tabPassbookFeatureTbcMain.Name = "tabPassbookFeatureTbcMain"
@@ -260,7 +292,7 @@ Partial Class FrmMain
         '
         'tbcPassbookFeatureMainTbcMain
         '
-        Me.tbcPassbookFeatureMainTbcMain.Controls.Add(Me.TabPage3)
+        Me.tbcPassbookFeatureMainTbcMain.Controls.Add(Me.tabAddFeatureTbcPassbookFeatureMainTbcMain)
         Me.tbcPassbookFeatureMainTbcMain.Controls.Add(Me.tabUpdtFeatureTbcPassbookFeatureMainTbcMain)
         Me.tbcPassbookFeatureMainTbcMain.Location = New System.Drawing.Point(68, 30)
         Me.tbcPassbookFeatureMainTbcMain.Name = "tbcPassbookFeatureMainTbcMain"
@@ -268,84 +300,122 @@ Partial Class FrmMain
         Me.tbcPassbookFeatureMainTbcMain.Size = New System.Drawing.Size(497, 304)
         Me.tbcPassbookFeatureMainTbcMain.TabIndex = 0
         '
-        'TabPage3
+        'tabAddFeatureTbcPassbookFeatureMainTbcMain
         '
-        Me.TabPage3.Controls.Add(Me.Label5)
-        Me.TabPage3.Controls.Add(Me.Button3)
-        Me.TabPage3.Controls.Add(Me.Button4)
-        Me.TabPage3.Controls.Add(Me.Label6)
-        Me.TabPage3.Controls.Add(Me.Label7)
-        Me.TabPage3.Controls.Add(Me.TextBox2)
-        Me.TabPage3.Controls.Add(Me.Label8)
-        Me.TabPage3.Location = New System.Drawing.Point(4, 25)
-        Me.TabPage3.Name = "TabPage3"
-        Me.TabPage3.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage3.Size = New System.Drawing.Size(489, 275)
-        Me.TabPage3.TabIndex = 0
-        Me.TabPage3.Text = "Add Feature"
-        Me.TabPage3.ToolTipText = "Add a new feature to the system"
-        Me.TabPage3.UseVisualStyleBackColor = True
+        Me.tabAddFeatureTbcPassbookFeatureMainTbcMain.AllowDrop = True
+        Me.tabAddFeatureTbcPassbookFeatureMainTbcMain.Controls.Add(Me.Button1)
+        Me.tabAddFeatureTbcPassbookFeatureMainTbcMain.Controls.Add(Me.btnAddTabAddFeatureTbcPassbookFeatureMainTbcMain)
+        Me.tabAddFeatureTbcPassbookFeatureMainTbcMain.Controls.Add(Me.GroupBox1)
+        Me.tabAddFeatureTbcPassbookFeatureMainTbcMain.Location = New System.Drawing.Point(4, 25)
+        Me.tabAddFeatureTbcPassbookFeatureMainTbcMain.Name = "tabAddFeatureTbcPassbookFeatureMainTbcMain"
+        Me.tabAddFeatureTbcPassbookFeatureMainTbcMain.Padding = New System.Windows.Forms.Padding(3)
+        Me.tabAddFeatureTbcPassbookFeatureMainTbcMain.Size = New System.Drawing.Size(489, 275)
+        Me.tabAddFeatureTbcPassbookFeatureMainTbcMain.TabIndex = 0
+        Me.tabAddFeatureTbcPassbookFeatureMainTbcMain.Text = "Add Feature"
+        Me.tabAddFeatureTbcPassbookFeatureMainTbcMain.ToolTipText = "Add a new feature to the system"
+        Me.tabAddFeatureTbcPassbookFeatureMainTbcMain.UseVisualStyleBackColor = True
         '
-        'Label5
+        'Button1
         '
-        Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(108, 147)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(49, 16)
-        Me.Label5.TabIndex = 13
-        Me.Label5.Text = "Label5"
+        Me.Button1.Location = New System.Drawing.Point(253, 227)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(75, 23)
+        Me.Button1.TabIndex = 9
+        Me.Button1.Text = "&Cancel"
+        Me.Button1.UseVisualStyleBackColor = True
         '
-        'Button3
+        'btnAddTabAddFeatureTbcPassbookFeatureMainTbcMain
         '
-        Me.Button3.Location = New System.Drawing.Point(280, 244)
-        Me.Button3.Name = "Button3"
-        Me.Button3.Size = New System.Drawing.Size(75, 23)
-        Me.Button3.TabIndex = 12
-        Me.Button3.Text = "Button3"
-        Me.Button3.UseVisualStyleBackColor = True
+        Me.btnAddTabAddFeatureTbcPassbookFeatureMainTbcMain.Location = New System.Drawing.Point(156, 227)
+        Me.btnAddTabAddFeatureTbcPassbookFeatureMainTbcMain.Name = "btnAddTabAddFeatureTbcPassbookFeatureMainTbcMain"
+        Me.btnAddTabAddFeatureTbcPassbookFeatureMainTbcMain.Size = New System.Drawing.Size(75, 23)
+        Me.btnAddTabAddFeatureTbcPassbookFeatureMainTbcMain.TabIndex = 8
+        Me.btnAddTabAddFeatureTbcPassbookFeatureMainTbcMain.Text = "&Add"
+        Me.btnAddTabAddFeatureTbcPassbookFeatureMainTbcMain.UseVisualStyleBackColor = True
         '
-        'Button4
+        'GroupBox1
         '
-        Me.Button4.Location = New System.Drawing.Point(151, 244)
-        Me.Button4.Name = "Button4"
-        Me.Button4.Size = New System.Drawing.Size(75, 23)
-        Me.Button4.TabIndex = 11
-        Me.Button4.Text = "Button4"
-        Me.Button4.UseVisualStyleBackColor = True
+        Me.GroupBox1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.GroupBox1.Controls.Add(Me.txtPriceTabAddFeatureTbcPassbookFeatureMainTbcMain)
+        Me.GroupBox1.Controls.Add(Me.txtUnitOfMeasAddFeatureTbcPassbookFeatureMainTbcMain)
+        Me.GroupBox1.Controls.Add(Me.lblUnitOfMeasTabAddFeatureTbcPassbookFeatureMainTbcMain)
+        Me.GroupBox1.Controls.Add(Me.TextBox3)
+        Me.GroupBox1.Controls.Add(Me.lblFeatureIdTabAddFeatureTbcPassbookFeatureMainTbcMain)
+        Me.GroupBox1.Controls.Add(Me.txtFeatureIdTabAddFeatureTbcPassbookFeatureMainTbcMain)
+        Me.GroupBox1.Controls.Add(Me.lblPriceTabAddFeatureTbcPassbookFeatureMainTbcMain)
+        Me.GroupBox1.Controls.Add(Me.lblFeatureNameTabAddFeatureTbcPassbookFeatureMainTbcMain)
+        Me.GroupBox1.Location = New System.Drawing.Point(34, 25)
+        Me.GroupBox1.Name = "GroupBox1"
+        Me.GroupBox1.Size = New System.Drawing.Size(421, 145)
+        Me.GroupBox1.TabIndex = 10
+        Me.GroupBox1.TabStop = False
+        Me.GroupBox1.Text = "Feature Info"
         '
-        'Label6
+        'txtPriceTabAddFeatureTbcPassbookFeatureMainTbcMain
         '
-        Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(108, 187)
-        Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(49, 16)
-        Me.Label6.TabIndex = 10
-        Me.Label6.Text = "Label6"
+        Me.txtPriceTabAddFeatureTbcPassbookFeatureMainTbcMain.Location = New System.Drawing.Point(134, 132)
+        Me.txtPriceTabAddFeatureTbcPassbookFeatureMainTbcMain.Name = "txtPriceTabAddFeatureTbcPassbookFeatureMainTbcMain"
+        Me.txtPriceTabAddFeatureTbcPassbookFeatureMainTbcMain.Size = New System.Drawing.Size(162, 22)
+        Me.txtPriceTabAddFeatureTbcPassbookFeatureMainTbcMain.TabIndex = 8
         '
-        'Label7
+        'txtUnitOfMeasAddFeatureTbcPassbookFeatureMainTbcMain
         '
-        Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(105, 101)
-        Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(49, 16)
-        Me.Label7.TabIndex = 9
-        Me.Label7.Text = "Label7"
+        Me.txtUnitOfMeasAddFeatureTbcPassbookFeatureMainTbcMain.Location = New System.Drawing.Point(134, 97)
+        Me.txtUnitOfMeasAddFeatureTbcPassbookFeatureMainTbcMain.Name = "txtUnitOfMeasAddFeatureTbcPassbookFeatureMainTbcMain"
+        Me.txtUnitOfMeasAddFeatureTbcPassbookFeatureMainTbcMain.Size = New System.Drawing.Size(271, 22)
+        Me.txtUnitOfMeasAddFeatureTbcPassbookFeatureMainTbcMain.TabIndex = 7
         '
-        'TextBox2
+        'lblUnitOfMeasTabAddFeatureTbcPassbookFeatureMainTbcMain
         '
-        Me.TextBox2.Location = New System.Drawing.Point(179, 48)
-        Me.TextBox2.Name = "TextBox2"
-        Me.TextBox2.Size = New System.Drawing.Size(100, 22)
-        Me.TextBox2.TabIndex = 8
+        Me.lblUnitOfMeasTabAddFeatureTbcPassbookFeatureMainTbcMain.AutoSize = True
+        Me.lblUnitOfMeasTabAddFeatureTbcPassbookFeatureMainTbcMain.Location = New System.Drawing.Point(24, 100)
+        Me.lblUnitOfMeasTabAddFeatureTbcPassbookFeatureMainTbcMain.Name = "lblUnitOfMeasTabAddFeatureTbcPassbookFeatureMainTbcMain"
+        Me.lblUnitOfMeasTabAddFeatureTbcPassbookFeatureMainTbcMain.Size = New System.Drawing.Size(104, 16)
+        Me.lblUnitOfMeasTabAddFeatureTbcPassbookFeatureMainTbcMain.TabIndex = 6
+        Me.lblUnitOfMeasTabAddFeatureTbcPassbookFeatureMainTbcMain.Text = "Unit of Measure:"
         '
-        'Label8
+        'TextBox3
         '
-        Me.Label8.AutoSize = True
-        Me.Label8.Location = New System.Drawing.Point(102, 48)
-        Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(49, 16)
-        Me.Label8.TabIndex = 7
-        Me.Label8.Text = "Label8"
+        Me.TextBox3.Location = New System.Drawing.Point(134, 60)
+        Me.TextBox3.Name = "TextBox3"
+        Me.TextBox3.Size = New System.Drawing.Size(271, 22)
+        Me.TextBox3.TabIndex = 3
+        '
+        'lblFeatureIdTabAddFeatureTbcPassbookFeatureMainTbcMain
+        '
+        Me.lblFeatureIdTabAddFeatureTbcPassbookFeatureMainTbcMain.AutoSize = True
+        Me.lblFeatureIdTabAddFeatureTbcPassbookFeatureMainTbcMain.Location = New System.Drawing.Point(52, 29)
+        Me.lblFeatureIdTabAddFeatureTbcPassbookFeatureMainTbcMain.Name = "lblFeatureIdTabAddFeatureTbcPassbookFeatureMainTbcMain"
+        Me.lblFeatureIdTabAddFeatureTbcPassbookFeatureMainTbcMain.Size = New System.Drawing.Size(76, 16)
+        Me.lblFeatureIdTabAddFeatureTbcPassbookFeatureMainTbcMain.TabIndex = 0
+        Me.lblFeatureIdTabAddFeatureTbcPassbookFeatureMainTbcMain.Text = "Feature ID: "
+        '
+        'txtFeatureIdTabAddFeatureTbcPassbookFeatureMainTbcMain
+        '
+        Me.txtFeatureIdTabAddFeatureTbcPassbookFeatureMainTbcMain.Location = New System.Drawing.Point(134, 26)
+        Me.txtFeatureIdTabAddFeatureTbcPassbookFeatureMainTbcMain.Name = "txtFeatureIdTabAddFeatureTbcPassbookFeatureMainTbcMain"
+        Me.txtFeatureIdTabAddFeatureTbcPassbookFeatureMainTbcMain.Size = New System.Drawing.Size(225, 22)
+        Me.txtFeatureIdTabAddFeatureTbcPassbookFeatureMainTbcMain.TabIndex = 1
+        '
+        'lblPriceTabAddFeatureTbcPassbookFeatureMainTbcMain
+        '
+        Me.lblPriceTabAddFeatureTbcPassbookFeatureMainTbcMain.AutoSize = True
+        Me.lblPriceTabAddFeatureTbcPassbookFeatureMainTbcMain.Location = New System.Drawing.Point(14, 135)
+        Me.lblPriceTabAddFeatureTbcPassbookFeatureMainTbcMain.Name = "lblPriceTabAddFeatureTbcPassbookFeatureMainTbcMain"
+        Me.lblPriceTabAddFeatureTbcPassbookFeatureMainTbcMain.Size = New System.Drawing.Size(114, 16)
+        Me.lblPriceTabAddFeatureTbcPassbookFeatureMainTbcMain.TabIndex = 3
+        Me.lblPriceTabAddFeatureTbcPassbookFeatureMainTbcMain.Text = "Price (Adult/Child)"
+        '
+        'lblFeatureNameTabAddFeatureTbcPassbookFeatureMainTbcMain
+        '
+        Me.lblFeatureNameTabAddFeatureTbcPassbookFeatureMainTbcMain.AutoSize = True
+        Me.lblFeatureNameTabAddFeatureTbcPassbookFeatureMainTbcMain.Location = New System.Drawing.Point(31, 63)
+        Me.lblFeatureNameTabAddFeatureTbcPassbookFeatureMainTbcMain.Name = "lblFeatureNameTabAddFeatureTbcPassbookFeatureMainTbcMain"
+        Me.lblFeatureNameTabAddFeatureTbcPassbookFeatureMainTbcMain.Size = New System.Drawing.Size(97, 16)
+        Me.lblFeatureNameTabAddFeatureTbcPassbookFeatureMainTbcMain.TabIndex = 2
+        Me.lblFeatureNameTabAddFeatureTbcPassbookFeatureMainTbcMain.Text = "Feature Name:"
         '
         'tabUpdtFeatureTbcPassbookFeatureMainTbcMain
         '
@@ -363,20 +433,20 @@ Partial Class FrmMain
         '
         'btnCancelTabUpdtFeatureTbcPassbookFeatureMainTbcMain
         '
-        Me.btnCancelTabUpdtFeatureTbcPassbookFeatureMainTbcMain.Location = New System.Drawing.Point(249, 233)
+        Me.btnCancelTabUpdtFeatureTbcPassbookFeatureMainTbcMain.Location = New System.Drawing.Point(253, 227)
         Me.btnCancelTabUpdtFeatureTbcPassbookFeatureMainTbcMain.Name = "btnCancelTabUpdtFeatureTbcPassbookFeatureMainTbcMain"
         Me.btnCancelTabUpdtFeatureTbcPassbookFeatureMainTbcMain.Size = New System.Drawing.Size(75, 23)
         Me.btnCancelTabUpdtFeatureTbcPassbookFeatureMainTbcMain.TabIndex = 5
-        Me.btnCancelTabUpdtFeatureTbcPassbookFeatureMainTbcMain.Text = "Cancel"
+        Me.btnCancelTabUpdtFeatureTbcPassbookFeatureMainTbcMain.Text = "&Cancel"
         Me.btnCancelTabUpdtFeatureTbcPassbookFeatureMainTbcMain.UseVisualStyleBackColor = True
         '
         'btnUpdateTabUpdtFeatureTbcPassbookFeatureMainTbcMain
         '
-        Me.btnUpdateTabUpdtFeatureTbcPassbookFeatureMainTbcMain.Location = New System.Drawing.Point(152, 233)
+        Me.btnUpdateTabUpdtFeatureTbcPassbookFeatureMainTbcMain.Location = New System.Drawing.Point(156, 227)
         Me.btnUpdateTabUpdtFeatureTbcPassbookFeatureMainTbcMain.Name = "btnUpdateTabUpdtFeatureTbcPassbookFeatureMainTbcMain"
         Me.btnUpdateTabUpdtFeatureTbcPassbookFeatureMainTbcMain.Size = New System.Drawing.Size(75, 23)
         Me.btnUpdateTabUpdtFeatureTbcPassbookFeatureMainTbcMain.TabIndex = 4
-        Me.btnUpdateTabUpdtFeatureTbcPassbookFeatureMainTbcMain.Text = "Update"
+        Me.btnUpdateTabUpdtFeatureTbcPassbookFeatureMainTbcMain.Text = "&Update"
         Me.btnUpdateTabUpdtFeatureTbcPassbookFeatureMainTbcMain.UseVisualStyleBackColor = True
         '
         'grpUpdtFeatureTbcPassbookFeatureMainTbcMain
@@ -389,10 +459,10 @@ Partial Class FrmMain
         Me.grpUpdtFeatureTbcPassbookFeatureMainTbcMain.Controls.Add(Me.lblUnitOfMeasTabUpdtFeatureTbcPassbookFeatureMainTbcMain)
         Me.grpUpdtFeatureTbcPassbookFeatureMainTbcMain.Controls.Add(Me.txtFeatureNameTabUpdtFeatureTbcPassbookFeatureMainTbcMain)
         Me.grpUpdtFeatureTbcPassbookFeatureMainTbcMain.Controls.Add(Me.lblFeatureIdTabUpdtFeatureTbcPassbookFeatureMainTbcMain)
-        Me.grpUpdtFeatureTbcPassbookFeatureMainTbcMain.Controls.Add(Me.txtlblFeatureIdTabUpdtFeatureTbcPassbookFeatureMainTbcMain)
+        Me.grpUpdtFeatureTbcPassbookFeatureMainTbcMain.Controls.Add(Me.txtFeatureIdTabUpdtFeatureTbcPassbookFeatureMainTbcMain)
         Me.grpUpdtFeatureTbcPassbookFeatureMainTbcMain.Controls.Add(Me.lblPriceTabUpdtFeatureTbcPassbookFeatureMainTbcMain)
         Me.grpUpdtFeatureTbcPassbookFeatureMainTbcMain.Controls.Add(Me.lblFeatureNameTabUpdtFeatureTbcPassbookFeatureMainTbcMain)
-        Me.grpUpdtFeatureTbcPassbookFeatureMainTbcMain.Location = New System.Drawing.Point(30, 31)
+        Me.grpUpdtFeatureTbcPassbookFeatureMainTbcMain.Location = New System.Drawing.Point(34, 25)
         Me.grpUpdtFeatureTbcPassbookFeatureMainTbcMain.Name = "grpUpdtFeatureTbcPassbookFeatureMainTbcMain"
         Me.grpUpdtFeatureTbcPassbookFeatureMainTbcMain.Size = New System.Drawing.Size(421, 175)
         Me.grpUpdtFeatureTbcPassbookFeatureMainTbcMain.TabIndex = 7
@@ -401,6 +471,8 @@ Partial Class FrmMain
         '
         'txtPriceTabUpdtFeatureTbcPassbookFeatureMainTbcMain
         '
+        Me.txtPriceTabUpdtFeatureTbcPassbookFeatureMainTbcMain.AcceptsReturn = True
+        Me.txtPriceTabUpdtFeatureTbcPassbookFeatureMainTbcMain.BackColor = System.Drawing.SystemColors.Window
         Me.txtPriceTabUpdtFeatureTbcPassbookFeatureMainTbcMain.Location = New System.Drawing.Point(134, 132)
         Me.txtPriceTabUpdtFeatureTbcPassbookFeatureMainTbcMain.Name = "txtPriceTabUpdtFeatureTbcPassbookFeatureMainTbcMain"
         Me.txtPriceTabUpdtFeatureTbcPassbookFeatureMainTbcMain.Size = New System.Drawing.Size(162, 22)
@@ -438,12 +510,12 @@ Partial Class FrmMain
         Me.lblFeatureIdTabUpdtFeatureTbcPassbookFeatureMainTbcMain.TabIndex = 0
         Me.lblFeatureIdTabUpdtFeatureTbcPassbookFeatureMainTbcMain.Text = "Feature ID: "
         '
-        'txtlblFeatureIdTabUpdtFeatureTbcPassbookFeatureMainTbcMain
+        'txtFeatureIdTabUpdtFeatureTbcPassbookFeatureMainTbcMain
         '
-        Me.txtlblFeatureIdTabUpdtFeatureTbcPassbookFeatureMainTbcMain.Location = New System.Drawing.Point(134, 26)
-        Me.txtlblFeatureIdTabUpdtFeatureTbcPassbookFeatureMainTbcMain.Name = "txtlblFeatureIdTabUpdtFeatureTbcPassbookFeatureMainTbcMain"
-        Me.txtlblFeatureIdTabUpdtFeatureTbcPassbookFeatureMainTbcMain.Size = New System.Drawing.Size(225, 22)
-        Me.txtlblFeatureIdTabUpdtFeatureTbcPassbookFeatureMainTbcMain.TabIndex = 1
+        Me.txtFeatureIdTabUpdtFeatureTbcPassbookFeatureMainTbcMain.Location = New System.Drawing.Point(134, 26)
+        Me.txtFeatureIdTabUpdtFeatureTbcPassbookFeatureMainTbcMain.Name = "txtFeatureIdTabUpdtFeatureTbcPassbookFeatureMainTbcMain"
+        Me.txtFeatureIdTabUpdtFeatureTbcPassbookFeatureMainTbcMain.Size = New System.Drawing.Size(225, 22)
+        Me.txtFeatureIdTabUpdtFeatureTbcPassbookFeatureMainTbcMain.TabIndex = 1
         '
         'lblPriceTabUpdtFeatureTbcPassbookFeatureMainTbcMain
         '
@@ -463,51 +535,181 @@ Partial Class FrmMain
         Me.lblFeatureNameTabUpdtFeatureTbcPassbookFeatureMainTbcMain.TabIndex = 2
         Me.lblFeatureNameTabUpdtFeatureTbcPassbookFeatureMainTbcMain.Text = "Feature Name:"
         '
-        'tabPassbookTbcMain
+        'tabPurchaseTbcMain
         '
-        Me.tabPassbookTbcMain.BackColor = System.Drawing.Color.WhiteSmoke
-        Me.tabPassbookTbcMain.Controls.Add(Me.TabControl1)
-        Me.tabPassbookTbcMain.Location = New System.Drawing.Point(4, 25)
-        Me.tabPassbookTbcMain.Name = "tabPassbookTbcMain"
-        Me.tabPassbookTbcMain.Padding = New System.Windows.Forms.Padding(3)
-        Me.tabPassbookTbcMain.Size = New System.Drawing.Size(634, 403)
-        Me.tabPassbookTbcMain.TabIndex = 2
-        Me.tabPassbookTbcMain.Text = "Passbooks"
+        Me.tabPurchaseTbcMain.BackColor = System.Drawing.Color.Gainsboro
+        Me.tabPurchaseTbcMain.Controls.Add(Me.tbcPurchaseMainTabPurchaseTbcMain)
+        Me.tabPurchaseTbcMain.Location = New System.Drawing.Point(4, 25)
+        Me.tabPurchaseTbcMain.Name = "tabPurchaseTbcMain"
+        Me.tabPurchaseTbcMain.Padding = New System.Windows.Forms.Padding(3)
+        Me.tabPurchaseTbcMain.Size = New System.Drawing.Size(634, 403)
+        Me.tabPurchaseTbcMain.TabIndex = 2
+        Me.tabPurchaseTbcMain.Text = "Purchase"
         '
-        'TabControl1
+        'tbcPurchaseMainTabPurchaseTbcMain
         '
-        Me.TabControl1.Controls.Add(Me.TabPage1)
-        Me.TabControl1.Controls.Add(Me.TabPage2)
-        Me.TabControl1.Location = New System.Drawing.Point(58, 47)
-        Me.TabControl1.Name = "TabControl1"
-        Me.TabControl1.SelectedIndex = 0
-        Me.TabControl1.Size = New System.Drawing.Size(562, 309)
-        Me.TabControl1.TabIndex = 0
+        Me.tbcPurchaseMainTabPurchaseTbcMain.Controls.Add(Me.tabPassbookTbcPurchaseMainTabPurchaseTbcMain)
+        Me.tbcPurchaseMainTabPurchaseTbcMain.Controls.Add(Me.tabFeatureTbcPurchaseMainTabPurchaseTbcMain)
+        Me.tbcPurchaseMainTabPurchaseTbcMain.Location = New System.Drawing.Point(58, 24)
+        Me.tbcPurchaseMainTabPurchaseTbcMain.Name = "tbcPurchaseMainTabPurchaseTbcMain"
+        Me.tbcPurchaseMainTabPurchaseTbcMain.SelectedIndex = 0
+        Me.tbcPurchaseMainTabPurchaseTbcMain.Size = New System.Drawing.Size(562, 353)
+        Me.tbcPurchaseMainTabPurchaseTbcMain.TabIndex = 0
         '
-        'TabPage1
+        'tabPassbookTbcPurchaseMainTabPurchaseTbcMain
         '
-        Me.TabPage1.Location = New System.Drawing.Point(4, 25)
-        Me.TabPage1.Name = "TabPage1"
-        Me.TabPage1.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage1.Size = New System.Drawing.Size(554, 280)
-        Me.TabPage1.TabIndex = 0
-        Me.TabPage1.Text = "TabPage1"
-        Me.TabPage1.UseVisualStyleBackColor = True
+        Me.tabPassbookTbcPurchaseMainTabPurchaseTbcMain.Controls.Add(Me.Button2)
+        Me.tabPassbookTbcPurchaseMainTabPurchaseTbcMain.Controls.Add(Me.Button3)
+        Me.tabPassbookTbcPurchaseMainTabPurchaseTbcMain.Controls.Add(Me.grpPassbookIfnoTabPassbookTbcPurchaseMainTabPurchaseTbcMain)
+        Me.tabPassbookTbcPurchaseMainTabPurchaseTbcMain.Location = New System.Drawing.Point(4, 25)
+        Me.tabPassbookTbcPurchaseMainTabPurchaseTbcMain.Name = "tabPassbookTbcPurchaseMainTabPurchaseTbcMain"
+        Me.tabPassbookTbcPurchaseMainTabPurchaseTbcMain.Padding = New System.Windows.Forms.Padding(3)
+        Me.tabPassbookTbcPurchaseMainTabPurchaseTbcMain.Size = New System.Drawing.Size(554, 324)
+        Me.tabPassbookTbcPurchaseMainTabPurchaseTbcMain.TabIndex = 0
+        Me.tabPassbookTbcPurchaseMainTabPurchaseTbcMain.Text = "Passbook"
+        Me.tabPassbookTbcPurchaseMainTabPurchaseTbcMain.UseVisualStyleBackColor = True
         '
-        'TabPage2
+        'Button2
         '
-        Me.TabPage2.Location = New System.Drawing.Point(4, 25)
-        Me.TabPage2.Name = "TabPage2"
-        Me.TabPage2.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage2.Size = New System.Drawing.Size(554, 280)
-        Me.TabPage2.TabIndex = 1
-        Me.TabPage2.Text = "TabPage2"
-        Me.TabPage2.UseVisualStyleBackColor = True
+        Me.Button2.Location = New System.Drawing.Point(257, 280)
+        Me.Button2.Name = "Button2"
+        Me.Button2.Size = New System.Drawing.Size(75, 23)
+        Me.Button2.TabIndex = 12
+        Me.Button2.Text = "&Cancel"
+        Me.Button2.UseVisualStyleBackColor = True
+        '
+        'Button3
+        '
+        Me.Button3.Location = New System.Drawing.Point(162, 280)
+        Me.Button3.Name = "Button3"
+        Me.Button3.Size = New System.Drawing.Size(75, 23)
+        Me.Button3.TabIndex = 11
+        Me.Button3.Text = "&Add"
+        Me.Button3.UseVisualStyleBackColor = True
+        '
+        'grpPassbookIfnoTabPassbookTbcPurchaseMainTabPurchaseTbcMain
+        '
+        Me.grpPassbookIfnoTabPassbookTbcPurchaseMainTabPurchaseTbcMain.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.grpPassbookIfnoTabPassbookTbcPurchaseMainTabPurchaseTbcMain.Controls.Add(Me.txtDatePurchasedGrpPassbookIfnoTabPassbookTbcPurchaseMainTabPurchaseTbcMain)
+        Me.grpPassbookIfnoTabPassbookTbcPurchaseMainTabPurchaseTbcMain.Controls.Add(Me.ListBox1)
+        Me.grpPassbookIfnoTabPassbookTbcPurchaseMainTabPurchaseTbcMain.Controls.Add(Me.TextBox1)
+        Me.grpPassbookIfnoTabPassbookTbcPurchaseMainTabPurchaseTbcMain.Controls.Add(Me.lblDatePurchasedGrpPassbookIfnoTabPassbookTbcPurchaseMainTabPurchaseTbcMain)
+        Me.grpPassbookIfnoTabPassbookTbcPurchaseMainTabPurchaseTbcMain.Controls.Add(Me.lblPassbookIdGrpPassbookIfnoTabPassbookTbcPurchaseMainTabPurchaseTbcMain)
+        Me.grpPassbookIfnoTabPassbookTbcPurchaseMainTabPurchaseTbcMain.Controls.Add(Me.txtPassbookIdGrpPassbookIfnoTabPassbookTbcPurchaseMainTabPurchaseTbcMain)
+        Me.grpPassbookIfnoTabPassbookTbcPurchaseMainTabPurchaseTbcMain.Controls.Add(Me.Label3)
+        Me.grpPassbookIfnoTabPassbookTbcPurchaseMainTabPurchaseTbcMain.Controls.Add(Me.lblCustNameGrpPassbookIfnoTabPassbookTbcPurchaseMainTabPurchaseTbcMain)
+        Me.grpPassbookIfnoTabPassbookTbcPurchaseMainTabPurchaseTbcMain.Location = New System.Drawing.Point(67, 28)
+        Me.grpPassbookIfnoTabPassbookTbcPurchaseMainTabPurchaseTbcMain.Name = "grpPassbookIfnoTabPassbookTbcPurchaseMainTabPurchaseTbcMain"
+        Me.grpPassbookIfnoTabPassbookTbcPurchaseMainTabPurchaseTbcMain.Size = New System.Drawing.Size(421, 220)
+        Me.grpPassbookIfnoTabPassbookTbcPurchaseMainTabPurchaseTbcMain.TabIndex = 13
+        Me.grpPassbookIfnoTabPassbookTbcPurchaseMainTabPurchaseTbcMain.TabStop = False
+        Me.grpPassbookIfnoTabPassbookTbcPurchaseMainTabPurchaseTbcMain.Text = "Passbook Info"
+        '
+        'txtDatePurchasedGrpPassbookIfnoTabPassbookTbcPurchaseMainTabPurchaseTbcMain
+        '
+        Me.txtDatePurchasedGrpPassbookIfnoTabPassbookTbcPurchaseMainTabPurchaseTbcMain.Location = New System.Drawing.Point(136, 94)
+        Me.txtDatePurchasedGrpPassbookIfnoTabPassbookTbcPurchaseMainTabPurchaseTbcMain.Name = "txtDatePurchasedGrpPassbookIfnoTabPassbookTbcPurchaseMainTabPurchaseTbcMain"
+        Me.txtDatePurchasedGrpPassbookIfnoTabPassbookTbcPurchaseMainTabPurchaseTbcMain.ReadOnly = True
+        Me.txtDatePurchasedGrpPassbookIfnoTabPassbookTbcPurchaseMainTabPurchaseTbcMain.Size = New System.Drawing.Size(142, 22)
+        Me.txtDatePurchasedGrpPassbookIfnoTabPassbookTbcPurchaseMainTabPurchaseTbcMain.TabIndex = 10
+        '
+        'ListBox1
+        '
+        Me.ListBox1.FormattingEnabled = True
+        Me.ListBox1.ItemHeight = 16
+        Me.ListBox1.Items.AddRange(New Object() {"Test Customer1", "Test Customer2", "Test Customer2"})
+        Me.ListBox1.Location = New System.Drawing.Point(135, 60)
+        Me.ListBox1.Name = "ListBox1"
+        Me.ListBox1.Size = New System.Drawing.Size(224, 20)
+        Me.ListBox1.TabIndex = 9
+        '
+        'TextBox1
+        '
+        Me.TextBox1.Location = New System.Drawing.Point(150, 163)
+        Me.TextBox1.Name = "TextBox1"
+        Me.TextBox1.Size = New System.Drawing.Size(162, 22)
+        Me.TextBox1.TabIndex = 8
+        '
+        'lblDatePurchasedGrpPassbookIfnoTabPassbookTbcPurchaseMainTabPurchaseTbcMain
+        '
+        Me.lblDatePurchasedGrpPassbookIfnoTabPassbookTbcPurchaseMainTabPurchaseTbcMain.AutoSize = True
+        Me.lblDatePurchasedGrpPassbookIfnoTabPassbookTbcPurchaseMainTabPurchaseTbcMain.Location = New System.Drawing.Point(24, 96)
+        Me.lblDatePurchasedGrpPassbookIfnoTabPassbookTbcPurchaseMainTabPurchaseTbcMain.Name = "lblDatePurchasedGrpPassbookIfnoTabPassbookTbcPurchaseMainTabPurchaseTbcMain"
+        Me.lblDatePurchasedGrpPassbookIfnoTabPassbookTbcPurchaseMainTabPurchaseTbcMain.Size = New System.Drawing.Size(105, 16)
+        Me.lblDatePurchasedGrpPassbookIfnoTabPassbookTbcPurchaseMainTabPurchaseTbcMain.TabIndex = 6
+        Me.lblDatePurchasedGrpPassbookIfnoTabPassbookTbcPurchaseMainTabPurchaseTbcMain.Text = "Date Purchased"
+        '
+        'lblPassbookIdGrpPassbookIfnoTabPassbookTbcPurchaseMainTabPurchaseTbcMain
+        '
+        Me.lblPassbookIdGrpPassbookIfnoTabPassbookTbcPurchaseMainTabPurchaseTbcMain.AutoSize = True
+        Me.lblPassbookIdGrpPassbookIfnoTabPassbookTbcPurchaseMainTabPurchaseTbcMain.Location = New System.Drawing.Point(40, 29)
+        Me.lblPassbookIdGrpPassbookIfnoTabPassbookTbcPurchaseMainTabPurchaseTbcMain.Name = "lblPassbookIdGrpPassbookIfnoTabPassbookTbcPurchaseMainTabPurchaseTbcMain"
+        Me.lblPassbookIdGrpPassbookIfnoTabPassbookTbcPurchaseMainTabPurchaseTbcMain.Size = New System.Drawing.Size(89, 16)
+        Me.lblPassbookIdGrpPassbookIfnoTabPassbookTbcPurchaseMainTabPurchaseTbcMain.TabIndex = 0
+        Me.lblPassbookIdGrpPassbookIfnoTabPassbookTbcPurchaseMainTabPurchaseTbcMain.Text = "Passbook ID:"
+        '
+        'txtPassbookIdGrpPassbookIfnoTabPassbookTbcPurchaseMainTabPurchaseTbcMain
+        '
+        Me.txtPassbookIdGrpPassbookIfnoTabPassbookTbcPurchaseMainTabPurchaseTbcMain.Location = New System.Drawing.Point(134, 26)
+        Me.txtPassbookIdGrpPassbookIfnoTabPassbookTbcPurchaseMainTabPurchaseTbcMain.Name = "txtPassbookIdGrpPassbookIfnoTabPassbookTbcPurchaseMainTabPurchaseTbcMain"
+        Me.txtPassbookIdGrpPassbookIfnoTabPassbookTbcPurchaseMainTabPurchaseTbcMain.Size = New System.Drawing.Size(225, 22)
+        Me.txtPassbookIdGrpPassbookIfnoTabPassbookTbcPurchaseMainTabPurchaseTbcMain.TabIndex = 1
+        Me.ToolTip1.SetToolTip(Me.txtPassbookIdGrpPassbookIfnoTabPassbookTbcPurchaseMainTabPurchaseTbcMain, "Enter assigned Passbok ID")
+        '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Location = New System.Drawing.Point(14, 163)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(114, 16)
+        Me.Label3.TabIndex = 3
+        Me.Label3.Text = "Price (Adult/Child)"
+        '
+        'lblCustNameGrpPassbookIfnoTabPassbookTbcPurchaseMainTabPurchaseTbcMain
+        '
+        Me.lblCustNameGrpPassbookIfnoTabPassbookTbcPurchaseMainTabPurchaseTbcMain.AutoSize = True
+        Me.lblCustNameGrpPassbookIfnoTabPassbookTbcPurchaseMainTabPurchaseTbcMain.Location = New System.Drawing.Point(21, 60)
+        Me.lblCustNameGrpPassbookIfnoTabPassbookTbcPurchaseMainTabPurchaseTbcMain.Name = "lblCustNameGrpPassbookIfnoTabPassbookTbcPurchaseMainTabPurchaseTbcMain"
+        Me.lblCustNameGrpPassbookIfnoTabPassbookTbcPurchaseMainTabPurchaseTbcMain.Size = New System.Drawing.Size(108, 16)
+        Me.lblCustNameGrpPassbookIfnoTabPassbookTbcPurchaseMainTabPurchaseTbcMain.TabIndex = 2
+        Me.lblCustNameGrpPassbookIfnoTabPassbookTbcPurchaseMainTabPurchaseTbcMain.Text = "Customer Name:"
+        '
+        'tabFeatureTbcPurchaseMainTabPurchaseTbcMain
+        '
+        Me.tabFeatureTbcPurchaseMainTabPurchaseTbcMain.Controls.Add(Me.btnCancelTabFeatureTbcPurchaseMainTabPurchaseTbcMain)
+        Me.tabFeatureTbcPurchaseMainTabPurchaseTbcMain.Controls.Add(Me.btnAcceptTbcPurchaseMainTabPurchaseTbcMain)
+        Me.tabFeatureTbcPurchaseMainTabPurchaseTbcMain.Location = New System.Drawing.Point(4, 25)
+        Me.tabFeatureTbcPurchaseMainTabPurchaseTbcMain.Name = "tabFeatureTbcPurchaseMainTabPurchaseTbcMain"
+        Me.tabFeatureTbcPurchaseMainTabPurchaseTbcMain.Padding = New System.Windows.Forms.Padding(3)
+        Me.tabFeatureTbcPurchaseMainTabPurchaseTbcMain.Size = New System.Drawing.Size(554, 324)
+        Me.tabFeatureTbcPurchaseMainTabPurchaseTbcMain.TabIndex = 1
+        Me.tabFeatureTbcPurchaseMainTabPurchaseTbcMain.Text = "Feature"
+        Me.tabFeatureTbcPurchaseMainTabPurchaseTbcMain.UseVisualStyleBackColor = True
+        '
+        'btnCancelTabFeatureTbcPurchaseMainTabPurchaseTbcMain
+        '
+        Me.btnCancelTabFeatureTbcPurchaseMainTabPurchaseTbcMain.Location = New System.Drawing.Point(278, 235)
+        Me.btnCancelTabFeatureTbcPurchaseMainTabPurchaseTbcMain.Name = "btnCancelTabFeatureTbcPurchaseMainTabPurchaseTbcMain"
+        Me.btnCancelTabFeatureTbcPurchaseMainTabPurchaseTbcMain.Size = New System.Drawing.Size(75, 23)
+        Me.btnCancelTabFeatureTbcPurchaseMainTabPurchaseTbcMain.TabIndex = 7
+        Me.btnCancelTabFeatureTbcPurchaseMainTabPurchaseTbcMain.Text = "&Cancel"
+        Me.btnCancelTabFeatureTbcPurchaseMainTabPurchaseTbcMain.UseVisualStyleBackColor = True
+        '
+        'btnAcceptTbcPurchaseMainTabPurchaseTbcMain
+        '
+        Me.btnAcceptTbcPurchaseMainTabPurchaseTbcMain.Location = New System.Drawing.Point(181, 235)
+        Me.btnAcceptTbcPurchaseMainTabPurchaseTbcMain.Name = "btnAcceptTbcPurchaseMainTabPurchaseTbcMain"
+        Me.btnAcceptTbcPurchaseMainTabPurchaseTbcMain.Size = New System.Drawing.Size(75, 23)
+        Me.btnAcceptTbcPurchaseMainTabPurchaseTbcMain.TabIndex = 6
+        Me.btnAcceptTbcPurchaseMainTabPurchaseTbcMain.Text = "&Accept"
+        Me.btnAcceptTbcPurchaseMainTabPurchaseTbcMain.UseVisualStyleBackColor = True
         '
         'tabCustTbcMain
         '
-        Me.tabCustTbcMain.BackColor = System.Drawing.Color.Transparent
-        Me.tabCustTbcMain.Controls.Add(Me.grpCustInfoTcbMain)
+        Me.tabCustTbcMain.BackColor = System.Drawing.Color.Gainsboro
+        Me.tabCustTbcMain.Controls.Add(Me.grpCustInfoTabCustTcbMain)
         Me.tabCustTbcMain.Location = New System.Drawing.Point(4, 25)
         Me.tabCustTbcMain.Margin = New System.Windows.Forms.Padding(4)
         Me.tabCustTbcMain.Name = "tabCustTbcMain"
@@ -516,24 +718,24 @@ Partial Class FrmMain
         Me.tabCustTbcMain.TabIndex = 0
         Me.tabCustTbcMain.Text = "Customer"
         '
-        'grpCustInfoTcbMain
+        'grpCustInfoTabCustTcbMain
         '
-        Me.grpCustInfoTcbMain.BackColor = System.Drawing.Color.White
-        Me.grpCustInfoTcbMain.Controls.Add(Me.btnCancelGrpCustInfoTcbMain)
-        Me.grpCustInfoTcbMain.Controls.Add(Me.btnAddGrpCustInfoTcbMain)
-        Me.grpCustInfoTcbMain.Controls.Add(Me.txtCustNameGrpCustInfoTcbMain)
-        Me.grpCustInfoTcbMain.Controls.Add(Me.lblCustNameGrpCustInfoTcbMain)
-        Me.grpCustInfoTcbMain.Controls.Add(Me.txtCustIdGrpCustInfoTcbMain)
-        Me.grpCustInfoTcbMain.Controls.Add(Me.lblCustIdGrpCustInfoTcbMain)
-        Me.grpCustInfoTcbMain.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.grpCustInfoTcbMain.Location = New System.Drawing.Point(106, 61)
-        Me.grpCustInfoTcbMain.Margin = New System.Windows.Forms.Padding(4)
-        Me.grpCustInfoTcbMain.Name = "grpCustInfoTcbMain"
-        Me.grpCustInfoTcbMain.Padding = New System.Windows.Forms.Padding(4)
-        Me.grpCustInfoTcbMain.Size = New System.Drawing.Size(422, 258)
-        Me.grpCustInfoTcbMain.TabIndex = 0
-        Me.grpCustInfoTcbMain.TabStop = False
-        Me.grpCustInfoTcbMain.Text = "Customer Info"
+        Me.grpCustInfoTabCustTcbMain.BackColor = System.Drawing.Color.White
+        Me.grpCustInfoTabCustTcbMain.Controls.Add(Me.btnCancelGrpCustInfoTcbMain)
+        Me.grpCustInfoTabCustTcbMain.Controls.Add(Me.btnAddGrpCustInfoTcbMain)
+        Me.grpCustInfoTabCustTcbMain.Controls.Add(Me.txtCustNameGrpCustInfoTcbMain)
+        Me.grpCustInfoTabCustTcbMain.Controls.Add(Me.lblCustNameGrpCustInfoTcbMain)
+        Me.grpCustInfoTabCustTcbMain.Controls.Add(Me.txtCustIdGrpCustInfoTcbMain)
+        Me.grpCustInfoTabCustTcbMain.Controls.Add(Me.lblCustIdGrpCustInfoTcbMain)
+        Me.grpCustInfoTabCustTcbMain.FlatStyle = System.Windows.Forms.FlatStyle.Popup
+        Me.grpCustInfoTabCustTcbMain.Location = New System.Drawing.Point(106, 61)
+        Me.grpCustInfoTabCustTcbMain.Margin = New System.Windows.Forms.Padding(4)
+        Me.grpCustInfoTabCustTcbMain.Name = "grpCustInfoTabCustTcbMain"
+        Me.grpCustInfoTabCustTcbMain.Padding = New System.Windows.Forms.Padding(4)
+        Me.grpCustInfoTabCustTcbMain.Size = New System.Drawing.Size(422, 258)
+        Me.grpCustInfoTabCustTcbMain.TabIndex = 0
+        Me.grpCustInfoTabCustTcbMain.TabStop = False
+        Me.grpCustInfoTabCustTcbMain.Text = "Customer Info"
         '
         'btnCancelGrpCustInfoTcbMain
         '
@@ -541,7 +743,7 @@ Partial Class FrmMain
         Me.btnCancelGrpCustInfoTcbMain.Name = "btnCancelGrpCustInfoTcbMain"
         Me.btnCancelGrpCustInfoTcbMain.Size = New System.Drawing.Size(75, 23)
         Me.btnCancelGrpCustInfoTcbMain.TabIndex = 5
-        Me.btnCancelGrpCustInfoTcbMain.Text = "Cancel"
+        Me.btnCancelGrpCustInfoTcbMain.Text = "&Cancel"
         Me.btnCancelGrpCustInfoTcbMain.UseVisualStyleBackColor = True
         '
         'btnAddGrpCustInfoTcbMain
@@ -550,7 +752,7 @@ Partial Class FrmMain
         Me.btnAddGrpCustInfoTcbMain.Name = "btnAddGrpCustInfoTcbMain"
         Me.btnAddGrpCustInfoTcbMain.Size = New System.Drawing.Size(75, 23)
         Me.btnAddGrpCustInfoTcbMain.TabIndex = 4
-        Me.btnAddGrpCustInfoTcbMain.Text = "Add"
+        Me.btnAddGrpCustInfoTcbMain.Text = "&Add"
         Me.btnAddGrpCustInfoTcbMain.UseVisualStyleBackColor = True
         '
         'txtCustNameGrpCustInfoTcbMain
@@ -588,7 +790,7 @@ Partial Class FrmMain
         'tbcMain
         '
         Me.tbcMain.Controls.Add(Me.tabCustTbcMain)
-        Me.tbcMain.Controls.Add(Me.tabPassbookTbcMain)
+        Me.tbcMain.Controls.Add(Me.tabPurchaseTbcMain)
         Me.tbcMain.Controls.Add(Me.tabPassbookFeatureTbcMain)
         Me.tbcMain.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.tbcMain.Location = New System.Drawing.Point(44, 123)
@@ -599,27 +801,48 @@ Partial Class FrmMain
         Me.tbcMain.Size = New System.Drawing.Size(642, 432)
         Me.tbcMain.TabIndex = 2
         '
-        'btnShutdownFrmMain
+        'btnExitFrmMain
         '
-        Me.btnShutdownFrmMain.Location = New System.Drawing.Point(327, 588)
-        Me.btnShutdownFrmMain.Name = "btnShutdownFrmMain"
-        Me.btnShutdownFrmMain.Size = New System.Drawing.Size(75, 45)
-        Me.btnShutdownFrmMain.TabIndex = 3
-        Me.btnShutdownFrmMain.Text = "Shutdown"
-        Me.btnShutdownFrmMain.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage
-        Me.btnShutdownFrmMain.UseVisualStyleBackColor = True
+        Me.btnExitFrmMain.BackColor = System.Drawing.Color.Transparent
+        Me.btnExitFrmMain.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnExitFrmMain.ForeColor = System.Drawing.SystemColors.HotTrack
+        Me.btnExitFrmMain.Location = New System.Drawing.Point(312, 594)
+        Me.btnExitFrmMain.Name = "btnExitFrmMain"
+        Me.btnExitFrmMain.Size = New System.Drawing.Size(99, 30)
+        Me.btnExitFrmMain.TabIndex = 3
+        Me.btnExitFrmMain.Text = "&Exit"
+        Me.btnExitFrmMain.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage
+        Me.btnExitFrmMain.UseVisualStyleBackColor = False
         '
-        'AddToolStripMenuItem
+        'grpTransLogTbcMain
         '
-        Me.AddToolStripMenuItem.Name = "AddToolStripMenuItem"
-        Me.AddToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
-        Me.AddToolStripMenuItem.Text = "Add"
+        Me.grpTransLogTbcMain.BackColor = System.Drawing.Color.Gainsboro
+        Me.grpTransLogTbcMain.Controls.Add(Me.btnCLearGrpTransLogTbcFrmMain)
+        Me.grpTransLogTbcMain.Controls.Add(Me.txtTransLogGrpTransLogTbcMain)
+        Me.grpTransLogTbcMain.Location = New System.Drawing.Point(704, 148)
+        Me.grpTransLogTbcMain.Name = "grpTransLogTbcMain"
+        Me.grpTransLogTbcMain.Size = New System.Drawing.Size(384, 407)
+        Me.grpTransLogTbcMain.TabIndex = 4
+        Me.grpTransLogTbcMain.TabStop = False
+        Me.grpTransLogTbcMain.Text = "Tranaction Log"
         '
-        'UpdateToolStripMenuItem
+        'btnCLearGrpTransLogTbcFrmMain
         '
-        Me.UpdateToolStripMenuItem.Name = "UpdateToolStripMenuItem"
-        Me.UpdateToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
-        Me.UpdateToolStripMenuItem.Text = "Update"
+        Me.btnCLearGrpTransLogTbcFrmMain.Location = New System.Drawing.Point(156, 369)
+        Me.btnCLearGrpTransLogTbcFrmMain.Name = "btnCLearGrpTransLogTbcFrmMain"
+        Me.btnCLearGrpTransLogTbcFrmMain.Size = New System.Drawing.Size(75, 23)
+        Me.btnCLearGrpTransLogTbcFrmMain.TabIndex = 6
+        Me.btnCLearGrpTransLogTbcFrmMain.Text = "Clea&r"
+        Me.btnCLearGrpTransLogTbcFrmMain.UseVisualStyleBackColor = True
+        '
+        'txtTransLogGrpTransLogTbcMain
+        '
+        Me.txtTransLogGrpTransLogTbcMain.Location = New System.Drawing.Point(17, 24)
+        Me.txtTransLogGrpTransLogTbcMain.Multiline = True
+        Me.txtTransLogGrpTransLogTbcMain.Name = "txtTransLogGrpTransLogTbcMain"
+        Me.txtTransLogGrpTransLogTbcMain.ReadOnly = True
+        Me.txtTransLogGrpTransLogTbcMain.Size = New System.Drawing.Size(351, 328)
+        Me.txtTransLogGrpTransLogTbcMain.TabIndex = 0
         '
         'FrmMain
         '
@@ -627,7 +850,8 @@ Partial Class FrmMain
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.Beige
         Me.ClientSize = New System.Drawing.Size(1112, 656)
-        Me.Controls.Add(Me.btnShutdownFrmMain)
+        Me.Controls.Add(Me.grpTransLogTbcMain)
+        Me.Controls.Add(Me.btnExitFrmMain)
         Me.Controls.Add(Me.tbcMain)
         Me.Controls.Add(Me.lblThemeParkMgmtSys)
         Me.Controls.Add(Me.mnuMainApplMenu)
@@ -640,52 +864,51 @@ Partial Class FrmMain
         Me.mnuMainApplMenu.PerformLayout()
         Me.tabPassbookFeatureTbcMain.ResumeLayout(False)
         Me.tbcPassbookFeatureMainTbcMain.ResumeLayout(False)
-        Me.TabPage3.ResumeLayout(False)
-        Me.TabPage3.PerformLayout()
+        Me.tabAddFeatureTbcPassbookFeatureMainTbcMain.ResumeLayout(False)
+        Me.GroupBox1.ResumeLayout(False)
+        Me.GroupBox1.PerformLayout()
         Me.tabUpdtFeatureTbcPassbookFeatureMainTbcMain.ResumeLayout(False)
         Me.grpUpdtFeatureTbcPassbookFeatureMainTbcMain.ResumeLayout(False)
         Me.grpUpdtFeatureTbcPassbookFeatureMainTbcMain.PerformLayout()
-        Me.tabPassbookTbcMain.ResumeLayout(False)
-        Me.TabControl1.ResumeLayout(False)
+        Me.tabPurchaseTbcMain.ResumeLayout(False)
+        Me.tbcPurchaseMainTabPurchaseTbcMain.ResumeLayout(False)
+        Me.tabPassbookTbcPurchaseMainTabPurchaseTbcMain.ResumeLayout(False)
+        Me.grpPassbookIfnoTabPassbookTbcPurchaseMainTabPurchaseTbcMain.ResumeLayout(False)
+        Me.grpPassbookIfnoTabPassbookTbcPurchaseMainTabPurchaseTbcMain.PerformLayout()
+        Me.tabFeatureTbcPurchaseMainTabPurchaseTbcMain.ResumeLayout(False)
         Me.tabCustTbcMain.ResumeLayout(False)
-        Me.grpCustInfoTcbMain.ResumeLayout(False)
-        Me.grpCustInfoTcbMain.PerformLayout()
+        Me.grpCustInfoTabCustTcbMain.ResumeLayout(False)
+        Me.grpCustInfoTabCustTcbMain.PerformLayout()
         Me.tbcMain.ResumeLayout(False)
+        Me.grpTransLogTbcMain.ResumeLayout(False)
+        Me.grpTransLogTbcMain.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
 
     Friend WithEvents mnuMainApplMenu As MenuStrip
-    Friend WithEvents mnuOptFile As ToolStripMenuItem
-    Friend WithEvents mnuOptFileSave As ToolStripMenuItem
-    Friend WithEvents mnuOptFileImport As ToolStripMenuItem
-    Friend WithEvents mnuOptFileExport As ToolStripMenuItem
-    Friend WithEvents ExitToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents mnuOptEdit As ToolStripMenuItem
-    Friend WithEvents mnuOptEditCut As ToolStripMenuItem
-    Friend WithEvents mnuOptEditCopy As ToolStripMenuItem
-    Friend WithEvents mnuOptEditPaste As ToolStripMenuItem
-    Friend WithEvents mnuOptView As ToolStripMenuItem
-    Friend WithEvents mnuOptHelp As ToolStripMenuItem
-    Friend WithEvents mnuOptHelpAbout As ToolStripMenuItem
+    Friend WithEvents mnuFileFrmMain As ToolStripMenuItem
+    Friend WithEvents mnuSaveFileFrmMain As ToolStripMenuItem
+    Friend WithEvents mnuImportFileFrmMain As ToolStripMenuItem
+    Friend WithEvents mnuExportFileFrmMain As ToolStripMenuItem
+    Friend WithEvents mnuExitFileFrmMain As ToolStripMenuItem
+    Friend WithEvents mnuEditFrmMain As ToolStripMenuItem
+    Friend WithEvents mnuCutEditFrmMain As ToolStripMenuItem
+    Friend WithEvents mnuCopyEditFrmMain As ToolStripMenuItem
+    Friend WithEvents mnuPasteEditFrmMain As ToolStripMenuItem
+    Friend WithEvents mnuViewFrmMain As ToolStripMenuItem
+    Friend WithEvents mnuHelpFrmMain As ToolStripMenuItem
+    Friend WithEvents mnuAboutHelpFrmMain As ToolStripMenuItem
     Friend WithEvents lblThemeParkMgmtSys As Label
-    Friend WithEvents SummaryToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents TransactionLogToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents mnuOptPassbook As ToolStripMenuItem
-    Friend WithEvents CreateToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents mnuCreateOptPassbook As ToolStripMenuItem
-    Friend WithEvents FeaturesToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents mnuSummaryViewFrmMain As ToolStripMenuItem
+    Friend WithEvents mnuTransLogViewFrmMain As ToolStripMenuItem
+    Friend WithEvents mnuPassbooksFrmMain As ToolStripMenuItem
+    Friend WithEvents mnuPurchasePassbooksFrmMain As ToolStripMenuItem
+    Friend WithEvents mnuFeaturePassbooksFrmMain As ToolStripMenuItem
     Friend WithEvents tabPassbookFeatureTbcMain As TabPage
     Friend WithEvents tbcPassbookFeatureMainTbcMain As TabControl
-    Friend WithEvents TabPage3 As TabPage
-    Friend WithEvents Label5 As Label
-    Friend WithEvents Button3 As Button
-    Friend WithEvents Button4 As Button
-    Friend WithEvents Label6 As Label
-    Friend WithEvents Label7 As Label
-    Friend WithEvents TextBox2 As TextBox
-    Friend WithEvents Label8 As Label
+    Friend WithEvents tabAddFeatureTbcPassbookFeatureMainTbcMain As TabPage
     Friend WithEvents tabUpdtFeatureTbcPassbookFeatureMainTbcMain As TabPage
     Friend WithEvents btnCancelTabUpdtFeatureTbcPassbookFeatureMainTbcMain As Button
     Friend WithEvents btnUpdateTabUpdtFeatureTbcPassbookFeatureMainTbcMain As Button
@@ -695,15 +918,15 @@ Partial Class FrmMain
     Friend WithEvents lblUnitOfMeasTabUpdtFeatureTbcPassbookFeatureMainTbcMain As Label
     Friend WithEvents txtFeatureNameTabUpdtFeatureTbcPassbookFeatureMainTbcMain As TextBox
     Friend WithEvents lblFeatureIdTabUpdtFeatureTbcPassbookFeatureMainTbcMain As Label
-    Private WithEvents txtlblFeatureIdTabUpdtFeatureTbcPassbookFeatureMainTbcMain As TextBox
+    Private WithEvents txtFeatureIdTabUpdtFeatureTbcPassbookFeatureMainTbcMain As TextBox
     Friend WithEvents lblPriceTabUpdtFeatureTbcPassbookFeatureMainTbcMain As Label
     Friend WithEvents lblFeatureNameTabUpdtFeatureTbcPassbookFeatureMainTbcMain As Label
-    Friend WithEvents tabPassbookTbcMain As TabPage
-    Friend WithEvents TabControl1 As TabControl
-    Friend WithEvents TabPage1 As TabPage
-    Friend WithEvents TabPage2 As TabPage
+    Friend WithEvents tabPurchaseTbcMain As TabPage
+    Friend WithEvents tbcPurchaseMainTabPurchaseTbcMain As TabControl
+    Friend WithEvents tabPassbookTbcPurchaseMainTabPurchaseTbcMain As TabPage
+    Friend WithEvents tabFeatureTbcPurchaseMainTabPurchaseTbcMain As TabPage
     Friend WithEvents tabCustTbcMain As TabPage
-    Friend WithEvents grpCustInfoTcbMain As GroupBox
+    Friend WithEvents grpCustInfoTabCustTcbMain As GroupBox
     Friend WithEvents btnCancelGrpCustInfoTcbMain As Button
     Friend WithEvents btnAddGrpCustInfoTcbMain As Button
     Friend WithEvents txtCustNameGrpCustInfoTcbMain As TextBox
@@ -711,7 +934,35 @@ Partial Class FrmMain
     Friend WithEvents txtCustIdGrpCustInfoTcbMain As TextBox
     Friend WithEvents lblCustIdGrpCustInfoTcbMain As Label
     Friend WithEvents tbcMain As TabControl
-    Friend WithEvents AddToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents UpdateToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents btnShutdownFrmMain As Button
+    Friend WithEvents mnuAddFeaturesPassbooksFrmMain As ToolStripMenuItem
+    Friend WithEvents mnuUpdateFeaturesPassbooksFrmMain As ToolStripMenuItem
+    Friend WithEvents btnExitFrmMain As Button
+    Friend WithEvents Button1 As Button
+    Friend WithEvents btnAddTabAddFeatureTbcPassbookFeatureMainTbcMain As Button
+    Friend WithEvents GroupBox1 As GroupBox
+    Friend WithEvents txtPriceTabAddFeatureTbcPassbookFeatureMainTbcMain As TextBox
+    Friend WithEvents txtUnitOfMeasAddFeatureTbcPassbookFeatureMainTbcMain As TextBox
+    Friend WithEvents lblUnitOfMeasTabAddFeatureTbcPassbookFeatureMainTbcMain As Label
+    Friend WithEvents TextBox3 As TextBox
+    Friend WithEvents lblFeatureIdTabAddFeatureTbcPassbookFeatureMainTbcMain As Label
+    Private WithEvents txtFeatureIdTabAddFeatureTbcPassbookFeatureMainTbcMain As TextBox
+    Friend WithEvents lblPriceTabAddFeatureTbcPassbookFeatureMainTbcMain As Label
+    Friend WithEvents lblFeatureNameTabAddFeatureTbcPassbookFeatureMainTbcMain As Label
+    Friend WithEvents grpTransLogTbcMain As GroupBox
+    Friend WithEvents btnCLearGrpTransLogTbcFrmMain As Button
+    Friend WithEvents txtTransLogGrpTransLogTbcMain As TextBox
+    Friend WithEvents btnCancelTabFeatureTbcPurchaseMainTabPurchaseTbcMain As Button
+    Friend WithEvents btnAcceptTbcPurchaseMainTabPurchaseTbcMain As Button
+    Friend WithEvents Button2 As Button
+    Friend WithEvents Button3 As Button
+    Friend WithEvents grpPassbookIfnoTabPassbookTbcPurchaseMainTabPurchaseTbcMain As GroupBox
+    Friend WithEvents TextBox1 As TextBox
+    Friend WithEvents lblDatePurchasedGrpPassbookIfnoTabPassbookTbcPurchaseMainTabPurchaseTbcMain As Label
+    Friend WithEvents lblPassbookIdGrpPassbookIfnoTabPassbookTbcPurchaseMainTabPurchaseTbcMain As Label
+    Private WithEvents txtPassbookIdGrpPassbookIfnoTabPassbookTbcPurchaseMainTabPurchaseTbcMain As TextBox
+    Friend WithEvents Label3 As Label
+    Friend WithEvents lblCustNameGrpPassbookIfnoTabPassbookTbcPurchaseMainTabPurchaseTbcMain As Label
+    Friend WithEvents ListBox1 As ListBox
+    Friend WithEvents ToolTip1 As ToolTip
+    Friend WithEvents txtDatePurchasedGrpPassbookIfnoTabPassbookTbcPurchaseMainTabPurchaseTbcMain As TextBox
 End Class
