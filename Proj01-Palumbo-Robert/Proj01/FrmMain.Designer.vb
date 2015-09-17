@@ -214,7 +214,7 @@ Partial Class FrmMain
         Me.mnuSaveFileFrmMain.Image = CType(resources.GetObject("mnuSaveFileFrmMain.Image"), System.Drawing.Image)
         Me.mnuSaveFileFrmMain.Name = "mnuSaveFileFrmMain"
         Me.mnuSaveFileFrmMain.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.S), System.Windows.Forms.Keys)
-        Me.mnuSaveFileFrmMain.Size = New System.Drawing.Size(149, 22)
+        Me.mnuSaveFileFrmMain.Size = New System.Drawing.Size(152, 22)
         Me.mnuSaveFileFrmMain.Text = "Save"
         Me.mnuSaveFileFrmMain.ToolTipText = "Save Session"
         '
@@ -236,8 +236,9 @@ Partial Class FrmMain
         '
         Me.mnuExitFileFrmMain.Name = "mnuExitFileFrmMain"
         Me.mnuExitFileFrmMain.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.X), System.Windows.Forms.Keys)
-        Me.mnuExitFileFrmMain.Size = New System.Drawing.Size(149, 22)
+        Me.mnuExitFileFrmMain.Size = New System.Drawing.Size(152, 22)
         Me.mnuExitFileFrmMain.Text = "Exit"
+        Me.mnuExitFileFrmMain.ToolTipText = "Exit the system"
         '
         'mnuEditFrmMain
         '
@@ -283,9 +284,9 @@ Partial Class FrmMain
         Me.mnuPurchasePassbooksFrmMain.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right
         Me.mnuPurchasePassbooksFrmMain.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuPassbookPurchasePassbooksFrmMain, Me.mnuFeaturePurchasePassbooksFrmMain})
         Me.mnuPurchasePassbooksFrmMain.Name = "mnuPurchasePassbooksFrmMain"
-        Me.mnuPurchasePassbooksFrmMain.Size = New System.Drawing.Size(131, 22)
+        Me.mnuPurchasePassbooksFrmMain.Size = New System.Drawing.Size(152, 22)
         Me.mnuPurchasePassbooksFrmMain.Text = "Purchase"
-        Me.mnuPurchasePassbooksFrmMain.ToolTipText = "Purchase options"
+        Me.mnuPurchasePassbooksFrmMain.ToolTipText = "Passbook and feature purchase options"
         '
         'mnuPassbookPurchasePassbooksFrmMain
         '
@@ -305,21 +306,23 @@ Partial Class FrmMain
         '
         Me.mnuFeaturePassbooksFrmMain.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuAddFeaturesPassbooksFrmMain, Me.mnuUpdateFeaturesPassbooksFrmMain})
         Me.mnuFeaturePassbooksFrmMain.Name = "mnuFeaturePassbooksFrmMain"
-        Me.mnuFeaturePassbooksFrmMain.Size = New System.Drawing.Size(131, 22)
+        Me.mnuFeaturePassbooksFrmMain.Size = New System.Drawing.Size(152, 22)
         Me.mnuFeaturePassbooksFrmMain.Text = "Features"
-        Me.mnuFeaturePassbooksFrmMain.ToolTipText = "Purchase feature for a passbook"
+        Me.mnuFeaturePassbooksFrmMain.ToolTipText = "Add or update a passbook feature"
         '
         'mnuAddFeaturesPassbooksFrmMain
         '
         Me.mnuAddFeaturesPassbooksFrmMain.Name = "mnuAddFeaturesPassbooksFrmMain"
-        Me.mnuAddFeaturesPassbooksFrmMain.Size = New System.Drawing.Size(120, 22)
+        Me.mnuAddFeaturesPassbooksFrmMain.Size = New System.Drawing.Size(152, 22)
         Me.mnuAddFeaturesPassbooksFrmMain.Text = "Add"
+        Me.mnuAddFeaturesPassbooksFrmMain.ToolTipText = "Add a passbook feature"
         '
         'mnuUpdateFeaturesPassbooksFrmMain
         '
         Me.mnuUpdateFeaturesPassbooksFrmMain.Name = "mnuUpdateFeaturesPassbooksFrmMain"
-        Me.mnuUpdateFeaturesPassbooksFrmMain.Size = New System.Drawing.Size(120, 22)
+        Me.mnuUpdateFeaturesPassbooksFrmMain.Size = New System.Drawing.Size(152, 22)
         Me.mnuUpdateFeaturesPassbooksFrmMain.Text = "Update"
+        Me.mnuUpdateFeaturesPassbooksFrmMain.ToolTipText = "Update a passbook feature"
         '
         'mnuViewFrmMain
         '
@@ -380,7 +383,7 @@ Partial Class FrmMain
         'lblThemeParkMgmtSys
         '
         Me.lblThemeParkMgmtSys.AutoSize = True
-        Me.lblThemeParkMgmtSys.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+        Me.lblThemeParkMgmtSys.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.lblThemeParkMgmtSys.Font = New System.Drawing.Font("Modern No. 20", 27.75!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblThemeParkMgmtSys.ForeColor = System.Drawing.Color.Maroon
         Me.lblThemeParkMgmtSys.Location = New System.Drawing.Point(110, 49)
@@ -418,6 +421,7 @@ Partial Class FrmMain
         'tabAddFeatureTbcPassbookFeatureMainTbcMain
         '
         Me.tabAddFeatureTbcPassbookFeatureMainTbcMain.AllowDrop = True
+        Me.tabAddFeatureTbcPassbookFeatureMainTbcMain.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.tabAddFeatureTbcPassbookFeatureMainTbcMain.Controls.Add(Me.grpAddFeatureTbcPassbookFeatureMainTbcMain)
         Me.tabAddFeatureTbcPassbookFeatureMainTbcMain.Controls.Add(Me.Button1)
         Me.tabAddFeatureTbcPassbookFeatureMainTbcMain.Controls.Add(Me.btnSubmitTabAddFeatureTbcPassbookFeatureMainTbcMain)
@@ -449,7 +453,7 @@ Partial Class FrmMain
         Me.grpAddFeatureTbcPassbookFeatureMainTbcMain.Controls.Add(Me.lblFeatureNameTabAddFeatureTbcPassbookFeatureMainTbcMain)
         Me.grpAddFeatureTbcPassbookFeatureMainTbcMain.Location = New System.Drawing.Point(24, 24)
         Me.grpAddFeatureTbcPassbookFeatureMainTbcMain.Name = "grpAddFeatureTbcPassbookFeatureMainTbcMain"
-        Me.grpAddFeatureTbcPassbookFeatureMainTbcMain.Size = New System.Drawing.Size(523, 318)
+        Me.grpAddFeatureTbcPassbookFeatureMainTbcMain.Size = New System.Drawing.Size(519, 314)
         Me.grpAddFeatureTbcPassbookFeatureMainTbcMain.TabIndex = 10
         Me.grpAddFeatureTbcPassbookFeatureMainTbcMain.TabStop = False
         Me.grpAddFeatureTbcPassbookFeatureMainTbcMain.Text = "Feature Info"
@@ -583,6 +587,7 @@ Partial Class FrmMain
         'tabUpdtFeatureTbcPassbookFeatureMainTbcMain
         '
         Me.tabUpdtFeatureTbcPassbookFeatureMainTbcMain.BackColor = System.Drawing.SystemColors.Control
+        Me.tabUpdtFeatureTbcPassbookFeatureMainTbcMain.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.tabUpdtFeatureTbcPassbookFeatureMainTbcMain.Controls.Add(Me.grpUpdtFeatureTbcPassbookFeatureMainTbcMain)
         Me.tabUpdtFeatureTbcPassbookFeatureMainTbcMain.Location = New System.Drawing.Point(4, 28)
         Me.tabUpdtFeatureTbcPassbookFeatureMainTbcMain.Name = "tabUpdtFeatureTbcPassbookFeatureMainTbcMain"
@@ -608,7 +613,7 @@ Partial Class FrmMain
         Me.grpUpdtFeatureTbcPassbookFeatureMainTbcMain.Controls.Add(Me.txtPassbookIdTabUpdtFeatureTbcPassbookFeatureMainTbcMain)
         Me.grpUpdtFeatureTbcPassbookFeatureMainTbcMain.Location = New System.Drawing.Point(24, 24)
         Me.grpUpdtFeatureTbcPassbookFeatureMainTbcMain.Name = "grpUpdtFeatureTbcPassbookFeatureMainTbcMain"
-        Me.grpUpdtFeatureTbcPassbookFeatureMainTbcMain.Size = New System.Drawing.Size(523, 330)
+        Me.grpUpdtFeatureTbcPassbookFeatureMainTbcMain.Size = New System.Drawing.Size(519, 326)
         Me.grpUpdtFeatureTbcPassbookFeatureMainTbcMain.TabIndex = 7
         Me.grpUpdtFeatureTbcPassbookFeatureMainTbcMain.TabStop = False
         Me.grpUpdtFeatureTbcPassbookFeatureMainTbcMain.Text = "Passbook Feature Info"
@@ -705,6 +710,7 @@ Partial Class FrmMain
         '
         'tabPostFeatureTbcPassbookFeatureMainTbcMain
         '
+        Me.tabPostFeatureTbcPassbookFeatureMainTbcMain.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.tabPostFeatureTbcPassbookFeatureMainTbcMain.Controls.Add(Me.grpPostFeatureTbcPassbookFeatureMainTbcMain)
         Me.tabPostFeatureTbcPassbookFeatureMainTbcMain.Location = New System.Drawing.Point(4, 28)
         Me.tabPostFeatureTbcPassbookFeatureMainTbcMain.Name = "tabPostFeatureTbcPassbookFeatureMainTbcMain"
@@ -735,7 +741,7 @@ Partial Class FrmMain
         Me.grpPostFeatureTbcPassbookFeatureMainTbcMain.Controls.Add(Me.txtPassbookFeatureIddGrpUpdtFeatureTbcPassbookFeatureMainTbcMain)
         Me.grpPostFeatureTbcPassbookFeatureMainTbcMain.Location = New System.Drawing.Point(24, 24)
         Me.grpPostFeatureTbcPassbookFeatureMainTbcMain.Name = "grpPostFeatureTbcPassbookFeatureMainTbcMain"
-        Me.grpPostFeatureTbcPassbookFeatureMainTbcMain.Size = New System.Drawing.Size(523, 330)
+        Me.grpPostFeatureTbcPassbookFeatureMainTbcMain.Size = New System.Drawing.Size(519, 326)
         Me.grpPostFeatureTbcPassbookFeatureMainTbcMain.TabIndex = 8
         Me.grpPostFeatureTbcPassbookFeatureMainTbcMain.TabStop = False
         Me.grpPostFeatureTbcPassbookFeatureMainTbcMain.Text = "Feature Info"
@@ -898,6 +904,7 @@ Partial Class FrmMain
         '
         'tabPassbookTbcPurchaseMainTabPurchaseTbcMain
         '
+        Me.tabPassbookTbcPurchaseMainTabPurchaseTbcMain.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.tabPassbookTbcPurchaseMainTabPurchaseTbcMain.Controls.Add(Me.grpPassbookInfoTabPassbookTbcPurchaseMainTabPurchaseTbcMain)
         Me.tabPassbookTbcPurchaseMainTabPurchaseTbcMain.Location = New System.Drawing.Point(4, 28)
         Me.tabPassbookTbcPurchaseMainTabPurchaseTbcMain.Name = "tabPassbookTbcPurchaseMainTabPurchaseTbcMain"
@@ -1057,6 +1064,7 @@ Partial Class FrmMain
         '
         'tabFeatureTbcPurchaseMainTabPurchaseTbcMain
         '
+        Me.tabFeatureTbcPurchaseMainTabPurchaseTbcMain.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.tabFeatureTbcPurchaseMainTabPurchaseTbcMain.Controls.Add(Me.grpFeatureInfoTabPassbookTbcPurchaseMainTabPurchaseTbcMain)
         Me.tabFeatureTbcPurchaseMainTabPurchaseTbcMain.Location = New System.Drawing.Point(4, 28)
         Me.tabFeatureTbcPurchaseMainTabPurchaseTbcMain.Name = "tabFeatureTbcPurchaseMainTabPurchaseTbcMain"
@@ -1085,7 +1093,7 @@ Partial Class FrmMain
         Me.grpFeatureInfoTabPassbookTbcPurchaseMainTabPurchaseTbcMain.Controls.Add(Me.lblFeatureGrpFeatureInfoTabPassbookTbcPurchaseMainTabPurchaseTbcMain)
         Me.grpFeatureInfoTabPassbookTbcPurchaseMainTabPurchaseTbcMain.Location = New System.Drawing.Point(24, 24)
         Me.grpFeatureInfoTabPassbookTbcPurchaseMainTabPurchaseTbcMain.Name = "grpFeatureInfoTabPassbookTbcPurchaseMainTabPurchaseTbcMain"
-        Me.grpFeatureInfoTabPassbookTbcPurchaseMainTabPurchaseTbcMain.Size = New System.Drawing.Size(523, 330)
+        Me.grpFeatureInfoTabPassbookTbcPurchaseMainTabPurchaseTbcMain.Size = New System.Drawing.Size(519, 326)
         Me.grpFeatureInfoTabPassbookTbcPurchaseMainTabPurchaseTbcMain.TabIndex = 11
         Me.grpFeatureInfoTabPassbookTbcPurchaseMainTabPurchaseTbcMain.TabStop = False
         Me.grpFeatureInfoTabPassbookTbcPurchaseMainTabPurchaseTbcMain.Text = "Feature Info"
@@ -1225,7 +1233,7 @@ Partial Class FrmMain
         'tabAddTbcCustomerMainTabCustomerTbcMain
         '
         Me.tabAddTbcCustomerMainTabCustomerTbcMain.BackColor = System.Drawing.SystemColors.Control
-        Me.tabAddTbcCustomerMainTabCustomerTbcMain.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.tabAddTbcCustomerMainTabCustomerTbcMain.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.tabAddTbcCustomerMainTabCustomerTbcMain.Controls.Add(Me.grpCustInfoTbcCustomerMainTabCustomerTbcMain)
         Me.tabAddTbcCustomerMainTabCustomerTbcMain.Location = New System.Drawing.Point(4, 28)
         Me.tabAddTbcCustomerMainTabCustomerTbcMain.Name = "tabAddTbcCustomerMainTabCustomerTbcMain"
@@ -1312,6 +1320,7 @@ Partial Class FrmMain
         '
         'tabViewCustTbcCustomerMainTabCustomerTbcMain
         '
+        Me.tabViewCustTbcCustomerMainTabCustomerTbcMain.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.tabViewCustTbcCustomerMainTabCustomerTbcMain.Controls.Add(Me.grpCustInfo2TbcCustomerMainTabCustomerTbcMain)
         Me.tabViewCustTbcCustomerMainTabCustomerTbcMain.Location = New System.Drawing.Point(4, 28)
         Me.tabViewCustTbcCustomerMainTabCustomerTbcMain.Name = "tabViewCustTbcCustomerMainTabCustomerTbcMain"
@@ -1331,7 +1340,7 @@ Partial Class FrmMain
         Me.grpCustInfo2TbcCustomerMainTabCustomerTbcMain.Controls.Add(Me.txtCustIdGrpCustInfo2TbcCustomerMainTabCustomerTbcMain)
         Me.grpCustInfo2TbcCustomerMainTabCustomerTbcMain.Controls.Add(Me.lblCustNameIdGrpCustInfo2TbcCustomerMainTabCustomerTbcMain)
         Me.grpCustInfo2TbcCustomerMainTabCustomerTbcMain.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.grpCustInfo2TbcCustomerMainTabCustomerTbcMain.Location = New System.Drawing.Point(24, 19)
+        Me.grpCustInfo2TbcCustomerMainTabCustomerTbcMain.Location = New System.Drawing.Point(24, 24)
         Me.grpCustInfo2TbcCustomerMainTabCustomerTbcMain.Margin = New System.Windows.Forms.Padding(4)
         Me.grpCustInfo2TbcCustomerMainTabCustomerTbcMain.Name = "grpCustInfo2TbcCustomerMainTabCustomerTbcMain"
         Me.grpCustInfo2TbcCustomerMainTabCustomerTbcMain.Padding = New System.Windows.Forms.Padding(4)
