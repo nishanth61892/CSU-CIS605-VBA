@@ -45,7 +45,7 @@ Public Class PassbookFeature
     Private mPurchPrice As Decimal
 
     'Passbook to add feature to
-    Private mPassbook As Passbook
+    Private mPassbk As Passbook
 
     'Feature being added
     Private mFeature As Feature
@@ -75,7 +75,7 @@ Public Class PassbookFeature
     Public Sub New(ByVal pId As String, _
                    ByVal pPurchPrice As Decimal, _
                    ByVal pFeature As Feature, _
-                   ByVal pPassbook As Passbook, _
+                   ByVal pPassbk As Passbook, _
                    ByVal pQtyPurch As Decimal, _
                    ByVal pQtyRemain As Decimal
                    )
@@ -87,7 +87,7 @@ Public Class PassbookFeature
         _id = pId
         _purchPrice = pPurchPrice
         _feature = pFeature
-        _passbook = pPassbook
+        _passbk = pPassbk
         _qtyPurch = pQtyPurch
         _qtyRemain = pQtyRemain
 
@@ -122,12 +122,12 @@ Public Class PassbookFeature
         End Set
     End Property
 
-    Public Property passbook() As Passbook
+    Public Property passbk() As Passbook
         Get
-            Return _passbook
+            Return _passbk
         End Get
         Set(pValue As Passbook)
-            _passbook = pValue
+            _passbk = pValue
         End Set
     End Property
 
@@ -179,12 +179,12 @@ Public Class PassbookFeature
         End Set
     End Property
 
-    Private Property _passbook() As Passbook
+    Private Property _passbk() As Passbook
         Get
-            Return mPassbook
+            Return mPassbk
         End Get
         Set(pValue As Passbook)
-            mPassbook = pValue
+            mPassbk = pValue
         End Set
     End Property
 

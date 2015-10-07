@@ -153,8 +153,8 @@ Public Class Customer
         Dim _tmpStr As String
 
         _tmpStr = "[Customer] -> " _
-            & " ID: " & _custId _
-            & " Name: " & _custName
+            & " Id=" & _custId _
+            & ", Name=" & _custName
 
         Return _tmpStr
     End Function

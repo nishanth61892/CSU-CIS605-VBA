@@ -37,6 +37,10 @@ Public Class FrmMain
 
     '********** Module-level constants
 
+    'Minimum age to be considered an adult. Less than this age is 
+    'thusly considered a child
+    Private Const mADULT_MIN_AGE As Integer = 13
+
     '********** Module-level variables
 
     'Reference object for a theme park
@@ -130,8 +134,7 @@ Public Class FrmMain
             DateAndTime.DateString & ":" & DateAndTime.TimeString & "::"
 
         txtTransLogTabTransLogTbcMainFrmMain.Text &= pLogMsg & vbCrLf
-    End Sub
-
+    End Sub '_writeTransLog(...)
 
     '_initializeToolTips to assist the user
     Private Sub _initializeToolTips()
@@ -183,38 +186,111 @@ Public Class FrmMain
     '********** User-Interface Event Procedures
     '             - Initiated explicitly by user
 
+    '_tabPostFeatTbcPassbkFeatMainTbcMain_Enter() simply assigns the AcceptButton to the
+    'Submit button on this tab.
+    Private Sub _tabPostFeatTbcPassbkFeatMainTbcMain_Enter(sender As Object, e As EventArgs) Handles _
+        tabPostFeatTbcPassbkFeatMainTbcMain.Enter
+
+        'Assign AcceptButton to this tab's Submit button for convenience
+        Me.AcceptButton = btnSubmitTabPostFeatTbcPassbkFeatMainTbcMain
+    End Sub '_tabPostFeatTbcPassbkFeatMainTbcMain_Enter(...)
+
+    '_tabUpdtFeatTbcPassbkFeatMainTbcMain_Enter() simply assigns the AcceptButton to the
+    'Submit button on this tab.
+    Private Sub _tabUpdtFeatTbcPassbkFeatMainTbcMain_Enter(sender As Object, e As EventArgs) Handles tabUpdtFeatTbcPassbkFeatMainTbcMain.Enter
+
+        'Assign AcceptButton to this tab's Submit button for convenience
+        Me.AcceptButton = btnSubmitTabUpdtFeatTbcPassbkFeatMainTbcMain
+    End Sub '_tabUpdtFeatTbcPassbkFeatMainTbcMain_Enter(...)
+
+    '_tabPassbkFeatTbcMainFrmMain_Enter() simply assigns the AcceptButton to the
+    'Submit button on the Add Feature tab. This is when the user enter the Passbook
+    'Feature tab for the first time.
+    Private Sub _tabPassbkFeatTbcMainFrmMain_Enter(sender As Object, e As EventArgs) Handles _
+        tabPassbkFeatTbcMainFrmMain.Enter
+
+        _tabAddFeatTbcPassbkFeatMainTbcMain_Enter(sender, e)
+    End Sub '_tabPassbkFeatTbcMainFrmMain_Enter(...)
+
+    '_tabAddFeatTbcPassbkFeatMainTbcMain_Enter() simply assigns the AcceptButton to the
+    'Submit button on this tab.
+    Private Sub _tabAddFeatTbcPassbkFeatMainTbcMain_Enter(sender As Object, e As EventArgs) Handles _
+        tabAddFeatTbcPassbkFeatMainTbcMain.Enter
+
+        'Assign AcceptButton to this tab's Submit button for convenience
+        Me.AcceptButton = btnSubmitTabAddFeatTbcPassbkFeatMainTbcMain
+    End Sub '_tabAddFeatTbcPassbkFeatMainTbcMain_Enter(...)
+
+    '_tabSysTestTbcMainFrmMain_Enter() simply assigns the AcceptButton to the
+    'Clear button on this tab.
+    Private Sub _tabSysTestTbcMainFrmMain_Enter(sender As Object, e As EventArgs) Handles _
+        tabSysTestTbcMainFrmMain.Enter
+
+        'Assign AcceptButton to this tab's 'Process Test Data' button for convenience
+        Me.AcceptButton = btnProcTestDataGrpSysTestTabSysTestTbcMainFrmMain
+    End Sub '_tabSysTestTbcMainFrmMain_Enter(...)
+
+    '_tabTransLogTbcMainFrmMain_Enter() simply assigns the AcceptButton to the
+    'Clear button on this tab.
+    Private Sub _tabTransLogTbcMainFrmMain_Enter(sender As Object, e As EventArgs) Handles _
+        tabTransLogTbcMainFrmMain.Enter
+
+        'Assign AcceptButton to this tab's Clear button for convenience
+        Me.AcceptButton = btnClearTabTransLogTbcMainFrmMain
+    End Sub '_tabTransLogTbcMainFrmMain_Enter(...)
+
+    '_tabPassbkTbcMainFrmMain_Enter() simply assigns the AcceptButton to the
+    'Submit button on this tab.
+    Private Sub _tabPassbkTbcMainFrmMain_Enter(sender As Object, e As EventArgs) Handles _
+        tabPassbkTbcMainFrmMain.Enter
+
+        'Assign AcceptButton to this tab's Submit button for convenience
+        Me.AcceptButton = btnSubmitGrpAddPassbkTabPassbkTbcMainFrmMain
+    End Sub '_tabPassbkTbcMainFrmMain_Enter(...)
+
+    '_tabFeatTbcMainFrmMain_Enter() simply assigns the AcceptButton to the
+    'Submit button on this tab.
+    Private Sub _tabFeatTbcMainFrmMain_Enter(sender As Object, e As EventArgs) Handles _
+        tabFeatTbcMainFrmMain.Enter
+
+        'Assign AcceptButton to this tab's Submit button for convenience
+        Me.AcceptButton = btnSubmitGrpAddFeatTabFeatTbcMainFrmMain
+    End Sub '_tabFeatTbcMainFrmMain_Enter(...)
+
+    '_tabCustTbcMainFrmMain_Enter() simply assigns the AcceptButton to the
+    'Submit button on this tab.
+    Private Sub _tabCustTbcMainFrmMain_Enter(sender As Object, e As EventArgs) Handles _
+        tabCustTbcMainFrmMain.Enter
+
+        'Assign AcceptButton to this tab's Submit button for convenience
+        Me.AcceptButton = btnSubmitGrpCustInfoTabCustTbcMainFrmMain
+    End Sub '_tabFeatTbcMainFrmMain_Enter(...)
+
     '_btnExitFrmMain_Click() is the event procedure that gets called when the
     'user clicks on the Exit button or by using Alt-E hot key sequence.
     'It is used to notify the user and formally terminate the program.
-    Private Sub btnExitFrmMain_Click(sender As Object, e As EventArgs) Handles btnExitFrmMain.Click
+    Private Sub _btnExitFrmMain_Click(sender As Object, e As EventArgs) Handles _
+        btnExitFrmMain.Click
 
         'Terminate the program
         _closeAppl()
 
-    End Sub '_btnExitFrmMain_Click(sender As Object, e As EventArgs)
+    End Sub '_btnExitFrmMain_Click(...)
 
     '_mnuFileExit() is the event procedure that gets called when the user selects
     'File->Exit from the main menu.
-    Private Sub _mnuExitFileFrmMain_Click(sender As Object, e As EventArgs) Handles mnuExitFileFrmMain.Click
+    Private Sub _mnuExitFileFrmMain_Click(sender As Object, e As EventArgs) Handles _
+        mnuExitFileFrmMain.Click
 
         'Program terminated from main menu selection
         _closeAppl()
 
-    End Sub '_mnuExitFileFrmMain_Click(sender As Object, e As EventArgs) 
+    End Sub '_mnuExitFileFrmMain_Click(...) 
 
-    '_btnTesttFrmMain_Click() is the event procedure that gets called when the user selects
-    'File->Exit from the main menu.
-    Private Sub _btnTesttFrmMain_Click(sender As Object, e As EventArgs)
-
-        'Notify the user application is closing
-        MsgBox("Reserved for future test scenarios", MsgBoxStyle.Exclamation)
-
-    End Sub '_btnTesttFrmMain_Click(sender As Object, e As EventArgs)
-
-    'btnSubmitGrpCustInfoTabCustTbcMainFrmMain_Click() is the event procedure that gets called 
+    '_btnSubmitGrpCustInfoTabCustTbcMainFrmMain_Click() is the event procedure that gets called 
     'when the user click on the Submit button from the Customer tab. It validates and then
     'submits the data to create a new customer.
-    Private Sub btnSubmitGrpCustInfoTabCustTbcMainFrmMain_Click(sender As Object, e As EventArgs) Handles _
+    Private Sub _btnSubmitGrpCustInfoTabCustTbcMainFrmMain_Click(sender As Object, e As EventArgs) Handles _
         btnSubmitGrpCustInfoTabCustTbcMainFrmMain.Click
         Dim newCust As Customer
         Dim custId As String
@@ -253,12 +329,12 @@ Public Class FrmMain
             txtCustIdGrpAddCustTabCustTbcMainFrmMain.Focus()
         End If
 
-    End Sub 'btnSubmitGrpCustInfoTabCustTbcMainFrmMain_Click(sender As Object, e As EventArgs)
+    End Sub '_btnSubmitGrpCustInfoTabCustTbcMainFrmMain_Click(...)
 
-    'btnSubmitGrpAddFeatTabFeatTbcMainFrmMain_Click() is the event procedure that gets called 
+    '_btnSubmitGrpAddFeatTabFeatTbcMainFrmMain_Click() is the event procedure that gets called 
     'when the user click on the Submit button from the Feature tab. It validates and then
     'submits the data to create a new feature.
-    Private Sub btnSubmitGrpAddFeatTabFeatTbcMainFrmMain_Click(sender As Object, e As EventArgs) Handles _
+    Private Sub _btnSubmitGrpAddFeatTabFeatTbcMainFrmMain_Click(sender As Object, e As EventArgs) Handles _
         btnSubmitGrpAddFeatTabFeatTbcMainFrmMain.Click
 
         Dim newFeat As Feature = Nothing
@@ -357,14 +433,91 @@ Public Class FrmMain
         txtPriceChildGrpAddFeatTabFeatTbcMainFrmMain.Text = ""
         txtFeatIdAddFeatTabFeatTbcMainFrmMain.Focus()
 
-    End Sub 'btnSubmitGrpCustInfoTabCustTbcMainFrmMain_Click()
+    End Sub '_btnSubmitGrpCustInfoTabCustTbcMainFrmMain_Click(...)
 
-    'btnClearTabTransLogTbcMainFrmMain_Click() is the event procedure that gets called when the user
+    '_btnSubmitGrpAddPassbkTabPassbkTbcMainFrmMain_Click() is the event procedure that gets called 
+    'when the user click on the Submit button from the Passbook tab. It validates and then
+    'submits the data to create a new passbook.
+    Private Sub _btnSubmitGrpAddPassbkTabPassbkTbcMainFrmMain_Click(sender As Object, e As EventArgs) Handles _
+        btnSubmitGrpAddPassbkTabPassbkTbcMainFrmMain.Click
+
+        Dim newPassbk As Passbook = Nothing
+
+        'Used as shortcut names to access the data
+        Dim passbkId As String = txtPassbkIdGrpAddPassbkTabPassbkTbcMainFrmMain.Text
+        Dim visName As String = txtVisNameGrpAddPassbkTabPassbkTbcMainFrmMain.Text
+        Dim visDob As String = txtVisDobGrpAddPassbkTabPassbkTbcMainFrmMain.Text
+        Dim custList As ListBox = lstCustIdGrpCustInfoGrpAddPassbkTabPassbkTbcMainFrmMain
+        Dim visDobValue As Date
+
+        'Validate all the fields
+        If String.IsNullOrEmpty(passbkId) Then
+            MsgBox("Please enter a unique Passbook ID (ex: 0001)", MsgBoxStyle.OkOnly)
+            txtPassbkIdGrpAddPassbkTabPassbkTbcMainFrmMain.SelectAll()
+            txtPassbkIdGrpAddPassbkTabPassbkTbcMainFrmMain.Focus()
+            Return
+        End If
+
+        If String.IsNullOrEmpty(visName) Then
+            MsgBox("Please enter a Visitor Name (ex: Doe, John)", MsgBoxStyle.OkOnly)
+            txtVisNameGrpAddPassbkTabPassbkTbcMainFrmMain.SelectAll()
+            txtVisNameGrpAddPassbkTabPassbkTbcMainFrmMain.Focus()
+            Return
+        End If
+
+        If Not DateTime.TryParse(visDob, visDobValue) Then
+            MsgBox("Please select a valid date from the calendar", MsgBoxStyle.OkOnly)
+            txtVisDobGrpAddPassbkTabPassbkTbcMainFrmMain.Focus()
+            Return
+        End If
+
+        'Determine if the visitor is a child (< 13 years old)
+        Dim datePurch As Date = DateTime.Now
+        Dim visAge As Long = DateDiff(DateInterval.Year, visDobValue, datePurch)
+        Dim visIsChild As Boolean = (visAge < mADULT_MIN_AGE)
+
+        'PBO - this customer object is tempary until the next phase of the project
+        Dim tempCust As Customer = New Customer("999", "Test Customer")
+
+        'Create a new Passbook
+        '
+        newPassbk = _theThemePark.createPassbook(passbkId, _
+                                                 tempCust, _
+                                                 datePurch, _
+                                                 visName, _
+                                                 visDobValue, _
+                                                 Convert.ToInt32(visAge), _
+                                                 visIsChild
+                                                 )
+
+        writeTransLog("<CREATED>: " & newPassbk.ToString())
+
+        MsgBox("Passbook has been successfully added to the system" & vbCrLf _
+               & "--> Id: " & passbkId & vbCrLf _
+               & "--> Owner: " & tempCust.custName & vbCrLf _
+               & "--> Date Purchased: " & datePurch & vbCrLf _
+               & "--> Visitor Name: " & visName & vbCrLf _
+               & "--> Visitor DOB: " & visDob & vbCrLf _
+               & "--> Vistor Age: " & visAge & vbCrLf _
+               & "--> Vistor IsChild? " & visIsChild.ToString,
+               MsgBoxStyle.OkOnly
+               )
+
+        'Reset the fields and focus to allow for another feature to be added
+        txtPassbkIdGrpAddPassbkTabPassbkTbcMainFrmMain.Text = ""
+        txtVisNameGrpAddPassbkTabPassbkTbcMainFrmMain.Text = ""
+        txtVisDobGrpAddPassbkTabPassbkTbcMainFrmMain.Text = ""
+
+    End Sub '_btnSubmitGrpAddPassbkTabPassbkTbcMainFrmMain_Click(...)
+
+    '_btnClearTabTransLogTbcMainFrmMain_Click() is the event procedure that gets called when the user
     'clicks on the Clear button from the Tranaaction log tab.  It clears the log.
-    Private Sub btnClearTabTransLogTbcMainFrmMain_Click(sender As Object, e As EventArgs) Handles btnClearTabTransLogTbcMainFrmMain.Click
-        'Reset the transactio log
+    Private Sub _btnClearTabTransLogTbcMainFrmMain_Click(sender As Object, e As EventArgs) Handles _
+        btnClearTabTransLogTbcMainFrmMain.Click
+
+        'Reset the transaction log
         txtTransLogTabTransLogTbcMainFrmMain.Text = ""
-    End Sub ' btnClearTabTransLogTbcMainFrmMain_Click(sender As Object, e As EventArgs)
+    End Sub '_btnClearTabTransLogTbcMainFrmMain_Click(...)
 
 
     '********** User-Interface Event Procedures
@@ -385,18 +538,17 @@ Public Class FrmMain
         'Initialize the user interface
         _initializeUserInterface()
 
-    End Sub '_frmMain_Load(sender, e)
+    End Sub '_frmMain_Load(...)
 
-    'txtTransLogTabTransLogTbcMainFrmMain_TextChanged() is the event procedure the is called when
+    '_txtTransLogTabTransLogTbcMainFrmMain_TextChanged() is the event procedure the is called when
     'the transaction log text box is modified.  Basically it enables the display text to scroll.
-    Private Sub txtTransLogTabTransLogTbcMainFrmMain_TextChanged(sender As Object, e As EventArgs) Handles _
+    Private Sub _txtTransLogTabTransLogTbcMainFrmMain_TextChanged(sender As Object, e As EventArgs) Handles _
         txtTransLogTabTransLogTbcMainFrmMain.TextChanged
 
         txtTransLogTabTransLogTbcMainFrmMain.SelectionStart = _
             txtTransLogTabTransLogTbcMainFrmMain.TextLength
         txtTransLogTabTransLogTbcMainFrmMain.ScrollToCaret()
-
-    End Sub 'txtTransLogTabTransLogTbcMainFrmMain_TextChanged(sender As Object, e As EventArgs)
+    End Sub '_txtTransLogTabTransLogTbcMainFrmMain_TextChanged(...)
 
     '********** Business Logic Event Procedures
     '             - Initiated as a result of business logic

@@ -249,7 +249,7 @@ Public Class ThemePark
         'Call the worker procedure to do the work
         Return _createCustomer(pCustId, pCustName)
 
-    End Function 'createCustomer()
+    End Function 'createCustomer(...)
 
     'createFeature() creates and returns a new Feature
     Public Function createFeature(ByVal pFeatId As String, _
@@ -267,7 +267,29 @@ Public Class ThemePark
                               pChildPrice
                               )
 
-    End Function 'createFeature()
+    End Function 'createFeature(...)
+
+    'createPassbook() creates and returns a new Passbook
+    Public Function createPassbook(ByVal pPassbkId As String, _
+                                   ByVal pOwner As Customer, _
+                                   ByVal pDatePurch As Date, _
+                                   ByVal pVisName As String, _
+                                   ByVal pVisDob As Date, _
+                                   ByVal pVisAge As Integer, _
+                                   ByVal pVisIsChild As Boolean
+                                   ) As Passbook
+
+        'Call the worker procedure to do the work
+        Return _createPassbook(pPassbkId, _
+                               pOwner, _
+                               pDatePurch, _
+                               pVisName, _
+                               pVisDob, _
+                               pVisAge, _
+                               pVisIsChild
+                               )
+
+    End Function 'createPassbook(...)
 
 
     '********** Private Non-Shared Behavioral Methods
@@ -279,15 +301,15 @@ Public Class ThemePark
         Dim _tmpStr As String = ""
 
         _tmpStr = "[Theme Park] -> " _
-            & " Name: " & _themeParkName _
-            & " NumCusts: " & _numCusts _
-            & " NumPassbks: " & _numPassbks _
-            & " NumFeats: " & _numFeats _
-            & " NumPassbkFeats: " & _numPassbkFeats _
-            & " NumUsedFeats: " & _numUsedFeats
+            & " Name=" & _themeParkName _
+            & ", #Customers=" & _numCusts _
+            & ", #Passbooks=" & _numPassbks _
+            & ", #Features=" & _numFeats _
+            & ", #PassbookkFeatures=" & _numPassbkFeats _
+            & ", #UsedFeaturess=" & _numUsedFeats
 
         Return _tmpStr
-    End Function '_toString()
+    End Function '_toString(...)
 
     '_createCustomer() creates and returns a new Customer object.
     'This is the work-horse function that does all the work for 
@@ -301,7 +323,7 @@ Public Class ThemePark
         _numCusts += 1
 
         Return cust
-    End Function '_createCustomer()
+    End Function '_createCustomer(...)
 
     '_createFeature() creates and returns a new Feature object.
     'This is the work-horse function that does all the work for 
@@ -324,7 +346,34 @@ Public Class ThemePark
         _numFeats += 1
 
         Return newFeat
-    End Function '_createFeature()
+    End Function '_createFeature(...)
+
+    '_createPassbook() creates and returns a new Passbook object.
+    'This is the work-horse function that does all the work for 
+    'createPassbook().
+    Private Function _createPassbook(ByVal pPassbkId As String, _
+                                     ByVal pOwner As Customer, _
+                                     ByVal pDatePurch As Date, _
+                                     ByVal pVisName As String, _
+                                     ByVal pVisDob As Date, _
+                                     ByVal pVisAge As Integer, _
+                                     ByVal pVisIsChild As Boolean
+                                     ) As Passbook
+
+        Dim newPassbk As Passbook = New Passbook(pPassbkId, _
+                                                 pOwner, _
+                                                 pDatePurch, _
+                                                 pVisName, _
+                                                 pVisDob, _
+                                                 pVisAge, _
+                                                 pVisIsChild
+                                                 )
+        'update the passbook cnt in the system
+        _numPassbks += 1
+
+        Return newPassbk
+    End Function '_createPassbook(...)
+
 
     '_writeDebugLog() is a debug only function for my use during 
     'development and is used to write debug info to a log for 
@@ -334,7 +383,7 @@ Public Class ThemePark
 
         'output the debug msg
         frm.writeTransLog(pLogMsg)
-    End Sub '_writeDebugLog()
+    End Sub '_writeDebugLog(...)
 
 
 #End Region 'Behavioral Methods

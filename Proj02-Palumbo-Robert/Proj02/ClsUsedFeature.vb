@@ -43,7 +43,7 @@ Public Class UsedFeature
     Private mId As String
 
     'Passbook feature to apply transaction on
-    Private mPassbookFeat As PassbookFeature
+    Private mPassbkFeat As PassbookFeature
 
     'Date feature was used
     Private mDateUsed As Date
@@ -70,7 +70,7 @@ Public Class UsedFeature
     '             - typically constructors have parameters 
     '               that are used to initialize attributes
     Public Sub New(ByVal pId As String, _
-                   ByVal pPassbookFeat As PassbookFeature, _
+                   ByVal pPassbkFeat As PassbookFeature, _
                    ByVal pDateUsed As Date, _
                    ByVal pLoc As String, _
                    ByVal pQtyUsed As Decimal _
@@ -81,7 +81,7 @@ Public Class UsedFeature
 
         'Initialize the attributes
         _id = pId
-        _passbookFeat = passbookFeat
+        _passbkFeat = pPassbkFeat
         _dateUsed = pDateUsed
         _loc = pLoc
         _qtyUsed = pQtyUsed
@@ -107,12 +107,12 @@ Public Class UsedFeature
         End Get
     End Property
 
-    Public Property passbookFeat() As PassbookFeature
+    Public Property passbkFeat() As PassbookFeature
         Get
-            Return _passbookFeat
+            Return _passbkFeat
         End Get
         Set(pValue As PassbookFeature)
-            _passbookFeat = pValue
+            _passbkFeat = pValue
         End Set
     End Property
 
@@ -155,12 +155,12 @@ Public Class UsedFeature
         End Set
     End Property
 
-    Private Property _passbookFeat() As PassbookFeature
+    Private Property _passbkFeat() As PassbookFeature
         Get
-            Return mPassbookFeat
+            Return mPassbkFeat
         End Get
         Set(pValue As PassbookFeature)
-            mPassbookFeat = pValue
+            mPassbkFeat = pValue
         End Set
     End Property
 
@@ -219,6 +219,12 @@ Public Class UsedFeature
     'does all the work for ToString().
     Private Function _toString() As String
         Dim _tmpStr As String = ""
+
+        _tmpStr = "[UsedFeature] -> " _
+            & " Id=" & _id _
+            & ", PassbookFeature=" & _passbkFeat.ToString _
+            & ", Location=" & _loc _
+            & ", QtyUsed=" & _qtyUsed
 
         Return _tmpStr
     End Function

@@ -209,11 +209,11 @@ Public Class Feature
         Dim _tmpStr As String = ""
 
         _tmpStr = "[Feature] -> " _
-            & " Id: " & _featId _
-            & " Name: " & _featName _
-            & " UnitOfMeas: " & _unitOfMeas _
-            & " AdultPrice: " & _adultPrice _
-            & " ChildPrice: " & _childPrice
+            & " Id=" & _featId _
+            & ", Name=" & _featName _
+            & ", UnitOfMeas=" & _unitOfMeas _
+            & ", AdultPrice=" & _adultPrice _
+            & ", ChildPrice=" & _childPrice
 
         Return _tmpStr
     End Function

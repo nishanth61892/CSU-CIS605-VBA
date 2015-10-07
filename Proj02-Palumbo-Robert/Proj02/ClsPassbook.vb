@@ -39,12 +39,12 @@ Public Class Passbook
 
     '********** Module-level variables
     Private mPassbkId As String
-    Private mOwnerCust As Customer
+    Private mOwner As Customer
     Private mDatePurch As Date
     Private mVisName As String
-    Private mBirthDate As Date
-    Private mAge As Integer
-    Private mIsChild As Boolean
+    Private mVisDob As Date
+    Private mVisAge As Integer
+    Private mVisIsChild As Boolean
 
 #End Region 'Attributes
 
@@ -62,12 +62,12 @@ Public Class Passbook
     '             - typically constructors have parameters 
     '               that are used to initialize attributes
     Public Sub New(ByVal pPasskdId As String, _
-                   ByVal pOwnerCust As Customer, _
+                   ByVal pOwner As Customer, _
                    ByVal pDatePurch As Date, _
                    ByVal pVisName As String, _
-                   ByVal pBirthDate As Date, _
-                   ByVal pAge As Integer, _
-                   ByVal pIsChild As Boolean _
+                   ByVal pVisDob As Date, _
+                   ByVal pVisAge As Integer, _
+                   ByVal pVisIsChild As Boolean _
                    )
 
         'invoke the default constructor to invoke the parent object constructor
@@ -75,12 +75,12 @@ Public Class Passbook
 
         'Initialize the attributes
         _passbkId = pPasskdId
-        _ownerCust = pOwnerCust
+        _owner = pOwner
         _datePurch = pDatePurch
         _visName = pVisName
-        _birthDate = pBirthDate
-        _age = pAge
-        _isChild = pIsChild
+        _visDob = pVisDob
+        _visAge = pVisAge
+        _visIsChild = pVisIsChild
 
     End Sub
 
@@ -104,12 +104,12 @@ Public Class Passbook
         End Get
     End Property
 
-    Public Property ownerCust() As Customer
+    Public Property owner() As Customer
         Get
-            Return _ownerCust
+            Return _owner
         End Get
         Set(pValue As Customer)
-            _ownerCust = pValue
+            _owner = pValue
         End Set
     End Property
 
@@ -131,30 +131,30 @@ Public Class Passbook
         End Set
     End Property
 
-    Public Property birthDate() As Date
+    Public Property visDob() As Date
         Get
-            Return _birthDate
+            Return _visDob
         End Get
         Set(pValue As Date)
-            _birthDate = pValue
+            _visDob = pValue
         End Set
     End Property
 
-    Public Property age() As Integer
+    Public Property visAge() As Integer
         Get
-            Return _age
+            Return _visAge
         End Get
         Set(pValue As Integer)
-            _age = pValue
+            _visAge = pValue
         End Set
     End Property
 
-    Public Property isChild() As Boolean
+    Public Property visIsChild() As Boolean
         Get
-            Return _isChild
+            Return _visIsChild
         End Get
         Set(pValue As Boolean)
-            _isChild = pValue
+            _visIsChild = pValue
         End Set
     End Property
 
@@ -171,12 +171,12 @@ Public Class Passbook
         End Set
     End Property
 
-    Private Property _ownerCust() As Customer
+    Private Property _owner() As Customer
         Get
-            Return mOwnerCust
+            Return mOwner
         End Get
         Set(pValue As Customer)
-            mOwnerCust = pValue
+            mOwner = pValue
         End Set
     End Property
 
@@ -198,33 +198,32 @@ Public Class Passbook
         End Set
     End Property
 
-    Private Property _birthDate() As Date
+    Private Property _visDob() As Date
         Get
-            Return mBirthDate
+            Return mVisDob
         End Get
         Set(pValue As Date)
-            mBirthDate = pValue
+            mVisDob = pValue
         End Set
     End Property
 
-    Private Property _age() As Integer
+    Private Property _visAge() As Integer
         Get
-            Return mAge
+            Return mVisAge
         End Get
         Set(pValue As Integer)
-            mAge = pValue
+            mVisAge = pValue
         End Set
     End Property
 
-    Private Property _isChild() As Boolean
+    Private Property _visIsChild() As Boolean
         Get
-            Return mIsChild
+            Return mVisIsChild
         End Get
         Set(pValue As Boolean)
-            mIsChild = pValue
+            mVisIsChild = pValue
         End Set
     End Property
-
 
 #End Region 'Get/Set Methods
 
@@ -252,6 +251,15 @@ Public Class Passbook
     'does all the work for ToString().
     Private Function _toString() As String
         Dim _tmpStr As String = ""
+
+        _tmpStr = "[Passbook] -> " _
+            & " Id=" & _passbkId _
+            & ", Owner=" & _owner.ToString _
+            & ", PurcaseDate=" & _datePurch _
+            & ", VisitorName=" & _visName _
+            & ", VisitorDOB=" & _visDob _
+            & ", VisitorAge=" & _visAge _
+            & ", VisitorIsChild? " & _visIsChild
 
         Return _tmpStr
     End Function
