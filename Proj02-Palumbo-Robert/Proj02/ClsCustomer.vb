@@ -35,11 +35,15 @@ Public Class Customer
     'Attributes + Module-level Constants+Variables
     '******************************************************************
 
-    'No Attributes are currently defined.
-
     '********** Module-level constants
 
     '********** Module-level variables
+
+    'Unique Customer ID
+    Private mCustId As String
+
+    'Customer Name
+    Private mCustName As String
 
 #End Region 'Attributes
 
@@ -48,20 +52,28 @@ Public Class Customer
     'Constructors
     '******************************************************************
 
-    'No Constructors are currently defined.
     'These are all public.
 
     '********** Default constructor
     '             - no parameters
-    Public Sub New()
-
-        MyBase.New()
-
-    End Sub 'New()
 
     '********** Special constructor(s)
     '             - typically constructors have parameters 
     '               that are used to initialize attributes
+
+    Public Sub New(ByVal pCustId As String, _
+                   ByVal pCustName As String
+                   )
+
+        'invoke the default constructor to invoke the parent object constructor
+        MyBase.New()
+
+        'Initialize the attributes
+        _custId = pCustId
+        _custName = pCustName
+
+    End Sub 'New(ByVal pCustId As String, _ByVal pCustName As String)
+
 
     '********** Copy constructor(s)
     '             - one parameter, an object of the same class
@@ -76,27 +88,42 @@ Public Class Customer
     '********** Public Get/Set Methods
     '             - call private get/set methods to implement
 
-    'Public Property #####() As String
-    '    Get
-    '        Return #####
-    '    End Get
-    '    Set(pValue As String)
-    '        ##### = pValue
-    '    End Set
-    'End Property
+    Public ReadOnly Property custId() As String
+        Get
+            Return _custId
+        End Get
+    End Property
+
+    Public Property custName() As String
+        Get
+            Return _custName
+        End Get
+        Set(pValue As String)
+            _custName = pValue
+        End Set
+    End Property
 
 
     '********** Private Get/Set Methods
     '             - access attributes, begin name with underscore (_)
 
-    'Private Property #####() As String
-    '    Get
-    '        Return #####
-    '    End Get
-    '    Set(pValue As String)
-    '        ##### = pValue
-    '    End Set
-    'End Property
+    Private Property _custId() As String
+        Get
+            Return mCustId
+        End Get
+        Set(pValue As String)
+            mCustId = pValue
+        End Set
+    End Property
+
+    Private Property _custName() As String
+        Get
+            Return mCustName
+        End Get
+        Set(pValue As String)
+            mCustName = pValue
+        End Set
+    End Property
 
 #End Region 'Get/Set Methods
 
@@ -104,8 +131,6 @@ Public Class Customer
     '******************************************************************
     'Behavioral Methods
     '******************************************************************
-
-    'No Behavioral Methods are currently defined.
 
     '********** Public Shared Behavioral Methods
 
@@ -125,7 +150,11 @@ Public Class Customer
     'stored in the object.  This is the work-horse function that
     'does all the work for ToString().
     Private Function _toString() As String
-        Dim _tmpStr As String = ""
+        Dim _tmpStr As String
+
+        _tmpStr = "[Customer] -> " _
+            & " ID: " & _custId _
+            & " Name: " & _custName
 
         Return _tmpStr
     End Function

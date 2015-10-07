@@ -35,11 +35,26 @@ Public Class PassbookFeature
     'Attributes + Module-level Constants+Variables
     '******************************************************************
 
-    'No Attributes are currently defined.
-
     '********** Module-level constants
 
     '********** Module-level variables
+    'Unique passbook feature ID
+    Private mId As String
+
+    'Total purchase price
+    Private mPurchPrice As Decimal
+
+    'Passbook to add feature to
+    Private mPassbook As Passbook
+
+    'Feature being added
+    Private mFeature As Feature
+
+    'Quantity purchased
+    Private mQtyPurch As Decimal
+
+    'Quantity remaining
+    Private mQtyRemain As Decimal
 
 #End Region 'Attributes
 
@@ -53,15 +68,31 @@ Public Class PassbookFeature
 
     '********** Default constructor
     '             - no parameters
-    Public Sub New()
-
-        MyBase.New()
-
-    End Sub 'New()
 
     '********** Special constructor(s)
     '             - typically constructors have parameters 
     '               that are used to initialize attributes
+    Public Sub New(ByVal pId As String, _
+                   ByVal pPurchPrice As Decimal, _
+                   ByVal pFeature As Feature, _
+                   ByVal pPassbook As Passbook, _
+                   ByVal pQtyPurch As Decimal, _
+                   ByVal pQtyRemain As Decimal
+                   )
+
+        'invoke the default constructor to invoke the parent object constructor
+        MyBase.New()
+
+        'Initialize the attributes
+        _id = pId
+        _purchPrice = pPurchPrice
+        _feature = pFeature
+        _passbook = pPassbook
+        _qtyPurch = pQtyPurch
+        _qtyRemain = pQtyRemain
+
+    End Sub 'New()
+
 
     '********** Copy constructor(s)
     '             - one parameter, an object of the same class
@@ -76,28 +107,113 @@ Public Class PassbookFeature
     '********** Public Get/Set Methods
     '             - call private get/set methods to implement
 
-    'Public Property #####() As String
-    '    Get
-    '        Return #####
-    '    End Get
-    '    Set(pValue As String)
-    '        ##### = pValue
-    '    End Set
-    'End Property
+    Public ReadOnly Property id() As String
+        Get
+            Return _id
+        End Get
+    End Property
 
+    Public Property purchPrice() As Decimal
+        Get
+            Return _purchPrice
+        End Get
+        Set(pValue As Decimal)
+            _purchPrice = pValue
+        End Set
+    End Property
+
+    Public Property passbook() As Passbook
+        Get
+            Return _passbook
+        End Get
+        Set(pValue As Passbook)
+            _passbook = pValue
+        End Set
+    End Property
+
+    Public Property feature() As Feature
+        Get
+            Return _feature
+        End Get
+        Set(pValue As Feature)
+            _feature = pValue
+        End Set
+    End Property
+
+    Public Property qtyPurch() As Decimal
+        Get
+            Return _qtyPurch
+        End Get
+        Set(pValue As Decimal)
+            _qtyPurch = pValue
+        End Set
+    End Property
+
+    Public Property qtyRemain() As Decimal
+        Get
+            Return _qtyRemain
+        End Get
+        Set(pValue As Decimal)
+            _qtyRemain = pValue
+        End Set
+    End Property
 
     '********** Private Get/Set Methods
     '             - access attributes, begin name with underscore (_)
 
-    'Private Property #####() As String
-    '    Get
-    '        Return #####
-    '    End Get
-    '    Set(pValue As String)
-    '        ##### = pValue
-    '    End Set
-    'End Property
+    Private Property _id() As String
+        Get
+            Return mId
+        End Get
+        Set(pValue As String)
+            mId = pValue
+        End Set
+    End Property
 
+    Private Property _purchPrice() As Decimal
+        Get
+            Return mPurchPrice
+        End Get
+        Set(pValue As Decimal)
+            mPurchPrice = pValue
+        End Set
+    End Property
+
+    Private Property _passbook() As Passbook
+        Get
+            Return mPassbook
+        End Get
+        Set(pValue As Passbook)
+            mPassbook = pValue
+        End Set
+    End Property
+
+    Private Property _feature() As Feature
+        Get
+            Return mFeature
+        End Get
+        Set(pValue As Feature)
+            mFeature = pValue
+        End Set
+    End Property
+
+    Private Property _qtyPurch() As Decimal
+        Get
+            Return mQtyPurch
+        End Get
+        Set(pValue As Decimal)
+            mQtyPurch = pValue
+        End Set
+    End Property
+
+    Private Property _qtyRemain() As Decimal
+        Get
+            Return mQtyRemain
+        End Get
+        Set(pValue As Decimal)
+            mQtyRemain = pValue
+        End Set
+    End Property
 #End Region 'Get/Set Methods
 
 #Region "Behavioral Methods"

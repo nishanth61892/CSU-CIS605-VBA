@@ -35,11 +35,14 @@ Public Class Feature
     'Attributes + Module-level Constants+Variables
     '******************************************************************
 
-    'No Attributes are currently defined.
-
     '********** Module-level constants
 
     '********** Module-level variables
+    Private mFeatId As String
+    Private mFeatName As String
+    Private mUnitOfMeas As String
+    Private mAdultPrice As Decimal
+    Private mChildPrice As Decimal
 
 #End Region 'Attributes
 
@@ -48,20 +51,32 @@ Public Class Feature
     'Constructors
     '******************************************************************
 
-    'No Constructors are currently defined.
     'These are all public.
 
     '********** Default constructor
     '             - no parameters
-    Public Sub New()
-
-        MyBase.New()
-
-    End Sub 'New()
 
     '********** Special constructor(s)
     '             - typically constructors have parameters 
     '               that are used to initialize attributes
+    Public Sub New(ByVal pFeatId As String, _
+                   ByVal pFeatName As String, _
+                   ByVal pUnitOfMeas As String, _
+                   ByVal pAdultPrice As Decimal, _
+                   ByVal pChildPrice As Decimal
+                   )
+
+        'invoke the default constructor to invoke the parent object constructor
+        MyBase.New()
+
+        'Initialize the attributes
+        _featId = pFeatId
+        _featName = pFeatName
+        _unitOfMeas = pUnitOfMeas
+        _adultPrice = pAdultPrice
+        _childPrice = pChildPrice
+
+    End Sub 'New()
 
     '********** Copy constructor(s)
     '             - one parameter, an object of the same class
@@ -76,27 +91,95 @@ Public Class Feature
     '********** Public Get/Set Methods
     '             - call private get/set methods to implement
 
-    'Public Property #####() As String
-    '    Get
-    '        Return #####
-    '    End Get
-    '    Set(pValue As String)
-    '        ##### = pValue
-    '    End Set
-    'End Property
+    Public ReadOnly Property featId() As String
+        Get
+            Return _featId
+        End Get
+    End Property
 
+    Public Property featName() As String
+        Get
+            Return _featName
+        End Get
+        Set(pValue As String)
+            _featName = pValue
+        End Set
+    End Property
+
+    Public Property unitOfMeas() As String
+        Get
+            Return _unitOfMeas
+        End Get
+        Set(pValue As String)
+            _unitOfMeas = pValue
+        End Set
+    End Property
+
+    Public Property adultPrice() As Decimal
+        Get
+            Return _adultPrice
+        End Get
+        Set(pValue As Decimal)
+            _adultPrice = pValue
+        End Set
+    End Property
+
+    Public Property childPrice() As Decimal
+        Get
+            Return _childPrice
+        End Get
+        Set(pValue As Decimal)
+            _childPrice = pValue
+        End Set
+    End Property
 
     '********** Private Get/Set Methods
     '             - access attributes, begin name with underscore (_)
 
-    'Private Property #####() As String
-    '    Get
-    '        Return #####
-    '    End Get
-    '    Set(pValue As String)
-    '        ##### = pValue
-    '    End Set
-    'End Property
+    Private Property _featId() As String
+        Get
+            Return mFeatId
+        End Get
+        Set(pValue As String)
+            mFeatId = pValue
+        End Set
+    End Property
+
+    Private Property _featName() As String
+        Get
+            Return mFeatName
+        End Get
+        Set(pValue As String)
+            mFeatName = pValue
+        End Set
+    End Property
+
+    Private Property _unitOfMeas() As String
+        Get
+            Return mUnitOfMeas
+        End Get
+        Set(pValue As String)
+            mUnitOfMeas = pValue
+        End Set
+    End Property
+
+    Private Property _adultPrice() As Decimal
+        Get
+            Return mAdultPrice
+        End Get
+        Set(pValue As Decimal)
+            mAdultPrice = pValue
+        End Set
+    End Property
+
+    Private Property _childPrice() As Decimal
+        Get
+            Return mChildPrice
+        End Get
+        Set(pValue As Decimal)
+            mChildPrice = pValue
+        End Set
+    End Property
 
 #End Region 'Get/Set Methods
 
@@ -104,8 +187,6 @@ Public Class Feature
     '******************************************************************
     'Behavioral Methods
     '******************************************************************
-
-    'No Behavioral Methods are currently defined.
 
     '********** Public Shared Behavioral Methods
 
@@ -126,6 +207,13 @@ Public Class Feature
     'does all the work for ToString().
     Private Function _toString() As String
         Dim _tmpStr As String = ""
+
+        _tmpStr = "[Feature] -> " _
+            & " Id: " & _featId _
+            & " Name: " & _featName _
+            & " UnitOfMeas: " & _unitOfMeas _
+            & " AdultPrice: " & _adultPrice _
+            & " ChildPrice: " & _childPrice
 
         Return _tmpStr
     End Function

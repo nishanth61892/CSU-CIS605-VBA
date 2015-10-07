@@ -35,11 +35,16 @@ Public Class Passbook
     'Attributes + Module-level Constants+Variables
     '******************************************************************
 
-    'No Attributes are currently defined.
-
     '********** Module-level constants
 
     '********** Module-level variables
+    Private mPassbkId As String
+    Private mOwnerCust As Customer
+    Private mDatePurch As Date
+    Private mVisName As String
+    Private mBirthDate As Date
+    Private mAge As Integer
+    Private mIsChild As Boolean
 
 #End Region 'Attributes
 
@@ -48,20 +53,37 @@ Public Class Passbook
     'Constructors
     '******************************************************************
 
-    'No Constructors are currently defined.
     'These are all public.
 
     '********** Default constructor
     '             - no parameters
-    Public Sub New()
-
-        MyBase.New()
-
-    End Sub 'New()
 
     '********** Special constructor(s)
     '             - typically constructors have parameters 
     '               that are used to initialize attributes
+    Public Sub New(ByVal pPasskdId As String, _
+                   ByVal pOwnerCust As Customer, _
+                   ByVal pDatePurch As Date, _
+                   ByVal pVisName As String, _
+                   ByVal pBirthDate As Date, _
+                   ByVal pAge As Integer, _
+                   ByVal pIsChild As Boolean _
+                   )
+
+        'invoke the default constructor to invoke the parent object constructor
+        MyBase.New()
+
+        'Initialize the attributes
+        _passbkId = pPasskdId
+        _ownerCust = pOwnerCust
+        _datePurch = pDatePurch
+        _visName = pVisName
+        _birthDate = pBirthDate
+        _age = pAge
+        _isChild = pIsChild
+
+    End Sub
+
 
     '********** Copy constructor(s)
     '             - one parameter, an object of the same class
@@ -76,27 +98,133 @@ Public Class Passbook
     '********** Public Get/Set Methods
     '             - call private get/set methods to implement
 
-    'Public Property #####() As String
-    '    Get
-    '        Return #####
-    '    End Get
-    '    Set(pValue As String)
-    '        ##### = pValue
-    '    End Set
-    'End Property
+    Public ReadOnly Property passbkId() As String
+        Get
+            Return _passbkId
+        End Get
+    End Property
+
+    Public Property ownerCust() As Customer
+        Get
+            Return _ownerCust
+        End Get
+        Set(pValue As Customer)
+            _ownerCust = pValue
+        End Set
+    End Property
+
+    Public Property datePurch() As Date
+        Get
+            Return _datePurch
+        End Get
+        Set(pValue As Date)
+            _datePurch = pValue
+        End Set
+    End Property
+
+    Public Property visName() As String
+        Get
+            Return _visName
+        End Get
+        Set(pValue As String)
+            _visName = pValue
+        End Set
+    End Property
+
+    Public Property birthDate() As Date
+        Get
+            Return _birthDate
+        End Get
+        Set(pValue As Date)
+            _birthDate = pValue
+        End Set
+    End Property
+
+    Public Property age() As Integer
+        Get
+            Return _age
+        End Get
+        Set(pValue As Integer)
+            _age = pValue
+        End Set
+    End Property
+
+    Public Property isChild() As Boolean
+        Get
+            Return _isChild
+        End Get
+        Set(pValue As Boolean)
+            _isChild = pValue
+        End Set
+    End Property
 
 
     '********** Private Get/Set Methods
     '             - access attributes, begin name with underscore (_)
 
-    'Private Property #####() As String
-    '    Get
-    '        Return #####
-    '    End Get
-    '    Set(pValue As String)
-    '        ##### = pValue
-    '    End Set
-    'End Property
+    Private Property _passbkId() As String
+        Get
+            Return mPassbkId
+        End Get
+        Set(pValue As String)
+            mPassbkId = pValue
+        End Set
+    End Property
+
+    Private Property _ownerCust() As Customer
+        Get
+            Return mOwnerCust
+        End Get
+        Set(pValue As Customer)
+            mOwnerCust = pValue
+        End Set
+    End Property
+
+    Private Property _datePurch() As Date
+        Get
+            Return mDatePurch
+        End Get
+        Set(pValue As Date)
+            mDatePurch = pValue
+        End Set
+    End Property
+
+    Private Property _visName() As String
+        Get
+            Return mVisName
+        End Get
+        Set(pValue As String)
+            mVisName = pValue
+        End Set
+    End Property
+
+    Private Property _birthDate() As Date
+        Get
+            Return mBirthDate
+        End Get
+        Set(pValue As Date)
+            mBirthDate = pValue
+        End Set
+    End Property
+
+    Private Property _age() As Integer
+        Get
+            Return mAge
+        End Get
+        Set(pValue As Integer)
+            mAge = pValue
+        End Set
+    End Property
+
+    Private Property _isChild() As Boolean
+        Get
+            Return mIsChild
+        End Get
+        Set(pValue As Boolean)
+            mIsChild = pValue
+        End Set
+    End Property
+
 
 #End Region 'Get/Set Methods
 
@@ -104,8 +232,6 @@ Public Class Passbook
     '******************************************************************
     'Behavioral Methods
     '******************************************************************
-
-    'No Behavioral Methods are currently defined.
 
     '********** Public Shared Behavioral Methods
 
@@ -137,7 +263,6 @@ Public Class Passbook
     'Event Procedures
     '******************************************************************
 
-    'No Event Procedures are currently defined.
     'These are all private.
 
     '********** User-Interface Event Procedures

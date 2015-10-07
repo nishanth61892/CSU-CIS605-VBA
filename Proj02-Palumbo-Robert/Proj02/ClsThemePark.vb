@@ -36,11 +36,29 @@ Public Class ThemePark
     'Attributes + Module-level Constants+Variables
     '******************************************************************
 
-    'No Attributes are currently defined.
-
     '********** Module-level constants
+    Private mTHEME_PARK_NAME As String = "Palumbo-Park"
 
     '********** Module-level variables
+
+    'Theme park name for the one theme park instance
+    Private mThemeParkName As String = mTHEME_PARK_NAME
+
+    'Number of customers in the system
+    Private mNumCusts As Integer
+
+    'Number of passbooks in the system
+    Private mNumPassbks As Integer
+
+    'Number of features in the system
+    Private mNumFeats As Integer
+
+    'Number of passbook features in the system
+    Private mNumPassbkFeats As Integer
+
+    'Number of used features in the system
+    Private mNumUsedFeats As Integer
+
 
 #End Region 'Attributes
 
@@ -49,13 +67,13 @@ Public Class ThemePark
     'Constructors
     '******************************************************************
 
-    'No Constructors are currently defined.
     'These are all public.
 
     '********** Default constructor
     '             - no parameters
     Public Sub New()
 
+        'invoke the parent object constructor
         MyBase.New()
 
     End Sub 'New()
@@ -63,6 +81,23 @@ Public Class ThemePark
     '********** Special constructor(s)
     '             - typically constructors have parameters 
     '               that are used to initialize attributes
+    Public Sub New(ByVal pParkName As String)
+
+        'invoke the default constructor to invoke the parent object constructor
+        Me.New()
+
+        'Initialize the attributes
+        _themeParkName = pParkName
+        _numCusts = 0
+        _numFeats = 0
+        _numPassbks = 0
+        _numPassbkFeats = 0
+        _numUsedFeats = 0
+
+        'debug msg
+        _writeDebugLog(Me._toString())
+
+    End Sub 'New()
 
     '********** Copy constructor(s)
     '             - one parameter, an object of the same class
@@ -77,27 +112,115 @@ Public Class ThemePark
     '********** Public Get/Set Methods
     '             - call private get/set methods to implement
 
-    'Public Property #####() As String
-    '    Get
-    '        Return #####
-    '    End Get
-    '    Set(pValue As String)
-    '        ##### = pValue
-    '    End Set
-    'End Property
+    Public Property themeParkName() As String
+        Get
+            Return _themeParkName
+        End Get
+        Set(pValue As String)
+            _themeParkName = pValue
+        End Set
+    End Property
 
+    Public Property numCusts() As Integer
+        Get
+            Return _numCusts
+        End Get
+        Set(pValue As Integer)
+            _numCusts = pValue
+        End Set
+    End Property
+
+    Private Property numPassbks() As Integer
+        Get
+            Return _numPassbks
+        End Get
+        Set(pValue As Integer)
+            _numPassbks = pValue
+        End Set
+    End Property
+
+    Private Property numFeats() As Integer
+        Get
+            Return _numFeats
+        End Get
+        Set(pValue As Integer)
+            _numFeats = pValue
+        End Set
+    End Property
+
+    Private Property numPassbkFeats() As Integer
+        Get
+            Return _numPassbkFeats
+        End Get
+        Set(pValue As Integer)
+            _numPassbkFeats = pValue
+        End Set
+    End Property
+
+    Private Property numUsedFeats() As Integer
+        Get
+            Return _numUsedFeats
+        End Get
+        Set(pValue As Integer)
+            _numUsedFeats = pValue
+        End Set
+    End Property
 
     '********** Private Get/Set Methods
     '             - access attributes, begin name with underscore (_)
+    Private Property _themeParkName() As String
+        Get
+            Return mThemeParkName
+        End Get
+        Set(pValue As String)
+            mThemeParkName = pValue
+        End Set
+    End Property
 
-    'Private Property #####() As String
-    '    Get
-    '        Return #####
-    '    End Get
-    '    Set(pValue As String)
-    '        ##### = pValue
-    '    End Set
-    'End Property
+    Private Property _numCusts() As Integer
+        Get
+            Return mNumCusts
+        End Get
+        Set(pValue As Integer)
+            mNumCusts = pValue
+        End Set
+    End Property
+
+    Private Property _numPassbks() As Integer
+        Get
+            Return mNumPassbks
+        End Get
+        Set(pValue As Integer)
+            mNumPassbks = pValue
+        End Set
+    End Property
+
+    Private Property _numFeats() As Integer
+        Get
+            Return mNumFeats
+        End Get
+        Set(pValue As Integer)
+            mNumFeats = pValue
+        End Set
+    End Property
+
+    Private Property _numPassbkFeats() As Integer
+        Get
+            Return mNumPassbkFeats
+        End Get
+        Set(pValue As Integer)
+            mNumPassbkFeats = pValue
+        End Set
+    End Property
+
+    Private Property _numUsedFeats() As Integer
+        Get
+            Return mNumUsedFeats
+        End Get
+        Set(pValue As Integer)
+            mNumUsedFeats = pValue
+        End Set
+    End Property
 
 #End Region 'Get/Set Methods
 
@@ -105,8 +228,6 @@ Public Class ThemePark
     '******************************************************************
     'Behavioral Methods
     '******************************************************************
-
-    'No Behavioral Methods are currently defined.
 
     '********** Public Shared Behavioral Methods
 
@@ -118,7 +239,36 @@ Public Class ThemePark
     'string representation of this object.
     Public Overrides Function ToString() As String
         Return _toString()
-    End Function
+    End Function 'ToString()
+
+    'createCustomer() creates and returns a new Customer object
+    Public Function createCustomer(ByVal pCustId As String, _
+                                   ByVal pCustName As String
+                                   ) As Customer
+
+        'Call the worker procedure to do the work
+        Return _createCustomer(pCustId, pCustName)
+
+    End Function 'createCustomer()
+
+    'createFeature() creates and returns a new Feature
+    Public Function createFeature(ByVal pFeatId As String, _
+                                  ByVal pFeatName As String, _
+                                  ByVal pUnitOfMeas As String, _
+                                  ByVal pAdultPrice As Decimal, _
+                                  ByVal pChildPrice As Decimal
+                                  ) As Feature
+
+        'Call the worker procedure to do the work
+        Return _createFeature(pFeatId, _
+                              pFeatName, _
+                              pUnitOfMeas, _
+                              pAdultPrice, _
+                              pChildPrice
+                              )
+
+    End Function 'createFeature()
+
 
     '********** Private Non-Shared Behavioral Methods
 
@@ -128,8 +278,64 @@ Public Class ThemePark
     Private Function _toString() As String
         Dim _tmpStr As String = ""
 
+        _tmpStr = "[Theme Park] -> " _
+            & " Name: " & _themeParkName _
+            & " NumCusts: " & _numCusts _
+            & " NumPassbks: " & _numPassbks _
+            & " NumFeats: " & _numFeats _
+            & " NumPassbkFeats: " & _numPassbkFeats _
+            & " NumUsedFeats: " & _numUsedFeats
+
         Return _tmpStr
-    End Function
+    End Function '_toString()
+
+    '_createCustomer() creates and returns a new Customer object.
+    'This is the work-horse function that does all the work for 
+    '_createCustomer().
+    Private Function _createCustomer(ByVal pCustId As String, _
+                                     ByVal pCustName As String
+                                     ) As Customer
+        Dim cust As Customer = New Customer(pCustId, pCustName)
+
+        'update the customer cnt in the system
+        _numCusts += 1
+
+        Return cust
+    End Function '_createCustomer()
+
+    '_createFeature() creates and returns a new Feature object.
+    'This is the work-horse function that does all the work for 
+    'createFeature().
+    Private Function _createFeature(ByVal pFeatId As String, _
+                                    ByVal pFeatName As String, _
+                                    ByVal pUnitOfMeas As String, _
+                                    ByVal pAdultPrice As Decimal, _
+                                    ByVal pChildPrice As Decimal
+                                    ) As Feature
+
+        Dim newFeat As Feature = New Feature(pFeatId, _
+                                             pFeatName, _
+                                             pUnitOfMeas, _
+                                             pAdultPrice, _
+                                             pChildPrice
+                                             )
+
+        'update the feature cnt in the system
+        _numFeats += 1
+
+        Return newFeat
+    End Function '_createFeature()
+
+    '_writeDebugLog() is a debug only function for my use during 
+    'development and is used to write debug info to a log for 
+    'review
+    Private Sub _writeDebugLog(ByVal pLogMsg As String)
+        Dim frm As FrmMain = New FrmMain
+
+        'output the debug msg
+        frm.writeTransLog(pLogMsg)
+    End Sub '_writeDebugLog()
+
 
 #End Region 'Behavioral Methods
 

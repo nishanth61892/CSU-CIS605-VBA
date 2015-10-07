@@ -185,9 +185,9 @@ Partial Class FrmMain
         Me.btnResetGrpAddFeatTabFeatTbcMainFrmMain = New System.Windows.Forms.Button()
         Me.btnSubmitGrpAddFeatTabFeatTbcMainFrmMain = New System.Windows.Forms.Button()
         Me.tabTransLogTbcMainFrmMain = New System.Windows.Forms.TabPage()
+        Me.btnClearTabTransLogTbcMainFrmMain = New System.Windows.Forms.Button()
         Me.grpTransLogTabTransLogTbcMain = New System.Windows.Forms.GroupBox()
-        Me.btnTransLogTabTransLogTbcMain = New System.Windows.Forms.Button()
-        Me.txtTransLogTabTransLogTbcMain = New System.Windows.Forms.TextBox()
+        Me.txtTransLogTabTransLogTbcMainFrmMain = New System.Windows.Forms.TextBox()
         Me.tabSysTestTbcMainFrmMain = New System.Windows.Forms.TabPage()
         Me.grpSysTestTabSysTestTbcMainFrmMain = New System.Windows.Forms.GroupBox()
         Me.grpAnon5 = New System.Windows.Forms.GroupBox()
@@ -1362,7 +1362,7 @@ Partial Class FrmMain
         Me.txtCustIdGrpCustInfoGrpAddPassbkTabPassbkTbcMainFrmMain.Location = New System.Drawing.Point(119, 43)
         Me.txtCustIdGrpCustInfoGrpAddPassbkTabPassbkTbcMainFrmMain.Name = "txtCustIdGrpCustInfoGrpAddPassbkTabPassbkTbcMainFrmMain"
         Me.txtCustIdGrpCustInfoGrpAddPassbkTabPassbkTbcMainFrmMain.ScrollAlwaysVisible = True
-        Me.txtCustIdGrpCustInfoGrpAddPassbkTabPassbkTbcMainFrmMain.Size = New System.Drawing.Size(184, 20)
+        Me.txtCustIdGrpCustInfoGrpAddPassbkTabPassbkTbcMainFrmMain.Size = New System.Drawing.Size(144, 20)
         Me.txtCustIdGrpCustInfoGrpAddPassbkTabPassbkTbcMainFrmMain.TabIndex = 1
         Me.tipTPMS.SetToolTip(Me.txtCustIdGrpCustInfoGrpAddPassbkTabPassbkTbcMainFrmMain, "Select Customer ID")
         '
@@ -1932,6 +1932,7 @@ Partial Class FrmMain
         'tabTransLogTbcMainFrmMain
         '
         Me.tabTransLogTbcMainFrmMain.BackColor = System.Drawing.Color.LightGray
+        Me.tabTransLogTbcMainFrmMain.Controls.Add(Me.btnClearTabTransLogTbcMainFrmMain)
         Me.tabTransLogTbcMainFrmMain.Controls.Add(Me.grpTransLogTabTransLogTbcMain)
         Me.tabTransLogTbcMainFrmMain.Location = New System.Drawing.Point(4, 28)
         Me.tabTransLogTbcMainFrmMain.Name = "tabTransLogTbcMainFrmMain"
@@ -1941,38 +1942,38 @@ Partial Class FrmMain
         Me.tabTransLogTbcMainFrmMain.Text = "Transaction Log"
         Me.tipTPMS.SetToolTip(Me.tabTransLogTbcMainFrmMain, "View system transaction log")
         '
+        'btnClearTabTransLogTbcMainFrmMain
+        '
+        Me.btnClearTabTransLogTbcMainFrmMain.Location = New System.Drawing.Point(422, 423)
+        Me.btnClearTabTransLogTbcMainFrmMain.Name = "btnClearTabTransLogTbcMainFrmMain"
+        Me.btnClearTabTransLogTbcMainFrmMain.Size = New System.Drawing.Size(75, 23)
+        Me.btnClearTabTransLogTbcMainFrmMain.TabIndex = 1
+        Me.btnClearTabTransLogTbcMainFrmMain.Text = "Clea&r"
+        Me.tipTPMS.SetToolTip(Me.btnClearTabTransLogTbcMainFrmMain, "Click to Clear window")
+        Me.btnClearTabTransLogTbcMainFrmMain.UseVisualStyleBackColor = True
+        '
         'grpTransLogTabTransLogTbcMain
         '
-        Me.grpTransLogTabTransLogTbcMain.Controls.Add(Me.btnTransLogTabTransLogTbcMain)
-        Me.grpTransLogTabTransLogTbcMain.Controls.Add(Me.txtTransLogTabTransLogTbcMain)
-        Me.grpTransLogTabTransLogTbcMain.Location = New System.Drawing.Point(106, 24)
+        Me.grpTransLogTabTransLogTbcMain.Controls.Add(Me.txtTransLogTabTransLogTbcMainFrmMain)
+        Me.grpTransLogTabTransLogTbcMain.Location = New System.Drawing.Point(6, 20)
         Me.grpTransLogTabTransLogTbcMain.Name = "grpTransLogTabTransLogTbcMain"
-        Me.grpTransLogTabTransLogTbcMain.Size = New System.Drawing.Size(707, 403)
+        Me.grpTransLogTabTransLogTbcMain.Size = New System.Drawing.Size(907, 387)
         Me.grpTransLogTabTransLogTbcMain.TabIndex = 0
         Me.grpTransLogTabTransLogTbcMain.TabStop = False
         Me.grpTransLogTabTransLogTbcMain.Text = "System Transaction Log"
         Me.tipTPMS.SetToolTip(Me.grpTransLogTabTransLogTbcMain, "View the system transaction log")
         '
-        'btnTransLogTabTransLogTbcMain
+        'txtTransLogTabTransLogTbcMainFrmMain
         '
-        Me.btnTransLogTabTransLogTbcMain.Location = New System.Drawing.Point(316, 362)
-        Me.btnTransLogTabTransLogTbcMain.Name = "btnTransLogTabTransLogTbcMain"
-        Me.btnTransLogTabTransLogTbcMain.Size = New System.Drawing.Size(75, 23)
-        Me.btnTransLogTabTransLogTbcMain.TabIndex = 1
-        Me.btnTransLogTabTransLogTbcMain.Text = "Clea&r"
-        Me.tipTPMS.SetToolTip(Me.btnTransLogTabTransLogTbcMain, "Click to Clear window")
-        Me.btnTransLogTabTransLogTbcMain.UseVisualStyleBackColor = True
-        '
-        'txtTransLogTabTransLogTbcMain
-        '
-        Me.txtTransLogTabTransLogTbcMain.BackColor = System.Drawing.SystemColors.Control
-        Me.txtTransLogTabTransLogTbcMain.Location = New System.Drawing.Point(30, 30)
-        Me.txtTransLogTabTransLogTbcMain.Multiline = True
-        Me.txtTransLogTabTransLogTbcMain.Name = "txtTransLogTabTransLogTbcMain"
-        Me.txtTransLogTabTransLogTbcMain.ReadOnly = True
-        Me.txtTransLogTabTransLogTbcMain.Size = New System.Drawing.Size(647, 318)
-        Me.txtTransLogTabTransLogTbcMain.TabIndex = 0
-        Me.tipTPMS.SetToolTip(Me.txtTransLogTabTransLogTbcMain, "Displays current system transaction log")
+        Me.txtTransLogTabTransLogTbcMainFrmMain.BackColor = System.Drawing.SystemColors.Control
+        Me.txtTransLogTabTransLogTbcMainFrmMain.Location = New System.Drawing.Point(6, 21)
+        Me.txtTransLogTabTransLogTbcMainFrmMain.Multiline = True
+        Me.txtTransLogTabTransLogTbcMainFrmMain.Name = "txtTransLogTabTransLogTbcMainFrmMain"
+        Me.txtTransLogTabTransLogTbcMainFrmMain.ReadOnly = True
+        Me.txtTransLogTabTransLogTbcMainFrmMain.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
+        Me.txtTransLogTabTransLogTbcMainFrmMain.Size = New System.Drawing.Size(895, 360)
+        Me.txtTransLogTabTransLogTbcMainFrmMain.TabIndex = 0
+        Me.tipTPMS.SetToolTip(Me.txtTransLogTabTransLogTbcMainFrmMain, "Displays current system transaction log")
         '
         'tabSysTestTbcMainFrmMain
         '
@@ -2315,7 +2316,6 @@ Partial Class FrmMain
     Friend WithEvents Label26 As Label
     Friend WithEvents tabTransLogTbcMainFrmMain As TabPage
     Friend WithEvents grpTransLogTabTransLogTbcMain As GroupBox
-    Friend WithEvents txtTransLogTabTransLogTbcMain As TextBox
     Friend WithEvents tabDashTbcMainFrmMain As TabPage
     Friend WithEvents grpKpiTabDashboardTbcMain As GroupBox
     Friend WithEvents mnuTestFrmMain As ToolStripMenuItem
@@ -2327,7 +2327,7 @@ Partial Class FrmMain
     Friend WithEvents btnSubmitTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain As Button
     Friend WithEvents btnResetTabAddFeatTbcPassbkFeatMainTbcMain As Button
     Friend WithEvents btnSubmitTabAddFeatTbcPassbkFeatMainTbcMain As Button
-    Friend WithEvents btnTransLogTabTransLogTbcMain As Button
+    Friend WithEvents btnClearTabTransLogTbcMainFrmMain As Button
     Friend WithEvents lblCustIdTabAddCustTbcCustomerMainTabCustomerTbcMain As Label
     Friend WithEvents txtCustIdTabAddCustTbcCustomerMainTabCustomerTbcMain As TextBox
     Friend WithEvents lblCustNameTabAddCustTbcCustomerMainTabCustomerTbcMain As Label
@@ -2466,4 +2466,5 @@ Partial Class FrmMain
     Private WithEvents txtFeatIdAddFeatTabFeatTbcMainFrmMain As System.Windows.Forms.TextBox
     Friend WithEvents Label42 As System.Windows.Forms.Label
     Friend WithEvents Label43 As System.Windows.Forms.Label
+    Private WithEvents txtTransLogTabTransLogTbcMainFrmMain As System.Windows.Forms.TextBox
 End Class

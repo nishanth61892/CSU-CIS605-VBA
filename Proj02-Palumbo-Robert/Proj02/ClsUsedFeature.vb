@@ -35,11 +35,24 @@ Public Class UsedFeature
     'Attributes + Module-level Constants+Variables
     '******************************************************************
 
-    'No Attributes are currently defined.
-
     '********** Module-level constants
 
     '********** Module-level variables
+
+    'Unique identifier
+    Private mId As String
+
+    'Passbook feature to apply transaction on
+    Private mPassbookFeat As PassbookFeature
+
+    'Date feature was used
+    Private mDateUsed As Date
+
+    'Location where feature was used
+    Private mLoc As String
+
+    'Quantity used
+    Private mQtyUsed As Decimal
 
 #End Region 'Attributes
 
@@ -48,20 +61,33 @@ Public Class UsedFeature
     'Constructors
     '******************************************************************
 
-    'No Constructors are currently defined.
     'These are all public.
 
     '********** Default constructor
     '             - no parameters
-    Public Sub New()
-
-        MyBase.New()
-
-    End Sub 'New()
 
     '********** Special constructor(s)
     '             - typically constructors have parameters 
     '               that are used to initialize attributes
+    Public Sub New(ByVal pId As String, _
+                   ByVal pPassbookFeat As PassbookFeature, _
+                   ByVal pDateUsed As Date, _
+                   ByVal pLoc As String, _
+                   ByVal pQtyUsed As Decimal _
+                   )
+
+        'invoke the default constructor to invoke the parent object constructor
+        MyBase.New()
+
+        'Initialize the attributes
+        _id = pId
+        _passbookFeat = passbookFeat
+        _dateUsed = pDateUsed
+        _loc = pLoc
+        _qtyUsed = pQtyUsed
+
+    End Sub 'New()
+
 
     '********** Copy constructor(s)
     '             - one parameter, an object of the same class
@@ -75,28 +101,95 @@ Public Class UsedFeature
 
     '********** Public Get/Set Methods
     '             - call private get/set methods to implement
+    Public ReadOnly Property id() As String
+        Get
+            Return mId
+        End Get
+    End Property
 
-    'Public Property #####() As String
-    '    Get
-    '        Return #####
-    '    End Get
-    '    Set(pValue As String)
-    '        ##### = pValue
-    '    End Set
-    'End Property
+    Public Property passbookFeat() As PassbookFeature
+        Get
+            Return _passbookFeat
+        End Get
+        Set(pValue As PassbookFeature)
+            _passbookFeat = pValue
+        End Set
+    End Property
+
+    Public Property dateUsed() As Date
+        Get
+            Return _dateUsed
+        End Get
+        Set(pValue As Date)
+            _dateUsed = pValue
+        End Set
+    End Property
+
+    Public Property loc() As String
+        Get
+            Return _loc
+        End Get
+        Set(pValue As String)
+            _loc = pValue
+        End Set
+    End Property
+
+    Public Property qtyUsed() As Decimal
+        Get
+            Return _qtyUsed
+        End Get
+        Set(pValue As Decimal)
+            _qtyUsed = pValue
+        End Set
+    End Property
 
 
     '********** Private Get/Set Methods
     '             - access attributes, begin name with underscore (_)
+    Private Property _id() As String
+        Get
+            Return mId
+        End Get
+        Set(pValue As String)
+            mId = pValue
+        End Set
+    End Property
 
-    'Private Property #####() As String
-    '    Get
-    '        Return #####
-    '    End Get
-    '    Set(pValue As String)
-    '        ##### = pValue
-    '    End Set
-    'End Property
+    Private Property _passbookFeat() As PassbookFeature
+        Get
+            Return mPassbookFeat
+        End Get
+        Set(pValue As PassbookFeature)
+            mPassbookFeat = pValue
+        End Set
+    End Property
+
+    Private Property _dateUsed() As Date
+        Get
+            Return mDateUsed
+        End Get
+        Set(pValue As Date)
+            mDateUsed = pValue
+        End Set
+    End Property
+
+    Private Property _loc() As String
+        Get
+            Return mLoc
+        End Get
+        Set(pValue As String)
+            mLoc = pValue
+        End Set
+    End Property
+
+    Private Property _qtyUsed() As Decimal
+        Get
+            Return mQtyUsed
+        End Get
+        Set(pValue As Decimal)
+            mQtyUsed = pValue
+        End Set
+    End Property
 
 #End Region 'Get/Set Methods
 
