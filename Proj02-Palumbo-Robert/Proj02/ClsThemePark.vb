@@ -291,6 +291,26 @@ Public Class ThemePark
 
     End Function 'createPassbook(...)
 
+    'purchaseFeature() creates and returns a new Passbook
+    Public Function purchaseFeature(ByVal pPassbkFeatId As String, _
+                                    ByVal pPurchPrice As Decimal, _
+                                    ByVal pFeature As Feature, _
+                                    ByVal pPassbk As Passbook, _
+                                    ByVal pQtyPurch As Decimal, _
+                                    ByVal pQtyRemain As Decimal
+                                    ) As PassbookFeature
+
+        'Call the worker procedure to do the work
+        Return _purchaseFeature(pPassbkFeatId, _
+                                pPurchPrice, _
+                                pFeature, _
+                                pPassbk, _
+                                pQtyPurch, _
+                                pQtyRemain
+                                )
+
+    End Function 'purchaseFeature(...)
+
 
     '********** Private Non-Shared Behavioral Methods
 
@@ -374,6 +394,29 @@ Public Class ThemePark
         Return newPassbk
     End Function '_createPassbook(...)
 
+    '_purchaseFeature() creates and returns a new Passbook Feature
+    'object. This is the work-horse function that does all the work for 
+    'purchaseFeature().
+    Private Function _purchaseFeature(ByVal pPassbkFeatId As String, _
+                                      ByVal pPurchPrice As Decimal, _
+                                      ByVal pFeature As Feature, _
+                                      ByVal pPassbk As Passbook, _
+                                      ByVal pQtyPurch As Decimal, _
+                                      ByVal pQtyRemain As Decimal  _
+                                      ) As PassbookFeature
+
+        Dim newPassbkFeat As PassbookFeature = New PassbookFeature(pPassbkFeatId, _
+                                                                   pPurchPrice, _
+                                                                   pFeature, _
+                                                                   pPassbk, _
+                                                                   pQtyPurch, _
+                                                                   pQtyRemain
+                                                                   )
+        'update the passbook cnt in the system
+        _numPassbkFeats += 1
+
+        Return newPassbkFeat
+    End Function '_purchaseFeature(...)
 
     '_writeDebugLog() is a debug only function for my use during 
     'development and is used to write debug info to a log for 

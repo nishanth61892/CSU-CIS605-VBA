@@ -243,6 +243,14 @@ Public Class PassbookFeature
     Private Function _toString() As String
         Dim _tmpStr As String = ""
 
+        _tmpStr = "[PurchaseFeature] -> " _
+            & " Id=" & _id _
+            & ", Feature=" & _feature.ToString _
+            & ", Passbk=" & _passbk.ToString _
+            & ", PurcasePrice=" & _purchPrice _
+            & ", QtyPurchased=" & _qtyPurch _
+            & ", QtyRemain=" & _qtyRemain
+
         Return _tmpStr
     End Function
 

@@ -304,11 +304,27 @@ Public Class FrmMain
             MsgBox("Please enter a unqiue Customer ID (ex: 0001)", MsgBoxStyle.OkOnly)
             txtCustIdGrpAddCustTabCustTbcMainFrmMain.SelectAll()
             txtCustIdGrpAddCustTabCustTbcMainFrmMain.Focus()
-        ElseIf String.IsNullOrEmpty(custName) Then
+            Return
+        End If
+
+        If String.IsNullOrEmpty(custName) Then
             MsgBox("Please enter a valid Customer Name (ex: Doe, John)", MsgBoxStyle.OkOnly)
             txtCustNameGrpAddCustTabCustTbcMainFrmMain.SelectAll()
             txtCustNameGrpAddCustTabCustTbcMainFrmMain.Focus()
-        Else
+            Return
+        End If
+
+        'Verify the purchase before committing
+        Dim choice As MsgBoxResult
+
+        choice = MsgBox("To create a new Feature with these attribute Click OK, otherwise Cancel" & vbCrLf & vbCrLf _
+                        & "--> Id=" & custId & vbCrLf _
+                        & "--> Name=" & custName & vbCrLf,
+                        MsgBoxStyle.OkCancel
+                        )
+
+        'If OK selected proceed with the submission
+        If choice = MsgBoxResult.Ok Then
             'Create a new Customer
             newCust = _theThemePark.createCustomer(
                             custId,
@@ -317,11 +333,7 @@ Public Class FrmMain
 
             writeTransLog("<CREATED>: " & newCust.ToString())
 
-            MsgBox("Customer has been successfully added to the system" & vbCrLf _
-                   & "--> Id: " & custId & vbCrLf _
-                   & "--> Name: " & custName & vbCrLf,
-                   MsgBoxStyle.OkOnly
-                   )
+            MsgBox("Customer creation was successful!", MsgBoxStyle.OkOnly)
 
             'Reset the fields and focus to allow for another feature to be added
             txtCustIdGrpAddCustTabCustTbcMainFrmMain.Text = ""
@@ -406,32 +418,40 @@ Public Class FrmMain
             Return
         End If
 
-        'Create a new Feature
-        newFeat = _theThemePark.createFeature(featId, _
-                                              featName, _
-                                              unitOfMeas, _
-                                              decAdultPrice, _
-                                              decChildPrice
-                                              )
+        'Verify the purchase before committing
+        Dim choice As MsgBoxResult
 
-        writeTransLog("<CREATED>: " & newFeat.ToString())
+        choice = MsgBox("To create a new Feature with these attribute Click OK, otherwise Cancel" & vbCrLf & vbCrLf _
+                        & "--> Id=" & featId & vbCrLf _
+                        & "--> Name=" & featName & vbCrLf _
+                        & "--> UnitMeasure=" & unitOfMeas & vbCrLf _
+                        & "--> AdultPrice=" & adultPrice & vbCrLf _
+                        & "--> ChildPrice=" & childPrice & vbCrLf,
+                        MsgBoxStyle.OkCancel
+                        )
 
-        MsgBox("Feature has been successfully added to the system" & vbCrLf _
-               & "--> Id: " & featId & vbCrLf _
-               & "--> Name: " & featName & vbCrLf _
-               & "--> Unit Measure: " & unitOfMeas & vbCrLf _
-               & "--> Adult Price: " & adultPrice & vbCrLf _
-               & "--> Child Price: " & childPrice & vbCrLf,
-               MsgBoxStyle.OkOnly
-               )
+        'If OK selected proceed with the submission
+        If choice = MsgBoxResult.Ok Then
+            'Create a new Feature
+            newFeat = _theThemePark.createFeature(featId, _
+                                                  featName, _
+                                                  unitOfMeas, _
+                                                  decAdultPrice, _
+                                                  decChildPrice
+                                                  )
 
-        'Reset the fields and focus to allow for another feature to be added
-        txtFeatIdAddFeatTabFeatTbcMainFrmMain.Text = ""
-        txtFeatNameGrpAddFeatTabFeatTbcMainFrmMain.Text = ""
-        txtUnifOfMeasGrpAddFeatTabFeatTbcMainFrmMain.Text = ""
-        txtPriceAdultGrpAddFeatTabFeatTbcMainFrmMain.Text = ""
-        txtPriceChildGrpAddFeatTabFeatTbcMainFrmMain.Text = ""
-        txtFeatIdAddFeatTabFeatTbcMainFrmMain.Focus()
+            writeTransLog("<CREATED>: " & newFeat.ToString())
+
+            MsgBox("Feature creation was successful!", MsgBoxStyle.OkOnly)
+
+            'Reset the fields and focus to allow for another feature to be added
+            txtFeatIdAddFeatTabFeatTbcMainFrmMain.Text = ""
+            txtFeatNameGrpAddFeatTabFeatTbcMainFrmMain.Text = ""
+            txtUnifOfMeasGrpAddFeatTabFeatTbcMainFrmMain.Text = ""
+            txtPriceAdultGrpAddFeatTabFeatTbcMainFrmMain.Text = ""
+            txtPriceChildGrpAddFeatTabFeatTbcMainFrmMain.Text = ""
+            txtFeatIdAddFeatTabFeatTbcMainFrmMain.Focus()
+        End If
 
     End Sub '_btnSubmitGrpCustInfoTabCustTbcMainFrmMain_Click(...)
 
@@ -477,38 +497,136 @@ Public Class FrmMain
         Dim visIsChild As Boolean = (visAge < mADULT_MIN_AGE)
 
         'PBO - this customer object is tempary until the next phase of the project
-        Dim tempCust As Customer = New Customer("999", "Test Customer")
+        Dim tempCust As Customer = New Customer("9999", "Test Customer")
 
-        'Create a new Passbook
-        '
-        newPassbk = _theThemePark.createPassbook(passbkId, _
-                                                 tempCust, _
-                                                 datePurch, _
-                                                 visName, _
-                                                 visDobValue, _
-                                                 Convert.ToInt32(visAge), _
-                                                 visIsChild
-                                                 )
+        'Verify the purchase before committing
+        Dim choice As MsgBoxResult
 
-        writeTransLog("<CREATED>: " & newPassbk.ToString())
+        choice = MsgBox("To create a new Passbook with these attribute Click OK, otherwise Cancel" & vbCrLf & vbCrLf _
+                        & "--> Id=" & passbkId & vbCrLf _
+                        & "--> Owner=" & tempCust.custName & vbCrLf _
+                        & "--> VisitorName=" & visName & vbCrLf _
+                        & "--> VisitorDOB=" & visDob & vbCrLf _
+                        & "--> VistorAge=" & visAge & vbCrLf _
+                        & "--> VistorIsChild? " & visIsChild.ToString & vbCrLf _
+                        & "--> DatePurchased=" & datePurch & vbCrLf,
+                        MsgBoxStyle.OkCancel
+                        )
 
-        MsgBox("Passbook has been successfully added to the system" & vbCrLf _
-               & "--> Id: " & passbkId & vbCrLf _
-               & "--> Owner: " & tempCust.custName & vbCrLf _
-               & "--> Date Purchased: " & datePurch & vbCrLf _
-               & "--> Visitor Name: " & visName & vbCrLf _
-               & "--> Visitor DOB: " & visDob & vbCrLf _
-               & "--> Vistor Age: " & visAge & vbCrLf _
-               & "--> Vistor IsChild? " & visIsChild.ToString,
-               MsgBoxStyle.OkOnly
-               )
+        'If OK selected proceed with the submission
+        If choice = MsgBoxResult.Ok Then
+            'Create a new Passbook
+            newPassbk = _theThemePark.createPassbook(passbkId, _
+                                                     tempCust, _
+                                                     datePurch, _
+                                                     visName, _
+                                                     visDobValue, _
+                                                     Convert.ToInt32(visAge), _
+                                                     visIsChild
+                                                     )
 
-        'Reset the fields and focus to allow for another feature to be added
-        txtPassbkIdGrpAddPassbkTabPassbkTbcMainFrmMain.Text = ""
-        txtVisNameGrpAddPassbkTabPassbkTbcMainFrmMain.Text = ""
-        txtVisDobGrpAddPassbkTabPassbkTbcMainFrmMain.Text = ""
+            writeTransLog("<CREATED>: " & newPassbk.ToString())
+
+            MsgBox("Passbook creation was successful!", MsgBoxStyle.OkOnly)
+
+            'Reset the fields and focus to allow for another feature to be added
+            txtPassbkIdGrpAddPassbkTabPassbkTbcMainFrmMain.Text = ""
+            txtVisNameGrpAddPassbkTabPassbkTbcMainFrmMain.Text = ""
+            txtVisDobGrpAddPassbkTabPassbkTbcMainFrmMain.Text = ""
+        End If
 
     End Sub '_btnSubmitGrpAddPassbkTabPassbkTbcMainFrmMain_Click(...)
+
+    '_btnSubmitTabAddFeatTbcPassbkFeatMainTbcMain_Click() is the event procedure that gets called when the user
+    'clicks on the Submit button from the Add Passbook Feature tab.  It validates and then submit the data
+    'to add a purchased feature to a customer passbook.
+    Private Sub _btnSubmitTabAddFeatTbcPassbkFeatMainTbcMain_Click(sender As Object, e As EventArgs) Handles _
+        btnSubmitTabAddFeatTbcPassbkFeatMainTbcMain.Click
+
+        Dim newPassbkFeat As PassbookFeature = Nothing
+
+        'Temporary for Phase 2 requirements
+        Dim tempCust As Customer = New Customer("0001", "Doe, John")
+        Dim tempPassbk As Passbook = New Passbook("0001", tempCust, DateTime.Now, "Doe, James",
+                                                  #2/21/2005#, 10, True)
+        Dim tempFeat As Feature = New Feature("0001", "Park Pass", "Day", 12.5D, 7.5D)
+
+        'Used as shortcut names to access the data
+        Dim featId As String = txtPassBkFeatIdTabAddFeatTbcPassbkFeatMainTbcMain.Text
+        Dim qtyPurch As String = txtQtyTabAddFeatTbcPassbkFeatMainTbcMain.Text
+        Dim decQtyPurch As Decimal
+        Dim decQtyRemain As Decimal = 0D
+
+        'Validate all the fields
+        If String.IsNullOrEmpty(featId) Then
+            MsgBox("Please enter unique Passbook Feature Id (ex: 0001)", MsgBoxStyle.OkOnly)
+            txtPassBkFeatIdTabAddFeatTbcPassbkFeatMainTbcMain.SelectAll()
+            txtPassBkFeatIdTabAddFeatTbcPassbkFeatMainTbcMain.Focus()
+            Return
+        End If
+
+        If Not Decimal.TryParse(qtyPurch, decQtyPurch) Then
+            MsgBox("Please enter a numeric Quantity > 0 to purchase (ex: 3)", MsgBoxStyle.OkOnly)
+            txtQtyTabAddFeatTbcPassbkFeatMainTbcMain.SelectAll()
+            txtQtyTabAddFeatTbcPassbkFeatMainTbcMain.Focus()
+            Return
+        End If
+
+        'Calculate total price - based on age 
+        Dim totPurchPrice As Decimal
+        Dim unitPurchPrice As Decimal
+
+        If tempPassbk.visIsChild = True Then
+            unitPurchPrice = tempFeat.childPrice
+        Else
+            unitPurchPrice = tempFeat.adultPrice
+        End If
+
+        totPurchPrice = unitPurchPrice * decQtyPurch
+
+        'Verify the purchase before committing
+        Dim choice As MsgBoxResult
+
+        choice = MsgBox("To puchase the following Passbook Feature Click OK, otherwise Cancel" & vbCrLf & vbCrLf _
+                        & "--> PassbookFeatureId=" & featId & vbCrLf _
+                        & "--> Feature=" & tempFeat.featName & vbCrLf _
+                        & "--> UnitPrice=" & unitPurchPrice & vbCrLf _
+                        & "--> QtyPurchased=" & decQtyPurch & vbCrLf _
+                        & "--> TotalPurchasePrice=" & totPurchPrice & vbCrLf _
+                        & "--> QtyRemain=" & decQtyRemain & vbCrLf _
+                        & "--> Passbook=" & tempPassbk.passbkId & vbCrLf,
+                        MsgBoxStyle.OkCancel
+                        )
+
+        'If OK selected proceed with the submission
+        If choice = MsgBoxResult.Ok Then
+            'Create a new Passbook Feature
+            newPassbkFeat = _theThemePark.purchaseFeature(featId, _
+                                                          totPurchPrice, _
+                                                          tempFeat, _
+                                                          tempPassbk, _
+                                                          decQtyPurch, _
+                                                          decQtyRemain
+                                                          )
+
+            writeTransLog("<PURCHASED>: " & newPassbkFeat.ToString())
+
+            MsgBox("Passbook Feature purchase was successful!", MsgBoxStyle.OkOnly)
+
+            'Reset the fields and focus to allow for another feature to be added
+            txtPassBkFeatIdTabAddFeatTbcPassbkFeatMainTbcMain.Text = ""
+            txtQtyTabAddFeatTbcPassbkFeatMainTbcMain.Text = ""
+        End If
+
+    End Sub '_btnSubmitTabAddFeatTbcPassbkFeatMainTbcMain_Click(...)
+
+    '_btnCalcTabAddFeatTbcPassbkFeatMainTbcMain_Click() is the event procedure that gets called when the user
+    'clicks on the Calc button from the Add Feature tab.  It calculates and display the current total cost
+    'to purchase the selected feature based on age and quantity.
+    Private Sub _btnCalcTabAddFeatTbcPassbkFeatMainTbcMain_Click(sender As Object, e As EventArgs) Handles _
+            btnCalcTabAddFeatTbcPassbkFeatMainTbcMain.Click
+
+    End Sub '_btnCalcTabAddFeatTbcPassbkFeatMainTbcMain_Click(...)
 
     '_btnClearTabTransLogTbcMainFrmMain_Click() is the event procedure that gets called when the user
     'clicks on the Clear button from the Tranaaction log tab.  It clears the log.
@@ -519,6 +637,34 @@ Public Class FrmMain
         txtTransLogTabTransLogTbcMainFrmMain.Text = ""
     End Sub '_btnClearTabTransLogTbcMainFrmMain_Click(...)
 
+    '_btnProcTestDataGrpSysTestTabSysTestTbcMainFrmMain_Click() is the event procedure that gets called when 
+    'the user clicks on the 'Process Test Data' button from the System Test tab.  It automates testing of 
+    'existing functionality of the system.  Results are output in the transaction log.
+    Private Sub _btnProcTestDataGrpSysTestTabSysTestTbcMainFrmMain_Click(sender As Object, e As EventArgs) Handles _
+        btnProcTestDataGrpSysTestTabSysTestTbcMainFrmMain.Click
+
+        'The theme park
+        Dim themePark As ThemePark = New ThemePark("World's Of Fun Theme Park")
+
+        'Customers
+        themePark.createCustomer("0001", "Smith, John")
+        themePark.createCustomer("0002", "Jone, James")
+        themePark.createCustomer("0003", "Johnson, Robert")
+
+        Dim cust1 As Customer = New Customer("0001", "Smith, John")
+        Dim cust2 As Customer = New Customer("0002", "Jones, James")
+        Dim cust3 As Customer = New Customer("0003", "Johnson, Robert")
+
+        'Features
+        Dim feat1 As Feature = New Feature("1001", "Park Pass", "Day", 12.5D, 0)
+        Dim feat2 As Feature = New Feature("1002", "Gate Pass", "Day", 35.95D, 22.95D)
+        Dim feat3 As Feature = New Feature("1003", "Meal Plan", "Week", 65.95D, 31.95D)
+
+        'Passbooks
+        Dim passbk1 As Passbook = New Passbook("2001", cust1, #2/8/2014#, "Smith, Will", #3/14/2001#, 14, False)
+        Dim passbk2 As Passbook = New Passbook("2002", cust2, #6/14/2015#, "Jones, Jennifer", #7/21/1975#, 40, False)
+        Dim passbk3 As Passbook = New Passbook("2003", cust3, #11/23/2011#, "Johnson, Brian", #12/14/2008#, 7, True)
+    End Sub '_btnProcTestDataGrpSysTestTabSysTestTbcMainFrmMain_Click(...)
 
     '********** User-Interface Event Procedures
     '             - Initiated automatically by system
