@@ -604,20 +604,34 @@ Public Class FrmMain
         Dim tempFeat As Feature = New Feature("0001", "Park Pass", "Day", 12.5D, 7.5D)
 
         'Used as shortcut names to access the data
-        Dim featId As String = txtPassBkFeatIdTabAddFeatTbcPassbkFeatMainTbcMain.Text
+        Dim passbkFeatId As String = txtPassBkFeatIdTabAddFeatTbcPassbkFeatMainTbcMain.Text
+        Dim passbkId As String = cboPassbkIdGrpPassbkTabAddFeatTbcPassbkFeatMainTbcMain.Text
+        Dim featId As String = cboFeatIdGrpFeatTabAddFeatTbcPassbkFeatMainTbcMain.Text
         Dim qtyPurch As String = txtQtyTabAddFeatTbcPassbkFeatMainTbcMain.Text
         Dim decQtyPurch As Decimal
         Dim decQtyRemain As Decimal = 0D
 
         'Validate all the fields
+        If String.IsNullOrEmpty(passbkId) Then
+            MsgBox("ERROR: Please select a Passbook Id from the list", MsgBoxStyle.OkOnly)
+            cboPassbkIdGrpPassbkTabAddFeatTbcPassbkFeatMainTbcMain.Focus()
+            Exit Sub
+        End If
+
         If String.IsNullOrEmpty(featId) Then
+            MsgBox("ERROR: Please select a Feature Id from the list", MsgBoxStyle.OkOnly)
+            cboFeatIdGrpFeatTabAddFeatTbcPassbkFeatMainTbcMain.Focus()
+            Exit Sub
+        End If
+
+        If String.IsNullOrEmpty(passbkFeatId) Then
             MsgBox("ERROR: Please enter unique Passbook Feature Id (ex: 0001)", MsgBoxStyle.OkOnly)
             txtPassBkFeatIdTabAddFeatTbcPassbkFeatMainTbcMain.SelectAll()
             txtPassBkFeatIdTabAddFeatTbcPassbkFeatMainTbcMain.Focus()
             Exit Sub
         End If
 
-        If Not Decimal.TryParse(qtyPurch, decQtyPurch) Then
+        If Not Decimal.TryParse(qtyPurch, decQtyPurch) Or decQtyPurch <= 0 Then
             MsgBox("ERROR: Please enter a numeric Quantity > 0 to purchase (ex: 3)", MsgBoxStyle.OkOnly)
             txtQtyTabAddFeatTbcPassbkFeatMainTbcMain.SelectAll()
             txtQtyTabAddFeatTbcPassbkFeatMainTbcMain.Focus()
@@ -640,7 +654,7 @@ Public Class FrmMain
         totPurchPrice = unitPurchPrice * decQtyPurch
 
         choice = MsgBox("To puchase the following Passbook Feature Click OK, otherwise Cancel" & vbCrLf & vbCrLf _
-                        & "--> PassbookFeatureId=" & featId & vbCrLf _
+                        & "--> PassbookFeatureId=" & passbkFeatId & vbCrLf _
                         & "--> Feature=" & tempFeat.featName & vbCrLf _
                         & "--> UnitPrice=" & unitPurchPrice & vbCrLf _
                         & "--> QtyPurchased=" & decQtyPurch & vbCrLf _
@@ -667,10 +681,34 @@ Public Class FrmMain
             MsgBox("Passbook Feature purchase was successful!", MsgBoxStyle.OkOnly)
 
             'Reset the fields and focus to allow for another feature to be added
-            txtPassBkFeatIdTabAddFeatTbcPassbkFeatMainTbcMain.Text = ""
-            txtQtyTabAddFeatTbcPassbkFeatMainTbcMain.Text = ""
+            _resetPassbkAddFeatInput()
         End If
     End Sub '_btnSubmitTabAddFeatTbcPassbkFeatMainTbcMain_Click(...)
+
+    '_resetPassbkFeatAddInput() is used to reset all the feature input fields to allow the user 
+    'to start over with input.
+    Private Sub _resetPassbkAddFeatInput()
+        'Reset the fields and focus to allow for another feature to be added
+        cboPassbkIdGrpPassbkTabAddFeatTbcPassbkFeatMainTbcMain.Text = ""
+        cboFeatIdGrpFeatTabAddFeatTbcPassbkFeatMainTbcMain.Text = ""
+        txtCustToStringGrpPassbkTabAddFeatTbcPassbkFeatMainTbcMain.Text = ""
+        txtVisToStringGrpPassbkTabAddFeatTbcPassbkFeatMainTbcMain.Text = ""
+        txtFeatToStringGrpFeatTabAddFeatTbcPassbkFeatMainTbcMain.Text = ""
+        txtPassBkFeatIdTabAddFeatTbcPassbkFeatMainTbcMain.Text = ""
+        txtQtyTabAddFeatTbcPassbkFeatMainTbcMain.Text = ""
+        txtPriceTabAddFeatTbcPassbkFeatMainTbcMain.Text = ""
+        cboPassbkIdGrpPassbkTabAddFeatTbcPassbkFeatMainTbcMain.Focus()
+    End Sub '_resetPassbkAddInput()
+
+    '_btnResetTabAddFeatTbcPassbkFeatMainTbcMain_Click() is the event procedure that gets called 
+    'when the user clicks on the Reset button from the 'Passbook Features | Add' tab. It clears all input
+    'fields to allow the user to reenter the data from scratch.
+    Private Sub _btnResetTabAddFeatTbcPassbkFeatMainTbcMain_Click(sender As Object, e As EventArgs) Handles _
+         btnResetTabAddFeatTbcPassbkFeatMainTbcMain.Click
+
+        'Reset the fields and focus to allow for another passbook featurd addition
+        _resetPassbkAddFeatInput()
+    End Sub '_btnResetTabAddFeatTbcPassbkFeatMainTbcMain_Click(...)
 
     '_btnSubmitTabUpdtFeatTbcPassbkFeatMainTbcMain_Click() is the event procedure that gets called when the user
     'clicks on the Submit button from the Update Passbook Feature tab.  It validates and then submits the data
@@ -686,23 +724,24 @@ Public Class FrmMain
         Dim tempFeat As Feature = New Feature("0001", "Park Pass", "Day", 12.5D, 7.5D)
 
         'Used as shortcut names to access the data
-        Dim featId As String = txtPassBkFeatIdTabAddFeatTbcPassbkFeatMainTbcMain.Text
-        Dim qtyPurch As String = txtQtyTabAddFeatTbcPassbkFeatMainTbcMain.Text
-        Dim decQtyPurch As Decimal
-        Dim decQtyRemain As Decimal = 0D
+        Dim featId As String = cboFeatIdGrpPassbkTabUpdtFeatTbcPassbkFeatMainTbcMain.Text
+        Dim price As Decimal = tempFeat.adultPrice
+        Dim newQty As String = txtNewQtyTabUpdtFeatTbcPassbkFeatMainTbcMain.Text
+        Dim remainQty As String = txtRemQtyTabUpdtFeatTbcPassbkFeatMainTbcMain.Text
+        Dim decNewQty As Decimal
+        Dim decRemainQty As Decimal = 0D
 
         'Validate all the fields
         If String.IsNullOrEmpty(featId) Then
-            MsgBox("ERROR: Please enter unique Passbook Feature Id (ex: 0001)", MsgBoxStyle.OkOnly)
-            txtPassBkFeatIdTabAddFeatTbcPassbkFeatMainTbcMain.SelectAll()
-            txtPassBkFeatIdTabAddFeatTbcPassbkFeatMainTbcMain.Focus()
+            MsgBox("ERROR: Please select a Passbook Feature Id from the list", MsgBoxStyle.OkOnly)
+            cboFeatIdGrpPassbkTabUpdtFeatTbcPassbkFeatMainTbcMain.Focus()
             Exit Sub
         End If
 
-        If Not Decimal.TryParse(qtyPurch, decQtyPurch) Then
-            MsgBox("ERROR: Please enter a numeric Quantity > 0 to purchase (ex: 3)", MsgBoxStyle.OkOnly)
-            txtQtyTabAddFeatTbcPassbkFeatMainTbcMain.SelectAll()
-            txtQtyTabAddFeatTbcPassbkFeatMainTbcMain.Focus()
+        If Not Decimal.TryParse(newQty, decNewQty) Or decNewQty <= 0 Then
+            MsgBox("ERROR: Please enter a numeric Quantity > 0 (ex: 3)", MsgBoxStyle.OkOnly)
+            txtNewQtyTabUpdtFeatTbcPassbkFeatMainTbcMain.SelectAll()
+            txtNewQtyTabUpdtFeatTbcPassbkFeatMainTbcMain.Focus()
             Exit Sub
         End If
 
@@ -719,16 +758,14 @@ Public Class FrmMain
         'Verify the purchase before committing
         Dim choice As MsgBoxResult
 
-        totPurchPrice = unitPurchPrice * decQtyPurch
+        totPurchPrice = unitPurchPrice * decNewQty
 
-        choice = MsgBox("To puchase the following Passbook Feature Click OK, otherwise Cancel" & vbCrLf & vbCrLf _
+        choice = MsgBox("To update the following Passbook Feature Click OK, otherwise Cancel" & vbCrLf & vbCrLf _
                         & "--> PassbookFeatureId=" & featId & vbCrLf _
-                        & "--> Feature=" & tempFeat.featName & vbCrLf _
-                        & "--> UnitPrice=" & unitPurchPrice & vbCrLf _
-                        & "--> QtyPurchased=" & decQtyPurch & vbCrLf _
-                        & "--> TotalPurchasePrice=" & totPurchPrice & vbCrLf _
-                        & "--> QtyRemain=" & decQtyRemain & vbCrLf _
-                        & "--> Passbook=" & tempPassbk.passbkId & vbCrLf,
+                        & "--> NewQuantity=" & decNewQty.ToString & vbCrLf _
+                        & "--> UnitPrice=" & unitPurchPrice.ToString & vbCrLf _
+                        & "--> RemainQuantity=" & decRemainQty.ToString & vbCrLf _
+                        & "--> Price=" & price.ToString & vbCrLf,
                         MsgBoxStyle.OkCancel
                         )
 
@@ -739,20 +776,143 @@ Public Class FrmMain
                                                           totPurchPrice, _
                                                           tempFeat, _
                                                           tempPassbk, _
-                                                          decQtyPurch, _
-                                                          decQtyRemain
+                                                          decNewQty, _
+                                                          decRemainQty
                                                           )
 
-            _writeTransLog("<PURCHASED>: " & newPassbkFeat.ToString())
+            _writeTransLog("<UPDATED>: " & newPassbkFeat.ToString())
             _writeTransLog("<STATUS>: " & _theThemePark.ToString())
 
-            MsgBox("Passbook Feature purchase was successful!", MsgBoxStyle.OkOnly)
+            MsgBox("Passbook Feature update was successful!", MsgBoxStyle.OkOnly)
 
             'Reset the fields and focus to allow for another feature to be added
-            txtPassBkFeatIdTabAddFeatTbcPassbkFeatMainTbcMain.Text = ""
-            txtQtyTabAddFeatTbcPassbkFeatMainTbcMain.Text = ""
+            cboFeatIdGrpPassbkTabUpdtFeatTbcPassbkFeatMainTbcMain.Focus()
+            cboFeatIdGrpPassbkTabUpdtFeatTbcPassbkFeatMainTbcMain.Text = ""
+            txtNewQtyTabUpdtFeatTbcPassbkFeatMainTbcMain.Text = ""
         End If
     End Sub '_btnSubmitTabUpdtFeatTbcPassbkFeatMainTbcMain_Click(...)
+
+    '_resetPassbkFeatUpdtInput() is used to reset all the feature input fields to allow the user 
+    'to start over with input.
+    Private Sub _resetPassbkUpdtFeatInput()
+        'Reset the fields and focus to allow for another feature to be added
+        cboPassbkIdGrpPassbkTabAddFeatTbcPassbkFeatMainTbcMain.Text = ""
+        cboFeatIdGrpFeatTabAddFeatTbcPassbkFeatMainTbcMain.Text = ""
+        txtCustToStringGrpPassbkTabAddFeatTbcPassbkFeatMainTbcMain.Text = ""
+        txtVisToStringGrpPassbkTabAddFeatTbcPassbkFeatMainTbcMain.Text = ""
+        txtFeatToStringGrpFeatTabAddFeatTbcPassbkFeatMainTbcMain.Text = ""
+        txtPassBkFeatIdTabAddFeatTbcPassbkFeatMainTbcMain.Text = ""
+        txtQtyTabAddFeatTbcPassbkFeatMainTbcMain.Text = ""
+        txtPriceTabAddFeatTbcPassbkFeatMainTbcMain.Text = ""
+        cboPassbkIdGrpPassbkTabAddFeatTbcPassbkFeatMainTbcMain.Focus()
+    End Sub '_resetPassbkAddInput()
+
+    '_btnResetTabUpdtFeatTbcPassbkFeatMainTbcMain() is the event procedure that gets called 
+    'when the user clicks on the Reset button from the 'Passbook Features | Update' tab. It clears all input
+    'fields to allow the user to reenter the data from scratch.
+    Private Sub _btnResetTabUpdtFeatTbcPassbkFeatMainTbcMain_Click(sender As Object, e As EventArgs) Handles _
+         btnResetTabUpdtFeatTbcPassbkFeatMainTbcMain.Click
+
+        'Reset the fields and focus to allow for another passbook featurd addition
+        _resetPassbkAddFeatInput()
+    End Sub '_btnResetTabUpdtFeatTbcPassbkFeatMainTbcMain(...)
+
+
+    '_btnSubmitTabPostFeatTbcPassbkFeatMainTbcMain_Click() is the event procedure that gets called when the user
+    'clicks on the Submit button from the Post Used Feature tab.  It validates and then submits the data
+    'to post a used customer passbook feature.
+    Private Sub _btnSubmitTabPostFeatTbcPassbkFeatMainTbcMain_Click(sender As Object, e As EventArgs) Handles _
+    btnSubmitTabPostFeatTbcPassbkFeatMainTbcMain.Click
+        Dim newUsedFeat As UsedFeature = Nothing
+
+        'Temporary for Phase 2 requirements
+        Dim tempCust As Customer = New Customer("0001", "Doe, John")
+        Dim tempPassbk As Passbook = New Passbook("0001", tempCust, DateTime.Now, "Doe, James",
+                                                 #2/21/2005#, 10, True)
+        Dim tempFeat As Feature = New Feature("0001", "Park Pass", "Day", 12.5D, 7.5D)
+        Dim tempPassbkFeat As PassbookFeature = New PassbookFeature("0001", 12.5D, tempFeat, tempPassbk, 5, 3)
+
+        'Used as shortcut names to access the data
+        Dim featId As String = cboPassbkFeatIdTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Text
+        Dim qtyUsed As String = txtQtyUsedGrpPassbkTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Text
+        Dim loc As String = txtLocGrpPassbkTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Text
+        Dim decQtyUsed As Decimal
+        Dim decQtyRemain As Decimal = 0D
+
+        'Validate all the fields
+        If String.IsNullOrEmpty(featId) Then
+            MsgBox("ERROR: Please select a Passbook Feature Id from the list", MsgBoxStyle.OkOnly)
+            cboPassbkFeatIdTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Focus()
+            Exit Sub
+        End If
+
+        If Not Decimal.TryParse(qtyUsed, decQtyUsed) Or decQtyUsed <= 0 Then
+            MsgBox("ERROR: Please enter a numeric Quantity > 0 (ex: 3)", MsgBoxStyle.OkOnly)
+            txtQtyUsedGrpPassbkTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.SelectAll()
+            txtQtyUsedGrpPassbkTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Focus()
+            Exit Sub
+        End If
+
+        If String.IsNullOrEmpty(loc) Then
+            MsgBox("ERROR: Please specify the location where feature was used", MsgBoxStyle.OkOnly)
+            txtLocGrpPassbkTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Focus()
+            txtLocGrpPassbkTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Text = ""
+            Exit Sub
+        End If
+
+        'Verify the purchase before committing
+        Dim choice As MsgBoxResult
+
+        choice = MsgBox("To post the following Used Feature Click OK, otherwise Cancel" & vbCrLf & vbCrLf _
+                        & "--> PassbookFeatureId=" & featId & vbCrLf _
+                        & "--> QtyUsed=" & decQtyUsed.ToString & vbCrLf _
+                        & "--> QtyRemain=" & decQtyRemain.ToString & vbCrLf _
+                        & "--> Location=" & loc & vbCrLf,
+                        MsgBoxStyle.OkCancel
+                        )
+
+        'If OK selected proceed with the submission
+        If choice = MsgBoxResult.Ok Then
+            'Create a new Used Feature
+            newUsedFeat = _theThemePark.usedFeature("NOTUSED??", tempPassbkFeat, DateTime.Now, decQtyUsed, loc)
+
+            _writeTransLog("<POST>: " & newUsedFeat.ToString())
+            _writeTransLog("<STATUS>: " & _theThemePark.ToString())
+
+            MsgBox("Passbook Feature update was successful!", MsgBoxStyle.OkOnly)
+
+            'Reset the fields and focus to allow for another feature to be added
+            cboFeatIdGrpPassbkTabUpdtFeatTbcPassbkFeatMainTbcMain.Focus()
+            cboFeatIdGrpPassbkTabUpdtFeatTbcPassbkFeatMainTbcMain.Text = ""
+            txtNewQtyTabUpdtFeatTbcPassbkFeatMainTbcMain.Text = ""
+        End If
+    End Sub '_btnSubmitTabUpdtFeatTbcPassbkFeatMainTbcMain_Click(...)
+
+    '_resetPassbkPostFeatInput() is used to reset all the feature input fields to allow the user 
+    'to start over with input.
+    Private Sub _resetPassbkPostFeatInput()
+        'Reset the fields and focus to allow for another feature to be added
+        cboPassbkFeatIdTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Text = ""
+        txtCustToStringTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Text = ""
+        txtVisToStringGrpPassbkTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Text = ""
+        txtFeatToStringGrpPassbkTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Text = ""
+        txtPrevUsedGrpPassbkTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Text = ""
+        txtRemQuantTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Text = ""
+        txtQtyUsedGrpPassbkTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Text = ""
+        txtLocGrpPassbkTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Text = ""
+        cboPassbkFeatIdTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Focus()
+    End Sub '_resetPassbkPostFeatInput()
+
+    '_btnResetTabPostFeatTbcPassbkFeatMainTbcMain_Click() is the event procedure that gets called 
+    'when the user clicks on the Reset button from the 'Passbook Features | Post' tab. It clears all input
+    'fields to allow the user to reenter the data from scratch.
+    Private Sub _btnResetTabPostFeatTbcPassbkFeatMainTbcMain_Click(sender As Object, e As EventArgs) Handles _
+         btnResetTabUpdtFeatTbcPassbkFeatMainTbcMain.Click
+
+        'Reset the fields and focus to allow for another passbook featurd addition
+        _resetPassbkPostFeatInput()
+    End Sub '_btnPostTabUpdtFeatTbcPassbkFeatMainTbcMain(...)
+
 
     '_btnClearTabTransLogTbcMainFrmMain_Click() is the event procedure that gets called when the user
     'clicks on the Clear button from the Tranaaction log tab.  It clears the log.
@@ -810,7 +970,7 @@ Public Class FrmMain
                 Me.AcceptButton = btnSubmitTabAddFeatTbcPassbkFeatMainTbcMain
 
                 'Set the focus to the first input field
-                lstPassbkIdGrpPassbkTabAddFeatTbcPassbkFeatMainTbcMain.Focus()
+                cboPassbkIdGrpPassbkTabAddFeatTbcPassbkFeatMainTbcMain.Focus()
 
             Case mTBC_MAIN_TAB_TRANSLOG
                 Console.WriteLine("Transaction Log Tab")
@@ -839,19 +999,19 @@ Public Class FrmMain
                 Console.WriteLine("Add Tab")
 
                 'Set the focus to the first input field
-                lstPassbkIdGrpPassbkTabAddFeatTbcPassbkFeatMainTbcMain.Focus()
+                cboPassbkIdGrpPassbkTabAddFeatTbcPassbkFeatMainTbcMain.Focus()
 
             Case mTBC_PASSBKFEAT_TAB_UPDT
                 Console.WriteLine("Update Tab")
 
                 'Set the focus to the first input field
-                lstFeatIdGrpPassbkTabUpdtFeatTbcPassbkFeatMainTbcMain.Focus()
+                cboFeatIdGrpPassbkTabUpdtFeatTbcPassbkFeatMainTbcMain.Focus()
 
             Case mTBC_PASSBKFEAT_TAB_POST
                 Console.WriteLine("Post Tab")
 
                 'Set the focus to the first input field
-                lstPassbkFeatIdTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Focus()
+                cboPassbkFeatIdTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Focus()
         End Select
     End Sub '_tbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain_SelectedIndexChanged(...)
 

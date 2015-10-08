@@ -303,6 +303,23 @@ Public Class ThemePark
                                 )
     End Function 'purchaseFeature(...)
 
+    'usedFeature() creates and returns a new Passbook
+    Public Function usedFeature(ByVal pId As String, _
+                                ByVal pPassbkFeatId As PassbookFeature, _
+                                ByVal pDateUsed As Date, _
+                                ByVal pQtyUsed As Decimal, _
+                                ByVal pLoc As String
+                                ) As UsedFeature
+
+        'Call the worker procedure to do the work
+        Return _usedFeature(pId, _
+                            pPassbkFeatId, _
+                            pDateUsed, _
+                            pQtyUsed, _
+                            pLoc
+                            )
+    End Function 'usedFeature(...)
+
 
     '********** Private Non-Shared Behavioral Methods
 
@@ -394,7 +411,7 @@ Public Class ThemePark
                                       ByVal pFeature As Feature, _
                                       ByVal pPassbk As Passbook, _
                                       ByVal pQtyPurch As Decimal, _
-                                      ByVal pQtyRemain As Decimal  _
+                                      ByVal pQtyRemain As Decimal _
                                       ) As PassbookFeature
 
         Dim newPassbkFeat As PassbookFeature = New PassbookFeature(pPassbkFeatId, _
@@ -409,6 +426,31 @@ Public Class ThemePark
 
         Return newPassbkFeat
     End Function '_purchaseFeature(...)
+
+    '_usedFeature() creates and returns a new Used Passbook Feature
+    'object. This is the work-horse function that does all the work for 
+    'postFeature(). This is accounting for when a customer 'uses' a
+    'feature previously purchased and added to a passbook owned by the
+    'customer.
+    Private Function _usedFeature(ByVal pId As String, _
+                                  ByVal pPassbkFeatId As PassbookFeature, _
+                                  ByVal pDateUsed As Date, _
+                                  ByVal pQtyUsed As Decimal, _
+                                  ByVal pLoc As String
+                                  ) As UsedFeature
+
+        Dim usedFeature As UsedFeature = New UsedFeature(pId, _
+                                                         pPassbkFeatId, _
+                                                         pQtyUsed, _
+                                                         pLoc, _
+                                                         pDateUsed
+                                                         )
+        'update the passbook cnt in the system
+        _numUsedFeats += 1
+
+        Return usedFeature
+    End Function '_usedFeature(...)
+
 
 #End Region 'Behavioral Methods
 

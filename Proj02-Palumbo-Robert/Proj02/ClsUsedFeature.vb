@@ -71,9 +71,9 @@ Public Class UsedFeature
     '               that are used to initialize attributes
     Public Sub New(ByVal pId As String, _
                    ByVal pPassbkFeat As PassbookFeature, _
-                   ByVal pDateUsed As Date, _
+                   ByVal pQtyUsed As Decimal, _
                    ByVal pLoc As String, _
-                   ByVal pQtyUsed As Decimal _
+                   ByVal pDateUsed As Date
                    )
 
         'invoke the default constructor to invoke the parent object constructor
