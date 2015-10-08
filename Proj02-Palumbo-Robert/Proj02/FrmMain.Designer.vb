@@ -741,7 +741,7 @@ Partial Class FrmMain
         '
         'btnResetTabUpdtFeatTbcPassbkFeatMainTbcMain
         '
-        Me.btnResetTabUpdtFeatTbcPassbkFeatMainTbcMain.Location = New System.Drawing.Point(443, 353)
+        Me.btnResetTabUpdtFeatTbcPassbkFeatMainTbcMain.Location = New System.Drawing.Point(443, 373)
         Me.btnResetTabUpdtFeatTbcPassbkFeatMainTbcMain.Name = "btnResetTabUpdtFeatTbcPassbkFeatMainTbcMain"
         Me.btnResetTabUpdtFeatTbcPassbkFeatMainTbcMain.Size = New System.Drawing.Size(75, 23)
         Me.btnResetTabUpdtFeatTbcPassbkFeatMainTbcMain.TabIndex = 3
@@ -751,7 +751,7 @@ Partial Class FrmMain
         '
         'btnSubmitTabUpdtFeatTbcPassbkFeatMainTbcMain
         '
-        Me.btnSubmitTabUpdtFeatTbcPassbkFeatMainTbcMain.Location = New System.Drawing.Point(348, 353)
+        Me.btnSubmitTabUpdtFeatTbcPassbkFeatMainTbcMain.Location = New System.Drawing.Point(348, 373)
         Me.btnSubmitTabUpdtFeatTbcPassbkFeatMainTbcMain.Name = "btnSubmitTabUpdtFeatTbcPassbkFeatMainTbcMain"
         Me.btnSubmitTabUpdtFeatTbcPassbkFeatMainTbcMain.Size = New System.Drawing.Size(75, 23)
         Me.btnSubmitTabUpdtFeatTbcPassbkFeatMainTbcMain.TabIndex = 2
@@ -1050,7 +1050,7 @@ Partial Class FrmMain
         '
         'btnResetTabPostFeatTbcPassbkFeatMainTbcMain
         '
-        Me.btnResetTabPostFeatTbcPassbkFeatMainTbcMain.Location = New System.Drawing.Point(443, 352)
+        Me.btnResetTabPostFeatTbcPassbkFeatMainTbcMain.Location = New System.Drawing.Point(443, 373)
         Me.btnResetTabPostFeatTbcPassbkFeatMainTbcMain.Name = "btnResetTabPostFeatTbcPassbkFeatMainTbcMain"
         Me.btnResetTabPostFeatTbcPassbkFeatMainTbcMain.Size = New System.Drawing.Size(75, 23)
         Me.btnResetTabPostFeatTbcPassbkFeatMainTbcMain.TabIndex = 3
@@ -1193,7 +1193,7 @@ Partial Class FrmMain
         '
         'btnSubmitTabPostFeatTbcPassbkFeatMainTbcMain
         '
-        Me.btnSubmitTabPostFeatTbcPassbkFeatMainTbcMain.Location = New System.Drawing.Point(348, 352)
+        Me.btnSubmitTabPostFeatTbcPassbkFeatMainTbcMain.Location = New System.Drawing.Point(348, 373)
         Me.btnSubmitTabPostFeatTbcPassbkFeatMainTbcMain.Name = "btnSubmitTabPostFeatTbcPassbkFeatMainTbcMain"
         Me.btnSubmitTabPostFeatTbcPassbkFeatMainTbcMain.Size = New System.Drawing.Size(75, 23)
         Me.btnSubmitTabPostFeatTbcPassbkFeatMainTbcMain.TabIndex = 2

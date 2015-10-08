@@ -301,17 +301,17 @@ Public Class FrmMain
 
         'Validate the id and name field to make sure they contain data
         If String.IsNullOrEmpty(custId) Then
-            MsgBox("Please enter a unqiue Customer ID (ex: 0001)", MsgBoxStyle.OkOnly)
+            MsgBox("ERROR: Please enter a unqiue Customer ID (ex: 0001)", MsgBoxStyle.OkOnly)
             txtCustIdGrpAddCustTabCustTbcMainFrmMain.SelectAll()
             txtCustIdGrpAddCustTabCustTbcMainFrmMain.Focus()
-            Return
+            Exit Sub
         End If
 
         If String.IsNullOrEmpty(custName) Then
-            MsgBox("Please enter a valid Customer Name (ex: Doe, John)", MsgBoxStyle.OkOnly)
+            MsgBox("ERROR: Please enter a valid Customer Name (ex: Doe, John)", MsgBoxStyle.OkOnly)
             txtCustNameGrpAddCustTabCustTbcMainFrmMain.SelectAll()
             txtCustNameGrpAddCustTabCustTbcMainFrmMain.Focus()
-            Return
+            Exit Sub
         End If
 
         'Verify the purchase before committing
@@ -339,7 +339,6 @@ Public Class FrmMain
             'Reset the input fields to allow for another possible customer entry
             _resetCustomerInput()
         End If
-
     End Sub '_btnSubmitGrpCustInfoTabCustTbcMainFrmMain_Click(...)
 
     '_resetCustomerInput() is used to reset all the customer input fields to allow the user 
@@ -380,60 +379,60 @@ Public Class FrmMain
 
         'Validate all the fields
         If String.IsNullOrEmpty(featId) Then
-            MsgBox("Please enter a unique Feature ID (ex: 0001)", MsgBoxStyle.OkOnly)
+            MsgBox("ERROR: Please enter a unique Feature ID (ex: 0001)", MsgBoxStyle.OkOnly)
             txtFeatIdAddFeatTabFeatTbcMainFrmMain.SelectAll()
             txtFeatIdAddFeatTabFeatTbcMainFrmMain.Focus()
-            Return
+            Exit Sub
         End If
 
         If String.IsNullOrEmpty(featName) Then
-            MsgBox("Please enter a valid Feature Name (ex: Park Pass)", MsgBoxStyle.OkOnly)
+            MsgBox("ERROR: Please enter a valid Feature Name (ex: Park Pass)", MsgBoxStyle.OkOnly)
             txtFeatNameGrpAddFeatTabFeatTbcMainFrmMain.SelectAll()
             txtFeatNameGrpAddFeatTabFeatTbcMainFrmMain.Focus()
-            Return
+            Exit Sub
         End If
 
         If String.IsNullOrEmpty(unitOfMeas) Then
-            MsgBox("Please enter a specific Unit of Measure (ex: Day)", MsgBoxStyle.OkOnly)
+            MsgBox("ERROR: Please enter a specific Unit of Measure (ex: Day)", MsgBoxStyle.OkOnly)
             txtUnifOfMeasGrpAddFeatTabFeatTbcMainFrmMain.SelectAll()
             txtUnifOfMeasGrpAddFeatTabFeatTbcMainFrmMain.Focus()
-            Return
+            Exit Sub
         End If
 
         'These must be converted to decimal values
         If Not IsNumeric(adultPrice) Then
-            MsgBox("Please enter a numeric Adult price (ex: 20.50)", MsgBoxStyle.OkOnly)
+            MsgBox("ERROR: Please enter a numeric Adult price (ex: 20.50)", MsgBoxStyle.OkOnly)
             txtPriceAdultGrpAddFeatTabFeatTbcMainFrmMain.Text = ""
             txtPriceAdultGrpAddFeatTabFeatTbcMainFrmMain.SelectAll()
             txtPriceAdultGrpAddFeatTabFeatTbcMainFrmMain.Focus()
-            Return
+            Exit Sub
         End If
 
         decAdultPrice = Decimal.Parse(adultPrice)
         If decAdultPrice <= 0 Then
-            MsgBox("Adult price must be greater than 0.0 (ex: 20.50)", MsgBoxStyle.OkOnly)
+            MsgBox("ERROR: Adult price must be greater than 0.0 (ex: 20.50)", MsgBoxStyle.OkOnly)
             txtPriceAdultGrpAddFeatTabFeatTbcMainFrmMain.Text = ""
             txtPriceAdultGrpAddFeatTabFeatTbcMainFrmMain.SelectAll()
             txtPriceAdultGrpAddFeatTabFeatTbcMainFrmMain.Focus()
-            Return
+            Exit Sub
         End If
 
         'These must be converted to decimal values
         If Not IsNumeric(childPrice) Then
-            MsgBox("Please enter a numeric Child price (ex: 20.50)", MsgBoxStyle.OkOnly)
+            MsgBox("ERROR: Please enter a numeric Child price (ex: 20.50)", MsgBoxStyle.OkOnly)
             txtPriceChildGrpAddFeatTabFeatTbcMainFrmMain.Text = ""
             txtPriceChildGrpAddFeatTabFeatTbcMainFrmMain.SelectAll()
             txtPriceChildGrpAddFeatTabFeatTbcMainFrmMain.Focus()
-            Return
+            Exit Sub
         End If
 
         decChildPrice = Decimal.Parse(childPrice)
         If decChildPrice <= 0 Then
-            MsgBox("Child price must be greater than 0.0 (ex: 20.50)", MsgBoxStyle.OkOnly)
+            MsgBox("ERROR: Child price must be greater than 0.0 (ex: 20.50)", MsgBoxStyle.OkOnly)
             txtPriceChildGrpAddFeatTabFeatTbcMainFrmMain.Text = "0"
             txtPriceChildGrpAddFeatTabFeatTbcMainFrmMain.SelectAll()
             txtPriceChildGrpAddFeatTabFeatTbcMainFrmMain.Focus()
-            Return
+            Exit Sub
         End If
 
         'Verify the purchase before committing
@@ -507,23 +506,23 @@ Public Class FrmMain
 
         'Validate all the fields
         If String.IsNullOrEmpty(passbkId) Then
-            MsgBox("Please enter a unique Passbook ID (ex: 0001)", MsgBoxStyle.OkOnly)
+            MsgBox("ERROR: Please enter a unique Passbook ID (ex: 0001)", MsgBoxStyle.OkOnly)
             txtPassbkIdGrpAddPassbkTabPassbkTbcMainFrmMain.SelectAll()
             txtPassbkIdGrpAddPassbkTabPassbkTbcMainFrmMain.Focus()
-            Return
+            Exit Sub
         End If
 
         If String.IsNullOrEmpty(visName) Then
-            MsgBox("Please enter a Visitor Name (ex: Doe, John)", MsgBoxStyle.OkOnly)
+            MsgBox("ERROR: Please enter a Visitor Name (ex: Doe, John)", MsgBoxStyle.OkOnly)
             txtVisNameGrpAddPassbkTabPassbkTbcMainFrmMain.SelectAll()
             txtVisNameGrpAddPassbkTabPassbkTbcMainFrmMain.Focus()
-            Return
+            Exit Sub
         End If
 
         If Not DateTime.TryParse(visDob, visDobValue) Then
-            MsgBox("Please select a valid date from the calendar", MsgBoxStyle.OkOnly)
+            MsgBox("ERROR: Please select a valid date from the calendar", MsgBoxStyle.OkOnly)
             txtVisDobGrpAddPassbkTabPassbkTbcMainFrmMain.Focus()
-            Return
+            Exit Sub
         End If
 
         'Determine if the visitor is a child (< 13 years old)
@@ -591,7 +590,7 @@ Public Class FrmMain
     End Sub '_btnResetGrpAddPassbkTabPassbkTbcMainFrmMain_Click
 
     '_btnSubmitTabAddFeatTbcPassbkFeatMainTbcMain_Click() is the event procedure that gets called when the user
-    'clicks on the Submit button from the Add Passbook Feature tab.  It validates and then submit the data
+    'clicks on the Submit button from the Add Passbook Feature tab.  It validates and then submits the data
     'to add a purchased feature to a customer passbook.
     Private Sub _btnSubmitTabAddFeatTbcPassbkFeatMainTbcMain_Click(sender As Object, e As EventArgs) Handles _
         btnSubmitTabAddFeatTbcPassbkFeatMainTbcMain.Click
@@ -612,17 +611,17 @@ Public Class FrmMain
 
         'Validate all the fields
         If String.IsNullOrEmpty(featId) Then
-            MsgBox("Please enter unique Passbook Feature Id (ex: 0001)", MsgBoxStyle.OkOnly)
+            MsgBox("ERROR: Please enter unique Passbook Feature Id (ex: 0001)", MsgBoxStyle.OkOnly)
             txtPassBkFeatIdTabAddFeatTbcPassbkFeatMainTbcMain.SelectAll()
             txtPassBkFeatIdTabAddFeatTbcPassbkFeatMainTbcMain.Focus()
-            Return
+            Exit Sub
         End If
 
         If Not Decimal.TryParse(qtyPurch, decQtyPurch) Then
-            MsgBox("Please enter a numeric Quantity > 0 to purchase (ex: 3)", MsgBoxStyle.OkOnly)
+            MsgBox("ERROR: Please enter a numeric Quantity > 0 to purchase (ex: 3)", MsgBoxStyle.OkOnly)
             txtQtyTabAddFeatTbcPassbkFeatMainTbcMain.SelectAll()
             txtQtyTabAddFeatTbcPassbkFeatMainTbcMain.Focus()
-            Return
+            Exit Sub
         End If
 
         'Calculate total price - based on age 
@@ -672,6 +671,88 @@ Public Class FrmMain
             txtQtyTabAddFeatTbcPassbkFeatMainTbcMain.Text = ""
         End If
     End Sub '_btnSubmitTabAddFeatTbcPassbkFeatMainTbcMain_Click(...)
+
+    '_btnSubmitTabUpdtFeatTbcPassbkFeatMainTbcMain_Click() is the event procedure that gets called when the user
+    'clicks on the Submit button from the Update Passbook Feature tab.  It validates and then submits the data
+    'to update a customer passbook feature.
+    Private Sub _btnSubmitTabUpdtFeatTbcPassbkFeatMainTbcMain_Click(sender As Object, e As EventArgs) Handles _
+    btnSubmitTabUpdtFeatTbcPassbkFeatMainTbcMain.Click
+        Dim newPassbkFeat As PassbookFeature = Nothing
+
+        'Temporary for Phase 2 requirements
+        Dim tempCust As Customer = New Customer("0001", "Doe, John")
+        Dim tempPassbk As Passbook = New Passbook("0001", tempCust, DateTime.Now, "Doe, James",
+                                                  #2/21/2005#, 10, True)
+        Dim tempFeat As Feature = New Feature("0001", "Park Pass", "Day", 12.5D, 7.5D)
+
+        'Used as shortcut names to access the data
+        Dim featId As String = txtPassBkFeatIdTabAddFeatTbcPassbkFeatMainTbcMain.Text
+        Dim qtyPurch As String = txtQtyTabAddFeatTbcPassbkFeatMainTbcMain.Text
+        Dim decQtyPurch As Decimal
+        Dim decQtyRemain As Decimal = 0D
+
+        'Validate all the fields
+        If String.IsNullOrEmpty(featId) Then
+            MsgBox("ERROR: Please enter unique Passbook Feature Id (ex: 0001)", MsgBoxStyle.OkOnly)
+            txtPassBkFeatIdTabAddFeatTbcPassbkFeatMainTbcMain.SelectAll()
+            txtPassBkFeatIdTabAddFeatTbcPassbkFeatMainTbcMain.Focus()
+            Exit Sub
+        End If
+
+        If Not Decimal.TryParse(qtyPurch, decQtyPurch) Then
+            MsgBox("ERROR: Please enter a numeric Quantity > 0 to purchase (ex: 3)", MsgBoxStyle.OkOnly)
+            txtQtyTabAddFeatTbcPassbkFeatMainTbcMain.SelectAll()
+            txtQtyTabAddFeatTbcPassbkFeatMainTbcMain.Focus()
+            Exit Sub
+        End If
+
+        'Calculate total price - based on age 
+        Dim totPurchPrice As Decimal
+        Dim unitPurchPrice As Decimal
+
+        If tempPassbk.visIsChild = True Then
+            unitPurchPrice = tempFeat.childPrice
+        Else
+            unitPurchPrice = tempFeat.adultPrice
+        End If
+
+        'Verify the purchase before committing
+        Dim choice As MsgBoxResult
+
+        totPurchPrice = unitPurchPrice * decQtyPurch
+
+        choice = MsgBox("To puchase the following Passbook Feature Click OK, otherwise Cancel" & vbCrLf & vbCrLf _
+                        & "--> PassbookFeatureId=" & featId & vbCrLf _
+                        & "--> Feature=" & tempFeat.featName & vbCrLf _
+                        & "--> UnitPrice=" & unitPurchPrice & vbCrLf _
+                        & "--> QtyPurchased=" & decQtyPurch & vbCrLf _
+                        & "--> TotalPurchasePrice=" & totPurchPrice & vbCrLf _
+                        & "--> QtyRemain=" & decQtyRemain & vbCrLf _
+                        & "--> Passbook=" & tempPassbk.passbkId & vbCrLf,
+                        MsgBoxStyle.OkCancel
+                        )
+
+        'If OK selected proceed with the submission
+        If choice = MsgBoxResult.Ok Then
+            'Create a new Passbook Feature
+            newPassbkFeat = _theThemePark.purchaseFeature(featId, _
+                                                          totPurchPrice, _
+                                                          tempFeat, _
+                                                          tempPassbk, _
+                                                          decQtyPurch, _
+                                                          decQtyRemain
+                                                          )
+
+            _writeTransLog("<PURCHASED>: " & newPassbkFeat.ToString())
+            _writeTransLog("<STATUS>: " & _theThemePark.ToString())
+
+            MsgBox("Passbook Feature purchase was successful!", MsgBoxStyle.OkOnly)
+
+            'Reset the fields and focus to allow for another feature to be added
+            txtPassBkFeatIdTabAddFeatTbcPassbkFeatMainTbcMain.Text = ""
+            txtQtyTabAddFeatTbcPassbkFeatMainTbcMain.Text = ""
+        End If
+    End Sub '_btnSubmitTabUpdtFeatTbcPassbkFeatMainTbcMain_Click(...)
 
     '_btnClearTabTransLogTbcMainFrmMain_Click() is the event procedure that gets called when the user
     'clicks on the Clear button from the Tranaaction log tab.  It clears the log.
