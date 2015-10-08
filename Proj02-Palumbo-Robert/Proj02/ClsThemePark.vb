@@ -93,10 +93,6 @@ Public Class ThemePark
         _numPassbks = 0
         _numPassbkFeats = 0
         _numUsedFeats = 0
-
-        'debug msg
-        _writeDebugLog(Me._toString())
-
     End Sub 'New()
 
     '********** Copy constructor(s)
@@ -248,7 +244,6 @@ Public Class ThemePark
 
         'Call the worker procedure to do the work
         Return _createCustomer(pCustId, pCustName)
-
     End Function 'createCustomer(...)
 
     'createFeature() creates and returns a new Feature
@@ -266,7 +261,6 @@ Public Class ThemePark
                               pAdultPrice, _
                               pChildPrice
                               )
-
     End Function 'createFeature(...)
 
     'createPassbook() creates and returns a new Passbook
@@ -288,7 +282,6 @@ Public Class ThemePark
                                pVisAge, _
                                pVisIsChild
                                )
-
     End Function 'createPassbook(...)
 
     'purchaseFeature() creates and returns a new Passbook
@@ -308,7 +301,6 @@ Public Class ThemePark
                                 pQtyPurch, _
                                 pQtyRemain
                                 )
-
     End Function 'purchaseFeature(...)
 
 
@@ -417,17 +409,6 @@ Public Class ThemePark
 
         Return newPassbkFeat
     End Function '_purchaseFeature(...)
-
-    '_writeDebugLog() is a debug only function for my use during 
-    'development and is used to write debug info to a log for 
-    'review
-    Private Sub _writeDebugLog(ByVal pLogMsg As String)
-        Dim frm As FrmMain = New FrmMain
-
-        'output the debug msg
-        frm.writeTransLog(pLogMsg)
-    End Sub '_writeDebugLog(...)
-
 
 #End Region 'Behavioral Methods
 

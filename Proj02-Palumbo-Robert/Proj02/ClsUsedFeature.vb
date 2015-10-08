@@ -85,7 +85,6 @@ Public Class UsedFeature
         _dateUsed = pDateUsed
         _loc = pLoc
         _qtyUsed = pQtyUsed
-
     End Sub 'New()
 
 

@@ -90,7 +90,6 @@ Public Class PassbookFeature
         _passbk = pPassbk
         _qtyPurch = pQtyPurch
         _qtyRemain = pQtyRemain
-
     End Sub 'New()
 
 
@@ -247,7 +246,7 @@ Public Class PassbookFeature
             & " Id=" & _id _
             & ", Feature=" & _feature.ToString _
             & ", Passbk=" & _passbk.ToString _
-            & ", PurcasePrice=" & _purchPrice _
+            & ", PurchasePrice=" & _purchPrice _
             & ", QtyPurchased=" & _qtyPurch _
             & ", QtyRemain=" & _qtyRemain
 

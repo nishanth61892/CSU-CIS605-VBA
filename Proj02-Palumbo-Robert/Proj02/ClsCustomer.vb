@@ -71,7 +71,6 @@ Public Class Customer
         'Initialize the attributes
         _custId = pCustId
         _custName = pCustName
-
     End Sub 'New(ByVal pCustId As String, _ByVal pCustName As String)
 
 

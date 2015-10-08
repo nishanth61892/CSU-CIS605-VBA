@@ -75,7 +75,6 @@ Public Class Feature
         _unitOfMeas = pUnitOfMeas
         _adultPrice = pAdultPrice
         _childPrice = pChildPrice
-
     End Sub 'New()
 
     '********** Copy constructor(s)
