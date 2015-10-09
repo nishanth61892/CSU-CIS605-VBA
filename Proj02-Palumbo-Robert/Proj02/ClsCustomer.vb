@@ -137,17 +137,21 @@ Public Class Customer
 
     '********** Public Non-Shared Behavioral Methods
 
+    '******************************************************************
     'ToString() overrides the parent object function to return a 
     'string representation of this object.
+    '******************************************************************
     Public Overrides Function ToString() As String
         Return _toString()
     End Function
 
     '********** Private Non-Shared Behavioral Methods
 
+    '******************************************************************
     '_toString() creates and returns a String version of the data
     'stored in the object.  This is the work-horse function that
     'does all the work for ToString().
+    '******************************************************************
     Private Function _toString() As String
         Dim _tmpStr As String
 

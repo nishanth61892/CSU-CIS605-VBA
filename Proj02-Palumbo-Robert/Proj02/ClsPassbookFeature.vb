@@ -228,8 +228,10 @@ Public Class PassbookFeature
 
     '********** Public Non-Shared Behavioral Methods
 
+    '******************************************************************
     'ToString() overrides the parent object function to return a 
     'string representation of this object.
+    '******************************************************************
     Public Overrides Function ToString() As String
         Return _toString()
     End Function

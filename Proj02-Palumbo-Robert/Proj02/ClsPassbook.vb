@@ -38,12 +38,26 @@ Public Class Passbook
     '********** Module-level constants
 
     '********** Module-level variables
+
+    'Unique passbook identifier
     Private mPassbkId As String
+
+    'Owner of the passbook
     Private mOwner As Customer
+
+    'Date the passbook was purchased/created
     Private mDatePurch As Date
+
+    'Associated visitor name
     Private mVisName As String
+
+    'Associated visitor birthdate
     Private mVisDob As Date
+
+    'Age of visitor
     Private mVisAge As Integer
+
+    'True is visitor is a child (< 13 y/o) false otherwise
     Private mVisIsChild As Boolean
 
 #End Region 'Attributes
@@ -83,7 +97,6 @@ Public Class Passbook
         _visIsChild = pVisIsChild
 
     End Sub
-
 
     '********** Copy constructor(s)
     '             - one parameter, an object of the same class
@@ -238,24 +251,28 @@ Public Class Passbook
 
     '********** Public Non-Shared Behavioral Methods
 
+    '******************************************************************
     'ToString() overrides the parent object function to return a 
     'string representation of this object.
+    '******************************************************************
     Public Overrides Function ToString() As String
         Return _toString()
     End Function
 
     '********** Private Non-Shared Behavioral Methods
 
+    '******************************************************************
     '_toString() creates and returns a String version of the data
     'stored in the object.  This is the work-horse function that
     'does all the work for ToString().
+    '******************************************************************
     Private Function _toString() As String
         Dim _tmpStr As String = ""
 
         _tmpStr = "[Passbook] -> " _
             & " Id=" & _passbkId _
             & ", Owner=" & _owner.ToString _
-            & ", PurcaseDate=" & _datePurch _
+            & ", PurchaseDate=" & _datePurch _
             & ", VisitorName=" & _visName _
             & ", VisitorDOB=" & _visDob _
             & ", VisitorAge=" & _visAge _

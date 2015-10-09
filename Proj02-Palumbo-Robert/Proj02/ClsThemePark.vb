@@ -71,12 +71,6 @@ Public Class ThemePark
 
     '********** Default constructor
     '             - no parameters
-    Public Sub New()
-
-        'invoke the parent object constructor
-        MyBase.New()
-
-    End Sub 'New()
 
     '********** Special constructor(s)
     '             - typically constructors have parameters 
@@ -84,7 +78,7 @@ Public Class ThemePark
     Public Sub New(ByVal pParkName As String)
 
         'invoke the default constructor to invoke the parent object constructor
-        Me.New()
+        MyBase.New()
 
         'Initialize the attributes
         _themeParkName = pParkName
@@ -231,13 +225,17 @@ Public Class ThemePark
 
     '********** Public Non-Shared Behavioral Methods
 
+    '******************************************************************
     'ToString() overrides the parent object function to return a 
     'string representation of this object.
+    '******************************************************************
     Public Overrides Function ToString() As String
         Return _toString()
     End Function 'ToString()
 
+    '******************************************************************
     'createCustomer() creates and returns a new Customer object
+    '******************************************************************
     Public Function createCustomer(ByVal pCustId As String, _
                                    ByVal pCustName As String
                                    ) As Customer
@@ -246,7 +244,9 @@ Public Class ThemePark
         Return _createCustomer(pCustId, pCustName)
     End Function 'createCustomer(...)
 
+    '******************************************************************
     'createFeature() creates and returns a new Feature
+    '******************************************************************
     Public Function createFeature(ByVal pFeatId As String, _
                                   ByVal pFeatName As String, _
                                   ByVal pUnitOfMeas As String, _
@@ -263,7 +263,9 @@ Public Class ThemePark
                               )
     End Function 'createFeature(...)
 
+    '******************************************************************
     'createPassbook() creates and returns a new Passbook
+    '******************************************************************
     Public Function createPassbook(ByVal pPassbkId As String, _
                                    ByVal pOwner As Customer, _
                                    ByVal pDatePurch As Date, _
@@ -284,7 +286,9 @@ Public Class ThemePark
                                )
     End Function 'createPassbook(...)
 
+    '******************************************************************
     'purchaseFeature() creates and returns a new Passbook
+    '******************************************************************
     Public Function purchaseFeature(ByVal pPassbkFeatId As String, _
                                     ByVal pPurchPrice As Decimal, _
                                     ByVal pFeature As Feature, _
@@ -303,7 +307,9 @@ Public Class ThemePark
                                 )
     End Function 'purchaseFeature(...)
 
+    '******************************************************************
     'usedFeature() creates and returns a new Passbook
+    '******************************************************************
     Public Function usedFeature(ByVal pId As String, _
                                 ByVal pPassbkFeatId As PassbookFeature, _
                                 ByVal pDateUsed As Date, _
@@ -323,9 +329,11 @@ Public Class ThemePark
 
     '********** Private Non-Shared Behavioral Methods
 
+    '******************************************************************
     '_toString() creates and returns a String version of the data
     'stored in the object.  This is the work-horse function that
     'does all the work for ToString().
+    '******************************************************************
     Private Function _toString() As String
         Dim _tmpStr As String = ""
 
@@ -340,9 +348,11 @@ Public Class ThemePark
         Return _tmpStr
     End Function '_toString(...)
 
+    '******************************************************************
     '_createCustomer() creates and returns a new Customer object.
     'This is the work-horse function that does all the work for 
     '_createCustomer().
+    '******************************************************************
     Private Function _createCustomer(ByVal pCustId As String, _
                                      ByVal pCustName As String
                                      ) As Customer
@@ -354,9 +364,11 @@ Public Class ThemePark
         Return cust
     End Function '_createCustomer(...)
 
+    '******************************************************************
     '_createFeature() creates and returns a new Feature object.
     'This is the work-horse function that does all the work for 
     'createFeature().
+    '******************************************************************
     Private Function _createFeature(ByVal pFeatId As String, _
                                     ByVal pFeatName As String, _
                                     ByVal pUnitOfMeas As String, _
@@ -377,9 +389,11 @@ Public Class ThemePark
         Return newFeat
     End Function '_createFeature(...)
 
+    '******************************************************************
     '_createPassbook() creates and returns a new Passbook object.
     'This is the work-horse function that does all the work for 
     'createPassbook().
+    '******************************************************************
     Private Function _createPassbook(ByVal pPassbkId As String, _
                                      ByVal pOwner As Customer, _
                                      ByVal pDatePurch As Date, _
@@ -403,9 +417,11 @@ Public Class ThemePark
         Return newPassbk
     End Function '_createPassbook(...)
 
+    '******************************************************************
     '_purchaseFeature() creates and returns a new Passbook Feature
     'object. This is the work-horse function that does all the work for 
     'purchaseFeature().
+    '******************************************************************
     Private Function _purchaseFeature(ByVal pPassbkFeatId As String, _
                                       ByVal pPurchPrice As Decimal, _
                                       ByVal pFeature As Feature, _
@@ -427,11 +443,13 @@ Public Class ThemePark
         Return newPassbkFeat
     End Function '_purchaseFeature(...)
 
+    '******************************************************************
     '_usedFeature() creates and returns a new Used Passbook Feature
     'object. This is the work-horse function that does all the work for 
     'postFeature(). This is accounting for when a customer 'uses' a
     'feature previously purchased and added to a passbook owned by the
     'customer.
+    '******************************************************************
     Private Function _usedFeature(ByVal pId As String, _
                                   ByVal pPassbkFeatId As PassbookFeature, _
                                   ByVal pDateUsed As Date, _

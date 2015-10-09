@@ -127,9 +127,9 @@ Partial Class FrmMain
         Me.txtPassbkIdGrpAddPassbkTabPassbkTbcMainFrmMain = New System.Windows.Forms.TextBox()
         Me.Label8 = New System.Windows.Forms.Label()
         Me.grpCustInfoGrpAddPassbkTabPassbkTbcMainFrmMain = New System.Windows.Forms.GroupBox()
+        Me.cboCustIdGrpCustInfoGrpAddPassbkTabPassbkTbcMainFrmMain = New System.Windows.Forms.ComboBox()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.txtToStringGrpCustInfoGrpAddPassbkTabPassbkTbcMainFrmMain = New System.Windows.Forms.TextBox()
-        Me.lstCustIdGrpCustInfoGrpAddPassbkTabPassbkTbcMainFrmMain = New System.Windows.Forms.ListBox()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.btnResetGrpAddPassbkTabPassbkTbcMainFrmMain = New System.Windows.Forms.Button()
         Me.btnSubmitGrpAddPassbkTabPassbkTbcMainFrmMain = New System.Windows.Forms.Button()
@@ -1286,9 +1286,9 @@ Partial Class FrmMain
         'grpCustInfoGrpAddPassbkTabPassbkTbcMainFrmMain
         '
         Me.grpCustInfoGrpAddPassbkTabPassbkTbcMainFrmMain.BackColor = System.Drawing.SystemColors.Control
+        Me.grpCustInfoGrpAddPassbkTabPassbkTbcMainFrmMain.Controls.Add(Me.cboCustIdGrpCustInfoGrpAddPassbkTabPassbkTbcMainFrmMain)
         Me.grpCustInfoGrpAddPassbkTabPassbkTbcMainFrmMain.Controls.Add(Me.Label3)
         Me.grpCustInfoGrpAddPassbkTabPassbkTbcMainFrmMain.Controls.Add(Me.txtToStringGrpCustInfoGrpAddPassbkTabPassbkTbcMainFrmMain)
-        Me.grpCustInfoGrpAddPassbkTabPassbkTbcMainFrmMain.Controls.Add(Me.lstCustIdGrpCustInfoGrpAddPassbkTabPassbkTbcMainFrmMain)
         Me.grpCustInfoGrpAddPassbkTabPassbkTbcMainFrmMain.Controls.Add(Me.Label6)
         Me.grpCustInfoGrpAddPassbkTabPassbkTbcMainFrmMain.Location = New System.Drawing.Point(48, 21)
         Me.grpCustInfoGrpAddPassbkTabPassbkTbcMainFrmMain.Name = "grpCustInfoGrpAddPassbkTabPassbkTbcMainFrmMain"
@@ -1296,6 +1296,15 @@ Partial Class FrmMain
         Me.grpCustInfoGrpAddPassbkTabPassbkTbcMainFrmMain.TabIndex = 0
         Me.grpCustInfoGrpAddPassbkTabPassbkTbcMainFrmMain.TabStop = False
         Me.grpCustInfoGrpAddPassbkTabPassbkTbcMainFrmMain.Text = "Customer Info"
+        '
+        'cboCustIdGrpCustInfoGrpAddPassbkTabPassbkTbcMainFrmMain
+        '
+        Me.cboCustIdGrpCustInfoGrpAddPassbkTabPassbkTbcMainFrmMain.FormattingEnabled = True
+        Me.cboCustIdGrpCustInfoGrpAddPassbkTabPassbkTbcMainFrmMain.Items.AddRange(New Object() {"", "TestCust-001", "TestCust-002", "TestCust-003"})
+        Me.cboCustIdGrpCustInfoGrpAddPassbkTabPassbkTbcMainFrmMain.Location = New System.Drawing.Point(117, 43)
+        Me.cboCustIdGrpCustInfoGrpAddPassbkTabPassbkTbcMainFrmMain.Name = "cboCustIdGrpCustInfoGrpAddPassbkTabPassbkTbcMainFrmMain"
+        Me.cboCustIdGrpCustInfoGrpAddPassbkTabPassbkTbcMainFrmMain.Size = New System.Drawing.Size(144, 24)
+        Me.cboCustIdGrpCustInfoGrpAddPassbkTabPassbkTbcMainFrmMain.TabIndex = 1
         '
         'Label3
         '
@@ -1317,18 +1326,6 @@ Partial Class FrmMain
         Me.txtToStringGrpCustInfoGrpAddPassbkTabPassbkTbcMainFrmMain.Size = New System.Drawing.Size(346, 90)
         Me.txtToStringGrpCustInfoGrpAddPassbkTabPassbkTbcMainFrmMain.TabIndex = 3
         Me.txtToStringGrpCustInfoGrpAddPassbkTabPassbkTbcMainFrmMain.TabStop = False
-        '
-        'lstCustIdGrpCustInfoGrpAddPassbkTabPassbkTbcMainFrmMain
-        '
-        Me.lstCustIdGrpCustInfoGrpAddPassbkTabPassbkTbcMainFrmMain.FormattingEnabled = True
-        Me.lstCustIdGrpCustInfoGrpAddPassbkTabPassbkTbcMainFrmMain.ItemHeight = 16
-        Me.lstCustIdGrpCustInfoGrpAddPassbkTabPassbkTbcMainFrmMain.Items.AddRange(New Object() {"Test Customer1", "Test Customer2", "Test Customer3", ""})
-        Me.lstCustIdGrpCustInfoGrpAddPassbkTabPassbkTbcMainFrmMain.Location = New System.Drawing.Point(119, 43)
-        Me.lstCustIdGrpCustInfoGrpAddPassbkTabPassbkTbcMainFrmMain.Name = "lstCustIdGrpCustInfoGrpAddPassbkTabPassbkTbcMainFrmMain"
-        Me.lstCustIdGrpCustInfoGrpAddPassbkTabPassbkTbcMainFrmMain.ScrollAlwaysVisible = True
-        Me.lstCustIdGrpCustInfoGrpAddPassbkTabPassbkTbcMainFrmMain.Size = New System.Drawing.Size(156, 20)
-        Me.lstCustIdGrpCustInfoGrpAddPassbkTabPassbkTbcMainFrmMain.TabIndex = 1
-        Me.tipTPMS.SetToolTip(Me.lstCustIdGrpCustInfoGrpAddPassbkTabPassbkTbcMainFrmMain, "Select Customer ID")
         '
         'Label6
         '
@@ -2325,7 +2322,6 @@ Partial Class FrmMain
     Friend WithEvents grpCustInfoGrpAddPassbkTabPassbkTbcMainFrmMain As System.Windows.Forms.GroupBox
     Friend WithEvents Label3 As System.Windows.Forms.Label
     Friend WithEvents txtToStringGrpCustInfoGrpAddPassbkTabPassbkTbcMainFrmMain As System.Windows.Forms.TextBox
-    Friend WithEvents lstCustIdGrpCustInfoGrpAddPassbkTabPassbkTbcMainFrmMain As System.Windows.Forms.ListBox
     Friend WithEvents Label6 As System.Windows.Forms.Label
     Friend WithEvents btnResetGrpAddPassbkTabPassbkTbcMainFrmMain As System.Windows.Forms.Button
     Friend WithEvents btnSubmitGrpAddPassbkTabPassbkTbcMainFrmMain As System.Windows.Forms.Button
@@ -2424,4 +2420,5 @@ Partial Class FrmMain
     Friend WithEvents cboFeatIdGrpFeatTabAddFeatTbcPassbkFeatMainTbcMain As System.Windows.Forms.ComboBox
     Friend WithEvents cboFeatIdGrpPassbkTabUpdtFeatTbcPassbkFeatMainTbcMain As System.Windows.Forms.ComboBox
     Friend WithEvents cboPassbkFeatIdTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain As System.Windows.Forms.ComboBox
+    Friend WithEvents cboCustIdGrpCustInfoGrpAddPassbkTabPassbkTbcMainFrmMain As System.Windows.Forms.ComboBox
 End Class
