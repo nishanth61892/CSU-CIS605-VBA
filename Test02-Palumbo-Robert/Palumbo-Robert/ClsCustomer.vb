@@ -33,10 +33,10 @@ Public Class Customer
     '********** Module-level constants
 
     'Unique Customer Id
-    Private mCustId As String
+    Private mId As String
 
     'Customer Name
-    Private mCustName As String
+    Private mName As String
 
     '********** Module-level variables
 
@@ -60,8 +60,8 @@ Public Class Customer
         MyBase.New()
 
         'Initialize the attributes
-        _custId = pCustId
-        _custName = pCustName
+        _id = pCustId
+        _name = pCustName
 
     End Sub 'New(...)
 
@@ -77,39 +77,39 @@ Public Class Customer
 
     '********** Public Get/Set Methods
     '             - call private get/set methods to implement
-    Public ReadOnly Property custId() As String
+    Public ReadOnly Property id() As String
         Get
-            Return _custId
+            Return _id
         End Get
     End Property
 
     Public Property custName() As String
         Get
-            Return _custName
+            Return _name
         End Get
         Set(pValue As String)
-            _custName = pValue
+            _name = pValue
         End Set
     End Property
 
     '********** Private Get/Set Methods
     '             - access attributes, begin name with underscore (_)
 
-    Private Property _custId() As String
+    Private Property _id() As String
         Get
-            Return mCustId
+            Return mId
         End Get
         Set(pValue As String)
-            mCustId = pValue
+            mId = pValue
         End Set
     End Property
 
-    Private Property _custName() As String
+    Private Property _name() As String
         Get
-            Return mCustName
+            Return mName
         End Get
         Set(pValue As String)
-            mCustId = pValue
+            mName = pValue
         End Set
     End Property
 
@@ -143,8 +143,8 @@ Public Class Customer
         Dim _tmpStr As String = ""
 
         _tmpStr = "[Customer] -> " _
-            & " Id=" & _custId _
-            & ", Name=" & _custName
+            & " Id=" & _id _
+            & ", Name=" & _name
 
         Return _tmpStr
     End Function

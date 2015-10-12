@@ -33,19 +33,19 @@ Public Class Account
     '********** Module-level constants
 
     'Unique Account Id
-    Private mAcctId As String
+    Private mId As String
 
     'Accout Name
-    Private mAcctName As String
+    Private mName As String
 
     'Account type
-    Private mAcctType As String
+    Private mType As String
 
     'Account Balance
-    Private mAcctBal As Decimal = 0D
+    Private mBal As Decimal = 0D
 
     'Account customer
-    Private mAcctCust As Customer
+    Private mCust As Customer
 
     '********** Module-level variables
 
@@ -71,10 +71,10 @@ Public Class Account
         MyBase.New()
 
         'Initialize the attributes
-        _acctId = pAcctId
-        _acctName = pAcctName
-        _acctType = pAcctType
-        _acctCust = pAcctCust
+        _id = pAcctId
+        _name = pAcctName
+        _type = pAcctType
+        _cust = pAcctCust
 
     End Sub 'New(...)
 
@@ -90,45 +90,45 @@ Public Class Account
 
     '********** Public Get/Set Methods
     '             - call private get/set methods to implement
-    Public ReadOnly Property acctId() As String
+    Public ReadOnly Property id() As String
         Get
-            Return _acctId
+            Return _id
         End Get
     End Property
 
-    Public Property acctName() As String
+    Public Property name() As String
         Get
-            Return _acctName
+            Return _name
         End Get
         Set(pValue As String)
-            _acctName = pValue
+            _name = pValue
         End Set
     End Property
 
-    Public Property acctType() As String
+    Public Property type() As String
         Get
-            Return _acctType
+            Return _type
         End Get
         Set(pValue As String)
-            _acctType = pValue
+            _type = pValue
         End Set
     End Property
 
-    Public Property acctBal() As Decimal
+    Public Property bal() As Decimal
         Get
-            Return _acctBal
+            Return _bal
         End Get
         Set(pValue As Decimal)
-            _acctBal = pValue
+            _bal = pValue
         End Set
     End Property
 
-    Public Property acctCust() As Customer
+    Public Property cust() As Customer
         Get
-            Return _acctCust
+            Return _cust
         End Get
         Set(pValue As Customer)
-            _acctCust = pValue
+            _cust = pValue
         End Set
     End Property
 
@@ -136,48 +136,48 @@ Public Class Account
     '********** Private Get/Set Methods
     '             - access attributes, begin name with underscore (_)
 
-    Private Property _acctId() As String
+    Private Property _id() As String
         Get
-            Return mAcctId
+            Return mId
         End Get
         Set(pValue As String)
-            mAcctId = pValue
+            mId = pValue
         End Set
     End Property
 
-    Private Property _acctName() As String
+    Private Property _name() As String
         Get
-            Return mAcctName
+            Return mName
         End Get
         Set(pValue As String)
-            mAcctName = pValue
+            mName = pValue
         End Set
     End Property
 
-    Private Property _acctType() As String
+    Private Property _type() As String
         Get
-            Return mAcctType
+            Return mType
         End Get
         Set(pValue As String)
-            mAcctType = pValue
+            mType = pValue
         End Set
     End Property
 
-    Private Property _acctBal() As Decimal
+    Private Property _bal() As Decimal
         Get
-            Return mAcctBal
+            Return mBal
         End Get
         Set(pValue As Decimal)
-            mAcctBal = pValue
+            mBal = pValue
         End Set
     End Property
 
-    Private Property _acctCust() As Customer
+    Private Property _cust() As Customer
         Get
-            Return mAcctCust
+            Return mCust
         End Get
         Set(pValue As Customer)
-            mAcctCust = pValue
+            mCust = pValue
         End Set
     End Property
 
@@ -211,11 +211,11 @@ Public Class Account
         Dim _tmpStr As String = ""
 
         _tmpStr = "[Account] -> " _
-            & " Id=" & _acctId _
-            & ", Name=" & _acctName _
-            & ", Type=" & _acctType _
-            & ", Balance=" & _acctBal _
-            & ", Customer=" & _acctCust.ToString
+            & " Id=" & _id _
+            & ", Type=" & _type _
+            & ", Name=" & _name _
+            & ", Balance=" & _bal _
+            & ", Customer=" & _cust.ToString
 
         Return _tmpStr
     End Function

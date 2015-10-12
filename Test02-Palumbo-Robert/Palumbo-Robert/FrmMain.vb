@@ -132,6 +132,62 @@ Public Class FrmMain
 
     End Sub '_initializeUserInterface()
 
+    '_processTestData() is used to exercise basic functionality of the
+    'program sending output to the transaction log.
+    Private Sub _processTestData()
+
+        _writeTransLog("[********* Processing Test Data - Started **********]")
+        _writeTransLog(Nothing)
+        _writeTransLog(Nothing)
+
+        'Create 1 Bank
+        Dim theBank As Bank = New Bank("B01", "CIS605 Bank Of Commerce", 0, 0, 0)
+        _writeTransLog("<CREATED BANK> => " & theBank.ToString)
+        _writeTransLog(Nothing)
+
+        'Create 3 Customers
+        Dim cust1 As Customer = theBank.createCustomer("C01", "Sarah")
+        _writeTransLog("<CREATED CUSTOMER> => " & cust1.ToString)
+        _writeTransLog("<UPDATED BANK STATUS> => " & theBank.ToString)
+        _writeTransLog(Nothing)
+
+        Dim cust2 As Customer = theBank.createCustomer("C02", "Bill")
+        _writeTransLog("<CREATED CUSTOMER> => " & cust2.ToString)
+        _writeTransLog("<UPDATED BANK STATUS> => " & theBank.ToString)
+        _writeTransLog(Nothing)
+
+        Dim cust3 As Customer = theBank.createCustomer("C03", "Jolene")
+        _writeTransLog("<CREATED CUSTOMER> => " & cust3.ToString)
+        _writeTransLog("<UPDATED BANK STATUS> => " & theBank.ToString)
+        _writeTransLog(Nothing)
+
+        'Create 4 Accounts
+        Dim acct1 As Account = theBank.createAccount("A01", "Savings", "Sarah's Savings", cust1)
+        _writeTransLog("<CREATED ACCOUNT> => " & acct1.ToString)
+        _writeTransLog("<UPDATED BANK STATUS> => " & theBank.ToString)
+        _writeTransLog(Nothing)
+
+        Dim acct2 As Account = theBank.createAccount("A02", "Savings", "House Down Payment", cust2)
+        _writeTransLog("<CREATED ACCOUNT> => " & acct2.ToString)
+        _writeTransLog("<UPDATED BANK STATUS> => " & theBank.ToString)
+        _writeTransLog(Nothing)
+
+        Dim acct3 As Account = theBank.createAccount("A03", "Checking", "Jolene's Checking", cust3)
+        _writeTransLog("<CREATED ACCOUNT> => " & acct3.ToString)
+        _writeTransLog("<UPDATED BANK STATUS> => " & theBank.ToString)
+        _writeTransLog(Nothing)
+
+        Dim acct4 As Account = theBank.createAccount("A04", "Loan", "Car Loan", cust3)
+        _writeTransLog("<CREATED ACCOUNT> => " & acct4.ToString)
+        _writeTransLog("<UPDATED BANK STATUS> => " & theBank.ToString)
+        _writeTransLog(Nothing)
+
+        _writeTransLog(Nothing)
+        _writeTransLog(Nothing)
+        _writeTransLog("[********* Processing Test Data - Completed **********]")
+
+    End Sub '_processTestData()
+
 
 #End Region 'Behavioral Methods
 
@@ -166,7 +222,7 @@ Public Class FrmMain
         'Set the form title per the test requirements
         Me.Text = "Test02-Palumbo-Robert"
 
-         'Initialize the program business logic
+        'Initialize the program business logic
         _initializeBusinessLogic()
 
         'Initialize the user interface
@@ -195,10 +251,8 @@ Public Class FrmMain
     Private Sub _btnPrcTestDataFrmMain_Click(sender As Object, e As EventArgs) Handles _
          btnPrcTestDataFrmMain.Click
 
-        _writeTransLog("[********* Processing Test Data - Started **********]")
-
-
-        _writeTransLog("[********* Processing Test Data - Completed **********]")
+        'call the workhorse procedure
+        _processTestData()
 
     End Sub '_btnPrcTestDataFrmMain_Click(...)
 

@@ -37,7 +37,7 @@ Partial Class FrmMain
         Me.txtTransLogFrmMain.Name = "txtTransLogFrmMain"
         Me.txtTransLogFrmMain.ReadOnly = True
         Me.txtTransLogFrmMain.ScrollBars = System.Windows.Forms.ScrollBars.Both
-        Me.txtTransLogFrmMain.Size = New System.Drawing.Size(979, 441)
+        Me.txtTransLogFrmMain.Size = New System.Drawing.Size(1155, 441)
         Me.txtTransLogFrmMain.TabIndex = 0
         '
         'btnPrcTestDataFrmMain
@@ -78,7 +78,7 @@ Partial Class FrmMain
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.Silver
-        Me.ClientSize = New System.Drawing.Size(1013, 587)
+        Me.ClientSize = New System.Drawing.Size(1178, 587)
         Me.Controls.Add(Me.btnExitFrmMain)
         Me.Controls.Add(Me.lblTransLogFrmMain)
         Me.Controls.Add(Me.btnPrcTestDataFrmMain)
