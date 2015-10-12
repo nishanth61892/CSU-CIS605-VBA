@@ -56,15 +56,7 @@ Public Class Account
     'Constructors
     '******************************************************************
 
-    'No Constructors are currently defined.
     'These are all public.
-
-    '********** Default constructor
-    '             - no parameters
-    Public Sub New()
-
-
-    End Sub 'New()
 
     '********** Special constructor(s)
     '             - typically constructors have parameters 
@@ -79,6 +71,10 @@ Public Class Account
         MyBase.New()
 
         'Initialize the attributes
+        _acctId = pAcctId
+        _acctName = pAcctName
+        _acctType = pAcctType
+        _acctCust = pAcctCust
 
     End Sub 'New(...)
 
@@ -91,8 +87,6 @@ Public Class Account
     '******************************************************************
     'Get/Set Methods
     '******************************************************************
-
-    'No Get/Set Methods are currently defined.
 
     '********** Public Get/Set Methods
     '             - call private get/set methods to implement
@@ -111,7 +105,7 @@ Public Class Account
         End Set
     End Property
 
-    Private Property acctType() As String
+    Public Property acctType() As String
         Get
             Return _acctType
         End Get
@@ -120,7 +114,7 @@ Public Class Account
         End Set
     End Property
 
-    Private Property acctBal() As Decimal
+    Public Property acctBal() As Decimal
         Get
             Return _acctBal
         End Get
@@ -129,7 +123,7 @@ Public Class Account
         End Set
     End Property
 
-    Private Property acctCust() As Customer
+    Public Property acctCust() As Customer
         Get
             Return _acctCust
         End Get
@@ -215,6 +209,13 @@ Public Class Account
     'does all the work for ToString().
     Private Function _toString() As String
         Dim _tmpStr As String = ""
+
+        _tmpStr = "[Account] -> " _
+            & " Id=" & _acctId _
+            & ", Name=" & _acctName _
+            & ", Type=" & _acctType _
+            & ", Balance=" & _acctBal _
+            & ", Customer=" & _acctCust.ToString
 
         Return _tmpStr
     End Function
