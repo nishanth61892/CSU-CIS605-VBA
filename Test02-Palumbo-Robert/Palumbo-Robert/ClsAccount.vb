@@ -5,7 +5,8 @@
 'File:          ClsAccount.vb
 'Author:        Robert Palumbo
 'Description:   This is the class definiton for Account which is  
-'               used within the Test02 Visual Basic program. 
+'               used within the "Test02-Palumbo-Robert" Visual 
+'               Basic program. 
 '
 'Date:          10/12/2015
 '                   - Initial Creation
@@ -188,8 +189,6 @@ Public Class Account
     'Behavioral Methods
     '******************************************************************
 
-    'No Behavioral Methods are currently defined.
-
     '********** Public Shared Behavioral Methods
 
     '********** Private Shared Behavioral Methods
@@ -227,7 +226,6 @@ Public Class Account
     'Event Procedures
     '******************************************************************
 
-    'No Event Procedures are currently defined.
     'These are all private.
 
     '********** User-Interface Event Procedures

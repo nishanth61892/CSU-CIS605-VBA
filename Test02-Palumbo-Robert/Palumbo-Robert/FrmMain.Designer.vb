@@ -39,11 +39,12 @@ Partial Class FrmMain
         Me.txtTransLogFrmMain.ScrollBars = System.Windows.Forms.ScrollBars.Both
         Me.txtTransLogFrmMain.Size = New System.Drawing.Size(1155, 441)
         Me.txtTransLogFrmMain.TabIndex = 0
+        Me.txtTransLogFrmMain.WordWrap = False
         '
         'btnPrcTestDataFrmMain
         '
         Me.btnPrcTestDataFrmMain.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnPrcTestDataFrmMain.Location = New System.Drawing.Point(322, 535)
+        Me.btnPrcTestDataFrmMain.Location = New System.Drawing.Point(399, 535)
         Me.btnPrcTestDataFrmMain.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.btnPrcTestDataFrmMain.Name = "btnPrcTestDataFrmMain"
         Me.btnPrcTestDataFrmMain.Size = New System.Drawing.Size(160, 28)
@@ -65,7 +66,7 @@ Partial Class FrmMain
         'btnExitFrmMain
         '
         Me.btnExitFrmMain.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnExitFrmMain.Location = New System.Drawing.Point(543, 535)
+        Me.btnExitFrmMain.Location = New System.Drawing.Point(620, 535)
         Me.btnExitFrmMain.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.btnExitFrmMain.Name = "btnExitFrmMain"
         Me.btnExitFrmMain.Size = New System.Drawing.Size(160, 28)

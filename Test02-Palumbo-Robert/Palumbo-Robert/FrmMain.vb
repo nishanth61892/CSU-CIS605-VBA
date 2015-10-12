@@ -183,7 +183,6 @@ Public Class FrmMain
         _writeTransLog(Nothing)
 
         _writeTransLog(Nothing)
-        _writeTransLog(Nothing)
         _writeTransLog("[********* Processing Test Data - Completed **********]")
 
     End Sub '_processTestData()

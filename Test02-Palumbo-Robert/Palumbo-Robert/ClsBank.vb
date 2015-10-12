@@ -5,7 +5,8 @@
 'File:          ClsBank.vb
 'Author:        Robert Palumbo
 'Description:   This is the class definiton for Bank which is  
-'               used within the Test02 Visual Basic program. 
+'               used within the "Test02-Palumbo-Robert" Visual
+'               Basic program. 
 '
 'Date:          10/12/2015
 '                   - Initial Creation
@@ -29,8 +30,6 @@ Public Class Bank
     '******************************************************************
     'Attributes + Module-level Constants+Variables
     '******************************************************************
-
-    'No Attributes are currently defined.
 
     '********** Module-level constants
 
@@ -131,7 +130,6 @@ Public Class Bank
     End Property
 
 
-
     '********** Private Get/Set Methods
     '             - access attributes, begin name with underscore (_)
 
@@ -188,8 +186,6 @@ Public Class Bank
     '******************************************************************
     'Behavioral Methods
     '******************************************************************
-
-    'No Behavioral Methods are currently defined.
 
     '********** Public Shared Behavioral Methods
 
@@ -275,7 +271,6 @@ Public Class Bank
     'Event Procedures
     '******************************************************************
 
-    'No Event Procedures are currently defined.
     'These are all private.
 
     '********** User-Interface Event Procedures
