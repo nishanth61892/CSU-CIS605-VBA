@@ -98,8 +98,6 @@ Public Class FrmMain
     'Behavioral Methods
     '******************************************************************
 
-    'No Behavioral Methods are currently defined.
-
     '********** Public Shared Behavioral Methods
 
     '********** Private Shared Behavioral Methods
@@ -144,6 +142,9 @@ Public Class FrmMain
         'Allocate a portfolio
         _portfolio = New Portfolio()
 
+        'Dont allow buying of stock until there is actually stock available
+        grpPtfItemFrmMain.Enabled = False
+
     End Sub '_initializeBusinessLogic()
 
     '_initializeUserInterface() is used to instantiate the user interface
@@ -171,6 +172,76 @@ Public Class FrmMain
         txtTransLogFrmMain.Text &= pLogMsg & vbCrLf
     End Sub '_writeTransLog(...)
 
+    '******************************************************************
+    '_processStockOffer() procedure that process a new stock that has
+    'been offered.
+    '******************************************************************
+    Private Sub _processStockOffer(ByVal stock As Stock)
+        'Update the stock market info for display
+        lstStkSymGrpStkMktFrmMain.Items.Add(stock.stkSym)
+        lstStkNameGrpStkMktFrmMain.Items.Add(stock.stkName)
+        lstStkPriceGrpStkMktFrmMain.Items.Add(stock.stkPrice.ToString("N2"))
+        txtCntGrpStkMktFrmMain.Text = _stockMarket.stockCnt.ToString("N0")
+
+        'Update the corresponding row indices so they highlight the new stock
+        'Item idices are zero based
+        lstStkNameGrpStkMktFrmMain.SelectedIndex = _
+            lstStkNameGrpStkMktFrmMain.Items.Count - 1
+        lstStkPriceGrpStkMktFrmMain.SelectedIndex =
+            lstStkPriceGrpStkMktFrmMain.Items.Count - 1
+        lstStkSymGrpStkMktFrmMain.SelectedIndex = _
+            lstStkSymGrpStkMktFrmMain.Items.Count - 1
+
+        'Clear out input field to get allow for another stock offering if needed
+        txtStkSymGrpStockFrmMain.Clear()
+        txtStkNameGrpStockFrmMain.Clear()
+        txtStkPriceGrpStockFrmMain.Clear()
+        txtStkSymGrpStockFrmMain.Focus()
+
+        'Now its ok to buy stock
+        grpPtfItemFrmMain.Enabled = True
+
+        'Log this transaction
+        _writeTransLog("[OFFER-STOCK] " & stock.ToString)
+    End Sub '_processStockOffer(...)
+
+    '******************************************************************
+    '_processStockBuy() procedure that process a new stock that has
+    'been bought.
+    '******************************************************************
+    Private Sub _processStockBuy(ByVal stock As Stock,
+                                 ByVal portItem As PortfolioItem)
+
+        lstStkNameGrpPortfolioFrmMain.Items.Add(stock.stkName)
+        lstStkSharesGrpPortfolioFrmMain.Items.Add(portItem.shares.ToString("N0"))
+        lstStkPriceGrpPortfolioFrmMain.Items.Add(stock.stkPrice.ToString("N2"))
+        lstStkValueGrpPortfolioFrmMain.Items.Add(portItem.value.ToString("N2"))
+        lstStkSymGrpPortfolioFrmMain.Items.Add(stock.stkSym)
+        txtCntGrpPortfolioFrmMain.Text = _portfolio.numStocks.ToString("N0")
+        txtValueGrpPortfolioFrmMain.Text = _portfolio.value.ToString("N2")
+
+        'Clear the input fields
+        txtSharesGrpPtfItemFrmMain.Clear()
+
+        'Log the transaction
+        _writeTransLog("[BUY-STOCK] " & portItem.ToString)
+    End Sub '_processStockBuy(...)
+
+    '******************************************************************
+    '_dispStkMktState() procedure that simply displays the
+    'current state of the stock market in the transaction log.
+    '******************************************************************
+    Private Sub _dispStkMktState()
+        _writeTransLog("[DISPLAY] " & _stockMarket.ToString)
+    End Sub 'dispStkMktState()
+
+    '******************************************************************
+    '_dispPortfolioState() procedure that simply displays the
+    'current state of the portfolio in the transaction log.
+    '******************************************************************
+    Private Sub _dispPortfolioState()
+        _writeTransLog("[DISPLAY] " & _portfolio.ToString)
+    End Sub 'dispPortfolioState()
 
 #End Region 'Behavioral Methods
 
@@ -179,7 +250,6 @@ Public Class FrmMain
     'Event Procedures
     '******************************************************************
 
-    'No Event Procedures are currently defined.
     'These are all private.
 
     '********** User-Interface Event Procedures
@@ -203,16 +273,15 @@ Public Class FrmMain
         btnOfferGrpStockFrmMain.Click
 
         'local variables
-        Dim stkTicker As String
+        Dim stkSym As String
         Dim stkName As String
         Dim stkPrice As Decimal
-        Dim theStock As Stock
 
         'Validate the input
-        stkTicker = txtStkSymGrpStockFrmMain.Text
+        stkSym = txtStkSymGrpStockFrmMain.Text
         stkName = txtStkNameGrpStockFrmMain.Text
 
-        If String.IsNullOrEmpty(stkTicker) Then
+        If String.IsNullOrEmpty(stkSym) Then
             MessageBox.Show("Please enter a stock ticker symbol (ex: STX)")
 
             txtStkSymGrpStockFrmMain.Focus()
@@ -237,35 +306,13 @@ Public Class FrmMain
         End Try
 
         'Create the new stock object
-        theStock = New Stock(stkTicker, stkName, stkPrice)
+        Dim stock As Stock = New Stock(stkSym, stkName, stkPrice)
 
         'Offer the stock on the stock market
-        _stockMarket.offerStock(theStock)
+        _stockMarket.offerStock(stock)
 
-        'Update the stock market info for display
-        lstStkSymGrpStkMktFrmMain.Items.Add(stkTicker)
-        lstStkNameGrpStkMktFrmMain.Items.Add(stkName)
-        lstStkPriceGrpStkMktFrmMain.Items.Add(stkPrice.ToString("N2"))
-        txtCntGrpStkMktFrmMain.Text = _stockMarket.stockCnt.ToString("N0")
-
-        'Update the corresponding row indices so they highlight the new stock
-        'Item idices are zero based
-        lstStkSymGrpStkMktFrmMain.SelectedIndex = _
-            lstStkSymGrpStkMktFrmMain.Items.Count - 1
-        lstStkNameGrpStkMktFrmMain.SelectedIndex = _
-            lstStkNameGrpStkMktFrmMain.Items.Count - 1
-        lstStkPriceGrpStkMktFrmMain.SelectedIndex =
-            lstStkPriceGrpStkMktFrmMain.Items.Count - 1
-
-        'Clear out input field to get allow for another stock offering if needed
-        txtStkSymGrpStockFrmMain.Clear()
-        txtStkNameGrpStockFrmMain.Clear()
-        txtStkPriceGrpStockFrmMain.Clear()
-        txtStkSymGrpStockFrmMain.Focus()
-
-        'Log this transaction
-        _writeTransLog("[OFFER-STOCK]-> " & theStock.ToString)
-
+        'Process the new stock offer
+        _processStockOffer(stock)
     End Sub '_btnOfferGrpStockFrmMain_Click(sender As Object, e As EventArgs)
 
     '_btnBuyGrpPtfItemFrmMain_Click() is the event procedure that gets called 
@@ -303,20 +350,8 @@ Public Class FrmMain
         'Update the portfolio as well
         _portfolio.buy(shares, stock)
 
-        lstStkSymGrpPortfolioFrmMain.Items.Add(stkSym)
-        lstStkNameGrpPortfolioFrmMain.Items.Add(stkName)
-        lstStkSharesGrpPortfolioFrmMain.Items.Add(shares.ToString("N0"))
-        lstStkPriceGrpPortfolioFrmMain.Items.Add(stkPrice.ToString("N2"))
-        lstStkValueGrpPortfolioFrmMain.Items.Add(portItem.value.ToString("N2"))
-        txtCntGrpPortfolioFrmMain.Text = _portfolio.numStocks.ToString("N0")
-        txtValueGrpPortfolioFrmMain.Text = _portfolio.value.ToString("N2")
-
-        'Clear the input fields
-        txtSharesGrpPtfItemFrmMain.Clear()
-
-        'Log the transaction
-        _writeTransLog("[BUY-STOCK]-> " & portItem.ToString)
-
+        'Process the stock buy
+        _processStockBuy(stock, portItem)
     End Sub '_btnBuyGrpPtfItemFrmMain_Click(...)
 
     '_btnDispPortGrpPortfolioFrmMain_Click() is the event procedure that gets called 
@@ -325,7 +360,7 @@ Public Class FrmMain
     Private Sub _btnDispPortGrpPortfolioFrmMain_Click(sender As Object, e As EventArgs) Handles _
         btnDispPortGrpPortfolioFrmMain.Click
 
-        _writeTransLog(_portfolio.ToString)
+        _dispPortfolioState()
     End Sub '_btnDispPortGrpPortfolioFrmMain_Click(...)
 
     '_btnDispStkMktGrpStkMktFrmMain_Click() is the event procedure that gets called 
@@ -334,8 +369,126 @@ Public Class FrmMain
     Private Sub _btnDispStkMktGrpStkMktFrmMain_Click(sender As Object, e As EventArgs) Handles _
         btnDispStkMktGrpStkMktFrmMain.Click
 
-        _writeTransLog(_stockMarket.ToString)
+        _dispStkMktState()
     End Sub '_btnDispStkMktGrpStkMktFrmMain_Click(...)
+
+    '_lstStkSymGrpPortfolioFrmMain_SelectedIndexChanged() is the event procedure that gets
+    'called when the user selects a list box entry.  It is used to move the indices of the 
+    'other associated list boxes in parallel with this one.
+    Private Sub _lstStkSymGrpPortfolioFrmMain_SelectedIndexChanged(sender As Object, e As EventArgs) Handles _
+        lstStkSymGrpPortfolioFrmMain.SelectedIndexChanged
+
+        Dim index As Integer = lstStkSymGrpPortfolioFrmMain.SelectedIndex
+
+        lstStkNameGrpPortfolioFrmMain.SelectedIndex = index
+        lstStkPriceGrpPortfolioFrmMain.SelectedIndex = index
+        lstStkSharesGrpPortfolioFrmMain.SelectedIndex = index
+        lstStkValueGrpPortfolioFrmMain.SelectedIndex = index
+    End Sub '_lstStkSymGrpPortfolioFrmMain_SelectedIndexChanged
+
+    '******************************************************************
+    '_lstTkrSymGrpStkMktFrmMain_SelectedIndexChanged() is the event procedure the is 
+    'called when the index changes for this list.  Here we need to update the 
+    'indices of the associated stock name and price.  Likewise we place the current
+    'value into the 'buy' group fields so the user has the option to buy shares
+    'if desired.
+    '******************************************************************
+    Private Sub _lstStkSymGrpStkMktFrmMain_SelectedIndexChanged(sender As Object, e As EventArgs) Handles _
+        lstStkSymGrpStkMktFrmMain.SelectedIndexChanged
+
+        Dim index As Integer = lstStkSymGrpStkMktFrmMain.SelectedIndex
+
+        lstStkNameGrpStkMktFrmMain.SelectedIndex = index
+        lstStkPriceGrpStkMktFrmMain.SelectedIndex = index
+
+        txtStkSymGrpPtfItemFrmMain.Text = lstStkSymGrpStkMktFrmMain.SelectedItem.ToString
+        txtStkNameGrpPtfItemFrmMain.Text = lstStkNameGrpStkMktFrmMain.SelectedItem.ToString
+        txtStkPriceGrpPtfItemFrmMain.Text = lstStkPriceGrpStkMktFrmMain.SelectedItem.ToString
+    End Sub
+    '    End Sub 'lstTkrSymGrpStkMktFrmMain_SelectedIndexChanged(...)
+
+    '_btnRunTestData_Click() is the event procedure that gets called when the user clicks 
+    'on the 'Run Test-Data' button or by using the Alt-R hotkey sequence.  It populates
+    'the system with sample test data to verify system integrity.
+    Private Sub _btnRunTestData_Click(sender As Object, e As EventArgs) Handles _
+        btnRunTestData.Click
+
+        Dim stk1 = New Stock("ABC", "ABC Inc.", 10.5D)
+        Dim stk2 = New Stock("DEF", "DEF Inc.", 75.33D)
+        Dim stk3 = New Stock("GHI", "GHI Company", 117.26D)
+        Dim stk4 = New Stock("JKL", "JKL Investments", 1.5D)
+
+        'Offer up some stocks
+        _stockMarket._offerStock(stk1)
+        _processStockOffer(stk1)
+        _stockMarket._offerStock(stk2)
+        _processStockOffer(stk2)
+        _stockMarket._offerStock(stk3)
+        _processStockOffer(stk3)
+        _stockMarket._offerStock(stk4)
+        _processStockOffer(stk4)
+
+        'display the stock market and portfolio status
+        _dispStkMktState()
+        _dispPortfolioState()
+
+        'Buy some stocks
+        'Create a portfolio item
+        Dim portItem = New PortfolioItem(stk1)
+
+        'Now buy the shares
+        portItem.buy(5)
+        'Update the portfolio as well
+        _portfolio.buy(5, stk1)
+        'Process the buy order
+        _processStockBuy(stk1, portItem)
+
+        'display the stock market and portfolio status
+        _dispStkMktState()
+        _dispPortfolioState()
+
+        'Create a portfolio item
+        portItem = New PortfolioItem(stk4)
+
+        'Now buy the shares
+        portItem.buy(10)
+        'Update the portfolio as well
+        _portfolio.buy(10, stk4)
+        'Process the buy order
+        _processStockBuy(stk4, portItem)
+
+        'display the stock market and portfolio status
+        _dispStkMktState()
+        _dispPortfolioState()
+
+        'Create a portfolio item
+        portItem = New PortfolioItem(stk2)
+
+        'Now buy the shares
+        portItem.buy(200)
+        'Update the portfolio as well
+        _portfolio.buy(200, stk2)
+        'Process the buy order
+        _processStockBuy(stk2, portItem)
+
+        'display the stock market and portfolio status
+        _dispStkMktState()
+        _dispPortfolioState()
+
+        'Create a portfolio item
+        portItem = New PortfolioItem(stk3)
+
+        'Now buy the shares
+        portItem.buy(1000)
+        'Update the portfolio as well
+        _portfolio.buy(1000, stk3)
+        'Process the buy order
+        _processStockBuy(stk3, portItem)
+
+        'display the stock market and portfolio status
+        _dispStkMktState()
+        _dispPortfolioState()
+    End Sub '_btnRunTestData_Click(...)
 
     '********** User-Interface Event Procedures
     '             - Initiated automatically by system
@@ -397,28 +550,6 @@ Public Class FrmMain
         txtTransLogFrmMain.ScrollToCaret()
 
     End Sub '_txtTransLogFrmMain_TextChanged
-
-    '******************************************************************
-    '_lstTkrSymGrpStkMktFrmMain_SelectedIndexChanged() is the event procedure the is 
-    'called when the index changes for this list.  Here we need to update the 
-    'indices of the associated stock name and price.  Likewise we place the current
-    'value into the 'buy' group fields so the user has the option to buy shares
-    'if desired.
-    '******************************************************************
-    Private Sub _lstTkrSymGrpStkMktFrmMain_SelectedIndexChanged(sender As Object, e As EventArgs) Handles _
-     lstStkSymGrpStkMktFrmMain.SelectedIndexChanged
-
-        Dim index As Integer = lstStkSymGrpStkMktFrmMain.SelectedIndex
-
-        lstStkNameGrpStkMktFrmMain.SelectedIndex = index
-        lstStkPriceGrpStkMktFrmMain.SelectedIndex = index
-
-        txtStkSymGrpPtfItemFrmMain.Text = lstStkSymGrpStkMktFrmMain.SelectedItem.ToString
-        txtStkNameGrpPtfItemFrmMain.Text = lstStkNameGrpStkMktFrmMain.SelectedItem.ToString
-        txtStkPriceGrpPtfItemFrmMain.Text = lstStkPriceGrpStkMktFrmMain.SelectedItem.ToString
-
-
-    End Sub 'lstTkrSymGrpStkMktFrmMain_SelectedIndexChanged(...)
 
     '********** Business Logic Event Procedures
     '             - Initiated as a result of business logic

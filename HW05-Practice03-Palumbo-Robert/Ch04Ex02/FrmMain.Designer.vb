@@ -57,6 +57,7 @@ Partial Class FrmMain
         Me.txtTransLogFrmMain = New System.Windows.Forms.TextBox()
         Me.btnExitFrmMain = New System.Windows.Forms.Button()
         Me.txtCntGrpPortfolioFrmMain = New System.Windows.Forms.TextBox()
+        Me.btnRunTestData = New System.Windows.Forms.Button()
         Me.grpStkMktFrmMain = New System.Windows.Forms.GroupBox()
         Me.btnDispStkMktGrpStkMktFrmMain = New System.Windows.Forms.Button()
         Me.Label12 = New System.Windows.Forms.Label()
@@ -103,7 +104,7 @@ Partial Class FrmMain
         Me.grpStockFrmMain.Location = New System.Drawing.Point(39, 79)
         Me.grpStockFrmMain.Name = "grpStockFrmMain"
         Me.grpStockFrmMain.Size = New System.Drawing.Size(281, 176)
-        Me.grpStockFrmMain.TabIndex = 3
+        Me.grpStockFrmMain.TabIndex = 1
         Me.grpStockFrmMain.TabStop = False
         Me.grpStockFrmMain.Text = "Stock"
         '
@@ -135,6 +136,7 @@ Partial Class FrmMain
         '
         'txtStkSymGrpStockFrmMain
         '
+        Me.txtStkSymGrpStockFrmMain.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.txtStkSymGrpStockFrmMain.Location = New System.Drawing.Point(126, 30)
         Me.txtStkSymGrpStockFrmMain.Name = "txtStkSymGrpStockFrmMain"
         Me.txtStkSymGrpStockFrmMain.Size = New System.Drawing.Size(77, 20)
@@ -183,7 +185,7 @@ Partial Class FrmMain
         Me.grpPtfItemFrmMain.Location = New System.Drawing.Point(39, 265)
         Me.grpPtfItemFrmMain.Name = "grpPtfItemFrmMain"
         Me.grpPtfItemFrmMain.Size = New System.Drawing.Size(281, 186)
-        Me.grpPtfItemFrmMain.TabIndex = 5
+        Me.grpPtfItemFrmMain.TabIndex = 2
         Me.grpPtfItemFrmMain.TabStop = False
         Me.grpPtfItemFrmMain.Text = "Portfolio Item"
         '
@@ -193,6 +195,7 @@ Partial Class FrmMain
         Me.txtSharesGrpPtfItemFrmMain.Name = "txtSharesGrpPtfItemFrmMain"
         Me.txtSharesGrpPtfItemFrmMain.Size = New System.Drawing.Size(77, 20)
         Me.txtSharesGrpPtfItemFrmMain.TabIndex = 7
+        Me.txtSharesGrpPtfItemFrmMain.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         Me.ToolTip1.SetToolTip(Me.txtSharesGrpPtfItemFrmMain, "Enter number of shares to buy")
         '
         'Label8
@@ -219,8 +222,10 @@ Partial Class FrmMain
         Me.txtStkPriceGrpPtfItemFrmMain.Location = New System.Drawing.Point(126, 76)
         Me.txtStkPriceGrpPtfItemFrmMain.Name = "txtStkPriceGrpPtfItemFrmMain"
         Me.txtStkPriceGrpPtfItemFrmMain.ReadOnly = True
+        Me.txtStkPriceGrpPtfItemFrmMain.RightToLeft = System.Windows.Forms.RightToLeft.Yes
         Me.txtStkPriceGrpPtfItemFrmMain.Size = New System.Drawing.Size(77, 20)
         Me.txtStkPriceGrpPtfItemFrmMain.TabIndex = 5
+        Me.txtStkPriceGrpPtfItemFrmMain.TabStop = False
         Me.ToolTip1.SetToolTip(Me.txtStkPriceGrpPtfItemFrmMain, "Price per share")
         '
         'txtStkNameGrpPtfItemFrmMain
@@ -230,6 +235,7 @@ Partial Class FrmMain
         Me.txtStkNameGrpPtfItemFrmMain.ReadOnly = True
         Me.txtStkNameGrpPtfItemFrmMain.Size = New System.Drawing.Size(112, 20)
         Me.txtStkNameGrpPtfItemFrmMain.TabIndex = 3
+        Me.txtStkNameGrpPtfItemFrmMain.TabStop = False
         Me.ToolTip1.SetToolTip(Me.txtStkNameGrpPtfItemFrmMain, "Stock name")
         '
         'txtStkSymGrpPtfItemFrmMain
@@ -239,6 +245,7 @@ Partial Class FrmMain
         Me.txtStkSymGrpPtfItemFrmMain.ReadOnly = True
         Me.txtStkSymGrpPtfItemFrmMain.Size = New System.Drawing.Size(77, 20)
         Me.txtStkSymGrpPtfItemFrmMain.TabIndex = 1
+        Me.txtStkSymGrpPtfItemFrmMain.TabStop = False
         Me.ToolTip1.SetToolTip(Me.txtStkSymGrpPtfItemFrmMain, "Enter the stock market ticker symbol")
         '
         'Label5
@@ -273,28 +280,37 @@ Partial Class FrmMain
         Me.txtCntGrpStkMktFrmMain.Location = New System.Drawing.Point(66, 142)
         Me.txtCntGrpStkMktFrmMain.Name = "txtCntGrpStkMktFrmMain"
         Me.txtCntGrpStkMktFrmMain.ReadOnly = True
+        Me.txtCntGrpStkMktFrmMain.RightToLeft = System.Windows.Forms.RightToLeft.Yes
         Me.txtCntGrpStkMktFrmMain.Size = New System.Drawing.Size(75, 20)
         Me.txtCntGrpStkMktFrmMain.TabIndex = 7
+        Me.txtCntGrpStkMktFrmMain.TabStop = False
+        Me.txtCntGrpStkMktFrmMain.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         Me.ToolTip1.SetToolTip(Me.txtCntGrpStkMktFrmMain, "Number of stocks contained in stock market")
         '
         'lstStkPriceGrpStkMktFrmMain
         '
+        Me.lstStkPriceGrpStkMktFrmMain.BackColor = System.Drawing.SystemColors.Control
         Me.lstStkPriceGrpStkMktFrmMain.Enabled = False
+        Me.lstStkPriceGrpStkMktFrmMain.FormatString = "C2"
         Me.lstStkPriceGrpStkMktFrmMain.FormattingEnabled = True
         Me.lstStkPriceGrpStkMktFrmMain.Location = New System.Drawing.Point(335, 35)
         Me.lstStkPriceGrpStkMktFrmMain.Name = "lstStkPriceGrpStkMktFrmMain"
+        Me.lstStkPriceGrpStkMktFrmMain.RightToLeft = System.Windows.Forms.RightToLeft.Yes
         Me.lstStkPriceGrpStkMktFrmMain.Size = New System.Drawing.Size(76, 95)
         Me.lstStkPriceGrpStkMktFrmMain.TabIndex = 5
+        Me.lstStkPriceGrpStkMktFrmMain.TabStop = False
         Me.ToolTip1.SetToolTip(Me.lstStkPriceGrpStkMktFrmMain, "Price per share ")
         '
         'lstStkNameGrpStkMktFrmMain
         '
+        Me.lstStkNameGrpStkMktFrmMain.BackColor = System.Drawing.SystemColors.Control
         Me.lstStkNameGrpStkMktFrmMain.Enabled = False
         Me.lstStkNameGrpStkMktFrmMain.FormattingEnabled = True
         Me.lstStkNameGrpStkMktFrmMain.Location = New System.Drawing.Point(148, 35)
         Me.lstStkNameGrpStkMktFrmMain.Name = "lstStkNameGrpStkMktFrmMain"
         Me.lstStkNameGrpStkMktFrmMain.Size = New System.Drawing.Size(181, 95)
         Me.lstStkNameGrpStkMktFrmMain.TabIndex = 3
+        Me.lstStkNameGrpStkMktFrmMain.TabStop = False
         Me.ToolTip1.SetToolTip(Me.lstStkNameGrpStkMktFrmMain, "Stock name")
         '
         'lstStkSymGrpStkMktFrmMain
@@ -311,29 +327,35 @@ Partial Class FrmMain
         Me.btnDispPortGrpPortfolioFrmMain.Location = New System.Drawing.Point(236, 143)
         Me.btnDispPortGrpPortfolioFrmMain.Name = "btnDispPortGrpPortfolioFrmMain"
         Me.btnDispPortGrpPortfolioFrmMain.Size = New System.Drawing.Size(128, 23)
-        Me.btnDispPortGrpPortfolioFrmMain.TabIndex = 10
+        Me.btnDispPortGrpPortfolioFrmMain.TabIndex = 12
         Me.btnDispPortGrpPortfolioFrmMain.Text = "Display &Portfolio"
         Me.ToolTip1.SetToolTip(Me.btnDispPortGrpPortfolioFrmMain, "Click to display current portfolio")
         Me.btnDispPortGrpPortfolioFrmMain.UseVisualStyleBackColor = True
         '
         'lstStkSharesGrpPortfolioFrmMain
         '
+        Me.lstStkSharesGrpPortfolioFrmMain.BackColor = System.Drawing.SystemColors.Control
         Me.lstStkSharesGrpPortfolioFrmMain.Enabled = False
+        Me.lstStkSharesGrpPortfolioFrmMain.FormatString = "N0"
         Me.lstStkSharesGrpPortfolioFrmMain.FormattingEnabled = True
         Me.lstStkSharesGrpPortfolioFrmMain.Location = New System.Drawing.Point(335, 40)
         Me.lstStkSharesGrpPortfolioFrmMain.Name = "lstStkSharesGrpPortfolioFrmMain"
+        Me.lstStkSharesGrpPortfolioFrmMain.RightToLeft = System.Windows.Forms.RightToLeft.Yes
         Me.lstStkSharesGrpPortfolioFrmMain.Size = New System.Drawing.Size(76, 95)
         Me.lstStkSharesGrpPortfolioFrmMain.TabIndex = 5
+        Me.lstStkSharesGrpPortfolioFrmMain.TabStop = False
         Me.ToolTip1.SetToolTip(Me.lstStkSharesGrpPortfolioFrmMain, "Number of shares in portfolio")
         '
         'lstStkNameGrpPortfolioFrmMain
         '
+        Me.lstStkNameGrpPortfolioFrmMain.BackColor = System.Drawing.SystemColors.Control
         Me.lstStkNameGrpPortfolioFrmMain.Enabled = False
         Me.lstStkNameGrpPortfolioFrmMain.FormattingEnabled = True
         Me.lstStkNameGrpPortfolioFrmMain.Location = New System.Drawing.Point(148, 40)
         Me.lstStkNameGrpPortfolioFrmMain.Name = "lstStkNameGrpPortfolioFrmMain"
         Me.lstStkNameGrpPortfolioFrmMain.Size = New System.Drawing.Size(181, 95)
         Me.lstStkNameGrpPortfolioFrmMain.TabIndex = 3
+        Me.lstStkNameGrpPortfolioFrmMain.TabStop = False
         Me.ToolTip1.SetToolTip(Me.lstStkNameGrpPortfolioFrmMain, "Stock name")
         '
         'lstStkSymGrpPortfolioFrmMain
@@ -347,22 +369,30 @@ Partial Class FrmMain
         '
         'lstStkPriceGrpPortfolioFrmMain
         '
+        Me.lstStkPriceGrpPortfolioFrmMain.BackColor = System.Drawing.SystemColors.Control
         Me.lstStkPriceGrpPortfolioFrmMain.Enabled = False
+        Me.lstStkPriceGrpPortfolioFrmMain.FormatString = "C2"
         Me.lstStkPriceGrpPortfolioFrmMain.FormattingEnabled = True
         Me.lstStkPriceGrpPortfolioFrmMain.Location = New System.Drawing.Point(417, 40)
         Me.lstStkPriceGrpPortfolioFrmMain.Name = "lstStkPriceGrpPortfolioFrmMain"
+        Me.lstStkPriceGrpPortfolioFrmMain.RightToLeft = System.Windows.Forms.RightToLeft.Yes
         Me.lstStkPriceGrpPortfolioFrmMain.Size = New System.Drawing.Size(76, 95)
         Me.lstStkPriceGrpPortfolioFrmMain.TabIndex = 7
+        Me.lstStkPriceGrpPortfolioFrmMain.TabStop = False
         Me.ToolTip1.SetToolTip(Me.lstStkPriceGrpPortfolioFrmMain, "Price per share")
         '
         'lstStkValueGrpPortfolioFrmMain
         '
+        Me.lstStkValueGrpPortfolioFrmMain.BackColor = System.Drawing.SystemColors.Control
         Me.lstStkValueGrpPortfolioFrmMain.Enabled = False
+        Me.lstStkValueGrpPortfolioFrmMain.FormatString = "N2"
         Me.lstStkValueGrpPortfolioFrmMain.FormattingEnabled = True
         Me.lstStkValueGrpPortfolioFrmMain.Location = New System.Drawing.Point(499, 40)
         Me.lstStkValueGrpPortfolioFrmMain.Name = "lstStkValueGrpPortfolioFrmMain"
+        Me.lstStkValueGrpPortfolioFrmMain.RightToLeft = System.Windows.Forms.RightToLeft.Yes
         Me.lstStkValueGrpPortfolioFrmMain.Size = New System.Drawing.Size(76, 95)
         Me.lstStkValueGrpPortfolioFrmMain.TabIndex = 9
+        Me.lstStkValueGrpPortfolioFrmMain.TabStop = False
         Me.ToolTip1.SetToolTip(Me.lstStkValueGrpPortfolioFrmMain, "Total value of stock held in portfolio")
         '
         'grpTransLogFrmMain
@@ -372,7 +402,7 @@ Partial Class FrmMain
         Me.grpTransLogFrmMain.Location = New System.Drawing.Point(39, 471)
         Me.grpTransLogFrmMain.Name = "grpTransLogFrmMain"
         Me.grpTransLogFrmMain.Size = New System.Drawing.Size(917, 187)
-        Me.grpTransLogFrmMain.TabIndex = 7
+        Me.grpTransLogFrmMain.TabIndex = 5
         Me.grpTransLogFrmMain.TabStop = False
         Me.grpTransLogFrmMain.Text = "Transaction Log"
         Me.ToolTip1.SetToolTip(Me.grpTransLogFrmMain, "System transaction log")
@@ -383,15 +413,17 @@ Partial Class FrmMain
         Me.txtTransLogFrmMain.Multiline = True
         Me.txtTransLogFrmMain.Name = "txtTransLogFrmMain"
         Me.txtTransLogFrmMain.ReadOnly = True
+        Me.txtTransLogFrmMain.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
         Me.txtTransLogFrmMain.Size = New System.Drawing.Size(864, 148)
         Me.txtTransLogFrmMain.TabIndex = 0
+        Me.txtTransLogFrmMain.TabStop = False
         '
         'btnExitFrmMain
         '
         Me.btnExitFrmMain.Location = New System.Drawing.Point(462, 667)
         Me.btnExitFrmMain.Name = "btnExitFrmMain"
         Me.btnExitFrmMain.Size = New System.Drawing.Size(75, 23)
-        Me.btnExitFrmMain.TabIndex = 8
+        Me.btnExitFrmMain.TabIndex = 6
         Me.btnExitFrmMain.Text = "E&xit"
         Me.ToolTip1.SetToolTip(Me.btnExitFrmMain, "Click to close and exit the system")
         Me.btnExitFrmMain.UseVisualStyleBackColor = True
@@ -402,8 +434,20 @@ Partial Class FrmMain
         Me.txtCntGrpPortfolioFrmMain.Name = "txtCntGrpPortfolioFrmMain"
         Me.txtCntGrpPortfolioFrmMain.ReadOnly = True
         Me.txtCntGrpPortfolioFrmMain.Size = New System.Drawing.Size(75, 20)
-        Me.txtCntGrpPortfolioFrmMain.TabIndex = 12
+        Me.txtCntGrpPortfolioFrmMain.TabIndex = 11
+        Me.txtCntGrpPortfolioFrmMain.TabStop = False
+        Me.txtCntGrpPortfolioFrmMain.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         Me.ToolTip1.SetToolTip(Me.txtCntGrpPortfolioFrmMain, "Number of stocks in the portfolio")
+        '
+        'btnRunTestData
+        '
+        Me.btnRunTestData.Location = New System.Drawing.Point(845, 79)
+        Me.btnRunTestData.Name = "btnRunTestData"
+        Me.btnRunTestData.Size = New System.Drawing.Size(111, 23)
+        Me.btnRunTestData.TabIndex = 7
+        Me.btnRunTestData.Text = "&Run Test-Data"
+        Me.ToolTip1.SetToolTip(Me.btnRunTestData, "Click to run test data simulation")
+        Me.btnRunTestData.UseVisualStyleBackColor = True
         '
         'grpStkMktFrmMain
         '
@@ -420,7 +464,7 @@ Partial Class FrmMain
         Me.grpStkMktFrmMain.Location = New System.Drawing.Point(346, 79)
         Me.grpStkMktFrmMain.Name = "grpStkMktFrmMain"
         Me.grpStkMktFrmMain.Size = New System.Drawing.Size(428, 176)
-        Me.grpStkMktFrmMain.TabIndex = 4
+        Me.grpStkMktFrmMain.TabIndex = 3
         Me.grpStkMktFrmMain.TabStop = False
         Me.grpStkMktFrmMain.Text = "Stock Market"
         '
@@ -490,7 +534,7 @@ Partial Class FrmMain
         Me.grpPortfolioFrmMain.Location = New System.Drawing.Point(346, 265)
         Me.grpPortfolioFrmMain.Name = "grpPortfolioFrmMain"
         Me.grpPortfolioFrmMain.Size = New System.Drawing.Size(610, 186)
-        Me.grpPortfolioFrmMain.TabIndex = 6
+        Me.grpPortfolioFrmMain.TabIndex = 4
         Me.grpPortfolioFrmMain.TabStop = False
         Me.grpPortfolioFrmMain.Text = "Portfolio"
         '
@@ -501,6 +545,8 @@ Partial Class FrmMain
         Me.txtValueGrpPortfolioFrmMain.ReadOnly = True
         Me.txtValueGrpPortfolioFrmMain.Size = New System.Drawing.Size(100, 20)
         Me.txtValueGrpPortfolioFrmMain.TabIndex = 14
+        Me.txtValueGrpPortfolioFrmMain.TabStop = False
+        Me.txtValueGrpPortfolioFrmMain.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
         'Label19
         '
@@ -517,7 +563,7 @@ Partial Class FrmMain
         Me.Label18.Location = New System.Drawing.Point(22, 148)
         Me.Label18.Name = "Label18"
         Me.Label18.Size = New System.Drawing.Size(38, 13)
-        Me.Label18.TabIndex = 11
+        Me.Label18.TabIndex = 10
         Me.Label18.Text = "Count:"
         '
         'Label17
@@ -571,6 +617,7 @@ Partial Class FrmMain
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.AntiqueWhite
         Me.ClientSize = New System.Drawing.Size(1009, 702)
+        Me.Controls.Add(Me.btnRunTestData)
         Me.Controls.Add(Me.btnExitFrmMain)
         Me.Controls.Add(Me.grpTransLogFrmMain)
         Me.Controls.Add(Me.grpPortfolioFrmMain)
@@ -644,5 +691,6 @@ Partial Class FrmMain
     Friend WithEvents Label19 As System.Windows.Forms.Label
     Friend WithEvents txtCntGrpPortfolioFrmMain As System.Windows.Forms.TextBox
     Friend WithEvents Label18 As System.Windows.Forms.Label
+    Friend WithEvents btnRunTestData As System.Windows.Forms.Button
 
 End Class
