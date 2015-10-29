@@ -1,7 +1,7 @@
 ﻿'Copyright (c) 2009-2015 Dan Turk
 
 #Region "Class / File Comment Header block"
-'Program:       Proj02 - Theme Park Management System
+'Program:       Proj03 - Theme Park Management System
 'File:          ClsCustomer.vb
 'Author:        Robert Palumbo
 'Description:   This is the class definiton for ThemePark which is  
@@ -14,6 +14,9 @@
 'Date:          10/05/2015
 '                   - initial creation
 '                   - Code for Proj02 - second phase of the course project.
+'               10/29/2015
+'                   - Modifications to support the third phase of
+'                   course project (Proj03)
 '
 'Tier:          Business Logic
 '
