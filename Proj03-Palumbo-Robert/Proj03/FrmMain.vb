@@ -61,7 +61,7 @@ Public Class FrmMain
     '********** Module-level variables
 
     'Reference object for a theme park
-    Private mThemePark As ThemePark
+    Private WithEvents mThemePark As ThemePark
 
     'Name of the theme park
     Private mThemeParkName As String
@@ -173,20 +173,35 @@ Public Class FrmMain
         _writeTransLog(Nothing)
 
         '**** Test Theme Park creation ****
-        Dim themePark As ThemePark = New ThemePark("World's Of Fun Theme Park")
-        _writeTransLog("[ThemePark]: successfully created ==> " & themePark.ToString())
+        'Use a temporary local theme park object if the associated check box has been
+        'checked, otherwise use the system theme park object
+        Dim themePark As ThemePark
+
+        If chkUseTestParkGrpSysTestTabSysTestTbcMainFrmMain.CheckState = CheckState.Checked Then
+            themePark = New ThemePark("World's Of Fun Theme Park")
+            _writeTransLog("[ThemePark]: successfully created ==> " & themePark.ToString())
+        Else
+            themePark = Me._theThemePark
+            _writeTransLog("[ThemePark]: using System Theme Park ==> " & themePark.ToString())
+        End If
 
         '**** Test Customer creation ****
         _writeTransLog(Nothing)
         _writeTransLog("**** CREATING TEST CUSTOMERS ****")
         _writeTransLog(Nothing)
 
-        Dim cust1 As Customer = themePark.createCustomer("0001", "Smith, John")
-        _writeTransLog("[Customer1]: successfully created ==> " & cust1.ToString())
-        Dim cust2 As Customer = themePark.createCustomer("0002", "Jone, James")
-        _writeTransLog("[Customer2]: successfully created ==> " & cust1.ToString())
-        Dim cust3 As Customer = themePark.createCustomer("0003", "Johnson, Robert")
-        _writeTransLog("[Customer3]: successfully created ==> " & cust1.ToString())
+        'Dim cust1 As Customer = themePark.createCustomer("0001", "Smith, John")
+        '_writeTransLog("[Customer1]: successfully created ==> " & cust1.ToString())
+        'Dim cust2 As Customer = themePark.createCustomer("0002", "Jone, James")
+        '_writeTransLog("[Customer2]: successfully created ==> " & cust1.ToString())
+        'Dim cust3 As Customer = themePark.createCustomer("0003", "Johnson, Robert")
+        '_writeTransLog("[Customer3]: successfully created ==> " & cust1.ToString())
+        themePark.createCustomer("0001", "Smith, John")
+        '_writeTransLog("[Customer1]: successfully created ==> " & cust1.ToString())
+        themePark.createCustomer("0002", "Jones, James")
+        '_writeTransLog("[Customer2]: successfully created ==> " & cust1.ToString())
+        themePark.createCustomer("0003", "Johnson, Robert")
+        '_writeTransLog("[Customer3]: successfully created ==> " & cust1.ToString())
 
         _writeTransLog("<PARK-STATUS>: " & themePark.ToString)
 
@@ -209,11 +224,11 @@ Public Class FrmMain
         _writeTransLog("**** CREATING TEST PASSBOOKS ****")
         _writeTransLog(Nothing)
 
-        Dim passbk1 As Passbook = themePark.createPassbook("2001", cust1, #2/8/2014#, "Smith, Will", #3/14/2001#, 14, False)
+        Dim passbk1 As Passbook = themePark.createPassbook("2001", New Customer("0001", "Smith, John"), #2/8/2014#, "Smith, Will", #3/14/2001#, 14, False)
         _writeTransLog("[Passbook1]: successfully created ==> " & passbk1.ToString())
-        Dim passbk2 As Passbook = themePark.createPassbook("2002", cust2, #6/14/2015#, "Jones, Jennifer", #7/21/1975#, 40, False)
+        Dim passbk2 As Passbook = themePark.createPassbook("2002", New Customer("0002", "Jones, James"), #6/14/2015#, "Jones, Jennifer", #7/21/1975#, 40, False)
         _writeTransLog("[Passbook2]: successfully created ==> " & passbk2.ToString())
-        Dim passbk3 As Passbook = themePark.createPassbook("2003", cust3, #11/23/2011#, "Johnson, Brian", #12/14/2008#, 7, True)
+        Dim passbk3 As Passbook = themePark.createPassbook("2003", New Customer("0003", "Johnson, Robert"), #11/23/2011#, "Johnson, Brian", #12/14/2008#, 7, True)
         _writeTransLog("[Passbook3]: successfully created ==> " & passbk3.ToString())
 
         _writeTransLog("<PARK-STATUS>: " & themePark.ToString)
@@ -348,7 +363,6 @@ Public Class FrmMain
     Private Sub _btnSubmitGrpCustInfoTabCustTbcMainFrmMain_Click(sender As Object, e As EventArgs) Handles _
         btnSubmitGrpCustInfoTabCustTbcMainFrmMain.Click
 
-        Dim newCust As Customer
         Dim custId As String
         Dim custName As String
 
@@ -382,15 +396,8 @@ Public Class FrmMain
         'If OK selected proceed with the submission
         If choice = MsgBoxResult.Ok Then
             'Create a new Customer
-            newCust = _theThemePark.createCustomer(
-                            custId,
-                            custName
-                            )
-
-            _writeTransLog("<CREATED>: " & newCust.ToString())
-            _writeTransLog("<STATUS>: " & _theThemePark.ToString())
-
-            MsgBox("Customer creation submission was successful!", MsgBoxStyle.OkOnly)
+            _theThemePark.createCustomer(custId,
+                                         custName)
 
             'Reset the input fields to allow for another possible customer entry
             _resetCustomerInput()
@@ -1202,6 +1209,39 @@ Public Class FrmMain
     '********** Business Logic Event Procedures
     '             - Initiated as a result of business logic
     '               method(s) running
+
+    '******************************************************************
+    '_createCust() handles processing for the  ThemePark_CreateCust
+    ' event that is generated when a new customer is added to the
+    'system.
+    Private Sub _createCust( _
+            ByVal sender As System.Object, _
+            ByVal e As System.EventArgs) _
+        Handles _
+            mThemePark.ThemePark_CreateCust
+
+        'Declare variables
+        Dim themePark_EventArgs_CreateCust As ThemePark_EventArgs_CreateCust
+        Dim cust As Customer
+
+        'Get/validate data
+        themePark_EventArgs_CreateCust = CType(e, ThemePark_EventArgs_CreateCust)
+
+        'Use the past in object to populate the necessary system components
+        cust = themePark_EventArgs_CreateCust.cust
+
+        With cust
+            lstCustTabDashboardTbcMain.Items.Add(.custId)
+            txtCustCntTabDashboardTbcMain.Text = _
+                lstCustTabDashboardTbcMain.Items.Count.ToString
+        End With
+
+        _writeTransLog("<CREATED>: " & cust.ToString())
+        _writeTransLog("<STATUS>: " & _theThemePark.ToString())
+
+        MsgBox("Customer creation submission was successful!", MsgBoxStyle.OkOnly)
+
+    End Sub '_createCust(...)
 
 #End Region 'Event Procedures
 

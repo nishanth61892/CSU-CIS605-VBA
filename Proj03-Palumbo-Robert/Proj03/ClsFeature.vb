@@ -222,16 +222,16 @@ Public Class Feature
     'does all the work for ToString().
     '******************************************************************
     Private Function _toString() As String
-        Dim _tmpStr As String = ""
+        Dim tmpStr As String = ""
 
-        _tmpStr = "[Feature] -> " _
+        tmpStr = "[Feature] -> " _
             & " Id=" & _featId _
             & ", Name=" & _featName _
             & ", UnitOfMeas=" & _unitOfMeas _
             & ", AdultPrice=" & _adultPrice _
             & ", ChildPrice=" & _childPrice
 
-        Return _tmpStr
+        Return tmpStr
     End Function '_toString()
 
 #End Region 'Behavioral Methods

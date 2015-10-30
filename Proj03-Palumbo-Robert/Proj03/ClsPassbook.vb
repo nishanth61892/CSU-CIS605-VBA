@@ -270,9 +270,9 @@ Public Class Passbook
     'does all the work for ToString().
     '******************************************************************
     Private Function _toString() As String
-        Dim _tmpStr As String = ""
+        Dim tmpStr As String = ""
 
-        _tmpStr = "[Passbook] -> " _
+        tmpStr = "[Passbook] -> " _
             & " Id=" & _passbkId _
             & ", Owner=" & _owner.ToString _
             & ", PurchaseDate=" & _datePurch _
@@ -281,7 +281,7 @@ Public Class Passbook
             & ", VisitorAge=" & _visAge _
             & ", VisitorIsChild? " & _visIsChild
 
-        Return _tmpStr
+        Return tmpStr
     End Function
 
 #End Region 'Behavioral Methods

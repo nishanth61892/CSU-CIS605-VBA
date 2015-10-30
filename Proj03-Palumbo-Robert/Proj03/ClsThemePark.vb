@@ -32,6 +32,7 @@ Option Strict On        'Must perform explicit data type conversions
 #End Region 'Option / Imports
 
 Public Class ThemePark
+    Inherits System.EventArgs
 
 #Region "Attributes"
     '******************************************************************
@@ -97,6 +98,7 @@ Public Class ThemePark
 #End Region 'Constructors
 
 #Region "Get/Set Methods"
+
     '******************************************************************
     'Get/Set Methods
     '******************************************************************
@@ -238,13 +240,12 @@ Public Class ThemePark
     '******************************************************************
     'createCustomer() creates and returns a new Customer object
     '******************************************************************
-    Public Function createCustomer(ByVal pCustId As String, _
-                                   ByVal pCustName As String
-                                   ) As Customer
+    Public Sub createCustomer(ByVal pCustId As String, _
+                              ByVal pCustName As String)
 
         'Call the worker procedure to do the work
-        Return _createCustomer(pCustId, pCustName)
-    End Function 'createCustomer(...)
+        _createCustomer(pCustId, pCustName)
+    End Sub 'createCustomer(...)
 
     '******************************************************************
     'createFeature() creates and returns a new Feature
@@ -337,9 +338,9 @@ Public Class ThemePark
     'does all the work for ToString().
     '******************************************************************
     Private Function _toString() As String
-        Dim _tmpStr As String = ""
+        Dim tmpStr As String = ""
 
-        _tmpStr = "[Theme Park] -> " _
+        tmpStr = "[Theme Park] -> " _
             & " Name=" & _themeParkName _
             & ", #Customers=" & _numCusts _
             & ", #Passbooks=" & _numPassbks _
@@ -347,24 +348,27 @@ Public Class ThemePark
             & ", #PassbookkFeatures=" & _numPassbkFeats _
             & ", #UsedFeaturess=" & _numUsedFeats
 
-        Return _tmpStr
+        Return tmpStr
     End Function '_toString(...)
 
     '******************************************************************
     '_createCustomer() creates and returns a new Customer object.
-    'This is the work-horse function that does all the work for 
-    '_createCustomer().
+    'This is the work-horse function that creates a new customer
+    'and raises an event to alert any listeners to handle the rest
+    'of the associated processed based on this event
     '******************************************************************
-    Private Function _createCustomer(ByVal pCustId As String, _
-                                     ByVal pCustName As String
-                                     ) As Customer
+    Private Sub _createCustomer(ByVal pCustId As String, _
+                                ByVal pCustName As String)
         Dim cust As Customer = New Customer(pCustId, pCustName)
 
         'update the customer cnt in the system
         _numCusts += 1
 
-        Return cust
-    End Function '_createCustomer(...)
+        'Raise and event to let the listeners of this event know a
+        'new customer has been added to the system
+        RaiseEvent ThemePark_CreateCust(Me,
+                                        New ThemePark_EventArgs_CreateCust(cust))
+    End Sub '_createCustomer(...)
 
     '******************************************************************
     '_createFeature() creates and returns a new Feature object.
@@ -501,6 +505,11 @@ Public Class ThemePark
 
     'No Events are currently defined.
     'These are all public.
+
+    'Define the customer event
+    Public Event ThemePark_CreateCust(ByVal sender As Object, _
+                                      ByVal e As System.EventArgs)
+
 
 #End Region 'Events
 

@@ -188,6 +188,7 @@ Partial Class FrmMain
         Me.txtTransLogTabTransLogTbcMainFrmMain = New System.Windows.Forms.TextBox()
         Me.tabSysTestTbcMainFrmMain = New System.Windows.Forms.TabPage()
         Me.grpSysTestTabSysTestTbcMainFrmMain = New System.Windows.Forms.GroupBox()
+        Me.chkUseTestParkGrpSysTestTabSysTestTbcMainFrmMain = New System.Windows.Forms.CheckBox()
         Me.grpAnon5 = New System.Windows.Forms.GroupBox()
         Me.btnWriteFileGrpSysTestTabSysTestTbcMainFrmMain = New System.Windows.Forms.Button()
         Me.chkAppendTabSysTestTbcMainFrmMain = New System.Windows.Forms.CheckBox()
@@ -200,7 +201,6 @@ Partial Class FrmMain
         Me.ListBox2 = New System.Windows.Forms.ListBox()
         Me.ListBox1 = New System.Windows.Forms.ListBox()
         Me.NumericUpDown3 = New System.Windows.Forms.NumericUpDown()
-        Me.TextBox2 = New System.Windows.Forms.TextBox()
         Me.Button5 = New System.Windows.Forms.Button()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.lblCustIdTabAddCustTbcCustomerMainTabCustomerTbcMain = New System.Windows.Forms.Label()
@@ -516,6 +516,7 @@ Partial Class FrmMain
         Me.txtPassBkFeatIdTabAddFeatTbcPassbkFeatMainTbcMain.Name = "txtPassBkFeatIdTabAddFeatTbcPassbkFeatMainTbcMain"
         Me.txtPassBkFeatIdTabAddFeatTbcPassbkFeatMainTbcMain.Size = New System.Drawing.Size(111, 21)
         Me.txtPassBkFeatIdTabAddFeatTbcPassbkFeatMainTbcMain.TabIndex = 1
+        Me.tipTPMS.SetToolTip(Me.txtPassBkFeatIdTabAddFeatTbcPassbkFeatMainTbcMain, "Assign a unqiue feature identifier for this Passbook Feature")
         '
         'Label9
         '
@@ -585,6 +586,7 @@ Partial Class FrmMain
         Me.cboFeatIdGrpFeatTabAddFeatTbcPassbkFeatMainTbcMain.Name = "cboFeatIdGrpFeatTabAddFeatTbcPassbkFeatMainTbcMain"
         Me.cboFeatIdGrpFeatTabAddFeatTbcPassbkFeatMainTbcMain.Size = New System.Drawing.Size(136, 23)
         Me.cboFeatIdGrpFeatTabAddFeatTbcPassbkFeatMainTbcMain.TabIndex = 4
+        Me.tipTPMS.SetToolTip(Me.cboFeatIdGrpFeatTabAddFeatTbcPassbkFeatMainTbcMain, "Select a Feature from the list")
         '
         'Label14
         '
@@ -643,6 +645,7 @@ Partial Class FrmMain
         Me.cboPassbkIdGrpPassbkTabAddFeatTbcPassbkFeatMainTbcMain.Name = "cboPassbkIdGrpPassbkTabAddFeatTbcPassbkFeatMainTbcMain"
         Me.cboPassbkIdGrpPassbkTabAddFeatTbcPassbkFeatMainTbcMain.Size = New System.Drawing.Size(135, 23)
         Me.cboPassbkIdGrpPassbkTabAddFeatTbcPassbkFeatMainTbcMain.TabIndex = 6
+        Me.tipTPMS.SetToolTip(Me.cboPassbkIdGrpPassbkTabAddFeatTbcPassbkFeatMainTbcMain, "Select a Passbook from the list")
         '
         'txtVisToStringGrpPassbkTabAddFeatTbcPassbkFeatMainTbcMain
         '
@@ -856,6 +859,7 @@ Partial Class FrmMain
         Me.cboFeatIdGrpPassbkTabUpdtFeatTbcPassbkFeatMainTbcMain.Name = "cboFeatIdGrpPassbkTabUpdtFeatTbcPassbkFeatMainTbcMain"
         Me.cboFeatIdGrpPassbkTabUpdtFeatTbcPassbkFeatMainTbcMain.Size = New System.Drawing.Size(136, 23)
         Me.cboFeatIdGrpPassbkTabUpdtFeatTbcPassbkFeatMainTbcMain.TabIndex = 10
+        Me.tipTPMS.SetToolTip(Me.cboFeatIdGrpPassbkTabUpdtFeatTbcPassbkFeatMainTbcMain, "Select a Passbook Feature from the list")
         '
         'txtPrevUsedGrpPassbkTabUpdtFeatTbcPassbkFeatMainTbcMain
         '
@@ -1040,7 +1044,7 @@ Partial Class FrmMain
         Me.txtLocGrpPassbkTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Name = "txtLocGrpPassbkTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain"
         Me.txtLocGrpPassbkTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Size = New System.Drawing.Size(249, 21)
         Me.txtLocGrpPassbkTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.TabIndex = 5
-        Me.tipTPMS.SetToolTip(Me.txtLocGrpPassbkTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain, "Enter the passbook feature id to be posted")
+        Me.tipTPMS.SetToolTip(Me.txtLocGrpPassbkTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain, "Enter the location where this feature was used")
         '
         'btnResetTabPostFeatTbcPassbkFeatMainTbcMain
         '
@@ -1082,6 +1086,7 @@ Partial Class FrmMain
         Me.cboPassbkFeatIdTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Name = "cboPassbkFeatIdTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain"
         Me.cboPassbkFeatIdTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Size = New System.Drawing.Size(136, 24)
         Me.cboPassbkFeatIdTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.TabIndex = 10
+        Me.tipTPMS.SetToolTip(Me.cboPassbkFeatIdTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain, "Select a Passbook Feature from the list")
         '
         'txtPrevUsedGrpPassbkTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain
         '
@@ -1967,6 +1972,7 @@ Partial Class FrmMain
         'grpSysTestTabSysTestTbcMainFrmMain
         '
         Me.grpSysTestTabSysTestTbcMainFrmMain.BackColor = System.Drawing.Color.LightGray
+        Me.grpSysTestTabSysTestTbcMainFrmMain.Controls.Add(Me.chkUseTestParkGrpSysTestTabSysTestTbcMainFrmMain)
         Me.grpSysTestTabSysTestTbcMainFrmMain.Controls.Add(Me.grpAnon5)
         Me.grpSysTestTabSysTestTbcMainFrmMain.Controls.Add(Me.btnProcTestDataGrpSysTestTabSysTestTbcMainFrmMain)
         Me.grpSysTestTabSysTestTbcMainFrmMain.Location = New System.Drawing.Point(215, 41)
@@ -1975,6 +1981,17 @@ Partial Class FrmMain
         Me.grpSysTestTabSysTestTbcMainFrmMain.TabIndex = 0
         Me.grpSysTestTabSysTestTbcMainFrmMain.TabStop = False
         Me.grpSysTestTabSysTestTbcMainFrmMain.Text = "System Test"
+        '
+        'chkUseTestParkGrpSysTestTabSysTestTbcMainFrmMain
+        '
+        Me.chkUseTestParkGrpSysTestTabSysTestTbcMainFrmMain.AutoSize = True
+        Me.chkUseTestParkGrpSysTestTabSysTestTbcMainFrmMain.Location = New System.Drawing.Point(231, 52)
+        Me.chkUseTestParkGrpSysTestTabSysTestTbcMainFrmMain.Name = "chkUseTestParkGrpSysTestTabSysTestTbcMainFrmMain"
+        Me.chkUseTestParkGrpSysTestTabSysTestTbcMainFrmMain.Size = New System.Drawing.Size(202, 19)
+        Me.chkUseTestParkGrpSysTestTabSysTestTbcMainFrmMain.TabIndex = 5
+        Me.chkUseTestParkGrpSysTestTabSysTestTbcMainFrmMain.Text = "Use Temporary Test Park Object"
+        Me.tipTPMS.SetToolTip(Me.chkUseTestParkGrpSysTestTabSysTestTbcMainFrmMain, "If checked will use an internal tempory theme park object to test with")
+        Me.chkUseTestParkGrpSysTestTabSysTestTbcMainFrmMain.UseVisualStyleBackColor = True
         '
         'grpAnon5
         '
@@ -2096,15 +2113,6 @@ Partial Class FrmMain
         Me.NumericUpDown3.TabIndex = 7
         Me.tipTPMS.SetToolTip(Me.NumericUpDown3, "Enter the feature quantity to purchase")
         Me.NumericUpDown3.Value = New Decimal(New Integer() {1, 0, 0, 0})
-        '
-        'TextBox2
-        '
-        Me.TextBox2.AccessibleRole = System.Windows.Forms.AccessibleRole.None
-        Me.TextBox2.Location = New System.Drawing.Point(154, 31)
-        Me.TextBox2.Name = "TextBox2"
-        Me.TextBox2.Size = New System.Drawing.Size(144, 20)
-        Me.TextBox2.TabIndex = 1
-        Me.tipTPMS.SetToolTip(Me.TextBox2, "Enter the assigned transaction identifier")
         '
         'Button5
         '
@@ -2232,6 +2240,7 @@ Partial Class FrmMain
         Me.grpTransLogTabTransLogTbcMain.PerformLayout()
         Me.tabSysTestTbcMainFrmMain.ResumeLayout(False)
         Me.grpSysTestTabSysTestTbcMainFrmMain.ResumeLayout(False)
+        Me.grpSysTestTabSysTestTbcMainFrmMain.PerformLayout()
         Me.grpAnon5.ResumeLayout(False)
         Me.grpAnon5.PerformLayout()
         CType(Me.NumericUpDown3, System.ComponentModel.ISupportInitialize).EndInit()
@@ -2397,7 +2406,6 @@ Partial Class FrmMain
     Friend WithEvents ListBox1 As System.Windows.Forms.ListBox
     Friend WithEvents NumericUpDown3 As System.Windows.Forms.NumericUpDown
     Friend WithEvents Label38 As System.Windows.Forms.Label
-    Private WithEvents TextBox2 As System.Windows.Forms.TextBox
     Friend WithEvents Button5 As System.Windows.Forms.Button
     Friend WithEvents Button1 As System.Windows.Forms.Button
     Friend WithEvents Label4 As System.Windows.Forms.Label
@@ -2426,4 +2434,5 @@ Partial Class FrmMain
     Friend WithEvents cboFeatIdGrpPassbkTabUpdtFeatTbcPassbkFeatMainTbcMain As System.Windows.Forms.ComboBox
     Friend WithEvents cboPassbkFeatIdTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain As System.Windows.Forms.ComboBox
     Friend WithEvents cboCustIdGrpCustInfoGrpAddPassbkTabPassbkTbcMainFrmMain As System.Windows.Forms.ComboBox
+    Friend WithEvents chkUseTestParkGrpSysTestTabSysTestTbcMainFrmMain As System.Windows.Forms.CheckBox
 End Class

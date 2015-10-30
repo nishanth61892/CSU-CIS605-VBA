@@ -224,15 +224,15 @@ Public Class UsedFeature
     'does all the work for ToString().
     '******************************************************************
     Private Function _toString() As String
-        Dim _tmpStr As String = ""
+        Dim tmpStr As String = ""
 
-        _tmpStr = "[UsedFeature] -> " _
+        tmpStr = "[UsedFeature] -> " _
             & " Id=" & _id _
             & ", PassbookFeature=" & _passbkFeat.ToString _
             & ", Location=" & _loc _
             & ", QtyUsed=" & _qtyUsed
 
-        Return _tmpStr
+        Return tmpStr
     End Function
 
 #End Region 'Behavioral Methods
