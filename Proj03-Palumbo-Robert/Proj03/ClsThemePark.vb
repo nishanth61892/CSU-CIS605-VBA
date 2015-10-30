@@ -241,30 +241,33 @@ Public Class ThemePark
     'createCustomer() creates and returns a new Customer object
     '******************************************************************
     Public Sub createCustomer(ByVal pCustId As String, _
-                              ByVal pCustName As String)
+                              ByVal pCustName As String
+                              )
 
         'Call the worker procedure to do the work
-        _createCustomer(pCustId, pCustName)
+        _createCustomer(pCustId,
+                        pCustName
+                        )
     End Sub 'createCustomer(...)
 
     '******************************************************************
     'createFeature() creates and returns a new Feature
     '******************************************************************
-    Public Function createFeature(ByVal pFeatId As String, _
-                                  ByVal pFeatName As String, _
-                                  ByVal pUnitOfMeas As String, _
-                                  ByVal pAdultPrice As Decimal, _
-                                  ByVal pChildPrice As Decimal
-                                  ) As Feature
+    Public Sub createFeature(ByVal pFeatId As String, _
+                         ByVal pFeatName As String, _
+                         ByVal pUnitOfMeas As String, _
+                         ByVal pAdultPrice As Decimal, _
+                         ByVal pChildPrice As Decimal
+                         )
 
         'Call the worker procedure to do the work
-        Return _createFeature(pFeatId, _
-                              pFeatName, _
-                              pUnitOfMeas, _
-                              pAdultPrice, _
-                              pChildPrice
-                              )
-    End Function 'createFeature(...)
+        _createFeature(pFeatId, _
+                       pFeatName, _
+                       pUnitOfMeas, _
+                       pAdultPrice, _
+                       pChildPrice
+                       )
+    End Sub 'createFeature(...)
 
     '******************************************************************
     'createPassbook() creates and returns a new Passbook
@@ -358,8 +361,9 @@ Public Class ThemePark
     'of the associated processed based on this event
     '******************************************************************
     Private Sub _createCustomer(ByVal pCustId As String, _
-                                ByVal pCustName As String)
-        Dim cust As Customer = New Customer(pCustId, pCustName)
+                                ByVal pCustName As String
+                                )
+        Dim newCust As Customer = New Customer(pCustId, pCustName)
 
         'update the customer cnt in the system
         _numCusts += 1
@@ -367,7 +371,7 @@ Public Class ThemePark
         'Raise and event to let the listeners of this event know a
         'new customer has been added to the system
         RaiseEvent ThemePark_CreateCust(Me,
-                                        New ThemePark_EventArgs_CreateCust(cust))
+                                        New ThemePark_EventArgs_CreateCust(newCust))
     End Sub '_createCustomer(...)
 
     '******************************************************************
@@ -375,12 +379,12 @@ Public Class ThemePark
     'This is the work-horse function that does all the work for 
     'createFeature().
     '******************************************************************
-    Private Function _createFeature(ByVal pFeatId As String, _
-                                    ByVal pFeatName As String, _
-                                    ByVal pUnitOfMeas As String, _
-                                    ByVal pAdultPrice As Decimal, _
-                                    ByVal pChildPrice As Decimal
-                                    ) As Feature
+    Private Sub _createFeature(ByVal pFeatId As String, _
+                               ByVal pFeatName As String, _
+                               ByVal pUnitOfMeas As String, _
+                               ByVal pAdultPrice As Decimal, _
+                               ByVal pChildPrice As Decimal
+                               )
 
         Dim newFeat As Feature = New Feature(pFeatId, _
                                              pFeatName, _
@@ -392,8 +396,11 @@ Public Class ThemePark
         'update the feature cnt in the system
         _numFeats += 1
 
-        Return newFeat
-    End Function '_createFeature(...)
+        'Raise and event to let the listeners of this event know a
+        'new customer has been added to the system
+        RaiseEvent ThemePark_CreateFeat(Me,
+                                        New ThemePark_EventArgs_CreateFeat(newFeat))
+    End Sub '_createFeature(...)
 
     '******************************************************************
     '_createPassbook() creates and returns a new Passbook object.
@@ -503,12 +510,17 @@ Public Class ThemePark
     'Events
     '******************************************************************
 
-    'No Events are currently defined.
     'These are all public.
 
-    'Define the customer event
+    'Define the new customer event
     Public Event ThemePark_CreateCust(ByVal sender As Object, _
-                                      ByVal e As System.EventArgs)
+                                      ByVal e As System.EventArgs
+                                      )
+
+    'Define the new feature event
+    Public Event ThemePark_CreateFeat(ByVal sender As Object, _
+                                      ByVal e As System.EventArgs
+                                      )
 
 
 #End Region 'Events
