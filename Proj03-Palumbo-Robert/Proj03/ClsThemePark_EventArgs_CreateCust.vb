@@ -6,8 +6,8 @@
 'Author:        Robert Palumbo
 'Description:   This is the class definiton for the ThemePark_EventArgs_CreateCust
 '               custom event.  This event is raised when a new customer is added
-'               to the system to inform any listeners of the event.  It is the 
-'               job of the listener to handle the event and process it.
+'               to the system to inform any listeners of the event.  
+'               It is the job of the listener to handle the event and process it.
 '
 'Date:          10/05/2015
 '                   - initial creation

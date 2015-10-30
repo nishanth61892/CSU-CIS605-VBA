@@ -210,18 +210,13 @@ Public Class FrmMain
         _writeTransLog("**** CREATING TEST CUSTOMERS ****")
         _writeTransLog(Nothing)
 
-        'Dim cust1 As Customer = themePark.createCustomer("0001", "Smith, John")
-        '_writeTransLog("[Customer1]: successfully created ==> " & cust1.ToString())
-        'Dim cust2 As Customer = themePark.createCustomer("0002", "Jone, James")
-        '_writeTransLog("[Customer2]: successfully created ==> " & cust1.ToString())
-        'Dim cust3 As Customer = themePark.createCustomer("0003", "Johnson, Robert")
-        '_writeTransLog("[Customer3]: successfully created ==> " & cust1.ToString())
-        themePark.createCustomer("0001", "Smith, John")
-        '_writeTransLog("[Customer1]: successfully created ==> " & cust1.ToString())
-        themePark.createCustomer("0002", "Jones, James")
-        '_writeTransLog("[Customer2]: successfully created ==> " & cust1.ToString())
-        themePark.createCustomer("0003", "Johnson, Robert")
-        '_writeTransLog("[Customer3]: successfully created ==> " & cust1.ToString())
+        Dim cust1 As Customer = New Customer("0001", "Smith, John")
+        Dim cust2 As Customer = New Customer("0002", "Jone, James")
+        Dim cust3 As Customer = New Customer("0003", "Johnson, Robert")
+
+        themePark.createCust("0001", "Smith, John")
+        themePark.createCust("0002", "Jones, James")
+        themePark.createCust("0003", "Johnson, Robert")
 
         _writeTransLog("<PARK-STATUS>: " & themePark.ToString)
 
@@ -231,14 +226,12 @@ Public Class FrmMain
         _writeTransLog(Nothing)
 
         Dim feat1 As Feature = New Feature("1001", "Parking Pass", "Day", 12.5D, 0)
-        themePark.createFeature("1001", "Parking Pass", "Day", 12.5D, 0)
-        '        _writeTransLog("[Feature1]: successfully created ==> " & feat1.ToString())
         Dim feat2 As Feature = New Feature("1002", "Gate Pass", "Day", 35.95D, 22.95D)
-        themePark.createFeature("1002", "Gate Pass", "Day", 35.95D, 22.95D)
-        '_writeTransLog("[Feature2]: successfully created ==> " & feat2.ToString())
         Dim feat3 As Feature = New Feature("1003", "Meal Plan", "Week", 65.95D, 31.95D)
-        themePark.createFeature("1003", "Meal Plan", "Week", 65.95D, 31.95D)
-        ' _writeTransLog("[Feature3]: successfully created ==> " & feat3.ToString())
+
+        themePark.createFeat("1001", "Parking Pass", "Day", 12.5D, 0)
+        themePark.createFeat("1002", "Gate Pass", "Day", 35.95D, 22.95D)
+        themePark.createFeat("1003", "Meal Plan", "Week", 65.95D, 31.95D)
 
         _writeTransLog("<PARK-STATUS>: " & themePark.ToString)
 
@@ -247,15 +240,13 @@ Public Class FrmMain
         _writeTransLog("**** CREATING TEST PASSBOOKS ****")
         _writeTransLog(Nothing)
 
-        Dim passbk1 As Passbook = themePark.createPassbook("2001", New Customer("0001", "Smith, John"), _
-                                                           #2/8/2014#, "Smith, Will", #3/14/2001#, 14, False)
-        _writeTransLog("[Passbook1]: successfully created ==> " & passbk1.ToString())
-        Dim passbk2 As Passbook = themePark.createPassbook("2002", New Customer("0002", "Jones, James"), _
-                                                           #6/14/2015#, "Jones, Jennifer", #7/21/1975#, 40, False)
-        _writeTransLog("[Passbook2]: successfully created ==> " & passbk2.ToString())
-        Dim passbk3 As Passbook = themePark.createPassbook("2003", New Customer("0003", "Johnson, Robert"), _
-                                                           #11/23/2011#, "Johnson, Brian", #12/14/2008#, 7, True)
-        _writeTransLog("[Passbook3]: successfully created ==> " & passbk3.ToString())
+        Dim passbk1 As Passbook = New Passbook("2001", cust1, #2/8/2014#, "Smith, Will", #3/14/2001#, 14, False)
+        Dim passbk2 As Passbook = New Passbook("2002", cust2, #6/14/2015#, "Jones, Jennifer", #7/21/1975#, 40, False)
+        Dim passbk3 As Passbook = New Passbook("2003", cust3, #11/23/2011#, "Johnson, Brian", #12/14/2008#, 7, True)
+
+        themePark.createPassbk("2001", cust1, #2/8/2014#, "Smith, Will", #3/14/2001#, 14, False)
+        themePark.createPassbk("2002", cust2, #6/14/2015#, "Jones, Jennifer", #7/21/1975#, 40, False)
+        themePark.createPassbk("2003", cust3, #11/23/2011#, "Johnson, Brian", #12/14/2008#, 7, True)
 
         _writeTransLog("<PARK-STATUS>: " & themePark.ToString)
 
@@ -264,12 +255,13 @@ Public Class FrmMain
         _writeTransLog("**** CREATING TEST PASSBOOK FEATURE PURCHASES ****")
         _writeTransLog(Nothing)
 
-        Dim passbkFeat1 As PassbookFeature = themePark.purchaseFeature("3001", feat1.adultPrice * 2, feat1, passbk1, 2, 0)
-        _writeTransLog("[PassbkFeature1]: successfully created ==>  " & passbkFeat1.ToString())
-        Dim passbkFeat2 As PassbookFeature = themePark.purchaseFeature("3002", feat2.adultPrice * 1, feat2, passbk2, 1, 0)
-        _writeTransLog("[PassbkFeature2]: successfully created ==>  " & passbkFeat2.ToString())
-        Dim passbkFeat3 As PassbookFeature = themePark.purchaseFeature("3003", feat3.childPrice * 2, feat3, passbk3, 2, 0)
-        _writeTransLog("[PassbkFeature3]: successfully created ==> " & passbkFeat3.ToString())
+        Dim passbkFeat1 As PassbookFeature = New PassbookFeature("3001", feat1.adultPrice * 2, feat1, passbk1, 2, 0)
+        Dim passbkFeat2 As PassbookFeature = New PassbookFeature("3002", feat2.adultPrice * 1, feat2, passbk2, 1, 0)
+        Dim passbkFeat3 As PassbookFeature = New PassbookFeature("3003", feat3.childPrice * 2, feat3, passbk3, 2, 0)
+
+        themePark.addPassbkFeat("3001", feat1.adultPrice * 2, feat1, passbk1, 2, 0)
+        themePark.addPassbkFeat("3002", feat2.adultPrice * 1, feat2, passbk2, 1, 0)
+        themePark.addPassbkFeat("3003", feat3.childPrice * 2, feat3, passbk3, 2, 0)
 
         _writeTransLog("<PARK-STATUS>: " & themePark.ToString)
 
@@ -278,12 +270,9 @@ Public Class FrmMain
         _writeTransLog("**** CREATING TEST USED PASSBOOK FEATURE ****")
         _writeTransLog(Nothing)
 
-        Dim usedFeat1 As UsedFeature = themePark.usedFeature("4001", passbkFeat1, DateTime.Now, 2, "Chicago IL")
-        _writeTransLog("[UsedFeature1]: successfully created ==> " & usedFeat1.ToString())
-        Dim usedFeat2 As UsedFeature = themePark.usedFeature("4002", passbkFeat2, DateTime.Now, 1, "Denver CO")
-        _writeTransLog("[UsedFeature2]: successfully created ==> " & usedFeat2.ToString())
-        Dim usedFeat3 As UsedFeature = themePark.usedFeature("4003", passbkFeat3, DateTime.Now, 3, "Center Circle Park")
-        _writeTransLog("[UsedFeature3]: successfully created ==> " & usedFeat3.ToString())
+        Dim usedFeat1 As UsedFeature = themePark.usedFeat("4001", passbkFeat1, DateTime.Now, 2, "Chicago IL")
+        Dim usedFeat2 As UsedFeature = themePark.usedFeat("4002", passbkFeat2, DateTime.Now, 1, "Denver CO")
+        Dim usedFeat3 As UsedFeature = themePark.usedFeat("4003", passbkFeat3, DateTime.Now, 3, "Center Circle Park")
 
         _writeTransLog("<PARK-STATUS>: " & themePark.ToString)
 
@@ -425,11 +414,12 @@ Public Class FrmMain
                         MsgBoxStyle.OkCancel
                         )
 
-        'If OK selected proceed with the submission
+        'If OK selected proceed with the submission assuming not test data
         If choice = MsgBoxResult.Ok Then
             'Create a new Customer
-            _theThemePark.createCustomer(custId,
-                                         custName)
+            _theThemePark.createCust(custId,
+                                     custName
+                                     )
 
             'Reset the input fields to allow for another possible customer entry
             _resetCustomerInput()
@@ -512,7 +502,7 @@ Public Class FrmMain
         End If
 
         decAdultPrice = Decimal.Parse(adultPrice)
-        If decAdultPrice <= 0 Then
+        If decAdultPrice < 0 Then
             MsgBox("ERROR: Adult price must be greater than 0.0 (ex: 20.50)", MsgBoxStyle.OkOnly)
             txtPriceAdultGrpAddFeatTabFeatTbcMainFrmMain.Text = ""
             txtPriceAdultGrpAddFeatTabFeatTbcMainFrmMain.SelectAll()
@@ -541,7 +531,6 @@ Public Class FrmMain
         'Verify the purchase before committing
         Dim choice As MsgBoxResult = MsgBoxResult.Ok
 
-
         'The following is only needed if system test data is NOT being processed
         If _sysTestActive = False Then
             choice = MsgBox("To create a new Feature with these attributes Click OK, otherwise Cancel" & vbCrLf & vbCrLf _
@@ -554,15 +543,15 @@ Public Class FrmMain
                             )
         End If
 
-        'If OK selected proceed with the submission
+        'If OK selected proceed with the submission assuming not test data
         If choice = MsgBoxResult.Ok And _sysTestActive = False Then
             'Create a new Feature
-            _theThemePark.createFeature(featId, _
-                                        featName, _
-                                        unitOfMeas, _
-                                        decAdultPrice, _
-                                        decChildPrice
-                                        )
+            _theThemePark.createFeat(featId, _
+                                     featName, _
+                                     unitOfMeas, _
+                                     decAdultPrice, _
+                                     decChildPrice
+                                     )
             'Reset the input fields to allow for another possible feature entry
             _resetFeatureInput()
         End If
@@ -648,38 +637,36 @@ Public Class FrmMain
         Dim visIsChild As Boolean = (visAge < mADULT_MIN_AGE)
 
         'Verify the purchase before committing
-        Dim choice As MsgBoxResult
+        Dim choice As MsgBoxResult = MsgBoxResult.Ok
 
-        choice = MsgBox("To create a new Passbook with these attributes Click OK, otherwise Cancel" & vbCrLf & vbCrLf _
-                        & "--> Id=" & passbkId & vbCrLf _
-                        & "--> Owner=" & custList.Text & vbCrLf _
-                        & "--> VisitorName=" & visName & vbCrLf _
-                        & "--> VisitorDOB=" & visDob & vbCrLf _
-                        & "--> VistorAge=" & visAge & vbCrLf _
-                        & "--> VistorIsChild? " & visIsChild.ToString & vbCrLf _
-                        & "--> DatePurchased=" & datePurch & vbCrLf,
-                        MsgBoxStyle.OkCancel
-                        )
+        'The following is only needed if system test data is NOT being processed
+        If _sysTestActive = False Then
+            choice = MsgBox("To create a new Passbook with these attributes Click OK, otherwise Cancel" & vbCrLf & vbCrLf _
+                            & "--> Id=" & passbkId & vbCrLf _
+                            & "--> Owner=" & custList.Text & vbCrLf _
+                            & "--> VisitorName=" & visName & vbCrLf _
+                            & "--> VisitorDOB=" & visDob & vbCrLf _
+                            & "--> VistorAge=" & visAge & vbCrLf _
+                            & "--> VistorIsChild? " & visIsChild.ToString & vbCrLf _
+                            & "--> DatePurchased=" & datePurch & vbCrLf,
+                            MsgBoxStyle.OkCancel
+                            )
+        End If
 
         'If OK selected proceed with the submission
-        If choice = MsgBoxResult.Ok Then
+        If choice = MsgBoxResult.Ok And _sysTestActive = False Then
             'PBO - this customer object is tempary until the next phase of the project
             Dim tempCust As Customer = New Customer("9999", custList.Text)
 
             'Create a new Passbook
-            newPassbk = _theThemePark.createPassbook(passbkId, _
-                                                     tempCust, _
-                                                     datePurch, _
-                                                     visName, _
-                                                     visDobValue, _
-                                                     Convert.ToInt32(visAge), _
-                                                     visIsChild
-                                                     )
-
-            _writeTransLog("<CREATED>: " & newPassbk.ToString())
-            _writeTransLog("<STATUS>: " & _theThemePark.ToString())
-
-            MsgBox("Passbook creation submission was successful!", MsgBoxStyle.OkOnly)
+            _theThemePark.createPassbk(passbkId, _
+                                       tempCust, _
+                                       datePurch, _
+                                       visName, _
+                                       visDobValue, _
+                                       Convert.ToInt32(visAge), _
+                                       visIsChild
+                                       )
 
             'Reset the input fields to allow for another possible feature entry
             _resetPassbkInput()
@@ -774,37 +761,35 @@ Public Class FrmMain
             unitPurchPrice = tempFeat.adultPrice
         End If
 
-        'Verify the purchase before committing
-        Dim choice As MsgBoxResult
-
         totPurchPrice = unitPurchPrice * decQtyPurch
 
-        choice = MsgBox("To purchase the following Passbook Feature Click OK, otherwise Cancel" & vbCrLf & vbCrLf _
-                        & "--> PassbookFeatureId=" & passbkFeatId & vbCrLf _
-                        & "--> Feature=" & tempFeat.featName & vbCrLf _
-                        & "--> UnitPrice=" & unitPurchPrice & vbCrLf _
-                        & "--> QtyPurchased=" & decQtyPurch & vbCrLf _
-                        & "--> TotalPurchasePrice=" & totPurchPrice & vbCrLf _
-                        & "--> QtyRemain=" & decQtyRemain & vbCrLf _
-                        & "--> Passbook=" & tempPassbk.passbkId & vbCrLf,
-                        MsgBoxStyle.OkCancel
-                        )
+        'Verify the purchase before committing
+        Dim choice As MsgBoxResult = MsgBoxResult.Ok
+
+        'The following is only needed if system test data is NOT being processed
+        If _sysTestActive = False Then
+            choice = MsgBox("To purchase the following Passbook Feature Click OK, otherwise Cancel" & vbCrLf & vbCrLf _
+                            & "--> PassbookFeatureId=" & passbkFeatId & vbCrLf _
+                            & "--> Feature=" & tempFeat.featName & vbCrLf _
+                            & "--> UnitPrice=" & unitPurchPrice & vbCrLf _
+                            & "--> QtyPurchased=" & decQtyPurch & vbCrLf _
+                            & "--> TotalPurchasePrice=" & totPurchPrice & vbCrLf _
+                            & "--> QtyRemain=" & decQtyRemain & vbCrLf _
+                            & "--> Passbook=" & tempPassbk.passbkId & vbCrLf,
+                            MsgBoxStyle.OkCancel
+                            )
+        End If
 
         'If OK selected proceed with the submission
-        If choice = MsgBoxResult.Ok Then
+        If choice = MsgBoxResult.Ok And _sysTestActive = False Then
             'Create a new Passbook Feature
-            newPassbkFeat = _theThemePark.purchaseFeature(featId, _
-                                                          totPurchPrice, _
-                                                          tempFeat, _
-                                                          tempPassbk, _
-                                                          decQtyPurch, _
-                                                          decQtyRemain
-                                                          )
-
-            _writeTransLog("<PURCHASED>: " & newPassbkFeat.ToString())
-            _writeTransLog("<STATUS>: " & _theThemePark.ToString())
-
-            MsgBox("Passbook Feature purchase submission was successful!", MsgBoxStyle.OkOnly)
+            _theThemePark.addPassbkFeat(featId, _
+                                        totPurchPrice, _
+                                        tempFeat, _
+                                        tempPassbk, _
+                                        decQtyPurch, _
+                                        decQtyRemain
+                                        )
 
             'Reset the fields and focus to allow for another feature to be added
             _resetPassbkAddFeatInput()
@@ -890,30 +875,33 @@ Public Class FrmMain
             unitPurchPrice = tempFeat.adultPrice
         End If
 
-        'Verify the purchase before committing
-        Dim choice As MsgBoxResult
-
         totPurchPrice = unitPurchPrice * decNewQty
 
-        choice = MsgBox("To update the following Passbook Feature Click OK, otherwise Cancel" & vbCrLf & vbCrLf _
-                        & "--> PassbookFeatureId=" & featId & vbCrLf _
-                        & "--> NewQuantity=" & decNewQty.ToString & vbCrLf _
-                        & "--> UnitPrice=" & unitPurchPrice.ToString & vbCrLf _
-                        & "--> RemainQuantity=" & decRemainQty.ToString & vbCrLf _
-                        & "--> Price=" & price.ToString & vbCrLf,
-                        MsgBoxStyle.OkCancel
-                        )
+        'Verify the purchase before committing
+        Dim choice As MsgBoxResult = MsgBoxResult.Ok
+
+        'The following is only needed if system test data is NOT being processed
+        If _sysTestActive = False Then
+            choice = MsgBox("To update the following Passbook Feature Click OK, otherwise Cancel" & vbCrLf & vbCrLf _
+                            & "--> PassbookFeatureId=" & featId & vbCrLf _
+                            & "--> NewQuantity=" & decNewQty.ToString & vbCrLf _
+                            & "--> UnitPrice=" & unitPurchPrice.ToString & vbCrLf _
+                            & "--> RemainQuantity=" & decRemainQty.ToString & vbCrLf _
+                            & "--> Price=" & price.ToString & vbCrLf,
+                            MsgBoxStyle.OkCancel
+                            )
+        End If
 
         'If OK selected proceed with the submission
-        If choice = MsgBoxResult.Ok Then
+        If choice = MsgBoxResult.Ok And _sysTestActive = False Then
             'Create a new Passbook Feature
-            newPassbkFeat = _theThemePark.purchaseFeature(featId, _
-                                                          totPurchPrice, _
-                                                          tempFeat, _
-                                                          tempPassbk, _
-                                                          decNewQty, _
-                                                          decRemainQty
-                                                          )
+            _theThemePark.updtPassbkFeat(featId, _
+                                         totPurchPrice, _
+                                         tempFeat, _
+                                         tempPassbk, _
+                                         decNewQty, _
+                                         decRemainQty
+                                         )
 
             _writeTransLog("<UPDATED>: " & newPassbkFeat.ToString())
             _writeTransLog("<STATUS>: " & _theThemePark.ToString())
@@ -921,9 +909,7 @@ Public Class FrmMain
             MsgBox("Passbook Feature update submission was successful!", MsgBoxStyle.OkOnly)
 
             'Reset the fields and focus to allow for another feature to be added
-            cboFeatIdGrpPassbkTabUpdtFeatTbcPassbkFeatMainTbcMain.Focus()
-            cboFeatIdGrpPassbkTabUpdtFeatTbcPassbkFeatMainTbcMain.Text = ""
-            txtNewQtyTabUpdtFeatTbcPassbkFeatMainTbcMain.Text = ""
+            _resetPassbkUpdtFeatInput()
         End If
     End Sub '_btnSubmitTabUpdtFeatTbcPassbkFeatMainTbcMain_Click(...)
 
@@ -953,8 +939,8 @@ Public Class FrmMain
                                                                    e As EventArgs) _
         Handles btnResetTabUpdtFeatTbcPassbkFeatMainTbcMain.Click
 
-        'Reset the fields and focus to allow for another passbook featurd addition
-        _resetPassbkAddFeatInput()
+        'Reset the fields and focus to allow for another passbook feature update
+        _resetPassbkUpdtFeatInput()
     End Sub '_btnResetTabUpdtFeatTbcPassbkFeatMainTbcMain(...)
 
 
@@ -1019,7 +1005,7 @@ Public Class FrmMain
         'If OK selected proceed with the submission
         If choice = MsgBoxResult.Ok Then
             'Create a new Used Feature
-            newUsedFeat = _theThemePark.usedFeature("NOTUSED??", tempPassbkFeat, DateTime.Now, decQtyUsed, loc)
+            newUsedFeat = _theThemePark.usedFeat("NOTUSED??", tempPassbkFeat, DateTime.Now, decQtyUsed, loc)
 
             _writeTransLog("<POST>: " & newUsedFeat.ToString())
             _writeTransLog("<STATUS>: " & _theThemePark.ToString())
@@ -1133,6 +1119,9 @@ Public Class FrmMain
 
                 'Assign AcceptButton to this tab's Submit button for convenience
                 Me.AcceptButton = btnClearTabTransLogTbcMainFrmMain
+
+                'Push the caret to the end of the log file
+                _txtTransLogTabTransLogTbcMainFrmMain_TextChanged(Me, Nothing)
 
             Case mTBC_MAIN_TAB_SYSTEST
                 Console.WriteLine("System Test Tab")
@@ -1270,6 +1259,7 @@ Public Class FrmMain
     '_createCust() handles processing for the  ThemePark_CreateCust
     ' event that is generated when a new customer is added to the
     'system.
+    '******************************************************************
     Private Sub _createCust(ByVal sender As System.Object, _
                             ByVal e As System.EventArgs) _
         Handles mThemePark.ThemePark_CreateCust
@@ -1286,9 +1276,10 @@ Public Class FrmMain
 
         With cust
             lstCustTabDashboardTbcMain.Items.Add(.custId)
-            cboCustIdGrpCustInfoGrpAddPassbkTabPassbkTbcMainFrmMain.Items.Add(.custId)
             txtCustCntTabDashboardTbcMain.Text = _
                 lstCustTabDashboardTbcMain.Items.Count.ToString
+
+            cboCustIdGrpCustInfoGrpAddPassbkTabPassbkTbcMainFrmMain.Items.Add(.custId)
         End With
 
         _writeTransLog("<CREATED>: " & cust.ToString())
@@ -1306,6 +1297,7 @@ Public Class FrmMain
     '_createFeat() handles processing for the ThemePark_CreateFeat
     ' event that is generated when a new Feature is added to the
     'system.
+    '******************************************************************
     Private Sub _createFeature(ByVal sender As System.Object, _
                                ByVal e As System.EventArgs) _
         Handles mThemePark.ThemePark_CreateFeat
@@ -1322,9 +1314,10 @@ Public Class FrmMain
 
         With feat
             lstFeatTabDashboardTbcMain.Items.Add(.featId)
-            cboFeatIdGrpFeatTabAddFeatTbcPassbkFeatMainTbcMain.Items.Add(.featId)
             txtFeatCntTabDashboardTbcMain.Text = _
                 lstFeatTabDashboardTbcMain.Items.Count.ToString
+
+            cboFeatIdGrpFeatTabAddFeatTbcPassbkFeatMainTbcMain.Items.Add(.featId)
         End With
 
         _writeTransLog("<CREATED>: " & feat.ToString())
@@ -1336,6 +1329,118 @@ Public Class FrmMain
         End If
 
     End Sub '_createFeat(...)
+
+    '******************************************************************
+    '_createPassbook() handles processing for the ThemePark_CreatePassbook
+    ' event that is generated when a new passbook is added to the
+    'system.
+    '******************************************************************
+    Private Sub _createPassbook(ByVal sender As System.Object, _
+                                ByVal e As System.EventArgs) _
+        Handles mThemePark.ThemePark_CreatePassbk
+
+        'Declare variables
+        Dim themePark_EventArgs_CreatePassbk As ThemePark_EventArgs_CreatePassbk
+        Dim passbook As Passbook
+
+        'Get/validate data
+        themePark_EventArgs_CreatePassbk = CType(e, ThemePark_EventArgs_CreatePassbk)
+
+        'Use the past in object to populate the necessary system components
+        passbook = themePark_EventArgs_CreatePassbk.passbook
+
+        With passbook
+            lstPassbkTabDashboardTbcMain.Items.Add(.passbkId)
+            txtPassbkCntTabDashboardTbcMain.Text =
+                lstPassbkTabDashboardTbcMain.Items.Count.ToString
+
+            cboPassbkIdGrpPassbkTabAddFeatTbcPassbkFeatMainTbcMain.Items.Add(.passbkId)
+        End With
+
+        _writeTransLog("<CREATED>: " & passbook.ToString())
+        _writeTransLog("<STATUS>: " & _theThemePark.ToString())
+
+        'Not needed if object was created from system test data
+        If _sysTestActive = False Then
+            MsgBox("Passbook creation submission was successful!", MsgBoxStyle.OkOnly)
+        End If
+
+    End Sub '_createPassbook(...)
+
+    '******************************************************************
+    '_addPassbkFeat() handles processing for the ThemePark_PurchFeat
+    ' event that is generated when a feature has been purchased fo
+    'a specified passbook
+    '******************************************************************
+    Private Sub _addPassbkFeat(ByVal sender As System.Object, _
+                               ByVal e As System.EventArgs) _
+        Handles mThemePark.ThemePark_AddPassbkFeat
+
+        'Declare variables
+        Dim themePark_EventArgs_PurchFeat As ThemePark_EventArgs_AddPassbkFeat
+        Dim passbkFeat As PassbookFeature
+
+        'Get/validate data
+        themePark_EventArgs_PurchFeat = CType(e, ThemePark_EventArgs_AddPassbkFeat)
+
+        'Use the past in object to populate the necessary system components
+        passbkFeat = themePark_EventArgs_PurchFeat.passbkFeat
+
+        With passbkFeat
+            lstPassbkFeatTabDashboardTbcMain.Items.Add(.id)
+            txtPassbkFeatCntTabDashboardTbcMain.Text =
+                lstPassbkFeatTabDashboardTbcMain.Items.Count.ToString()
+
+            cboFeatIdGrpPassbkTabUpdtFeatTbcPassbkFeatMainTbcMain.Items.Add(.id)
+            cboPassbkIdGrpPassbkTabAddFeatTbcPassbkFeatMainTbcMain.Items.Add(.id)
+        End With
+
+        _writeTransLog("<PURCHASED>: " & passbkFeat.ToString())
+        _writeTransLog("<STATUS>: " & _theThemePark.ToString())
+
+        'Not needed if object was created from system test data
+        If _sysTestActive = False Then
+            MsgBox("Passbook Feature submission was successful!", MsgBoxStyle.OkOnly)
+        End If
+
+    End Sub '_addPassbkFeat(...)
+
+    '******************************************************************
+    '_updtPassbkFeat() handles processing for the ThemePark_UpdtPassbkFeat
+    ' event that is generated when a passbook feature is updated
+    '******************************************************************
+    Private Sub _updtPassbkFeat(ByVal sender As System.Object, _
+                           ByVal e As System.EventArgs) _
+        Handles mThemePark.ThemePark_UpdtPassbkFeat
+
+        'Declare variables
+        Dim themePark_EventArgs_UpdtPassbkFeat As ThemePark_EventArgs_UpdtPassbkFeat
+        Dim passbkFeat As PassbookFeature
+
+        'Get/validate data
+        themePark_EventArgs_UpdtPassbkFeat = CType(e, ThemePark_EventArgs_UpdtPassbkFeat)
+
+        'Use the past in object to populate the necessary system components
+        passbkFeat = ThemePark_EventArgs_UpdtPassbkFeat.passbkFeat
+
+        With passbkFeat
+            '            lstPassbkFeatTabDashboardTbcMain.Items.Add(.id)
+            '            lstPassbkTabDashboardTbcMain.Items.Add(.id)
+
+            '           txtPassbkFeatCntTabDashboardTbcMain.Text =
+            'lstPassbkTabDashboardTbcMain.Items.Count.ToString()
+        End With
+
+        _writeTransLog("<UPDATED>: " & passbkFeat.ToString())
+        _writeTransLog("<STATUS>: " & _theThemePark.ToString())
+
+        'Not needed if object was created from system test data
+        If _sysTestActive = False Then
+            MsgBox("Passbook Feature purchase submission was successful!", MsgBoxStyle.OkOnly)
+        End If
+
+    End Sub '_updtPassbkFeat(...)
+
 
 #End Region 'Event Procedures
 

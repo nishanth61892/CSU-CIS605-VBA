@@ -72,12 +72,16 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ClcThemePark_EventArgs_UsedFeat.vb" />
     <Compile Include="ClsCustomer.vb" />
     <Compile Include="ClsFeature.vb" />
     <Compile Include="ClsPassbook.vb" />
     <Compile Include="ClsPassbookFeature.vb" />
     <Compile Include="ClsThemePark.vb" />
     <Compile Include="ClsThemePark_EventArgs_CreateCust.vb" />
+    <Compile Include="ClsThemePark_EventArgs_CreatePassbk.vb" />
+    <Compile Include="ClsThemePark_EventArgs_AddPassbkFeat.vb" />
+    <Compile Include="ClsThemePark_EventArgs_UpdtPassbkFeat.vb" />
     <Compile Include="ClsThemePark_EventsArgs_CreateFeat.vb" />
     <Compile Include="ClsUsedFeature.vb" />
     <Compile Include="FrmMain.vb">

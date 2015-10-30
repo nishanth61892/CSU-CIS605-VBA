@@ -238,99 +238,120 @@ Public Class ThemePark
     End Function 'ToString()
 
     '******************************************************************
-    'createCustomer() creates and returns a new Customer object
+    'createCust() creates a new Customer and raises an event
     '******************************************************************
-    Public Sub createCustomer(ByVal pCustId As String, _
-                              ByVal pCustName As String
+    Public Sub createCust(ByVal pCustId As String, _
+                          ByVal pCustName As String
+                          )
+
+        'Call the worker procedure to do the work
+        _createCust(pCustId,
+                    pCustName
+                    )
+    End Sub 'createCust(...)
+
+    '******************************************************************
+    'createFeat() creates a new Feature and raises an event
+    '******************************************************************
+    Public Sub createFeat(ByVal pFeatId As String, _
+                          ByVal pFeatName As String, _
+                          ByVal pUnitOfMeas As String, _
+                          ByVal pAdultPrice As Decimal, _
+                          ByVal pChildPrice As Decimal
+                          )
+
+        'Call the worker procedure to do the work
+        _createFeat(pFeatId, _
+                    pFeatName, _
+                    pUnitOfMeas, _
+                    pAdultPrice, _
+                    pChildPrice
+                    )
+    End Sub 'createFeat(...)
+
+    '******************************************************************
+    'createPassbk() creates a new Passbook and raises an event
+    '******************************************************************
+    Public Sub createPassbk(ByVal pPassbkId As String, _
+                            ByVal pOwner As Customer, _
+                            ByVal pDatePurch As Date, _
+                            ByVal pVisName As String, _
+                            ByVal pVisDob As Date, _
+                            ByVal pVisAge As Integer, _
+                            ByVal pVisIsChild As Boolean
+                            )
+
+        'Call the worker procedure to do the work
+        _createPassbk(pPassbkId, _
+                      pOwner, _
+                      pDatePurch, _
+                      pVisName, _
+                      pVisDob, _
+                      pVisAge, _
+                      pVisIsChild
+                      )
+    End Sub 'createPassbk(...)
+
+    '******************************************************************
+    'addPassbkFeat() creates a new Purchase Feature and raises an event
+    '******************************************************************
+    Public Sub addPassbkFeat(ByVal pPassbkFeatId As String, _
+                               ByVal pPurchPrice As Decimal, _
+                               ByVal pFeature As Feature, _
+                               ByVal pPassbk As Passbook, _
+                               ByVal pQtyPurch As Decimal, _
+                               ByVal pQtyRemain As Decimal
+                               )
+
+        'Call the worker procedure to do the work
+        _addPassbkFeat(pPassbkFeatId, _
+                       pPurchPrice, _
+                       pFeature, _
+                       pPassbk, _
+                       pQtyPurch, _
+                       pQtyRemain
+                       )
+    End Sub 'addPassbkFeat(...)
+
+    '******************************************************************
+    'updtPassbkFeat() updates an existing feature and raises an event
+    '******************************************************************
+    Public Sub updtPassbkFeat(ByVal pPassbkFeatId As String, _
+                              ByVal pPurchPrice As Decimal, _
+                              ByVal pFeature As Feature, _
+                              ByVal pPassbk As Passbook, _
+                              ByVal pQtyPurch As Decimal, _
+                              ByVal pQtyRemain As Decimal
                               )
 
         'Call the worker procedure to do the work
-        _createCustomer(pCustId,
-                        pCustName
+        _updtPassbkFeat(pPassbkFeatId, _
+                        pPurchPrice, _
+                        pFeature, _
+                        pPassbk, _
+                        pQtyPurch, _
+                        pQtyRemain
                         )
-    End Sub 'createCustomer(...)
+    End Sub 'updtPassbkFeat(...)
 
     '******************************************************************
-    'createFeature() creates and returns a new Feature
+    'usedFeat() creates used feature object and raises and event
     '******************************************************************
-    Public Sub createFeature(ByVal pFeatId As String, _
-                         ByVal pFeatName As String, _
-                         ByVal pUnitOfMeas As String, _
-                         ByVal pAdultPrice As Decimal, _
-                         ByVal pChildPrice As Decimal
+    Public Function usedFeat(ByVal pId As String, _
+                             ByVal pPassbkFeatId As PassbookFeature, _
+                             ByVal pDateUsed As Date, _
+                             ByVal pQtyUsed As Decimal, _
+                             ByVal pLoc As String
+                             ) As UsedFeature
+
+        'Call the worker procedure to do the work
+        Return _usedFeat(pId, _
+                         pPassbkFeatId, _
+                         pDateUsed, _
+                         pQtyUsed, _
+                         pLoc
                          )
-
-        'Call the worker procedure to do the work
-        _createFeature(pFeatId, _
-                       pFeatName, _
-                       pUnitOfMeas, _
-                       pAdultPrice, _
-                       pChildPrice
-                       )
-    End Sub 'createFeature(...)
-
-    '******************************************************************
-    'createPassbook() creates and returns a new Passbook
-    '******************************************************************
-    Public Function createPassbook(ByVal pPassbkId As String, _
-                                   ByVal pOwner As Customer, _
-                                   ByVal pDatePurch As Date, _
-                                   ByVal pVisName As String, _
-                                   ByVal pVisDob As Date, _
-                                   ByVal pVisAge As Integer, _
-                                   ByVal pVisIsChild As Boolean
-                                   ) As Passbook
-
-        'Call the worker procedure to do the work
-        Return _createPassbook(pPassbkId, _
-                               pOwner, _
-                               pDatePurch, _
-                               pVisName, _
-                               pVisDob, _
-                               pVisAge, _
-                               pVisIsChild
-                               )
-    End Function 'createPassbook(...)
-
-    '******************************************************************
-    'purchaseFeature() creates and returns a new Passbook
-    '******************************************************************
-    Public Function purchaseFeature(ByVal pPassbkFeatId As String, _
-                                    ByVal pPurchPrice As Decimal, _
-                                    ByVal pFeature As Feature, _
-                                    ByVal pPassbk As Passbook, _
-                                    ByVal pQtyPurch As Decimal, _
-                                    ByVal pQtyRemain As Decimal
-                                    ) As PassbookFeature
-
-        'Call the worker procedure to do the work
-        Return _purchaseFeature(pPassbkFeatId, _
-                                pPurchPrice, _
-                                pFeature, _
-                                pPassbk, _
-                                pQtyPurch, _
-                                pQtyRemain
-                                )
-    End Function 'purchaseFeature(...)
-
-    '******************************************************************
-    'usedFeature() creates and returns a new Passbook
-    '******************************************************************
-    Public Function usedFeature(ByVal pId As String, _
-                                ByVal pPassbkFeatId As PassbookFeature, _
-                                ByVal pDateUsed As Date, _
-                                ByVal pQtyUsed As Decimal, _
-                                ByVal pLoc As String
-                                ) As UsedFeature
-
-        'Call the worker procedure to do the work
-        Return _usedFeature(pId, _
-                            pPassbkFeatId, _
-                            pDateUsed, _
-                            pQtyUsed, _
-                            pLoc
-                            )
-    End Function 'usedFeature(...)
+    End Function 'usedFeat(...)
 
 
     '********** Private Non-Shared Behavioral Methods
@@ -355,14 +376,14 @@ Public Class ThemePark
     End Function '_toString(...)
 
     '******************************************************************
-    '_createCustomer() creates and returns a new Customer object.
+    '_createCust() creates a new Customer object and raises an event.
     'This is the work-horse function that creates a new customer
     'and raises an event to alert any listeners to handle the rest
     'of the associated processed based on this event
     '******************************************************************
-    Private Sub _createCustomer(ByVal pCustId As String, _
-                                ByVal pCustName As String
-                                )
+    Private Sub _createCust(ByVal pCustId As String, _
+                            ByVal pCustName As String
+                            )
         Dim newCust As Customer = New Customer(pCustId, pCustName)
 
         'update the customer cnt in the system
@@ -372,14 +393,14 @@ Public Class ThemePark
         'new customer has been added to the system
         RaiseEvent ThemePark_CreateCust(Me,
                                         New ThemePark_EventArgs_CreateCust(newCust))
-    End Sub '_createCustomer(...)
+    End Sub '_createCust(...)
 
     '******************************************************************
-    '_createFeature() creates and returns a new Feature object.
+    '_createFeat() creates a new Feature object and raises an event.
     'This is the work-horse function that does all the work for 
     'createFeature().
     '******************************************************************
-    Private Sub _createFeature(ByVal pFeatId As String, _
+    Private Sub _createFeat(ByVal pFeatId As String, _
                                ByVal pFeatName As String, _
                                ByVal pUnitOfMeas As String, _
                                ByVal pAdultPrice As Decimal, _
@@ -400,75 +421,109 @@ Public Class ThemePark
         'new customer has been added to the system
         RaiseEvent ThemePark_CreateFeat(Me,
                                         New ThemePark_EventArgs_CreateFeat(newFeat))
-    End Sub '_createFeature(...)
+    End Sub '_createFeat(...)
 
     '******************************************************************
-    '_createPassbook() creates and returns a new Passbook object.
+    '_createPassbk() creates a new Passbook object and raises an event.
     'This is the work-horse function that does all the work for 
-    'createPassbook().
+    'createPassbk().
     '******************************************************************
-    Private Function _createPassbook(ByVal pPassbkId As String, _
-                                     ByVal pOwner As Customer, _
-                                     ByVal pDatePurch As Date, _
-                                     ByVal pVisName As String, _
-                                     ByVal pVisDob As Date, _
-                                     ByVal pVisAge As Integer, _
-                                     ByVal pVisIsChild As Boolean
-                                     ) As Passbook
+    Private Sub _createPassbk(ByVal pPassbkId As String, _
+                              ByVal pOwner As Customer, _
+                              ByVal pDatePurch As Date, _
+                              ByVal pVisName As String, _
+                              ByVal pVisDob As Date, _
+                              ByVal pVisAge As Integer, _
+                              ByVal pVisIsChild As Boolean
+                              )
 
-        Dim newPassbk As Passbook = New Passbook(pPassbkId, _
-                                                 pOwner, _
-                                                 pDatePurch, _
-                                                 pVisName, _
-                                                 pVisDob, _
-                                                 pVisAge, _
-                                                 pVisIsChild
-                                                 )
+        Dim passbook As Passbook = New Passbook(pPassbkId, _
+                                                pOwner, _
+                                                pDatePurch, _
+                                                pVisName, _
+                                                pVisDob, _
+                                                pVisAge, _
+                                                pVisIsChild
+                                                )
         'update the passbook cnt in the system
         _numPassbks += 1
 
-        Return newPassbk
-    End Function '_createPassbook(...)
+        'Raise and event to let the listeners of this event know a
+        'new customer has been added to the system
+        RaiseEvent ThemePark_CreatePassbk(Me,
+                                          New ThemePark_EventArgs_CreatePassbk(passbook))
+    End Sub '_createPassbk(...)
 
     '******************************************************************
-    '_purchaseFeature() creates and returns a new Passbook Feature
+    '_addPassbkFeat() creates and returns a new Passbook Feature
     'object. This is the work-horse function that does all the work for 
-    'purchaseFeature().
+    '_addPassbkFeat().
     '******************************************************************
-    Private Function _purchaseFeature(ByVal pPassbkFeatId As String, _
-                                      ByVal pPurchPrice As Decimal, _
-                                      ByVal pFeature As Feature, _
-                                      ByVal pPassbk As Passbook, _
-                                      ByVal pQtyPurch As Decimal, _
-                                      ByVal pQtyRemain As Decimal _
-                                      ) As PassbookFeature
+    Private Sub _addPassbkFeat(ByVal pPassbkFeatId As String, _
+                               ByVal pPurchPrice As Decimal, _
+                               ByVal pFeature As Feature, _
+                               ByVal pPassbk As Passbook, _
+                               ByVal pQtyPurch As Decimal, _
+                               ByVal pQtyRemain As Decimal _
+                               )
 
-        Dim newPassbkFeat As PassbookFeature = New PassbookFeature(pPassbkFeatId, _
-                                                                   pPurchPrice, _
-                                                                   pFeature, _
-                                                                   pPassbk, _
-                                                                   pQtyPurch, _
-                                                                   pQtyRemain
-                                                                   )
+        Dim passbkFeat As PassbookFeature = New PassbookFeature(pPassbkFeatId, _
+                                                                pPurchPrice, _
+                                                                pFeature, _
+                                                                pPassbk, _
+                                                                pQtyPurch, _
+                                                                pQtyRemain
+                                                                )
         'update the passbook cnt in the system
         _numPassbkFeats += 1
 
-        Return newPassbkFeat
-    End Function '_purchaseFeature(...)
+        'Raise and event to let the listeners of this event know a
+        'new customer has been added to the system
+        RaiseEvent ThemePark_AddPassbkFeat(Me,
+                                           New ThemePark_EventArgs_AddPassbkFeat(passbkFeat))
+    End Sub '_addPassbkFeat(...)
 
     '******************************************************************
-    '_usedFeature() creates and returns a new Used Passbook Feature
+    '_updtPassbkFeat() updates and existing features with the specified
+    'values. This is the work-horse function that does all the work for 
+    'updateFeature().
+    '******************************************************************
+    Private Sub _updtPassbkFeat(ByVal pPassbkFeatId As String, _
+                                ByVal pPurchPrice As Decimal, _
+                                ByVal pFeature As Feature, _
+                                ByVal pPassbk As Passbook, _
+                                ByVal pQtyPurch As Decimal, _
+                                ByVal pQtyRemain As Decimal _
+                                )
+
+        Dim passbkFeat As PassbookFeature = New PassbookFeature(pPassbkFeatId, _
+                                                                pPurchPrice, _
+                                                                pFeature, _
+                                                                pPassbk, _
+                                                                pQtyPurch, _
+                                                                pQtyRemain
+                                                                )
+
+        'Raise and event to let the listeners of this event know a
+        'new customer has been added to the system
+        RaiseEvent ThemePark_UpdtPassbkFeat(Me,
+                                            New ThemePark_EventArgs_UpdtPassbkFeat(passbkFeat))
+    End Sub '_updtPassbkFeat(...)
+
+
+    '******************************************************************
+    '_usedFeat() creates a used feature object and raises an event.
     'object. This is the work-horse function that does all the work for 
     'postFeature(). This is accounting for when a customer 'uses' a
     'feature previously purchased and added to a passbook owned by the
     'customer.
     '******************************************************************
-    Private Function _usedFeature(ByVal pId As String, _
-                                  ByVal pPassbkFeatId As PassbookFeature, _
-                                  ByVal pDateUsed As Date, _
-                                  ByVal pQtyUsed As Decimal, _
-                                  ByVal pLoc As String
-                                  ) As UsedFeature
+    Private Function _usedFeat(ByVal pId As String, _
+                               ByVal pPassbkFeatId As PassbookFeature, _
+                               ByVal pDateUsed As Date, _
+                               ByVal pQtyUsed As Decimal, _
+                               ByVal pLoc As String
+                               ) As UsedFeature
 
         Dim usedFeature As UsedFeature = New UsedFeature(pId, _
                                                          pPassbkFeatId, _
@@ -480,7 +535,7 @@ Public Class ThemePark
         _numUsedFeats += 1
 
         Return usedFeature
-    End Function '_usedFeature(...)
+    End Function '_usedFeat(...)
 
 
 #End Region 'Behavioral Methods
@@ -522,6 +577,20 @@ Public Class ThemePark
                                       ByVal e As System.EventArgs
                                       )
 
+    'Define the new passbook event
+    Public Event ThemePark_CreatePassbk(ByVal sender As Object, _
+                                        ByVal e As System.EventArgs
+                                        )
+
+    'Define the new purchase passbook feature event
+    Public Event ThemePark_AddPassbkFeat(ByVal sender As Object, _
+                                         ByVal e As System.EventArgs
+                                         )
+
+    'Define the new purchase passbook feature event
+    Public Event ThemePark_UpdtPassbkFeat(ByVal sender As Object, _
+                                          ByVal e As System.EventArgs
+                                          )
 
 #End Region 'Events
 
