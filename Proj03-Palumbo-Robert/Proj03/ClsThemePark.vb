@@ -39,6 +39,10 @@ Public Class ThemePark
     'Attributes + Module-level Constants+Variables
     '******************************************************************
 
+    'System level error message
+    Private Const mSYS_ERR_MSG As String = "Internal System Error: Object creation Failed"
+
+
     '********** Module-level variables
 
     'Theme park name for the one theme park instance
@@ -369,14 +373,23 @@ Public Class ThemePark
     Private Sub _createCust(ByVal pCustId As String, _
                             ByVal pCustName As String
                             )
-        Dim newCust As Customer = New Customer(pCustId, pCustName)
+        Dim cust As Customer = New Customer(pCustId,
+                                            pCustName
+                                            )
+
+        'Make sure we actually have customer object.  There is the slight chance
+        'that the New () could have failed.
+        If cust Is Nothing Then
+            MsgBox(mSYS_ERR_MSG, MsgBoxStyle.Critical)
+            Exit Sub
+        End If
 
         'update the customer cnt in the system
         _numCusts += 1
 
         'Raise and event to let the listeners of this event it happened
         RaiseEvent ThemePark_CreateCust(Me,
-                                        New ThemePark_EventArgs_CreateCust(newCust))
+                                        New ThemePark_EventArgs_CreateCust(cust))
     End Sub '_createCust(...)
 
     '******************************************************************
@@ -392,19 +405,26 @@ Public Class ThemePark
                                ByVal pChildPrice As Decimal
                                )
 
-        Dim newFeat As Feature = New Feature(pFeatId, _
-                                             pFeatName, _
-                                             pUnitOfMeas, _
-                                             pAdultPrice, _
-                                             pChildPrice
-                                             )
+        Dim feat As Feature = New Feature(pFeatId, _
+                                          pFeatName, _
+                                          pUnitOfMeas, _
+                                          pAdultPrice, _
+                                          pChildPrice
+                                          )
+
+        'Make sure we actually have customer object.  There is the slight chance
+        'that the New () could have failed.
+        If feat Is Nothing Then
+            MsgBox(mSYS_ERR_MSG, MsgBoxStyle.Critical)
+            Exit Sub
+        End If
 
         'update the feature cnt in the system
         _numFeats += 1
 
         'Raise and event to let the listeners of this event it happened
         RaiseEvent ThemePark_CreateFeat(Me,
-                                        New ThemePark_EventArgs_CreateFeat(newFeat))
+                                        New ThemePark_EventArgs_CreateFeat(feat))
     End Sub '_createFeat(...)
 
     '******************************************************************
@@ -430,6 +450,14 @@ Public Class ThemePark
                                                 pVisAge, _
                                                 pVisIsChild
                                                 )
+
+        'Make sure we actually have customer object.  There is the slight chance
+        'that the New () could have failed.
+        If passbook Is Nothing Then
+            MsgBox(mSYS_ERR_MSG, MsgBoxStyle.Critical)
+            Exit Sub
+        End If
+
         'update the passbook cnt in the system
         _numPassbks += 1
 
@@ -455,6 +483,13 @@ Public Class ThemePark
                                                                 pPassbk, _
                                                                 pQtyPurch
                                                                 )
+        'Make sure we actually have customer object.  There is the slight chance
+        'that the New () could have failed.
+        If passbkFeat Is Nothing Then
+            MsgBox(mSYS_ERR_MSG, MsgBoxStyle.Critical)
+            Exit Sub
+        End If
+
         'update the passbook cnt in the system
         _numPassbkFeats += 1
 
@@ -478,6 +513,13 @@ Public Class ThemePark
                                                                 Nothing, _
                                                                 pQty
                                                                 )
+
+        'Make sure we actually have customer object.  There is the slight chance
+        'that the New () could have failed.
+        If passbkFeat Is Nothing Then
+            MsgBox(mSYS_ERR_MSG, MsgBoxStyle.Critical)
+            Exit Sub
+        End If
 
         'Raise and event to let the listeners of this event it happened
         RaiseEvent ThemePark_UpdtPassbkFeat(Me,
@@ -504,6 +546,14 @@ Public Class ThemePark
                                                       pLoc, _
                                                       pDateUsed
                                                       )
+
+        'Make sure we actually have customer object.  There is the slight chance
+        'that the New () could have failed.
+        If usedFeat Is Nothing Then
+            MsgBox(mSYS_ERR_MSG, MsgBoxStyle.Critical)
+            Exit Sub
+        End If
+
         'update the passbook cnt in the system
         _numUsedFeats += 1
 

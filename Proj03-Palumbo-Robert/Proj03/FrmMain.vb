@@ -40,6 +40,9 @@ Public Class FrmMain
     'Theme Park Name
     Private Const mTHEME_PARK_NAME As String = "CIS605 Theme Park"
 
+    'System level error message
+    Private Const mSYS_ERR_MSG As String = "Internal System Error: Object creation Failed"
+
     'Minimum age to be considered an adult. Less than this age is 
     'thusly considered a child
     Private Const mADULT_MIN_AGE As Integer = 13
@@ -370,6 +373,13 @@ Public Class FrmMain
         'Create a theme park instance
         _theThemePark = New ThemePark(_themeParkName)
 
+        If _theThemePark Is Nothing Then
+            MsgBox(mSYS_ERR_MSG & ", Theme Park could not be instantiated")
+
+            'Terminate the program
+            _closeAppl()
+        End If
+
         _writeTransLog("<CREATED>: " & _theThemePark.ToString())
     End Sub '_initializeBusinessLogic()
 
@@ -485,6 +495,7 @@ Public Class FrmMain
         'Reset the fields and focus to allow for another feature to be added
         txtCustIdGrpAddCustTabCustTbcMainFrmMain.Text = ""
         txtCustNameGrpAddCustTabCustTbcMainFrmMain.Text = ""
+
         txtCustIdGrpAddCustTabCustTbcMainFrmMain.Focus()
     End Sub '_resetCustomerInput()
 
@@ -553,7 +564,7 @@ Public Class FrmMain
         End If
 
         decAdultPrice = Decimal.Parse(adultPrice)
-        If decAdultPrice < 0 Then
+        If decAdultPrice <= 0 Then
             MsgBox("ERROR: Adult price must be greater than 0.0 (ex: 20.50)", MsgBoxStyle.OkOnly)
             txtPriceAdultGrpAddFeatTabFeatTbcMainFrmMain.Text = ""
             txtPriceAdultGrpAddFeatTabFeatTbcMainFrmMain.SelectAll()
@@ -571,7 +582,7 @@ Public Class FrmMain
         End If
 
         decChildPrice = Decimal.Parse(childPrice)
-        If decChildPrice <= 0 Then
+        If decChildPrice < 0 Then
             MsgBox("ERROR: Child price must be greater than 0.0 (ex: 20.50)", MsgBoxStyle.OkOnly)
             txtPriceChildGrpAddFeatTabFeatTbcMainFrmMain.Text = "0"
             txtPriceChildGrpAddFeatTabFeatTbcMainFrmMain.SelectAll()
@@ -603,6 +614,7 @@ Public Class FrmMain
                                      decAdultPrice, _
                                      decChildPrice
                                      )
+
             'Reset the input fields to allow for another possible feature entry
             _resetFeatureInput()
         End If
@@ -620,6 +632,7 @@ Public Class FrmMain
         txtUnifOfMeasGrpAddFeatTabFeatTbcMainFrmMain.Text = ""
         txtPriceAdultGrpAddFeatTabFeatTbcMainFrmMain.Text = ""
         txtPriceChildGrpAddFeatTabFeatTbcMainFrmMain.Text = ""
+
         txtFeatIdAddFeatTabFeatTbcMainFrmMain.Focus()
     End Sub '_resetFeatureInput()
 
@@ -655,6 +668,13 @@ Public Class FrmMain
         Dim visDobValue As Date
 
         'Validate all the fields
+        If custList.Items.Count = 0 Then
+            MsgBox("ERROR: There are no Customers defined, please add a Customer", MsgBoxStyle.OkOnly)
+            txtCustIdGrpAddCustTabCustTbcMainFrmMain.Focus()
+            tbcMainFrmMain.SelectTab(mTBC_MAIN_TAB_CUSTOMER)
+            Exit Sub
+        End If
+
         If String.IsNullOrEmpty(custList.Text) Then
             MsgBox("ERROR: Please seleect a Customer Id from the list", MsgBoxStyle.OkOnly)
             txtToStringGrpCustInfoGrpAddPassbkTabPassbkTbcMainFrmMain.SelectAll()
@@ -731,9 +751,12 @@ Public Class FrmMain
     Private Sub _resetPassbkInput()
         'Reset the fields and focus to allow for another feature to be added
         cboCustIdGrpCustInfoGrpAddPassbkTabPassbkTbcMainFrmMain.Text = ""
+
         txtPassbkIdGrpAddPassbkTabPassbkTbcMainFrmMain.Text = ""
         txtVisNameGrpAddPassbkTabPassbkTbcMainFrmMain.Text = ""
         txtVisDobGrpAddPassbkTabPassbkTbcMainFrmMain.Text = ""
+        txtToStringGrpCustInfoGrpAddPassbkTabPassbkTbcMainFrmMain.Text = ""
+
         txtPassbkIdGrpAddPassbkTabPassbkTbcMainFrmMain.Focus()
     End Sub '_resetPassbkInput()
 
@@ -759,8 +782,6 @@ Public Class FrmMain
                                                                    e As EventArgs) _
         Handles btnSubmitTabAddFeatTbcPassbkFeatMainTbcMain.Click
 
-        Dim newPassbkFeat As PassbookFeature = Nothing
-
         'Temporary for Phase 2 requirements
         Dim tempCust As Customer = New Customer("0001", "Doe, John")
         Dim tempPassbk As Passbook = New Passbook("0001", tempCust, DateTime.Now, "Doe, James",
@@ -769,22 +790,36 @@ Public Class FrmMain
 
         'Used as shortcut names to access the data
         Dim passbkFeatId As String = txtPassBkFeatIdTabAddFeatTbcPassbkFeatMainTbcMain.Text
-        Dim passbkId As String = cboPassbkIdGrpPassbkTabAddFeatTbcPassbkFeatMainTbcMain.Text
-        Dim featId As String = cboFeatIdGrpFeatTabAddFeatTbcPassbkFeatMainTbcMain.Text
+        Dim passbkId As String = cboPassbkIdTabAddFeatTbcPassbkFeatMainTbcMain.Text
+        Dim featId As String = cboFeatIdTabAddFeatTbcPassbkFeatMainTbcMain.Text
         Dim qtyPurch As String = txtQtyTabAddFeatTbcPassbkFeatMainTbcMain.Text
         Dim decQtyPurch As Decimal
         Dim decQtyRemain As Decimal = 0D
 
         'Validate all the fields
+        If cboPassbkIdTabAddFeatTbcPassbkFeatMainTbcMain.Items.Count = 0 Then
+            MsgBox("ERROR: There are no Passbooks defined, please add a Passbook", MsgBoxStyle.OkOnly)
+            cboCustIdGrpCustInfoGrpAddPassbkTabPassbkTbcMainFrmMain.Focus()
+            tbcMainFrmMain.SelectTab(mTBC_MAIN_TAB_PASSBK)
+            Exit Sub
+        End If
+
         If String.IsNullOrEmpty(passbkId) Then
             MsgBox("ERROR: Please select a Passbook Id from the list", MsgBoxStyle.OkOnly)
-            cboPassbkIdGrpPassbkTabAddFeatTbcPassbkFeatMainTbcMain.Focus()
+            cboPassbkIdTabAddFeatTbcPassbkFeatMainTbcMain.Focus()
+            Exit Sub
+        End If
+
+        If cboFeatIdTabAddFeatTbcPassbkFeatMainTbcMain.Items.Count = 0 Then
+            MsgBox("ERROR: There are no Features defined, please add a Feature", MsgBoxStyle.OkOnly)
+            txtFeatIdAddFeatTabFeatTbcMainFrmMain.Focus()
+            tbcMainFrmMain.SelectTab(mTBC_MAIN_TAB_FEATURE)
             Exit Sub
         End If
 
         If String.IsNullOrEmpty(featId) Then
             MsgBox("ERROR: Please select a Feature Id from the list", MsgBoxStyle.OkOnly)
-            cboFeatIdGrpFeatTabAddFeatTbcPassbkFeatMainTbcMain.Focus()
+            cboFeatIdTabAddFeatTbcPassbkFeatMainTbcMain.Focus()
             Exit Sub
         End If
 
@@ -851,15 +886,17 @@ Public Class FrmMain
     '******************************************************************
     Private Sub _resetPassbkAddFeatInput()
         'Reset the fields and focus to allow for another feature to be added
-        cboPassbkIdGrpPassbkTabAddFeatTbcPassbkFeatMainTbcMain.Text = ""
-        cboFeatIdGrpFeatTabAddFeatTbcPassbkFeatMainTbcMain.Text = ""
-        txtCustToStringGrpPassbkTabAddFeatTbcPassbkFeatMainTbcMain.Text = ""
-        txtVisToStringGrpPassbkTabAddFeatTbcPassbkFeatMainTbcMain.Text = ""
-        txtFeatToStringGrpFeatTabAddFeatTbcPassbkFeatMainTbcMain.Text = ""
+        cboPassbkIdTabAddFeatTbcPassbkFeatMainTbcMain.Text = ""
+        cboFeatIdTabAddFeatTbcPassbkFeatMainTbcMain.Text = ""
+
+        txtCustToStringTabAddFeatTbcPassbkFeatMainTbcMain.Text = ""
+        txtVisToStringTabAddFeatTbcPassbkFeatMainTbcMain.Text = ""
+        txtFeatToStringTabAddFeatTbcPassbkFeatMainTbcMain.Text = ""
         txtPassBkFeatIdTabAddFeatTbcPassbkFeatMainTbcMain.Text = ""
         txtQtyTabAddFeatTbcPassbkFeatMainTbcMain.Text = ""
         txtPriceTabAddFeatTbcPassbkFeatMainTbcMain.Text = ""
-        cboPassbkIdGrpPassbkTabAddFeatTbcPassbkFeatMainTbcMain.Focus()
+
+        cboPassbkIdTabAddFeatTbcPassbkFeatMainTbcMain.Focus()
     End Sub '_resetPassbkAddInput()
 
     '******************************************************************
@@ -893,7 +930,7 @@ Public Class FrmMain
         Dim tempFeat As Feature = New Feature("0001", "Park Pass", "Day", 12.5D, 7.5D)
 
         'Used as shortcut names to access the data
-        Dim featId As String = cboFeatIdGrpPassbkTabUpdtFeatTbcPassbkFeatMainTbcMain.Text
+        Dim featId As String = cboFeatIdTabUpdtFeatTbcPassbkFeatMainTbcMain.Text
         Dim price As Decimal = tempFeat.adultPrice
         Dim newQty As String = txtNewQtyTabUpdtFeatTbcPassbkFeatMainTbcMain.Text
         Dim remainQty As String = txtRemQtyTabUpdtFeatTbcPassbkFeatMainTbcMain.Text
@@ -901,9 +938,17 @@ Public Class FrmMain
         Dim decRemainQty As Decimal = 0D
 
         'Validate all the fields
+        If cboFeatIdTabUpdtFeatTbcPassbkFeatMainTbcMain.Items.Count = 0 Then
+            MsgBox("ERROR: There are no Passbook Features defined, please add a Passbook Feature", MsgBoxStyle.OkOnly)
+            cboPassbkIdTabAddFeatTbcPassbkFeatMainTbcMain.Focus()
+            tbcMainFrmMain.SelectTab(mTBC_MAIN_TAB_PASSBKFEAT)
+            tbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.SelectTab(mTBC_PASSBKFEAT_TAB_ADD)
+            Exit Sub
+        End If
+
         If String.IsNullOrEmpty(featId) Then
             MsgBox("ERROR: Please select a Passbook Feature Id from the list", MsgBoxStyle.OkOnly)
-            cboFeatIdGrpPassbkTabUpdtFeatTbcPassbkFeatMainTbcMain.Focus()
+            cboFeatIdTabUpdtFeatTbcPassbkFeatMainTbcMain.Focus()
             Exit Sub
         End If
 
@@ -948,8 +993,6 @@ Public Class FrmMain
                                          decNewQty
                                          )
 
-            MsgBox("Passbook Feature update submission was successful!", MsgBoxStyle.OkOnly)
-
             'Reset the fields and focus to allow for another feature to be added
             _resetPassbkUpdtFeatInput()
         End If
@@ -961,15 +1004,17 @@ Public Class FrmMain
     '******************************************************************
     Private Sub _resetPassbkUpdtFeatInput()
         'Reset the fields and focus to allow for another feature to be added
-        cboPassbkIdGrpPassbkTabAddFeatTbcPassbkFeatMainTbcMain.Text = ""
-        cboFeatIdGrpFeatTabAddFeatTbcPassbkFeatMainTbcMain.Text = ""
-        txtCustToStringGrpPassbkTabAddFeatTbcPassbkFeatMainTbcMain.Text = ""
-        txtVisToStringGrpPassbkTabAddFeatTbcPassbkFeatMainTbcMain.Text = ""
-        txtFeatToStringGrpFeatTabAddFeatTbcPassbkFeatMainTbcMain.Text = ""
-        txtPassBkFeatIdTabAddFeatTbcPassbkFeatMainTbcMain.Text = ""
-        txtQtyTabAddFeatTbcPassbkFeatMainTbcMain.Text = ""
-        txtPriceTabAddFeatTbcPassbkFeatMainTbcMain.Text = ""
-        cboPassbkIdGrpPassbkTabAddFeatTbcPassbkFeatMainTbcMain.Focus()
+        cboFeatIdTabUpdtFeatTbcPassbkFeatMainTbcMain.Text = ""
+
+        txtCustToStringTabUpdtFeatTbcPassbkFeatMainTbcMain.Text = ""
+        txtVisToStringTabUpdtFeatTbcPassbkFeatMainTbcMain.Text = ""
+        txtFeatToStringTabUpdtFeatTbcPassbkFeatMainTbcMain.Text = ""
+        txtPrevUsedTabUpdtFeatTbcPassbkFeatMainTbcMain.Text = ""
+        txtPriceTabUpdtFeatTbcPassbkFeatMainTbcMain.Text = ""
+        txtRemQtyTabUpdtFeatTbcPassbkFeatMainTbcMain.Text = ""
+        txtNewQtyTabUpdtFeatTbcPassbkFeatMainTbcMain.Text = ""
+
+        cboPassbkIdTabAddFeatTbcPassbkFeatMainTbcMain.Focus()
     End Sub '_resetPassbkAddInput()
 
     '******************************************************************
@@ -1006,30 +1051,38 @@ Public Class FrmMain
         Dim tempPassbkFeat As PassbookFeature = New PassbookFeature("0001", tempFeat, tempPassbk, 5)
 
         'Used as shortcut names to access the data
-        Dim featId As String = cboPassbkFeatIdTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Text
-        Dim qtyUsed As String = txtQtyUsedGrpPassbkTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Text
-        Dim loc As String = txtLocGrpPassbkTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Text
+        Dim featId As String = cboPassbkFeatIdTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Text
+        Dim qtyUsed As String = txtQtyUsedTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Text
+        Dim loc As String = txtLocTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Text
         Dim decQtyUsed As Decimal
         Dim decQtyRemain As Decimal = 0D
 
         'Validate all the fields
+        If cboPassbkFeatIdTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Items.Count = 0 Then
+            MsgBox("ERROR: There are no Passbook Features defined, please add a Passbook Feature", MsgBoxStyle.OkOnly)
+            cboPassbkIdTabAddFeatTbcPassbkFeatMainTbcMain.Focus()
+            tbcMainFrmMain.SelectTab(mTBC_MAIN_TAB_PASSBKFEAT)
+            tbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.SelectTab(mTBC_PASSBKFEAT_TAB_ADD)
+            Exit Sub
+        End If
+
         If String.IsNullOrEmpty(featId) Then
             MsgBox("ERROR: Please select a Passbook Feature Id from the list", MsgBoxStyle.OkOnly)
-            cboPassbkFeatIdTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Focus()
+            cboPassbkFeatIdTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Focus()
             Exit Sub
         End If
 
         If Not Decimal.TryParse(qtyUsed, decQtyUsed) Or decQtyUsed <= 0 Then
             MsgBox("ERROR: Please enter a numeric Quantity > 0 (ex: 3)", MsgBoxStyle.OkOnly)
-            txtQtyUsedGrpPassbkTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.SelectAll()
-            txtQtyUsedGrpPassbkTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Focus()
+            txtQtyUsedTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.SelectAll()
+            txtQtyUsedTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Focus()
             Exit Sub
         End If
 
         If String.IsNullOrEmpty(loc) Then
             MsgBox("ERROR: Please specify the location where feature was used", MsgBoxStyle.OkOnly)
-            txtLocGrpPassbkTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Focus()
-            txtLocGrpPassbkTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Text = ""
+            txtLocTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Focus()
+            txtLocTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Text = ""
             Exit Sub
         End If
 
@@ -1050,12 +1103,12 @@ Public Class FrmMain
         'If OK selected proceed with the submission
         If choice = MsgBoxResult.Ok And _sysTestActive = False Then
             'Create a new Used Feature
-            _theThemePark.usedFeat("PALUMBO-NOTUSED", tempPassbkFeat, DateTime.Now, decQtyUsed, loc)
+            _theThemePark.usedFeat("PBO-NOTUSED", tempPassbkFeat, DateTime.Now, decQtyUsed, loc)
 
             'Reset the fields and focus to allow for another used feature to be submitted
             _resetPassbkUsedFeatInput()
         End If
-    End Sub '_btnSubmitTabUpdtFeatTbcPassbkFeatMainTbcMain_Click(...)
+    End Sub '_btnSubmitTabPostFeatTbcPassbkFeatMainTbcMain_Click(...)
 
     '******************************************************************
     '_resetPassbkPostFeatInput() is used to reset all the feature input fields to allow the user 
@@ -1063,16 +1116,17 @@ Public Class FrmMain
     '******************************************************************
     Private Sub _resetPassbkUsedFeatInput()
         'Reset the fields and focus to allow for another feature to be added
-        cboPassbkFeatIdTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Text = ""
-        cboPassbkFeatIdTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Focus()
+        cboPassbkFeatIdTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Text = ""
 
         txtCustToStringTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Text = ""
-        txtVisToStringGrpPassbkTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Text = ""
-        txtFeatToStringGrpPassbkTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Text = ""
-        txtPrevUsedGrpPassbkTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Text = ""
+        txtVisToStringTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Text = ""
+        txtFeatToStringTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Text = ""
+        txtPrevUsedTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Text = ""
         txtRemQuantTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Text = ""
-        txtQtyUsedGrpPassbkTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Text = ""
-        txtLocGrpPassbkTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Text = ""
+        txtQtyUsedTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Text = ""
+        txtLocTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Text = ""
+
+        cboPassbkFeatIdTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Focus()
     End Sub '_resetPassbkPostFeatInput()
 
     '******************************************************************
@@ -1082,7 +1136,7 @@ Public Class FrmMain
     '******************************************************************
     Private Sub _btnResetTabPostFeatTbcPassbkFeatMainTbcMain_Click(sender As Object, _
                                                                    e As EventArgs) _
-        Handles btnResetTabUpdtFeatTbcPassbkFeatMainTbcMain.Click
+        Handles btnResetTabUpdtFeatTbcPassbkFeatMainTbcMain.Click, btnResetTabPostFeatTbcPassbkFeatMainTbcMain.Click
 
         'Reset the fields and focus to allow for another passbook featurd addition
         _resetPassbkUsedFeatInput()
@@ -1151,7 +1205,7 @@ Public Class FrmMain
                 Me.AcceptButton = btnSubmitTabAddFeatTbcPassbkFeatMainTbcMain
 
                 'Set the focus to the first input field
-                cboPassbkIdGrpPassbkTabAddFeatTbcPassbkFeatMainTbcMain.Focus()
+                cboPassbkIdTabAddFeatTbcPassbkFeatMainTbcMain.Focus()
 
             Case mTBC_MAIN_TAB_TRANSLOG
                 Console.WriteLine("Transaction Log Tab")
@@ -1186,19 +1240,19 @@ Public Class FrmMain
                 Console.WriteLine("Add Tab")
 
                 'Set the focus to the first input field
-                cboPassbkIdGrpPassbkTabAddFeatTbcPassbkFeatMainTbcMain.Focus()
+                cboPassbkIdTabAddFeatTbcPassbkFeatMainTbcMain.Focus()
 
             Case mTBC_PASSBKFEAT_TAB_UPDT
                 Console.WriteLine("Update Tab")
 
                 'Set the focus to the first input field
-                cboFeatIdGrpPassbkTabUpdtFeatTbcPassbkFeatMainTbcMain.Focus()
+                cboFeatIdTabUpdtFeatTbcPassbkFeatMainTbcMain.Focus()
 
             Case mTBC_PASSBKFEAT_TAB_POST
                 Console.WriteLine("Post Tab")
 
                 'Set the focus to the first input field
-                cboPassbkFeatIdTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Focus()
+                cboPassbkFeatIdTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Focus()
         End Select
     End Sub '_tbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain_SelectedIndexChanged(...)
 
@@ -1352,6 +1406,7 @@ Public Class FrmMain
     Private Sub _lstCustTabDashboardTbcMain_SelectedIndexChanged(sender As Object, e As EventArgs) _
         Handles lstCustTabDashboardTbcMain.SelectedIndexChanged
 
+        'PBO: TEMPORARY AND MUST BE REFACTORED FOR PP04
         Dim info As String = "Customer-Info: "
         Dim lstVal As String = _
             lstCustTabDashboardTbcMain.SelectedItem.ToString
@@ -1369,6 +1424,7 @@ Public Class FrmMain
     Private Sub _lstFeatTabDashboardTbcMain_SelectedIndexChanged(sender As Object, e As EventArgs) _
         Handles lstFeatTabDashboardTbcMain.SelectedIndexChanged
 
+        'PBO: TEMPORARY AND MUST BE REFACTORED FOR PP04
         Dim info As String = "Feature-Info: "
         Dim lstVal As String = _
             lstFeatTabDashboardTbcMain.SelectedItem.ToString
@@ -1387,6 +1443,7 @@ Public Class FrmMain
     Private Sub _lstPassbkTabDashboardTbcMain_SelectedIndexChanged(sender As Object, e As EventArgs) _
         Handles lstPassbkTabDashboardTbcMain.SelectedIndexChanged
 
+        'PBO: TEMPORARY AND MUST BE REFACTORED FOR PP04
         Dim info As String = "Passbook-Info: "
         Dim lstVal As String = _
             lstPassbkTabDashboardTbcMain.SelectedItem.ToString
@@ -1406,6 +1463,7 @@ Public Class FrmMain
     Private Sub _lstPassbkFeatTabDashboardTbcMain_SelectedIndexChanged(sender As Object, e As EventArgs) _
         Handles lstPassbkFeatTabDashboardTbcMain.SelectedIndexChanged
 
+        'PBO: TEMPORARY AND MUST BE REFACTORED FOR PP04
         Dim info As String = "PassbookFeature-Info: "
         Dim lstVal As String = _
             lstPassbkFeatTabDashboardTbcMain.SelectedItem.ToString
@@ -1424,6 +1482,7 @@ Public Class FrmMain
     Private Sub _lstUsedFeatTabDashboardTbcMain_SelectedIndexChanged(sender As Object, e As EventArgs) _
         Handles lstUsedFeatTabDashboardTbcMain.SelectedIndexChanged
 
+        'PBO: TEMPORARY AND MUST BE REFACTORED FOR PP04
         Dim info As String = "UsedFeature-Info: "
         Dim lstVal As String = _
             lstUsedFeatTabDashboardTbcMain.SelectedItem.ToString
@@ -1443,6 +1502,7 @@ Public Class FrmMain
     Private Sub _cboCustIdGrpCustInfoGrpAddPassbkTabPassbkTbcMainFrmMain_SelectedIndexChanged(sender As Object, e As EventArgs) _
         Handles cboCustIdGrpCustInfoGrpAddPassbkTabPassbkTbcMainFrmMain.SelectedIndexChanged
 
+        'PBO: TEMPORARY AND MUST BE REFACTORED FOR PP04
         Dim info As String = "Customer-Info: "
         Dim cboVal As String = _
             cboCustIdGrpCustInfoGrpAddPassbkTabPassbkTbcMainFrmMain.SelectedItem.ToString
@@ -1459,17 +1519,18 @@ Public Class FrmMain
     'is displayed in the associated text fields.
     '******************************************************************
     Private Sub _cboPassbkIdGrpPassbkTabAddFeatTbcPassbkFeatMainTbcMain_SelectedIndexChanged(sender As Object, e As EventArgs) _
-        Handles cboPassbkIdGrpPassbkTabAddFeatTbcPassbkFeatMainTbcMain.SelectedIndexChanged
+        Handles cboPassbkIdTabAddFeatTbcPassbkFeatMainTbcMain.SelectedIndexChanged
 
+        'PBO: TEMPORARY AND MUST BE REFACTORED FOR PP04
         Dim info As String = "Customer-Info: "
         Dim cboVal As String = _
-            cboPassbkIdGrpPassbkTabAddFeatTbcPassbkFeatMainTbcMain.SelectedItem.ToString
+            cboPassbkIdTabAddFeatTbcPassbkFeatMainTbcMain.SelectedItem.ToString
 
-        txtCustToStringGrpPassbkTabAddFeatTbcPassbkFeatMainTbcMain.Text = _
+        txtCustToStringTabAddFeatTbcPassbkFeatMainTbcMain.Text = _
             info & cboVal & ", completed full info in PP04"
 
         info = "Visitor-Info"
-        txtVisToStringGrpPassbkTabAddFeatTbcPassbkFeatMainTbcMain.Text = _
+        txtVisToStringTabAddFeatTbcPassbkFeatMainTbcMain.Text = _
             info & cboVal & ", completed full info in PP04"
     End Sub '_cboPassbkIdGrpPassbkTabAddFeatTbcPassbkFeatMainTbcMain_SelectedIndexChanged
 
@@ -1480,15 +1541,17 @@ Public Class FrmMain
     'in the associated text fields.
     '******************************************************************
     Private Sub _cboFeatIdGrpFeatTabAddFeatTbcPassbkFeatMainTbcMain_SelectedIndexChanged(sender As Object, e As EventArgs) _
-        Handles cboFeatIdGrpFeatTabAddFeatTbcPassbkFeatMainTbcMain.SelectedIndexChanged
+        Handles cboFeatIdTabAddFeatTbcPassbkFeatMainTbcMain.SelectedIndexChanged
 
+        'PBO: TEMPORARY AND MUST BE REFACTORED FOR PP04
         Dim info As String = "Feature-Info: "
         Dim cboVal As String = _
-            cboFeatIdGrpFeatTabAddFeatTbcPassbkFeatMainTbcMain.SelectedItem.ToString
+            cboFeatIdTabAddFeatTbcPassbkFeatMainTbcMain.SelectedItem.ToString
 
-        txtFeatToStringGrpFeatTabAddFeatTbcPassbkFeatMainTbcMain.Text = _
+        txtFeatToStringTabAddFeatTbcPassbkFeatMainTbcMain.Text = _
             info & cboVal & ", completed full info in PP04"
 
+        txtPriceTabAddFeatTbcPassbkFeatMainTbcMain.Text = "137.50"
     End Sub '_cboFeatIdGrpFeatTabAddFeatTbcPassbkFeatMainTbcMain_SelectedIndexChanged(...)
 
     '******************************************************************
@@ -1498,23 +1561,26 @@ Public Class FrmMain
     'displayed in the associated text fields.
     '******************************************************************
     Private Sub _cboFeatIdGrpPassbkTabUpdtFeatTbcPassbkFeatMainTbcMain_SelectedIndexChanged(sender As Object, e As EventArgs) _
-        Handles cboFeatIdGrpPassbkTabUpdtFeatTbcPassbkFeatMainTbcMain.SelectedIndexChanged
+        Handles cboFeatIdTabUpdtFeatTbcPassbkFeatMainTbcMain.SelectedIndexChanged
 
+        'PBO: TEMPORARY AND MUST BE REFACTORED FOR PP04
         Dim info As String = "Customer-Info: "
         Dim cboVal As String = _
-            cboFeatIdGrpPassbkTabUpdtFeatTbcPassbkFeatMainTbcMain.SelectedItem.ToString
+            cboFeatIdTabUpdtFeatTbcPassbkFeatMainTbcMain.SelectedItem.ToString
 
-        txtCustToStringGrpPassbkTabUpdtFeatTbcPassbkFeatMainTbcMain.Text = _
+        txtCustToStringTabUpdtFeatTbcPassbkFeatMainTbcMain.Text = _
             info & cboVal & ", completed full info in PP04"
 
         info = "Visitor-Info: "
-        txtVisToStringGrpPassbkTabUpdtFeatTbcPassbkFeatMainTbcMain.Text = _
+        txtVisToStringTabUpdtFeatTbcPassbkFeatMainTbcMain.Text = _
             info & cboVal & ", completed full info in PP04"
 
         info = "Feature-Info: "
-        txtFeatToStringGrpPassbkTabUpdtFeatTbcPassbkFeatMainTbcMain.Text = _
+        txtFeatToStringTabUpdtFeatTbcPassbkFeatMainTbcMain.Text = _
             info & cboVal & ", completed full info in PP04"
 
+        txtPriceTabUpdtFeatTbcPassbkFeatMainTbcMain.Text = "12.50"
+        txtRemQtyTabUpdtFeatTbcPassbkFeatMainTbcMain.Text = "3"
     End Sub '_cboFeatIdGrpPassbkTabUpdtFeatTbcPassbkFeatMainTbcMain_SelectedIndexChanged(...)
 
     '******************************************************************
@@ -1524,24 +1590,27 @@ Public Class FrmMain
     'displayed in the associated text fields.
     '******************************************************************
     Private Sub _cboPassbkFeatIdTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain_SelectedIndexChanged(sender As Object, e As EventArgs) _
-          Handles cboPassbkFeatIdTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.SelectedIndexChanged
+          Handles cboPassbkFeatIdTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.SelectedIndexChanged
 
+        'PBO: TEMPORARY AND MUST BE REFACTORED FOR PP04
         Dim info As String = "Customer-Info: "
         Dim cboVal As String = _
-            cboPassbkFeatIdTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.SelectedItem.ToString
+            cboPassbkFeatIdTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.SelectedItem.ToString
 
         txtCustToStringTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Text = _
             info & cboVal & ", completed full info in PP04"
 
         info = "Visitor-Info: "
-        txtVisToStringGrpPassbkTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Text = _
+        txtVisToStringTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Text = _
             info & cboVal & ", completed full info in PP04"
 
         info = "Feature-Info: "
-        txtFeatToStringGrpPassbkTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Text = _
+        txtFeatToStringTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Text = _
             info & cboVal & ", completed full info in PP04"
 
+        txtRemQuantTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Text = "3"
     End Sub '_cboPassbkFeatIdTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain_SelectedIndexChanged(...)
+
 
 
     '********** Business Logic Event Procedures
@@ -1566,6 +1635,13 @@ Public Class FrmMain
 
         'Use the past in object to populate the necessary system components
         cust = themePark_EventArgs_CreateCust.cust
+
+        'Make sure we actually have customer object.  There is the slight chance
+        'that the New () could have failed.
+        If cust Is Nothing Then
+            MsgBox(mSYS_ERR_MSG, MsgBoxStyle.Critical)
+            Exit Sub
+        End If
 
         With cust
             lstCustTabDashboardTbcMain.Items.Add(.custId)
@@ -1605,12 +1681,19 @@ Public Class FrmMain
         'Use the past in object to populate the necessary system components
         feat = themePark_EventArgs_CreateFeat.feat
 
+        'Make sure we actually have customer object.  There is the slight chance
+        'that the New () could have failed.
+        If feat Is Nothing Then
+            MsgBox(mSYS_ERR_MSG, MsgBoxStyle.Critical)
+            Exit Sub
+        End If
+
         With feat
             lstFeatTabDashboardTbcMain.Items.Add(.featId)
             txtFeatCntTabDashboardTbcMain.Text = _
                 lstFeatTabDashboardTbcMain.Items.Count.ToString
 
-            cboFeatIdGrpFeatTabAddFeatTbcPassbkFeatMainTbcMain.Items.Add(.featId)
+            cboFeatIdTabAddFeatTbcPassbkFeatMainTbcMain.Items.Add(.featId)
         End With
 
         _writeTransLog("<CREATED>: " & feat.ToString())
@@ -1642,12 +1725,19 @@ Public Class FrmMain
         'Use the past in object to populate the necessary system components
         passbook = themePark_EventArgs_CreatePassbk.passbook
 
+        'Make sure we actually have customer object.  There is the slight chance
+        'that the New () could have failed.
+        If passbook Is Nothing Then
+            MsgBox(mSYS_ERR_MSG, MsgBoxStyle.Critical)
+            Exit Sub
+        End If
+
         With passbook
             lstPassbkTabDashboardTbcMain.Items.Add(.passbkId)
             txtPassbkCntTabDashboardTbcMain.Text =
                 lstPassbkTabDashboardTbcMain.Items.Count.ToString
 
-            cboPassbkIdGrpPassbkTabAddFeatTbcPassbkFeatMainTbcMain.Items.Add(.passbkId)
+            cboPassbkIdTabAddFeatTbcPassbkFeatMainTbcMain.Items.Add(.passbkId)
         End With
 
         _writeTransLog("<CREATED>: " & passbook.ToString())
@@ -1679,15 +1769,20 @@ Public Class FrmMain
         'Use the past in object to populate the necessary system components
         passbkFeat = themePark_EventArgs_PurchFeat.passbkFeat
 
+        'Make sure we actually have customer object.  There is the slight chance
+        'that the New () could have failed.
+        If passbkFeat Is Nothing Then
+            MsgBox(mSYS_ERR_MSG, MsgBoxStyle.Critical)
+            Exit Sub
+        End If
+
         With passbkFeat
             lstPassbkFeatTabDashboardTbcMain.Items.Add(.id)
             txtPassbkFeatCntTabDashboardTbcMain.Text =
                 lstPassbkFeatTabDashboardTbcMain.Items.Count.ToString()
 
-            'cboFeatIdGrpPassbkTabUpdtFeatTbcPassbkFeatMainTbcMain.Items.Add(.id)
-            'cboPassbkIdGrpPassbkTabAddFeatTbcPassbkFeatMainTbcMain.Items.Add(.id)
-            cboFeatIdGrpPassbkTabUpdtFeatTbcPassbkFeatMainTbcMain.Items.Add(.id)
-            cboPassbkFeatIdTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Items.Add(.id)
+            cboFeatIdTabUpdtFeatTbcPassbkFeatMainTbcMain.Items.Add(.id)
+            cboPassbkFeatIdTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Items.Add(.id)
         End With
 
         _writeTransLog("<PURCHASED>: " & passbkFeat.ToString())
@@ -1717,6 +1812,14 @@ Public Class FrmMain
 
         'Use the past in object to populate the necessary system components
         passbkFeat = themePark_EventArgs_UpdtPassbkFeat.passbkFeat
+
+        'Make sure we actually have customer object.  There is the slight chance
+        'that the New () could have failed.
+        If passbkFeat Is Nothing Then
+            MsgBox(mSYS_ERR_MSG, MsgBoxStyle.Critical)
+            Exit Sub
+        End If
+
 
         With passbkFeat
             '            lstPassbkFeatTabDashboardTbcMain.Items.Add(.id)
@@ -1753,6 +1856,13 @@ Public Class FrmMain
 
         'Use the past in object to populate the necessary system components
         usedFeat = themePark_EventArgs_UsedFeat.usedFeat
+
+        'Make sure we actually have customer object.  There is the slight chance
+        'that the New () could have failed.
+        If usedFeat Is Nothing Then
+            MsgBox(mSYS_ERR_MSG, MsgBoxStyle.Critical)
+            Exit Sub
+        End If
 
         With usedFeat
             lstUsedFeatTabDashboardTbcMain.Items.Add(.id)

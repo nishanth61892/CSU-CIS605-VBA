@@ -61,14 +61,14 @@ Partial Class FrmMain
         Me.Label25 = New System.Windows.Forms.Label()
         Me.txtQtyTabAddFeatTbcPassbkFeatMainTbcMain = New System.Windows.Forms.TextBox()
         Me.grpFeatTabAddFeatureTbcPassbookFeatureMainTbcMain = New System.Windows.Forms.GroupBox()
-        Me.cboFeatIdGrpFeatTabAddFeatTbcPassbkFeatMainTbcMain = New System.Windows.Forms.ComboBox()
+        Me.cboFeatIdTabAddFeatTbcPassbkFeatMainTbcMain = New System.Windows.Forms.ComboBox()
         Me.Label14 = New System.Windows.Forms.Label()
-        Me.txtFeatToStringGrpFeatTabAddFeatTbcPassbkFeatMainTbcMain = New System.Windows.Forms.TextBox()
+        Me.txtFeatToStringTabAddFeatTbcPassbkFeatMainTbcMain = New System.Windows.Forms.TextBox()
         Me.Label15 = New System.Windows.Forms.Label()
         Me.grpPassbkTabAddFeatureTbcPassbookFeatureMainTbcMain = New System.Windows.Forms.GroupBox()
-        Me.cboPassbkIdGrpPassbkTabAddFeatTbcPassbkFeatMainTbcMain = New System.Windows.Forms.ComboBox()
-        Me.txtVisToStringGrpPassbkTabAddFeatTbcPassbkFeatMainTbcMain = New System.Windows.Forms.TextBox()
-        Me.txtCustToStringGrpPassbkTabAddFeatTbcPassbkFeatMainTbcMain = New System.Windows.Forms.TextBox()
+        Me.cboPassbkIdTabAddFeatTbcPassbkFeatMainTbcMain = New System.Windows.Forms.ComboBox()
+        Me.txtVisToStringTabAddFeatTbcPassbkFeatMainTbcMain = New System.Windows.Forms.TextBox()
+        Me.txtCustToStringTabAddFeatTbcPassbkFeatMainTbcMain = New System.Windows.Forms.TextBox()
         Me.Label16 = New System.Windows.Forms.Label()
         Me.Label17 = New System.Windows.Forms.Label()
         Me.Label18 = New System.Windows.Forms.Label()
@@ -85,30 +85,30 @@ Partial Class FrmMain
         Me.txtRemQtyTabUpdtFeatTbcPassbkFeatMainTbcMain = New System.Windows.Forms.TextBox()
         Me.Label20 = New System.Windows.Forms.Label()
         Me.grpPassbkTabUpdtFeatTbcPassbkFeatMainTbcMain = New System.Windows.Forms.GroupBox()
-        Me.cboFeatIdGrpPassbkTabUpdtFeatTbcPassbkFeatMainTbcMain = New System.Windows.Forms.ComboBox()
-        Me.txtPrevUsedGrpPassbkTabUpdtFeatTbcPassbkFeatMainTbcMain = New System.Windows.Forms.TextBox()
-        Me.txtVisToStringGrpPassbkTabUpdtFeatTbcPassbkFeatMainTbcMain = New System.Windows.Forms.TextBox()
-        Me.txtFeatToStringGrpPassbkTabUpdtFeatTbcPassbkFeatMainTbcMain = New System.Windows.Forms.TextBox()
+        Me.cboFeatIdTabUpdtFeatTbcPassbkFeatMainTbcMain = New System.Windows.Forms.ComboBox()
+        Me.txtPrevUsedTabUpdtFeatTbcPassbkFeatMainTbcMain = New System.Windows.Forms.TextBox()
+        Me.txtVisToStringTabUpdtFeatTbcPassbkFeatMainTbcMain = New System.Windows.Forms.TextBox()
+        Me.txtFeatToStringTabUpdtFeatTbcPassbkFeatMainTbcMain = New System.Windows.Forms.TextBox()
         Me.Label47 = New System.Windows.Forms.Label()
-        Me.txtCustToStringGrpPassbkTabUpdtFeatTbcPassbkFeatMainTbcMain = New System.Windows.Forms.TextBox()
+        Me.txtCustToStringTabUpdtFeatTbcPassbkFeatMainTbcMain = New System.Windows.Forms.TextBox()
         Me.Label48 = New System.Windows.Forms.Label()
         Me.Label49 = New System.Windows.Forms.Label()
         Me.Label50 = New System.Windows.Forms.Label()
         Me.Label51 = New System.Windows.Forms.Label()
         Me.tabPostFeatTbcPassbkFeatMainTbcMain = New System.Windows.Forms.TabPage()
         Me.grpAnon1 = New System.Windows.Forms.GroupBox()
-        Me.txtQtyUsedGrpPassbkTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain = New System.Windows.Forms.TextBox()
+        Me.txtQtyUsedTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain = New System.Windows.Forms.TextBox()
         Me.Label24 = New System.Windows.Forms.Label()
         Me.txtRemQuantTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain = New System.Windows.Forms.TextBox()
         Me.Label23 = New System.Windows.Forms.Label()
         Me.Label26 = New System.Windows.Forms.Label()
-        Me.txtLocGrpPassbkTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain = New System.Windows.Forms.TextBox()
+        Me.txtLocTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain = New System.Windows.Forms.TextBox()
         Me.btnResetTabPostFeatTbcPassbkFeatMainTbcMain = New System.Windows.Forms.Button()
         Me.grpPassbkTabPostTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain = New System.Windows.Forms.GroupBox()
-        Me.cboPassbkFeatIdTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain = New System.Windows.Forms.ComboBox()
-        Me.txtPrevUsedGrpPassbkTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain = New System.Windows.Forms.TextBox()
-        Me.txtVisToStringGrpPassbkTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain = New System.Windows.Forms.TextBox()
-        Me.txtFeatToStringGrpPassbkTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain = New System.Windows.Forms.TextBox()
+        Me.cboPassbkFeatIdTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain = New System.Windows.Forms.ComboBox()
+        Me.txtPrevUsedTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain = New System.Windows.Forms.TextBox()
+        Me.txtVisToStringTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain = New System.Windows.Forms.TextBox()
+        Me.txtFeatToStringTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain = New System.Windows.Forms.TextBox()
         Me.Label13 = New System.Windows.Forms.Label()
         Me.txtCustToStringTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain = New System.Windows.Forms.TextBox()
         Me.Label12 = New System.Windows.Forms.Label()
@@ -438,9 +438,10 @@ Partial Class FrmMain
         Me.lblThemeParkMgmtSysFrmMain.Location = New System.Drawing.Point(345, 49)
         Me.lblThemeParkMgmtSysFrmMain.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblThemeParkMgmtSysFrmMain.Name = "lblThemeParkMgmtSysFrmMain"
-        Me.lblThemeParkMgmtSysFrmMain.Size = New System.Drawing.Size(2, 40)
+        Me.lblThemeParkMgmtSysFrmMain.Size = New System.Drawing.Size(74, 40)
         Me.lblThemeParkMgmtSysFrmMain.TabIndex = 1
         Me.lblThemeParkMgmtSysFrmMain.Tag = "CIS605 Theme Park"
+        Me.lblThemeParkMgmtSysFrmMain.Text = "     "
         '
         'tabPassbkFeatTbcMainFrmMain
         '
@@ -557,9 +558,9 @@ Partial Class FrmMain
         'grpFeatTabAddFeatureTbcPassbookFeatureMainTbcMain
         '
         Me.grpFeatTabAddFeatureTbcPassbookFeatureMainTbcMain.BackColor = System.Drawing.SystemColors.Control
-        Me.grpFeatTabAddFeatureTbcPassbookFeatureMainTbcMain.Controls.Add(Me.cboFeatIdGrpFeatTabAddFeatTbcPassbkFeatMainTbcMain)
+        Me.grpFeatTabAddFeatureTbcPassbookFeatureMainTbcMain.Controls.Add(Me.cboFeatIdTabAddFeatTbcPassbkFeatMainTbcMain)
         Me.grpFeatTabAddFeatureTbcPassbookFeatureMainTbcMain.Controls.Add(Me.Label14)
-        Me.grpFeatTabAddFeatureTbcPassbookFeatureMainTbcMain.Controls.Add(Me.txtFeatToStringGrpFeatTabAddFeatTbcPassbkFeatMainTbcMain)
+        Me.grpFeatTabAddFeatureTbcPassbookFeatureMainTbcMain.Controls.Add(Me.txtFeatToStringTabAddFeatTbcPassbkFeatMainTbcMain)
         Me.grpFeatTabAddFeatureTbcPassbookFeatureMainTbcMain.Controls.Add(Me.Label15)
         Me.grpFeatTabAddFeatureTbcPassbookFeatureMainTbcMain.Location = New System.Drawing.Point(130, 160)
         Me.grpFeatTabAddFeatureTbcPassbookFeatureMainTbcMain.Name = "grpFeatTabAddFeatureTbcPassbookFeatureMainTbcMain"
@@ -568,14 +569,14 @@ Partial Class FrmMain
         Me.grpFeatTabAddFeatureTbcPassbookFeatureMainTbcMain.TabStop = False
         Me.grpFeatTabAddFeatureTbcPassbookFeatureMainTbcMain.Text = "Feature Selection"
         '
-        'cboFeatIdGrpFeatTabAddFeatTbcPassbkFeatMainTbcMain
+        'cboFeatIdTabAddFeatTbcPassbkFeatMainTbcMain
         '
-        Me.cboFeatIdGrpFeatTabAddFeatTbcPassbkFeatMainTbcMain.FormattingEnabled = True
-        Me.cboFeatIdGrpFeatTabAddFeatTbcPassbkFeatMainTbcMain.Location = New System.Drawing.Point(109, 23)
-        Me.cboFeatIdGrpFeatTabAddFeatTbcPassbkFeatMainTbcMain.Name = "cboFeatIdGrpFeatTabAddFeatTbcPassbkFeatMainTbcMain"
-        Me.cboFeatIdGrpFeatTabAddFeatTbcPassbkFeatMainTbcMain.Size = New System.Drawing.Size(136, 23)
-        Me.cboFeatIdGrpFeatTabAddFeatTbcPassbkFeatMainTbcMain.TabIndex = 4
-        Me.tipTPMS.SetToolTip(Me.cboFeatIdGrpFeatTabAddFeatTbcPassbkFeatMainTbcMain, "Select a Feature from the list")
+        Me.cboFeatIdTabAddFeatTbcPassbkFeatMainTbcMain.FormattingEnabled = True
+        Me.cboFeatIdTabAddFeatTbcPassbkFeatMainTbcMain.Location = New System.Drawing.Point(109, 23)
+        Me.cboFeatIdTabAddFeatTbcPassbkFeatMainTbcMain.Name = "cboFeatIdTabAddFeatTbcPassbkFeatMainTbcMain"
+        Me.cboFeatIdTabAddFeatTbcPassbkFeatMainTbcMain.Size = New System.Drawing.Size(136, 23)
+        Me.cboFeatIdTabAddFeatTbcPassbkFeatMainTbcMain.TabIndex = 4
+        Me.tipTPMS.SetToolTip(Me.cboFeatIdTabAddFeatTbcPassbkFeatMainTbcMain, "Select a Feature from the list")
         '
         'Label14
         '
@@ -586,17 +587,17 @@ Partial Class FrmMain
         Me.Label14.TabIndex = 0
         Me.Label14.Text = "Feature ID:"
         '
-        'txtFeatToStringGrpFeatTabAddFeatTbcPassbkFeatMainTbcMain
+        'txtFeatToStringTabAddFeatTbcPassbkFeatMainTbcMain
         '
-        Me.txtFeatToStringGrpFeatTabAddFeatTbcPassbkFeatMainTbcMain.BackColor = System.Drawing.SystemColors.ControlLight
-        Me.txtFeatToStringGrpFeatTabAddFeatTbcPassbkFeatMainTbcMain.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtFeatToStringGrpFeatTabAddFeatTbcPassbkFeatMainTbcMain.Location = New System.Drawing.Point(278, 37)
-        Me.txtFeatToStringGrpFeatTabAddFeatTbcPassbkFeatMainTbcMain.Multiline = True
-        Me.txtFeatToStringGrpFeatTabAddFeatTbcPassbkFeatMainTbcMain.Name = "txtFeatToStringGrpFeatTabAddFeatTbcPassbkFeatMainTbcMain"
-        Me.txtFeatToStringGrpFeatTabAddFeatTbcPassbkFeatMainTbcMain.ReadOnly = True
-        Me.txtFeatToStringGrpFeatTabAddFeatTbcPassbkFeatMainTbcMain.Size = New System.Drawing.Size(298, 38)
-        Me.txtFeatToStringGrpFeatTabAddFeatTbcPassbkFeatMainTbcMain.TabIndex = 3
-        Me.txtFeatToStringGrpFeatTabAddFeatTbcPassbkFeatMainTbcMain.TabStop = False
+        Me.txtFeatToStringTabAddFeatTbcPassbkFeatMainTbcMain.BackColor = System.Drawing.SystemColors.ControlLight
+        Me.txtFeatToStringTabAddFeatTbcPassbkFeatMainTbcMain.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtFeatToStringTabAddFeatTbcPassbkFeatMainTbcMain.Location = New System.Drawing.Point(278, 37)
+        Me.txtFeatToStringTabAddFeatTbcPassbkFeatMainTbcMain.Multiline = True
+        Me.txtFeatToStringTabAddFeatTbcPassbkFeatMainTbcMain.Name = "txtFeatToStringTabAddFeatTbcPassbkFeatMainTbcMain"
+        Me.txtFeatToStringTabAddFeatTbcPassbkFeatMainTbcMain.ReadOnly = True
+        Me.txtFeatToStringTabAddFeatTbcPassbkFeatMainTbcMain.Size = New System.Drawing.Size(298, 38)
+        Me.txtFeatToStringTabAddFeatTbcPassbkFeatMainTbcMain.TabIndex = 3
+        Me.txtFeatToStringTabAddFeatTbcPassbkFeatMainTbcMain.TabStop = False
         '
         'Label15
         '
@@ -611,9 +612,9 @@ Partial Class FrmMain
         'grpPassbkTabAddFeatureTbcPassbookFeatureMainTbcMain
         '
         Me.grpPassbkTabAddFeatureTbcPassbookFeatureMainTbcMain.BackColor = System.Drawing.SystemColors.Control
-        Me.grpPassbkTabAddFeatureTbcPassbookFeatureMainTbcMain.Controls.Add(Me.cboPassbkIdGrpPassbkTabAddFeatTbcPassbkFeatMainTbcMain)
-        Me.grpPassbkTabAddFeatureTbcPassbookFeatureMainTbcMain.Controls.Add(Me.txtVisToStringGrpPassbkTabAddFeatTbcPassbkFeatMainTbcMain)
-        Me.grpPassbkTabAddFeatureTbcPassbookFeatureMainTbcMain.Controls.Add(Me.txtCustToStringGrpPassbkTabAddFeatTbcPassbkFeatMainTbcMain)
+        Me.grpPassbkTabAddFeatureTbcPassbookFeatureMainTbcMain.Controls.Add(Me.cboPassbkIdTabAddFeatTbcPassbkFeatMainTbcMain)
+        Me.grpPassbkTabAddFeatureTbcPassbookFeatureMainTbcMain.Controls.Add(Me.txtVisToStringTabAddFeatTbcPassbkFeatMainTbcMain)
+        Me.grpPassbkTabAddFeatureTbcPassbookFeatureMainTbcMain.Controls.Add(Me.txtCustToStringTabAddFeatTbcPassbkFeatMainTbcMain)
         Me.grpPassbkTabAddFeatureTbcPassbookFeatureMainTbcMain.Controls.Add(Me.Label16)
         Me.grpPassbkTabAddFeatureTbcPassbookFeatureMainTbcMain.Controls.Add(Me.Label17)
         Me.grpPassbkTabAddFeatureTbcPassbookFeatureMainTbcMain.Controls.Add(Me.Label18)
@@ -625,38 +626,38 @@ Partial Class FrmMain
         Me.grpPassbkTabAddFeatureTbcPassbookFeatureMainTbcMain.Text = "Passbook Selection"
         Me.tipTPMS.SetToolTip(Me.grpPassbkTabAddFeatureTbcPassbookFeatureMainTbcMain, "Enter feature specific information")
         '
-        'cboPassbkIdGrpPassbkTabAddFeatTbcPassbkFeatMainTbcMain
+        'cboPassbkIdTabAddFeatTbcPassbkFeatMainTbcMain
         '
-        Me.cboPassbkIdGrpPassbkTabAddFeatTbcPassbkFeatMainTbcMain.FormattingEnabled = True
-        Me.cboPassbkIdGrpPassbkTabAddFeatTbcPassbkFeatMainTbcMain.Location = New System.Drawing.Point(110, 29)
-        Me.cboPassbkIdGrpPassbkTabAddFeatTbcPassbkFeatMainTbcMain.Name = "cboPassbkIdGrpPassbkTabAddFeatTbcPassbkFeatMainTbcMain"
-        Me.cboPassbkIdGrpPassbkTabAddFeatTbcPassbkFeatMainTbcMain.Size = New System.Drawing.Size(135, 23)
-        Me.cboPassbkIdGrpPassbkTabAddFeatTbcPassbkFeatMainTbcMain.TabIndex = 6
-        Me.tipTPMS.SetToolTip(Me.cboPassbkIdGrpPassbkTabAddFeatTbcPassbkFeatMainTbcMain, "Select a Passbook from the list")
+        Me.cboPassbkIdTabAddFeatTbcPassbkFeatMainTbcMain.FormattingEnabled = True
+        Me.cboPassbkIdTabAddFeatTbcPassbkFeatMainTbcMain.Location = New System.Drawing.Point(110, 29)
+        Me.cboPassbkIdTabAddFeatTbcPassbkFeatMainTbcMain.Name = "cboPassbkIdTabAddFeatTbcPassbkFeatMainTbcMain"
+        Me.cboPassbkIdTabAddFeatTbcPassbkFeatMainTbcMain.Size = New System.Drawing.Size(135, 23)
+        Me.cboPassbkIdTabAddFeatTbcPassbkFeatMainTbcMain.TabIndex = 6
+        Me.tipTPMS.SetToolTip(Me.cboPassbkIdTabAddFeatTbcPassbkFeatMainTbcMain, "Select a Passbook from the list")
         '
-        'txtVisToStringGrpPassbkTabAddFeatTbcPassbkFeatMainTbcMain
+        'txtVisToStringTabAddFeatTbcPassbkFeatMainTbcMain
         '
-        Me.txtVisToStringGrpPassbkTabAddFeatTbcPassbkFeatMainTbcMain.BackColor = System.Drawing.SystemColors.ControlLight
-        Me.txtVisToStringGrpPassbkTabAddFeatTbcPassbkFeatMainTbcMain.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtVisToStringGrpPassbkTabAddFeatTbcPassbkFeatMainTbcMain.Location = New System.Drawing.Point(278, 96)
-        Me.txtVisToStringGrpPassbkTabAddFeatTbcPassbkFeatMainTbcMain.Multiline = True
-        Me.txtVisToStringGrpPassbkTabAddFeatTbcPassbkFeatMainTbcMain.Name = "txtVisToStringGrpPassbkTabAddFeatTbcPassbkFeatMainTbcMain"
-        Me.txtVisToStringGrpPassbkTabAddFeatTbcPassbkFeatMainTbcMain.ReadOnly = True
-        Me.txtVisToStringGrpPassbkTabAddFeatTbcPassbkFeatMainTbcMain.Size = New System.Drawing.Size(298, 38)
-        Me.txtVisToStringGrpPassbkTabAddFeatTbcPassbkFeatMainTbcMain.TabIndex = 5
-        Me.txtVisToStringGrpPassbkTabAddFeatTbcPassbkFeatMainTbcMain.TabStop = False
+        Me.txtVisToStringTabAddFeatTbcPassbkFeatMainTbcMain.BackColor = System.Drawing.SystemColors.ControlLight
+        Me.txtVisToStringTabAddFeatTbcPassbkFeatMainTbcMain.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtVisToStringTabAddFeatTbcPassbkFeatMainTbcMain.Location = New System.Drawing.Point(278, 96)
+        Me.txtVisToStringTabAddFeatTbcPassbkFeatMainTbcMain.Multiline = True
+        Me.txtVisToStringTabAddFeatTbcPassbkFeatMainTbcMain.Name = "txtVisToStringTabAddFeatTbcPassbkFeatMainTbcMain"
+        Me.txtVisToStringTabAddFeatTbcPassbkFeatMainTbcMain.ReadOnly = True
+        Me.txtVisToStringTabAddFeatTbcPassbkFeatMainTbcMain.Size = New System.Drawing.Size(298, 38)
+        Me.txtVisToStringTabAddFeatTbcPassbkFeatMainTbcMain.TabIndex = 5
+        Me.txtVisToStringTabAddFeatTbcPassbkFeatMainTbcMain.TabStop = False
         '
-        'txtCustToStringGrpPassbkTabAddFeatTbcPassbkFeatMainTbcMain
+        'txtCustToStringTabAddFeatTbcPassbkFeatMainTbcMain
         '
-        Me.txtCustToStringGrpPassbkTabAddFeatTbcPassbkFeatMainTbcMain.BackColor = System.Drawing.SystemColors.ControlLight
-        Me.txtCustToStringGrpPassbkTabAddFeatTbcPassbkFeatMainTbcMain.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtCustToStringGrpPassbkTabAddFeatTbcPassbkFeatMainTbcMain.Location = New System.Drawing.Point(278, 37)
-        Me.txtCustToStringGrpPassbkTabAddFeatTbcPassbkFeatMainTbcMain.Multiline = True
-        Me.txtCustToStringGrpPassbkTabAddFeatTbcPassbkFeatMainTbcMain.Name = "txtCustToStringGrpPassbkTabAddFeatTbcPassbkFeatMainTbcMain"
-        Me.txtCustToStringGrpPassbkTabAddFeatTbcPassbkFeatMainTbcMain.ReadOnly = True
-        Me.txtCustToStringGrpPassbkTabAddFeatTbcPassbkFeatMainTbcMain.Size = New System.Drawing.Size(298, 38)
-        Me.txtCustToStringGrpPassbkTabAddFeatTbcPassbkFeatMainTbcMain.TabIndex = 3
-        Me.txtCustToStringGrpPassbkTabAddFeatTbcPassbkFeatMainTbcMain.TabStop = False
+        Me.txtCustToStringTabAddFeatTbcPassbkFeatMainTbcMain.BackColor = System.Drawing.SystemColors.ControlLight
+        Me.txtCustToStringTabAddFeatTbcPassbkFeatMainTbcMain.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtCustToStringTabAddFeatTbcPassbkFeatMainTbcMain.Location = New System.Drawing.Point(278, 37)
+        Me.txtCustToStringTabAddFeatTbcPassbkFeatMainTbcMain.Multiline = True
+        Me.txtCustToStringTabAddFeatTbcPassbkFeatMainTbcMain.Name = "txtCustToStringTabAddFeatTbcPassbkFeatMainTbcMain"
+        Me.txtCustToStringTabAddFeatTbcPassbkFeatMainTbcMain.ReadOnly = True
+        Me.txtCustToStringTabAddFeatTbcPassbkFeatMainTbcMain.Size = New System.Drawing.Size(298, 38)
+        Me.txtCustToStringTabAddFeatTbcPassbkFeatMainTbcMain.TabIndex = 3
+        Me.txtCustToStringTabAddFeatTbcPassbkFeatMainTbcMain.TabStop = False
         '
         'Label16
         '
@@ -818,12 +819,12 @@ Partial Class FrmMain
         'grpPassbkTabUpdtFeatTbcPassbkFeatMainTbcMain
         '
         Me.grpPassbkTabUpdtFeatTbcPassbkFeatMainTbcMain.BackColor = System.Drawing.SystemColors.Control
-        Me.grpPassbkTabUpdtFeatTbcPassbkFeatMainTbcMain.Controls.Add(Me.cboFeatIdGrpPassbkTabUpdtFeatTbcPassbkFeatMainTbcMain)
-        Me.grpPassbkTabUpdtFeatTbcPassbkFeatMainTbcMain.Controls.Add(Me.txtPrevUsedGrpPassbkTabUpdtFeatTbcPassbkFeatMainTbcMain)
-        Me.grpPassbkTabUpdtFeatTbcPassbkFeatMainTbcMain.Controls.Add(Me.txtVisToStringGrpPassbkTabUpdtFeatTbcPassbkFeatMainTbcMain)
-        Me.grpPassbkTabUpdtFeatTbcPassbkFeatMainTbcMain.Controls.Add(Me.txtFeatToStringGrpPassbkTabUpdtFeatTbcPassbkFeatMainTbcMain)
+        Me.grpPassbkTabUpdtFeatTbcPassbkFeatMainTbcMain.Controls.Add(Me.cboFeatIdTabUpdtFeatTbcPassbkFeatMainTbcMain)
+        Me.grpPassbkTabUpdtFeatTbcPassbkFeatMainTbcMain.Controls.Add(Me.txtPrevUsedTabUpdtFeatTbcPassbkFeatMainTbcMain)
+        Me.grpPassbkTabUpdtFeatTbcPassbkFeatMainTbcMain.Controls.Add(Me.txtVisToStringTabUpdtFeatTbcPassbkFeatMainTbcMain)
+        Me.grpPassbkTabUpdtFeatTbcPassbkFeatMainTbcMain.Controls.Add(Me.txtFeatToStringTabUpdtFeatTbcPassbkFeatMainTbcMain)
         Me.grpPassbkTabUpdtFeatTbcPassbkFeatMainTbcMain.Controls.Add(Me.Label47)
-        Me.grpPassbkTabUpdtFeatTbcPassbkFeatMainTbcMain.Controls.Add(Me.txtCustToStringGrpPassbkTabUpdtFeatTbcPassbkFeatMainTbcMain)
+        Me.grpPassbkTabUpdtFeatTbcPassbkFeatMainTbcMain.Controls.Add(Me.txtCustToStringTabUpdtFeatTbcPassbkFeatMainTbcMain)
         Me.grpPassbkTabUpdtFeatTbcPassbkFeatMainTbcMain.Controls.Add(Me.Label48)
         Me.grpPassbkTabUpdtFeatTbcPassbkFeatMainTbcMain.Controls.Add(Me.Label49)
         Me.grpPassbkTabUpdtFeatTbcPassbkFeatMainTbcMain.Controls.Add(Me.Label50)
@@ -836,50 +837,50 @@ Partial Class FrmMain
         Me.grpPassbkTabUpdtFeatTbcPassbkFeatMainTbcMain.Text = "Passbook"
         Me.tipTPMS.SetToolTip(Me.grpPassbkTabUpdtFeatTbcPassbkFeatMainTbcMain, "Enter feature specific information")
         '
-        'cboFeatIdGrpPassbkTabUpdtFeatTbcPassbkFeatMainTbcMain
+        'cboFeatIdTabUpdtFeatTbcPassbkFeatMainTbcMain
         '
-        Me.cboFeatIdGrpPassbkTabUpdtFeatTbcPassbkFeatMainTbcMain.FormattingEnabled = True
-        Me.cboFeatIdGrpPassbkTabUpdtFeatTbcPassbkFeatMainTbcMain.Location = New System.Drawing.Point(98, 36)
-        Me.cboFeatIdGrpPassbkTabUpdtFeatTbcPassbkFeatMainTbcMain.Name = "cboFeatIdGrpPassbkTabUpdtFeatTbcPassbkFeatMainTbcMain"
-        Me.cboFeatIdGrpPassbkTabUpdtFeatTbcPassbkFeatMainTbcMain.Size = New System.Drawing.Size(136, 23)
-        Me.cboFeatIdGrpPassbkTabUpdtFeatTbcPassbkFeatMainTbcMain.TabIndex = 10
-        Me.tipTPMS.SetToolTip(Me.cboFeatIdGrpPassbkTabUpdtFeatTbcPassbkFeatMainTbcMain, "Select a Passbook Feature from the list")
+        Me.cboFeatIdTabUpdtFeatTbcPassbkFeatMainTbcMain.FormattingEnabled = True
+        Me.cboFeatIdTabUpdtFeatTbcPassbkFeatMainTbcMain.Location = New System.Drawing.Point(98, 36)
+        Me.cboFeatIdTabUpdtFeatTbcPassbkFeatMainTbcMain.Name = "cboFeatIdTabUpdtFeatTbcPassbkFeatMainTbcMain"
+        Me.cboFeatIdTabUpdtFeatTbcPassbkFeatMainTbcMain.Size = New System.Drawing.Size(136, 23)
+        Me.cboFeatIdTabUpdtFeatTbcPassbkFeatMainTbcMain.TabIndex = 10
+        Me.tipTPMS.SetToolTip(Me.cboFeatIdTabUpdtFeatTbcPassbkFeatMainTbcMain, "Select a Passbook Feature from the list")
         '
-        'txtPrevUsedGrpPassbkTabUpdtFeatTbcPassbkFeatMainTbcMain
+        'txtPrevUsedTabUpdtFeatTbcPassbkFeatMainTbcMain
         '
-        Me.txtPrevUsedGrpPassbkTabUpdtFeatTbcPassbkFeatMainTbcMain.BackColor = System.Drawing.SystemColors.ControlLight
-        Me.txtPrevUsedGrpPassbkTabUpdtFeatTbcPassbkFeatMainTbcMain.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtPrevUsedGrpPassbkTabUpdtFeatTbcPassbkFeatMainTbcMain.Location = New System.Drawing.Point(590, 38)
-        Me.txtPrevUsedGrpPassbkTabUpdtFeatTbcPassbkFeatMainTbcMain.Multiline = True
-        Me.txtPrevUsedGrpPassbkTabUpdtFeatTbcPassbkFeatMainTbcMain.Name = "txtPrevUsedGrpPassbkTabUpdtFeatTbcPassbkFeatMainTbcMain"
-        Me.txtPrevUsedGrpPassbkTabUpdtFeatTbcPassbkFeatMainTbcMain.ReadOnly = True
-        Me.txtPrevUsedGrpPassbkTabUpdtFeatTbcPassbkFeatMainTbcMain.Size = New System.Drawing.Size(212, 157)
-        Me.txtPrevUsedGrpPassbkTabUpdtFeatTbcPassbkFeatMainTbcMain.TabIndex = 9
-        Me.txtPrevUsedGrpPassbkTabUpdtFeatTbcPassbkFeatMainTbcMain.TabStop = False
+        Me.txtPrevUsedTabUpdtFeatTbcPassbkFeatMainTbcMain.BackColor = System.Drawing.SystemColors.ControlLight
+        Me.txtPrevUsedTabUpdtFeatTbcPassbkFeatMainTbcMain.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtPrevUsedTabUpdtFeatTbcPassbkFeatMainTbcMain.Location = New System.Drawing.Point(590, 38)
+        Me.txtPrevUsedTabUpdtFeatTbcPassbkFeatMainTbcMain.Multiline = True
+        Me.txtPrevUsedTabUpdtFeatTbcPassbkFeatMainTbcMain.Name = "txtPrevUsedTabUpdtFeatTbcPassbkFeatMainTbcMain"
+        Me.txtPrevUsedTabUpdtFeatTbcPassbkFeatMainTbcMain.ReadOnly = True
+        Me.txtPrevUsedTabUpdtFeatTbcPassbkFeatMainTbcMain.Size = New System.Drawing.Size(212, 157)
+        Me.txtPrevUsedTabUpdtFeatTbcPassbkFeatMainTbcMain.TabIndex = 9
+        Me.txtPrevUsedTabUpdtFeatTbcPassbkFeatMainTbcMain.TabStop = False
         '
-        'txtVisToStringGrpPassbkTabUpdtFeatTbcPassbkFeatMainTbcMain
+        'txtVisToStringTabUpdtFeatTbcPassbkFeatMainTbcMain
         '
-        Me.txtVisToStringGrpPassbkTabUpdtFeatTbcPassbkFeatMainTbcMain.BackColor = System.Drawing.SystemColors.ControlLight
-        Me.txtVisToStringGrpPassbkTabUpdtFeatTbcPassbkFeatMainTbcMain.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtVisToStringGrpPassbkTabUpdtFeatTbcPassbkFeatMainTbcMain.Location = New System.Drawing.Point(283, 97)
-        Me.txtVisToStringGrpPassbkTabUpdtFeatTbcPassbkFeatMainTbcMain.Multiline = True
-        Me.txtVisToStringGrpPassbkTabUpdtFeatTbcPassbkFeatMainTbcMain.Name = "txtVisToStringGrpPassbkTabUpdtFeatTbcPassbkFeatMainTbcMain"
-        Me.txtVisToStringGrpPassbkTabUpdtFeatTbcPassbkFeatMainTbcMain.ReadOnly = True
-        Me.txtVisToStringGrpPassbkTabUpdtFeatTbcPassbkFeatMainTbcMain.Size = New System.Drawing.Size(268, 38)
-        Me.txtVisToStringGrpPassbkTabUpdtFeatTbcPassbkFeatMainTbcMain.TabIndex = 5
-        Me.txtVisToStringGrpPassbkTabUpdtFeatTbcPassbkFeatMainTbcMain.TabStop = False
+        Me.txtVisToStringTabUpdtFeatTbcPassbkFeatMainTbcMain.BackColor = System.Drawing.SystemColors.ControlLight
+        Me.txtVisToStringTabUpdtFeatTbcPassbkFeatMainTbcMain.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtVisToStringTabUpdtFeatTbcPassbkFeatMainTbcMain.Location = New System.Drawing.Point(283, 97)
+        Me.txtVisToStringTabUpdtFeatTbcPassbkFeatMainTbcMain.Multiline = True
+        Me.txtVisToStringTabUpdtFeatTbcPassbkFeatMainTbcMain.Name = "txtVisToStringTabUpdtFeatTbcPassbkFeatMainTbcMain"
+        Me.txtVisToStringTabUpdtFeatTbcPassbkFeatMainTbcMain.ReadOnly = True
+        Me.txtVisToStringTabUpdtFeatTbcPassbkFeatMainTbcMain.Size = New System.Drawing.Size(268, 38)
+        Me.txtVisToStringTabUpdtFeatTbcPassbkFeatMainTbcMain.TabIndex = 5
+        Me.txtVisToStringTabUpdtFeatTbcPassbkFeatMainTbcMain.TabStop = False
         '
-        'txtFeatToStringGrpPassbkTabUpdtFeatTbcPassbkFeatMainTbcMain
+        'txtFeatToStringTabUpdtFeatTbcPassbkFeatMainTbcMain
         '
-        Me.txtFeatToStringGrpPassbkTabUpdtFeatTbcPassbkFeatMainTbcMain.BackColor = System.Drawing.SystemColors.ControlLight
-        Me.txtFeatToStringGrpPassbkTabUpdtFeatTbcPassbkFeatMainTbcMain.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtFeatToStringGrpPassbkTabUpdtFeatTbcPassbkFeatMainTbcMain.Location = New System.Drawing.Point(283, 157)
-        Me.txtFeatToStringGrpPassbkTabUpdtFeatTbcPassbkFeatMainTbcMain.Multiline = True
-        Me.txtFeatToStringGrpPassbkTabUpdtFeatTbcPassbkFeatMainTbcMain.Name = "txtFeatToStringGrpPassbkTabUpdtFeatTbcPassbkFeatMainTbcMain"
-        Me.txtFeatToStringGrpPassbkTabUpdtFeatTbcPassbkFeatMainTbcMain.ReadOnly = True
-        Me.txtFeatToStringGrpPassbkTabUpdtFeatTbcPassbkFeatMainTbcMain.Size = New System.Drawing.Size(268, 38)
-        Me.txtFeatToStringGrpPassbkTabUpdtFeatTbcPassbkFeatMainTbcMain.TabIndex = 7
-        Me.txtFeatToStringGrpPassbkTabUpdtFeatTbcPassbkFeatMainTbcMain.TabStop = False
+        Me.txtFeatToStringTabUpdtFeatTbcPassbkFeatMainTbcMain.BackColor = System.Drawing.SystemColors.ControlLight
+        Me.txtFeatToStringTabUpdtFeatTbcPassbkFeatMainTbcMain.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtFeatToStringTabUpdtFeatTbcPassbkFeatMainTbcMain.Location = New System.Drawing.Point(283, 157)
+        Me.txtFeatToStringTabUpdtFeatTbcPassbkFeatMainTbcMain.Multiline = True
+        Me.txtFeatToStringTabUpdtFeatTbcPassbkFeatMainTbcMain.Name = "txtFeatToStringTabUpdtFeatTbcPassbkFeatMainTbcMain"
+        Me.txtFeatToStringTabUpdtFeatTbcPassbkFeatMainTbcMain.ReadOnly = True
+        Me.txtFeatToStringTabUpdtFeatTbcPassbkFeatMainTbcMain.Size = New System.Drawing.Size(268, 38)
+        Me.txtFeatToStringTabUpdtFeatTbcPassbkFeatMainTbcMain.TabIndex = 7
+        Me.txtFeatToStringTabUpdtFeatTbcPassbkFeatMainTbcMain.TabStop = False
         '
         'Label47
         '
@@ -891,17 +892,17 @@ Partial Class FrmMain
         Me.Label47.TabIndex = 8
         Me.Label47.Text = "Previously Used"
         '
-        'txtCustToStringGrpPassbkTabUpdtFeatTbcPassbkFeatMainTbcMain
+        'txtCustToStringTabUpdtFeatTbcPassbkFeatMainTbcMain
         '
-        Me.txtCustToStringGrpPassbkTabUpdtFeatTbcPassbkFeatMainTbcMain.BackColor = System.Drawing.SystemColors.ControlLight
-        Me.txtCustToStringGrpPassbkTabUpdtFeatTbcPassbkFeatMainTbcMain.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtCustToStringGrpPassbkTabUpdtFeatTbcPassbkFeatMainTbcMain.Location = New System.Drawing.Point(283, 37)
-        Me.txtCustToStringGrpPassbkTabUpdtFeatTbcPassbkFeatMainTbcMain.Multiline = True
-        Me.txtCustToStringGrpPassbkTabUpdtFeatTbcPassbkFeatMainTbcMain.Name = "txtCustToStringGrpPassbkTabUpdtFeatTbcPassbkFeatMainTbcMain"
-        Me.txtCustToStringGrpPassbkTabUpdtFeatTbcPassbkFeatMainTbcMain.ReadOnly = True
-        Me.txtCustToStringGrpPassbkTabUpdtFeatTbcPassbkFeatMainTbcMain.Size = New System.Drawing.Size(271, 38)
-        Me.txtCustToStringGrpPassbkTabUpdtFeatTbcPassbkFeatMainTbcMain.TabIndex = 3
-        Me.txtCustToStringGrpPassbkTabUpdtFeatTbcPassbkFeatMainTbcMain.TabStop = False
+        Me.txtCustToStringTabUpdtFeatTbcPassbkFeatMainTbcMain.BackColor = System.Drawing.SystemColors.ControlLight
+        Me.txtCustToStringTabUpdtFeatTbcPassbkFeatMainTbcMain.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtCustToStringTabUpdtFeatTbcPassbkFeatMainTbcMain.Location = New System.Drawing.Point(283, 37)
+        Me.txtCustToStringTabUpdtFeatTbcPassbkFeatMainTbcMain.Multiline = True
+        Me.txtCustToStringTabUpdtFeatTbcPassbkFeatMainTbcMain.Name = "txtCustToStringTabUpdtFeatTbcPassbkFeatMainTbcMain"
+        Me.txtCustToStringTabUpdtFeatTbcPassbkFeatMainTbcMain.ReadOnly = True
+        Me.txtCustToStringTabUpdtFeatTbcPassbkFeatMainTbcMain.Size = New System.Drawing.Size(271, 38)
+        Me.txtCustToStringTabUpdtFeatTbcPassbkFeatMainTbcMain.TabIndex = 3
+        Me.txtCustToStringTabUpdtFeatTbcPassbkFeatMainTbcMain.TabStop = False
         '
         'Label48
         '
@@ -962,25 +963,25 @@ Partial Class FrmMain
         'grpAnon1
         '
         Me.grpAnon1.BackColor = System.Drawing.SystemColors.Control
-        Me.grpAnon1.Controls.Add(Me.txtQtyUsedGrpPassbkTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain)
+        Me.grpAnon1.Controls.Add(Me.txtQtyUsedTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain)
         Me.grpAnon1.Controls.Add(Me.Label24)
         Me.grpAnon1.Controls.Add(Me.txtRemQuantTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain)
         Me.grpAnon1.Controls.Add(Me.Label23)
         Me.grpAnon1.Controls.Add(Me.Label26)
-        Me.grpAnon1.Controls.Add(Me.txtLocGrpPassbkTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain)
+        Me.grpAnon1.Controls.Add(Me.txtLocTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain)
         Me.grpAnon1.Location = New System.Drawing.Point(200, 222)
         Me.grpAnon1.Name = "grpAnon1"
         Me.grpAnon1.Size = New System.Drawing.Size(467, 110)
         Me.grpAnon1.TabIndex = 1
         Me.grpAnon1.TabStop = False
         '
-        'txtQtyUsedGrpPassbkTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain
+        'txtQtyUsedTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain
         '
-        Me.txtQtyUsedGrpPassbkTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Location = New System.Drawing.Point(153, 45)
-        Me.txtQtyUsedGrpPassbkTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Name = "txtQtyUsedGrpPassbkTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain"
-        Me.txtQtyUsedGrpPassbkTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Size = New System.Drawing.Size(100, 21)
-        Me.txtQtyUsedGrpPassbkTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.TabIndex = 3
-        Me.tipTPMS.SetToolTip(Me.txtQtyUsedGrpPassbkTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain, "Enter the amount of feature used")
+        Me.txtQtyUsedTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Location = New System.Drawing.Point(153, 45)
+        Me.txtQtyUsedTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Name = "txtQtyUsedTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain"
+        Me.txtQtyUsedTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Size = New System.Drawing.Size(100, 21)
+        Me.txtQtyUsedTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.TabIndex = 3
+        Me.tipTPMS.SetToolTip(Me.txtQtyUsedTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain, "Enter the amount of feature used")
         '
         'Label24
         '
@@ -1021,14 +1022,14 @@ Partial Class FrmMain
         Me.Label26.Text = "Location:"
         Me.tipTPMS.SetToolTip(Me.Label26, "Enter the location where transaction occurred")
         '
-        'txtLocGrpPassbkTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain
+        'txtLocTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain
         '
-        Me.txtLocGrpPassbkTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.AccessibleRole = System.Windows.Forms.AccessibleRole.None
-        Me.txtLocGrpPassbkTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Location = New System.Drawing.Point(153, 74)
-        Me.txtLocGrpPassbkTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Name = "txtLocGrpPassbkTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain"
-        Me.txtLocGrpPassbkTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Size = New System.Drawing.Size(249, 21)
-        Me.txtLocGrpPassbkTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.TabIndex = 5
-        Me.tipTPMS.SetToolTip(Me.txtLocGrpPassbkTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain, "Enter the location where this feature was used")
+        Me.txtLocTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.AccessibleRole = System.Windows.Forms.AccessibleRole.None
+        Me.txtLocTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Location = New System.Drawing.Point(153, 74)
+        Me.txtLocTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Name = "txtLocTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain"
+        Me.txtLocTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Size = New System.Drawing.Size(249, 21)
+        Me.txtLocTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.TabIndex = 5
+        Me.tipTPMS.SetToolTip(Me.txtLocTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain, "Enter the location where this feature was used")
         '
         'btnResetTabPostFeatTbcPassbkFeatMainTbcMain
         '
@@ -1043,10 +1044,10 @@ Partial Class FrmMain
         'grpPassbkTabPostTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain
         '
         Me.grpPassbkTabPostTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.BackColor = System.Drawing.SystemColors.Control
-        Me.grpPassbkTabPostTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Controls.Add(Me.cboPassbkFeatIdTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain)
-        Me.grpPassbkTabPostTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Controls.Add(Me.txtPrevUsedGrpPassbkTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain)
-        Me.grpPassbkTabPostTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Controls.Add(Me.txtVisToStringGrpPassbkTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain)
-        Me.grpPassbkTabPostTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Controls.Add(Me.txtFeatToStringGrpPassbkTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain)
+        Me.grpPassbkTabPostTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Controls.Add(Me.cboPassbkFeatIdTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain)
+        Me.grpPassbkTabPostTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Controls.Add(Me.txtPrevUsedTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain)
+        Me.grpPassbkTabPostTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Controls.Add(Me.txtVisToStringTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain)
+        Me.grpPassbkTabPostTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Controls.Add(Me.txtFeatToStringTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain)
         Me.grpPassbkTabPostTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Controls.Add(Me.Label13)
         Me.grpPassbkTabPostTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Controls.Add(Me.txtCustToStringTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain)
         Me.grpPassbkTabPostTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Controls.Add(Me.Label12)
@@ -1062,50 +1063,50 @@ Partial Class FrmMain
         Me.grpPassbkTabPostTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Text = "Passbook"
         Me.tipTPMS.SetToolTip(Me.grpPassbkTabPostTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain, "Enter feature specific information")
         '
-        'cboPassbkFeatIdTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain
+        'cboPassbkFeatIdTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain
         '
-        Me.cboPassbkFeatIdTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.FormattingEnabled = True
-        Me.cboPassbkFeatIdTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Location = New System.Drawing.Point(98, 36)
-        Me.cboPassbkFeatIdTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Name = "cboPassbkFeatIdTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain"
-        Me.cboPassbkFeatIdTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Size = New System.Drawing.Size(136, 23)
-        Me.cboPassbkFeatIdTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.TabIndex = 10
-        Me.tipTPMS.SetToolTip(Me.cboPassbkFeatIdTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain, "Select a Passbook Feature from the list")
+        Me.cboPassbkFeatIdTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.FormattingEnabled = True
+        Me.cboPassbkFeatIdTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Location = New System.Drawing.Point(98, 36)
+        Me.cboPassbkFeatIdTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Name = "cboPassbkFeatIdTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain"
+        Me.cboPassbkFeatIdTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Size = New System.Drawing.Size(136, 23)
+        Me.cboPassbkFeatIdTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.TabIndex = 10
+        Me.tipTPMS.SetToolTip(Me.cboPassbkFeatIdTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain, "Select a Passbook Feature from the list")
         '
-        'txtPrevUsedGrpPassbkTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain
+        'txtPrevUsedTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain
         '
-        Me.txtPrevUsedGrpPassbkTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.BackColor = System.Drawing.SystemColors.ControlLight
-        Me.txtPrevUsedGrpPassbkTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtPrevUsedGrpPassbkTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Location = New System.Drawing.Point(590, 38)
-        Me.txtPrevUsedGrpPassbkTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Multiline = True
-        Me.txtPrevUsedGrpPassbkTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Name = "txtPrevUsedGrpPassbkTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain"
-        Me.txtPrevUsedGrpPassbkTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.ReadOnly = True
-        Me.txtPrevUsedGrpPassbkTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Size = New System.Drawing.Size(212, 157)
-        Me.txtPrevUsedGrpPassbkTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.TabIndex = 9
-        Me.txtPrevUsedGrpPassbkTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.TabStop = False
+        Me.txtPrevUsedTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.BackColor = System.Drawing.SystemColors.ControlLight
+        Me.txtPrevUsedTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtPrevUsedTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Location = New System.Drawing.Point(590, 38)
+        Me.txtPrevUsedTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Multiline = True
+        Me.txtPrevUsedTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Name = "txtPrevUsedTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain"
+        Me.txtPrevUsedTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.ReadOnly = True
+        Me.txtPrevUsedTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Size = New System.Drawing.Size(212, 157)
+        Me.txtPrevUsedTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.TabIndex = 9
+        Me.txtPrevUsedTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.TabStop = False
         '
-        'txtVisToStringGrpPassbkTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain
+        'txtVisToStringTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain
         '
-        Me.txtVisToStringGrpPassbkTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.BackColor = System.Drawing.SystemColors.ControlLight
-        Me.txtVisToStringGrpPassbkTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtVisToStringGrpPassbkTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Location = New System.Drawing.Point(283, 97)
-        Me.txtVisToStringGrpPassbkTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Multiline = True
-        Me.txtVisToStringGrpPassbkTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Name = "txtVisToStringGrpPassbkTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain"
-        Me.txtVisToStringGrpPassbkTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.ReadOnly = True
-        Me.txtVisToStringGrpPassbkTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Size = New System.Drawing.Size(268, 38)
-        Me.txtVisToStringGrpPassbkTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.TabIndex = 5
-        Me.txtVisToStringGrpPassbkTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.TabStop = False
+        Me.txtVisToStringTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.BackColor = System.Drawing.SystemColors.ControlLight
+        Me.txtVisToStringTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtVisToStringTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Location = New System.Drawing.Point(283, 97)
+        Me.txtVisToStringTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Multiline = True
+        Me.txtVisToStringTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Name = "txtVisToStringTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain"
+        Me.txtVisToStringTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.ReadOnly = True
+        Me.txtVisToStringTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Size = New System.Drawing.Size(268, 38)
+        Me.txtVisToStringTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.TabIndex = 5
+        Me.txtVisToStringTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.TabStop = False
         '
-        'txtFeatToStringGrpPassbkTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain
+        'txtFeatToStringTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain
         '
-        Me.txtFeatToStringGrpPassbkTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.BackColor = System.Drawing.SystemColors.ControlLight
-        Me.txtFeatToStringGrpPassbkTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtFeatToStringGrpPassbkTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Location = New System.Drawing.Point(283, 157)
-        Me.txtFeatToStringGrpPassbkTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Multiline = True
-        Me.txtFeatToStringGrpPassbkTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Name = "txtFeatToStringGrpPassbkTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain"
-        Me.txtFeatToStringGrpPassbkTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.ReadOnly = True
-        Me.txtFeatToStringGrpPassbkTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Size = New System.Drawing.Size(268, 38)
-        Me.txtFeatToStringGrpPassbkTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.TabIndex = 7
-        Me.txtFeatToStringGrpPassbkTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.TabStop = False
+        Me.txtFeatToStringTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.BackColor = System.Drawing.SystemColors.ControlLight
+        Me.txtFeatToStringTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtFeatToStringTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Location = New System.Drawing.Point(283, 157)
+        Me.txtFeatToStringTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Multiline = True
+        Me.txtFeatToStringTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Name = "txtFeatToStringTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain"
+        Me.txtFeatToStringTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.ReadOnly = True
+        Me.txtFeatToStringTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Size = New System.Drawing.Size(268, 38)
+        Me.txtFeatToStringTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.TabIndex = 7
+        Me.txtFeatToStringTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.TabStop = False
         '
         'Label13
         '
@@ -1295,6 +1296,7 @@ Partial Class FrmMain
         Me.cboCustIdGrpCustInfoGrpAddPassbkTabPassbkTbcMainFrmMain.Name = "cboCustIdGrpCustInfoGrpAddPassbkTabPassbkTbcMainFrmMain"
         Me.cboCustIdGrpCustInfoGrpAddPassbkTabPassbkTbcMainFrmMain.Size = New System.Drawing.Size(144, 23)
         Me.cboCustIdGrpCustInfoGrpAddPassbkTabPassbkTbcMainFrmMain.TabIndex = 1
+        Me.tipTPMS.SetToolTip(Me.cboCustIdGrpCustInfoGrpAddPassbkTabPassbkTbcMainFrmMain, "Select a Customer from the list")
         '
         'Label3
         '
@@ -1316,7 +1318,6 @@ Partial Class FrmMain
         Me.txtToStringGrpCustInfoGrpAddPassbkTabPassbkTbcMainFrmMain.Size = New System.Drawing.Size(346, 90)
         Me.txtToStringGrpCustInfoGrpAddPassbkTabPassbkTbcMainFrmMain.TabIndex = 3
         Me.txtToStringGrpCustInfoGrpAddPassbkTabPassbkTbcMainFrmMain.TabStop = False
-        Me.txtToStringGrpCustInfoGrpAddPassbkTabPassbkTbcMainFrmMain.Text = "Output is to TransLog file for this phase."
         '
         'Label6
         '
@@ -1622,7 +1623,6 @@ Partial Class FrmMain
         Me.txtToStringTabDashboardTbcMain.Size = New System.Drawing.Size(235, 99)
         Me.txtToStringTabDashboardTbcMain.TabIndex = 21
         Me.txtToStringTabDashboardTbcMain.TabStop = False
-        Me.txtToStringTabDashboardTbcMain.Text = "No information to display for this phase"
         '
         'lstUsedFeatTabDashboardTbcMain
         '
@@ -2256,7 +2256,7 @@ Partial Class FrmMain
     Friend WithEvents tabPostFeatTbcPassbkFeatMainTbcMain As TabPage
     Friend WithEvents grpPassbkTabPostTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain As GroupBox
     Friend WithEvents Label22 As Label
-    Private WithEvents txtLocGrpPassbkTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain As TextBox
+    Private WithEvents txtLocTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain As TextBox
     Friend WithEvents Label26 As Label
     Friend WithEvents tabTransLogTbcMainFrmMain As TabPage
     Friend WithEvents grpTransLogTabTransLogTbcMain As GroupBox
@@ -2312,13 +2312,13 @@ Partial Class FrmMain
     Friend WithEvents btnResetGrpAddPassbkTabPassbkTbcMainFrmMain As System.Windows.Forms.Button
     Friend WithEvents btnSubmitGrpAddPassbkTabPassbkTbcMainFrmMain As System.Windows.Forms.Button
     Friend WithEvents grpAnon1 As System.Windows.Forms.GroupBox
-    Friend WithEvents txtQtyUsedGrpPassbkTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain As System.Windows.Forms.TextBox
+    Friend WithEvents txtQtyUsedTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain As System.Windows.Forms.TextBox
     Friend WithEvents Label24 As System.Windows.Forms.Label
     Friend WithEvents txtRemQuantTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain As System.Windows.Forms.TextBox
     Friend WithEvents Label23 As System.Windows.Forms.Label
-    Friend WithEvents txtPrevUsedGrpPassbkTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain As System.Windows.Forms.TextBox
-    Friend WithEvents txtVisToStringGrpPassbkTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain As System.Windows.Forms.TextBox
-    Friend WithEvents txtFeatToStringGrpPassbkTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain As System.Windows.Forms.TextBox
+    Friend WithEvents txtPrevUsedTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain As System.Windows.Forms.TextBox
+    Friend WithEvents txtVisToStringTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain As System.Windows.Forms.TextBox
+    Friend WithEvents txtFeatToStringTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain As System.Windows.Forms.TextBox
     Friend WithEvents Label13 As System.Windows.Forms.Label
     Friend WithEvents txtCustToStringTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain As System.Windows.Forms.TextBox
     Friend WithEvents Label12 As System.Windows.Forms.Label
@@ -2333,11 +2333,11 @@ Partial Class FrmMain
     Friend WithEvents Label8 As System.Windows.Forms.Label
     Friend WithEvents grpFeatTabAddFeatureTbcPassbookFeatureMainTbcMain As System.Windows.Forms.GroupBox
     Friend WithEvents Label14 As System.Windows.Forms.Label
-    Friend WithEvents txtFeatToStringGrpFeatTabAddFeatTbcPassbkFeatMainTbcMain As System.Windows.Forms.TextBox
+    Friend WithEvents txtFeatToStringTabAddFeatTbcPassbkFeatMainTbcMain As System.Windows.Forms.TextBox
     Friend WithEvents Label15 As System.Windows.Forms.Label
     Friend WithEvents grpPassbkTabAddFeatureTbcPassbookFeatureMainTbcMain As System.Windows.Forms.GroupBox
-    Friend WithEvents txtVisToStringGrpPassbkTabAddFeatTbcPassbkFeatMainTbcMain As System.Windows.Forms.TextBox
-    Friend WithEvents txtCustToStringGrpPassbkTabAddFeatTbcPassbkFeatMainTbcMain As System.Windows.Forms.TextBox
+    Friend WithEvents txtVisToStringTabAddFeatTbcPassbkFeatMainTbcMain As System.Windows.Forms.TextBox
+    Friend WithEvents txtCustToStringTabAddFeatTbcPassbkFeatMainTbcMain As System.Windows.Forms.TextBox
     Friend WithEvents Label16 As System.Windows.Forms.Label
     Friend WithEvents Label17 As System.Windows.Forms.Label
     Friend WithEvents Label18 As System.Windows.Forms.Label
@@ -2352,11 +2352,11 @@ Partial Class FrmMain
     Friend WithEvents txtRemQtyTabUpdtFeatTbcPassbkFeatMainTbcMain As System.Windows.Forms.TextBox
     Friend WithEvents Label20 As System.Windows.Forms.Label
     Friend WithEvents grpPassbkTabUpdtFeatTbcPassbkFeatMainTbcMain As System.Windows.Forms.GroupBox
-    Friend WithEvents txtPrevUsedGrpPassbkTabUpdtFeatTbcPassbkFeatMainTbcMain As System.Windows.Forms.TextBox
-    Friend WithEvents txtVisToStringGrpPassbkTabUpdtFeatTbcPassbkFeatMainTbcMain As System.Windows.Forms.TextBox
-    Friend WithEvents txtFeatToStringGrpPassbkTabUpdtFeatTbcPassbkFeatMainTbcMain As System.Windows.Forms.TextBox
+    Friend WithEvents txtPrevUsedTabUpdtFeatTbcPassbkFeatMainTbcMain As System.Windows.Forms.TextBox
+    Friend WithEvents txtVisToStringTabUpdtFeatTbcPassbkFeatMainTbcMain As System.Windows.Forms.TextBox
+    Friend WithEvents txtFeatToStringTabUpdtFeatTbcPassbkFeatMainTbcMain As System.Windows.Forms.TextBox
     Friend WithEvents Label47 As System.Windows.Forms.Label
-    Friend WithEvents txtCustToStringGrpPassbkTabUpdtFeatTbcPassbkFeatMainTbcMain As System.Windows.Forms.TextBox
+    Friend WithEvents txtCustToStringTabUpdtFeatTbcPassbkFeatMainTbcMain As System.Windows.Forms.TextBox
     Friend WithEvents Label48 As System.Windows.Forms.Label
     Friend WithEvents Label49 As System.Windows.Forms.Label
     Friend WithEvents Label50 As System.Windows.Forms.Label
@@ -2401,10 +2401,10 @@ Partial Class FrmMain
     Friend WithEvents txtPassBkFeatIdTabAddFeatTbcPassbkFeatMainTbcMain As System.Windows.Forms.TextBox
     Friend WithEvents Label9 As System.Windows.Forms.Label
     Friend WithEvents mnuRunSysTestTestFrmMain As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents cboPassbkIdGrpPassbkTabAddFeatTbcPassbkFeatMainTbcMain As System.Windows.Forms.ComboBox
-    Friend WithEvents cboFeatIdGrpFeatTabAddFeatTbcPassbkFeatMainTbcMain As System.Windows.Forms.ComboBox
-    Friend WithEvents cboFeatIdGrpPassbkTabUpdtFeatTbcPassbkFeatMainTbcMain As System.Windows.Forms.ComboBox
-    Friend WithEvents cboPassbkFeatIdTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain As System.Windows.Forms.ComboBox
+    Friend WithEvents cboPassbkIdTabAddFeatTbcPassbkFeatMainTbcMain As System.Windows.Forms.ComboBox
+    Friend WithEvents cboFeatIdTabAddFeatTbcPassbkFeatMainTbcMain As System.Windows.Forms.ComboBox
+    Friend WithEvents cboFeatIdTabUpdtFeatTbcPassbkFeatMainTbcMain As System.Windows.Forms.ComboBox
+    Friend WithEvents cboPassbkFeatIdTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain As System.Windows.Forms.ComboBox
     Friend WithEvents cboCustIdGrpCustInfoGrpAddPassbkTabPassbkTbcMainFrmMain As System.Windows.Forms.ComboBox
     Friend WithEvents chkUseTestParkGrpSysTestTabSysTestTbcMainFrmMain As System.Windows.Forms.CheckBox
     Friend WithEvents mnuUseFeaturesPassbooksFrmMain As System.Windows.Forms.ToolStripMenuItem
