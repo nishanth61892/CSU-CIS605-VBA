@@ -57,10 +57,10 @@ Public Class Passbook
     'Associated visitor birthdate
     Private mVisDob As Date
 
-    'Age of visitor
+    'Calculated - Age of visitor
     Private mVisAge As Integer
 
-    'True is visitor is a child (< 13 y/o) false otherwise
+    'Calculated - True is visitor is a child (< 13 y/o) false otherwise
     Private mVisIsChild As Boolean
 
 #End Region 'Attributes

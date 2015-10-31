@@ -76,25 +76,25 @@ Public Class PassbookFeature
     '             - typically constructors have parameters 
     '               that are used to initialize attributes
     Public Sub New(ByVal pId As String, _
-                   ByVal pPurchPrice As Decimal, _
                    ByVal pFeature As Feature, _
                    ByVal pPassbk As Passbook, _
-                   ByVal pQtyPurch As Decimal, _
-                   ByVal pQtyRemain As Decimal
+                   ByVal pQtyPurch As Decimal
                    )
-
         'invoke the default constructor to invoke the parent object constructor
         MyBase.New()
 
         'Initialize the attributes
         _id = pId
-        _purchPrice = pPurchPrice
         _feature = pFeature
         _passbk = pPassbk
-        _qtyPurch = pQtyPurch
-        _qtyRemain = pQtyRemain
-    End Sub 'New()
 
+        If Not pFeature Is Nothing Then
+            _purchPrice = CDec(IIf(pPassbk.visIsChild = False, pFeature.adultPrice, pFeature.childPrice))
+        End If
+
+        _qtyPurch = pQtyPurch
+        _qtyRemain -= pQtyPurch
+    End Sub 'New()
 
     '********** Copy constructor(s)
     '             - one parameter, an object of the same class

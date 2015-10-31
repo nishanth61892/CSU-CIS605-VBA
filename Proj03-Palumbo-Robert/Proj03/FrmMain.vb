@@ -36,9 +36,9 @@ Public Class FrmMain
     'Attributes + Module-level Constants+Variables
     '******************************************************************
 
-    'No Attributes are currently defined.
-
     '********** Module-level constants
+    'Theme Park Name
+    Private Const mTHEME_PARK_NAME As String = "CIS605 Theme Park"
 
     'Minimum age to be considered an adult. Less than this age is 
     'thusly considered a child
@@ -189,97 +189,143 @@ Public Class FrmMain
         _sysTestActive = True
 
         _writeTransLog(Nothing)
-        _writeTransLog("[Test Processing Started]: ********************************* ")
+        _writeTransLog("[SYSTEM-TEST: PROCESSING STARTED]")
         _writeTransLog(Nothing)
 
         '**** Test Theme Park creation ****
+
         'Use a temporary local theme park object if the associated check box has been
         'checked, otherwise use the system theme park object
         Dim themePark As ThemePark
 
         If chkUseTestParkGrpSysTestTabSysTestTbcMainFrmMain.CheckState = CheckState.Checked Then
-            themePark = New ThemePark("World's Of Fun Theme Park")
+            themePark = New ThemePark("PALUMBO Test Theme Park")
             _writeTransLog("[ThemePark]: successfully created ==> " & themePark.ToString())
         Else
             themePark = Me._theThemePark
             _writeTransLog("[ThemePark]: using System Theme Park ==> " & themePark.ToString())
         End If
 
-        '**** Test Customer creation ****
-        _writeTransLog(Nothing)
-        _writeTransLog("****[Create Customers]****")
-        _writeTransLog(Nothing)
-
-        Dim cust1 As Customer = New Customer("C0001", "Smith, John")
-        Dim cust2 As Customer = New Customer("C0002", "Jone, James")
-        Dim cust3 As Customer = New Customer("C0003", "Johnson, Robert")
-
-        themePark.createCust("C0001", "Smith, John")
-        themePark.createCust("C0002", "Jones, James")
-        themePark.createCust("C0003", "Johnson, Robert")
-
-        _writeTransLog("<PARK-STATUS>: " & themePark.ToString)
 
         '**** Test Feature creation ****
         _writeTransLog(Nothing)
-        _writeTransLog("****[Create Features]****")
+        _writeTransLog("[SYSTEM-TEST: CREATE FEATURES]")
         _writeTransLog(Nothing)
 
-        Dim feat1 As Feature = New Feature("F1001", "Parking Pass", "Day", 12.5D, 0)
-        Dim feat2 As Feature = New Feature("F1002", "Gate Pass", "Day", 35.95D, 22.95D)
-        Dim feat3 As Feature = New Feature("F1003", "Meal Plan", "Week", 65.95D, 31.95D)
+        Dim f01 As Feature = New Feature("F01", "Park Pass", "Day", 100D, 80D)
+        Dim f02 As Feature = New Feature("F02", "Early Entry Pass", "Day", 10D, 5D)
+        Dim f03 As Feature = New Feature("F03", "Meal Plan", "Meal", 30D, 20D)
 
-        themePark.createFeat("F1001", "Parking Pass", "Day", 12.5D, 0)
-        themePark.createFeat("F1002", "Gate Pass", "Day", 35.95D, 22.95D)
-        themePark.createFeat("F1003", "Meal Plan", "Week", 65.95D, 31.95D)
+        themePark.createFeat(f01.featId, f01.featName, f01.unitOfMeas, f01.adultPrice, f01.childPrice)
+        themePark.createFeat(f02.featId, f02.featName, f02.unitOfMeas, f02.adultPrice, f02.childPrice)
+        themePark.createFeat(f03.featId, f03.featName, f03.unitOfMeas, f03.adultPrice, f03.childPrice)
 
-        _writeTransLog("<PARK-STATUS>: " & themePark.ToString)
+        _writeTransLog(Nothing)
+        _writeTransLog("<CURRENT-PARK-STATUS>: " & themePark.ToString)
+
+
+        '**** Test Customer creation ****
+        _writeTransLog(Nothing)
+        _writeTransLog("[SYSTEM-TEST: CREATE CUSTOMERS]")
+        _writeTransLog(Nothing)
+
+        Dim c01 As Customer = New Customer("C01", "CName01")
+        Dim c02 As Customer = New Customer("C02", "CName02")
+        Dim c03 As Customer = New Customer("C03", "Customer Name 03")
+
+        themePark.createCust(c01.custId, c01.custName)
+        themePark.createCust(c02.custId, c02.custName)
+        themePark.createCust(c03.custId, c03.custName)
+
+        _writeTransLog(Nothing)
+        _writeTransLog("<CURRENT-PARK-STATUS>: " & themePark.ToString)
+
 
         '**** Test Passbook creation ****
         _writeTransLog(Nothing)
-        _writeTransLog("****[Create Passbooks]****")
+        _writeTransLog("[SYSTEM-TEST: CREATE PASSBOOKS]")
         _writeTransLog(Nothing)
 
-        Dim passbk1 As Passbook = New Passbook("P2001", cust1, #2/8/2014#, "Smith, Will", #3/14/2001#, 14, False)
-        Dim passbk2 As Passbook = New Passbook("P2002", cust2, #6/14/2015#, "Jones, Jennifer", #7/21/1975#, 40, False)
-        Dim passbk3 As Passbook = New Passbook("P2003", cust3, #11/23/2011#, "Johnson, Brian", #12/14/2008#, 7, True)
+        Dim pb01 As Passbook = New Passbook("PB01", c01, #9/15/2015#, "self", #1/1/1980#, 35, False)
+        Dim pb02 As Passbook = New Passbook("PB02", c02, #9/16/2015#, "self", #6/1/1985#, 30, False)
+        Dim pb03 As Passbook = New Passbook("PB03", c02, #9/17/2015#, "CO2 Visitor", #12/1/2003#, 12, True)
+        Dim pb04 As Passbook = New Passbook("PB04", c03, #8/15/2015#, "self", #1/1/1975#, 40, False)
+        Dim pb05 As Passbook = New Passbook("PB05", c03, #9/15/2015#, "CO3 Visitor 1", #10/7/2002#, 13, False)
+        Dim pb06 As Passbook = New Passbook("PB06", c03, #10/15/2015#, "CO3 Visitor 2", #10/8/2002#, 13, False)
 
-        themePark.createPassbk("P2001", cust1, #2/8/2014#, "Smith, Will", #3/14/2001#, 14, False)
-        themePark.createPassbk("P2002", cust2, #6/14/2015#, "Jones, Jennifer", #7/21/1975#, 40, False)
-        themePark.createPassbk("P2003", cust3, #11/23/2011#, "Johnson, Brian", #12/14/2008#, 7, True)
+        themePark.createPassbk(pb01.passbkId, pb01.owner, pb01.datePurch, _
+                               pb01.visName, pb01.visDob, pb01.visAge, pb01.visIsChild)
+        themePark.createPassbk(pb02.passbkId, pb02.owner, pb02.datePurch, _
+                               pb02.visName, pb02.visDob, pb02.visAge, pb02.visIsChild)
+        themePark.createPassbk(pb03.passbkId, pb03.owner, pb03.datePurch, _
+                               pb03.visName, pb03.visDob, pb03.visAge, pb03.visIsChild)
+        themePark.createPassbk(pb04.passbkId, pb04.owner, pb04.datePurch, _
+                               pb04.visName, pb04.visDob, pb04.visAge, pb04.visIsChild)
+        themePark.createPassbk(pb05.passbkId, pb05.owner, pb05.datePurch, _
+                               pb05.visName, pb05.visDob, pb05.visAge, pb05.visIsChild)
+        themePark.createPassbk(pb06.passbkId, pb06.owner, pb06.datePurch, _
+                               pb06.visName, pb06.visDob, pb06.visAge, pb06.visIsChild)
 
-        _writeTransLog("<PARK-STATUS>: " & themePark.ToString)
+        _writeTransLog(Nothing)
+        _writeTransLog("<CURRENT-PARK-STATUS>: " & themePark.ToString)
+
 
         '**** Test Passbook Feature purchase ****'
         _writeTransLog(Nothing)
-        _writeTransLog("****[Create Add Passbook Features]****")
-
+        _writeTransLog("[SYSTEM-TEST: PURCHASE FEATURE]")
         _writeTransLog(Nothing)
 
 
-        Dim passbkFeat1 As PassbookFeature = New PassbookFeature("PF3001", feat1.adultPrice * 2, feat1, passbk1, 2, 0)
-        Dim passbkFeat2 As PassbookFeature = New PassbookFeature("PF3002", feat2.adultPrice * 1, feat2, passbk2, 1, 0)
-        Dim passbkFeat3 As PassbookFeature = New PassbookFeature("PF3003", feat3.childPrice * 2, feat3, passbk3, 2, 0)
+        Dim pbf01 As PassbookFeature = New PassbookFeature("PBF01", f01, pb01, 1)
+        Dim pbf02 As PassbookFeature = New PassbookFeature("PBF02", f01, pb02, 2)
+        Dim pbf03 As PassbookFeature = New PassbookFeature("PBF03", f01, pb03, 3)
+        Dim pbf04 As PassbookFeature = New PassbookFeature("PBF04", f01, pb04, 1)
+        Dim pbf05 As PassbookFeature = New PassbookFeature("PBF05", f01, pb05, 1)
+        Dim pbf06 As PassbookFeature = New PassbookFeature("PBF06", f01, pb06, 1)
+        Dim pbf07 As PassbookFeature = New PassbookFeature("PBF07", f02, pb03, 3)
+        Dim pbf08 As PassbookFeature = New PassbookFeature("PBF08", f03, pb03, 9)
+        Dim pbf09 As PassbookFeature = New PassbookFeature("PBF09", f01, pb04, 1)
+        Dim pbf10 As PassbookFeature = New PassbookFeature("PBF10", f01, pb04, 3)
 
-        themePark.addPassbkFeat("PF3001", feat1.adultPrice * 2, feat1, passbk1, 2, 0)
-        themePark.addPassbkFeat("PF3002", feat2.adultPrice * 1, feat2, passbk2, 1, 0)
-        themePark.addPassbkFeat("PF3003", feat3.childPrice * 2, feat3, passbk3, 2, 0)
+        themePark.addPassbkFeat(pbf01.id, pbf01.feature, pbf01.passbk, pbf01.qtyPurch)
+        themePark.addPassbkFeat(pbf02.id, pbf02.feature, pbf02.passbk, pbf02.qtyPurch)
+        themePark.addPassbkFeat(pbf03.id, pbf03.feature, pbf03.passbk, pbf03.qtyPurch)
+        themePark.addPassbkFeat(pbf04.id, pbf04.feature, pbf04.passbk, pbf04.qtyPurch)
+        themePark.addPassbkFeat(pbf05.id, pbf05.feature, pbf05.passbk, pbf05.qtyPurch)
+        themePark.addPassbkFeat(pbf06.id, pbf06.feature, pbf06.passbk, pbf06.qtyPurch)
+        themePark.addPassbkFeat(pbf07.id, pbf07.feature, pbf07.passbk, pbf07.qtyPurch)
+        themePark.addPassbkFeat(pbf08.id, pbf08.feature, pbf08.passbk, pbf08.qtyPurch)
+        themePark.addPassbkFeat(pbf09.id, pbf09.feature, pbf09.passbk, pbf09.qtyPurch)
+        themePark.addPassbkFeat(pbf10.id, pbf10.feature, pbf10.passbk, pbf10.qtyPurch)
 
-        _writeTransLog("<PARK-STATUS>: " & themePark.ToString)
-
-        '**** Test Passbook Feature Update ****'
         _writeTransLog(Nothing)
-        _writeTransLog("****[Create Used Passbook Features]****")
+        _writeTransLog("<CURRENT-PARK-STATUS>: " & themePark.ToString)
+
+
+        '**** Test Use Passbook Feature ****'
+        _writeTransLog(Nothing)
+        _writeTransLog("[SYSTEM-TEST: USE PASSBOOK FEATURE]")
         _writeTransLog(Nothing)
 
-        themePark.usedFeat("UPF4001", passbkFeat1, DateTime.Now, 2, "Chicago IL")
-        themePark.usedFeat("UPF4002", passbkFeat2, DateTime.Now, 1, "Denver CO")
-        themePark.usedFeat("UPF4003", passbkFeat3, DateTime.Now, 3, "Center Circle Park")
-
-        _writeTransLog("<PARK-STATUS>: " & themePark.ToString)
+        themePark.usedFeat("UF01", pbf01, #10/20/2015#, 1, "Epcot Center")
+        themePark.usedFeat("UF02", pbf02, #10/20/2015#, 1, "West Parking")
+        themePark.usedFeat("UF03", pbf03, #10/20/2015#, 2, "France")
+        themePark.usedFeat("UF04", pbf03, #10/20/2015#, 1, "American Pavillion")
 
         _writeTransLog(Nothing)
-        _writeTransLog("[Test Processing Completed]: ********************************* ")
+        _writeTransLog("<CURRENT-PARK-STATUS>: " & themePark.ToString)
+
+
+        '**** Test Update Passbook Feature ****'
+        _writeTransLog(Nothing)
+        _writeTransLog("[SYSTEM-TEST: UPDATE PASSBOOK FEATURE")
+        _writeTransLog(Nothing)
+
+        themePark.updtPassbkFeat(pbf03.id, 1)
+
+        '**** System Test Completed ****'
+        _writeTransLog(Nothing)
+        _writeTransLog("[TEST PROCESSING COMPLETED]")
         _writeTransLog(Nothing)
 
         MsgBox("Test Processing completed.  Click to view the transaction", MsgBoxStyle.OkOnly)
@@ -322,7 +368,7 @@ Public Class FrmMain
     '******************************************************************
     Private Sub _initializeBusinessLogic()
         'Create a theme park instance
-        _theThemePark = New ThemePark("Palumbo's Party Park")
+        _theThemePark = New ThemePark(_themeParkName)
 
         _writeTransLog("<CREATED>: " & _theThemePark.ToString())
     End Sub '_initializeBusinessLogic()
@@ -338,6 +384,9 @@ Public Class FrmMain
 
         'Center the main form on the display
         Me.StartPosition = FormStartPosition.CenterScreen
+
+        lblThemeParkMgmtSysFrmMain.Text = mTHEME_PARK_NAME
+        Me.Text = mTHEME_PARK_NAME
     End Sub 'initializeUserInterface()
 
 #End Region 'Behavioral Methods
@@ -786,11 +835,9 @@ Public Class FrmMain
         If choice = MsgBoxResult.Ok And _sysTestActive = False Then
             'Create a new Passbook Feature
             _theThemePark.addPassbkFeat(passbkFeatId, _
-                                        totPurchPrice, _
                                         tempFeat, _
                                         tempPassbk, _
-                                        decQtyPurch, _
-                                        decQtyRemain
+                                        decQtyPurch
                                         )
 
             'Reset the fields and focus to allow for another feature to be added
@@ -898,11 +945,7 @@ Public Class FrmMain
         If choice = MsgBoxResult.Ok And _sysTestActive = False Then
             'Create a new Passbook Feature
             _theThemePark.updtPassbkFeat(featId, _
-                                         totPurchPrice, _
-                                         tempFeat, _
-                                         tempPassbk, _
-                                         decNewQty, _
-                                         decRemainQty
+                                         decNewQty
                                          )
 
             MsgBox("Passbook Feature update submission was successful!", MsgBoxStyle.OkOnly)
@@ -960,7 +1003,7 @@ Public Class FrmMain
         Dim tempPassbk As Passbook = New Passbook("0001", tempCust, DateTime.Now, "Doe, James",
                                                  #2/21/2005#, 10, True)
         Dim tempFeat As Feature = New Feature("0001", "Park Pass", "Day", 12.5D, 7.5D)
-        Dim tempPassbkFeat As PassbookFeature = New PassbookFeature("0001", 12.5D, tempFeat, tempPassbk, 5, 3)
+        Dim tempPassbkFeat As PassbookFeature = New PassbookFeature("0001", tempFeat, tempPassbk, 5)
 
         'Used as shortcut names to access the data
         Dim featId As String = cboPassbkFeatIdTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Text
@@ -1007,9 +1050,7 @@ Public Class FrmMain
         'If OK selected proceed with the submission
         If choice = MsgBoxResult.Ok And _sysTestActive = False Then
             'Create a new Used Feature
-            _theThemePark.usedFeat("NOTUSED", tempPassbkFeat, DateTime.Now, decQtyUsed, loc)
-
-            MsgBox("Used Passbook Feature submission was successful!", MsgBoxStyle.OkOnly)
+            _theThemePark.usedFeat("PALUMBO-NOTUSED", tempPassbkFeat, DateTime.Now, decQtyUsed, loc)
 
             'Reset the fields and focus to allow for another used feature to be submitted
             _resetPassbkUsedFeatInput()
@@ -1236,8 +1277,9 @@ Public Class FrmMain
     End Sub '_frmMain_Load(...)
 
     '******************************************************************
-    '_txtTransLogTabTransLogTbcMainFrmMain_TextChanged() is the event procedure the is called when
-    'the transaction log text box is modified.  Basically it enables the display text to scroll.
+    '_txtTransLogTabTransLogTbcMainFrmMain_TextChanged() is the event 
+    'procedure the is called when the transaction log text box is 
+    'modified.  Basically it enables the display text to scroll.
     '******************************************************************
     Private Sub _txtTransLogTabTransLogTbcMainFrmMain_TextChanged(sender As Object, _
                                                                   e As EventArgs) _
@@ -1247,6 +1289,259 @@ Public Class FrmMain
             txtTransLogTabTransLogTbcMainFrmMain.TextLength
         txtTransLogTabTransLogTbcMainFrmMain.ScrollToCaret()
     End Sub '_txtTransLogTabTransLogTbcMainFrmMain_TextChanged(...)
+
+    '******************************************************************
+    '_mnuPurchasePassbooksFrmMain_Click() is the event procedure the is 
+    'called when the user selects Passbooks->Add New from the main menu.
+    'It transitions the GUI to the Passbook tab.
+    '******************************************************************
+    Private Sub _mnuPurchasePassbooksFrmMain_Click(sender As Object, e As EventArgs) _
+        Handles mnuPurchasePassbooksFrmMain.Click
+
+        tbcMainFrmMain.SelectTab(mTBC_MAIN_TAB_PASSBK)
+
+    End Sub '_mnuPurchasePassbooksFrmMain_Click(...)
+
+    '******************************************************************
+    '_mnuAddFeaturesPassbooksFrmMain_Click() is the event procedure the 
+    'is called when the user selects Passbooks->Feature->Purchase from 
+    'the main menu. It transitions the GUI to the Passbook Feature 
+    'Purchase tab.
+    '******************************************************************
+    Private Sub _mnuAddFeaturesPassbooksFrmMain_Click(sender As Object, e As EventArgs) _
+        Handles mnuAddFeaturesPassbooksFrmMain.Click
+
+        tbcMainFrmMain.SelectTab(mTBC_MAIN_TAB_PASSBKFEAT)
+        tbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.SelectTab(mTBC_PASSBKFEAT_TAB_ADD)
+
+    End Sub '_mnuAddFeaturesPassbooksFrmMain_Click(...)
+
+    '******************************************************************
+    '_mnuUpdateFeaturesPassbooksFrmMain_Click() is the event procedure 
+    'the is called when the user selects Passbooks->Feature->Update 
+    'from the main menu. It transitions the GUI to the Passbook Feature 
+    'Update tab.
+    '******************************************************************
+    Private Sub _mnuUpdateFeaturesPassbooksFrmMain_Click(sender As Object, e As EventArgs) _
+        Handles mnuUpdateFeaturesPassbooksFrmMain.Click
+
+        tbcMainFrmMain.SelectTab(mTBC_MAIN_TAB_PASSBKFEAT)
+        tbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.SelectTab(mTBC_PASSBKFEAT_TAB_UPDT)
+
+    End Sub '_mnuAddFeaturesPassbooksFrmMain_Click(...)
+
+    '******************************************************************
+    '_mnuUseFeaturesPassbooksFrmMain_Click() is the event procedure the is called when
+    'the user selects Passbooks->Feature->Post from the main menu.
+    'It transitions the GUI to the Passbook Feature Post tab.
+    '******************************************************************
+    Private Sub _mnuUseFeaturesPassbooksFrmMain_Click(sender As Object, e As EventArgs) _
+        Handles mnuUseFeaturesPassbooksFrmMain.Click
+
+        tbcMainFrmMain.SelectTab(mTBC_MAIN_TAB_PASSBKFEAT)
+        tbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.SelectTab(mTBC_PASSBKFEAT_TAB_POST)
+
+    End Sub '_mnuUseFeaturesPassbooksFrmMain_Click(...)
+
+    '******************************************************************
+    '_lstCustTabDashboardTbcMain_SelectedIndexChanged() is the event 
+    'procedure the is called when the user selects a customer from 
+    'the Dashboard tab.  Customer info is displayed in the associated 
+    'text field.
+    '******************************************************************
+    Private Sub _lstCustTabDashboardTbcMain_SelectedIndexChanged(sender As Object, e As EventArgs) _
+        Handles lstCustTabDashboardTbcMain.SelectedIndexChanged
+
+        Dim info As String = "Customer-Info: "
+        Dim lstVal As String = _
+            lstCustTabDashboardTbcMain.SelectedItem.ToString
+
+        txtToStringTabDashboardTbcMain.Text = _
+            info & lstVal & ", completed full info in PP04"
+    End Sub '_lstCustTabDashboardTbcMain_SelectedIndexChanged(...)
+
+    '******************************************************************
+    '_lstFeatTabDashboardTbcMain_SelectedIndexChanged() is the event 
+    'procedure the is called when the user selects a feature from the 
+    'Dashboard tab.  Feature info is displayed in the associated text 
+    'field.
+    '******************************************************************
+    Private Sub _lstFeatTabDashboardTbcMain_SelectedIndexChanged(sender As Object, e As EventArgs) _
+        Handles lstFeatTabDashboardTbcMain.SelectedIndexChanged
+
+        Dim info As String = "Feature-Info: "
+        Dim lstVal As String = _
+            lstFeatTabDashboardTbcMain.SelectedItem.ToString
+
+        txtToStringTabDashboardTbcMain.Text = _
+            info & lstVal & ", completed full info in PP04"
+
+    End Sub '_lstFeatTabDashboardTbcMain_SelectedIndexChanged
+
+    '******************************************************************
+    '_lstPassbkTabDashboardTbcMain_SelectedIndexChanged() is the event 
+    'procedure the is called when the user selects a passbook from 
+    'the Dashboard tab.  Passbook info is displayed in the associated 
+    'text field.
+    '******************************************************************
+    Private Sub _lstPassbkTabDashboardTbcMain_SelectedIndexChanged(sender As Object, e As EventArgs) _
+        Handles lstPassbkTabDashboardTbcMain.SelectedIndexChanged
+
+        Dim info As String = "Passbook-Info: "
+        Dim lstVal As String = _
+            lstPassbkTabDashboardTbcMain.SelectedItem.ToString
+
+        txtToStringTabDashboardTbcMain.Text = _
+            info & lstVal & ", completed full info in PP04"
+
+    End Sub '_lstPassbkTabDashboardTbcMain_SelectedIndexChanged(...)
+
+
+    '******************************************************************
+    '_lstPassbkFeatTabDashboardTbcMain_SelectedIndexChanged() is the 
+    'event procedure the is called when the user selects a passbook from 
+    'the Dashboard tab.  Passbook info is displayed in the associated 
+    'text field.
+    '******************************************************************
+    Private Sub _lstPassbkFeatTabDashboardTbcMain_SelectedIndexChanged(sender As Object, e As EventArgs) _
+        Handles lstPassbkFeatTabDashboardTbcMain.SelectedIndexChanged
+
+        Dim info As String = "PassbookFeature-Info: "
+        Dim lstVal As String = _
+            lstPassbkFeatTabDashboardTbcMain.SelectedItem.ToString
+
+        txtToStringTabDashboardTbcMain.Text = _
+            info & lstVal & ", completed full info in PP04"
+
+    End Sub '_lstPassbkFeatTabDashboardTbcMain_SelectedIndexChanged(...)
+
+    '******************************************************************
+    '_lstUsedFeatTabDashboardTbcMain_SelectedIndexChanged() is the 
+    'event procedure the is called when the user selects a used
+    'feature from the Dashboard tab.  Used feature info is displayed in 
+    'the associated text field.
+    '******************************************************************
+    Private Sub _lstUsedFeatTabDashboardTbcMain_SelectedIndexChanged(sender As Object, e As EventArgs) _
+        Handles lstUsedFeatTabDashboardTbcMain.SelectedIndexChanged
+
+        Dim info As String = "UsedFeature-Info: "
+        Dim lstVal As String = _
+            lstUsedFeatTabDashboardTbcMain.SelectedItem.ToString
+
+        txtToStringTabDashboardTbcMain.Text = _
+            info & lstVal & ", completed full info in PP04"
+
+    End Sub '_lstUsedFeatTabDashboardTbcMain_SelectedIndexChanged(...)
+
+
+    '******************************************************************
+    '_cboCustIdGrpCustInfoGrpAddPassbkTabPassbkTbcMainFrmMain_SelectedIndexChanged() 
+    'is the event procedure the is called when the user selects a used
+    'customer from the Add Passbook tab. Customer info is displayed in 
+    'the associated text field.
+    '******************************************************************
+    Private Sub _cboCustIdGrpCustInfoGrpAddPassbkTabPassbkTbcMainFrmMain_SelectedIndexChanged(sender As Object, e As EventArgs) _
+        Handles cboCustIdGrpCustInfoGrpAddPassbkTabPassbkTbcMainFrmMain.SelectedIndexChanged
+
+        Dim info As String = "Customer-Info: "
+        Dim cboVal As String = _
+            cboCustIdGrpCustInfoGrpAddPassbkTabPassbkTbcMainFrmMain.SelectedItem.ToString
+
+        txtToStringGrpCustInfoGrpAddPassbkTabPassbkTbcMainFrmMain.Text = _
+            info & cboVal & ", completed full info in PP04"
+
+    End Sub '_cboCustIdGrpCustInfoGrpAddPassbkTabPassbkTbcMainFrmMain_SelectedIndexChanged(...)
+
+    '******************************************************************
+    '_cboPassbkIdGrpPassbkTabAddFeatTbcPassbkFeatMainTbcMain_SelectedIndexChanged() 
+    'is the event procedure the is called when the user selects a 
+    'passbook id from the Update Feature tab. Customer and Visitor info 
+    'is displayed in the associated text fields.
+    '******************************************************************
+    Private Sub _cboPassbkIdGrpPassbkTabAddFeatTbcPassbkFeatMainTbcMain_SelectedIndexChanged(sender As Object, e As EventArgs) _
+        Handles cboPassbkIdGrpPassbkTabAddFeatTbcPassbkFeatMainTbcMain.SelectedIndexChanged
+
+        Dim info As String = "Customer-Info: "
+        Dim cboVal As String = _
+            cboPassbkIdGrpPassbkTabAddFeatTbcPassbkFeatMainTbcMain.SelectedItem.ToString
+
+        txtCustToStringGrpPassbkTabAddFeatTbcPassbkFeatMainTbcMain.Text = _
+            info & cboVal & ", completed full info in PP04"
+
+        info = "Visitor-Info"
+        txtVisToStringGrpPassbkTabAddFeatTbcPassbkFeatMainTbcMain.Text = _
+            info & cboVal & ", completed full info in PP04"
+    End Sub '_cboPassbkIdGrpPassbkTabAddFeatTbcPassbkFeatMainTbcMain_SelectedIndexChanged
+
+    '******************************************************************
+    '_cboFeatIdGrpFeatTabAddFeatTbcPassbkFeatMainTbcMain_SelectedIndexChanged() 
+    'is the event procedure the is called when the user selects a 
+    'feature id from the Update Feature tab. Feature info is displayed 
+    'in the associated text fields.
+    '******************************************************************
+    Private Sub _cboFeatIdGrpFeatTabAddFeatTbcPassbkFeatMainTbcMain_SelectedIndexChanged(sender As Object, e As EventArgs) _
+        Handles cboFeatIdGrpFeatTabAddFeatTbcPassbkFeatMainTbcMain.SelectedIndexChanged
+
+        Dim info As String = "Feature-Info: "
+        Dim cboVal As String = _
+            cboFeatIdGrpFeatTabAddFeatTbcPassbkFeatMainTbcMain.SelectedItem.ToString
+
+        txtFeatToStringGrpFeatTabAddFeatTbcPassbkFeatMainTbcMain.Text = _
+            info & cboVal & ", completed full info in PP04"
+
+    End Sub '_cboFeatIdGrpFeatTabAddFeatTbcPassbkFeatMainTbcMain_SelectedIndexChanged(...)
+
+    '******************************************************************
+    '_cboFeatIdGrpPassbkTabUpdtFeatTbcPassbkFeatMainTbcMain_SelectedIndexChanged() 
+    'is the event procedure the is called when the user selects a 
+    'passbook feature id from the Update Feature tab. Feature info is 
+    'displayed in the associated text fields.
+    '******************************************************************
+    Private Sub _cboFeatIdGrpPassbkTabUpdtFeatTbcPassbkFeatMainTbcMain_SelectedIndexChanged(sender As Object, e As EventArgs) _
+        Handles cboFeatIdGrpPassbkTabUpdtFeatTbcPassbkFeatMainTbcMain.SelectedIndexChanged
+
+        Dim info As String = "Customer-Info: "
+        Dim cboVal As String = _
+            cboFeatIdGrpPassbkTabUpdtFeatTbcPassbkFeatMainTbcMain.SelectedItem.ToString
+
+        txtCustToStringGrpPassbkTabUpdtFeatTbcPassbkFeatMainTbcMain.Text = _
+            info & cboVal & ", completed full info in PP04"
+
+        info = "Visitor-Info: "
+        txtVisToStringGrpPassbkTabUpdtFeatTbcPassbkFeatMainTbcMain.Text = _
+            info & cboVal & ", completed full info in PP04"
+
+        info = "Feature-Info: "
+        txtFeatToStringGrpPassbkTabUpdtFeatTbcPassbkFeatMainTbcMain.Text = _
+            info & cboVal & ", completed full info in PP04"
+
+    End Sub '_cboFeatIdGrpPassbkTabUpdtFeatTbcPassbkFeatMainTbcMain_SelectedIndexChanged(...)
+
+    '******************************************************************
+    '_cboPassbkFeatIdTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain_SelectedIndexChanged() 
+    'is the event procedure the is called when the user selects a 
+    'passbook feature id from the Update Feature tab. Feature info is 
+    'displayed in the associated text fields.
+    '******************************************************************
+    Private Sub _cboPassbkFeatIdTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain_SelectedIndexChanged(sender As Object, e As EventArgs) _
+          Handles cboPassbkFeatIdTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.SelectedIndexChanged
+
+        Dim info As String = "Customer-Info: "
+        Dim cboVal As String = _
+            cboPassbkFeatIdTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.SelectedItem.ToString
+
+        txtCustToStringTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Text = _
+            info & cboVal & ", completed full info in PP04"
+
+        info = "Visitor-Info: "
+        txtVisToStringGrpPassbkTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Text = _
+            info & cboVal & ", completed full info in PP04"
+
+        info = "Feature-Info: "
+        txtFeatToStringGrpPassbkTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Text = _
+            info & cboVal & ", completed full info in PP04"
+
+    End Sub '_cboPassbkFeatIdTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain_SelectedIndexChanged(...)
 
 
     '********** Business Logic Event Procedures
@@ -1421,7 +1716,7 @@ Public Class FrmMain
         themePark_EventArgs_UpdtPassbkFeat = CType(e, ThemePark_EventArgs_UpdtPassbkFeat)
 
         'Use the past in object to populate the necessary system components
-        passbkFeat = ThemePark_EventArgs_UpdtPassbkFeat.passbkFeat
+        passbkFeat = themePark_EventArgs_UpdtPassbkFeat.passbkFeat
 
         With passbkFeat
             '            lstPassbkFeatTabDashboardTbcMain.Items.Add(.id)
@@ -1431,7 +1726,7 @@ Public Class FrmMain
             'lstPassbkTabDashboardTbcMain.Items.Count.ToString()
         End With
 
-        _writeTransLog("<UPDATED>: " & passbkFeat.ToString())
+        _writeTransLog("<UPDATED>: " & passbkFeat.id & " temporary place holder for this project")
         _writeTransLog("<STATUS>: " & _theThemePark.ToString())
 
         'Not needed if object was created from system test data

@@ -39,13 +39,10 @@ Public Class ThemePark
     'Attributes + Module-level Constants+Variables
     '******************************************************************
 
-    '********** Module-level constants
-    Private mTHEME_PARK_NAME As String = "Palumbo-Park"
-
     '********** Module-level variables
 
     'Theme park name for the one theme park instance
-    Private mThemeParkName As String = mTHEME_PARK_NAME
+    Private mThemeParkName As String
 
     'Number of customers in the system
     Private mNumCusts As Integer
@@ -296,20 +293,16 @@ Public Class ThemePark
     'addPassbkFeat() generates an add passbook feature transaction
     '******************************************************************
     Public Sub addPassbkFeat(ByVal pPassbkFeatId As String, _
-                             ByVal pPurchPrice As Decimal, _
                              ByVal pFeature As Feature, _
                              ByVal pPassbk As Passbook, _
-                             ByVal pQtyPurch As Decimal, _
-                             ByVal pQtyRemain As Decimal
+                             ByVal pQtyPurch As Decimal
                              )
 
         'Call the worker procedure to do the work
         _addPassbkFeat(pPassbkFeatId, _
-                       pPurchPrice, _
                        pFeature, _
                        pPassbk, _
-                       pQtyPurch, _
-                       pQtyRemain
+                       pQtyPurch
                        )
     End Sub 'addPassbkFeat(...)
 
@@ -317,20 +310,12 @@ Public Class ThemePark
     'updtPassbkFeat() generates an update passbook feature transaction
     '******************************************************************
     Public Sub updtPassbkFeat(ByVal pPassbkFeatId As String, _
-                              ByVal pPurchPrice As Decimal, _
-                              ByVal pFeature As Feature, _
-                              ByVal pPassbk As Passbook, _
-                              ByVal pQtyPurch As Decimal, _
-                              ByVal pQtyRemain As Decimal
+                              ByVal pQty As Decimal
                               )
 
         'Call the worker procedure to do the work
-        _updtPassbkFeat(pPassbkFeatId, _
-                        pPurchPrice, _
-                        pFeature, _
-                        pPassbk, _
-                        pQtyPurch, _
-                        pQtyRemain
+        _updtPassbkFeat(pPassbkFeatId,
+                        pQty
                         )
     End Sub 'updtPassbkFeat(...)
 
@@ -460,19 +445,15 @@ Public Class ThemePark
     'of the associated processed based on this event
     '******************************************************************
     Private Sub _addPassbkFeat(ByVal pPassbkFeatId As String, _
-                               ByVal pPurchPrice As Decimal, _
                                ByVal pFeature As Feature, _
                                ByVal pPassbk As Passbook, _
-                               ByVal pQtyPurch As Decimal, _
-                               ByVal pQtyRemain As Decimal _
+                               ByVal pQtyPurch As Decimal
                                )
 
         Dim passbkFeat As PassbookFeature = New PassbookFeature(pPassbkFeatId, _
-                                                                pPurchPrice, _
                                                                 pFeature, _
                                                                 pPassbk, _
-                                                                pQtyPurch, _
-                                                                pQtyRemain
+                                                                pQtyPurch
                                                                 )
         'update the passbook cnt in the system
         _numPassbkFeats += 1
@@ -489,19 +470,13 @@ Public Class ThemePark
     'of the associated processed based on this event
     '******************************************************************
     Private Sub _updtPassbkFeat(ByVal pPassbkFeatId As String, _
-                                ByVal pPurchPrice As Decimal, _
-                                ByVal pFeature As Feature, _
-                                ByVal pPassbk As Passbook, _
-                                ByVal pQtyPurch As Decimal, _
-                                ByVal pQtyRemain As Decimal _
+                                ByVal pQty As Decimal
                                 )
 
         Dim passbkFeat As PassbookFeature = New PassbookFeature(pPassbkFeatId, _
-                                                                pPurchPrice, _
-                                                                pFeature, _
-                                                                pPassbk, _
-                                                                pQtyPurch, _
-                                                                pQtyRemain
+                                                                Nothing, _
+                                                                Nothing, _
+                                                                pQty
                                                                 )
 
         'Raise and event to let the listeners of this event it happened

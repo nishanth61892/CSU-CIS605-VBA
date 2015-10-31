@@ -36,11 +36,10 @@ Partial Class FrmMain
         Me.mnuPasteEditFrmMain = New System.Windows.Forms.ToolStripMenuItem()
         Me.mnuPassbooksFrmMain = New System.Windows.Forms.ToolStripMenuItem()
         Me.mnuPurchasePassbooksFrmMain = New System.Windows.Forms.ToolStripMenuItem()
-        Me.mnuPassbookPurchasePassbooksFrmMain = New System.Windows.Forms.ToolStripMenuItem()
-        Me.mnuFeaturePurchasePassbooksFrmMain = New System.Windows.Forms.ToolStripMenuItem()
         Me.mnuFeaturePassbooksFrmMain = New System.Windows.Forms.ToolStripMenuItem()
         Me.mnuAddFeaturesPassbooksFrmMain = New System.Windows.Forms.ToolStripMenuItem()
         Me.mnuUpdateFeaturesPassbooksFrmMain = New System.Windows.Forms.ToolStripMenuItem()
+        Me.mnuUseFeaturesPassbooksFrmMain = New System.Windows.Forms.ToolStripMenuItem()
         Me.mnuViewFrmMain = New System.Windows.Forms.ToolStripMenuItem()
         Me.mnuDashboardViewFrmMain = New System.Windows.Forms.ToolStripMenuItem()
         Me.mnuTransLogViewFrmMain = New System.Windows.Forms.ToolStripMenuItem()
@@ -335,47 +334,38 @@ Partial Class FrmMain
         'mnuPurchasePassbooksFrmMain
         '
         Me.mnuPurchasePassbooksFrmMain.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right
-        Me.mnuPurchasePassbooksFrmMain.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuPassbookPurchasePassbooksFrmMain, Me.mnuFeaturePurchasePassbooksFrmMain})
         Me.mnuPurchasePassbooksFrmMain.Name = "mnuPurchasePassbooksFrmMain"
-        Me.mnuPurchasePassbooksFrmMain.Size = New System.Drawing.Size(131, 22)
-        Me.mnuPurchasePassbooksFrmMain.Text = "Purchase"
+        Me.mnuPurchasePassbooksFrmMain.Size = New System.Drawing.Size(132, 22)
+        Me.mnuPurchasePassbooksFrmMain.Text = "Add New"
         Me.mnuPurchasePassbooksFrmMain.ToolTipText = "Passbook and feature purchase options"
-        '
-        'mnuPassbookPurchasePassbooksFrmMain
-        '
-        Me.mnuPassbookPurchasePassbooksFrmMain.Name = "mnuPassbookPurchasePassbooksFrmMain"
-        Me.mnuPassbookPurchasePassbooksFrmMain.Size = New System.Drawing.Size(134, 22)
-        Me.mnuPassbookPurchasePassbooksFrmMain.Text = "Passbook"
-        Me.mnuPassbookPurchasePassbooksFrmMain.ToolTipText = "Purchase a new Theme Park Passbook"
-        '
-        'mnuFeaturePurchasePassbooksFrmMain
-        '
-        Me.mnuFeaturePurchasePassbooksFrmMain.Name = "mnuFeaturePurchasePassbooksFrmMain"
-        Me.mnuFeaturePurchasePassbooksFrmMain.Size = New System.Drawing.Size(134, 22)
-        Me.mnuFeaturePurchasePassbooksFrmMain.Text = "Feature"
-        Me.mnuFeaturePurchasePassbooksFrmMain.ToolTipText = "Purchase a new Theme Park Feature"
         '
         'mnuFeaturePassbooksFrmMain
         '
-        Me.mnuFeaturePassbooksFrmMain.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuAddFeaturesPassbooksFrmMain, Me.mnuUpdateFeaturesPassbooksFrmMain})
+        Me.mnuFeaturePassbooksFrmMain.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuAddFeaturesPassbooksFrmMain, Me.mnuUpdateFeaturesPassbooksFrmMain, Me.mnuUseFeaturesPassbooksFrmMain})
         Me.mnuFeaturePassbooksFrmMain.Name = "mnuFeaturePassbooksFrmMain"
-        Me.mnuFeaturePassbooksFrmMain.Size = New System.Drawing.Size(131, 22)
+        Me.mnuFeaturePassbooksFrmMain.Size = New System.Drawing.Size(132, 22)
         Me.mnuFeaturePassbooksFrmMain.Text = "Features"
         Me.mnuFeaturePassbooksFrmMain.ToolTipText = "Add or update a passbook feature"
         '
         'mnuAddFeaturesPassbooksFrmMain
         '
         Me.mnuAddFeaturesPassbooksFrmMain.Name = "mnuAddFeaturesPassbooksFrmMain"
-        Me.mnuAddFeaturesPassbooksFrmMain.Size = New System.Drawing.Size(120, 22)
-        Me.mnuAddFeaturesPassbooksFrmMain.Text = "Add"
+        Me.mnuAddFeaturesPassbooksFrmMain.Size = New System.Drawing.Size(131, 22)
+        Me.mnuAddFeaturesPassbooksFrmMain.Text = "Purchase"
         Me.mnuAddFeaturesPassbooksFrmMain.ToolTipText = "Add a passbook feature"
         '
         'mnuUpdateFeaturesPassbooksFrmMain
         '
         Me.mnuUpdateFeaturesPassbooksFrmMain.Name = "mnuUpdateFeaturesPassbooksFrmMain"
-        Me.mnuUpdateFeaturesPassbooksFrmMain.Size = New System.Drawing.Size(120, 22)
+        Me.mnuUpdateFeaturesPassbooksFrmMain.Size = New System.Drawing.Size(131, 22)
         Me.mnuUpdateFeaturesPassbooksFrmMain.Text = "Update"
         Me.mnuUpdateFeaturesPassbooksFrmMain.ToolTipText = "Update a passbook feature"
+        '
+        'mnuUseFeaturesPassbooksFrmMain
+        '
+        Me.mnuUseFeaturesPassbooksFrmMain.Name = "mnuUseFeaturesPassbooksFrmMain"
+        Me.mnuUseFeaturesPassbooksFrmMain.Size = New System.Drawing.Size(131, 22)
+        Me.mnuUseFeaturesPassbooksFrmMain.Text = "Post"
         '
         'mnuViewFrmMain
         '
@@ -445,12 +435,12 @@ Partial Class FrmMain
         Me.lblThemeParkMgmtSysFrmMain.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.lblThemeParkMgmtSysFrmMain.Font = New System.Drawing.Font("Modern No. 20", 27.75!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblThemeParkMgmtSysFrmMain.ForeColor = System.Drawing.Color.Maroon
-        Me.lblThemeParkMgmtSysFrmMain.Location = New System.Drawing.Point(245, 49)
+        Me.lblThemeParkMgmtSysFrmMain.Location = New System.Drawing.Point(345, 49)
         Me.lblThemeParkMgmtSysFrmMain.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblThemeParkMgmtSysFrmMain.Name = "lblThemeParkMgmtSysFrmMain"
-        Me.lblThemeParkMgmtSysFrmMain.Size = New System.Drawing.Size(523, 40)
+        Me.lblThemeParkMgmtSysFrmMain.Size = New System.Drawing.Size(2, 40)
         Me.lblThemeParkMgmtSysFrmMain.TabIndex = 1
-        Me.lblThemeParkMgmtSysFrmMain.Text = "Theme Park Management System"
+        Me.lblThemeParkMgmtSysFrmMain.Tag = "CIS605 Theme Park"
         '
         'tabPassbkFeatTbcMainFrmMain
         '
@@ -492,8 +482,8 @@ Partial Class FrmMain
         Me.tabAddFeatTbcPassbkFeatMainTbcMain.Padding = New System.Windows.Forms.Padding(3)
         Me.tabAddFeatTbcPassbkFeatMainTbcMain.Size = New System.Drawing.Size(871, 416)
         Me.tabAddFeatTbcPassbkFeatMainTbcMain.TabIndex = 0
-        Me.tabAddFeatTbcPassbkFeatMainTbcMain.Text = "Add Feature"
-        Me.tipTPMS.SetToolTip(Me.tabAddFeatTbcPassbkFeatMainTbcMain, "Add a new feature to the system")
+        Me.tabAddFeatTbcPassbkFeatMainTbcMain.Text = "Purchase "
+        Me.tipTPMS.SetToolTip(Me.tabAddFeatTbcPassbkFeatMainTbcMain, "Purchase a feature for the specified passbook")
         '
         'grpAnon3
         '
@@ -600,20 +590,19 @@ Partial Class FrmMain
         '
         Me.txtFeatToStringGrpFeatTabAddFeatTbcPassbkFeatMainTbcMain.BackColor = System.Drawing.SystemColors.ControlLight
         Me.txtFeatToStringGrpFeatTabAddFeatTbcPassbkFeatMainTbcMain.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtFeatToStringGrpFeatTabAddFeatTbcPassbkFeatMainTbcMain.Location = New System.Drawing.Point(304, 37)
+        Me.txtFeatToStringGrpFeatTabAddFeatTbcPassbkFeatMainTbcMain.Location = New System.Drawing.Point(278, 37)
         Me.txtFeatToStringGrpFeatTabAddFeatTbcPassbkFeatMainTbcMain.Multiline = True
         Me.txtFeatToStringGrpFeatTabAddFeatTbcPassbkFeatMainTbcMain.Name = "txtFeatToStringGrpFeatTabAddFeatTbcPassbkFeatMainTbcMain"
         Me.txtFeatToStringGrpFeatTabAddFeatTbcPassbkFeatMainTbcMain.ReadOnly = True
-        Me.txtFeatToStringGrpFeatTabAddFeatTbcPassbkFeatMainTbcMain.Size = New System.Drawing.Size(268, 38)
+        Me.txtFeatToStringGrpFeatTabAddFeatTbcPassbkFeatMainTbcMain.Size = New System.Drawing.Size(298, 38)
         Me.txtFeatToStringGrpFeatTabAddFeatTbcPassbkFeatMainTbcMain.TabIndex = 3
         Me.txtFeatToStringGrpFeatTabAddFeatTbcPassbkFeatMainTbcMain.TabStop = False
-        Me.txtFeatToStringGrpFeatTabAddFeatTbcPassbkFeatMainTbcMain.Text = "Output is to TransLog file for this phase."
         '
         'Label15
         '
         Me.Label15.AutoSize = True
         Me.Label15.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label15.Location = New System.Drawing.Point(301, 18)
+        Me.Label15.Location = New System.Drawing.Point(275, 17)
         Me.Label15.Name = "Label15"
         Me.Label15.Size = New System.Drawing.Size(163, 15)
         Me.Label15.TabIndex = 2
@@ -649,33 +638,31 @@ Partial Class FrmMain
         '
         Me.txtVisToStringGrpPassbkTabAddFeatTbcPassbkFeatMainTbcMain.BackColor = System.Drawing.SystemColors.ControlLight
         Me.txtVisToStringGrpPassbkTabAddFeatTbcPassbkFeatMainTbcMain.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtVisToStringGrpPassbkTabAddFeatTbcPassbkFeatMainTbcMain.Location = New System.Drawing.Point(304, 102)
+        Me.txtVisToStringGrpPassbkTabAddFeatTbcPassbkFeatMainTbcMain.Location = New System.Drawing.Point(278, 96)
         Me.txtVisToStringGrpPassbkTabAddFeatTbcPassbkFeatMainTbcMain.Multiline = True
         Me.txtVisToStringGrpPassbkTabAddFeatTbcPassbkFeatMainTbcMain.Name = "txtVisToStringGrpPassbkTabAddFeatTbcPassbkFeatMainTbcMain"
         Me.txtVisToStringGrpPassbkTabAddFeatTbcPassbkFeatMainTbcMain.ReadOnly = True
-        Me.txtVisToStringGrpPassbkTabAddFeatTbcPassbkFeatMainTbcMain.Size = New System.Drawing.Size(268, 38)
+        Me.txtVisToStringGrpPassbkTabAddFeatTbcPassbkFeatMainTbcMain.Size = New System.Drawing.Size(298, 38)
         Me.txtVisToStringGrpPassbkTabAddFeatTbcPassbkFeatMainTbcMain.TabIndex = 5
         Me.txtVisToStringGrpPassbkTabAddFeatTbcPassbkFeatMainTbcMain.TabStop = False
-        Me.txtVisToStringGrpPassbkTabAddFeatTbcPassbkFeatMainTbcMain.Text = "Output is to TransLog file for this phase."
         '
         'txtCustToStringGrpPassbkTabAddFeatTbcPassbkFeatMainTbcMain
         '
         Me.txtCustToStringGrpPassbkTabAddFeatTbcPassbkFeatMainTbcMain.BackColor = System.Drawing.SystemColors.ControlLight
         Me.txtCustToStringGrpPassbkTabAddFeatTbcPassbkFeatMainTbcMain.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtCustToStringGrpPassbkTabAddFeatTbcPassbkFeatMainTbcMain.Location = New System.Drawing.Point(305, 37)
+        Me.txtCustToStringGrpPassbkTabAddFeatTbcPassbkFeatMainTbcMain.Location = New System.Drawing.Point(278, 37)
         Me.txtCustToStringGrpPassbkTabAddFeatTbcPassbkFeatMainTbcMain.Multiline = True
         Me.txtCustToStringGrpPassbkTabAddFeatTbcPassbkFeatMainTbcMain.Name = "txtCustToStringGrpPassbkTabAddFeatTbcPassbkFeatMainTbcMain"
         Me.txtCustToStringGrpPassbkTabAddFeatTbcPassbkFeatMainTbcMain.ReadOnly = True
-        Me.txtCustToStringGrpPassbkTabAddFeatTbcPassbkFeatMainTbcMain.Size = New System.Drawing.Size(271, 38)
+        Me.txtCustToStringGrpPassbkTabAddFeatTbcPassbkFeatMainTbcMain.Size = New System.Drawing.Size(298, 38)
         Me.txtCustToStringGrpPassbkTabAddFeatTbcPassbkFeatMainTbcMain.TabIndex = 3
         Me.txtCustToStringGrpPassbkTabAddFeatTbcPassbkFeatMainTbcMain.TabStop = False
-        Me.txtCustToStringGrpPassbkTabAddFeatTbcPassbkFeatMainTbcMain.Text = "Output is to TransLog file for this phase."
         '
         'Label16
         '
         Me.Label16.AutoSize = True
         Me.Label16.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label16.Location = New System.Drawing.Point(302, 78)
+        Me.Label16.Location = New System.Drawing.Point(275, 78)
         Me.Label16.Name = "Label16"
         Me.Label16.Size = New System.Drawing.Size(154, 15)
         Me.Label16.TabIndex = 4
@@ -685,7 +672,7 @@ Partial Class FrmMain
         '
         Me.Label17.AutoSize = True
         Me.Label17.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label17.Location = New System.Drawing.Point(301, 18)
+        Me.Label17.Location = New System.Drawing.Point(275, 17)
         Me.Label17.Name = "Label17"
         Me.Label17.Size = New System.Drawing.Size(174, 15)
         Me.Label17.TabIndex = 2
@@ -734,7 +721,7 @@ Partial Class FrmMain
         Me.tabUpdtFeatTbcPassbkFeatMainTbcMain.Padding = New System.Windows.Forms.Padding(3)
         Me.tabUpdtFeatTbcPassbkFeatMainTbcMain.Size = New System.Drawing.Size(871, 416)
         Me.tabUpdtFeatTbcPassbkFeatMainTbcMain.TabIndex = 1
-        Me.tabUpdtFeatTbcPassbkFeatMainTbcMain.Text = "Update Feature"
+        Me.tabUpdtFeatTbcPassbkFeatMainTbcMain.Text = "Update"
         Me.tabUpdtFeatTbcPassbkFeatMainTbcMain.ToolTipText = "Update passbook feature"
         '
         'btnResetTabUpdtFeatTbcPassbkFeatMainTbcMain
@@ -969,7 +956,7 @@ Partial Class FrmMain
         Me.tabPostFeatTbcPassbkFeatMainTbcMain.Padding = New System.Windows.Forms.Padding(3)
         Me.tabPostFeatTbcPassbkFeatMainTbcMain.Size = New System.Drawing.Size(871, 416)
         Me.tabPostFeatTbcPassbkFeatMainTbcMain.TabIndex = 2
-        Me.tabPostFeatTbcPassbkFeatMainTbcMain.Text = "Post Feature"
+        Me.tabPostFeatTbcPassbkFeatMainTbcMain.Text = "Post "
         Me.tipTPMS.SetToolTip(Me.tabPostFeatTbcPassbkFeatMainTbcMain, "Register use of a specific feature")
         '
         'grpAnon1
@@ -1632,7 +1619,7 @@ Partial Class FrmMain
         Me.txtToStringTabDashboardTbcMain.Multiline = True
         Me.txtToStringTabDashboardTbcMain.Name = "txtToStringTabDashboardTbcMain"
         Me.txtToStringTabDashboardTbcMain.ReadOnly = True
-        Me.txtToStringTabDashboardTbcMain.Size = New System.Drawing.Size(235, 212)
+        Me.txtToStringTabDashboardTbcMain.Size = New System.Drawing.Size(235, 99)
         Me.txtToStringTabDashboardTbcMain.TabIndex = 21
         Me.txtToStringTabDashboardTbcMain.TabStop = False
         Me.txtToStringTabDashboardTbcMain.Text = "No information to display for this phase"
@@ -2184,7 +2171,6 @@ Partial Class FrmMain
         Me.MainMenuStrip = Me.mnuMainApplMenu
         Me.Margin = New System.Windows.Forms.Padding(4)
         Me.Name = "FrmMain"
-        Me.Text = "Theme Park Management System"
         Me.mnuMainApplMenu.ResumeLayout(False)
         Me.mnuMainApplMenu.PerformLayout()
         Me.tabPassbkFeatTbcMainFrmMain.ResumeLayout(False)
@@ -2279,8 +2265,6 @@ Partial Class FrmMain
     Friend WithEvents mnuTestFrmMain As ToolStripMenuItem
     Friend WithEvents mnuImportTestFrmMain As ToolStripMenuItem
     Friend WithEvents mnuExportTestFrmMain As ToolStripMenuItem
-    Friend WithEvents mnuPassbookPurchasePassbooksFrmMain As ToolStripMenuItem
-    Friend WithEvents mnuFeaturePurchasePassbooksFrmMain As ToolStripMenuItem
     Friend WithEvents btnResetTabPostFeatTbcPassbkFeatMainTbcMain As Button
     Friend WithEvents btnSubmitTabPostFeatTbcPassbkFeatMainTbcMain As Button
     Friend WithEvents btnResetTabAddFeatTbcPassbkFeatMainTbcMain As Button
@@ -2423,4 +2407,5 @@ Partial Class FrmMain
     Friend WithEvents cboPassbkFeatIdTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain As System.Windows.Forms.ComboBox
     Friend WithEvents cboCustIdGrpCustInfoGrpAddPassbkTabPassbkTbcMainFrmMain As System.Windows.Forms.ComboBox
     Friend WithEvents chkUseTestParkGrpSysTestTabSysTestTbcMainFrmMain As System.Windows.Forms.CheckBox
+    Friend WithEvents mnuUseFeaturesPassbooksFrmMain As System.Windows.Forms.ToolStripMenuItem
 End Class
