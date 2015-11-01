@@ -28,16 +28,16 @@
 
 #Region "Option / Imports"
 Option Explicit On      'Must declare variables before using them
-Option Strict On        'Must perform explicit data type conversions
+Option Strict On    'Must perform explicit data type conversions
 #End Region 'Option / Imports
 
 Public Class ThemePark
     Inherits System.EventArgs
 
 #Region "Attributes"
-    '******************************************************************
+    '****************************************************************************************
     'Attributes + Module-level Constants+Variables
-    '******************************************************************
+    '****************************************************************************************
 
     'System level error message
     Private Const mSYS_ERR_MSG As String = "Internal System Error: Object creation Failed"
@@ -67,9 +67,9 @@ Public Class ThemePark
 #End Region 'Attributes
 
 #Region "Constructors"
-    '******************************************************************
+    '****************************************************************************************
     'Constructors
-    '******************************************************************
+    '****************************************************************************************
 
     'These are all public.
 
@@ -100,9 +100,9 @@ Public Class ThemePark
 
 #Region "Get/Set Methods"
 
-    '******************************************************************
+    '****************************************************************************************
     'Get/Set Methods
-    '******************************************************************
+    '****************************************************************************************
 
     '********** Public Get/Set Methods
     '             - call private get/set methods to implement
@@ -220,9 +220,9 @@ Public Class ThemePark
 #End Region 'Get/Set Methods
 
 #Region "Behavioral Methods"
-    '******************************************************************
+    '****************************************************************************************
     'Behavioral Methods
-    '******************************************************************
+    '****************************************************************************************
 
     '********** Public Shared Behavioral Methods
 
@@ -230,17 +230,17 @@ Public Class ThemePark
 
     '********** Public Non-Shared Behavioral Methods
 
-    '******************************************************************
+    '****************************************************************************************
     'ToString() overrides the parent object function to return a 
     'string representation of this object.
-    '******************************************************************
+    '****************************************************************************************
     Public Overrides Function ToString() As String
         Return _toString()
     End Function 'ToString()
 
-    '******************************************************************
+    '****************************************************************************************
     'createCust() generates a new customer transaction
-    '******************************************************************
+    '****************************************************************************************
     Public Sub createCust(ByVal pCustId As String, _
                           ByVal pCustName As String
                           )
@@ -251,9 +251,9 @@ Public Class ThemePark
                     )
     End Sub 'createCust(...)
 
-    '******************************************************************
+    '****************************************************************************************
     'createFeat() generates a new feature transaction
-    '******************************************************************
+    '****************************************************************************************
     Public Sub createFeat(ByVal pFeatId As String, _
                           ByVal pFeatName As String, _
                           ByVal pUnitOfMeas As String, _
@@ -270,9 +270,9 @@ Public Class ThemePark
                     )
     End Sub 'createFeat(...)
 
-    '******************************************************************
+    '****************************************************************************************
     'createPassbk() generates a new passbook transaction
-    '******************************************************************
+    '****************************************************************************************
     Public Sub createPassbk(ByVal pPassbkId As String, _
                             ByVal pOwner As Customer, _
                             ByVal pDatePurch As Date, _
@@ -293,9 +293,9 @@ Public Class ThemePark
                       )
     End Sub 'createPassbk(...)
 
-    '******************************************************************
+    '****************************************************************************************
     'addPassbkFeat() generates an add passbook feature transaction
-    '******************************************************************
+    '****************************************************************************************
     Public Sub addPassbkFeat(ByVal pPassbkFeatId As String, _
                              ByVal pFeature As Feature, _
                              ByVal pPassbk As Passbook, _
@@ -310,9 +310,9 @@ Public Class ThemePark
                        )
     End Sub 'addPassbkFeat(...)
 
-    '******************************************************************
+    '****************************************************************************************
     'updtPassbkFeat() generates an update passbook feature transaction
-    '******************************************************************
+    '****************************************************************************************
     Public Sub updtPassbkFeat(ByVal pPassbkFeatId As String, _
                               ByVal pQty As Decimal
                               )
@@ -323,9 +323,9 @@ Public Class ThemePark
                         )
     End Sub 'updtPassbkFeat(...)
 
-    '******************************************************************
+    '****************************************************************************************
     'usedFeat() generates a used passbook feature transaction
-    '******************************************************************
+    '****************************************************************************************
     Public Sub usedFeat(ByVal pId As String, _
                         ByVal pPassbkFeatId As PassbookFeature, _
                         ByVal pDateUsed As Date, _
@@ -345,11 +345,11 @@ Public Class ThemePark
 
     '********** Private Non-Shared Behavioral Methods
 
-    '******************************************************************
+    '****************************************************************************************
     '_toString() creates and returns a String version of the data
     'stored in the object.  This is the work-horse function that
     'does all the work for ToString().
-    '******************************************************************
+    '****************************************************************************************
     Private Function _toString() As String
         Dim tmpStr As String = ""
 
@@ -364,12 +364,12 @@ Public Class ThemePark
         Return tmpStr
     End Function '_toString(...)
 
-    '******************************************************************
+    '****************************************************************************************
     '_createCust()
     'This is the work-horse function that creates a new customer
     'and raises an event to alert any listeners to handle the rest
     'of the associated processed based on this event
-    '******************************************************************
+    '****************************************************************************************
     Private Sub _createCust(ByVal pCustId As String, _
                             ByVal pCustName As String
                             )
@@ -392,18 +392,18 @@ Public Class ThemePark
                                         New ThemePark_EventArgs_CreateCust(cust))
     End Sub '_createCust(...)
 
-    '******************************************************************
+    '****************************************************************************************
     '_createFeat()
     'This is the work-horse function that creates a new feature
     'and raises an event to alert any listeners to handle the rest
     'of the associated processed based on this event
-    '******************************************************************
+    '****************************************************************************************
     Private Sub _createFeat(ByVal pFeatId As String, _
-                               ByVal pFeatName As String, _
-                               ByVal pUnitOfMeas As String, _
-                               ByVal pAdultPrice As Decimal, _
-                               ByVal pChildPrice As Decimal
-                               )
+                            ByVal pFeatName As String, _
+                            ByVal pUnitOfMeas As String, _
+                            ByVal pAdultPrice As Decimal, _
+                            ByVal pChildPrice As Decimal
+                            )
 
         Dim feat As Feature = New Feature(pFeatId, _
                                           pFeatName, _
@@ -427,12 +427,12 @@ Public Class ThemePark
                                         New ThemePark_EventArgs_CreateFeat(feat))
     End Sub '_createFeat(...)
 
-    '******************************************************************
+    '****************************************************************************************
     '_createPassbk()
     'This is the work-horse function that creates a new passbook
     'and raises an event to alert any listeners to handle the rest
     'of the associated processed based on this event
-    '******************************************************************
+    '****************************************************************************************
     Private Sub _createPassbk(ByVal pPassbkId As String, _
                               ByVal pOwner As Customer, _
                               ByVal pDatePurch As Date, _
@@ -466,12 +466,12 @@ Public Class ThemePark
                                           New ThemePark_EventArgs_CreatePassbk(passbook))
     End Sub '_createPassbk(...)
 
-    '******************************************************************
+    '****************************************************************************************
     '_addPassbkFeat() 
     'This is the work-horse function that creates a new passbook feature
     'and raises an event to alert any listeners to handle the rest
     'of the associated processed based on this event
-    '******************************************************************
+    '****************************************************************************************
     Private Sub _addPassbkFeat(ByVal pPassbkFeatId As String, _
                                ByVal pFeature As Feature, _
                                ByVal pPassbk As Passbook, _
@@ -498,12 +498,12 @@ Public Class ThemePark
                                            New ThemePark_EventArgs_AddPassbkFeat(passbkFeat))
     End Sub '_addPassbkFeat(...)
 
-    '******************************************************************
+    '****************************************************************************************
     '_updtPassbkFeat()
     'This is the work-horse function that updates a passbook feature
     'and raises an event to alert any listeners to handle the rest
     'of the associated processed based on this event
-    '******************************************************************
+    '****************************************************************************************
     Private Sub _updtPassbkFeat(ByVal pPassbkFeatId As String, _
                                 ByVal pQty As Decimal
                                 )
@@ -527,12 +527,12 @@ Public Class ThemePark
     End Sub '_updtPassbkFeat(...)
 
 
-    '******************************************************************
+    '****************************************************************************************
     '_usedFeat()
     'This is the work-horse function that posts a used passbook feature
     'and raises an event to alert any listeners to handle the rest
     'of the associated processed based on this event
-    '******************************************************************
+    '****************************************************************************************
     Private Sub _usedFeat(ByVal pId As String, _
                           ByVal pPassbkFeatId As PassbookFeature, _
                           ByVal pDateUsed As Date, _
@@ -566,9 +566,9 @@ Public Class ThemePark
 #End Region 'Behavioral Methods
 
 #Region "Event Procedures"
-    '******************************************************************
+    '****************************************************************************************
     'Event Procedures
-    '******************************************************************
+    '****************************************************************************************
 
     'No Event Procedures are currently defined.
     'These are all private.
@@ -586,9 +586,9 @@ Public Class ThemePark
 #End Region 'Event Procedures
 
 #Region "Events"
-    '******************************************************************
+    '****************************************************************************************
     'Events
-    '******************************************************************
+    '****************************************************************************************
 
     'These are all public.
 

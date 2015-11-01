@@ -28,15 +28,15 @@
 
 #Region "Option / Imports"
 Option Explicit On      'Must declare variables before using them
-Option Strict On        'Must perform explicit data type conversions
+Option Strict On    'Must perform explicit data type conversions
 #End Region 'Option / Imports
 
 Public Class Feature
 
 #Region "Attributes"
-    '******************************************************************
+    '****************************************************************************************
     'Attributes + Module-level Constants+Variables
-    '******************************************************************
+    '****************************************************************************************
 
     '********** Module-level constants
 
@@ -60,9 +60,9 @@ Public Class Feature
 #End Region 'Attributes
 
 #Region "Constructors"
-    '******************************************************************
+    '****************************************************************************************
     'Constructors
-    '******************************************************************
+    '****************************************************************************************
 
     'These are all public.
 
@@ -96,9 +96,9 @@ Public Class Feature
 #End Region 'Constructors
 
 #Region "Get/Set Methods"
-    '******************************************************************
+    '****************************************************************************************
     'Get/Set Methods
-    '******************************************************************
+    '****************************************************************************************
 
     '********** Public Get/Set Methods
     '             - call private get/set methods to implement
@@ -196,9 +196,9 @@ Public Class Feature
 #End Region 'Get/Set Methods
 
 #Region "Behavioral Methods"
-    '******************************************************************
+    '****************************************************************************************
     'Behavioral Methods
-    '******************************************************************
+    '****************************************************************************************
 
     '********** Public Shared Behavioral Methods
 
@@ -206,21 +206,21 @@ Public Class Feature
 
     '********** Public Non-Shared Behavioral Methods
 
-    '******************************************************************
+    '****************************************************************************************
     'ToString() overrides the parent object function to return a 
     'string representation of this object.
-    '******************************************************************
+    '****************************************************************************************
     Public Overrides Function ToString() As String
         Return _toString()
     End Function 'ToString()
 
     '********** Private Non-Shared Behavioral Methods
 
-    '******************************************************************
+    '****************************************************************************************
     '_toString() creates and returns a String version of the data
     'stored in the object.  This is the work-horse function that
     'does all the work for ToString().
-    '******************************************************************
+    '****************************************************************************************
     Private Function _toString() As String
         Dim tmpStr As String = ""
 
@@ -237,9 +237,9 @@ Public Class Feature
 #End Region 'Behavioral Methods
 
 #Region "Event Procedures"
-    '******************************************************************
+    '****************************************************************************************
     'Event Procedures
-    '******************************************************************
+    '****************************************************************************************
 
     'No Event Procedures are currently defined.
     'These are all private.
@@ -257,9 +257,9 @@ Public Class Feature
 #End Region 'Event Procedures
 
 #Region "Events"
-    '******************************************************************
+    '****************************************************************************************
     'Events
-    '******************************************************************
+    '****************************************************************************************
 
     'No Events are currently defined.
     'These are all public.

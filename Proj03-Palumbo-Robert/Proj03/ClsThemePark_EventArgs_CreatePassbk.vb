@@ -29,16 +29,16 @@
 
 #Region "Option / Imports"
 Option Explicit On      'Must declare variables before using them
-Option Strict On        'Must perform explicit data type conversions
+Option Strict On    'Must perform explicit data type conversions
 #End Region 'Option / Imports
 
 Public Class ThemePark_EventArgs_CreatePassbk
     Inherits System.EventArgs
 
 #Region "Attributes"
-    '******************************************************************
+    '****************************************************************************************
     'Attributes + Module-level Constants+Variables
-    '******************************************************************
+    '****************************************************************************************
 
     '********** Module-level constants
 
@@ -50,9 +50,9 @@ Public Class ThemePark_EventArgs_CreatePassbk
 #End Region 'Attributes
 
 #Region "Constructors"
-    '******************************************************************
+    '****************************************************************************************
     'Constructors
-    '******************************************************************
+    '****************************************************************************************
 
     'Default constructor - no parameters
 
@@ -76,9 +76,9 @@ Public Class ThemePark_EventArgs_CreatePassbk
 #End Region 'Constructors
 
 #Region "Get/Set Methods"
-    '******************************************************************
+    '****************************************************************************************
     'Get/Set Methods
-    '******************************************************************
+    '****************************************************************************************
 
     Public ReadOnly Property passbook As Passbook
         Get
@@ -101,9 +101,9 @@ Public Class ThemePark_EventArgs_CreatePassbk
 #End Region 'Get/Set Methods
 
 #Region "Behavioral Methods"
-    '******************************************************************
+    '****************************************************************************************
     'Behavioral Methods
-    '******************************************************************
+    '****************************************************************************************
 
     'Public Shared Behavioral Methods
 
@@ -123,11 +123,11 @@ Public Class ThemePark_EventArgs_CreatePassbk
 
     'Private Non-Shared Behavioral Methods
 
-    '******************************************************************
+    '****************************************************************************************
     '_toString() creates and returns a String version of the data
     'stored in the object.  This is the work-horse function that
     'does all the work for ToString().
-    '******************************************************************
+    '****************************************************************************************
     Private Function _toString() As String
         Dim tmpStr As String
 
@@ -140,9 +140,9 @@ Public Class ThemePark_EventArgs_CreatePassbk
 #End Region 'Behavioral Methods
 
 #Region "Event Procedures"
-    '******************************************************************
+    '****************************************************************************************
     'Event Procedures
-    '******************************************************************
+    '****************************************************************************************
 
     'No Event Procedures are currently defined
 
@@ -159,9 +159,9 @@ Public Class ThemePark_EventArgs_CreatePassbk
 #End Region 'Event Procedures
 
 #Region "Events"
-    '******************************************************************
+    '****************************************************************************************
     'Events
-    '******************************************************************
+    '****************************************************************************************
 
 #End Region 'Events
 

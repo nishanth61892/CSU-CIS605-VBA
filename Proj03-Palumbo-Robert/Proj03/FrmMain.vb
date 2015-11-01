@@ -26,15 +26,15 @@
 
 #Region "Option / Imports"
 Option Explicit On      'Must declare variables before using them
-Option Strict On        'Must perform explicit data type conversions
+Option Strict On    'Must perform explicit data type conversions
 #End Region 'Option / Imports
 
 Public Class FrmMain
 
 #Region "Attributes"
-    '******************************************************************
+    '****************************************************************************************
     'Attributes + Module-level Constants+Variables
-    '******************************************************************
+    '****************************************************************************************
 
     '********** Module-level constants
     'Theme Park Name
@@ -77,9 +77,9 @@ Public Class FrmMain
 #End Region 'Attributes
 
 #Region "Constructors"
-    '******************************************************************
+    '****************************************************************************************
     'Constructors
-    '******************************************************************
+    '****************************************************************************************
 
     'No Constructors are currently defined.
     'These are all public.
@@ -97,11 +97,9 @@ Public Class FrmMain
 #End Region 'Constructors
 
 #Region "Get/Set Methods"
-    '******************************************************************
+    '****************************************************************************************
     'Get/Set Methods
-    '******************************************************************
-
-    'No Get/Set Methods are currently defined.
+    '****************************************************************************************
 
     '********** Public Get/Set Methods
     '             - call private get/set methods to implement
@@ -151,18 +149,18 @@ Public Class FrmMain
 #End Region 'Get/Set Methods
 
 #Region "Behavioral Methods"
-    '******************************************************************
+    '****************************************************************************************
     'Behavioral Methods
-    '******************************************************************
+    '****************************************************************************************
 
     '********** Public Shared Behavioral Methods
 
     '********** Private Shared Behavioral Methods
 
-    '******************************************************************
+    '****************************************************************************************
     '_closeAppl() is used to simply close the application when
     'requested.
-    '******************************************************************
+    '****************************************************************************************
     Private Sub _closeAppl()
 
         Dim msg = "Shutting down the system.  Click OK to continue, otherwise Cancel"
@@ -183,10 +181,10 @@ Public Class FrmMain
 
     '********** Private Non-Shared Behavioral Methods
 
-    '******************************************************************
-    '_runSystemTest() is the procedure that executes the applications automated system test logic.
+    '****************************************************************************************
+    '_runSystemTest() is the procedure that executes the applications automated test logic.
     'It is invoked either from the main UI menu or from the System Test tab.
-    '******************************************************************
+    '****************************************************************************************
     Private Sub _runSystemTest()
         'Indicate to that the system test is running
         _sysTestActive = True
@@ -340,11 +338,11 @@ Public Class FrmMain
         _sysTestActive = False
     End Sub '_runSystemTest()
 
-    '******************************************************************
+    '****************************************************************************************
     '_writeTransLog() procedure does all the work to write a 
     'message to the transaction log.hat write the specified string to 
     'the transaction log.
-    '******************************************************************
+    '****************************************************************************************
     Private Sub _writeTransLog(ByVal pLogMsg As String)
         txtTransLogTabTransLogTbcMainFrmMain.Text &= _
             DateAndTime.DateString & ":" & DateAndTime.TimeString & "::"
@@ -365,13 +363,13 @@ Public Class FrmMain
         toolTip.ShowAlways = True
     End Sub '_initializeToolTips()
 
-    '******************************************************************
+    '****************************************************************************************
     '_initializeBusinessLogic() is used to initialize the program business
     'data/logic to a known good starting state.
-    '******************************************************************
+    '****************************************************************************************
     Private Sub _initializeBusinessLogic()
         'Create a theme park instance
-        _theThemePark = New ThemePark(_themeParkName)
+        _theThemePark = New ThemePark(mTHEME_PARK_NAME)
 
         If _theThemePark Is Nothing Then
             MsgBox(mSYS_ERR_MSG & ", Theme Park could not be instantiated")
@@ -383,10 +381,10 @@ Public Class FrmMain
         _writeTransLog("<CREATED>: " & _theThemePark.ToString())
     End Sub '_initializeBusinessLogic()
 
-    '******************************************************************
+    '****************************************************************************************
     '_initializeUserInterface() is used to instantiate the user interface
     'so it is ready for user interaction.
-    '******************************************************************
+    '****************************************************************************************
     Private Sub _initializeUserInterface()
         'Assign CancelButton to the form based buttons so the 'Esc'
         'key will activate the exit functionality when on the main form. 
@@ -395,27 +393,27 @@ Public Class FrmMain
         'Center the main form on the display
         Me.StartPosition = FormStartPosition.CenterScreen
 
-        lblThemeParkMgmtSysFrmMain.Text = mTHEME_PARK_NAME
-        Me.Text = mTHEME_PARK_NAME
+        lblThemeParkMgmtSysFrmMain.Text = _theThemePark.themeParkName
+        Me.Text = _theThemePark.themeParkName
     End Sub 'initializeUserInterface()
 
 #End Region 'Behavioral Methods
 
 #Region "Event Procedures"
-    '******************************************************************
+    '****************************************************************************************
     'Event Procedures
-    '******************************************************************
+    '****************************************************************************************
 
     'These are all private.
 
     '********** User-Interface Event Procedures
     '             - Initiated explicitly by user
 
-    '******************************************************************
-    '_btnExitFrmMain_Click() is the event procedure that gets called when the
-    'user clicks on the Exit button or by using Alt-E hot key sequence.
+    '****************************************************************************************
+    '_btnExitFrmMain_Click() is the event procedure that gets called when
+    'the user clicks on the Exit button or by using Alt-E hot key sequence.
     'It is used to notify the user and formally terminate the program.
-    '******************************************************************
+    '****************************************************************************************
     Private Sub _btnExitFrmMain_Click(sender As Object, _
                                       e As EventArgs) _
         Handles btnExitFrmMain.Click
@@ -424,10 +422,10 @@ Public Class FrmMain
         _closeAppl()
     End Sub '_btnExitFrmMain_Click(...)
 
-    '******************************************************************
+    '****************************************************************************************
     '_mnuFileExit() is the event procedure that gets called when the user selects
     'File->Exit from the main menu.
-    '******************************************************************
+    '****************************************************************************************
     Private Sub _mnuExitFileFrmMain_Click(sender As Object, _
                                           e As EventArgs) _
         Handles mnuExitFileFrmMain.Click
@@ -436,11 +434,11 @@ Public Class FrmMain
         _closeAppl()
     End Sub '_mnuExitFileFrmMain_Click(...) 
 
-    '******************************************************************
+    '****************************************************************************************
     '_btnSubmitGrpCustInfoTabCustTbcMainFrmMain_Click() is the event procedure that gets called 
     'when the user click on the Submit button from the Customer tab. It validates and then
     'submits the data to create a new customer.
-    '******************************************************************
+    '****************************************************************************************
     Private Sub _btnSubmitGrpCustInfoTabCustTbcMainFrmMain_Click(sender As Object, _
                                                                  e As EventArgs) _
         Handles btnSubmitGrpCustInfoTabCustTbcMainFrmMain.Click
@@ -487,10 +485,10 @@ Public Class FrmMain
         End If
     End Sub '_btnSubmitGrpCustInfoTabCustTbcMainFrmMain_Click(...)
 
-    '******************************************************************
+    '****************************************************************************************
     '_resetCustomerInput() is used to reset all the customer input fields to allow the user 
     'to start over with input.
-    '******************************************************************
+    '****************************************************************************************
     Private Sub _resetCustomerInput()
         'Reset the fields and focus to allow for another feature to be added
         txtCustIdGrpAddCustTabCustTbcMainFrmMain.Text = ""
@@ -499,11 +497,11 @@ Public Class FrmMain
         txtCustIdGrpAddCustTabCustTbcMainFrmMain.Focus()
     End Sub '_resetCustomerInput()
 
-    '******************************************************************
+    '****************************************************************************************
     '_btnResetGrpCustInfoTabCustTbcMainFrmMain_Click() is the event procedure that gets called 
     'when the user click on the Reset button from the Customer tab. It clears all input fields
     'to allow the user to reenter the data from scratch.
-    '******************************************************************
+    '****************************************************************************************
     Private Sub _btnResetGrpCustInfoTabCustTbcMainFrmMain_Click(sender As Object, _
                                                                 e As EventArgs) _
         Handles btnResetGrpCustInfoTabCustTbcMainFrmMain.Click
@@ -512,11 +510,11 @@ Public Class FrmMain
         _resetCustomerInput()
     End Sub '_btnResetGrpCustInfoTabCustTbcMainFrmMain_Click(...)
 
-    '******************************************************************
+    '****************************************************************************************
     '_btnSubmitGrpAddFeatTabFeatTbcMainFrmMain_Click() is the event procedure that gets called 
     'when the user click on the Submit button from the Feature tab. It validates and then
     'submits the data to create a new feature.
-    '******************************************************************
+    '****************************************************************************************
     Private Sub _btnSubmitGrpAddFeatTabFeatTbcMainFrmMain_Click(sender As Object, _
                                                                 e As EventArgs) _
         Handles btnSubmitGrpAddFeatTabFeatTbcMainFrmMain.Click
@@ -621,10 +619,10 @@ Public Class FrmMain
 
     End Sub '_btnSubmitGrpCustInfoTabCustTbcMainFrmMain_Click(...)
 
-    '******************************************************************
+    '****************************************************************************************
     '_resetFeatureInput() is used to reset all the feature input fields to allow the user 
     'to start over with input.
-    '******************************************************************
+    '****************************************************************************************
     Private Sub _resetFeatureInput()
         'Reset the fields and focus to allow for another feature to be added
         txtFeatIdAddFeatTabFeatTbcMainFrmMain.Text = ""
@@ -636,11 +634,11 @@ Public Class FrmMain
         txtFeatIdAddFeatTabFeatTbcMainFrmMain.Focus()
     End Sub '_resetFeatureInput()
 
-    '******************************************************************
+    '****************************************************************************************
     '_btnResetGrpAddFeatTabFeatTbcMainFrmMain() is the event procedure that gets called 
     'when the user click on the Reset button from the Customer tab. It clears all input fields
     'to allow the user to reenter the data from scratch.
-    '******************************************************************
+    '****************************************************************************************
     Private Sub _btnResetGrpAddFeatTabFeatTbcMainFrmMain_Click(sender As Object, _
                                                                e As EventArgs) _
         Handles btnResetGrpAddFeatTabFeatTbcMainFrmMain.Click
@@ -649,11 +647,11 @@ Public Class FrmMain
         _resetFeatureInput()
     End Sub '_btnResetGrpAddFeatTabFeatTbcMainFrmMain(...)
 
-    '******************************************************************
+    '****************************************************************************************
     '_btnSubmitGrpAddPassbkTabPassbkTbcMainFrmMain_Click() is the event procedure that gets called 
     'when the user click on the Submit button from the Passbook tab. It validates and then
     'submits the data to create a new passbook.
-    '******************************************************************
+    '****************************************************************************************
     Private Sub _btnSubmitGrpAddPassbkTabPassbkTbcMainFrmMain_Click(sender As Object, _
                                                                     e As EventArgs) _
         Handles btnSubmitGrpAddPassbkTabPassbkTbcMainFrmMain.Click
@@ -702,8 +700,16 @@ Public Class FrmMain
             Exit Sub
         End If
 
-        'Determine if the visitor is a child (< 13 years old)
+        'Validate the visitor date of birth - can't be in the future, child is < 13yo
         Dim datePurch As Date = DateTime.Now
+
+        If DateTime.Compare(visDobValue, datePurch) > 0 Then
+            MsgBox("ERROR: Visitor DOB is in the future, please re-enter date", MsgBoxStyle.OkOnly)
+            txtVisDobGrpAddPassbkTabPassbkTbcMainFrmMain.Focus()
+            Exit Sub
+        End If
+
+        'Determine if the visitor is a child (< 13 years old)
         Dim visAge As Long = DateDiff(DateInterval.Year, visDobValue, datePurch)
         Dim visIsChild As Boolean = (visAge < mADULT_MIN_AGE)
 
@@ -744,10 +750,10 @@ Public Class FrmMain
         End If
     End Sub '_btnSubmitGrpAddPassbkTabPassbkTbcMainFrmMain_Click(...)
 
-    '******************************************************************
+    '****************************************************************************************
     '_resetPassbkInput() is used to reset all the feature input fields to allow the user 
     'to start over with input.
-    '******************************************************************
+    '****************************************************************************************
     Private Sub _resetPassbkInput()
         'Reset the fields and focus to allow for another feature to be added
         cboCustIdGrpCustInfoGrpAddPassbkTabPassbkTbcMainFrmMain.Text = ""
@@ -760,11 +766,11 @@ Public Class FrmMain
         txtPassbkIdGrpAddPassbkTabPassbkTbcMainFrmMain.Focus()
     End Sub '_resetPassbkInput()
 
-    '******************************************************************
+    '****************************************************************************************
     'btnResetGrpAddFeatTabFeatTbcMainFrmMain() is the event procedure that gets called 
     'when the user click on the Reset button from the Customer tab. It clears all input fields
     'to allow the user to reenter the data from scratch.
-    '******************************************************************
+    '****************************************************************************************
     Private Sub _btnResetGrpAddPassbkTabPassbkTbcMainFrmMain_Click(sender As Object, _
                                                                    e As EventArgs) _
         Handles btnResetGrpAddPassbkTabPassbkTbcMainFrmMain.Click
@@ -773,11 +779,11 @@ Public Class FrmMain
         _resetPassbkInput()
     End Sub '_btnResetGrpAddPassbkTabPassbkTbcMainFrmMain_Click
 
-    '******************************************************************
-    '_btnSubmitTabAddFeatTbcPassbkFeatMainTbcMain_Click() is the event procedure that gets called when the user
-    'clicks on the Submit button from the Add Passbook Feature tab.  It validates and then submits the data
-    'to add a purchased feature to a customer passbook.
-    '******************************************************************
+    '****************************************************************************************
+    '_btnSubmitTabAddFeatTbcPassbkFeatMainTbcMain_Click() is the event procedure that gets 
+    'called when the user clicks on the Submit button from the Add Passbook Feature tab.  
+    'It validates and then submits the data to add a purchased feature to a customer passbook.
+    '****************************************************************************************
     Private Sub _btnSubmitTabAddFeatTbcPassbkFeatMainTbcMain_Click(sender As Object, _
                                                                    e As EventArgs) _
         Handles btnSubmitTabAddFeatTbcPassbkFeatMainTbcMain.Click
@@ -880,10 +886,10 @@ Public Class FrmMain
         End If
     End Sub '_btnSubmitTabAddFeatTbcPassbkFeatMainTbcMain_Click(...)
 
-    '******************************************************************
-    '_resetPassbkFeatAddInput() is used to reset all the feature input fields to allow the user 
-    'to start over with input.
-    '******************************************************************
+    '****************************************************************************************
+    '_resetPassbkFeatAddInput() is used to reset all the feature input fields to allow the 
+    'user to start over with input.
+    '****************************************************************************************
     Private Sub _resetPassbkAddFeatInput()
         'Reset the fields and focus to allow for another feature to be added
         cboPassbkIdTabAddFeatTbcPassbkFeatMainTbcMain.Text = ""
@@ -899,11 +905,11 @@ Public Class FrmMain
         cboPassbkIdTabAddFeatTbcPassbkFeatMainTbcMain.Focus()
     End Sub '_resetPassbkAddInput()
 
-    '******************************************************************
-    '_btnResetTabAddFeatTbcPassbkFeatMainTbcMain_Click() is the event procedure that gets called 
-    'when the user clicks on the Reset button from the 'Passbook Features | Add' tab. It clears all input
-    'fields to allow the user to reenter the data from scratch.
-    '******************************************************************
+    '****************************************************************************************
+    '_btnResetTabAddFeatTbcPassbkFeatMainTbcMain_Click() is the event procedure that gets 
+    'called when the user clicks on the Reset button from the 'Passbook Features | Add' tab. 
+    'It clears all input fields to allow the user to reenter the data from scratch.
+    '****************************************************************************************
     Private Sub _btnResetTabAddFeatTbcPassbkFeatMainTbcMain_Click(sender As Object, _
                                                                   e As EventArgs) _
         Handles btnResetTabAddFeatTbcPassbkFeatMainTbcMain.Click
@@ -912,11 +918,11 @@ Public Class FrmMain
         _resetPassbkAddFeatInput()
     End Sub '_btnResetTabAddFeatTbcPassbkFeatMainTbcMain_Click(...)
 
-    '******************************************************************
-    '_btnSubmitTabUpdtFeatTbcPassbkFeatMainTbcMain_Click() is the event procedure that gets called when the user
-    'clicks on the Submit button from the Update Passbook Feature tab.  It validates and then submits the data
-    'to update a customer passbook feature.
-    '******************************************************************
+    '****************************************************************************************
+    '_btnSubmitTabUpdtFeatTbcPassbkFeatMainTbcMain_Click() is the event procedure that gets 
+    'called when the user clicks on the Submit button from the Update Passbook Feature tab.  
+    'It validates and then submits the data to update a customer passbook feature.
+    '****************************************************************************************
     Private Sub _btnSubmitTabUpdtFeatTbcPassbkFeatMainTbcMain_Click(sender As Object, _
                                                                     e As EventArgs) _
         Handles btnSubmitTabUpdtFeatTbcPassbkFeatMainTbcMain.Click
@@ -998,10 +1004,10 @@ Public Class FrmMain
         End If
     End Sub '_btnSubmitTabUpdtFeatTbcPassbkFeatMainTbcMain_Click(...)
 
-    '******************************************************************
-    '_resetPassbkFeatUpdtInput() is used to reset all the feature input fields to allow the user 
-    'to start over with input.
-    '******************************************************************
+    '****************************************************************************************
+    '_resetPassbkFeatUpdtInput() is used to reset all the feature input fields to allow the
+    'user to start over with input.
+    '****************************************************************************************
     Private Sub _resetPassbkUpdtFeatInput()
         'Reset the fields and focus to allow for another feature to be added
         cboFeatIdTabUpdtFeatTbcPassbkFeatMainTbcMain.Text = ""
@@ -1009,7 +1015,7 @@ Public Class FrmMain
         txtCustToStringTabUpdtFeatTbcPassbkFeatMainTbcMain.Text = ""
         txtVisToStringTabUpdtFeatTbcPassbkFeatMainTbcMain.Text = ""
         txtFeatToStringTabUpdtFeatTbcPassbkFeatMainTbcMain.Text = ""
-        txtPrevUsedTabUpdtFeatTbcPassbkFeatMainTbcMain.Text = ""
+        txtPrevUsedToStringTabUpdtFeatTbcPassbkFeatMainTbcMain.Text = ""
         txtPriceTabUpdtFeatTbcPassbkFeatMainTbcMain.Text = ""
         txtRemQtyTabUpdtFeatTbcPassbkFeatMainTbcMain.Text = ""
         txtNewQtyTabUpdtFeatTbcPassbkFeatMainTbcMain.Text = ""
@@ -1017,11 +1023,11 @@ Public Class FrmMain
         cboPassbkIdTabAddFeatTbcPassbkFeatMainTbcMain.Focus()
     End Sub '_resetPassbkAddInput()
 
-    '******************************************************************
+    '****************************************************************************************
     '_btnResetTabUpdtFeatTbcPassbkFeatMainTbcMain() is the event procedure that gets called 
-    'when the user clicks on the Reset button from the 'Passbook Features | Update' tab. It clears all input
-    'fields to allow the user to reenter the data from scratch.
-    '******************************************************************
+    'when the user clicks on the Reset button from the 'Passbook Features | Update' tab. 
+    'It clears all input fields to allow the user to reenter the data from scratch.
+    '****************************************************************************************
     Private Sub _btnResetTabUpdtFeatTbcPassbkFeatMainTbcMain_Click(sender As Object, _
                                                                    e As EventArgs) _
         Handles btnResetTabUpdtFeatTbcPassbkFeatMainTbcMain.Click
@@ -1031,11 +1037,11 @@ Public Class FrmMain
     End Sub '_btnResetTabUpdtFeatTbcPassbkFeatMainTbcMain(...)
 
 
-    '******************************************************************
-    '_btnSubmitTabPostFeatTbcPassbkFeatMainTbcMain_Click() is the event procedure that gets called when the user
-    'clicks on the Submit button from the Post Used Feature tab.  It validates and then submits the data
-    'to post a used customer passbook feature.
-    '******************************************************************
+    '****************************************************************************************
+    '_btnSubmitTabPostFeatTbcPassbkFeatMainTbcMain_Click() is the event procedure that gets 
+    'called when the user clicks on the Submit button from the Post Used Feature tab.  
+    'It validates and then submits the data to post a used customer passbook feature.
+    '****************************************************************************************
     Private Sub _btnSubmitTabPostFeatTbcPassbkFeatMainTbcMain_Click(sender As Object, _
                                                                     e As EventArgs) _
         Handles btnSubmitTabPostFeatTbcPassbkFeatMainTbcMain.Click
@@ -1103,17 +1109,17 @@ Public Class FrmMain
         'If OK selected proceed with the submission
         If choice = MsgBoxResult.Ok And _sysTestActive = False Then
             'Create a new Used Feature
-            _theThemePark.usedFeat("PBO-NOTUSED", tempPassbkFeat, DateTime.Now, decQtyUsed, loc)
+            _theThemePark.usedFeat("PP03-NOTUSED", tempPassbkFeat, DateTime.Now, decQtyUsed, loc)
 
             'Reset the fields and focus to allow for another used feature to be submitted
             _resetPassbkUsedFeatInput()
         End If
     End Sub '_btnSubmitTabPostFeatTbcPassbkFeatMainTbcMain_Click(...)
 
-    '******************************************************************
-    '_resetPassbkPostFeatInput() is used to reset all the feature input fields to allow the user 
-    'to start over with input.
-    '******************************************************************
+    '****************************************************************************************
+    '_resetPassbkPostFeatInput() is used to reset all the feature input fields to allow the 
+    'user to start over with input.
+    '****************************************************************************************
     Private Sub _resetPassbkUsedFeatInput()
         'Reset the fields and focus to allow for another feature to be added
         cboPassbkFeatIdTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Text = ""
@@ -1129,24 +1135,24 @@ Public Class FrmMain
         cboPassbkFeatIdTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Focus()
     End Sub '_resetPassbkPostFeatInput()
 
-    '******************************************************************
-    '_btnResetTabPostFeatTbcPassbkFeatMainTbcMain_Click() is the event procedure that gets called 
-    'when the user clicks on the Reset button from the 'Passbook Features | Post' tab. It clears all input
-    'fields to allow the user to reenter the data from scratch.
-    '******************************************************************
+    '****************************************************************************************
+    '_btnResetTabPostFeatTbcPassbkFeatMainTbcMain_Click() is the event procedure that gets 
+    'called when the user clicks on the Reset button from the 'Passbook Features | Post' tab. 
+    'It clears all input fields to allow the user to reenter the data from scratch.
+    '****************************************************************************************
     Private Sub _btnResetTabPostFeatTbcPassbkFeatMainTbcMain_Click(sender As Object, _
                                                                    e As EventArgs) _
-        Handles btnResetTabUpdtFeatTbcPassbkFeatMainTbcMain.Click, btnResetTabPostFeatTbcPassbkFeatMainTbcMain.Click
+        Handles btnResetTabPostFeatTbcPassbkFeatMainTbcMain.Click
 
         'Reset the fields and focus to allow for another passbook featurd addition
         _resetPassbkUsedFeatInput()
     End Sub '_btnPostTabUpdtFeatTbcPassbkFeatMainTbcMain(...)
 
 
-    '******************************************************************
-    '_btnClearTabTransLogTbcMainFrmMain_Click() is the event procedure that gets called when the user
-    'clicks on the Clear button from the Tranaaction log tab.  It clears the log.
-    '******************************************************************
+    '****************************************************************************************
+    '_btnClearTabTransLogTbcMainFrmMain_Click() is the event procedure that gets called when 
+    'the user clicks on the Clear button from the Tranaaction log tab.  It clears the log.
+    '****************************************************************************************
     Private Sub _btnClearTabTransLogTbcMainFrmMain_Click(sender As Object, _
                                                          e As EventArgs) _
         Handles btnClearTabTransLogTbcMainFrmMain.Click
@@ -1155,10 +1161,10 @@ Public Class FrmMain
         txtTransLogTabTransLogTbcMainFrmMain.Text = ""
     End Sub '_btnClearTabTransLogTbcMainFrmMain_Click(...)
 
-    '******************************************************************
+    '****************************************************************************************
     '_tbcMainFrmMain_SelectedIndexChanged() is used to set control attribute when specific
     'tab on the UI are selected.  This is form the main program tab control.
-    '******************************************************************
+    '****************************************************************************************
     Private Sub _tbcMainFrmMain_SelectedIndexChanged(sender As Object, _
                                                      e As EventArgs) _
         Handles tbcMainFrmMain.SelectedIndexChanged
@@ -1224,11 +1230,11 @@ Public Class FrmMain
         End Select
     End Sub 'tbcMainFrmMain_SelectedIndexChanged(...)
 
-    '******************************************************************
+    '****************************************************************************************
     '_tbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain_SelectedIndexChanged() is used to set 
     'control attribute when specific tab on the UI are selected.  This is for the 
     'Passboo Feature tab control.
-    '******************************************************************
+    '****************************************************************************************
     Private Sub _tbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain_SelectedIndexChanged(sender As Object, _
                                                                                    e As EventArgs) _
         Handles tbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.SelectedIndexChanged
@@ -1256,11 +1262,12 @@ Public Class FrmMain
         End Select
     End Sub '_tbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain_SelectedIndexChanged(...)
 
-    '******************************************************************
-    '_btnProcTestDataGrpSysTestTabSysTestTbcMainFrmMain_Click() is the event procedure that gets called when 
-    'the user clicks on the 'Process Test Data' button from the System Test tab.  It automates testing of 
-    'existing functionality of the system.  Results are output in the transaction log.
-    '******************************************************************
+    '****************************************************************************************
+    '_btnProcTestDataGrpSysTestTabSysTestTbcMainFrmMain_Click() is the event procedure that 
+    'gets called when the user clicks on the 'Process Test Data' button from the System Test 
+    'tab.  It automates testing of existing functionality of the system.  Results are output 
+    'in the transaction log.
+    '****************************************************************************************
     Private Sub _btnProcTestDataGrpSysTestTabSysTestTbcMainFrmMain_Click(sender As Object, _
                                                                          e As EventArgs) _
         Handles btnProcTestDataGrpSysTestTabSysTestTbcMainFrmMain.Click
@@ -1269,11 +1276,11 @@ Public Class FrmMain
         _runSystemTest()
     End Sub '_btnProcTestDataGrpSysTestTabSysTestTbcMainFrmMain_Click(...)
 
-    '******************************************************************
-    '_mnuTransLogViewFrmMain_Click() is the event procedure that gets called when the user selects
-    '"View -> Transaction Log' from the main menu.  It will automically switch the UI to the
-    'Transaction log tab.
-    '******************************************************************
+    '****************************************************************************************
+    '_mnuTransLogViewFrmMain_Click() is the event procedure that gets called when the user 
+    'selects"View -> Transaction Log' from the main menu.  It will automically switch the UI
+    'to the Transaction log tab.
+    '****************************************************************************************
     Private Sub _mnuTransLogViewFrmMain_Click(sender As Object, _
                                               e As EventArgs) _
         Handles mnuTransLogViewFrmMain.Click
@@ -1282,11 +1289,11 @@ Public Class FrmMain
         tbcMainFrmMain.SelectTab(mTBC_MAIN_TAB_TRANSLOG)
     End Sub '_mnuTransLogViewFrmMain_Click(...)
 
-    '******************************************************************
-    '_mnuTransLogViewFrmMain_Click() is the event procedure that gets called when the user selects
-    '"View -> Dashboard from the main menu.  It will automically switch the UI to the
+    '****************************************************************************************
+    '_mnuTransLogViewFrmMain_Click() is the event procedure that gets called when the user 
+    'selects "View -> Dashboard from the main menu.  It will automically switch the UI to the
     'Dashboard tab.
-    '******************************************************************
+    '****************************************************************************************
     Private Sub _mnuDashboardViewFrmMain_Click(sender As Object, _
                                                e As EventArgs) _
         Handles mnuDashboardViewFrmMain.Click
@@ -1295,10 +1302,11 @@ Public Class FrmMain
         tbcMainFrmMain.SelectTab(mTBC_MAIN_TAB_DASHBOARD)
     End Sub '_mnuDashboardViewFrmMain_Click(...)
 
-    '******************************************************************
-    '_mnuRunSysTestTestFrmMain_Click() is the event procedure that gets called when the user selects
-    '"Test -> Run System Test' from the main menu.  It will initiate the automated test procedure.
-    '******************************************************************
+    '****************************************************************************************
+    '_mnuRunSysTestTestFrmMain_Click() is the event procedure that gets called when the user 
+    'selects "Test -> Run System Test' from the main menu.  It will initiate the automated 
+    'test procedure.
+    '****************************************************************************************
     Private Sub _mnuRunSysTestTestFrmMain_Click(sender As Object, _
                                                 e As EventArgs) _
         Handles mnuRunSysTestTestFrmMain.Click
@@ -1310,12 +1318,12 @@ Public Class FrmMain
     '********** User-Interface Event Procedures
     '             - Initiated automatically by system
 
-    '******************************************************************
+    '****************************************************************************************
     '_frmMain_Load() is the first method that is invoked when the program
     'starts execution.  It is responsbile for initializing any business
     'logic data to a known good state as well as initializing the user
     'interface to ready it for user interaction.
-    '******************************************************************
+    '****************************************************************************************
     Private Sub _frmMain_Load(sender As Object, _
                               e As EventArgs) _
         Handles MyBase.Load
@@ -1330,11 +1338,11 @@ Public Class FrmMain
         _initializeUserInterface()
     End Sub '_frmMain_Load(...)
 
-    '******************************************************************
+    '****************************************************************************************
     '_txtTransLogTabTransLogTbcMainFrmMain_TextChanged() is the event 
     'procedure the is called when the transaction log text box is 
     'modified.  Basically it enables the display text to scroll.
-    '******************************************************************
+    '****************************************************************************************
     Private Sub _txtTransLogTabTransLogTbcMainFrmMain_TextChanged(sender As Object, _
                                                                   e As EventArgs) _
         Handles txtTransLogTabTransLogTbcMainFrmMain.TextChanged
@@ -1344,11 +1352,11 @@ Public Class FrmMain
         txtTransLogTabTransLogTbcMainFrmMain.ScrollToCaret()
     End Sub '_txtTransLogTabTransLogTbcMainFrmMain_TextChanged(...)
 
-    '******************************************************************
+    '****************************************************************************************
     '_mnuPurchasePassbooksFrmMain_Click() is the event procedure the is 
     'called when the user selects Passbooks->Add New from the main menu.
     'It transitions the GUI to the Passbook tab.
-    '******************************************************************
+    '****************************************************************************************
     Private Sub _mnuPurchasePassbooksFrmMain_Click(sender As Object, e As EventArgs) _
         Handles mnuPurchasePassbooksFrmMain.Click
 
@@ -1356,12 +1364,12 @@ Public Class FrmMain
 
     End Sub '_mnuPurchasePassbooksFrmMain_Click(...)
 
-    '******************************************************************
+    '****************************************************************************************
     '_mnuAddFeaturesPassbooksFrmMain_Click() is the event procedure the 
     'is called when the user selects Passbooks->Feature->Purchase from 
     'the main menu. It transitions the GUI to the Passbook Feature 
     'Purchase tab.
-    '******************************************************************
+    '****************************************************************************************
     Private Sub _mnuAddFeaturesPassbooksFrmMain_Click(sender As Object, e As EventArgs) _
         Handles mnuAddFeaturesPassbooksFrmMain.Click
 
@@ -1370,12 +1378,12 @@ Public Class FrmMain
 
     End Sub '_mnuAddFeaturesPassbooksFrmMain_Click(...)
 
-    '******************************************************************
+    '****************************************************************************************
     '_mnuUpdateFeaturesPassbooksFrmMain_Click() is the event procedure 
     'the is called when the user selects Passbooks->Feature->Update 
     'from the main menu. It transitions the GUI to the Passbook Feature 
     'Update tab.
-    '******************************************************************
+    '****************************************************************************************
     Private Sub _mnuUpdateFeaturesPassbooksFrmMain_Click(sender As Object, e As EventArgs) _
         Handles mnuUpdateFeaturesPassbooksFrmMain.Click
 
@@ -1384,11 +1392,11 @@ Public Class FrmMain
 
     End Sub '_mnuAddFeaturesPassbooksFrmMain_Click(...)
 
-    '******************************************************************
+    '****************************************************************************************
     '_mnuUseFeaturesPassbooksFrmMain_Click() is the event procedure the is called when
     'the user selects Passbooks->Feature->Post from the main menu.
     'It transitions the GUI to the Passbook Feature Post tab.
-    '******************************************************************
+    '****************************************************************************************
     Private Sub _mnuUseFeaturesPassbooksFrmMain_Click(sender As Object, e As EventArgs) _
         Handles mnuUseFeaturesPassbooksFrmMain.Click
 
@@ -1397,12 +1405,12 @@ Public Class FrmMain
 
     End Sub '_mnuUseFeaturesPassbooksFrmMain_Click(...)
 
-    '******************************************************************
+    '****************************************************************************************
     '_lstCustTabDashboardTbcMain_SelectedIndexChanged() is the event 
     'procedure the is called when the user selects a customer from 
     'the Dashboard tab.  Customer info is displayed in the associated 
     'text field.
-    '******************************************************************
+    '****************************************************************************************
     Private Sub _lstCustTabDashboardTbcMain_SelectedIndexChanged(sender As Object, e As EventArgs) _
         Handles lstCustTabDashboardTbcMain.SelectedIndexChanged
 
@@ -1415,12 +1423,12 @@ Public Class FrmMain
             info & lstVal & ", completed full info in PP04"
     End Sub '_lstCustTabDashboardTbcMain_SelectedIndexChanged(...)
 
-    '******************************************************************
+    '****************************************************************************************
     '_lstFeatTabDashboardTbcMain_SelectedIndexChanged() is the event 
     'procedure the is called when the user selects a feature from the 
     'Dashboard tab.  Feature info is displayed in the associated text 
     'field.
-    '******************************************************************
+    '****************************************************************************************
     Private Sub _lstFeatTabDashboardTbcMain_SelectedIndexChanged(sender As Object, e As EventArgs) _
         Handles lstFeatTabDashboardTbcMain.SelectedIndexChanged
 
@@ -1434,12 +1442,12 @@ Public Class FrmMain
 
     End Sub '_lstFeatTabDashboardTbcMain_SelectedIndexChanged
 
-    '******************************************************************
+    '****************************************************************************************
     '_lstPassbkTabDashboardTbcMain_SelectedIndexChanged() is the event 
     'procedure the is called when the user selects a passbook from 
     'the Dashboard tab.  Passbook info is displayed in the associated 
     'text field.
-    '******************************************************************
+    '****************************************************************************************
     Private Sub _lstPassbkTabDashboardTbcMain_SelectedIndexChanged(sender As Object, e As EventArgs) _
         Handles lstPassbkTabDashboardTbcMain.SelectedIndexChanged
 
@@ -1454,12 +1462,12 @@ Public Class FrmMain
     End Sub '_lstPassbkTabDashboardTbcMain_SelectedIndexChanged(...)
 
 
-    '******************************************************************
+    '****************************************************************************************
     '_lstPassbkFeatTabDashboardTbcMain_SelectedIndexChanged() is the 
     'event procedure the is called when the user selects a passbook from 
     'the Dashboard tab.  Passbook info is displayed in the associated 
     'text field.
-    '******************************************************************
+    '****************************************************************************************
     Private Sub _lstPassbkFeatTabDashboardTbcMain_SelectedIndexChanged(sender As Object, e As EventArgs) _
         Handles lstPassbkFeatTabDashboardTbcMain.SelectedIndexChanged
 
@@ -1473,12 +1481,12 @@ Public Class FrmMain
 
     End Sub '_lstPassbkFeatTabDashboardTbcMain_SelectedIndexChanged(...)
 
-    '******************************************************************
+    '****************************************************************************************
     '_lstUsedFeatTabDashboardTbcMain_SelectedIndexChanged() is the 
     'event procedure the is called when the user selects a used
     'feature from the Dashboard tab.  Used feature info is displayed in 
     'the associated text field.
-    '******************************************************************
+    '****************************************************************************************
     Private Sub _lstUsedFeatTabDashboardTbcMain_SelectedIndexChanged(sender As Object, e As EventArgs) _
         Handles lstUsedFeatTabDashboardTbcMain.SelectedIndexChanged
 
@@ -1493,12 +1501,12 @@ Public Class FrmMain
     End Sub '_lstUsedFeatTabDashboardTbcMain_SelectedIndexChanged(...)
 
 
-    '******************************************************************
+    '****************************************************************************************
     '_cboCustIdGrpCustInfoGrpAddPassbkTabPassbkTbcMainFrmMain_SelectedIndexChanged() 
     'is the event procedure the is called when the user selects a used
     'customer from the Add Passbook tab. Customer info is displayed in 
     'the associated text field.
-    '******************************************************************
+    '****************************************************************************************
     Private Sub _cboCustIdGrpCustInfoGrpAddPassbkTabPassbkTbcMainFrmMain_SelectedIndexChanged(sender As Object, e As EventArgs) _
         Handles cboCustIdGrpCustInfoGrpAddPassbkTabPassbkTbcMainFrmMain.SelectedIndexChanged
 
@@ -1512,12 +1520,12 @@ Public Class FrmMain
 
     End Sub '_cboCustIdGrpCustInfoGrpAddPassbkTabPassbkTbcMainFrmMain_SelectedIndexChanged(...)
 
-    '******************************************************************
+    '****************************************************************************************
     '_cboPassbkIdGrpPassbkTabAddFeatTbcPassbkFeatMainTbcMain_SelectedIndexChanged() 
     'is the event procedure the is called when the user selects a 
     'passbook id from the Update Feature tab. Customer and Visitor info 
     'is displayed in the associated text fields.
-    '******************************************************************
+    '****************************************************************************************
     Private Sub _cboPassbkIdGrpPassbkTabAddFeatTbcPassbkFeatMainTbcMain_SelectedIndexChanged(sender As Object, e As EventArgs) _
         Handles cboPassbkIdTabAddFeatTbcPassbkFeatMainTbcMain.SelectedIndexChanged
 
@@ -1534,12 +1542,12 @@ Public Class FrmMain
             info & cboVal & ", completed full info in PP04"
     End Sub '_cboPassbkIdGrpPassbkTabAddFeatTbcPassbkFeatMainTbcMain_SelectedIndexChanged
 
-    '******************************************************************
+    '****************************************************************************************
     '_cboFeatIdGrpFeatTabAddFeatTbcPassbkFeatMainTbcMain_SelectedIndexChanged() 
     'is the event procedure the is called when the user selects a 
     'feature id from the Update Feature tab. Feature info is displayed 
     'in the associated text fields.
-    '******************************************************************
+    '****************************************************************************************
     Private Sub _cboFeatIdGrpFeatTabAddFeatTbcPassbkFeatMainTbcMain_SelectedIndexChanged(sender As Object, e As EventArgs) _
         Handles cboFeatIdTabAddFeatTbcPassbkFeatMainTbcMain.SelectedIndexChanged
 
@@ -1551,15 +1559,15 @@ Public Class FrmMain
         txtFeatToStringTabAddFeatTbcPassbkFeatMainTbcMain.Text = _
             info & cboVal & ", completed full info in PP04"
 
-        txtPriceTabAddFeatTbcPassbkFeatMainTbcMain.Text = "137.50"
+        txtPriceTabAddFeatTbcPassbkFeatMainTbcMain.Text = "$TBD"
     End Sub '_cboFeatIdGrpFeatTabAddFeatTbcPassbkFeatMainTbcMain_SelectedIndexChanged(...)
 
-    '******************************************************************
+    '****************************************************************************************
     '_cboFeatIdGrpPassbkTabUpdtFeatTbcPassbkFeatMainTbcMain_SelectedIndexChanged() 
     'is the event procedure the is called when the user selects a 
     'passbook feature id from the Update Feature tab. Feature info is 
     'displayed in the associated text fields.
-    '******************************************************************
+    '****************************************************************************************
     Private Sub _cboFeatIdGrpPassbkTabUpdtFeatTbcPassbkFeatMainTbcMain_SelectedIndexChanged(sender As Object, e As EventArgs) _
         Handles cboFeatIdTabUpdtFeatTbcPassbkFeatMainTbcMain.SelectedIndexChanged
 
@@ -1579,16 +1587,20 @@ Public Class FrmMain
         txtFeatToStringTabUpdtFeatTbcPassbkFeatMainTbcMain.Text = _
             info & cboVal & ", completed full info in PP04"
 
-        txtPriceTabUpdtFeatTbcPassbkFeatMainTbcMain.Text = "12.50"
+        info = "PrevUsed-Info: "
+        txtPrevUsedToStringTabUpdtFeatTbcPassbkFeatMainTbcMain.Text =
+            info & cboVal & ", completed full info in PP04"
+
+        txtPriceTabUpdtFeatTbcPassbkFeatMainTbcMain.Text = "$TBD"
         txtRemQtyTabUpdtFeatTbcPassbkFeatMainTbcMain.Text = "3"
     End Sub '_cboFeatIdGrpPassbkTabUpdtFeatTbcPassbkFeatMainTbcMain_SelectedIndexChanged(...)
 
-    '******************************************************************
+    '****************************************************************************************
     '_cboPassbkFeatIdTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain_SelectedIndexChanged() 
     'is the event procedure the is called when the user selects a 
     'passbook feature id from the Update Feature tab. Feature info is 
     'displayed in the associated text fields.
-    '******************************************************************
+    '****************************************************************************************
     Private Sub _cboPassbkFeatIdTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain_SelectedIndexChanged(sender As Object, e As EventArgs) _
           Handles cboPassbkFeatIdTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.SelectedIndexChanged
 
@@ -1608,20 +1620,49 @@ Public Class FrmMain
         txtFeatToStringTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Text = _
             info & cboVal & ", completed full info in PP04"
 
+        info = "PrevUsed-Info: "
+        txtPrevUsedTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Text =
+            info & cboVal & ", completed full info in PP04"
+
         txtRemQuantTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Text = "3"
     End Sub '_cboPassbkFeatIdTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain_SelectedIndexChanged(...)
 
+    '****************************************************************************************
+    '_mnuAboutHelpFrmMain_Click() 
+    'is the event procedure the is called when the user selects the About option from the
+    'main program menu.  It simply displays credit information.
+    '****************************************************************************************
+    Private Sub _mnuAboutHelpFrmMain_Click(sender As Object, e As EventArgs) _
+        Handles mnuAboutHelpFrmMain.Click
+
+        Dim about As String
+
+        about = _theThemePark.themeParkName & " Management System" _
+                & vbCrLf _
+                & vbCrLf & "Course:" & vbTab & "CIS605 Visual Business Applications" _
+                & vbCrLf & "Author:" & vbTab & "Robert L Palumbo" _
+                & vbCrLf & "Date:" & vbTab & "Fall Semester 2015" _
+                & vbCrLf & "Project:" & vbTab & "PP03" _
+                & vbCrLf _
+                & vbCrLf & "Credits:" & vbTab & "Dr. Dan Turk, Dr. Ramadan Abdunabi"
+
+        'MsgBox(about, MsgBoxStyle.OkOnly)
+        MessageBox.Show(about, "About '" & _theThemePark.themeParkName & "'", _
+           MessageBoxButtons.OK, MessageBoxIcon.Information)
+
+        _writeTransLog(about)
+    End Sub '_mnuAboutHelpFrmMain_Click
 
 
     '********** Business Logic Event Procedures
     '             - Initiated as a result of business logic
     '               method(s) running
 
-    '******************************************************************
+    '****************************************************************************************
     '_createCust() handles processing for the  ThemePark_CreateCust
     ' event that is generated when a new customer is added to the
     'system.
-    '******************************************************************
+    '****************************************************************************************
     Private Sub _createCust(ByVal sender As System.Object, _
                             ByVal e As System.EventArgs) _
         Handles mThemePark.ThemePark_CreateCust
@@ -1652,21 +1693,22 @@ Public Class FrmMain
         End With
 
         _writeTransLog("<CREATED>: " & cust.ToString())
-        _writeTransLog("<STATUS>: " & _theThemePark.ToString())
 
         'Not needed if object was created from system test data
         If _sysTestActive = False Then
+            _writeTransLog("<STATUS>: " & _theThemePark.ToString())
+
             MsgBox("Customer creation submission was successful!", MsgBoxStyle.OkOnly)
         End If
 
     End Sub '_createCust(...)
 
 
-    '******************************************************************
+    '****************************************************************************************
     '_createFeat() handles processing for the ThemePark_CreateFeat
     ' event that is generated when a new Feature is added to the
     'system.
-    '******************************************************************
+    '****************************************************************************************
     Private Sub _createFeature(ByVal sender As System.Object, _
                                ByVal e As System.EventArgs) _
         Handles mThemePark.ThemePark_CreateFeat
@@ -1697,20 +1739,21 @@ Public Class FrmMain
         End With
 
         _writeTransLog("<CREATED>: " & feat.ToString())
-        _writeTransLog("<STATUS>: " & _theThemePark.ToString())
 
         'Not needed if object was created from system test data
         If _sysTestActive = False Then
+            _writeTransLog("<STATUS>: " & _theThemePark.ToString())
+
             MsgBox("Feature creation submission was successful!", MsgBoxStyle.OkOnly)
         End If
 
     End Sub '_createFeat(...)
 
-    '******************************************************************
+    '****************************************************************************************
     '_createPassbook() handles processing for the ThemePark_CreatePassbook
     ' event that is generated when a new passbook is added to the
     'system.
-    '******************************************************************
+    '****************************************************************************************
     Private Sub _createPassbook(ByVal sender As System.Object, _
                                 ByVal e As System.EventArgs) _
         Handles mThemePark.ThemePark_CreatePassbk
@@ -1741,20 +1784,21 @@ Public Class FrmMain
         End With
 
         _writeTransLog("<CREATED>: " & passbook.ToString())
-        _writeTransLog("<STATUS>: " & _theThemePark.ToString())
 
         'Not needed if object was created from system test data
         If _sysTestActive = False Then
+            _writeTransLog("<STATUS>: " & _theThemePark.ToString())
+
             MsgBox("Passbook creation submission was successful!", MsgBoxStyle.OkOnly)
         End If
 
     End Sub '_createPassbook(...)
 
-    '******************************************************************
+    '****************************************************************************************
     '_addPassbkFeat() handles processing for the ThemePark_PurchFeat
     ' event that is generated when a feature has been purchased fo
     'a specified passbook
-    '******************************************************************
+    '****************************************************************************************
     Private Sub _addPassbkFeat(ByVal sender As System.Object, _
                                ByVal e As System.EventArgs) _
         Handles mThemePark.ThemePark_AddPassbkFeat
@@ -1786,19 +1830,20 @@ Public Class FrmMain
         End With
 
         _writeTransLog("<PURCHASED>: " & passbkFeat.ToString())
-        _writeTransLog("<STATUS>: " & _theThemePark.ToString())
 
         'Not needed if object was created from system test data
         If _sysTestActive = False Then
+            _writeTransLog("<STATUS>: " & _theThemePark.ToString())
+
             MsgBox("Passbook Feature submission was successful!", MsgBoxStyle.OkOnly)
         End If
 
     End Sub '_addPassbkFeat(...)
 
-    '******************************************************************
+    '****************************************************************************************
     '_updtPassbkFeat() handles processing for the ThemePark_UpdtPassbkFeat
     ' event that is generated when a passbook feature is updated
-    '******************************************************************
+    '****************************************************************************************
     Private Sub _updtPassbkFeat(ByVal sender As System.Object, _
                            ByVal e As System.EventArgs) _
         Handles mThemePark.ThemePark_UpdtPassbkFeat
@@ -1830,19 +1875,20 @@ Public Class FrmMain
         End With
 
         _writeTransLog("<UPDATED>: " & passbkFeat.id & " temporary place holder for this project")
-        _writeTransLog("<STATUS>: " & _theThemePark.ToString())
 
         'Not needed if object was created from system test data
         If _sysTestActive = False Then
+            _writeTransLog("<STATUS>: " & _theThemePark.ToString())
+
             MsgBox("Passbook Feature update submission was successful!", MsgBoxStyle.OkOnly)
         End If
 
     End Sub '_updtPassbkFeat(...)
 
-    '******************************************************************
+    '****************************************************************************************
     '_usedFeat() handles processing for the ThemePark_UsedFeat
     ' event that is generated when a used feature is submitted
-    '******************************************************************
+    '****************************************************************************************
     Private Sub _usedFeat(ByVal sender As System.Object, _
                           ByVal e As System.EventArgs) _
         Handles mThemePark.ThemePark_UsedFeat
@@ -1872,10 +1918,11 @@ Public Class FrmMain
         End With
 
         _writeTransLog("<USED>: " & usedFeat.ToString())
-        _writeTransLog("<STATUS>: " & _theThemePark.ToString())
 
         'Not needed if object was created from system test data
         If _sysTestActive = False Then
+            _writeTransLog("<STATUS>: " & _theThemePark.ToString())
+
             MsgBox("Used Passbook Feature submission was successful!", MsgBoxStyle.OkOnly)
         End If
 
@@ -1884,9 +1931,9 @@ Public Class FrmMain
 #End Region 'Event Procedures
 
 #Region "Events"
-    '******************************************************************
+    '****************************************************************************************
     'Events
-    '******************************************************************
+    '****************************************************************************************
 
     'No Events are currently defined.
     'These are all public.
