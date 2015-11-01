@@ -675,8 +675,7 @@ Public Class FrmMain
 
         If String.IsNullOrEmpty(custList.Text) Then
             MsgBox("ERROR: Please seleect a Customer Id from the list", MsgBoxStyle.OkOnly)
-            txtToStringGrpCustInfoGrpAddPassbkTabPassbkTbcMainFrmMain.SelectAll()
-            txtToStringGrpCustInfoGrpAddPassbkTabPassbkTbcMainFrmMain.Focus()
+            cboCustIdGrpCustInfoGrpAddPassbkTabPassbkTbcMainFrmMain.Focus()
             Exit Sub
         End If
 
@@ -757,6 +756,7 @@ Public Class FrmMain
     Private Sub _resetPassbkInput()
         'Reset the fields and focus to allow for another feature to be added
         cboCustIdGrpCustInfoGrpAddPassbkTabPassbkTbcMainFrmMain.Text = ""
+        cboCustIdGrpCustInfoGrpAddPassbkTabPassbkTbcMainFrmMain.SelectedIndex = -1
 
         txtPassbkIdGrpAddPassbkTabPassbkTbcMainFrmMain.Text = ""
         txtVisNameGrpAddPassbkTabPassbkTbcMainFrmMain.Text = ""
@@ -892,8 +892,8 @@ Public Class FrmMain
     '****************************************************************************************
     Private Sub _resetPassbkAddFeatInput()
         'Reset the fields and focus to allow for another feature to be added
-        cboPassbkIdTabAddFeatTbcPassbkFeatMainTbcMain.Text = ""
-        cboFeatIdTabAddFeatTbcPassbkFeatMainTbcMain.Text = ""
+        cboPassbkIdTabAddFeatTbcPassbkFeatMainTbcMain.SelectedIndex = -1
+        cboFeatIdTabAddFeatTbcPassbkFeatMainTbcMain.SelectedIndex = -1
 
         txtCustToStringTabAddFeatTbcPassbkFeatMainTbcMain.Text = ""
         txtVisToStringTabAddFeatTbcPassbkFeatMainTbcMain.Text = ""
@@ -1010,7 +1010,7 @@ Public Class FrmMain
     '****************************************************************************************
     Private Sub _resetPassbkUpdtFeatInput()
         'Reset the fields and focus to allow for another feature to be added
-        cboFeatIdTabUpdtFeatTbcPassbkFeatMainTbcMain.Text = ""
+        cboFeatIdTabUpdtFeatTbcPassbkFeatMainTbcMain.SelectedIndex = -1
 
         txtCustToStringTabUpdtFeatTbcPassbkFeatMainTbcMain.Text = ""
         txtVisToStringTabUpdtFeatTbcPassbkFeatMainTbcMain.Text = ""
@@ -1122,7 +1122,7 @@ Public Class FrmMain
     '****************************************************************************************
     Private Sub _resetPassbkUsedFeatInput()
         'Reset the fields and focus to allow for another feature to be added
-        cboPassbkFeatIdTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Text = ""
+        cboPassbkFeatIdTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.SelectedIndex = -1
 
         txtCustToStringTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Text = ""
         txtVisToStringTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Text = ""
@@ -1511,12 +1511,14 @@ Public Class FrmMain
         Handles cboCustIdGrpCustInfoGrpAddPassbkTabPassbkTbcMainFrmMain.SelectedIndexChanged
 
         'PBO: TEMPORARY AND MUST BE REFACTORED FOR PP04
-        Dim info As String = "Customer-Info: "
-        Dim cboVal As String = _
-            cboCustIdGrpCustInfoGrpAddPassbkTabPassbkTbcMainFrmMain.SelectedItem.ToString
+        If Not cboCustIdGrpCustInfoGrpAddPassbkTabPassbkTbcMainFrmMain.SelectedIndex = -1 Then
+            Dim info As String = "Customer-Info: "
+            Dim cboVal As String = _
+                cboCustIdGrpCustInfoGrpAddPassbkTabPassbkTbcMainFrmMain.SelectedItem.ToString
 
-        txtToStringGrpCustInfoGrpAddPassbkTabPassbkTbcMainFrmMain.Text = _
-            info & cboVal & ", completed full info in PP04"
+            txtToStringGrpCustInfoGrpAddPassbkTabPassbkTbcMainFrmMain.Text = _
+                info & cboVal & ", completed full info in PP04"
+        End If
 
     End Sub '_cboCustIdGrpCustInfoGrpAddPassbkTabPassbkTbcMainFrmMain_SelectedIndexChanged(...)
 
@@ -1530,16 +1532,19 @@ Public Class FrmMain
         Handles cboPassbkIdTabAddFeatTbcPassbkFeatMainTbcMain.SelectedIndexChanged
 
         'PBO: TEMPORARY AND MUST BE REFACTORED FOR PP04
-        Dim info As String = "Customer-Info: "
-        Dim cboVal As String = _
-            cboPassbkIdTabAddFeatTbcPassbkFeatMainTbcMain.SelectedItem.ToString
+        If Not cboPassbkIdTabAddFeatTbcPassbkFeatMainTbcMain.SelectedIndex = -1 Then
+            Dim info As String = "Customer-Info: "
+            Dim cboVal As String = _
+                cboPassbkIdTabAddFeatTbcPassbkFeatMainTbcMain.SelectedItem.ToString
 
-        txtCustToStringTabAddFeatTbcPassbkFeatMainTbcMain.Text = _
-            info & cboVal & ", completed full info in PP04"
+            txtCustToStringTabAddFeatTbcPassbkFeatMainTbcMain.Text = _
+                info & cboVal & ", completed full info in PP04"
 
-        info = "Visitor-Info"
-        txtVisToStringTabAddFeatTbcPassbkFeatMainTbcMain.Text = _
-            info & cboVal & ", completed full info in PP04"
+            info = "Visitor-Info"
+            txtVisToStringTabAddFeatTbcPassbkFeatMainTbcMain.Text = _
+                info & cboVal & ", completed full info in PP04"
+        End If
+
     End Sub '_cboPassbkIdGrpPassbkTabAddFeatTbcPassbkFeatMainTbcMain_SelectedIndexChanged
 
     '****************************************************************************************
@@ -1552,14 +1557,17 @@ Public Class FrmMain
         Handles cboFeatIdTabAddFeatTbcPassbkFeatMainTbcMain.SelectedIndexChanged
 
         'PBO: TEMPORARY AND MUST BE REFACTORED FOR PP04
-        Dim info As String = "Feature-Info: "
-        Dim cboVal As String = _
-            cboFeatIdTabAddFeatTbcPassbkFeatMainTbcMain.SelectedItem.ToString
+        If Not cboFeatIdTabAddFeatTbcPassbkFeatMainTbcMain.SelectedIndex = -1 Then
+            Dim info As String = "Feature-Info: "
+            Dim cboVal As String = _
+                cboFeatIdTabAddFeatTbcPassbkFeatMainTbcMain.SelectedItem.ToString
 
-        txtFeatToStringTabAddFeatTbcPassbkFeatMainTbcMain.Text = _
-            info & cboVal & ", completed full info in PP04"
+            txtFeatToStringTabAddFeatTbcPassbkFeatMainTbcMain.Text = _
+                info & cboVal & ", completed full info in PP04"
 
-        txtPriceTabAddFeatTbcPassbkFeatMainTbcMain.Text = "$TBD"
+            txtPriceTabAddFeatTbcPassbkFeatMainTbcMain.Text = "$TBD"
+        End If
+
     End Sub '_cboFeatIdGrpFeatTabAddFeatTbcPassbkFeatMainTbcMain_SelectedIndexChanged(...)
 
     '****************************************************************************************
@@ -1572,27 +1580,30 @@ Public Class FrmMain
         Handles cboFeatIdTabUpdtFeatTbcPassbkFeatMainTbcMain.SelectedIndexChanged
 
         'PBO: TEMPORARY AND MUST BE REFACTORED FOR PP04
-        Dim info As String = "Customer-Info: "
-        Dim cboVal As String = _
-            cboFeatIdTabUpdtFeatTbcPassbkFeatMainTbcMain.SelectedItem.ToString
+        If Not cboFeatIdTabUpdtFeatTbcPassbkFeatMainTbcMain.SelectedIndex = -1 Then
+            Dim info As String = "Customer-Info: "
+            Dim cboVal As String = _
+                cboFeatIdTabUpdtFeatTbcPassbkFeatMainTbcMain.SelectedItem.ToString
 
-        txtCustToStringTabUpdtFeatTbcPassbkFeatMainTbcMain.Text = _
-            info & cboVal & ", completed full info in PP04"
+            txtCustToStringTabUpdtFeatTbcPassbkFeatMainTbcMain.Text = _
+                info & cboVal & ", completed full info in PP04"
 
-        info = "Visitor-Info: "
-        txtVisToStringTabUpdtFeatTbcPassbkFeatMainTbcMain.Text = _
-            info & cboVal & ", completed full info in PP04"
+            info = "Visitor-Info: "
+            txtVisToStringTabUpdtFeatTbcPassbkFeatMainTbcMain.Text = _
+                info & cboVal & ", completed full info in PP04"
 
-        info = "Feature-Info: "
-        txtFeatToStringTabUpdtFeatTbcPassbkFeatMainTbcMain.Text = _
-            info & cboVal & ", completed full info in PP04"
+            info = "Feature-Info: "
+            txtFeatToStringTabUpdtFeatTbcPassbkFeatMainTbcMain.Text = _
+                info & cboVal & ", completed full info in PP04"
 
-        info = "PrevUsed-Info: "
-        txtPrevUsedToStringTabUpdtFeatTbcPassbkFeatMainTbcMain.Text =
-            info & cboVal & ", completed full info in PP04"
+            info = "PrevUsed-Info: "
+            txtPrevUsedToStringTabUpdtFeatTbcPassbkFeatMainTbcMain.Text =
+                info & cboVal & ", completed full info in PP04"
 
-        txtPriceTabUpdtFeatTbcPassbkFeatMainTbcMain.Text = "$TBD"
-        txtRemQtyTabUpdtFeatTbcPassbkFeatMainTbcMain.Text = "3"
+            txtPriceTabUpdtFeatTbcPassbkFeatMainTbcMain.Text = "$TBD"
+            txtRemQtyTabUpdtFeatTbcPassbkFeatMainTbcMain.Text = "3"
+        End If
+
     End Sub '_cboFeatIdGrpPassbkTabUpdtFeatTbcPassbkFeatMainTbcMain_SelectedIndexChanged(...)
 
     '****************************************************************************************
@@ -1605,26 +1616,29 @@ Public Class FrmMain
           Handles cboPassbkFeatIdTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.SelectedIndexChanged
 
         'PBO: TEMPORARY AND MUST BE REFACTORED FOR PP04
-        Dim info As String = "Customer-Info: "
-        Dim cboVal As String = _
-            cboPassbkFeatIdTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.SelectedItem.ToString
+        If Not cboPassbkFeatIdTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.SelectedIndex = -1 Then
+            Dim info As String = "Customer-Info: "
+            Dim cboVal As String = _
+                cboPassbkFeatIdTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.SelectedItem.ToString
 
-        txtCustToStringTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Text = _
-            info & cboVal & ", completed full info in PP04"
+            txtCustToStringTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Text = _
+                info & cboVal & ", completed full info in PP04"
 
-        info = "Visitor-Info: "
-        txtVisToStringTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Text = _
-            info & cboVal & ", completed full info in PP04"
+            info = "Visitor-Info: "
+            txtVisToStringTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Text = _
+                info & cboVal & ", completed full info in PP04"
 
-        info = "Feature-Info: "
-        txtFeatToStringTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Text = _
-            info & cboVal & ", completed full info in PP04"
+            info = "Feature-Info: "
+            txtFeatToStringTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Text = _
+                info & cboVal & ", completed full info in PP04"
 
-        info = "PrevUsed-Info: "
-        txtPrevUsedTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Text =
-            info & cboVal & ", completed full info in PP04"
+            info = "PrevUsed-Info: "
+            txtPrevUsedTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Text =
+                info & cboVal & ", completed full info in PP04"
 
-        txtRemQuantTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Text = "3"
+            txtRemQuantTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Text = "3"
+        End If
+
     End Sub '_cboPassbkFeatIdTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain_SelectedIndexChanged(...)
 
     '****************************************************************************************
