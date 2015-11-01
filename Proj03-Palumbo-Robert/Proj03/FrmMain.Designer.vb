@@ -571,6 +571,7 @@ Partial Class FrmMain
         '
         'cboFeatIdTabAddFeatTbcPassbkFeatMainTbcMain
         '
+        Me.cboFeatIdTabAddFeatTbcPassbkFeatMainTbcMain.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cboFeatIdTabAddFeatTbcPassbkFeatMainTbcMain.FormattingEnabled = True
         Me.cboFeatIdTabAddFeatTbcPassbkFeatMainTbcMain.Location = New System.Drawing.Point(109, 23)
         Me.cboFeatIdTabAddFeatTbcPassbkFeatMainTbcMain.Name = "cboFeatIdTabAddFeatTbcPassbkFeatMainTbcMain"
@@ -629,7 +630,7 @@ Partial Class FrmMain
         '
         'cboPassbkIdTabAddFeatTbcPassbkFeatMainTbcMain
         '
-        Me.cboPassbkIdTabAddFeatTbcPassbkFeatMainTbcMain.FormattingEnabled = True
+        Me.cboPassbkIdTabAddFeatTbcPassbkFeatMainTbcMain.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cboPassbkIdTabAddFeatTbcPassbkFeatMainTbcMain.Location = New System.Drawing.Point(110, 29)
         Me.cboPassbkIdTabAddFeatTbcPassbkFeatMainTbcMain.Name = "cboPassbkIdTabAddFeatTbcPassbkFeatMainTbcMain"
         Me.cboPassbkIdTabAddFeatTbcPassbkFeatMainTbcMain.Size = New System.Drawing.Size(135, 23)
@@ -843,6 +844,7 @@ Partial Class FrmMain
         '
         'cboFeatIdTabUpdtFeatTbcPassbkFeatMainTbcMain
         '
+        Me.cboFeatIdTabUpdtFeatTbcPassbkFeatMainTbcMain.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cboFeatIdTabUpdtFeatTbcPassbkFeatMainTbcMain.FormattingEnabled = True
         Me.cboFeatIdTabUpdtFeatTbcPassbkFeatMainTbcMain.Location = New System.Drawing.Point(98, 36)
         Me.cboFeatIdTabUpdtFeatTbcPassbkFeatMainTbcMain.Name = "cboFeatIdTabUpdtFeatTbcPassbkFeatMainTbcMain"
@@ -1073,6 +1075,7 @@ Partial Class FrmMain
         '
         'cboPassbkFeatIdTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain
         '
+        Me.cboPassbkFeatIdTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cboPassbkFeatIdTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.FormattingEnabled = True
         Me.cboPassbkFeatIdTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Location = New System.Drawing.Point(98, 36)
         Me.cboPassbkFeatIdTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Name = "cboPassbkFeatIdTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain"
@@ -1303,6 +1306,7 @@ Partial Class FrmMain
         '
         'cboCustIdGrpCustInfoGrpAddPassbkTabPassbkTbcMainFrmMain
         '
+        Me.cboCustIdGrpCustInfoGrpAddPassbkTabPassbkTbcMainFrmMain.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cboCustIdGrpCustInfoGrpAddPassbkTabPassbkTbcMainFrmMain.FormattingEnabled = True
         Me.cboCustIdGrpCustInfoGrpAddPassbkTabPassbkTbcMainFrmMain.Location = New System.Drawing.Point(117, 43)
         Me.cboCustIdGrpCustInfoGrpAddPassbkTabPassbkTbcMainFrmMain.Name = "cboCustIdGrpCustInfoGrpAddPassbkTabPassbkTbcMainFrmMain"
@@ -2184,6 +2188,7 @@ Partial Class FrmMain
         Me.Controls.Add(Me.lblThemeParkMgmtSysFrmMain)
         Me.Controls.Add(Me.mnuMainApplMenu)
         Me.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
         Me.MainMenuStrip = Me.mnuMainApplMenu
         Me.Margin = New System.Windows.Forms.Padding(4)
         Me.Name = "FrmMain"
