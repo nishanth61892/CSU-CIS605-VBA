@@ -141,8 +141,10 @@ Public Class Snowshoe
 
     '********** Public Non-Shared Behavioral Methods
 
+    '****************************************************************************************
     'ToString() is the public interface that provides a String 
     'version of the data stored in the class attributes.
+    '****************************************************************************************
     Public Overrides Function ToString() As String
         Return _toString()
     End Function 'ToString()

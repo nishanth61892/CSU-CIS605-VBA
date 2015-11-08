@@ -61,9 +61,9 @@ Public Class FrmMain
 #End Region 'Constructors
 
 #Region "Get/Set Methods"
-    '******************************************************************
+    '****************************************************************************************
     'Get/Set Methods
-    '******************************************************************
+    '****************************************************************************************
 
     '********** Public Get/Set Methods
     '             - call private get/set methods to implement
@@ -83,9 +83,9 @@ Public Class FrmMain
 #End Region 'Get/Set Methods
 
 #Region "Behavioral Methods"
-    '******************************************************************
+    '****************************************************************************************
     'Behavioral Methods
-    '******************************************************************
+    '****************************************************************************************
 
     '********** Public Shared Behavioral Methods
 
@@ -140,11 +140,11 @@ Public Class FrmMain
         nudRentalDaysGrpPurch.Enabled = False
     End Sub 'initializeUserInterface()
 
-    '******************************************************************
+    '****************************************************************************************
     '_writeTransLog() procedure does all the work to write a 
     'message to the transaction log.hat write the specified string to 
     'the transaction log.
-    '******************************************************************
+    '****************************************************************************************
     Private Sub _writeTransLog(ByVal pLogMsg As String)
         txtTransLogFrmMain.Text &= _
             DateAndTime.DateString & ":" & DateAndTime.TimeString & "::"
@@ -153,11 +153,11 @@ Public Class FrmMain
     End Sub '_writeTransLog(...)
 
 
-    '******************************************************************
+    '****************************************************************************************
     '_dispStkMktState() procedure that simply displays the
     'current state of the Snowshoe Marketplace state in the 
     'transaction log.
-    '******************************************************************
+    '****************************************************************************************
     Private Sub _dispStoreState()
         _writeTransLog("[DISPLAY] " & "FILL IN WITH SOMETHING")
     End Sub 'dispStoreState()
@@ -165,9 +165,9 @@ Public Class FrmMain
 #End Region 'Behavioral Methods
 
 #Region "Event Procedures"
-    '******************************************************************
+    '****************************************************************************************
     'Event Procedures
-    '******************************************************************
+    '****************************************************************************************
 
     'These are all private.
 
@@ -334,10 +334,10 @@ Public Class FrmMain
         _initializeUserInterface()
     End Sub '_frmMain_Load(sender, e)
 
-    '******************************************************************
+    '****************************************************************************************
     '_txtTransLogFrmMain_TextChanged() is the event procedure the is called when
     'the transaction log text box is modified.  Basically it enables the display text to scroll.
-    '******************************************************************
+    '****************************************************************************************
     Private Sub _txtTransLogFrmMain_TextChanged(sender As Object, e As EventArgs) _
         Handles txtTransLogFrmMain.TextChanged
 
@@ -353,10 +353,9 @@ Public Class FrmMain
 #End Region 'Event Procedures
 
 #Region "Events"
-    '******************************************************************
+    '****************************************************************************************
     'Events
-    '******************************************************************
-
+    '****************************************************************************************
     'No Events are currently defined.
     'These are all public.
 
