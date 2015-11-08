@@ -5,8 +5,8 @@
 'File:          ClsSnowshoeStore_EventArgs_SnowshoeAdded.vb
 'Author:        Robert Palumbo
 'Description:   This is the class definiton for the SnowshoeStore_EventArgs_SnowshoeAdded
-'               custom event.  This event is raised when a snowshoe is added 
-'               to the system to inform any listeners of the event.
+'               custom event.  This event is raised when a snowshoe add transaction
+'               occurs to inform any listeners of the event.
 '               It is the job of the listener to handle the event and process it.
 '
 'Date:          11/08/2015
@@ -25,7 +25,7 @@ Option Explicit On      'Must declare variables before using them
 Option Strict On        'Must perform explicit data type conversions
 #End Region 'Option / Imports
 
-Public Class OutdoorStore_EventArgs_SnowshoeAdded
+Public Class SnowshoeStore_SnowshoeAdded
     Inherits System.EventArgs
 
 #Region "Attributes"

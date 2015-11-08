@@ -72,6 +72,9 @@
   <ItemGroup>
     <Compile Include="ClsSnowshoe.vb" />
     <Compile Include="ClsSnowshoeStore_EventArgs_SnowshoeAdded.vb" />
+    <Compile Include="ClsSnowshoeTransRec.vb" />
+    <Compile Include="ClsSnowshoe_EventArgs_SnowshoePurchase.vb" />
+    <Compile Include="ClsSnowshoe_EventArgs_SnowshoeRental.vb" />
     <Compile Include="FrmMain.vb">
       <SubType>Form</SubType>
     </Compile>

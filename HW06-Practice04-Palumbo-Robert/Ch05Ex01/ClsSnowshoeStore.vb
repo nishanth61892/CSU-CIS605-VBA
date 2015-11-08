@@ -233,12 +233,8 @@ Public Class SnowshoeStore
     Private Sub _addSnowshoe(ByVal pSnowshoe As Snowshoe)
         _snowshoeCnt += 1
 
-        RaiseEvent OutdoorStore_SnowshoeAdded( _
-            Me, _
-            New OutdoorStore_EventArgs_SnowshoeAdded( _
-                pSnowshoe _
-                ) _
-            )
+        RaiseEvent SnowshoeStore_SnowshoeAdded(Me, _
+                                               New SnowshoeStore_SnowshoeAdded(pSnowshoe))
     End Sub '_addSnowshoe(...)
 
     '****************************************************************************************
