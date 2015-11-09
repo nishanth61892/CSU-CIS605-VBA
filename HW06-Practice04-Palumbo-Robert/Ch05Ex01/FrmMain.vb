@@ -212,7 +212,7 @@ Public Class FrmMain
         Dim extPrice As Decimal
         Dim memDiscnt As Decimal
         Dim preTaxPrice As Decimal
-        Dim salesTaxPrice As Decimal
+        Dim salesTax As Decimal
         Dim totalCost As Decimal
         Dim transCnt As Integer
 
@@ -223,7 +223,7 @@ Public Class FrmMain
                 extPrice = .extPriceTotal
                 memDiscnt = .membDiscntTotal
                 preTaxPrice = .preTaxTotal
-                salesTaxPrice = .taxTotal
+                salesTax = .taxTotal
                 totalCost = .totPriceTotal
                 transCnt = .snowshoeTransCnt
             End With
@@ -233,7 +233,7 @@ Public Class FrmMain
         txtExtPriceTotalGrpSummaryInfo.Text = extPrice.ToString("N2")
         txtMemDiscntTotalGrpSummaryInfo.Text = memDiscnt.ToString("N2")
         txtPreTaxTotalGrpSummaryInfo.Text = preTaxPrice.ToString("N2")
-        txtTaxTotalGrpSummaryInfo.Text = salesTaxPrice.ToString("N2")
+        txtTaxTotalGrpSummaryInfo.Text = salesTax.ToString("N2")
         txtTotalCostTotalGrpSummaryInfo.Text = totalCost.ToString("N2")
         txtTransCntTotalGrpSummaryInfo.Text = transCnt.ToString()
     End Sub '_updateSummaryInfoTotals()
@@ -246,7 +246,7 @@ Public Class FrmMain
         Dim extPrice As Decimal
         Dim memDiscnt As Decimal
         Dim preTaxPrice As Decimal
-        Dim salesTaxPrice As Decimal
+        Dim salesTax As Decimal
         Dim totalCost As Decimal
 
         'If there is transaction record we can update the UI with current info
@@ -256,7 +256,7 @@ Public Class FrmMain
                 extPrice = .extPrice
                 memDiscnt = .memDiscnt
                 preTaxPrice = .preTaxPrice
-                salesTaxPrice = .preTaxPrice
+                salesTax = .salesTax
                 totalCost = .totalTransCost
             End With
         End If
@@ -265,7 +265,7 @@ Public Class FrmMain
         txtExtPriceCurrTransSummaryInfo.Text = extPrice.ToString("N2")
         txtMemDiscntCurrGrpSummaryInfo.Text = memDiscnt.ToString("N2")
         txtPreTaxCurrGrpSummaryInfo.Text = preTaxPrice.ToString("N2")
-        txtTaxCurrGrpSummaryInfo.Text = salesTaxPrice.ToString("N2")
+        txtTaxCurrGrpSummaryInfo.Text = salesTax.ToString("N2")
         txtTotalCostCurrGrpSummaryInfo.Text = totalCost.ToString("N2")
     End Sub '_updateSummaryInfoCurrent()
 
@@ -419,7 +419,7 @@ Public Class FrmMain
 
         'Terminate the program
         _closeAppl()
-    End Sub '_btnExitFrmMain_Click(sender As Object, e As EventArgs)
+    End Sub '_btnExitFrmMain_Click(...)
 
     '****************************************************************************************
     '_chkRental_CheckedChanged() is the event procedure that gets called when the user toggles
@@ -430,7 +430,7 @@ Public Class FrmMain
         Handles chkIsRentalGrpTransDetail.CheckedChanged
 
         nudRentalDaysGrpTransDetail.Enabled = CBool(IIf(chkIsRentalGrpTransDetail.Checked = True, True, False))
-    End Sub '_chkRental_CheckedChanged
+    End Sub '_chkRental_CheckedChanged(...)
 
     '****************************************************************************************
     '_btnRunTestData_Click() is the event procedure that gets called when the user clicks 
@@ -549,7 +549,7 @@ Public Class FrmMain
 
         'get/validate input
         _updateFromUserInputs()
-    End Sub '_frmMain_Load(sender, e)
+    End Sub '_frmMain_Load(...)
 
     '****************************************************************************************
     '_txtTransLogFrmMain_TextChanged() is the event procedure the is called when
@@ -560,7 +560,8 @@ Public Class FrmMain
 
         txtTransLogFrmMain.SelectionStart = txtTransLogFrmMain.TextLength
         txtTransLogFrmMain.ScrollToCaret()
-    End Sub '_txtTransLogFrmMain_TextChanged
+    End Sub '_txtTransLogFrmMain_TextChanged(...)
+
 
     '********** Business Logic Event Procedures
     '             - Initiated as a result of business logic

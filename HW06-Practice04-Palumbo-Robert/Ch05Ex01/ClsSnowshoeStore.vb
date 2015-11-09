@@ -48,8 +48,6 @@ Public Class SnowshoeStore
     Private mTaxTotal As Decimal
     'Running dollar amount of all transactions
     Private mTotPriceTotal As Decimal
-
-
 #End Region 'Attributes
 
 #Region "Constructors"
@@ -226,7 +224,6 @@ Public Class SnowshoeStore
         _snowshoeRental(pSnowshoeTransRec)
     End Sub 'snowshoeRental(...)
 
-
     '****************************************************************************************
     'ToString() overrides the parent object function to return a 
     'string representation of this object.
@@ -238,6 +235,7 @@ Public Class SnowshoeStore
 
     '********** Private Non-Shared Behavioral Methods
 
+    '****************************************************************************************
     '_snowshoePurchase() is called by snowshoePurchase() and is the 
     'worker procedure that is used to simlulate a snowshoe purchase transasction.
     'It calculates appropriate pricing information and raises the associated purchase
@@ -250,12 +248,12 @@ Public Class SnowshoeStore
         _extPriceTotal += pSnowshoeTransRec.extPrice
         _memDiscntTotal += pSnowshoeTransRec.memDiscnt
         _preTaxTotal += pSnowshoeTransRec.preTaxPrice
-        _taxTotal += pSnowshoeTransRec.salesTaxPrice
+        _taxTotal += pSnowshoeTransRec.salesTax
         _totPriceTotal += pSnowshoeTransRec.totalTransCost
 
         RaiseEvent SnowshoeStore_SnowshoePurchase(Me, _
                                                   New Snowshoe_EventArgs_SnowshoePurchase(pSnowshoeTransRec))
-    End Sub '_rentBuySnowPurchase(...)
+    End Sub '_snowshoePurchase(...)
 
 
     '****************************************************************************************
@@ -271,12 +269,12 @@ Public Class SnowshoeStore
         _extPriceTotal += pSnowshoeTransRec.extPrice
         _memDiscntTotal += pSnowshoeTransRec.memDiscnt
         _preTaxTotal += pSnowshoeTransRec.preTaxPrice
-        _taxTotal += pSnowshoeTransRec.salesTaxPrice
+        _taxTotal += pSnowshoeTransRec.salesTax
         _totPriceTotal += pSnowshoeTransRec.totalTransCost
 
         RaiseEvent SnowshoeStore_SnowshoeRental(Me, _
                                                 New Snowshoe_EventArgs_SnowshoeRental(pSnowshoeTransRec))
-    End Sub '_rentBuySnowshoes(...)
+    End Sub '_snowshoeRental(...)
 
 
     '****************************************************************************************

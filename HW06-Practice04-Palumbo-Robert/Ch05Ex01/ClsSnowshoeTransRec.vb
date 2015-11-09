@@ -35,7 +35,7 @@ Public Class SnowshoeTransRec
     'Member discount rate off of price
     Private Const mMEM_DISCNT_RATE As Decimal = 0.15D
     'Sales tax rate
-    Private Const mSALES_TAX_RATE As Decimal = 0.0695D
+    Private Const mSALES_TAX_RATE As Decimal = 0.0375D
 
     '********** Module-level variables
 
@@ -225,12 +225,12 @@ Public Class SnowshoeTransRec
     End Function 'preTaxPrice()
 
     '****************************************************************************************
-    'salesTaxPrice() calculates the total sales tax for the transaction.
+    'salesTax() calculates the total sales tax for the transaction.
     '   preTaxPrice * _SALES_TAX_RATE
     '****************************************************************************************
-    Public Function salesTaxPrice() As Decimal
-        Return _salesTaxPrice()
-    End Function 'salesTaxPrice()
+    Public Function salesTax() As Decimal
+        Return _salesTax()
+    End Function 'salesTax()
 
     '****************************************************************************************
     'totalTransCost() calculates the overall cost for the transaction
@@ -289,19 +289,19 @@ Public Class SnowshoeTransRec
     End Function '_preTaxPrice()
 
     '****************************************************************************************
-    '_salesTaxPrice() is the worker procedure that calculates the sale-tax amount for the
+    '_salesTax() is the worker procedure that calculates the sale-tax amount for the
     'transaction.  This is the pre-tax price * SALES_TAX_RATE
     '****************************************************************************************
-    Private Function _salesTaxPrice() As Decimal
+    Private Function _salesTax() As Decimal
         Return _preTaxPrice() * _SALES_TAX_RATE
-    End Function '_salesTaxPrice()
+    End Function '_salesTax()
 
     '****************************************************************************************
     '_totalTransCost() is the worker procedure that calculates the total price for the
     'transaction.  This is the pre-tax price + sales tax
     '****************************************************************************************
     Private Function _totalTransCost() As Decimal
-        Return _preTaxPrice() + _salesTaxPrice()
+        Return _preTaxPrice() + _salesTax()
     End Function '_totalTransCost()
 
     '****************************************************************************************
@@ -317,8 +317,8 @@ Public Class SnowshoeTransRec
             & ", IsMember?=" & _isMember.ToString() _
             & ", PricePerDay=$" & _extPrice.ToString("N2") _
             & ", MemberDiscnt$" & _memDiscnt.ToString("N2") _
-            & ", PreTaxAmt=$" & _preTaxPrice.ToString("N2") _
-            & ", SalesTaxAmt=$" & _salesTaxPrice.ToString("N2") _
+            & ", PreTaxPrice=$" & _preTaxPrice.ToString("N2") _
+            & ", SalesTaxAmt=$" & _salesTax.ToString("N2") _
             & ", TotalCost=$" & _totalTransCost.ToString("N2") _
             & " )"
 

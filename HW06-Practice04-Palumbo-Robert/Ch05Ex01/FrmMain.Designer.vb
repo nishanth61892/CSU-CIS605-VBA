@@ -440,11 +440,11 @@ Partial Class FrmMain
         'Label5
         '
         Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(138, 133)
+        Me.Label5.Location = New System.Drawing.Point(109, 133)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(25, 13)
+        Me.Label5.Size = New System.Drawing.Size(54, 13)
         Me.Label5.TabIndex = 35
-        Me.Label5.Text = "Tax"
+        Me.Label5.Text = "Sales Tax"
         '
         'Label4
         '
