@@ -25,53 +25,53 @@ Partial Class FrmMain
         Me.components = New System.ComponentModel.Container()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
-        Me.lstSnowshoeRentPriceGrpPurch = New System.Windows.Forms.ListBox()
-        Me.lstSnowshoeNameGrpPurch = New System.Windows.Forms.ListBox()
-        Me.lstSnowshoePurchPriceGrpPurch = New System.Windows.Forms.ListBox()
+        Me.lstSnowshoeRentPriceGrpTransDetail = New System.Windows.Forms.ListBox()
+        Me.lstSnowshoeNameGrpTransDetail = New System.Windows.Forms.ListBox()
+        Me.lstSnowshoePurchPriceGrpTransDetail = New System.Windows.Forms.ListBox()
         Me.grpTransLogFrmMain = New System.Windows.Forms.GroupBox()
         Me.txtTransLogFrmMain = New System.Windows.Forms.TextBox()
         Me.btnExitFrmMain = New System.Windows.Forms.Button()
-        Me.nudNumPairsGrpPurch = New System.Windows.Forms.NumericUpDown()
-        Me.chkRentalGrpPurch = New System.Windows.Forms.CheckBox()
-        Me.nudRentalDaysGrpPurch = New System.Windows.Forms.NumericUpDown()
-        Me.chkMemberGrpPurch = New System.Windows.Forms.CheckBox()
+        Me.nudPairsCntGrpTransDetail = New System.Windows.Forms.NumericUpDown()
+        Me.chkIsRentalGrpTransDetail = New System.Windows.Forms.CheckBox()
+        Me.nudRentalDaysGrpTransDetail = New System.Windows.Forms.NumericUpDown()
+        Me.chkIsMemberGrpTransDetail = New System.Windows.Forms.CheckBox()
         Me.btnDispStoreInfo = New System.Windows.Forms.Button()
-        Me.btnClearGrpPurch = New System.Windows.Forms.Button()
+        Me.btnClearGrpTransDetail = New System.Windows.Forms.Button()
         Me.btnProcessTestData = New System.Windows.Forms.Button()
-        Me.btnConfirmGrpPurch = New System.Windows.Forms.Button()
+        Me.btnConfirmGrpTransDetail = New System.Windows.Forms.Button()
         Me.grpSnowShoeInfo = New System.Windows.Forms.GroupBox()
-        Me.grpTransInfo = New System.Windows.Forms.GroupBox()
+        Me.grpSummaryInfo = New System.Windows.Forms.GroupBox()
         Me.Label14 = New System.Windows.Forms.Label()
         Me.Label8 = New System.Windows.Forms.Label()
-        Me.txtTransCntTotalGrpTransInfo = New System.Windows.Forms.TextBox()
-        Me.txtExtPriceTotalTransInfo = New System.Windows.Forms.TextBox()
-        Me.txtMemDiscntCurrGrpTransInfo = New System.Windows.Forms.TextBox()
-        Me.txtMemDiscntTotalGrpTransInfo = New System.Windows.Forms.TextBox()
-        Me.txtPreTaxCurrGrpTransInfo = New System.Windows.Forms.TextBox()
-        Me.txtPreTaxTotalGrpTransInfo = New System.Windows.Forms.TextBox()
-        Me.txtTaxCurrGrpTransInfo = New System.Windows.Forms.TextBox()
-        Me.txtTaxTotalGrpTransInfo = New System.Windows.Forms.TextBox()
-        Me.txtTotalCostCurrGrpTransInfo = New System.Windows.Forms.TextBox()
-        Me.txtTotalCostTotalGrpTransInfo = New System.Windows.Forms.TextBox()
-        Me.txtExtPriceCurrTransInfo = New System.Windows.Forms.TextBox()
+        Me.txtTransCntTotalGrpSummaryInfo = New System.Windows.Forms.TextBox()
+        Me.txtExtPriceTotalGrpSummaryInfo = New System.Windows.Forms.TextBox()
+        Me.txtMemDiscntCurrGrpSummaryInfo = New System.Windows.Forms.TextBox()
+        Me.txtMemDiscntTotalGrpSummaryInfo = New System.Windows.Forms.TextBox()
+        Me.txtPreTaxCurrGrpSummaryInfo = New System.Windows.Forms.TextBox()
+        Me.txtPreTaxTotalGrpSummaryInfo = New System.Windows.Forms.TextBox()
+        Me.txtTaxCurrGrpSummaryInfo = New System.Windows.Forms.TextBox()
+        Me.txtTaxTotalGrpSummaryInfo = New System.Windows.Forms.TextBox()
+        Me.txtTotalCostCurrGrpSummaryInfo = New System.Windows.Forms.TextBox()
+        Me.txtTotalCostTotalGrpSummaryInfo = New System.Windows.Forms.TextBox()
+        Me.txtExtPriceCurrTransSummaryInfo = New System.Windows.Forms.TextBox()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
-        Me.grpPurch = New System.Windows.Forms.GroupBox()
+        Me.grpTransDetail = New System.Windows.Forms.GroupBox()
         Me.Label12 = New System.Windows.Forms.Label()
         Me.Label13 = New System.Windows.Forms.Label()
         Me.Label9 = New System.Windows.Forms.Label()
         Me.Label11 = New System.Windows.Forms.Label()
         Me.Label10 = New System.Windows.Forms.Label()
         Me.grpTransLogFrmMain.SuspendLayout()
-        CType(Me.nudNumPairsGrpPurch, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.nudRentalDaysGrpPurch, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.nudPairsCntGrpTransDetail, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.nudRentalDaysGrpTransDetail, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.grpSnowShoeInfo.SuspendLayout()
-        Me.grpTransInfo.SuspendLayout()
-        Me.grpPurch.SuspendLayout()
+        Me.grpSummaryInfo.SuspendLayout()
+        Me.grpTransDetail.SuspendLayout()
         Me.SuspendLayout()
         '
         'Label1
@@ -85,46 +85,46 @@ Partial Class FrmMain
         Me.Label1.TabIndex = 0
         Me.Label1.Text = "Snowshoe MarketPlace"
         '
-        'lstSnowshoeRentPriceGrpPurch
+        'lstSnowshoeRentPriceGrpTransDetail
         '
-        Me.lstSnowshoeRentPriceGrpPurch.BackColor = System.Drawing.SystemColors.Control
-        Me.lstSnowshoeRentPriceGrpPurch.Enabled = False
-        Me.lstSnowshoeRentPriceGrpPurch.FormatString = "C2"
-        Me.lstSnowshoeRentPriceGrpPurch.FormattingEnabled = True
-        Me.lstSnowshoeRentPriceGrpPurch.Items.AddRange(New Object() {"15.00", "12.00", "10.00"})
-        Me.lstSnowshoeRentPriceGrpPurch.Location = New System.Drawing.Point(354, 48)
-        Me.lstSnowshoeRentPriceGrpPurch.Name = "lstSnowshoeRentPriceGrpPurch"
-        Me.lstSnowshoeRentPriceGrpPurch.RightToLeft = System.Windows.Forms.RightToLeft.Yes
-        Me.lstSnowshoeRentPriceGrpPurch.Size = New System.Drawing.Size(62, 95)
-        Me.lstSnowshoeRentPriceGrpPurch.TabIndex = 5
-        Me.lstSnowshoeRentPriceGrpPurch.TabStop = False
-        Me.ToolTip1.SetToolTip(Me.lstSnowshoeRentPriceGrpPurch, "Snowshoe rental price")
+        Me.lstSnowshoeRentPriceGrpTransDetail.BackColor = System.Drawing.SystemColors.Control
+        Me.lstSnowshoeRentPriceGrpTransDetail.Enabled = False
+        Me.lstSnowshoeRentPriceGrpTransDetail.FormatString = "C2"
+        Me.lstSnowshoeRentPriceGrpTransDetail.FormattingEnabled = True
+        Me.lstSnowshoeRentPriceGrpTransDetail.Items.AddRange(New Object() {"15.00", "12.00", "10.00"})
+        Me.lstSnowshoeRentPriceGrpTransDetail.Location = New System.Drawing.Point(354, 48)
+        Me.lstSnowshoeRentPriceGrpTransDetail.Name = "lstSnowshoeRentPriceGrpTransDetail"
+        Me.lstSnowshoeRentPriceGrpTransDetail.RightToLeft = System.Windows.Forms.RightToLeft.Yes
+        Me.lstSnowshoeRentPriceGrpTransDetail.Size = New System.Drawing.Size(62, 95)
+        Me.lstSnowshoeRentPriceGrpTransDetail.TabIndex = 5
+        Me.lstSnowshoeRentPriceGrpTransDetail.TabStop = False
+        Me.ToolTip1.SetToolTip(Me.lstSnowshoeRentPriceGrpTransDetail, "Snowshoe rental price")
         '
-        'lstSnowshoeNameGrpPurch
+        'lstSnowshoeNameGrpTransDetail
         '
-        Me.lstSnowshoeNameGrpPurch.BackColor = System.Drawing.SystemColors.Control
-        Me.lstSnowshoeNameGrpPurch.FormattingEnabled = True
-        Me.lstSnowshoeNameGrpPurch.Items.AddRange(New Object() {"MSR Lightning Ascent", "Tubbs Mountaineer 30", "Atlas 1023 Elektra  (W)"})
-        Me.lstSnowshoeNameGrpPurch.Location = New System.Drawing.Point(40, 49)
-        Me.lstSnowshoeNameGrpPurch.Name = "lstSnowshoeNameGrpPurch"
-        Me.lstSnowshoeNameGrpPurch.Size = New System.Drawing.Size(181, 95)
-        Me.lstSnowshoeNameGrpPurch.TabIndex = 3
-        Me.lstSnowshoeNameGrpPurch.TabStop = False
-        Me.ToolTip1.SetToolTip(Me.lstSnowshoeNameGrpPurch, "Select a snowshoe from the list")
+        Me.lstSnowshoeNameGrpTransDetail.BackColor = System.Drawing.SystemColors.Control
+        Me.lstSnowshoeNameGrpTransDetail.FormattingEnabled = True
+        Me.lstSnowshoeNameGrpTransDetail.Items.AddRange(New Object() {"MSR Lightning Ascent", "Tubbs Mountaineer 30", "Atlas 1023 Elektra  (W)"})
+        Me.lstSnowshoeNameGrpTransDetail.Location = New System.Drawing.Point(40, 49)
+        Me.lstSnowshoeNameGrpTransDetail.Name = "lstSnowshoeNameGrpTransDetail"
+        Me.lstSnowshoeNameGrpTransDetail.Size = New System.Drawing.Size(181, 95)
+        Me.lstSnowshoeNameGrpTransDetail.TabIndex = 3
+        Me.lstSnowshoeNameGrpTransDetail.TabStop = False
+        Me.ToolTip1.SetToolTip(Me.lstSnowshoeNameGrpTransDetail, "Select a snowshoe from the list")
         '
-        'lstSnowshoePurchPriceGrpPurch
+        'lstSnowshoePurchPriceGrpTransDetail
         '
-        Me.lstSnowshoePurchPriceGrpPurch.BackColor = System.Drawing.SystemColors.Control
-        Me.lstSnowshoePurchPriceGrpPurch.Enabled = False
-        Me.lstSnowshoePurchPriceGrpPurch.FormatString = "C2"
-        Me.lstSnowshoePurchPriceGrpPurch.FormattingEnabled = True
-        Me.lstSnowshoePurchPriceGrpPurch.Items.AddRange(New Object() {"299.95", "259.95", "199.95"})
-        Me.lstSnowshoePurchPriceGrpPurch.Location = New System.Drawing.Point(240, 48)
-        Me.lstSnowshoePurchPriceGrpPurch.Name = "lstSnowshoePurchPriceGrpPurch"
-        Me.lstSnowshoePurchPriceGrpPurch.RightToLeft = System.Windows.Forms.RightToLeft.Yes
-        Me.lstSnowshoePurchPriceGrpPurch.Size = New System.Drawing.Size(90, 95)
-        Me.lstSnowshoePurchPriceGrpPurch.TabIndex = 1
-        Me.ToolTip1.SetToolTip(Me.lstSnowshoePurchPriceGrpPurch, "Snowshoe purchase price")
+        Me.lstSnowshoePurchPriceGrpTransDetail.BackColor = System.Drawing.SystemColors.Control
+        Me.lstSnowshoePurchPriceGrpTransDetail.Enabled = False
+        Me.lstSnowshoePurchPriceGrpTransDetail.FormatString = "C2"
+        Me.lstSnowshoePurchPriceGrpTransDetail.FormattingEnabled = True
+        Me.lstSnowshoePurchPriceGrpTransDetail.Items.AddRange(New Object() {"299.95", "259.95", "199.95"})
+        Me.lstSnowshoePurchPriceGrpTransDetail.Location = New System.Drawing.Point(240, 48)
+        Me.lstSnowshoePurchPriceGrpTransDetail.Name = "lstSnowshoePurchPriceGrpTransDetail"
+        Me.lstSnowshoePurchPriceGrpTransDetail.RightToLeft = System.Windows.Forms.RightToLeft.Yes
+        Me.lstSnowshoePurchPriceGrpTransDetail.Size = New System.Drawing.Size(90, 95)
+        Me.lstSnowshoePurchPriceGrpTransDetail.TabIndex = 1
+        Me.ToolTip1.SetToolTip(Me.lstSnowshoePurchPriceGrpTransDetail, "Snowshoe purchase price")
         '
         'grpTransLogFrmMain
         '
@@ -159,50 +159,54 @@ Partial Class FrmMain
         Me.ToolTip1.SetToolTip(Me.btnExitFrmMain, "Click to close and exit the system")
         Me.btnExitFrmMain.UseVisualStyleBackColor = True
         '
-        'nudNumPairsGrpPurch
+        'nudPairsCntGrpTransDetail
         '
-        Me.nudNumPairsGrpPurch.Location = New System.Drawing.Point(131, 163)
-        Me.nudNumPairsGrpPurch.Name = "nudNumPairsGrpPurch"
-        Me.nudNumPairsGrpPurch.ReadOnly = True
-        Me.nudNumPairsGrpPurch.Size = New System.Drawing.Size(45, 20)
-        Me.nudNumPairsGrpPurch.TabIndex = 9
-        Me.ToolTip1.SetToolTip(Me.nudNumPairsGrpPurch, "Number of pair to purchase or rent")
+        Me.nudPairsCntGrpTransDetail.Location = New System.Drawing.Point(131, 163)
+        Me.nudPairsCntGrpTransDetail.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
+        Me.nudPairsCntGrpTransDetail.Name = "nudPairsCntGrpTransDetail"
+        Me.nudPairsCntGrpTransDetail.ReadOnly = True
+        Me.nudPairsCntGrpTransDetail.Size = New System.Drawing.Size(45, 20)
+        Me.nudPairsCntGrpTransDetail.TabIndex = 9
+        Me.ToolTip1.SetToolTip(Me.nudPairsCntGrpTransDetail, "Number of pair to purchase or rent")
+        Me.nudPairsCntGrpTransDetail.Value = New Decimal(New Integer() {1, 0, 0, 0})
         '
-        'chkRentalGrpPurch
+        'chkIsRentalGrpTransDetail
         '
-        Me.chkRentalGrpPurch.AutoSize = True
-        Me.chkRentalGrpPurch.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
-        Me.chkRentalGrpPurch.FlatAppearance.CheckedBackColor = System.Drawing.Color.Gainsboro
-        Me.chkRentalGrpPurch.Location = New System.Drawing.Point(43, 194)
-        Me.chkRentalGrpPurch.Name = "chkRentalGrpPurch"
-        Me.chkRentalGrpPurch.RightToLeft = System.Windows.Forms.RightToLeft.Yes
-        Me.chkRentalGrpPurch.Size = New System.Drawing.Size(55, 17)
-        Me.chkRentalGrpPurch.TabIndex = 10
-        Me.chkRentalGrpPurch.Text = "?Rent"
-        Me.chkRentalGrpPurch.TextAlign = System.Drawing.ContentAlignment.TopRight
-        Me.ToolTip1.SetToolTip(Me.chkRentalGrpPurch, "Check if this is a rental transaction")
-        Me.chkRentalGrpPurch.UseVisualStyleBackColor = True
+        Me.chkIsRentalGrpTransDetail.AutoSize = True
+        Me.chkIsRentalGrpTransDetail.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
+        Me.chkIsRentalGrpTransDetail.FlatAppearance.CheckedBackColor = System.Drawing.Color.Gainsboro
+        Me.chkIsRentalGrpTransDetail.Location = New System.Drawing.Point(43, 194)
+        Me.chkIsRentalGrpTransDetail.Name = "chkIsRentalGrpTransDetail"
+        Me.chkIsRentalGrpTransDetail.RightToLeft = System.Windows.Forms.RightToLeft.Yes
+        Me.chkIsRentalGrpTransDetail.Size = New System.Drawing.Size(55, 17)
+        Me.chkIsRentalGrpTransDetail.TabIndex = 10
+        Me.chkIsRentalGrpTransDetail.Text = "?Rent"
+        Me.chkIsRentalGrpTransDetail.TextAlign = System.Drawing.ContentAlignment.TopRight
+        Me.ToolTip1.SetToolTip(Me.chkIsRentalGrpTransDetail, "Check if this is a rental transaction")
+        Me.chkIsRentalGrpTransDetail.UseVisualStyleBackColor = True
         '
-        'nudRentalDaysGrpPurch
+        'nudRentalDaysGrpTransDetail
         '
-        Me.nudRentalDaysGrpPurch.Location = New System.Drawing.Point(182, 193)
-        Me.nudRentalDaysGrpPurch.Name = "nudRentalDaysGrpPurch"
-        Me.nudRentalDaysGrpPurch.ReadOnly = True
-        Me.nudRentalDaysGrpPurch.Size = New System.Drawing.Size(43, 20)
-        Me.nudRentalDaysGrpPurch.TabIndex = 12
-        Me.ToolTip1.SetToolTip(Me.nudRentalDaysGrpPurch, "Enter number of days to rent")
+        Me.nudRentalDaysGrpTransDetail.Location = New System.Drawing.Point(182, 193)
+        Me.nudRentalDaysGrpTransDetail.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
+        Me.nudRentalDaysGrpTransDetail.Name = "nudRentalDaysGrpTransDetail"
+        Me.nudRentalDaysGrpTransDetail.ReadOnly = True
+        Me.nudRentalDaysGrpTransDetail.Size = New System.Drawing.Size(43, 20)
+        Me.nudRentalDaysGrpTransDetail.TabIndex = 12
+        Me.ToolTip1.SetToolTip(Me.nudRentalDaysGrpTransDetail, "Enter number of days to rent")
+        Me.nudRentalDaysGrpTransDetail.Value = New Decimal(New Integer() {1, 0, 0, 0})
         '
-        'chkMemberGrpPurch
+        'chkIsMemberGrpTransDetail
         '
-        Me.chkMemberGrpPurch.AutoSize = True
-        Me.chkMemberGrpPurch.Location = New System.Drawing.Point(197, 162)
-        Me.chkMemberGrpPurch.Name = "chkMemberGrpPurch"
-        Me.chkMemberGrpPurch.RightToLeft = System.Windows.Forms.RightToLeft.Yes
-        Me.chkMemberGrpPurch.Size = New System.Drawing.Size(133, 17)
-        Me.chkMemberGrpPurch.TabIndex = 13
-        Me.chkMemberGrpPurch.Text = "?MarketPlace Member"
-        Me.ToolTip1.SetToolTip(Me.chkMemberGrpPurch, "Check if customer is a MarketPlace member")
-        Me.chkMemberGrpPurch.UseVisualStyleBackColor = True
+        Me.chkIsMemberGrpTransDetail.AutoSize = True
+        Me.chkIsMemberGrpTransDetail.Location = New System.Drawing.Point(197, 164)
+        Me.chkIsMemberGrpTransDetail.Name = "chkIsMemberGrpTransDetail"
+        Me.chkIsMemberGrpTransDetail.RightToLeft = System.Windows.Forms.RightToLeft.Yes
+        Me.chkIsMemberGrpTransDetail.Size = New System.Drawing.Size(133, 17)
+        Me.chkIsMemberGrpTransDetail.TabIndex = 13
+        Me.chkIsMemberGrpTransDetail.Text = "?MarketPlace Member"
+        Me.ToolTip1.SetToolTip(Me.chkIsMemberGrpTransDetail, "Check if customer is a MarketPlace member")
+        Me.chkIsMemberGrpTransDetail.UseVisualStyleBackColor = True
         '
         'btnDispStoreInfo
         '
@@ -214,15 +218,15 @@ Partial Class FrmMain
         Me.ToolTip1.SetToolTip(Me.btnDispStoreInfo, "Click to display current store information")
         Me.btnDispStoreInfo.UseVisualStyleBackColor = True
         '
-        'btnClearGrpPurch
+        'btnClearGrpTransDetail
         '
-        Me.btnClearGrpPurch.Location = New System.Drawing.Point(240, 235)
-        Me.btnClearGrpPurch.Name = "btnClearGrpPurch"
-        Me.btnClearGrpPurch.Size = New System.Drawing.Size(128, 23)
-        Me.btnClearGrpPurch.TabIndex = 33
-        Me.btnClearGrpPurch.Text = "&Clear"
-        Me.ToolTip1.SetToolTip(Me.btnClearGrpPurch, "Click to clear input selections")
-        Me.btnClearGrpPurch.UseVisualStyleBackColor = True
+        Me.btnClearGrpTransDetail.Location = New System.Drawing.Point(240, 235)
+        Me.btnClearGrpTransDetail.Name = "btnClearGrpTransDetail"
+        Me.btnClearGrpTransDetail.Size = New System.Drawing.Size(128, 23)
+        Me.btnClearGrpTransDetail.TabIndex = 33
+        Me.btnClearGrpTransDetail.Text = "&Clear"
+        Me.ToolTip1.SetToolTip(Me.btnClearGrpTransDetail, "Click to clear input selections")
+        Me.btnClearGrpTransDetail.UseVisualStyleBackColor = True
         '
         'btnProcessTestData
         '
@@ -235,22 +239,22 @@ Partial Class FrmMain
         Me.ToolTip1.SetToolTip(Me.btnProcessTestData, "Click to load test data into system")
         Me.btnProcessTestData.UseVisualStyleBackColor = True
         '
-        'btnConfirmGrpPurch
+        'btnConfirmGrpTransDetail
         '
-        Me.btnConfirmGrpPurch.Location = New System.Drawing.Point(93, 235)
-        Me.btnConfirmGrpPurch.Name = "btnConfirmGrpPurch"
-        Me.btnConfirmGrpPurch.Size = New System.Drawing.Size(128, 23)
-        Me.btnConfirmGrpPurch.TabIndex = 34
-        Me.btnConfirmGrpPurch.Text = "&Confirm"
-        Me.ToolTip1.SetToolTip(Me.btnConfirmGrpPurch, "Click to confirm transaction")
-        Me.btnConfirmGrpPurch.UseVisualStyleBackColor = True
+        Me.btnConfirmGrpTransDetail.Location = New System.Drawing.Point(93, 235)
+        Me.btnConfirmGrpTransDetail.Name = "btnConfirmGrpTransDetail"
+        Me.btnConfirmGrpTransDetail.Size = New System.Drawing.Size(128, 23)
+        Me.btnConfirmGrpTransDetail.TabIndex = 34
+        Me.btnConfirmGrpTransDetail.Text = "&Confirm"
+        Me.ToolTip1.SetToolTip(Me.btnConfirmGrpTransDetail, "Click to confirm transaction")
+        Me.btnConfirmGrpTransDetail.UseVisualStyleBackColor = True
         '
         'grpSnowShoeInfo
         '
         Me.grpSnowShoeInfo.BackColor = System.Drawing.SystemColors.ActiveCaption
         Me.grpSnowShoeInfo.Controls.Add(Me.btnProcessTestData)
-        Me.grpSnowShoeInfo.Controls.Add(Me.grpTransInfo)
-        Me.grpSnowShoeInfo.Controls.Add(Me.grpPurch)
+        Me.grpSnowShoeInfo.Controls.Add(Me.grpSummaryInfo)
+        Me.grpSnowShoeInfo.Controls.Add(Me.grpTransDetail)
         Me.grpSnowShoeInfo.Controls.Add(Me.btnDispStoreInfo)
         Me.grpSnowShoeInfo.Location = New System.Drawing.Point(39, 79)
         Me.grpSnowShoeInfo.Name = "grpSnowShoeInfo"
@@ -259,33 +263,33 @@ Partial Class FrmMain
         Me.grpSnowShoeInfo.TabStop = False
         Me.grpSnowShoeInfo.Text = "Snowshoe Info"
         '
-        'grpTransInfo
+        'grpSummaryInfo
         '
-        Me.grpTransInfo.Controls.Add(Me.Label14)
-        Me.grpTransInfo.Controls.Add(Me.Label8)
-        Me.grpTransInfo.Controls.Add(Me.txtTransCntTotalGrpTransInfo)
-        Me.grpTransInfo.Controls.Add(Me.txtExtPriceTotalTransInfo)
-        Me.grpTransInfo.Controls.Add(Me.txtMemDiscntCurrGrpTransInfo)
-        Me.grpTransInfo.Controls.Add(Me.txtMemDiscntTotalGrpTransInfo)
-        Me.grpTransInfo.Controls.Add(Me.txtPreTaxCurrGrpTransInfo)
-        Me.grpTransInfo.Controls.Add(Me.txtPreTaxTotalGrpTransInfo)
-        Me.grpTransInfo.Controls.Add(Me.txtTaxCurrGrpTransInfo)
-        Me.grpTransInfo.Controls.Add(Me.txtTaxTotalGrpTransInfo)
-        Me.grpTransInfo.Controls.Add(Me.txtTotalCostCurrGrpTransInfo)
-        Me.grpTransInfo.Controls.Add(Me.txtTotalCostTotalGrpTransInfo)
-        Me.grpTransInfo.Controls.Add(Me.txtExtPriceCurrTransInfo)
-        Me.grpTransInfo.Controls.Add(Me.Label7)
-        Me.grpTransInfo.Controls.Add(Me.Label6)
-        Me.grpTransInfo.Controls.Add(Me.Label5)
-        Me.grpTransInfo.Controls.Add(Me.Label4)
-        Me.grpTransInfo.Controls.Add(Me.Label3)
-        Me.grpTransInfo.Controls.Add(Me.Label2)
-        Me.grpTransInfo.Location = New System.Drawing.Point(510, 31)
-        Me.grpTransInfo.Name = "grpTransInfo"
-        Me.grpTransInfo.Size = New System.Drawing.Size(380, 271)
-        Me.grpTransInfo.TabIndex = 32
-        Me.grpTransInfo.TabStop = False
-        Me.grpTransInfo.Text = "Transaction Info"
+        Me.grpSummaryInfo.Controls.Add(Me.Label14)
+        Me.grpSummaryInfo.Controls.Add(Me.Label8)
+        Me.grpSummaryInfo.Controls.Add(Me.txtTransCntTotalGrpSummaryInfo)
+        Me.grpSummaryInfo.Controls.Add(Me.txtExtPriceTotalGrpSummaryInfo)
+        Me.grpSummaryInfo.Controls.Add(Me.txtMemDiscntCurrGrpSummaryInfo)
+        Me.grpSummaryInfo.Controls.Add(Me.txtMemDiscntTotalGrpSummaryInfo)
+        Me.grpSummaryInfo.Controls.Add(Me.txtPreTaxCurrGrpSummaryInfo)
+        Me.grpSummaryInfo.Controls.Add(Me.txtPreTaxTotalGrpSummaryInfo)
+        Me.grpSummaryInfo.Controls.Add(Me.txtTaxCurrGrpSummaryInfo)
+        Me.grpSummaryInfo.Controls.Add(Me.txtTaxTotalGrpSummaryInfo)
+        Me.grpSummaryInfo.Controls.Add(Me.txtTotalCostCurrGrpSummaryInfo)
+        Me.grpSummaryInfo.Controls.Add(Me.txtTotalCostTotalGrpSummaryInfo)
+        Me.grpSummaryInfo.Controls.Add(Me.txtExtPriceCurrTransSummaryInfo)
+        Me.grpSummaryInfo.Controls.Add(Me.Label7)
+        Me.grpSummaryInfo.Controls.Add(Me.Label6)
+        Me.grpSummaryInfo.Controls.Add(Me.Label5)
+        Me.grpSummaryInfo.Controls.Add(Me.Label4)
+        Me.grpSummaryInfo.Controls.Add(Me.Label3)
+        Me.grpSummaryInfo.Controls.Add(Me.Label2)
+        Me.grpSummaryInfo.Location = New System.Drawing.Point(510, 31)
+        Me.grpSummaryInfo.Name = "grpSummaryInfo"
+        Me.grpSummaryInfo.Size = New System.Drawing.Size(380, 271)
+        Me.grpSummaryInfo.TabIndex = 32
+        Me.grpSummaryInfo.TabStop = False
+        Me.grpSummaryInfo.Text = "Summary Info"
         '
         'Label14
         '
@@ -305,115 +309,115 @@ Partial Class FrmMain
         Me.Label8.TabIndex = 49
         Me.Label8.Text = "Current"
         '
-        'txtTransCntTotalGrpTransInfo
+        'txtTransCntTotalGrpSummaryInfo
         '
-        Me.txtTransCntTotalGrpTransInfo.BackColor = System.Drawing.SystemColors.ControlLight
-        Me.txtTransCntTotalGrpTransInfo.Location = New System.Drawing.Point(169, 210)
-        Me.txtTransCntTotalGrpTransInfo.Name = "txtTransCntTotalGrpTransInfo"
-        Me.txtTransCntTotalGrpTransInfo.ReadOnly = True
-        Me.txtTransCntTotalGrpTransInfo.RightToLeft = System.Windows.Forms.RightToLeft.Yes
-        Me.txtTransCntTotalGrpTransInfo.Size = New System.Drawing.Size(74, 20)
-        Me.txtTransCntTotalGrpTransInfo.TabIndex = 48
+        Me.txtTransCntTotalGrpSummaryInfo.BackColor = System.Drawing.SystemColors.ControlLight
+        Me.txtTransCntTotalGrpSummaryInfo.Location = New System.Drawing.Point(169, 210)
+        Me.txtTransCntTotalGrpSummaryInfo.Name = "txtTransCntTotalGrpSummaryInfo"
+        Me.txtTransCntTotalGrpSummaryInfo.ReadOnly = True
+        Me.txtTransCntTotalGrpSummaryInfo.RightToLeft = System.Windows.Forms.RightToLeft.Yes
+        Me.txtTransCntTotalGrpSummaryInfo.Size = New System.Drawing.Size(74, 20)
+        Me.txtTransCntTotalGrpSummaryInfo.TabIndex = 48
         '
-        'txtExtPriceTotalTransInfo
+        'txtExtPriceTotalGrpSummaryInfo
         '
-        Me.txtExtPriceTotalTransInfo.BackColor = System.Drawing.SystemColors.ControlLight
-        Me.txtExtPriceTotalTransInfo.Location = New System.Drawing.Point(249, 53)
-        Me.txtExtPriceTotalTransInfo.Name = "txtExtPriceTotalTransInfo"
-        Me.txtExtPriceTotalTransInfo.ReadOnly = True
-        Me.txtExtPriceTotalTransInfo.RightToLeft = System.Windows.Forms.RightToLeft.Yes
-        Me.txtExtPriceTotalTransInfo.Size = New System.Drawing.Size(74, 20)
-        Me.txtExtPriceTotalTransInfo.TabIndex = 47
+        Me.txtExtPriceTotalGrpSummaryInfo.BackColor = System.Drawing.SystemColors.ControlLight
+        Me.txtExtPriceTotalGrpSummaryInfo.Location = New System.Drawing.Point(249, 53)
+        Me.txtExtPriceTotalGrpSummaryInfo.Name = "txtExtPriceTotalGrpSummaryInfo"
+        Me.txtExtPriceTotalGrpSummaryInfo.ReadOnly = True
+        Me.txtExtPriceTotalGrpSummaryInfo.RightToLeft = System.Windows.Forms.RightToLeft.Yes
+        Me.txtExtPriceTotalGrpSummaryInfo.Size = New System.Drawing.Size(74, 20)
+        Me.txtExtPriceTotalGrpSummaryInfo.TabIndex = 47
         '
-        'txtMemDiscntCurrGrpTransInfo
+        'txtMemDiscntCurrGrpSummaryInfo
         '
-        Me.txtMemDiscntCurrGrpTransInfo.BackColor = System.Drawing.SystemColors.ControlLight
-        Me.txtMemDiscntCurrGrpTransInfo.Location = New System.Drawing.Point(169, 78)
-        Me.txtMemDiscntCurrGrpTransInfo.Name = "txtMemDiscntCurrGrpTransInfo"
-        Me.txtMemDiscntCurrGrpTransInfo.ReadOnly = True
-        Me.txtMemDiscntCurrGrpTransInfo.RightToLeft = System.Windows.Forms.RightToLeft.Yes
-        Me.txtMemDiscntCurrGrpTransInfo.Size = New System.Drawing.Size(74, 20)
-        Me.txtMemDiscntCurrGrpTransInfo.TabIndex = 46
+        Me.txtMemDiscntCurrGrpSummaryInfo.BackColor = System.Drawing.SystemColors.ControlLight
+        Me.txtMemDiscntCurrGrpSummaryInfo.Location = New System.Drawing.Point(169, 78)
+        Me.txtMemDiscntCurrGrpSummaryInfo.Name = "txtMemDiscntCurrGrpSummaryInfo"
+        Me.txtMemDiscntCurrGrpSummaryInfo.ReadOnly = True
+        Me.txtMemDiscntCurrGrpSummaryInfo.RightToLeft = System.Windows.Forms.RightToLeft.Yes
+        Me.txtMemDiscntCurrGrpSummaryInfo.Size = New System.Drawing.Size(74, 20)
+        Me.txtMemDiscntCurrGrpSummaryInfo.TabIndex = 46
         '
-        'txtMemDiscntTotalGrpTransInfo
+        'txtMemDiscntTotalGrpSummaryInfo
         '
-        Me.txtMemDiscntTotalGrpTransInfo.BackColor = System.Drawing.SystemColors.ControlLight
-        Me.txtMemDiscntTotalGrpTransInfo.Location = New System.Drawing.Point(249, 78)
-        Me.txtMemDiscntTotalGrpTransInfo.Name = "txtMemDiscntTotalGrpTransInfo"
-        Me.txtMemDiscntTotalGrpTransInfo.ReadOnly = True
-        Me.txtMemDiscntTotalGrpTransInfo.RightToLeft = System.Windows.Forms.RightToLeft.Yes
-        Me.txtMemDiscntTotalGrpTransInfo.Size = New System.Drawing.Size(74, 20)
-        Me.txtMemDiscntTotalGrpTransInfo.TabIndex = 45
+        Me.txtMemDiscntTotalGrpSummaryInfo.BackColor = System.Drawing.SystemColors.ControlLight
+        Me.txtMemDiscntTotalGrpSummaryInfo.Location = New System.Drawing.Point(249, 78)
+        Me.txtMemDiscntTotalGrpSummaryInfo.Name = "txtMemDiscntTotalGrpSummaryInfo"
+        Me.txtMemDiscntTotalGrpSummaryInfo.ReadOnly = True
+        Me.txtMemDiscntTotalGrpSummaryInfo.RightToLeft = System.Windows.Forms.RightToLeft.Yes
+        Me.txtMemDiscntTotalGrpSummaryInfo.Size = New System.Drawing.Size(74, 20)
+        Me.txtMemDiscntTotalGrpSummaryInfo.TabIndex = 45
         '
-        'txtPreTaxCurrGrpTransInfo
+        'txtPreTaxCurrGrpSummaryInfo
         '
-        Me.txtPreTaxCurrGrpTransInfo.BackColor = System.Drawing.SystemColors.ControlLight
-        Me.txtPreTaxCurrGrpTransInfo.Location = New System.Drawing.Point(169, 104)
-        Me.txtPreTaxCurrGrpTransInfo.Name = "txtPreTaxCurrGrpTransInfo"
-        Me.txtPreTaxCurrGrpTransInfo.ReadOnly = True
-        Me.txtPreTaxCurrGrpTransInfo.RightToLeft = System.Windows.Forms.RightToLeft.Yes
-        Me.txtPreTaxCurrGrpTransInfo.Size = New System.Drawing.Size(74, 20)
-        Me.txtPreTaxCurrGrpTransInfo.TabIndex = 44
+        Me.txtPreTaxCurrGrpSummaryInfo.BackColor = System.Drawing.SystemColors.ControlLight
+        Me.txtPreTaxCurrGrpSummaryInfo.Location = New System.Drawing.Point(169, 104)
+        Me.txtPreTaxCurrGrpSummaryInfo.Name = "txtPreTaxCurrGrpSummaryInfo"
+        Me.txtPreTaxCurrGrpSummaryInfo.ReadOnly = True
+        Me.txtPreTaxCurrGrpSummaryInfo.RightToLeft = System.Windows.Forms.RightToLeft.Yes
+        Me.txtPreTaxCurrGrpSummaryInfo.Size = New System.Drawing.Size(74, 20)
+        Me.txtPreTaxCurrGrpSummaryInfo.TabIndex = 44
         '
-        'txtPreTaxTotalGrpTransInfo
+        'txtPreTaxTotalGrpSummaryInfo
         '
-        Me.txtPreTaxTotalGrpTransInfo.BackColor = System.Drawing.SystemColors.ControlLight
-        Me.txtPreTaxTotalGrpTransInfo.Location = New System.Drawing.Point(249, 104)
-        Me.txtPreTaxTotalGrpTransInfo.Name = "txtPreTaxTotalGrpTransInfo"
-        Me.txtPreTaxTotalGrpTransInfo.ReadOnly = True
-        Me.txtPreTaxTotalGrpTransInfo.RightToLeft = System.Windows.Forms.RightToLeft.Yes
-        Me.txtPreTaxTotalGrpTransInfo.Size = New System.Drawing.Size(74, 20)
-        Me.txtPreTaxTotalGrpTransInfo.TabIndex = 43
+        Me.txtPreTaxTotalGrpSummaryInfo.BackColor = System.Drawing.SystemColors.ControlLight
+        Me.txtPreTaxTotalGrpSummaryInfo.Location = New System.Drawing.Point(249, 104)
+        Me.txtPreTaxTotalGrpSummaryInfo.Name = "txtPreTaxTotalGrpSummaryInfo"
+        Me.txtPreTaxTotalGrpSummaryInfo.ReadOnly = True
+        Me.txtPreTaxTotalGrpSummaryInfo.RightToLeft = System.Windows.Forms.RightToLeft.Yes
+        Me.txtPreTaxTotalGrpSummaryInfo.Size = New System.Drawing.Size(74, 20)
+        Me.txtPreTaxTotalGrpSummaryInfo.TabIndex = 43
         '
-        'txtTaxCurrGrpTransInfo
+        'txtTaxCurrGrpSummaryInfo
         '
-        Me.txtTaxCurrGrpTransInfo.BackColor = System.Drawing.SystemColors.ControlLight
-        Me.txtTaxCurrGrpTransInfo.Location = New System.Drawing.Point(169, 130)
-        Me.txtTaxCurrGrpTransInfo.Name = "txtTaxCurrGrpTransInfo"
-        Me.txtTaxCurrGrpTransInfo.ReadOnly = True
-        Me.txtTaxCurrGrpTransInfo.RightToLeft = System.Windows.Forms.RightToLeft.Yes
-        Me.txtTaxCurrGrpTransInfo.Size = New System.Drawing.Size(74, 20)
-        Me.txtTaxCurrGrpTransInfo.TabIndex = 42
+        Me.txtTaxCurrGrpSummaryInfo.BackColor = System.Drawing.SystemColors.ControlLight
+        Me.txtTaxCurrGrpSummaryInfo.Location = New System.Drawing.Point(169, 130)
+        Me.txtTaxCurrGrpSummaryInfo.Name = "txtTaxCurrGrpSummaryInfo"
+        Me.txtTaxCurrGrpSummaryInfo.ReadOnly = True
+        Me.txtTaxCurrGrpSummaryInfo.RightToLeft = System.Windows.Forms.RightToLeft.Yes
+        Me.txtTaxCurrGrpSummaryInfo.Size = New System.Drawing.Size(74, 20)
+        Me.txtTaxCurrGrpSummaryInfo.TabIndex = 42
         '
-        'txtTaxTotalGrpTransInfo
+        'txtTaxTotalGrpSummaryInfo
         '
-        Me.txtTaxTotalGrpTransInfo.BackColor = System.Drawing.SystemColors.ControlLight
-        Me.txtTaxTotalGrpTransInfo.Location = New System.Drawing.Point(249, 130)
-        Me.txtTaxTotalGrpTransInfo.Name = "txtTaxTotalGrpTransInfo"
-        Me.txtTaxTotalGrpTransInfo.ReadOnly = True
-        Me.txtTaxTotalGrpTransInfo.RightToLeft = System.Windows.Forms.RightToLeft.Yes
-        Me.txtTaxTotalGrpTransInfo.Size = New System.Drawing.Size(74, 20)
-        Me.txtTaxTotalGrpTransInfo.TabIndex = 41
+        Me.txtTaxTotalGrpSummaryInfo.BackColor = System.Drawing.SystemColors.ControlLight
+        Me.txtTaxTotalGrpSummaryInfo.Location = New System.Drawing.Point(249, 130)
+        Me.txtTaxTotalGrpSummaryInfo.Name = "txtTaxTotalGrpSummaryInfo"
+        Me.txtTaxTotalGrpSummaryInfo.ReadOnly = True
+        Me.txtTaxTotalGrpSummaryInfo.RightToLeft = System.Windows.Forms.RightToLeft.Yes
+        Me.txtTaxTotalGrpSummaryInfo.Size = New System.Drawing.Size(74, 20)
+        Me.txtTaxTotalGrpSummaryInfo.TabIndex = 41
         '
-        'txtTotalCostCurrGrpTransInfo
+        'txtTotalCostCurrGrpSummaryInfo
         '
-        Me.txtTotalCostCurrGrpTransInfo.BackColor = System.Drawing.SystemColors.ControlLight
-        Me.txtTotalCostCurrGrpTransInfo.Location = New System.Drawing.Point(169, 156)
-        Me.txtTotalCostCurrGrpTransInfo.Name = "txtTotalCostCurrGrpTransInfo"
-        Me.txtTotalCostCurrGrpTransInfo.ReadOnly = True
-        Me.txtTotalCostCurrGrpTransInfo.RightToLeft = System.Windows.Forms.RightToLeft.Yes
-        Me.txtTotalCostCurrGrpTransInfo.Size = New System.Drawing.Size(74, 20)
-        Me.txtTotalCostCurrGrpTransInfo.TabIndex = 40
+        Me.txtTotalCostCurrGrpSummaryInfo.BackColor = System.Drawing.SystemColors.ControlLight
+        Me.txtTotalCostCurrGrpSummaryInfo.Location = New System.Drawing.Point(169, 156)
+        Me.txtTotalCostCurrGrpSummaryInfo.Name = "txtTotalCostCurrGrpSummaryInfo"
+        Me.txtTotalCostCurrGrpSummaryInfo.ReadOnly = True
+        Me.txtTotalCostCurrGrpSummaryInfo.RightToLeft = System.Windows.Forms.RightToLeft.Yes
+        Me.txtTotalCostCurrGrpSummaryInfo.Size = New System.Drawing.Size(74, 20)
+        Me.txtTotalCostCurrGrpSummaryInfo.TabIndex = 40
         '
-        'txtTotalCostTotalGrpTransInfo
+        'txtTotalCostTotalGrpSummaryInfo
         '
-        Me.txtTotalCostTotalGrpTransInfo.BackColor = System.Drawing.SystemColors.ControlLight
-        Me.txtTotalCostTotalGrpTransInfo.Location = New System.Drawing.Point(249, 156)
-        Me.txtTotalCostTotalGrpTransInfo.Name = "txtTotalCostTotalGrpTransInfo"
-        Me.txtTotalCostTotalGrpTransInfo.ReadOnly = True
-        Me.txtTotalCostTotalGrpTransInfo.RightToLeft = System.Windows.Forms.RightToLeft.Yes
-        Me.txtTotalCostTotalGrpTransInfo.Size = New System.Drawing.Size(74, 20)
-        Me.txtTotalCostTotalGrpTransInfo.TabIndex = 39
+        Me.txtTotalCostTotalGrpSummaryInfo.BackColor = System.Drawing.SystemColors.ControlLight
+        Me.txtTotalCostTotalGrpSummaryInfo.Location = New System.Drawing.Point(249, 156)
+        Me.txtTotalCostTotalGrpSummaryInfo.Name = "txtTotalCostTotalGrpSummaryInfo"
+        Me.txtTotalCostTotalGrpSummaryInfo.ReadOnly = True
+        Me.txtTotalCostTotalGrpSummaryInfo.RightToLeft = System.Windows.Forms.RightToLeft.Yes
+        Me.txtTotalCostTotalGrpSummaryInfo.Size = New System.Drawing.Size(74, 20)
+        Me.txtTotalCostTotalGrpSummaryInfo.TabIndex = 39
         '
-        'txtExtPriceCurrTransInfo
+        'txtExtPriceCurrTransSummaryInfo
         '
-        Me.txtExtPriceCurrTransInfo.BackColor = System.Drawing.SystemColors.ControlLight
-        Me.txtExtPriceCurrTransInfo.Location = New System.Drawing.Point(169, 53)
-        Me.txtExtPriceCurrTransInfo.Name = "txtExtPriceCurrTransInfo"
-        Me.txtExtPriceCurrTransInfo.ReadOnly = True
-        Me.txtExtPriceCurrTransInfo.RightToLeft = System.Windows.Forms.RightToLeft.Yes
-        Me.txtExtPriceCurrTransInfo.Size = New System.Drawing.Size(74, 20)
-        Me.txtExtPriceCurrTransInfo.TabIndex = 38
+        Me.txtExtPriceCurrTransSummaryInfo.BackColor = System.Drawing.SystemColors.ControlLight
+        Me.txtExtPriceCurrTransSummaryInfo.Location = New System.Drawing.Point(169, 53)
+        Me.txtExtPriceCurrTransSummaryInfo.Name = "txtExtPriceCurrTransSummaryInfo"
+        Me.txtExtPriceCurrTransSummaryInfo.ReadOnly = True
+        Me.txtExtPriceCurrTransSummaryInfo.RightToLeft = System.Windows.Forms.RightToLeft.Yes
+        Me.txtExtPriceCurrTransSummaryInfo.Size = New System.Drawing.Size(74, 20)
+        Me.txtExtPriceCurrTransSummaryInfo.TabIndex = 38
         '
         'Label7
         '
@@ -469,33 +473,33 @@ Partial Class FrmMain
         Me.Label2.TabIndex = 32
         Me.Label2.Text = "Extended Price"
         '
-        'grpPurch
+        'grpTransDetail
         '
-        Me.grpPurch.Controls.Add(Me.btnConfirmGrpPurch)
-        Me.grpPurch.Controls.Add(Me.lstSnowshoeNameGrpPurch)
-        Me.grpPurch.Controls.Add(Me.btnClearGrpPurch)
-        Me.grpPurch.Controls.Add(Me.lstSnowshoePurchPriceGrpPurch)
-        Me.grpPurch.Controls.Add(Me.lstSnowshoeRentPriceGrpPurch)
-        Me.grpPurch.Controls.Add(Me.Label12)
-        Me.grpPurch.Controls.Add(Me.nudNumPairsGrpPurch)
-        Me.grpPurch.Controls.Add(Me.chkMemberGrpPurch)
-        Me.grpPurch.Controls.Add(Me.chkRentalGrpPurch)
-        Me.grpPurch.Controls.Add(Me.nudRentalDaysGrpPurch)
-        Me.grpPurch.Controls.Add(Me.Label13)
-        Me.grpPurch.Controls.Add(Me.Label9)
-        Me.grpPurch.Controls.Add(Me.Label11)
-        Me.grpPurch.Controls.Add(Me.Label10)
-        Me.grpPurch.Location = New System.Drawing.Point(25, 31)
-        Me.grpPurch.Name = "grpPurch"
-        Me.grpPurch.Size = New System.Drawing.Size(449, 271)
-        Me.grpPurch.TabIndex = 31
-        Me.grpPurch.TabStop = False
-        Me.grpPurch.Text = "Purchase Info"
+        Me.grpTransDetail.Controls.Add(Me.btnConfirmGrpTransDetail)
+        Me.grpTransDetail.Controls.Add(Me.lstSnowshoeNameGrpTransDetail)
+        Me.grpTransDetail.Controls.Add(Me.btnClearGrpTransDetail)
+        Me.grpTransDetail.Controls.Add(Me.lstSnowshoePurchPriceGrpTransDetail)
+        Me.grpTransDetail.Controls.Add(Me.lstSnowshoeRentPriceGrpTransDetail)
+        Me.grpTransDetail.Controls.Add(Me.Label12)
+        Me.grpTransDetail.Controls.Add(Me.nudPairsCntGrpTransDetail)
+        Me.grpTransDetail.Controls.Add(Me.chkIsMemberGrpTransDetail)
+        Me.grpTransDetail.Controls.Add(Me.chkIsRentalGrpTransDetail)
+        Me.grpTransDetail.Controls.Add(Me.nudRentalDaysGrpTransDetail)
+        Me.grpTransDetail.Controls.Add(Me.Label13)
+        Me.grpTransDetail.Controls.Add(Me.Label9)
+        Me.grpTransDetail.Controls.Add(Me.Label11)
+        Me.grpTransDetail.Controls.Add(Me.Label10)
+        Me.grpTransDetail.Location = New System.Drawing.Point(25, 31)
+        Me.grpTransDetail.Name = "grpTransDetail"
+        Me.grpTransDetail.Size = New System.Drawing.Size(449, 271)
+        Me.grpTransDetail.TabIndex = 31
+        Me.grpTransDetail.TabStop = False
+        Me.grpTransDetail.Text = "Transaction Details"
         '
         'Label12
         '
         Me.Label12.AutoSize = True
-        Me.Label12.Location = New System.Drawing.Point(40, 163)
+        Me.Label12.Location = New System.Drawing.Point(37, 165)
         Me.Label12.Name = "Label12"
         Me.Label12.Size = New System.Drawing.Size(85, 13)
         Me.Label12.TabIndex = 6
@@ -552,14 +556,14 @@ Partial Class FrmMain
         Me.ToolTip1.SetToolTip(Me, "Stock Market Portfolio Management")
         Me.grpTransLogFrmMain.ResumeLayout(False)
         Me.grpTransLogFrmMain.PerformLayout()
-        CType(Me.nudNumPairsGrpPurch, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.nudRentalDaysGrpPurch, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.nudPairsCntGrpTransDetail, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.nudRentalDaysGrpTransDetail, System.ComponentModel.ISupportInitialize).EndInit()
         Me.grpSnowShoeInfo.ResumeLayout(False)
         Me.grpSnowShoeInfo.PerformLayout()
-        Me.grpTransInfo.ResumeLayout(False)
-        Me.grpTransInfo.PerformLayout()
-        Me.grpPurch.ResumeLayout(False)
-        Me.grpPurch.PerformLayout()
+        Me.grpSummaryInfo.ResumeLayout(False)
+        Me.grpSummaryInfo.PerformLayout()
+        Me.grpTransDetail.ResumeLayout(False)
+        Me.grpTransDetail.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -570,40 +574,40 @@ Partial Class FrmMain
     Friend WithEvents Label11 As System.Windows.Forms.Label
     Friend WithEvents Label10 As System.Windows.Forms.Label
     Friend WithEvents Label9 As System.Windows.Forms.Label
-    Friend WithEvents lstSnowshoeRentPriceGrpPurch As System.Windows.Forms.ListBox
-    Friend WithEvents lstSnowshoeNameGrpPurch As System.Windows.Forms.ListBox
-    Friend WithEvents lstSnowshoePurchPriceGrpPurch As System.Windows.Forms.ListBox
+    Friend WithEvents lstSnowshoeRentPriceGrpTransDetail As System.Windows.Forms.ListBox
+    Friend WithEvents lstSnowshoeNameGrpTransDetail As System.Windows.Forms.ListBox
+    Friend WithEvents lstSnowshoePurchPriceGrpTransDetail As System.Windows.Forms.ListBox
     Friend WithEvents Label12 As System.Windows.Forms.Label
     Friend WithEvents grpTransLogFrmMain As System.Windows.Forms.GroupBox
     Friend WithEvents txtTransLogFrmMain As System.Windows.Forms.TextBox
     Friend WithEvents btnExitFrmMain As System.Windows.Forms.Button
-    Friend WithEvents chkRentalGrpPurch As System.Windows.Forms.CheckBox
-    Friend WithEvents nudNumPairsGrpPurch As System.Windows.Forms.NumericUpDown
+    Friend WithEvents chkIsRentalGrpTransDetail As System.Windows.Forms.CheckBox
+    Friend WithEvents nudPairsCntGrpTransDetail As System.Windows.Forms.NumericUpDown
     Friend WithEvents Label13 As System.Windows.Forms.Label
-    Friend WithEvents chkMemberGrpPurch As System.Windows.Forms.CheckBox
-    Friend WithEvents nudRentalDaysGrpPurch As System.Windows.Forms.NumericUpDown
-    Friend WithEvents grpPurch As System.Windows.Forms.GroupBox
+    Friend WithEvents chkIsMemberGrpTransDetail As System.Windows.Forms.CheckBox
+    Friend WithEvents nudRentalDaysGrpTransDetail As System.Windows.Forms.NumericUpDown
+    Friend WithEvents grpTransDetail As System.Windows.Forms.GroupBox
     Friend WithEvents btnProcessTestData As System.Windows.Forms.Button
-    Friend WithEvents grpTransInfo As System.Windows.Forms.GroupBox
-    Friend WithEvents txtTransCntTotalGrpTransInfo As System.Windows.Forms.TextBox
-    Friend WithEvents txtExtPriceTotalTransInfo As System.Windows.Forms.TextBox
-    Friend WithEvents txtMemDiscntCurrGrpTransInfo As System.Windows.Forms.TextBox
-    Friend WithEvents txtMemDiscntTotalGrpTransInfo As System.Windows.Forms.TextBox
-    Friend WithEvents txtPreTaxCurrGrpTransInfo As System.Windows.Forms.TextBox
-    Friend WithEvents txtPreTaxTotalGrpTransInfo As System.Windows.Forms.TextBox
-    Friend WithEvents txtTaxCurrGrpTransInfo As System.Windows.Forms.TextBox
-    Friend WithEvents txtTaxTotalGrpTransInfo As System.Windows.Forms.TextBox
-    Friend WithEvents txtTotalCostCurrGrpTransInfo As System.Windows.Forms.TextBox
-    Friend WithEvents txtTotalCostTotalGrpTransInfo As System.Windows.Forms.TextBox
-    Friend WithEvents txtExtPriceCurrTransInfo As System.Windows.Forms.TextBox
+    Friend WithEvents grpSummaryInfo As System.Windows.Forms.GroupBox
+    Friend WithEvents txtTransCntTotalGrpSummaryInfo As System.Windows.Forms.TextBox
+    Friend WithEvents txtExtPriceTotalGrpSummaryInfo As System.Windows.Forms.TextBox
+    Friend WithEvents txtMemDiscntCurrGrpSummaryInfo As System.Windows.Forms.TextBox
+    Friend WithEvents txtMemDiscntTotalGrpSummaryInfo As System.Windows.Forms.TextBox
+    Friend WithEvents txtPreTaxCurrGrpSummaryInfo As System.Windows.Forms.TextBox
+    Friend WithEvents txtPreTaxTotalGrpSummaryInfo As System.Windows.Forms.TextBox
+    Friend WithEvents txtTaxCurrGrpSummaryInfo As System.Windows.Forms.TextBox
+    Friend WithEvents txtTaxTotalGrpSummaryInfo As System.Windows.Forms.TextBox
+    Friend WithEvents txtTotalCostCurrGrpSummaryInfo As System.Windows.Forms.TextBox
+    Friend WithEvents txtTotalCostTotalGrpSummaryInfo As System.Windows.Forms.TextBox
+    Friend WithEvents txtExtPriceCurrTransSummaryInfo As System.Windows.Forms.TextBox
     Friend WithEvents Label7 As System.Windows.Forms.Label
     Friend WithEvents Label6 As System.Windows.Forms.Label
     Friend WithEvents Label5 As System.Windows.Forms.Label
     Friend WithEvents Label4 As System.Windows.Forms.Label
     Friend WithEvents Label3 As System.Windows.Forms.Label
     Friend WithEvents Label2 As System.Windows.Forms.Label
-    Friend WithEvents btnConfirmGrpPurch As System.Windows.Forms.Button
-    Friend WithEvents btnClearGrpPurch As System.Windows.Forms.Button
+    Friend WithEvents btnConfirmGrpTransDetail As System.Windows.Forms.Button
+    Friend WithEvents btnClearGrpTransDetail As System.Windows.Forms.Button
     Friend WithEvents btnDispStoreInfo As System.Windows.Forms.Button
     Friend WithEvents Label14 As System.Windows.Forms.Label
     Friend WithEvents Label8 As System.Windows.Forms.Label

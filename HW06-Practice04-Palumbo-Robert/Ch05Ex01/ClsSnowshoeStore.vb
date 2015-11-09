@@ -81,7 +81,7 @@ Public Class SnowshoeStore
         End Get
     End Property
 
-    Public ReadOnly Property transCnt() As Integer
+    Public ReadOnly Property snowshoeTransCnt() As Integer
         Get
             Return _snowshoeTransCnt
         End Get
@@ -200,15 +200,32 @@ Public Class SnowshoeStore
     '********** Public Non-Shared Behavioral Methods
 
     '****************************************************************************************
-    'addSnowshoe() is used by the system to add a snowshoe item to 
-    'the list of snowshoes made avaiable to the customer.
+    'snowshoeAdd() is used by the system to add a snowshoe item to the list of snowshoes 
+    'made avaiable to the customer.  It calls the worker procedure to perform the actual
+    'work needed which also raises the associated event to notify any listeners.
     '****************************************************************************************
-    Public Sub addSnowshoe( _
-             ByVal pSnowshoe As Snowshoe _
-             )
+    Public Sub snowshoeAdd(ByVal pSnowshoe As Snowshoe)
+        _snowshoeAdd(pSnowshoe)
+    End Sub 'snowshoeAdd(...)
 
-        _addSnowshoe(pSnowshoe)
-    End Sub 'addSnowshoe(...)
+    '****************************************************************************************
+    'snowshoePurchase() is used by the system to simulate a snowshoe purchase transaction. 
+    'It calls the worker procedure to perform the actual work needed which also raises the 
+    'associated event to notify any listeners.
+    '****************************************************************************************
+    Public Sub snowshoePurchase(ByVal pSnowshoeTransRec As SnowshoeTransRec)
+        _snowshoePurchase(pSnowshoeTransRec)
+    End Sub 'snowshoePurchase(...)
+
+    '****************************************************************************************
+    'snowshoeRental() is used by the system to simulate a snowshoe rental transaction. 
+    'It calls the worker procedure to perform the actual work needed which also raises the 
+    'associated event to notify any listeners.
+    '****************************************************************************************
+    Public Sub snowshoeRental(ByVal pSnowshoeTransRec As SnowshoeTransRec)
+        _snowshoeRental(pSnowshoeTransRec)
+    End Sub 'snowshoeRental(...)
+
 
     '****************************************************************************************
     'ToString() overrides the parent object function to return a 
@@ -221,21 +238,60 @@ Public Class SnowshoeStore
 
     '********** Private Non-Shared Behavioral Methods
 
+    '_snowshoePurchase() is called by snowshoePurchase() and is the 
+    'worker procedure that is used to simlulate a snowshoe purchase transasction.
+    'It calculates appropriate pricing information and raises the associated purchase
+    'event to allow any listeners to perform subsequent actions based up the 
+    'occurrence of the event.
     '****************************************************************************************
-    '_addSnowshoe() is called by addSnowshoe() and is the 
-    'worker procedure that is used to physically add a new
-    'snowshoe to the system.  For now it can only keep a
-    'count of the total number of snowshoes in the system.
-    'It raises an event to notify any listener that the
-    'add has occurred so any additional processing can be
-    'performed.
+    Private Sub _snowshoePurchase(ByVal pSnowshoeTransRec As SnowshoeTransRec)
+        _snowshoeTransCnt += 1
+
+        _extPriceTotal += pSnowshoeTransRec.extPrice
+        _memDiscntTotal += pSnowshoeTransRec.memDiscnt
+        _preTaxTotal += pSnowshoeTransRec.preTaxPrice
+        _taxTotal += pSnowshoeTransRec.salesTaxPrice
+        _totPriceTotal += pSnowshoeTransRec.totalTransCost
+
+        RaiseEvent SnowshoeStore_SnowshoePurchase(Me, _
+                                                  New Snowshoe_EventArgs_SnowshoePurchase(pSnowshoeTransRec))
+    End Sub '_rentBuySnowPurchase(...)
+
+
     '****************************************************************************************
-    Private Sub _addSnowshoe(ByVal pSnowshoe As Snowshoe)
+    '_snowshoeRental() is called by snowshoeRental() and is the 
+    'worker procedure that is used to simlulate a snowshoe rental transasction.
+    'It calculates appropriate pricing information and raises the associated rental
+    'event to allow any listeners to perform subsequent actions based up the 
+    'occurrence of the event.
+    '****************************************************************************************
+    Private Sub _snowshoeRental(ByVal pSnowshoeTransRec As SnowshoeTransRec)
+        _snowshoeTransCnt += 1
+
+        _extPriceTotal += pSnowshoeTransRec.extPrice
+        _memDiscntTotal += pSnowshoeTransRec.memDiscnt
+        _preTaxTotal += pSnowshoeTransRec.preTaxPrice
+        _taxTotal += pSnowshoeTransRec.salesTaxPrice
+        _totPriceTotal += pSnowshoeTransRec.totalTransCost
+
+        RaiseEvent SnowshoeStore_SnowshoeRental(Me, _
+                                                New Snowshoe_EventArgs_SnowshoeRental(pSnowshoeTransRec))
+    End Sub '_rentBuySnowshoes(...)
+
+
+    '****************************************************************************************
+    '_addSnowshoe() is called by addSnowshoe() and is the worker procedure that is used 
+    'to physically add a new snowshoe to the system.  For now it can only keep a count of 
+    'the total number of snowshoes in the system and raises the associated add event
+    'to allow any listeners to perform subsequent actions based up the occurrence of 
+    'the event.
+    '****************************************************************************************
+    Private Sub _snowshoeAdd(ByVal pSnowshoe As Snowshoe)
         _snowshoeCnt += 1
 
         RaiseEvent SnowshoeStore_SnowshoeAdded(Me, _
-                                               New SnowshoeStore_SnowshoeAdded(pSnowshoe))
-    End Sub '_addSnowshoe(...)
+                                               New SnowshoeStore_EventArgs_SnowshoeAdded(pSnowshoe))
+    End Sub '_snowshoeAdd(...)
 
     '****************************************************************************************
     '_toString() creates and returns a String version of the data
@@ -243,9 +299,18 @@ Public Class SnowshoeStore
     'does all the work for ToString().
     '****************************************************************************************
     Private Function _toString() As String
-        Dim _tmpStr As String = ""
+        Dim tmpStr As String = ""
 
-        Return _tmpStr
+        tmpStr = "[SnowshoeStore-Status] -> " _
+            & "SnowshoeCnt=" & _snowshoeCnt.ToString("N0") _
+            & ", TransactionCnt=" & _snowshoeTransCnt.ToString("N0") _
+            & ", ExtPriceTot=$" & _extPriceTotal.ToString("N2") _
+            & ", MemDiscntTot=$" & _memDiscntTotal.ToString("N2") _
+            & ", TotalPreTaxes=$" & _preTaxTotal.ToString("N2") _
+            & ", TotalTaxes=$" & _taxTotal.ToString("N2") _
+            & ", TotalCost=$" & _totPriceTotal.ToString("N2")
+
+        Return tmpStr
     End Function '_toString()
 
 #End Region 'Behavioral Methods
@@ -282,12 +347,12 @@ Public Class SnowshoeStore
                                              ByVal e As System.EventArgs)
 
     'Event raised when snowshow is purchased
-    Public Event SnowshoeStore_SnowshoesPurch(ByVal sender As System.Object, _
-                                              ByVal e As System.EventArgs)
+    Public Event SnowshoeStore_SnowshoePurchase(ByVal sender As System.Object, _
+                                                ByVal e As System.EventArgs)
 
     'Event raised when snowshow is rented
-    Public Event SnowshoeStore_SnowshoesRental(ByVal sender As System.Object, _
-                                               ByVal e As System.EventArgs)
+    Public Event SnowshoeStore_SnowshoeRental(ByVal sender As System.Object, _
+                                              ByVal e As System.EventArgs)
 
 #End Region 'Events
 

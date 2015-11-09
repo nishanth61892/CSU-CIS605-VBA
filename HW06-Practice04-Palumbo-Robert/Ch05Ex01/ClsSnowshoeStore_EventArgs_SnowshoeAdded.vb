@@ -25,7 +25,7 @@ Option Explicit On      'Must declare variables before using them
 Option Strict On        'Must perform explicit data type conversions
 #End Region 'Option / Imports
 
-Public Class SnowshoeStore_SnowshoeAdded
+Public Class SnowshoeStore_EventArgs_SnowshoeAdded
     Inherits System.EventArgs
 
 #Region "Attributes"
@@ -55,7 +55,7 @@ Public Class SnowshoeStore_SnowshoeAdded
         MyBase.New()
 
         _snowshoe = pSnowshoe
-    End Sub 'New(pSnowshoe)
+    End Sub 'New(...)
 
     '********** Copy constructor(s)
     '             - one parameter, an object of the same class
@@ -152,4 +152,4 @@ Public Class SnowshoeStore_SnowshoeAdded
 
 #End Region 'Events
 
-End Class 'OutdoorStore_EventArgs_SnowshoeAdded
+End Class 'SnowshoeStore_EventArgs_SnowshoeAdded

@@ -25,7 +25,7 @@ Option Explicit On      'Must declare variables before using them
 Option Strict On        'Must perform explicit data type conversions
 #End Region 'Option / Imports
 
-Public Class Snowshoe_SnowshoeRental
+Public Class Snowshoe_EventArgs_SnowshoeRental
     Inherits System.EventArgs
 
 #Region "Attributes"
@@ -37,7 +37,7 @@ Public Class Snowshoe_SnowshoeRental
 
     '********** Module-level variables
 
-    Private mSnowshoe As Snowshoe
+    Private mSnowshoeTransRec As SnowshoeTransRec
 
 #End Region 'Attributes
 
@@ -51,11 +51,11 @@ Public Class Snowshoe_SnowshoeRental
     'Special constructor(s) - typically constructors have parameters 
     '                         that are used to initialize attributes
 
-    Public Sub New(ByVal pSnowshoe As Snowshoe)
+    Public Sub New(ByVal pSnowshoeTransRec As SnowshoeTransRec)
         MyBase.New()
 
-        _snowshoe = pSnowshoe
-    End Sub 'New(pSnowshoe)
+        _snowshoeTransRec = pSnowshoeTransRec
+    End Sub 'New(...)
 
     '********** Copy constructor(s)
     '             - one parameter, an object of the same class
@@ -67,21 +67,21 @@ Public Class Snowshoe_SnowshoeRental
     'Get/Set Methods
     '****************************************************************************************
 
-    Public ReadOnly Property snowshoe As Snowshoe
+    Public ReadOnly Property snowshoeTransRec As SnowshoeTransRec
         Get
-            Return _snowshoe
+            Return _snowshoeTransRec
         End Get
     End Property
 
     'Private Get/Set Methods - access attributes, 
     '                          begin name with underscore (_)
 
-    Private Property _snowshoe As Snowshoe
+    Private Property _snowshoeTransRec As SnowshoeTransRec
         Get
-            Return mSnowshoe
+            Return mSnowshoeTransRec
         End Get
-        Set(pValue As Snowshoe)
-            mSnowshoe = pValue
+        Set(pValue As SnowshoeTransRec)
+            mSnowshoeTransRec = pValue
         End Set
     End Property
 
@@ -116,8 +116,8 @@ Public Class Snowshoe_SnowshoeRental
     Private Function _toString() As String
         Dim tmpStr As String
 
-        tmpStr = "[AddSnowshoe-Event] -> " _
-            & "Snowshoe=" & _snowshoe.ToString
+        tmpStr = "[SnowshoeRental-Event] -> " _
+            & "SnowshoeTransRec=" & _snowshoeTransRec.ToString
 
         Return tmpStr
     End Function '_toString()
@@ -152,4 +152,4 @@ Public Class Snowshoe_SnowshoeRental
 
 #End Region 'Events
 
-End Class 'ClsSnowshoe_EventArgs_SnowshoeRental
+End Class 'Snowshoe_EventArgs_SnowshoeRental
