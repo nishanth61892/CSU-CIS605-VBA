@@ -91,7 +91,6 @@ Partial Class FrmMain
         Me.lstSnowshoeRentPriceGrpTransDetail.Enabled = False
         Me.lstSnowshoeRentPriceGrpTransDetail.FormatString = "C2"
         Me.lstSnowshoeRentPriceGrpTransDetail.FormattingEnabled = True
-        Me.lstSnowshoeRentPriceGrpTransDetail.Items.AddRange(New Object() {"15.00", "12.00", "10.00"})
         Me.lstSnowshoeRentPriceGrpTransDetail.Location = New System.Drawing.Point(354, 48)
         Me.lstSnowshoeRentPriceGrpTransDetail.Name = "lstSnowshoeRentPriceGrpTransDetail"
         Me.lstSnowshoeRentPriceGrpTransDetail.RightToLeft = System.Windows.Forms.RightToLeft.Yes
@@ -104,7 +103,6 @@ Partial Class FrmMain
         '
         Me.lstSnowshoeNameGrpTransDetail.BackColor = System.Drawing.SystemColors.Control
         Me.lstSnowshoeNameGrpTransDetail.FormattingEnabled = True
-        Me.lstSnowshoeNameGrpTransDetail.Items.AddRange(New Object() {"MSR Lightning Ascent", "Tubbs Mountaineer 30", "Atlas 1023 Elektra  (W)"})
         Me.lstSnowshoeNameGrpTransDetail.Location = New System.Drawing.Point(40, 49)
         Me.lstSnowshoeNameGrpTransDetail.Name = "lstSnowshoeNameGrpTransDetail"
         Me.lstSnowshoeNameGrpTransDetail.Size = New System.Drawing.Size(181, 95)
@@ -118,7 +116,6 @@ Partial Class FrmMain
         Me.lstSnowshoePurchPriceGrpTransDetail.Enabled = False
         Me.lstSnowshoePurchPriceGrpTransDetail.FormatString = "C2"
         Me.lstSnowshoePurchPriceGrpTransDetail.FormattingEnabled = True
-        Me.lstSnowshoePurchPriceGrpTransDetail.Items.AddRange(New Object() {"299.95", "259.95", "199.95"})
         Me.lstSnowshoePurchPriceGrpTransDetail.Location = New System.Drawing.Point(240, 48)
         Me.lstSnowshoePurchPriceGrpTransDetail.Name = "lstSnowshoePurchPriceGrpTransDetail"
         Me.lstSnowshoePurchPriceGrpTransDetail.RightToLeft = System.Windows.Forms.RightToLeft.Yes

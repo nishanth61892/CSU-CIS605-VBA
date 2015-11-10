@@ -282,9 +282,14 @@ Public Class FrmMain
         Dim daysToRent As Integer
         Dim isMember As Boolean
         Dim isRental As Boolean
+        Dim idx As Integer
 
         'First update based on any snowshoe selection from the list
         If lstSnowshoeNameGrpTransDetail.SelectedIndex >= 0 Then
+            idx = lstSnowshoeNameGrpTransDetail.SelectedIndex
+            lstSnowshoePurchPriceGrpTransDetail.SelectedIndex = idx
+            lstSnowshoeRentPriceGrpTransDetail.SelectedIndex = idx
+
             snowshoeName = lstSnowshoeNameGrpTransDetail.SelectedItem.ToString
             snowshoePurchPrice = Convert.ToDecimal(lstSnowshoePurchPriceGrpTransDetail.SelectedItem)
             snowshoeRentalPrice = Convert.ToDecimal(lstSnowshoeRentPriceGrpTransDetail.SelectedItem)
@@ -356,18 +361,19 @@ Public Class FrmMain
             snowshoe1 = New Snowshoe("MSR Lightning Ascent", 295.95D, 12D)
             snowshoe2 = New Snowshoe("Tubbs Mountaineer 30", 259.95D, 10D)
             snowshoe3 = New Snowshoe("MSR Denali Evo Ascent", 224.95D, 8D)
-            snowshoe4 = New Snowshoe("Yukon Charlie's Trail 930", 99.95D, 7D)
-            snowshoe5 = New Snowshoe("MSR Denali Tyker - Kids", 55.95D, 6D)
-            snowshoe6 = New Snowshoe("Redfeather Snowpaws - Kids", 25.5D, 5D)
+            _snowshoeStore.snowshoeAdd(snowshoe1)
+            _snowshoeStore.snowshoeAdd(snowshoe2)
+            _snowshoeStore.snowshoeAdd(snowshoe3)
             firstTime = False
-        Else
-            snowshoe1 = New Snowshoe("MSR Lightning Ascent II", 395.95D, 18D)
-            snowshoe2 = New Snowshoe("Tubbs Mountaineer 75", 359.95D, 15D)
-            snowshoe3 = New Snowshoe("MSR Everest 1000", 245.95D, 10D)
-            snowshoe4 = New Snowshoe("Tubbs Mountaineer 60", 120D, 9D)
-            snowshoe5 = New Snowshoe("MSR Everest 100 - Kids", 55.95D, 6D)
-            snowshoe6 = New Snowshoe("Redfeather Snowpaws III - Kids", 15.5D, 3D)
+            Return
         End If
+
+        snowshoe1 = New Snowshoe("MSR Lightning Ascent II", 395.95D, 18D)
+        snowshoe2 = New Snowshoe("Tubbs Mountaineer 75", 359.95D, 15D)
+        snowshoe3 = New Snowshoe("MSR Everest 1000", 245.95D, 10D)
+        snowshoe4 = New Snowshoe("Tubbs Mountaineer 60", 120D, 9D)
+        snowshoe5 = New Snowshoe("MSR Everest 100 - Kids", 55.95D, 6D)
+        snowshoe6 = New Snowshoe("Redfeather Snowpaws III - Kids", 15.5D, 3D)
 
         Dim snowshoeTrans1 As SnowshoeTransRec = _
             New SnowshoeTransRec(snowshoe4, 10, True, 10, True)
@@ -509,22 +515,6 @@ Public Class FrmMain
         End If
     End Sub '_btnConfirmGrpTransDetail_Click(...)
 
-    '****************************************************************************************
-    '_lstSnowshoeName_SelectedIndexChanged() is the event procedure that gets called 
-    'when the user selects a specific snowshoe from the list.  It is used to map the
-    'price and rental list selections to the same index
-    '****************************************************************************************
-    Private Sub _lstSnowshoeName_SelectedIndexChanged(sender As Object, e As EventArgs) _
-        Handles lstSnowshoeNameGrpTransDetail.SelectedIndexChanged
-
-        Dim idx As Integer
-
-        idx = lstSnowshoeNameGrpTransDetail.SelectedIndex
-        lstSnowshoePurchPriceGrpTransDetail.SelectedIndex = idx
-        lstSnowshoeRentPriceGrpTransDetail.SelectedIndex = idx
-    End Sub '_lstSnowshoeName_SelectedIndexChanged(...)
-
-
 
     '********** User-Interface Event Procedures
     '             - Initiated automatically by system
@@ -587,8 +577,8 @@ Public Class FrmMain
             lstSnowshoeRentPriceGrpTransDetail.Items.Add(.rentPrice.ToString("N2"))
         End With
 
-        lstSnowshoeNameGrpTransDetail.SelectedIndex =
-            lstSnowshoeNameGrpTransDetail.Items.Count - 1
+        ' lstSnowshoeNameGrpTransDetail.SelectedIndex =
+        'lstSnowshoeNameGrpTransDetail.Items.Count(-1)
 
         'Create a transaction log record
         _writeTransLog("[Snowshoe-Added] -> " & snowshoe.ToString)
