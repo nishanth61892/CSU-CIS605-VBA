@@ -106,8 +106,7 @@ Partial Class FrmMain
         Me.lstSnowshoeNameGrpTransDetail.Location = New System.Drawing.Point(40, 49)
         Me.lstSnowshoeNameGrpTransDetail.Name = "lstSnowshoeNameGrpTransDetail"
         Me.lstSnowshoeNameGrpTransDetail.Size = New System.Drawing.Size(181, 95)
-        Me.lstSnowshoeNameGrpTransDetail.TabIndex = 3
-        Me.lstSnowshoeNameGrpTransDetail.TabStop = False
+        Me.lstSnowshoeNameGrpTransDetail.TabIndex = 1
         Me.ToolTip1.SetToolTip(Me.lstSnowshoeNameGrpTransDetail, "Select a snowshoe from the list")
         '
         'lstSnowshoePurchPriceGrpTransDetail
@@ -120,7 +119,8 @@ Partial Class FrmMain
         Me.lstSnowshoePurchPriceGrpTransDetail.Name = "lstSnowshoePurchPriceGrpTransDetail"
         Me.lstSnowshoePurchPriceGrpTransDetail.RightToLeft = System.Windows.Forms.RightToLeft.Yes
         Me.lstSnowshoePurchPriceGrpTransDetail.Size = New System.Drawing.Size(90, 95)
-        Me.lstSnowshoePurchPriceGrpTransDetail.TabIndex = 1
+        Me.lstSnowshoePurchPriceGrpTransDetail.TabIndex = 3
+        Me.lstSnowshoePurchPriceGrpTransDetail.TabStop = False
         Me.ToolTip1.SetToolTip(Me.lstSnowshoePurchPriceGrpTransDetail, "Snowshoe purchase price")
         '
         'grpTransLogFrmMain
@@ -130,7 +130,7 @@ Partial Class FrmMain
         Me.grpTransLogFrmMain.Location = New System.Drawing.Point(39, 471)
         Me.grpTransLogFrmMain.Name = "grpTransLogFrmMain"
         Me.grpTransLogFrmMain.Size = New System.Drawing.Size(917, 187)
-        Me.grpTransLogFrmMain.TabIndex = 5
+        Me.grpTransLogFrmMain.TabIndex = 2
         Me.grpTransLogFrmMain.TabStop = False
         Me.grpTransLogFrmMain.Text = "Transaction Log"
         Me.ToolTip1.SetToolTip(Me.grpTransLogFrmMain, "System transaction log")
@@ -145,13 +145,14 @@ Partial Class FrmMain
         Me.txtTransLogFrmMain.Size = New System.Drawing.Size(864, 148)
         Me.txtTransLogFrmMain.TabIndex = 0
         Me.txtTransLogFrmMain.TabStop = False
+        Me.ToolTip1.SetToolTip(Me.txtTransLogFrmMain, "Transaction detail log")
         '
         'btnExitFrmMain
         '
         Me.btnExitFrmMain.Location = New System.Drawing.Point(462, 667)
         Me.btnExitFrmMain.Name = "btnExitFrmMain"
         Me.btnExitFrmMain.Size = New System.Drawing.Size(75, 23)
-        Me.btnExitFrmMain.TabIndex = 6
+        Me.btnExitFrmMain.TabIndex = 3
         Me.btnExitFrmMain.Text = "E&xit"
         Me.ToolTip1.SetToolTip(Me.btnExitFrmMain, "Click to close and exit the system")
         Me.btnExitFrmMain.UseVisualStyleBackColor = True
@@ -163,7 +164,7 @@ Partial Class FrmMain
         Me.nudPairsCntGrpTransDetail.Name = "nudPairsCntGrpTransDetail"
         Me.nudPairsCntGrpTransDetail.ReadOnly = True
         Me.nudPairsCntGrpTransDetail.Size = New System.Drawing.Size(45, 20)
-        Me.nudPairsCntGrpTransDetail.TabIndex = 9
+        Me.nudPairsCntGrpTransDetail.TabIndex = 7
         Me.ToolTip1.SetToolTip(Me.nudPairsCntGrpTransDetail, "Number of pair to purchase or rent")
         Me.nudPairsCntGrpTransDetail.Value = New Decimal(New Integer() {1, 0, 0, 0})
         '
@@ -176,7 +177,7 @@ Partial Class FrmMain
         Me.chkIsRentalGrpTransDetail.Name = "chkIsRentalGrpTransDetail"
         Me.chkIsRentalGrpTransDetail.RightToLeft = System.Windows.Forms.RightToLeft.Yes
         Me.chkIsRentalGrpTransDetail.Size = New System.Drawing.Size(55, 17)
-        Me.chkIsRentalGrpTransDetail.TabIndex = 10
+        Me.chkIsRentalGrpTransDetail.TabIndex = 9
         Me.chkIsRentalGrpTransDetail.Text = "?Rent"
         Me.chkIsRentalGrpTransDetail.TextAlign = System.Drawing.ContentAlignment.TopRight
         Me.ToolTip1.SetToolTip(Me.chkIsRentalGrpTransDetail, "Check if this is a rental transaction")
@@ -189,7 +190,7 @@ Partial Class FrmMain
         Me.nudRentalDaysGrpTransDetail.Name = "nudRentalDaysGrpTransDetail"
         Me.nudRentalDaysGrpTransDetail.ReadOnly = True
         Me.nudRentalDaysGrpTransDetail.Size = New System.Drawing.Size(43, 20)
-        Me.nudRentalDaysGrpTransDetail.TabIndex = 12
+        Me.nudRentalDaysGrpTransDetail.TabIndex = 11
         Me.ToolTip1.SetToolTip(Me.nudRentalDaysGrpTransDetail, "Enter number of days to rent")
         Me.nudRentalDaysGrpTransDetail.Value = New Decimal(New Integer() {1, 0, 0, 0})
         '
@@ -200,7 +201,7 @@ Partial Class FrmMain
         Me.chkIsMemberGrpTransDetail.Name = "chkIsMemberGrpTransDetail"
         Me.chkIsMemberGrpTransDetail.RightToLeft = System.Windows.Forms.RightToLeft.Yes
         Me.chkIsMemberGrpTransDetail.Size = New System.Drawing.Size(133, 17)
-        Me.chkIsMemberGrpTransDetail.TabIndex = 13
+        Me.chkIsMemberGrpTransDetail.TabIndex = 8
         Me.chkIsMemberGrpTransDetail.Text = "?MarketPlace Member"
         Me.ToolTip1.SetToolTip(Me.chkIsMemberGrpTransDetail, "Check if customer is a MarketPlace member")
         Me.chkIsMemberGrpTransDetail.UseVisualStyleBackColor = True
@@ -210,7 +211,7 @@ Partial Class FrmMain
         Me.btnDispStoreInfo.Location = New System.Drawing.Point(625, 324)
         Me.btnDispStoreInfo.Name = "btnDispStoreInfo"
         Me.btnDispStoreInfo.Size = New System.Drawing.Size(128, 23)
-        Me.btnDispStoreInfo.TabIndex = 31
+        Me.btnDispStoreInfo.TabIndex = 3
         Me.btnDispStoreInfo.Text = "Display &Store Info"
         Me.ToolTip1.SetToolTip(Me.btnDispStoreInfo, "Click to display current store information")
         Me.btnDispStoreInfo.UseVisualStyleBackColor = True
@@ -220,8 +221,8 @@ Partial Class FrmMain
         Me.btnClearGrpTransDetail.Location = New System.Drawing.Point(240, 235)
         Me.btnClearGrpTransDetail.Name = "btnClearGrpTransDetail"
         Me.btnClearGrpTransDetail.Size = New System.Drawing.Size(128, 23)
-        Me.btnClearGrpTransDetail.TabIndex = 33
-        Me.btnClearGrpTransDetail.Text = "&Clear"
+        Me.btnClearGrpTransDetail.TabIndex = 13
+        Me.btnClearGrpTransDetail.Text = "Clea&r"
         Me.ToolTip1.SetToolTip(Me.btnClearGrpTransDetail, "Click to clear input selections")
         Me.btnClearGrpTransDetail.UseVisualStyleBackColor = True
         '
@@ -231,7 +232,7 @@ Partial Class FrmMain
         Me.btnProcessTestData.Location = New System.Drawing.Point(183, 324)
         Me.btnProcessTestData.Name = "btnProcessTestData"
         Me.btnProcessTestData.Size = New System.Drawing.Size(128, 23)
-        Me.btnProcessTestData.TabIndex = 34
+        Me.btnProcessTestData.TabIndex = 1
         Me.btnProcessTestData.Text = "&ProcessTestData"
         Me.ToolTip1.SetToolTip(Me.btnProcessTestData, "Click to load test data into system")
         Me.btnProcessTestData.UseVisualStyleBackColor = True
@@ -241,7 +242,7 @@ Partial Class FrmMain
         Me.btnConfirmGrpTransDetail.Location = New System.Drawing.Point(93, 235)
         Me.btnConfirmGrpTransDetail.Name = "btnConfirmGrpTransDetail"
         Me.btnConfirmGrpTransDetail.Size = New System.Drawing.Size(128, 23)
-        Me.btnConfirmGrpTransDetail.TabIndex = 34
+        Me.btnConfirmGrpTransDetail.TabIndex = 12
         Me.btnConfirmGrpTransDetail.Text = "&Confirm"
         Me.ToolTip1.SetToolTip(Me.btnConfirmGrpTransDetail, "Click to confirm transaction")
         Me.btnConfirmGrpTransDetail.UseVisualStyleBackColor = True
@@ -256,7 +257,7 @@ Partial Class FrmMain
         Me.grpSnowShoeInfo.Location = New System.Drawing.Point(39, 79)
         Me.grpSnowShoeInfo.Name = "grpSnowShoeInfo"
         Me.grpSnowShoeInfo.Size = New System.Drawing.Size(917, 372)
-        Me.grpSnowShoeInfo.TabIndex = 3
+        Me.grpSnowShoeInfo.TabIndex = 1
         Me.grpSnowShoeInfo.TabStop = False
         Me.grpSnowShoeInfo.Text = "Snowshoe Info"
         '
@@ -284,7 +285,7 @@ Partial Class FrmMain
         Me.grpSummaryInfo.Location = New System.Drawing.Point(510, 31)
         Me.grpSummaryInfo.Name = "grpSummaryInfo"
         Me.grpSummaryInfo.Size = New System.Drawing.Size(380, 271)
-        Me.grpSummaryInfo.TabIndex = 32
+        Me.grpSummaryInfo.TabIndex = 2
         Me.grpSummaryInfo.TabStop = False
         Me.grpSummaryInfo.Text = "Summary Info"
         '
@@ -294,7 +295,7 @@ Partial Class FrmMain
         Me.Label14.Location = New System.Drawing.Point(292, 33)
         Me.Label14.Name = "Label14"
         Me.Label14.Size = New System.Drawing.Size(31, 13)
-        Me.Label14.TabIndex = 50
+        Me.Label14.TabIndex = 1
         Me.Label14.Text = "Total"
         '
         'Label8
@@ -303,7 +304,7 @@ Partial Class FrmMain
         Me.Label8.Location = New System.Drawing.Point(202, 33)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(41, 13)
-        Me.Label8.TabIndex = 49
+        Me.Label8.TabIndex = 0
         Me.Label8.Text = "Current"
         '
         'txtTransCntTotalGrpSummaryInfo
@@ -314,7 +315,9 @@ Partial Class FrmMain
         Me.txtTransCntTotalGrpSummaryInfo.ReadOnly = True
         Me.txtTransCntTotalGrpSummaryInfo.RightToLeft = System.Windows.Forms.RightToLeft.Yes
         Me.txtTransCntTotalGrpSummaryInfo.Size = New System.Drawing.Size(74, 20)
-        Me.txtTransCntTotalGrpSummaryInfo.TabIndex = 48
+        Me.txtTransCntTotalGrpSummaryInfo.TabIndex = 18
+        Me.txtTransCntTotalGrpSummaryInfo.TabStop = False
+        Me.ToolTip1.SetToolTip(Me.txtTransCntTotalGrpSummaryInfo, "Number of store transaction incurred")
         '
         'txtExtPriceTotalGrpSummaryInfo
         '
@@ -324,7 +327,9 @@ Partial Class FrmMain
         Me.txtExtPriceTotalGrpSummaryInfo.ReadOnly = True
         Me.txtExtPriceTotalGrpSummaryInfo.RightToLeft = System.Windows.Forms.RightToLeft.Yes
         Me.txtExtPriceTotalGrpSummaryInfo.Size = New System.Drawing.Size(74, 20)
-        Me.txtExtPriceTotalGrpSummaryInfo.TabIndex = 47
+        Me.txtExtPriceTotalGrpSummaryInfo.TabIndex = 4
+        Me.txtExtPriceTotalGrpSummaryInfo.TabStop = False
+        Me.ToolTip1.SetToolTip(Me.txtExtPriceTotalGrpSummaryInfo, "Cumulative extended price dollar amount for all transactions")
         '
         'txtMemDiscntCurrGrpSummaryInfo
         '
@@ -334,7 +339,9 @@ Partial Class FrmMain
         Me.txtMemDiscntCurrGrpSummaryInfo.ReadOnly = True
         Me.txtMemDiscntCurrGrpSummaryInfo.RightToLeft = System.Windows.Forms.RightToLeft.Yes
         Me.txtMemDiscntCurrGrpSummaryInfo.Size = New System.Drawing.Size(74, 20)
-        Me.txtMemDiscntCurrGrpSummaryInfo.TabIndex = 46
+        Me.txtMemDiscntCurrGrpSummaryInfo.TabIndex = 6
+        Me.txtMemDiscntCurrGrpSummaryInfo.TabStop = False
+        Me.ToolTip1.SetToolTip(Me.txtMemDiscntCurrGrpSummaryInfo, "Member discount dollar amount for this transaction (rentals only)")
         '
         'txtMemDiscntTotalGrpSummaryInfo
         '
@@ -344,7 +351,9 @@ Partial Class FrmMain
         Me.txtMemDiscntTotalGrpSummaryInfo.ReadOnly = True
         Me.txtMemDiscntTotalGrpSummaryInfo.RightToLeft = System.Windows.Forms.RightToLeft.Yes
         Me.txtMemDiscntTotalGrpSummaryInfo.Size = New System.Drawing.Size(74, 20)
-        Me.txtMemDiscntTotalGrpSummaryInfo.TabIndex = 45
+        Me.txtMemDiscntTotalGrpSummaryInfo.TabIndex = 7
+        Me.txtMemDiscntTotalGrpSummaryInfo.TabStop = False
+        Me.ToolTip1.SetToolTip(Me.txtMemDiscntTotalGrpSummaryInfo, "Cumulative member discount dollar amount for all transactions")
         '
         'txtPreTaxCurrGrpSummaryInfo
         '
@@ -354,7 +363,9 @@ Partial Class FrmMain
         Me.txtPreTaxCurrGrpSummaryInfo.ReadOnly = True
         Me.txtPreTaxCurrGrpSummaryInfo.RightToLeft = System.Windows.Forms.RightToLeft.Yes
         Me.txtPreTaxCurrGrpSummaryInfo.Size = New System.Drawing.Size(74, 20)
-        Me.txtPreTaxCurrGrpSummaryInfo.TabIndex = 44
+        Me.txtPreTaxCurrGrpSummaryInfo.TabIndex = 9
+        Me.txtPreTaxCurrGrpSummaryInfo.TabStop = False
+        Me.ToolTip1.SetToolTip(Me.txtPreTaxCurrGrpSummaryInfo, "Pre-tax dollar amount for this transaction")
         '
         'txtPreTaxTotalGrpSummaryInfo
         '
@@ -364,7 +375,9 @@ Partial Class FrmMain
         Me.txtPreTaxTotalGrpSummaryInfo.ReadOnly = True
         Me.txtPreTaxTotalGrpSummaryInfo.RightToLeft = System.Windows.Forms.RightToLeft.Yes
         Me.txtPreTaxTotalGrpSummaryInfo.Size = New System.Drawing.Size(74, 20)
-        Me.txtPreTaxTotalGrpSummaryInfo.TabIndex = 43
+        Me.txtPreTaxTotalGrpSummaryInfo.TabIndex = 10
+        Me.txtPreTaxTotalGrpSummaryInfo.TabStop = False
+        Me.ToolTip1.SetToolTip(Me.txtPreTaxTotalGrpSummaryInfo, "Cumulative pre-tax dollar amount for all transactions")
         '
         'txtTaxCurrGrpSummaryInfo
         '
@@ -374,7 +387,9 @@ Partial Class FrmMain
         Me.txtTaxCurrGrpSummaryInfo.ReadOnly = True
         Me.txtTaxCurrGrpSummaryInfo.RightToLeft = System.Windows.Forms.RightToLeft.Yes
         Me.txtTaxCurrGrpSummaryInfo.Size = New System.Drawing.Size(74, 20)
-        Me.txtTaxCurrGrpSummaryInfo.TabIndex = 42
+        Me.txtTaxCurrGrpSummaryInfo.TabIndex = 12
+        Me.txtTaxCurrGrpSummaryInfo.TabStop = False
+        Me.ToolTip1.SetToolTip(Me.txtTaxCurrGrpSummaryInfo, "Sales tax dollar amount for this transaction")
         '
         'txtTaxTotalGrpSummaryInfo
         '
@@ -384,7 +399,9 @@ Partial Class FrmMain
         Me.txtTaxTotalGrpSummaryInfo.ReadOnly = True
         Me.txtTaxTotalGrpSummaryInfo.RightToLeft = System.Windows.Forms.RightToLeft.Yes
         Me.txtTaxTotalGrpSummaryInfo.Size = New System.Drawing.Size(74, 20)
-        Me.txtTaxTotalGrpSummaryInfo.TabIndex = 41
+        Me.txtTaxTotalGrpSummaryInfo.TabIndex = 13
+        Me.txtTaxTotalGrpSummaryInfo.TabStop = False
+        Me.ToolTip1.SetToolTip(Me.txtTaxTotalGrpSummaryInfo, "Cumulative sales tax dollar amount for all transactions")
         '
         'txtTotalCostCurrGrpSummaryInfo
         '
@@ -394,7 +411,9 @@ Partial Class FrmMain
         Me.txtTotalCostCurrGrpSummaryInfo.ReadOnly = True
         Me.txtTotalCostCurrGrpSummaryInfo.RightToLeft = System.Windows.Forms.RightToLeft.Yes
         Me.txtTotalCostCurrGrpSummaryInfo.Size = New System.Drawing.Size(74, 20)
-        Me.txtTotalCostCurrGrpSummaryInfo.TabIndex = 40
+        Me.txtTotalCostCurrGrpSummaryInfo.TabIndex = 15
+        Me.txtTotalCostCurrGrpSummaryInfo.TabStop = False
+        Me.ToolTip1.SetToolTip(Me.txtTotalCostCurrGrpSummaryInfo, "Total dollar amount for this transaction")
         '
         'txtTotalCostTotalGrpSummaryInfo
         '
@@ -404,7 +423,9 @@ Partial Class FrmMain
         Me.txtTotalCostTotalGrpSummaryInfo.ReadOnly = True
         Me.txtTotalCostTotalGrpSummaryInfo.RightToLeft = System.Windows.Forms.RightToLeft.Yes
         Me.txtTotalCostTotalGrpSummaryInfo.Size = New System.Drawing.Size(74, 20)
-        Me.txtTotalCostTotalGrpSummaryInfo.TabIndex = 39
+        Me.txtTotalCostTotalGrpSummaryInfo.TabIndex = 16
+        Me.txtTotalCostTotalGrpSummaryInfo.TabStop = False
+        Me.ToolTip1.SetToolTip(Me.txtTotalCostTotalGrpSummaryInfo, "Cumulative dollar amount for all transactions")
         '
         'txtExtPriceCurrTransSummaryInfo
         '
@@ -414,7 +435,9 @@ Partial Class FrmMain
         Me.txtExtPriceCurrTransSummaryInfo.ReadOnly = True
         Me.txtExtPriceCurrTransSummaryInfo.RightToLeft = System.Windows.Forms.RightToLeft.Yes
         Me.txtExtPriceCurrTransSummaryInfo.Size = New System.Drawing.Size(74, 20)
-        Me.txtExtPriceCurrTransSummaryInfo.TabIndex = 38
+        Me.txtExtPriceCurrTransSummaryInfo.TabIndex = 3
+        Me.txtExtPriceCurrTransSummaryInfo.TabStop = False
+        Me.ToolTip1.SetToolTip(Me.txtExtPriceCurrTransSummaryInfo, "Extended purchase price for this transaction")
         '
         'Label7
         '
@@ -422,7 +445,7 @@ Partial Class FrmMain
         Me.Label7.Location = New System.Drawing.Point(57, 213)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(110, 13)
-        Me.Label7.TabIndex = 37
+        Me.Label7.TabIndex = 17
         Me.Label7.Text = "Store Transaction Cnt"
         '
         'Label6
@@ -431,7 +454,7 @@ Partial Class FrmMain
         Me.Label6.Location = New System.Drawing.Point(112, 159)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(55, 13)
-        Me.Label6.TabIndex = 36
+        Me.Label6.TabIndex = 14
         Me.Label6.Text = "Total Cost"
         '
         'Label5
@@ -440,7 +463,7 @@ Partial Class FrmMain
         Me.Label5.Location = New System.Drawing.Point(109, 133)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(54, 13)
-        Me.Label5.TabIndex = 35
+        Me.Label5.TabIndex = 11
         Me.Label5.Text = "Sales Tax"
         '
         'Label4
@@ -449,7 +472,7 @@ Partial Class FrmMain
         Me.Label4.Location = New System.Drawing.Point(95, 107)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(68, 13)
-        Me.Label4.TabIndex = 34
+        Me.Label4.TabIndex = 8
         Me.Label4.Text = "Pre-Tax Cost"
         '
         'Label3
@@ -458,7 +481,7 @@ Partial Class FrmMain
         Me.Label3.Location = New System.Drawing.Point(73, 81)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(90, 13)
-        Me.Label3.TabIndex = 33
+        Me.Label3.TabIndex = 5
         Me.Label3.Text = "Member Discount"
         '
         'Label2
@@ -467,7 +490,7 @@ Partial Class FrmMain
         Me.Label2.Location = New System.Drawing.Point(84, 56)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(79, 13)
-        Me.Label2.TabIndex = 32
+        Me.Label2.TabIndex = 2
         Me.Label2.Text = "Extended Price"
         '
         'grpTransDetail
@@ -489,7 +512,7 @@ Partial Class FrmMain
         Me.grpTransDetail.Location = New System.Drawing.Point(25, 31)
         Me.grpTransDetail.Name = "grpTransDetail"
         Me.grpTransDetail.Size = New System.Drawing.Size(449, 271)
-        Me.grpTransDetail.TabIndex = 31
+        Me.grpTransDetail.TabIndex = 0
         Me.grpTransDetail.TabStop = False
         Me.grpTransDetail.Text = "Transaction Details"
         '
@@ -508,7 +531,7 @@ Partial Class FrmMain
         Me.Label13.Location = New System.Drawing.Point(111, 195)
         Me.Label13.Name = "Label13"
         Me.Label13.Size = New System.Drawing.Size(65, 13)
-        Me.Label13.TabIndex = 11
+        Me.Label13.TabIndex = 10
         Me.Label13.Text = "Rental Days"
         '
         'Label9
@@ -526,7 +549,7 @@ Partial Class FrmMain
         Me.Label11.Location = New System.Drawing.Point(251, 32)
         Me.Label11.Name = "Label11"
         Me.Label11.Size = New System.Drawing.Size(79, 13)
-        Me.Label11.TabIndex = 4
+        Me.Label11.TabIndex = 2
         Me.Label11.Text = "Purchase Price"
         '
         'Label10
@@ -535,7 +558,7 @@ Partial Class FrmMain
         Me.Label10.Location = New System.Drawing.Point(351, 32)
         Me.Label10.Name = "Label10"
         Me.Label10.Size = New System.Drawing.Size(65, 13)
-        Me.Label10.TabIndex = 2
+        Me.Label10.TabIndex = 4
         Me.Label10.Text = "Rental Price"
         '
         'FrmMain
