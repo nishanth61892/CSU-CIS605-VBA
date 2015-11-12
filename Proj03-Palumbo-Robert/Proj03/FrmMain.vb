@@ -45,7 +45,7 @@ Public Class FrmMain
 
     'Minimum age to be considered an adult. Less than this age is 
     'thusly considered a child
-    Private Const mADULT_MIN_AGE As Integer = 13
+    Private Const mADULT_MIN_AGE As Integer = (13)
 
     'Used to reference the main UI tab control tabs
     Private Const mTBC_MAIN_TAB_DASHBOARD As Integer = 0
@@ -397,6 +397,28 @@ Public Class FrmMain
         Me.Text = _theThemePark.themeParkName
     End Sub 'initializeUserInterface()
 
+
+    '****************************************************************************************
+    '_calcAge() is used to calculate the age in years for a visitor being added to a 
+    'passbook purchase - age is calculate relative to the current system time (i.e. Now)
+    '****************************************************************************************
+    Private Function _calcAge(ByVal pVisDoB As Date) As Integer
+        Dim age As Integer = 0
+        Dim dateNow As Date = Now
+
+        'Need to compensate for DoB in the current year 
+        Dim dobYear As Integer = pVisDoB.Year
+        Dim nowYear As Integer = Now.Year
+
+        age = nowYear - dobYear
+        If pVisDoB.AddYears(age) > dateNow Then
+            age -= 1
+        End If
+
+        Return age
+    End Function '_calcAge(...)
+
+
 #End Region 'Behavioral Methods
 
 #Region "Event Procedures"
@@ -709,8 +731,8 @@ Public Class FrmMain
         End If
 
         'Determine if the visitor is a child (< 13 years old)
-        Dim visAge As Long = DateDiff(DateInterval.Year, visDobValue, datePurch)
-        Dim visIsChild As Boolean = (visAge < mADULT_MIN_AGE)
+        Dim visAge As Integer = _calcAge(visDobValue)
+        Dim visIsChild As Boolean = visAge < mADULT_MIN_AGE
 
         'Verify the purchase before committing
         Dim choice As MsgBoxResult = MsgBoxResult.Ok
@@ -740,7 +762,7 @@ Public Class FrmMain
                                        datePurch, _
                                        visName, _
                                        visDobValue, _
-                                       Convert.ToInt32(visAge), _
+                                       visAge, _
                                        visIsChild
                                        )
 
