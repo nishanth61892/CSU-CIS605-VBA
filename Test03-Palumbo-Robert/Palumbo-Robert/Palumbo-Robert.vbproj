@@ -75,8 +75,6 @@
     <Compile Include="ClsCustomer.vb" />
     <Compile Include="ClsBank_EventArgs_CreateAccount.vb" />
     <Compile Include="ClsBank_EventArgs_CreateCustomer.vb" />
-    <Compile Include="ClsTrx.vb" />
-    <Compile Include="ClsTrxItem.vb" />
     <Compile Include="FrmMain.vb">
       <SubType>Form</SubType>
     </Compile>
