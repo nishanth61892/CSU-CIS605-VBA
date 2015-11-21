@@ -159,6 +159,10 @@ Public Class FrmMain
 
     '********** Private Shared Behavioral Methods
 
+    '********** Public Non-Shared Behavioral Methods
+
+    '********** Private Non-Shared Behavioral Methods
+
     '****************************************************************************************
     '_closeAppl() is used to simply close the application when
     'requested.
@@ -178,10 +182,22 @@ Public Class FrmMain
         End If
     End Sub '_closeAppl()
 
+    '****************************************************************************************
+    'findCust() is used to locate a customer by ID from the ThemePark customer database.  
+    'Returns a customer reference if found, otherwise Nothing.  
+    'If exception is caught display a UI message and return Nothing
+    '****************************************************************************************
+    Private Function _findCust(ByVal pCustId As String) As Customer
+        Dim cust As Customer = Nothing
 
-    '********** Public Non-Shared Behavioral Methods
+        Try
+            cust = _theThemePark.findCust(pCustId)
+        Catch ex As Exception
+            MsgBox(mSYS_LOOKUP_ERR_MSG, MsgBoxStyle.Exclamation)
+        End Try
 
-    '********** Private Non-Shared Behavioral Methods
+        Return cust
+    End Function '_findCust(...)
 
     '****************************************************************************************
     '_runSystemTest() is the procedure that executes the applications automated test logic.
@@ -925,7 +941,7 @@ Public Class FrmMain
             'But need to trap any insertion acceptions which could happen based on 
             'the state of the system
             Try
-            'Create a new Passbook Feature
+                'Create a new Passbook Feature
                 _theThemePark.addPassbkFeat(passbkFeatId, _
                                             tempFeat, _
                                             tempPassbk, _
@@ -1635,7 +1651,14 @@ Public Class FrmMain
         If Not cboFeatIdTabAddFeatTbcPassbkFeatMainTbcMain.SelectedIndex = -1 Then
             Dim cboVal As String = _
                 cboFeatIdTabAddFeatTbcPassbkFeatMainTbcMain.SelectedItem.ToString
-            Dim feat As Feature = _theThemePark.findFeat(cboVal)
+            Dim feat As Feature
+
+            Try
+                feat = _theThemePark.findFeat(cboVal)
+            Catch ex As Exception
+                MsgBox(mSYS_LOOKUP_ERR_MSG, MsgBoxStyle.Exclamation)
+                Exit Sub
+            End Try
 
             If Not feat Is Nothing Then
                 txtFeatToStringTabAddFeatTbcPassbkFeatMainTbcMain.Text = feat.ToString & vbCrLf
@@ -1690,28 +1713,65 @@ Public Class FrmMain
     Private Sub _cboPassbkFeatIdTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain_SelectedIndexChanged(sender As Object, e As EventArgs) _
           Handles cboPassbkFeatIdTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.SelectedIndexChanged
 
-        'PBO: TEMPORARY AND MUST BE REFACTORED FOR PP04
+        'This require a lot of work.  Need to first locate the passbook feature by id.  If found
+        'then need to use the passbook reference and find it and the feature reference to find
+        'the feature.  Once the passbook is found use the customer reference to locate the 
+        'customer.
         If Not cboPassbkFeatIdTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.SelectedIndex = -1 Then
-            Dim info As String = "Customer-Info: "
             Dim cboVal As String = _
                 cboPassbkFeatIdTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.SelectedItem.ToString
 
-            txtCustToStringTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Text = _
-                info & cboVal & ", completed full info in PP04"
+            Dim passbkFeat As PassbookFeature
+            Dim cust As Customer
+            Dim feat As Feature
+            Dim passbk As Passbook
 
-            info = "Visitor-Info: "
-            txtVisToStringTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Text = _
-                info & cboVal & ", completed full info in PP04"
+            'Find the passbook feature by Id
+            passbkFeat = _theThemePark.findPassbkFeat(cboVal)
 
-            info = "Feature-Info: "
-            txtFeatToStringTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Text = _
-                info & cboVal & ", completed full info in PP04"
+            If Not passbkFeat Is Nothing Then
+                'Find the passbook from the reference contained in the passbook feature object
+                If Not passbkFeat.passbk Is Nothing Then
+                    passbk = _theThemePark.findPassbk(passbkFeat.passbk.passbkId)
+                Else
+                    MsgBox("Failed to associate a Passbook with this Passbook Feature",
+                           MsgBoxStyle.Exclamation)
+                    Exit Sub
+                End If
 
-            info = "PrevUsed-Info: "
-            txtPrevUsedTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Text =
-                info & cboVal & ", completed full info in PP04"
+                'Find the feature from the reference contained in the passbook object 
+                If Not passbkFeat.feature Is Nothing Then
+                    feat = _theThemePark.findFeat(passbkFeat.feature.featId)
+                Else
+                    MsgBox("Failed to associate a Feature with this Passbook Feature",
+                           MsgBoxStyle.Exclamation)
+                    Exit Sub
+                End If
 
-            txtRemQuantTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Text = "3"
+                'Find the owner of the passbook from the customer reference contained object
+                If Not passbk.owner Is Nothing Then
+                    cust = _theThemePark.findCust(passbk.owner.custId)
+                Else
+                    MsgBox("Failed to associate a Customer with the referenced Passbook",
+                           MsgBoxStyle.Exclamation)
+                    Exit Sub
+                End If
+
+                'Made it this far, update the relevant text boxes with current info
+                txtCustToStringTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Text = _
+                    cust.ToString
+                txtVisToStringTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Text = _
+                    "VisitorName: " & passbk.visName & "  RLP: add AGE DOB ETC"
+                txtFeatToStringTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Text = _
+                    feat.ToString
+                txtPrevUsedTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Text =
+                    cboVal & ", RLP MUST BE COMPLETED"
+
+                txtRemQuantTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Text = "3"
+            Else
+                MsgBox("Failed to locate Passbook Feature in the System", MsgBoxStyle.Exclamation)
+                Exit Sub
+            End If
         End If
     End Sub '_cboPassbkFeatIdTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain_SelectedIndexChanged(...)
 
