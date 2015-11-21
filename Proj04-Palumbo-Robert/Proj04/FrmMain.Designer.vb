@@ -604,11 +604,12 @@ Partial Class FrmMain
         'txtFeatToStringTabAddFeatTbcPassbkFeatMainTbcMain
         '
         Me.txtFeatToStringTabAddFeatTbcPassbkFeatMainTbcMain.BackColor = System.Drawing.SystemColors.ControlLight
-        Me.txtFeatToStringTabAddFeatTbcPassbkFeatMainTbcMain.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtFeatToStringTabAddFeatTbcPassbkFeatMainTbcMain.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtFeatToStringTabAddFeatTbcPassbkFeatMainTbcMain.Location = New System.Drawing.Point(278, 37)
         Me.txtFeatToStringTabAddFeatTbcPassbkFeatMainTbcMain.Multiline = True
         Me.txtFeatToStringTabAddFeatTbcPassbkFeatMainTbcMain.Name = "txtFeatToStringTabAddFeatTbcPassbkFeatMainTbcMain"
         Me.txtFeatToStringTabAddFeatTbcPassbkFeatMainTbcMain.ReadOnly = True
+        Me.txtFeatToStringTabAddFeatTbcPassbkFeatMainTbcMain.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
         Me.txtFeatToStringTabAddFeatTbcPassbkFeatMainTbcMain.Size = New System.Drawing.Size(298, 38)
         Me.txtFeatToStringTabAddFeatTbcPassbkFeatMainTbcMain.TabIndex = 3
         Me.txtFeatToStringTabAddFeatTbcPassbkFeatMainTbcMain.TabStop = False
@@ -617,10 +618,10 @@ Partial Class FrmMain
         'Label15
         '
         Me.Label15.AutoSize = True
-        Me.Label15.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label15.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label15.Location = New System.Drawing.Point(275, 17)
         Me.Label15.Name = "Label15"
-        Me.Label15.Size = New System.Drawing.Size(163, 15)
+        Me.Label15.Size = New System.Drawing.Size(141, 13)
         Me.Label15.TabIndex = 2
         Me.Label15.Text = "Feature ToString Information"
         '
@@ -653,11 +654,12 @@ Partial Class FrmMain
         'txtVisToStringTabAddFeatTbcPassbkFeatMainTbcMain
         '
         Me.txtVisToStringTabAddFeatTbcPassbkFeatMainTbcMain.BackColor = System.Drawing.SystemColors.ControlLight
-        Me.txtVisToStringTabAddFeatTbcPassbkFeatMainTbcMain.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtVisToStringTabAddFeatTbcPassbkFeatMainTbcMain.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtVisToStringTabAddFeatTbcPassbkFeatMainTbcMain.Location = New System.Drawing.Point(278, 96)
         Me.txtVisToStringTabAddFeatTbcPassbkFeatMainTbcMain.Multiline = True
         Me.txtVisToStringTabAddFeatTbcPassbkFeatMainTbcMain.Name = "txtVisToStringTabAddFeatTbcPassbkFeatMainTbcMain"
         Me.txtVisToStringTabAddFeatTbcPassbkFeatMainTbcMain.ReadOnly = True
+        Me.txtVisToStringTabAddFeatTbcPassbkFeatMainTbcMain.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
         Me.txtVisToStringTabAddFeatTbcPassbkFeatMainTbcMain.Size = New System.Drawing.Size(298, 38)
         Me.txtVisToStringTabAddFeatTbcPassbkFeatMainTbcMain.TabIndex = 5
         Me.txtVisToStringTabAddFeatTbcPassbkFeatMainTbcMain.TabStop = False
@@ -666,11 +668,12 @@ Partial Class FrmMain
         'txtCustToStringTabAddFeatTbcPassbkFeatMainTbcMain
         '
         Me.txtCustToStringTabAddFeatTbcPassbkFeatMainTbcMain.BackColor = System.Drawing.SystemColors.ControlLight
-        Me.txtCustToStringTabAddFeatTbcPassbkFeatMainTbcMain.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtCustToStringTabAddFeatTbcPassbkFeatMainTbcMain.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtCustToStringTabAddFeatTbcPassbkFeatMainTbcMain.Location = New System.Drawing.Point(278, 37)
         Me.txtCustToStringTabAddFeatTbcPassbkFeatMainTbcMain.Multiline = True
         Me.txtCustToStringTabAddFeatTbcPassbkFeatMainTbcMain.Name = "txtCustToStringTabAddFeatTbcPassbkFeatMainTbcMain"
         Me.txtCustToStringTabAddFeatTbcPassbkFeatMainTbcMain.ReadOnly = True
+        Me.txtCustToStringTabAddFeatTbcPassbkFeatMainTbcMain.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
         Me.txtCustToStringTabAddFeatTbcPassbkFeatMainTbcMain.Size = New System.Drawing.Size(298, 38)
         Me.txtCustToStringTabAddFeatTbcPassbkFeatMainTbcMain.TabIndex = 3
         Me.txtCustToStringTabAddFeatTbcPassbkFeatMainTbcMain.TabStop = False
@@ -679,20 +682,20 @@ Partial Class FrmMain
         'Label16
         '
         Me.Label16.AutoSize = True
-        Me.Label16.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label16.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label16.Location = New System.Drawing.Point(275, 78)
         Me.Label16.Name = "Label16"
-        Me.Label16.Size = New System.Drawing.Size(154, 15)
+        Me.Label16.Size = New System.Drawing.Size(133, 13)
         Me.Label16.TabIndex = 4
         Me.Label16.Text = "Visitor ToString Information"
         '
         'Label17
         '
         Me.Label17.AutoSize = True
-        Me.Label17.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label17.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label17.Location = New System.Drawing.Point(275, 17)
         Me.Label17.Name = "Label17"
-        Me.Label17.Size = New System.Drawing.Size(174, 15)
+        Me.Label17.Size = New System.Drawing.Size(149, 13)
         Me.Label17.TabIndex = 2
         Me.Label17.Text = "Customer ToString Information"
         '
@@ -873,6 +876,7 @@ Partial Class FrmMain
         Me.txtPrevUsedToStringTabUpdtFeatTbcPassbkFeatMainTbcMain.Multiline = True
         Me.txtPrevUsedToStringTabUpdtFeatTbcPassbkFeatMainTbcMain.Name = "txtPrevUsedToStringTabUpdtFeatTbcPassbkFeatMainTbcMain"
         Me.txtPrevUsedToStringTabUpdtFeatTbcPassbkFeatMainTbcMain.ReadOnly = True
+        Me.txtPrevUsedToStringTabUpdtFeatTbcPassbkFeatMainTbcMain.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
         Me.txtPrevUsedToStringTabUpdtFeatTbcPassbkFeatMainTbcMain.Size = New System.Drawing.Size(212, 157)
         Me.txtPrevUsedToStringTabUpdtFeatTbcPassbkFeatMainTbcMain.TabIndex = 9
         Me.txtPrevUsedToStringTabUpdtFeatTbcPassbkFeatMainTbcMain.TabStop = False
@@ -886,6 +890,7 @@ Partial Class FrmMain
         Me.txtVisToStringTabUpdtFeatTbcPassbkFeatMainTbcMain.Multiline = True
         Me.txtVisToStringTabUpdtFeatTbcPassbkFeatMainTbcMain.Name = "txtVisToStringTabUpdtFeatTbcPassbkFeatMainTbcMain"
         Me.txtVisToStringTabUpdtFeatTbcPassbkFeatMainTbcMain.ReadOnly = True
+        Me.txtVisToStringTabUpdtFeatTbcPassbkFeatMainTbcMain.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
         Me.txtVisToStringTabUpdtFeatTbcPassbkFeatMainTbcMain.Size = New System.Drawing.Size(268, 38)
         Me.txtVisToStringTabUpdtFeatTbcPassbkFeatMainTbcMain.TabIndex = 5
         Me.txtVisToStringTabUpdtFeatTbcPassbkFeatMainTbcMain.TabStop = False
@@ -899,6 +904,7 @@ Partial Class FrmMain
         Me.txtFeatToStringTabUpdtFeatTbcPassbkFeatMainTbcMain.Multiline = True
         Me.txtFeatToStringTabUpdtFeatTbcPassbkFeatMainTbcMain.Name = "txtFeatToStringTabUpdtFeatTbcPassbkFeatMainTbcMain"
         Me.txtFeatToStringTabUpdtFeatTbcPassbkFeatMainTbcMain.ReadOnly = True
+        Me.txtFeatToStringTabUpdtFeatTbcPassbkFeatMainTbcMain.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
         Me.txtFeatToStringTabUpdtFeatTbcPassbkFeatMainTbcMain.Size = New System.Drawing.Size(268, 38)
         Me.txtFeatToStringTabUpdtFeatTbcPassbkFeatMainTbcMain.TabIndex = 7
         Me.txtFeatToStringTabUpdtFeatTbcPassbkFeatMainTbcMain.TabStop = False
@@ -922,6 +928,7 @@ Partial Class FrmMain
         Me.txtCustToStringTabUpdtFeatTbcPassbkFeatMainTbcMain.Multiline = True
         Me.txtCustToStringTabUpdtFeatTbcPassbkFeatMainTbcMain.Name = "txtCustToStringTabUpdtFeatTbcPassbkFeatMainTbcMain"
         Me.txtCustToStringTabUpdtFeatTbcPassbkFeatMainTbcMain.ReadOnly = True
+        Me.txtCustToStringTabUpdtFeatTbcPassbkFeatMainTbcMain.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
         Me.txtCustToStringTabUpdtFeatTbcPassbkFeatMainTbcMain.Size = New System.Drawing.Size(271, 38)
         Me.txtCustToStringTabUpdtFeatTbcPassbkFeatMainTbcMain.TabIndex = 3
         Me.txtCustToStringTabUpdtFeatTbcPassbkFeatMainTbcMain.TabStop = False
@@ -1104,6 +1111,7 @@ Partial Class FrmMain
         Me.txtPrevUsedTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Multiline = True
         Me.txtPrevUsedTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Name = "txtPrevUsedTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain"
         Me.txtPrevUsedTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.ReadOnly = True
+        Me.txtPrevUsedTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
         Me.txtPrevUsedTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Size = New System.Drawing.Size(212, 157)
         Me.txtPrevUsedTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.TabIndex = 9
         Me.txtPrevUsedTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.TabStop = False
@@ -1117,6 +1125,7 @@ Partial Class FrmMain
         Me.txtVisToStringTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Multiline = True
         Me.txtVisToStringTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Name = "txtVisToStringTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain"
         Me.txtVisToStringTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.ReadOnly = True
+        Me.txtVisToStringTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
         Me.txtVisToStringTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Size = New System.Drawing.Size(268, 38)
         Me.txtVisToStringTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.TabIndex = 5
         Me.txtVisToStringTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.TabStop = False
@@ -1130,6 +1139,7 @@ Partial Class FrmMain
         Me.txtFeatToStringTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Multiline = True
         Me.txtFeatToStringTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Name = "txtFeatToStringTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain"
         Me.txtFeatToStringTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.ReadOnly = True
+        Me.txtFeatToStringTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
         Me.txtFeatToStringTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Size = New System.Drawing.Size(268, 38)
         Me.txtFeatToStringTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.TabIndex = 7
         Me.txtFeatToStringTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.TabStop = False
@@ -1153,6 +1163,7 @@ Partial Class FrmMain
         Me.txtCustToStringTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Multiline = True
         Me.txtCustToStringTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Name = "txtCustToStringTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain"
         Me.txtCustToStringTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.ReadOnly = True
+        Me.txtCustToStringTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
         Me.txtCustToStringTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Size = New System.Drawing.Size(271, 38)
         Me.txtCustToStringTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.TabIndex = 3
         Me.txtCustToStringTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.TabStop = False
@@ -1651,7 +1662,8 @@ Partial Class FrmMain
         Me.txtToStringTabDashboardTbcMain.Multiline = True
         Me.txtToStringTabDashboardTbcMain.Name = "txtToStringTabDashboardTbcMain"
         Me.txtToStringTabDashboardTbcMain.ReadOnly = True
-        Me.txtToStringTabDashboardTbcMain.Size = New System.Drawing.Size(235, 99)
+        Me.txtToStringTabDashboardTbcMain.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
+        Me.txtToStringTabDashboardTbcMain.Size = New System.Drawing.Size(235, 199)
         Me.txtToStringTabDashboardTbcMain.TabIndex = 21
         Me.txtToStringTabDashboardTbcMain.TabStop = False
         Me.tipTPMS.SetToolTip(Me.txtToStringTabDashboardTbcMain, "Display of specific information of current selected item")

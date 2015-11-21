@@ -38,13 +38,13 @@ Public Class FrmMain
     '****************************************************************************************
     'Attributes + Module-level Constants+Variables
     '****************************************************************************************
+    'System level error message
+    Private Const mSYS_ERR_MSG As String = "Internal System Error: Object Creation Failed"
+    Private Const mSYS_LOOKUP_ERR_MSG As String = "Internal System Error: Object Lookup Failed"
 
     '********** Module-level constants
     'Theme Park Name
     Private Const mTHEME_PARK_NAME As String = "CIS605 Theme Park"
-
-    'System level error message
-    Private Const mSYS_ERR_MSG As String = "Internal System Error: Object creation Failed"
 
     'Minimum age to be considered an adult. Less than this age is 
     'thusly considered a child
@@ -148,7 +148,6 @@ Public Class FrmMain
         End Set
     End Property
 
-
 #End Region 'Get/Set Methods
 
 #Region "Behavioral Methods"
@@ -188,7 +187,7 @@ Public Class FrmMain
     '_runSystemTest() is the procedure that executes the applications automated test logic.
     'It is invoked either from the main UI menu or from the System Test tab.
     '****************************************************************************************
-    Private Sub _runSystemTest()
+    Private Sub _runSystemTest(ByVal showMsgBox As Boolean)
         'Indicate to that the system test is running
         _sysTestActive = True
 
@@ -332,10 +331,12 @@ Public Class FrmMain
         _writeTransLog("[TEST PROCESSING COMPLETED]")
         _writeTransLog(Nothing)
 
-        MsgBox("Test Processing completed.  Click to view the transaction", MsgBoxStyle.OkOnly)
+        If (showMsgBox = True) Then
+            MsgBox("Test Processing completed.  Click to view the transaction", MsgBoxStyle.OkOnly)
 
-        'Switch UI directly to the Transaction log tab
-        tbcMainFrmMain.SelectTab(mTBC_MAIN_TAB_TRANSLOG)
+            'Switch UI directly to the Transaction log tab
+            tbcMainFrmMain.SelectTab(mTBC_MAIN_TAB_TRANSLOG)
+        End If
 
         'Indicate the system test has completed
         _sysTestActive = False
@@ -382,6 +383,9 @@ Public Class FrmMain
         End If
 
         _writeTransLog("<CREATED>: " & _theThemePark.ToString())
+
+        'Run the system test to populate with hard coded data 
+        _runSystemTest(False)
     End Sub '_initializeBusinessLogic()
 
     '****************************************************************************************
@@ -1329,7 +1333,7 @@ Public Class FrmMain
         Handles btnProcTestDataGrpSysTestTabSysTestTbcMainFrmMain.Click
 
         'Execute the system test procedure
-        _runSystemTest()
+        _runSystemTest(True)
     End Sub '_btnProcTestDataGrpSysTestTabSysTestTbcMainFrmMain_Click(...)
 
     '****************************************************************************************
@@ -1368,7 +1372,7 @@ Public Class FrmMain
         Handles mnuRunSysTestTestFrmMain.Click
 
         'Execute the system test procedure
-        _runSystemTest()
+        _runSystemTest(True)
     End Sub '_mnuRunSysTestTestFrmMain_Click(...)
 
     '********** User-Interface Event Procedures
@@ -1417,7 +1421,6 @@ Public Class FrmMain
         Handles mnuPurchasePassbooksFrmMain.Click
 
         tbcMainFrmMain.SelectTab(mTBC_MAIN_TAB_PASSBK)
-
     End Sub '_mnuPurchasePassbooksFrmMain_Click(...)
 
     '****************************************************************************************
@@ -1431,7 +1434,6 @@ Public Class FrmMain
 
         tbcMainFrmMain.SelectTab(mTBC_MAIN_TAB_PASSBKFEAT)
         tbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.SelectTab(mTBC_PASSBKFEAT_TAB_ADD)
-
     End Sub '_mnuAddFeaturesPassbooksFrmMain_Click(...)
 
     '****************************************************************************************
@@ -1445,7 +1447,6 @@ Public Class FrmMain
 
         tbcMainFrmMain.SelectTab(mTBC_MAIN_TAB_PASSBKFEAT)
         tbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.SelectTab(mTBC_PASSBKFEAT_TAB_UPDT)
-
     End Sub '_mnuAddFeaturesPassbooksFrmMain_Click(...)
 
     '****************************************************************************************
@@ -1458,7 +1459,6 @@ Public Class FrmMain
 
         tbcMainFrmMain.SelectTab(mTBC_MAIN_TAB_PASSBKFEAT)
         tbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.SelectTab(mTBC_PASSBKFEAT_TAB_POST)
-
     End Sub '_mnuUseFeaturesPassbooksFrmMain_Click(...)
 
     '****************************************************************************************
@@ -1470,13 +1470,15 @@ Public Class FrmMain
     Private Sub _lstCustTabDashboardTbcMain_SelectedIndexChanged(sender As Object, e As EventArgs) _
         Handles lstCustTabDashboardTbcMain.SelectedIndexChanged
 
-        'PBO: TEMPORARY AND MUST BE REFACTORED FOR PP04
-        Dim info As String = "Customer-Info: "
-        Dim lstVal As String = _
-            lstCustTabDashboardTbcMain.SelectedItem.ToString
+        Dim lstVal As String = lstCustTabDashboardTbcMain.SelectedItem.ToString
+        Dim cust As Customer = _theThemePark.findCust(lstVal)
 
-        txtToStringTabDashboardTbcMain.Text = _
-            info & lstVal & ", completed full info in PP04"
+        If Not cust Is Nothing Then
+            txtToStringTabDashboardTbcMain.Text = cust.ToString & vbCrLf
+        Else
+            txtToStringTabDashboardTbcMain.Text = _
+                "No Customer info found for CustId=" & lstVal & vbCrLf
+        End If
     End Sub '_lstCustTabDashboardTbcMain_SelectedIndexChanged(...)
 
     '****************************************************************************************
@@ -1488,14 +1490,16 @@ Public Class FrmMain
     Private Sub _lstFeatTabDashboardTbcMain_SelectedIndexChanged(sender As Object, e As EventArgs) _
         Handles lstFeatTabDashboardTbcMain.SelectedIndexChanged
 
-        'PBO: TEMPORARY AND MUST BE REFACTORED FOR PP04
-        Dim info As String = "Feature-Info: "
         Dim lstVal As String = _
             lstFeatTabDashboardTbcMain.SelectedItem.ToString
+        Dim feat As Feature = _theThemePark.findFeat(lstVal)
 
-        txtToStringTabDashboardTbcMain.Text = _
-            info & lstVal & ", completed full info in PP04"
-
+        If Not feat Is Nothing Then
+            txtToStringTabDashboardTbcMain.Text = feat.ToString & vbCrLf
+        Else
+            txtToStringTabDashboardTbcMain.Text = _
+                "No Feature info found for FeatId=" & lstVal & vbCrLf
+        End If
     End Sub '_lstFeatTabDashboardTbcMain_SelectedIndexChanged
 
     '****************************************************************************************
@@ -1507,14 +1511,16 @@ Public Class FrmMain
     Private Sub _lstPassbkTabDashboardTbcMain_SelectedIndexChanged(sender As Object, e As EventArgs) _
         Handles lstPassbkTabDashboardTbcMain.SelectedIndexChanged
 
-        'PBO: TEMPORARY AND MUST BE REFACTORED FOR PP04
-        Dim info As String = "Passbook-Info: "
         Dim lstVal As String = _
             lstPassbkTabDashboardTbcMain.SelectedItem.ToString
+        Dim passbk As Passbook = _theThemePark.findPassbk(lstVal)
 
-        txtToStringTabDashboardTbcMain.Text = _
-            info & lstVal & ", completed full info in PP04"
-
+        If Not passbk Is Nothing Then
+            txtToStringTabDashboardTbcMain.Text = passbk.ToString & vbCrLf
+        Else
+            txtToStringTabDashboardTbcMain.Text = _
+                "No Passbook info found for FeatId=" & lstVal & vbCrLf
+        End If
     End Sub '_lstPassbkTabDashboardTbcMain_SelectedIndexChanged(...)
 
 
@@ -1527,14 +1533,16 @@ Public Class FrmMain
     Private Sub _lstPassbkFeatTabDashboardTbcMain_SelectedIndexChanged(sender As Object, e As EventArgs) _
         Handles lstPassbkFeatTabDashboardTbcMain.SelectedIndexChanged
 
-        'PBO: TEMPORARY AND MUST BE REFACTORED FOR PP04
-        Dim info As String = "PassbookFeature-Info: "
         Dim lstVal As String = _
             lstPassbkFeatTabDashboardTbcMain.SelectedItem.ToString
+        Dim passbkFeat As PassbookFeature = _theThemePark.findPassbkFeat(lstVal)
 
-        txtToStringTabDashboardTbcMain.Text = _
-            info & lstVal & ", completed full info in PP04"
-
+        If Not passbkFeat Is Nothing Then
+            txtToStringTabDashboardTbcMain.Text = passbkFeat.ToString & vbCrLf
+        Else
+            txtToStringTabDashboardTbcMain.Text = _
+                "No Passbook Feature info found for PassbkFeatId=" & lstVal & vbCrLf
+        End If
     End Sub '_lstPassbkFeatTabDashboardTbcMain_SelectedIndexChanged(...)
 
     '****************************************************************************************
@@ -1546,14 +1554,16 @@ Public Class FrmMain
     Private Sub _lstUsedFeatTabDashboardTbcMain_SelectedIndexChanged(sender As Object, e As EventArgs) _
         Handles lstUsedFeatTabDashboardTbcMain.SelectedIndexChanged
 
-        'PBO: TEMPORARY AND MUST BE REFACTORED FOR PP04
-        Dim info As String = "UsedFeature-Info: "
         Dim lstVal As String = _
             lstUsedFeatTabDashboardTbcMain.SelectedItem.ToString
+        Dim usedFeat As UsedFeature = _theThemePark.findUsedFeat(lstVal)
 
-        txtToStringTabDashboardTbcMain.Text = _
-            info & lstVal & ", completed full info in PP04"
-
+        If Not usedFeat Is Nothing Then
+            txtToStringTabDashboardTbcMain.Text = usedFeat.ToString & vbCrLf
+        Else
+            txtToStringTabDashboardTbcMain.Text = _
+                "No Used Feature info found for PassbkFeatId=" & lstVal & vbCrLf
+        End If
     End Sub '_lstUsedFeatTabDashboardTbcMain_SelectedIndexChanged(...)
 
 
@@ -1566,16 +1576,26 @@ Public Class FrmMain
     Private Sub _cboCustIdGrpCustInfoGrpAddPassbkTabPassbkTbcMainFrmMain_SelectedIndexChanged(sender As Object, e As EventArgs) _
         Handles cboCustIdGrpCustInfoGrpAddPassbkTabPassbkTbcMainFrmMain.SelectedIndexChanged
 
-        'PBO: TEMPORARY AND MUST BE REFACTORED FOR PP04
         If Not cboCustIdGrpCustInfoGrpAddPassbkTabPassbkTbcMainFrmMain.SelectedIndex = -1 Then
-            Dim info As String = "Customer-Info: "
             Dim cboVal As String = _
                 cboCustIdGrpCustInfoGrpAddPassbkTabPassbkTbcMainFrmMain.SelectedItem.ToString
+            Dim cust As Customer
 
-            txtToStringGrpCustInfoGrpAddPassbkTabPassbkTbcMainFrmMain.Text = _
-                info & cboVal & ", completed full info in PP04"
+            Try
+                cust = _theThemePark.findCust(cboVal)
+            Catch ex As Exception
+                MsgBox(mSYS_LOOKUP_ERR_MSG, MsgBoxStyle.Exclamation)
+                Exit Sub
+            End Try
+
+            If Not cust Is Nothing Then
+                txtToStringGrpCustInfoGrpAddPassbkTabPassbkTbcMainFrmMain.Text = _
+                    cust.ToString & vbCrLf
+            Else
+                txtToStringGrpCustInfoGrpAddPassbkTabPassbkTbcMainFrmMain.Text = _
+                    "No customer info found for CustId=" & cboVal & vbCrLf
+            End If
         End If
-
     End Sub '_cboCustIdGrpCustInfoGrpAddPassbkTabPassbkTbcMainFrmMain_SelectedIndexChanged(...)
 
     '****************************************************************************************
@@ -1600,7 +1620,6 @@ Public Class FrmMain
             txtVisToStringTabAddFeatTbcPassbkFeatMainTbcMain.Text = _
                 info & cboVal & ", completed full info in PP04"
         End If
-
     End Sub '_cboPassbkIdGrpPassbkTabAddFeatTbcPassbkFeatMainTbcMain_SelectedIndexChanged
 
     '****************************************************************************************
@@ -1614,16 +1633,17 @@ Public Class FrmMain
 
         'PBO: TEMPORARY AND MUST BE REFACTORED FOR PP04
         If Not cboFeatIdTabAddFeatTbcPassbkFeatMainTbcMain.SelectedIndex = -1 Then
-            Dim info As String = "Feature-Info: "
             Dim cboVal As String = _
                 cboFeatIdTabAddFeatTbcPassbkFeatMainTbcMain.SelectedItem.ToString
+            Dim feat As Feature = _theThemePark.findFeat(cboVal)
 
-            txtFeatToStringTabAddFeatTbcPassbkFeatMainTbcMain.Text = _
-                info & cboVal & ", completed full info in PP04"
-
-            txtPriceTabAddFeatTbcPassbkFeatMainTbcMain.Text = "$TBD"
+            If Not feat Is Nothing Then
+                txtFeatToStringTabAddFeatTbcPassbkFeatMainTbcMain.Text = feat.ToString & vbCrLf
+            Else
+                txtFeatToStringTabAddFeatTbcPassbkFeatMainTbcMain.Text = _
+                    "No Feature info found for FeatId=" & cboVal & vbCrLf
+            End If
         End If
-
     End Sub '_cboFeatIdGrpFeatTabAddFeatTbcPassbkFeatMainTbcMain_SelectedIndexChanged(...)
 
     '****************************************************************************************
@@ -1659,7 +1679,6 @@ Public Class FrmMain
             txtPriceTabUpdtFeatTbcPassbkFeatMainTbcMain.Text = "$TBD"
             txtRemQtyTabUpdtFeatTbcPassbkFeatMainTbcMain.Text = "3"
         End If
-
     End Sub '_cboFeatIdGrpPassbkTabUpdtFeatTbcPassbkFeatMainTbcMain_SelectedIndexChanged(...)
 
     '****************************************************************************************
@@ -1694,7 +1713,6 @@ Public Class FrmMain
 
             txtRemQuantTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Text = "3"
         End If
-
     End Sub '_cboPassbkFeatIdTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain_SelectedIndexChanged(...)
 
     '****************************************************************************************
@@ -1770,7 +1788,6 @@ Public Class FrmMain
 
             MsgBox("Customer creation submission was successful!", MsgBoxStyle.OkOnly)
         End If
-
     End Sub '_createCust(...)
 
 
@@ -1816,7 +1833,6 @@ Public Class FrmMain
 
             MsgBox("Feature creation submission was successful!", MsgBoxStyle.OkOnly)
         End If
-
     End Sub '_createFeat(...)
 
     '****************************************************************************************
@@ -1861,7 +1877,6 @@ Public Class FrmMain
 
             MsgBox("Passbook creation submission was successful!", MsgBoxStyle.OkOnly)
         End If
-
     End Sub '_createPassbk(...)
 
     '****************************************************************************************
@@ -1907,7 +1922,6 @@ Public Class FrmMain
 
             MsgBox("Passbook Feature submission was successful!", MsgBoxStyle.OkOnly)
         End If
-
     End Sub '_addPassbkFeat(...)
 
     '****************************************************************************************
@@ -1952,7 +1966,6 @@ Public Class FrmMain
 
             MsgBox("Passbook Feature update submission was successful!", MsgBoxStyle.OkOnly)
         End If
-
     End Sub '_updtPassbkFeat(...)
 
     '****************************************************************************************
@@ -1995,7 +2008,6 @@ Public Class FrmMain
 
             MsgBox("Used Passbook Feature submission was successful!", MsgBoxStyle.OkOnly)
         End If
-
     End Sub '_usedFeat(...)
 
 #End Region 'Event Procedures
@@ -2011,6 +2023,9 @@ Public Class FrmMain
 #End Region 'Events
 
 #Region "Palumbo-Debug"
+    '****************************************************************************************
+    'THIS REGION IS STRICTLY FOR MY OWN DEBUG CODE AND IS NOT APPLICABLE FOR GRADING.
+    '****************************************************************************************
     Private Sub _txtDebug_TextChanged(sender As Object, e As EventArgs) _
         Handles txtDebug.TextChanged
 
@@ -2035,10 +2050,9 @@ Public Class FrmMain
             Next i
         End If
     End Sub
-#End Region 'Palumbo-Debug
 
     Private Sub _btnShowPassbk_Click(sender As Object, e As EventArgs) _
-        Handles btnShowPassbk.Click
+    Handles btnShowPassbk.Click
 
         If _theThemePark.numPassbks = 0 Then
             txtDebug.Text &= "No Passbook data to display" & vbCrLf
@@ -2088,4 +2102,7 @@ Public Class FrmMain
             Next i
         End If
     End Sub
+
+#End Region 'Palumbo-Debug
+
 End Class 'FrmMain

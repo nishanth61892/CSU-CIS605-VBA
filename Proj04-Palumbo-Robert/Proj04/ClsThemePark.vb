@@ -43,9 +43,9 @@ Public Class ThemePark
     '****************************************************************************************
     'Attributes + Module-level Constants+Variables
     '****************************************************************************************
-
     'System level error message
-    Private Const mSYS_ERR_MSG As String = "Internal System Error: Object creation Failed"
+    Private Const mSYS_ERR_MSG As String = "Internal System Error: Object Creation Failed"
+    Private Const mSYS_LOOKUP_ERR_MSG As String = "Internal System Error: Object Lookup Failed"
 
     'Input/Output file names
     Private Const mINPUT_FILENAME As String = "Transactions-in.txt"
@@ -596,6 +596,106 @@ Public Class ThemePark
     '********** Private Shared Behavioral Methods
 
     '********** Public Non-Shared Behavioral Methods
+
+    '****************************************************************************************
+    'findCust() is used to locate a customer by ID from the customer database.  
+    'Returns a customer reference if found, otherwise Nothing.
+    '****************************************************************************************
+    Public Function findCust(ByVal pCustId As String) As Customer
+        Dim i As Integer
+
+        Try
+            For i = 0 To _numCusts - 1
+                If _ithCust(i).custId = pCustId Then
+                    Return _ithCust(i)
+                End If
+            Next i
+        Catch ex As Exception
+            MsgBox(mSYS_LOOKUP_ERR_MSG, MsgBoxStyle.Exclamation)
+        End Try
+
+        Return Nothing
+    End Function 'findCust(...)
+
+    '****************************************************************************************
+    'findFeat() is used to locate a feature by ID from the feature database.  
+    'Returns a feature reference if found, otherwise Nothing
+    '****************************************************************************************
+    Public Function findFeat(ByVal pFeatId As String) As Feature
+        Dim i As Integer
+
+        Try
+            For i = 0 To _numFeats - 1
+                If _ithFeat(i).featId = pFeatId Then
+                    Return _ithFeat(i)
+                End If
+            Next i
+        Catch ex As Exception
+            MsgBox(mSYS_LOOKUP_ERR_MSG, MsgBoxStyle.Exclamation)
+        End Try
+
+        Return Nothing
+    End Function 'findFeat(...)
+
+    '****************************************************************************************
+    'findPassbk() is used to locate a Passbook by ID from the passbook database.  
+    'Returns a passbook reference if found, otherwise Nothing
+    '****************************************************************************************
+    Public Function findPassbk(ByVal pPassbkId As String) As Passbook
+        Dim i As Integer
+
+        Try
+            For i = 0 To _numPassbks - 1
+                If _ithPassbk(i).passbkId = pPassbkId Then
+                    Return _ithPassbk(i)
+                End If
+            Next i
+        Catch ex As Exception
+            MsgBox(mSYS_LOOKUP_ERR_MSG, MsgBoxStyle.Exclamation)
+        End Try
+
+        Return Nothing
+    End Function 'findPassbk(...)
+
+    '****************************************************************************************
+    'findPassbkFeat() is used to locate a Passbook Feature by ID from the Feature database.  
+    'Returns a passbook feature reference if found, otherwise Nothing
+    '****************************************************************************************
+    Public Function findPassbkFeat(ByVal pPassbkFeatId As String) As PassbookFeature
+        Dim i As Integer
+
+        Try
+            For i = 0 To _numPassbkFeats - 1
+                If _ithPassbkFeat(i).id = pPassbkFeatId Then
+                    Return _ithPassbkFeat(i)
+                End If
+            Next i
+        Catch ex As Exception
+            MsgBox(mSYS_LOOKUP_ERR_MSG, MsgBoxStyle.Exclamation)
+        End Try
+
+        Return Nothing
+    End Function 'findPassbkFeat(...)
+
+    '****************************************************************************************
+    'findUsedFeat() is used to locate a Used Feature by ID from the Used Feature database.  
+    'Returns a used feature reference if found, otherwise Nothing
+    '****************************************************************************************
+    Public Function findUsedFeat(ByVal pUsedFeatId As String) As UsedFeature
+        Dim i As Integer
+
+        Try
+            For i = 0 To _numUsedFeats - 1
+                If _ithUsedFeat(i).id = pUsedFeatId Then
+                    Return _ithUsedFeat(i)
+                End If
+            Next i
+        Catch ex As Exception
+            MsgBox(mSYS_LOOKUP_ERR_MSG, MsgBoxStyle.Exclamation)
+        End Try
+
+        Return Nothing
+    End Function 'findUsedFeat(...)
 
     '****************************************************************************************
     'ToString() overrides the parent object function to return a 
