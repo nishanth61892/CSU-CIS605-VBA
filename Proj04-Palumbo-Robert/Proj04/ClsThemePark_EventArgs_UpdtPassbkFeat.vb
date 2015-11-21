@@ -1,7 +1,7 @@
 ﻿'Copyright (c) 2009-2015 Dan Turk
 
 #Region "Class / File Comment Header block"
-'Program:       Proj03 - Theme Park Management System
+'Program:       Proj04 - Theme Park Management System
 'File:          ClsThemePark_EventArgs_UpdtPassbkFeat.vb
 'Author:        Robert Palumbo
 'Description:   This is the class definiton for the ThemePark_EventArgs_UpdtPassbkFeat
@@ -15,9 +15,9 @@
 '               10/29/2015
 '                   - Modifications to support the third phase of
 '                   course project (Proj03)
-'               10/30/2015
-'                   - Modifications to support the third phase of
-'                   course project (Proj03)
+'               11/20/2015
+'                   - Modifications to support the fourth phase of
+'                   course project (Proj04)
 '
 'Tier:          Business Logic
 '

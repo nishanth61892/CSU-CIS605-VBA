@@ -1,7 +1,7 @@
 ﻿'Copyright (c) 2009-2015 Dan Turk
 
 #Region "Class / File Comment Header block"
-'Program:       Proj03 - Theme Park Management System
+'Program:       Proj04 - Theme Park Management System
 'File:          ClsThemePark.vb
 'Author:        Robert Palumbo
 'Description:   This is the class definiton for ThemePark which is  
@@ -17,17 +17,22 @@
 '               10/29/2015
 '                   - Modifications to support the third phase of
 '                   course project (Proj03)
+'               11/20/2015
+'                   - Modifications to support the fourth phase of
+'                   course project (Proj04)
 '
 'Tier:          Business Logic
 '
-'Exceptions:          TBD
+'Exceptions:          All array accessor method (_ith<?>) will throw IndexOutOfRangeException
+'                     for any index access outside the size of the defined array
+'
 'Exception-Handling:  TBD
 'Events:              TBD
 'Event-Handling:      TBD
 #End Region 'Class / File Comment Header block
 
 #Region "Option / Imports"
-Option Explicit On      'Must declare variables before using them
+Option Explicit On  'Must declare variables before using them
 Option Strict On    'Must perform explicit data type conversions
 #End Region 'Option / Imports
 
@@ -41,6 +46,10 @@ Public Class ThemePark
 
     'System level error message
     Private Const mSYS_ERR_MSG As String = "Internal System Error: Object creation Failed"
+
+    'Input/Output file names
+    Private Const mINPUT_FILENAME As String = "Transactions-in.txt"
+    Private Const mOUTPUT_FILENAME As String = "Transactions-out.txt"
 
     'Array constants
     Private Const mCUSTOMER_ARRAY_SIZE_DFLT As Integer = 100
@@ -60,7 +69,6 @@ Public Class ThemePark
 
     Private Const mTRANSX_ARRAY_SIZE_DFLT As Integer = 300
     Private Const mTRANSX_ARRAY_INC_DFLT As Integer = 100
-
 
     '********** Module-level variables
 

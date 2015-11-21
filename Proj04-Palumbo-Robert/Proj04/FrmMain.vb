@@ -1,7 +1,7 @@
 ﻿'Copyright (c) 2009-2015 Dan Turk
 
 #Region "Class / File Comment Header block"
-'Program:       Proj03 - Theme Park Managament System  
+'Program:       Proj04 - Theme Park Managament System  
 'File:          FrmMain.vb
 'Author:        Robert Palumbo     
 'Description:   This is the main user interface form for the
@@ -16,6 +16,9 @@
 '               10/29/2015
 '                   - Modifications to support the third phase of
 '                   course project (Proj03)
+'               11/20/2015
+'                   - Modifications to support the fourth phase of
+'                   course project (Proj04)
 '
 'Tier:          User Interface     
 'Exceptions:           N/A
