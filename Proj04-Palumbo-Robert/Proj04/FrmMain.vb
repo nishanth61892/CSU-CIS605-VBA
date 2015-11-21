@@ -501,9 +501,15 @@ Public Class FrmMain
         'If OK selected proceed with the submission assuming not test data
         If choice = MsgBoxResult.Ok Then
             'Create a new Customer
-            _theThemePark.createCust(custId,
-                                     custName
-                                     )
+
+            'Create a new customer. It will be persistent within the ThemePark object.
+            'But need to trap any insertion acceptions which could happen based on 
+            'the state of the system
+            Try
+                _theThemePark.createCust(custId, custName)
+            Catch ex As Exception
+                MsgBox(mSYS_ERR_MSG, MsgBoxStyle.Exclamation)
+            End Try
 
             'Reset the input fields to allow for another possible customer entry
             _resetCustomerInput()
@@ -630,13 +636,19 @@ Public Class FrmMain
 
         'If OK selected proceed with the submission assuming not test data
         If choice = MsgBoxResult.Ok And _sysTestActive = False Then
-            'Create a new Feature
-            _theThemePark.createFeat(featId, _
-                                     featName, _
-                                     unitOfMeas, _
-                                     decAdultPrice, _
-                                     decChildPrice
-                                     )
+            'Create a new feature. It will be persistent within the ThemePark object.
+            'But need to trap any insertion acceptions which could happen based on 
+            'the state of the system
+            Try
+                _theThemePark.createFeat(featId, _
+                                         featName, _
+                                         unitOfMeas, _
+                                         decAdultPrice, _
+                                         decChildPrice
+                                         )
+            Catch ex As Exception
+                MsgBox(mSYS_ERR_MSG, MsgBoxStyle.Exclamation)
+            End Try
 
             'Reset the input fields to allow for another possible feature entry
             _resetFeatureInput()
@@ -759,15 +771,21 @@ Public Class FrmMain
             'PBO - this customer object is tempary until the next phase of the project
             Dim tempCust As Customer = New Customer("9999", custList.Text)
 
-            'Create a new Passbook
-            _theThemePark.createPassbk(passbkId, _
-                                       tempCust, _
-                                       datePurch, _
-                                       visName, _
-                                       visDobValue, _
-                                       visAge, _
-                                       visIsChild
-                                       )
+            'Create a new passbook. It will be persistent within the ThemePark object.
+            'But need to trap any insertion acceptions which could happen based on 
+            'the state of the system
+            Try
+                _theThemePark.createPassbk(passbkId, _
+                                           tempCust, _
+                                           datePurch, _
+                                           visName, _
+                                           visDobValue, _
+                                           visAge, _
+                                           visIsChild
+                                           )
+            Catch ex As Exception
+                MsgBox(mSYS_ERR_MSG, MsgBoxStyle.Exclamation)
+            End Try
 
             'Reset the input fields to allow for another possible feature entry
             _resetPassbkInput()
@@ -899,12 +917,19 @@ Public Class FrmMain
 
         'If OK selected proceed with the submission
         If choice = MsgBoxResult.Ok And _sysTestActive = False Then
+            'Create a new passbook feature. It will be persistent within the ThemePark object.
+            'But need to trap any insertion acceptions which could happen based on 
+            'the state of the system
+            Try
             'Create a new Passbook Feature
-            _theThemePark.addPassbkFeat(passbkFeatId, _
-                                        tempFeat, _
-                                        tempPassbk, _
-                                        decQtyPurch
-                                        )
+                _theThemePark.addPassbkFeat(passbkFeatId, _
+                                            tempFeat, _
+                                            tempPassbk, _
+                                            decQtyPurch
+                                            )
+            Catch ex As Exception
+                MsgBox(mSYS_ERR_MSG, MsgBoxStyle.Exclamation)
+            End Try
 
             'Reset the fields and focus to allow for another feature to be added
             _resetPassbkAddFeatInput()
@@ -1133,8 +1158,14 @@ Public Class FrmMain
 
         'If OK selected proceed with the submission
         If choice = MsgBoxResult.Ok And _sysTestActive = False Then
-            'Create a new Used Feature
-            _theThemePark.usedFeat("PP03-NOTUSED", tempPassbkFeat, DateTime.Now, decQtyUsed, loc)
+            'Create a new used feature. It will be persistent within the ThemePark object.
+            'But need to trap any insertion acceptions which could happen based on 
+            'the state of the system
+            Try
+                _theThemePark.usedFeat("PP03-NOTUSED", tempPassbkFeat, DateTime.Now, decQtyUsed, loc)
+            Catch ex As Exception
+                MsgBox(mSYS_ERR_MSG, MsgBoxStyle.Exclamation)
+            End Try
 
             'Reset the fields and focus to allow for another used feature to be submitted
             _resetPassbkUsedFeatInput()
@@ -1748,8 +1779,8 @@ Public Class FrmMain
     ' event that is generated when a new Feature is added to the
     'system.
     '****************************************************************************************
-    Private Sub _createFeature(ByVal sender As System.Object, _
-                               ByVal e As System.EventArgs) _
+    Private Sub _createFeat(ByVal sender As System.Object, _
+                            ByVal e As System.EventArgs) _
         Handles mThemePark.ThemePark_CreateFeat
 
         'Declare variables
@@ -1789,12 +1820,12 @@ Public Class FrmMain
     End Sub '_createFeat(...)
 
     '****************************************************************************************
-    '_createPassbook() handles processing for the ThemePark_CreatePassbook
+    '_createPassbk() handles processing for the ThemePark_CreatePassbook
     ' event that is generated when a new passbook is added to the
     'system.
     '****************************************************************************************
-    Private Sub _createPassbook(ByVal sender As System.Object, _
-                                ByVal e As System.EventArgs) _
+    Private Sub _createPassbk(ByVal sender As System.Object, _
+                              ByVal e As System.EventArgs) _
         Handles mThemePark.ThemePark_CreatePassbk
 
         'Declare variables
@@ -1831,7 +1862,7 @@ Public Class FrmMain
             MsgBox("Passbook creation submission was successful!", MsgBoxStyle.OkOnly)
         End If
 
-    End Sub '_createPassbook(...)
+    End Sub '_createPassbk(...)
 
     '****************************************************************************************
     '_addPassbkFeat() handles processing for the ThemePark_PurchFeat
@@ -1979,4 +2010,82 @@ Public Class FrmMain
 
 #End Region 'Events
 
+#Region "Palumbo-Debug"
+    Private Sub _txtDebug_TextChanged(sender As Object, e As EventArgs) _
+        Handles txtDebug.TextChanged
+
+        txtDebug.SelectionStart = txtDebug.TextLength
+        txtDebug.ScrollToCaret()
+    End Sub '_txtDebug_TextChanged(...)
+
+    Private Sub _btnResetView_Click(sender As Object, e As EventArgs) _
+        Handles btnResetView.Click
+        txtDebug.Clear()
+    End Sub '_btnResetView_Click
+
+    Private Sub _btnDispCustArray_Click(sender As Object, e As EventArgs) _
+        Handles btnDispCustArray.Click
+
+        If _theThemePark.numCusts = 0 Then
+            txtDebug.Text &= "No Customer data to display" & vbCrLf
+        Else
+            Dim i As Integer
+            For i = 0 To _theThemePark.numCusts - 1
+                txtDebug.Text &= _theThemePark.ithCust(i).ToString & vbCrLf
+            Next i
+        End If
+    End Sub
+#End Region 'Palumbo-Debug
+
+    Private Sub _btnShowPassbk_Click(sender As Object, e As EventArgs) _
+        Handles btnShowPassbk.Click
+
+        If _theThemePark.numPassbks = 0 Then
+            txtDebug.Text &= "No Passbook data to display" & vbCrLf
+        Else
+            Dim i As Integer
+            For i = 0 To _theThemePark.numPassbks - 1
+                txtDebug.Text &= _theThemePark.ithPassbk(i).ToString & vbCrLf
+            Next i
+        End If
+    End Sub
+
+    Private Sub _btnShowFeat_Click(sender As Object, e As EventArgs) _
+        Handles btnShowFeat.Click
+
+        If _theThemePark.numFeats = 0 Then
+            txtDebug.Text &= "No Feature data to display" & vbCrLf
+        Else
+            Dim i As Integer
+            For i = 0 To _theThemePark.numFeats - 1
+                txtDebug.Text &= _theThemePark.ithFeat(i).ToString & vbCrLf
+            Next i
+        End If
+    End Sub
+
+    Private Sub _btnShowPassbkFeat_Click(sender As Object, e As EventArgs) _
+        Handles btnShowPassbkFeat.Click
+
+        If _theThemePark.numPassbkFeats = 0 Then
+            txtDebug.Text &= "No Passbook Feature data to display" & vbCrLf
+        Else
+            Dim i As Integer
+            For i = 0 To _theThemePark.numPassbkFeats - 1
+                txtDebug.Text &= _theThemePark.ithPassbkFeat(i).ToString & vbCrLf
+            Next i
+        End If
+    End Sub
+
+    Private Sub _btnShowUsedFeat_Click(sender As Object, e As EventArgs) _
+        Handles btnShowUsedFeat.Click
+
+        If _theThemePark.numUsedFeats = 0 Then
+            txtDebug.Text &= "No Used Feature data to display" & vbCrLf
+        Else
+            Dim i As Integer
+            For i = 0 To _theThemePark.numUsedFeats - 1
+                txtDebug.Text &= _theThemePark.ithUsedFeat(i).ToString & vbCrLf
+            Next i
+        End If
+    End Sub
 End Class 'FrmMain

@@ -193,6 +193,16 @@ Partial Class FrmMain
         Me.chkAppendTabSysTestTbcMainFrmMain = New System.Windows.Forms.CheckBox()
         Me.btnReadFileTabSysTestTbcMainFrmMain = New System.Windows.Forms.Button()
         Me.btnProcTestDataGrpSysTestTabSysTestTbcMainFrmMain = New System.Windows.Forms.Button()
+        Me.tabDebugTbcMainFrmMain = New System.Windows.Forms.TabPage()
+        Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.txtDebug = New System.Windows.Forms.TextBox()
+        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.btnResetView = New System.Windows.Forms.Button()
+        Me.btnShowUsedFeat = New System.Windows.Forms.Button()
+        Me.btnShowPassbkFeat = New System.Windows.Forms.Button()
+        Me.btnShowPassbk = New System.Windows.Forms.Button()
+        Me.btnShowFeat = New System.Windows.Forms.Button()
+        Me.btnDispCustArray = New System.Windows.Forms.Button()
         Me.btnExitFrmMain = New System.Windows.Forms.Button()
         Me.tipTPMS = New System.Windows.Forms.ToolTip(Me.components)
         Me.btnAddGrpCustInfoTcbMain = New System.Windows.Forms.Button()
@@ -238,6 +248,9 @@ Partial Class FrmMain
         Me.tabSysTestTbcMainFrmMain.SuspendLayout()
         Me.grpSysTestTabSysTestTbcMainFrmMain.SuspendLayout()
         Me.grpAnon5.SuspendLayout()
+        Me.tabDebugTbcMainFrmMain.SuspendLayout()
+        Me.GroupBox2.SuspendLayout()
+        Me.GroupBox1.SuspendLayout()
         CType(Me.NumericUpDown3, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -1473,6 +1486,7 @@ Partial Class FrmMain
         Me.tbcMainFrmMain.Controls.Add(Me.tabPassbkFeatTbcMainFrmMain)
         Me.tbcMainFrmMain.Controls.Add(Me.tabTransLogTbcMainFrmMain)
         Me.tbcMainFrmMain.Controls.Add(Me.tabSysTestTbcMainFrmMain)
+        Me.tbcMainFrmMain.Controls.Add(Me.tabDebugTbcMainFrmMain)
         Me.tbcMainFrmMain.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.tbcMainFrmMain.Location = New System.Drawing.Point(43, 109)
         Me.tbcMainFrmMain.Margin = New System.Windows.Forms.Padding(4)
@@ -2041,14 +2055,121 @@ Partial Class FrmMain
         Me.tipTPMS.SetToolTip(Me.btnProcTestDataGrpSysTestTabSysTestTbcMainFrmMain, "Click to enable automated testing")
         Me.btnProcTestDataGrpSysTestTabSysTestTbcMainFrmMain.UseVisualStyleBackColor = True
         '
+        'tabDebugTbcMainFrmMain
+        '
+        Me.tabDebugTbcMainFrmMain.BackColor = System.Drawing.Color.LightGray
+        Me.tabDebugTbcMainFrmMain.Controls.Add(Me.GroupBox2)
+        Me.tabDebugTbcMainFrmMain.Controls.Add(Me.GroupBox1)
+        Me.tabDebugTbcMainFrmMain.Location = New System.Drawing.Point(4, 27)
+        Me.tabDebugTbcMainFrmMain.Name = "tabDebugTbcMainFrmMain"
+        Me.tabDebugTbcMainFrmMain.Padding = New System.Windows.Forms.Padding(3)
+        Me.tabDebugTbcMainFrmMain.Size = New System.Drawing.Size(919, 468)
+        Me.tabDebugTbcMainFrmMain.TabIndex = 8
+        Me.tabDebugTbcMainFrmMain.Text = "Debug"
+        '
+        'GroupBox2
+        '
+        Me.GroupBox2.Controls.Add(Me.txtDebug)
+        Me.GroupBox2.Location = New System.Drawing.Point(325, 32)
+        Me.GroupBox2.Name = "GroupBox2"
+        Me.GroupBox2.Size = New System.Drawing.Size(542, 376)
+        Me.GroupBox2.TabIndex = 2
+        Me.GroupBox2.TabStop = False
+        Me.GroupBox2.Text = "Data View"
+        '
+        'txtDebug
+        '
+        Me.txtDebug.Location = New System.Drawing.Point(6, 20)
+        Me.txtDebug.Multiline = True
+        Me.txtDebug.Name = "txtDebug"
+        Me.txtDebug.ReadOnly = True
+        Me.txtDebug.ScrollBars = System.Windows.Forms.ScrollBars.Both
+        Me.txtDebug.Size = New System.Drawing.Size(530, 350)
+        Me.txtDebug.TabIndex = 1
+        '
+        'GroupBox1
+        '
+        Me.GroupBox1.Controls.Add(Me.btnResetView)
+        Me.GroupBox1.Controls.Add(Me.btnShowUsedFeat)
+        Me.GroupBox1.Controls.Add(Me.btnShowPassbkFeat)
+        Me.GroupBox1.Controls.Add(Me.btnShowPassbk)
+        Me.GroupBox1.Controls.Add(Me.btnShowFeat)
+        Me.GroupBox1.Controls.Add(Me.btnDispCustArray)
+        Me.GroupBox1.Location = New System.Drawing.Point(79, 32)
+        Me.GroupBox1.Name = "GroupBox1"
+        Me.GroupBox1.Size = New System.Drawing.Size(195, 370)
+        Me.GroupBox1.TabIndex = 0
+        Me.GroupBox1.TabStop = False
+        Me.GroupBox1.Text = "Display Internal Data"
+        '
+        'btnResetView
+        '
+        Me.btnResetView.Location = New System.Drawing.Point(45, 326)
+        Me.btnResetView.Name = "btnResetView"
+        Me.btnResetView.Size = New System.Drawing.Size(103, 29)
+        Me.btnResetView.TabIndex = 5
+        Me.btnResetView.Text = "Reset View"
+        Me.tipTPMS.SetToolTip(Me.btnResetView, "Click to reset the data view")
+        Me.btnResetView.UseVisualStyleBackColor = True
+        '
+        'btnShowUsedFeat
+        '
+        Me.btnShowUsedFeat.Location = New System.Drawing.Point(45, 193)
+        Me.btnShowUsedFeat.Name = "btnShowUsedFeat"
+        Me.btnShowUsedFeat.Size = New System.Drawing.Size(103, 29)
+        Me.btnShowUsedFeat.TabIndex = 4
+        Me.btnShowUsedFeat.Text = "Show-UsedFeat"
+        Me.tipTPMS.SetToolTip(Me.btnShowUsedFeat, "Click to display used feature array")
+        Me.btnShowUsedFeat.UseVisualStyleBackColor = True
+        '
+        'btnShowPassbkFeat
+        '
+        Me.btnShowPassbkFeat.Location = New System.Drawing.Point(45, 155)
+        Me.btnShowPassbkFeat.Name = "btnShowPassbkFeat"
+        Me.btnShowPassbkFeat.Size = New System.Drawing.Size(103, 29)
+        Me.btnShowPassbkFeat.TabIndex = 3
+        Me.btnShowPassbkFeat.Text = "Show-PbFeat"
+        Me.tipTPMS.SetToolTip(Me.btnShowPassbkFeat, "Click to display passbook feature array")
+        Me.btnShowPassbkFeat.UseVisualStyleBackColor = True
+        '
+        'btnShowPassbk
+        '
+        Me.btnShowPassbk.Location = New System.Drawing.Point(45, 77)
+        Me.btnShowPassbk.Name = "btnShowPassbk"
+        Me.btnShowPassbk.Size = New System.Drawing.Size(103, 29)
+        Me.btnShowPassbk.TabIndex = 2
+        Me.btnShowPassbk.Text = "Show-Passbk"
+        Me.tipTPMS.SetToolTip(Me.btnShowPassbk, "Click to display passbook array")
+        Me.btnShowPassbk.UseVisualStyleBackColor = True
+        '
+        'btnShowFeat
+        '
+        Me.btnShowFeat.Location = New System.Drawing.Point(45, 117)
+        Me.btnShowFeat.Name = "btnShowFeat"
+        Me.btnShowFeat.Size = New System.Drawing.Size(103, 29)
+        Me.btnShowFeat.TabIndex = 1
+        Me.btnShowFeat.Text = "Show-Feat"
+        Me.tipTPMS.SetToolTip(Me.btnShowFeat, "Click to display feature array")
+        Me.btnShowFeat.UseVisualStyleBackColor = True
+        '
+        'btnDispCustArray
+        '
+        Me.btnDispCustArray.Location = New System.Drawing.Point(45, 36)
+        Me.btnDispCustArray.Name = "btnDispCustArray"
+        Me.btnDispCustArray.Size = New System.Drawing.Size(103, 29)
+        Me.btnDispCustArray.TabIndex = 0
+        Me.btnDispCustArray.Text = "Show-Cust"
+        Me.tipTPMS.SetToolTip(Me.btnDispCustArray, "Click to display customer array")
+        Me.btnDispCustArray.UseVisualStyleBackColor = True
+        '
         'btnExitFrmMain
         '
         Me.btnExitFrmMain.BackColor = System.Drawing.Color.Transparent
         Me.btnExitFrmMain.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnExitFrmMain.ForeColor = System.Drawing.SystemColors.HotTrack
-        Me.btnExitFrmMain.Location = New System.Drawing.Point(457, 635)
+        Me.btnExitFrmMain.Location = New System.Drawing.Point(463, 640)
         Me.btnExitFrmMain.Name = "btnExitFrmMain"
-        Me.btnExitFrmMain.Size = New System.Drawing.Size(99, 30)
+        Me.btnExitFrmMain.Size = New System.Drawing.Size(86, 25)
         Me.btnExitFrmMain.TabIndex = 3
         Me.btnExitFrmMain.Text = "E&xit"
         Me.btnExitFrmMain.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage
@@ -2238,6 +2359,10 @@ Partial Class FrmMain
         Me.grpSysTestTabSysTestTbcMainFrmMain.PerformLayout()
         Me.grpAnon5.ResumeLayout(False)
         Me.grpAnon5.PerformLayout()
+        Me.tabDebugTbcMainFrmMain.ResumeLayout(False)
+        Me.GroupBox2.ResumeLayout(False)
+        Me.GroupBox2.PerformLayout()
+        Me.GroupBox1.ResumeLayout(False)
         CType(Me.NumericUpDown3, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
@@ -2429,4 +2554,14 @@ Partial Class FrmMain
     Friend WithEvents cboCustIdGrpCustInfoGrpAddPassbkTabPassbkTbcMainFrmMain As System.Windows.Forms.ComboBox
     Friend WithEvents chkUseTestParkGrpSysTestTabSysTestTbcMainFrmMain As System.Windows.Forms.CheckBox
     Friend WithEvents mnuUseFeaturesPassbooksFrmMain As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents tabDebugTbcMainFrmMain As System.Windows.Forms.TabPage
+    Friend WithEvents GroupBox2 As System.Windows.Forms.GroupBox
+    Friend WithEvents txtDebug As System.Windows.Forms.TextBox
+    Friend WithEvents GroupBox1 As System.Windows.Forms.GroupBox
+    Friend WithEvents btnShowUsedFeat As System.Windows.Forms.Button
+    Friend WithEvents btnShowPassbkFeat As System.Windows.Forms.Button
+    Friend WithEvents btnShowPassbk As System.Windows.Forms.Button
+    Friend WithEvents btnShowFeat As System.Windows.Forms.Button
+    Friend WithEvents btnDispCustArray As System.Windows.Forms.Button
+    Friend WithEvents btnResetView As System.Windows.Forms.Button
 End Class

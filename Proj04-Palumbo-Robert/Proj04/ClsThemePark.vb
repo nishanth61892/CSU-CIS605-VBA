@@ -245,6 +245,41 @@ Public Class ThemePark
         End Set
     End Property
 
+    'Customer array accessor
+    Public ReadOnly Property ithCust(ByVal pN As Integer) As Customer
+        Get
+            Return _ithCust(pN)
+        End Get
+    End Property
+
+    'Feature array accessor
+    Public ReadOnly Property ithFeat(ByVal pN As Integer) As Feature
+        Get
+            Return _ithFeat(pN)
+        End Get
+    End Property
+
+    'Passbook array accessor
+    Public ReadOnly Property ithPassbk(ByVal pN As Integer) As Passbook
+        Get
+            Return _ithPassbk(pN)
+        End Get
+    End Property
+
+    'Passbook Feature array accessor
+    Public ReadOnly Property ithPassbkFeat(ByVal pN As Integer) As PassbookFeature
+        Get
+            Return _ithPassbkFeat(pN)
+        End Get
+    End Property
+
+    'Update Feature array accessor
+    Public ReadOnly Property ithUsedFeat(ByVal pN As Integer) As UsedFeature
+        Get
+            Return _ithUsedFeat(pN)
+        End Get
+    End Property
+
 
 
     '********** Private Get/Set Methods
@@ -430,7 +465,7 @@ Public Class ThemePark
     End Property
 
     'Customer array accessor
-    Private Property _ithCustomer(ByVal pN As Integer) As Customer
+    Private Property _ithCust(ByVal pN As Integer) As Customer
         'Assumes: 0 <= pN < _custArrayMax
         'Throws an IndexOutOfRangeException if this is not the case.
         Get
@@ -450,7 +485,7 @@ Public Class ThemePark
     End Property
 
     'Feature array accessor
-    Private Property _ithFeature(ByVal pN As Integer) As Feature
+    Private Property _ithFeat(ByVal pN As Integer) As Feature
         'Assumes: 0 <= pN < _featureArrayMax
         'Throws an IndexOutOfRangeException if this is not the case.
         Get
@@ -470,7 +505,7 @@ Public Class ThemePark
     End Property
 
     'Passbook array accessor
-    Private Property _ithPassbook(ByVal pN As Integer) As Passbook
+    Private Property _ithPassbk(ByVal pN As Integer) As Passbook
         'Assumes: 0 <= pN < _featureArrayMax
         'Throws an IndexOutOfRangeException if this is not the case.
         Get
@@ -490,7 +525,7 @@ Public Class ThemePark
     End Property
 
     'PassbookFeature array accessor
-    Private Property _ithPassbookFeature(ByVal pN As Integer) As PassbookFeature
+    Private Property _ithPassbkFeat(ByVal pN As Integer) As PassbookFeature
         'Assumes: 0 <= pN < _passbookFeatureArrayMax
         'Throws an IndexOutOfRangeException if this is not the case.
         Get
@@ -510,7 +545,7 @@ Public Class ThemePark
     End Property
 
     'Used feature array accessor
-    Private Property _ithUsedFeature(ByVal pN As Integer) As UsedFeature
+    Private Property _ithUsedFeat(ByVal pN As Integer) As UsedFeature
         'Assumes: 0 <= pN < _usedFeatureArrayMax
         'Throws an IndexOutOfRangeException if this is not the case.
         Get
@@ -716,6 +751,22 @@ Public Class ThemePark
             Exit Sub
         End If
 
+        'May need to dynamically resize internal customer storage as needed
+        If _numCusts >= _custArrayMax Then
+            _custArrayMax += _CUSTOMER_ARRAY_INC_DFLT
+            ReDim Preserve mCustomer(_custArrayMax - 1)
+        End If
+
+        'Attempt to add the customer object to the internal storage and trap
+        'any potential exceptions which will be passed up the call stack
+        'for processing.
+        Try
+            _ithCust(_numCusts) = cust
+        Catch ex As Exception
+            Throw New IndexOutOfRangeException
+            Exit Sub
+        End Try
+
         'update the customer cnt in the system
         _numCusts += 1
 
@@ -744,12 +795,28 @@ Public Class ThemePark
                                           pChildPrice
                                           )
 
-        'Make sure we actually have customer object.  There is the slight chance
+        'Make sure we actually have feature object.  There is the slight chance
         'that the New () could have failed.
         If feat Is Nothing Then
             MsgBox(mSYS_ERR_MSG, MsgBoxStyle.Critical)
             Exit Sub
         End If
+
+        'May need to dynamically resize internal feature storage as needed
+        If _numFeats >= _featureArrayMax Then
+            _featureArrayMax += _FEATURE_ARRAY_INC_DFLT
+            ReDim Preserve mFeature(_featureArrayMax - 1)
+        End If
+
+        'Attempt to add the feature object to the internal storage and trap
+        'any potential exceptions which will be passed up the call stack
+        'for processing.
+        Try
+            _ithFeat(_numFeats) = feat
+        Catch ex As Exception
+            Throw New IndexOutOfRangeException
+            Exit Sub
+        End Try
 
         'update the feature cnt in the system
         _numFeats += 1
@@ -783,12 +850,28 @@ Public Class ThemePark
                                                 pVisIsChild
                                                 )
 
-        'Make sure we actually have customer object.  There is the slight chance
+        'Make sure we actually have passbook object.  There is the slight chance
         'that the New () could have failed.
         If passbook Is Nothing Then
             MsgBox(mSYS_ERR_MSG, MsgBoxStyle.Critical)
             Exit Sub
         End If
+
+        'May need to dynamically resize internal passbook storage as needed
+        If _numPassbks >= _passbookArrayMax Then
+            _passbookArrayMax += _PASSBL_ARRAY_INC_DFLT
+            ReDim Preserve mPassbook(_passbookArrayMax - 1)
+        End If
+
+        'Attempt to add the passbook object to the internal storage and trap
+        'any potential exceptions which will be passed up the call stack
+        'for processing.
+        Try
+            _ithPassbk(_numPassbks) = passbook
+        Catch ex As Exception
+            Throw New IndexOutOfRangeException
+            Exit Sub
+        End Try
 
         'update the passbook cnt in the system
         _numPassbks += 1
@@ -815,12 +898,28 @@ Public Class ThemePark
                                                                 pPassbk, _
                                                                 pQtyPurch
                                                                 )
-        'Make sure we actually have customer object.  There is the slight chance
+        'Make sure we actually have passbook feature object.  There is the slight chance
         'that the New () could have failed.
         If passbkFeat Is Nothing Then
             MsgBox(mSYS_ERR_MSG, MsgBoxStyle.Critical)
             Exit Sub
         End If
+
+        'May need to dynamically resize internal passbook feature storage as needed
+        If _numPassbkFeats >= _passbookFeatureArrayMax Then
+            _passbookFeatureArrayMax += _PASSBKFEATURE_ARRAY_INC_DFLT
+            ReDim Preserve mPassbookFeature(_passbookFeatureArrayMax - 1)
+        End If
+
+        'Attempt to add the passbook feature object to the internal storage and trap
+        'any potential exceptions which will be passed up the call stack
+        'for processing.
+        Try
+            _ithPassbkFeat(_numPassbkFeats) = passbkFeat
+        Catch ex As Exception
+            Throw New IndexOutOfRangeException
+            Exit Sub
+        End Try
 
         'update the passbook cnt in the system
         _numPassbkFeats += 1
@@ -879,12 +978,28 @@ Public Class ThemePark
                                                       pDateUsed
                                                       )
 
-        'Make sure we actually have customer object.  There is the slight chance
+        'Make sure we actually have used feature object.  There is the slight chance
         'that the New () could have failed.
         If usedFeat Is Nothing Then
             MsgBox(mSYS_ERR_MSG, MsgBoxStyle.Critical)
             Exit Sub
         End If
+
+        'May need to dynamically resize internal passbook feature storage as needed
+        If _numUsedFeats >= _usedFeatureArrayMax Then
+            _usedFeatureArrayMax += _USED_FEATURE_ARRAY_INC_DFLT
+            ReDim Preserve mUsedFeature(_usedFeatureArrayMax - 1)
+        End If
+
+        'Attempt to add the passbook feature object to the internal storage and trap
+        'any potential exceptions which will be passed up the call stack
+        'for processing.
+        Try
+            _ithUsedFeat(_numUsedFeats) = usedFeat
+        Catch ex As Exception
+            Throw New IndexOutOfRangeException
+            Exit Sub
+        End Try
 
         'update the passbook cnt in the system
         _numUsedFeats += 1
