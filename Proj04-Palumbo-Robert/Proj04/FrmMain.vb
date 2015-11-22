@@ -41,6 +41,10 @@ Public Class FrmMain
     'System level error message
     Private Const mSYS_ERR_MSG As String = "Internal System Error: Object Creation Failed"
     Private Const mSYS_LOOKUP_ERR_MSG As String = "Internal System Error: Object Lookup Failed"
+    Private Const mSYS_ERR_CUSTID_EXISTS_MSG As String = "Error: Customer ID already exists, ID="
+    Private Const mSYS_ERR_FEATID_EXISTS_MSG As String = "Error: Feature ID already exists, ID="
+    Private Const mSYS_ERR_PASSBKID_EXISTS_MSG As String = "Error: Passbook ID already exists, ID="
+    Private Const mSYS_ERR_PASSBKFEATID_EXISTS_MSG As String = "Error: Passbook Feature ID already exists, ID="
 
     '********** Module-level constants
     'Theme Park Name
@@ -502,6 +506,15 @@ Public Class FrmMain
             Exit Sub
         End If
 
+        'Check for duplicate customer (by ID of course).  Duplicates are 
+        'not allowed
+        If Not IsNothing(_theThemePark.findCust(custId)) Then
+            MsgBox(mSYS_ERR_CUSTID_EXISTS_MSG & custId, MsgBoxStyle.Critical)
+            txtCustIdGrpAddCustTabCustTbcMainFrmMain.SelectAll()
+            txtCustIdGrpAddCustTabCustTbcMainFrmMain.Focus()
+            Exit Sub
+        End If
+
         If String.IsNullOrEmpty(custName) Then
             MsgBox("ERROR: Please enter a valid Customer Name (ex: Doe, John)", MsgBoxStyle.OkOnly)
             txtCustNameGrpAddCustTabCustTbcMainFrmMain.SelectAll()
@@ -584,6 +597,15 @@ Public Class FrmMain
         'Validate all the fields
         If String.IsNullOrEmpty(featId) Then
             MsgBox("ERROR: Please enter a unique Feature ID (ex: 0001)", MsgBoxStyle.OkOnly)
+            txtFeatIdAddFeatTabFeatTbcMainFrmMain.SelectAll()
+            txtFeatIdAddFeatTabFeatTbcMainFrmMain.Focus()
+            Exit Sub
+        End If
+
+        'Check for duplicate feature (by ID of course).  Duplicates are 
+        'not allowed
+        If Not IsNothing(_theThemePark.findFeat(featId)) Then
+            MsgBox(mSYS_ERR_FEATID_EXISTS_MSG & featId, MsgBoxStyle.Critical)
             txtFeatIdAddFeatTabFeatTbcMainFrmMain.SelectAll()
             txtFeatIdAddFeatTabFeatTbcMainFrmMain.Focus()
             Exit Sub
@@ -743,6 +765,15 @@ Public Class FrmMain
             Exit Sub
         End If
 
+        'Check for duplicate passbook (by ID of course).  Duplicates are 
+        'not allowed
+        If Not IsNothing(_theThemePark.findPassbk(passbkId)) Then
+            MsgBox(mSYS_ERR_PASSBKID_EXISTS_MSG & passbkId, MsgBoxStyle.Critical)
+            txtPassbkIdGrpAddPassbkTabPassbkTbcMainFrmMain.SelectAll()
+            txtPassbkIdGrpAddPassbkTabPassbkTbcMainFrmMain.Focus()
+            Exit Sub
+        End If
+
         If String.IsNullOrEmpty(visName) Then
             MsgBox("ERROR: Please enter a Visitor Name (ex: Doe, John)", MsgBoxStyle.OkOnly)
             txtVisNameGrpAddPassbkTabPassbkTbcMainFrmMain.SelectAll()
@@ -762,6 +793,7 @@ Public Class FrmMain
         If DateTime.Compare(visDobValue, datePurch) > 0 Then
             MsgBox("ERROR: Visitor DOB is in the future, please re-enter date", MsgBoxStyle.OkOnly)
             txtVisDobGrpAddPassbkTabPassbkTbcMainFrmMain.Focus()
+            txtVisDobGrpAddPassbkTabPassbkTbcMainFrmMain.Text = Now.ToString
             Exit Sub
         End If
 
@@ -894,6 +926,15 @@ Public Class FrmMain
 
         If String.IsNullOrEmpty(passbkFeatId) Then
             MsgBox("ERROR: Please enter unique Passbook Feature Id (ex: 0001)", MsgBoxStyle.OkOnly)
+            txtPassBkFeatIdTabAddFeatTbcPassbkFeatMainTbcMain.SelectAll()
+            txtPassBkFeatIdTabAddFeatTbcPassbkFeatMainTbcMain.Focus()
+            Exit Sub
+        End If
+
+        'Check for duplicate passbook features (by ID of course).  Duplicates are 
+        'not allowed
+        If Not IsNothing(_theThemePark.findPassbkFeat(passbkFeatId)) Then
+            MsgBox(mSYS_ERR_PASSBKFEATID_EXISTS_MSG & passbkFeatId, MsgBoxStyle.Critical)
             txtPassBkFeatIdTabAddFeatTbcPassbkFeatMainTbcMain.SelectAll()
             txtPassBkFeatIdTabAddFeatTbcPassbkFeatMainTbcMain.Focus()
             Exit Sub
@@ -1832,6 +1873,7 @@ Public Class FrmMain
             Exit Sub
         End If
 
+        'Update associated UI components with component values
         With cust
             lstCustTabDashboardTbcMain.Items.Add(.custId)
             txtCustCntTabDashboardTbcMain.Text = _
@@ -1840,6 +1882,8 @@ Public Class FrmMain
             cboCustIdGrpCustInfoGrpAddPassbkTabPassbkTbcMainFrmMain.Items.Add(.custId)
         End With
 
+        'Write transaction record and log info
+        _theThemePark.writeTranxRec(_theThemePark.tranxCustType, Nothing, cust)
         _writeTransLog("<CREATED>: " & cust.ToString())
 
         'Not needed if object was created from system test data
@@ -1877,6 +1921,7 @@ Public Class FrmMain
             Exit Sub
         End If
 
+        'Update associated UI components with component values
         With feat
             lstFeatTabDashboardTbcMain.Items.Add(.featId)
             txtFeatCntTabDashboardTbcMain.Text = _
@@ -1885,6 +1930,8 @@ Public Class FrmMain
             cboFeatIdTabAddFeatTbcPassbkFeatMainTbcMain.Items.Add(.featId)
         End With
 
+        'Write transaction record and log info
+        _theThemePark.writeTranxRec(_theThemePark.tranxFeatType, Nothing, feat)
         _writeTransLog("<CREATED>: " & feat.ToString())
 
         'Not needed if object was created from system test data
@@ -1906,22 +1953,23 @@ Public Class FrmMain
 
         'Declare variables
         Dim themePark_EventArgs_CreatePassbk As ThemePark_EventArgs_CreatePassbk
-        Dim passbook As Passbook
+        Dim passbk As Passbook
 
         'Get/validate data
         themePark_EventArgs_CreatePassbk = CType(e, ThemePark_EventArgs_CreatePassbk)
 
         'Use the past in object to populate the necessary system components
-        passbook = themePark_EventArgs_CreatePassbk.passbook
+        passbk = themePark_EventArgs_CreatePassbk.passbook
 
         'Make sure we actually have customer object.  There is the slight chance
         'that the New () could have failed.
-        If passbook Is Nothing Then
+        If passbk Is Nothing Then
             MsgBox(mSYS_ERR_MSG, MsgBoxStyle.Critical)
             Exit Sub
         End If
 
-        With passbook
+        'Update associated UI components with component values
+        With passbk
             lstPassbkTabDashboardTbcMain.Items.Add(.passbkId)
             txtPassbkCntTabDashboardTbcMain.Text =
                 lstPassbkTabDashboardTbcMain.Items.Count.ToString
@@ -1929,7 +1977,9 @@ Public Class FrmMain
             cboPassbkIdTabAddFeatTbcPassbkFeatMainTbcMain.Items.Add(.passbkId)
         End With
 
-        _writeTransLog("<CREATED>: " & passbook.ToString())
+        'Write transaction record and log info
+        _theThemePark.writeTranxRec(_theThemePark.tranxPassbkType, Nothing, passbk)
+        _writeTransLog("<CREATED>: " & passbk.ToString())
 
         'Not needed if object was created from system test data
         If _sysTestActive = False Then
@@ -1965,6 +2015,7 @@ Public Class FrmMain
             Exit Sub
         End If
 
+        'Update associated UI components with component values
         With passbkFeat
             lstPassbkFeatTabDashboardTbcMain.Items.Add(.id)
             txtPassbkFeatCntTabDashboardTbcMain.Text =
@@ -1974,6 +2025,8 @@ Public Class FrmMain
             cboPassbkFeatIdTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Items.Add(.id)
         End With
 
+        'Write transaction record and log info
+        _theThemePark.writeTranxRec(_theThemePark.tranxPassbkFeatType, Nothing, passbkFeat)
         _writeTransLog("<PURCHASED>: " & passbkFeat.ToString())
 
         'Not needed if object was created from system test data
@@ -2010,6 +2063,7 @@ Public Class FrmMain
         End If
 
 
+        'Update associated UI components with component values
         With passbkFeat
             '            lstPassbkFeatTabDashboardTbcMain.Items.Add(.id)
             '            lstPassbkTabDashboardTbcMain.Items.Add(.id)
@@ -2053,6 +2107,7 @@ Public Class FrmMain
             Exit Sub
         End If
 
+        'Update associated UI components with component values
         With usedFeat
             lstUsedFeatTabDashboardTbcMain.Items.Add(.id)
             lstUsedFeatCntTabDashboardTbcMain.Text =

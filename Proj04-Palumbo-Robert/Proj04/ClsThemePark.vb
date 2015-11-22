@@ -44,8 +44,15 @@ Public Class ThemePark
     'Attributes + Module-level Constants+Variables
     '****************************************************************************************
     'System level error message
-    Private Const mSYS_ERR_MSG As String = "Internal System Error: Object Creation Failed"
+    Private Const mSYS_OBJ_CREATE_ERR_MSG As String = "Internal System Error: Object Creation Failed"
     Private Const mSYS_LOOKUP_ERR_MSG As String = "Internal System Error: Object Lookup Failed"
+    Private Const mSYS_TRANX_CREATE_ERR_MSG As String = "Internal System Error: Transaction Creation Failed"
+
+    'Transaction Record types
+    Private Const mTRANX_CUST_TYPE As String = "CUSTOMER"
+    Private Const mTRANX_FEAT_TYPE As String = "FEATURE"
+    Private Const mTRANX_PASSBK_TYPE As String = "PASSBOOK"
+    Private Const mTRANX_PASSBKFEAT_TYPE As String = "PASSBOOK_FEATURE"
 
     'Input/Output file names
     Private Const mINPUT_FILENAME As String = "Transactions-in.txt"
@@ -245,6 +252,30 @@ Public Class ThemePark
         End Set
     End Property
 
+    Public ReadOnly Property tranxCustType() As String
+        Get
+            Return _tranxCustType
+        End Get
+    End Property
+
+    Public ReadOnly Property tranxFeatType() As String
+        Get
+            Return _tranxFeatType
+        End Get
+    End Property
+
+    Public ReadOnly Property tranxPassbkType() As String
+        Get
+            Return _tranxPassbkType
+        End Get
+    End Property
+
+    Public ReadOnly Property tranxPassbkFeatType() As String
+        Get
+            Return _tranxPassbkFeatType
+        End Get
+    End Property
+
     'Customer array accessor
     Public ReadOnly Property ithCust(ByVal pN As Integer) As Customer
         Get
@@ -336,6 +367,30 @@ Public Class ThemePark
         Set(pValue As Integer)
             mNumUsedFeats = pValue
         End Set
+    End Property
+
+    Private ReadOnly Property _tranxCustType() As String
+        Get
+            Return mTRANX_CUST_TYPE
+        End Get
+    End Property
+
+    Private ReadOnly Property _tranxFeatType() As String
+        Get
+            Return mTRANX_FEAT_TYPE
+        End Get
+    End Property
+
+    Private ReadOnly Property _tranxPassbkType() As String
+        Get
+            Return mTRANX_PASSBK_TYPE
+        End Get
+    End Property
+
+    Private ReadOnly Property _tranxPassbkFeatType() As String
+        Get
+            Return mTRANX_PASSBKFEAT_TYPE
+        End Get
     End Property
 
     Private ReadOnly Property _CUSTOMER_ARRAY_SIZE_DFLT As Integer
@@ -598,23 +653,21 @@ Public Class ThemePark
     '********** Public Non-Shared Behavioral Methods
 
     '****************************************************************************************
+    'writeTranxRec() is used to format a transaction record and store it in the tranx rec
+    'database.
+    '****************************************************************************************
+    Public Sub writeTranxRec(ByVal pType As String,
+                             ByVal pSubType As String,
+                             ByVal pObj As Object)
+        _writeTranxRec(pType, pSubType, pObj)
+    End Sub 'writeTranxRec(...)
+
+    '****************************************************************************************
     'findCust() is used to locate a customer by ID from the customer database.  
     'Returns a customer reference if found, otherwise Nothing.
     '****************************************************************************************
     Public Function findCust(ByVal pCustId As String) As Customer
-        Dim i As Integer
-
-        Try
-            For i = 0 To _numCusts - 1
-                If _ithCust(i).custId = pCustId Then
-                    Return _ithCust(i)
-                End If
-            Next i
-        Catch ex As Exception
-            MsgBox(mSYS_LOOKUP_ERR_MSG, MsgBoxStyle.Exclamation)
-        End Try
-
-        Return Nothing
+        Return _findCust(pCustId)
     End Function 'findCust(...)
 
     '****************************************************************************************
@@ -622,19 +675,7 @@ Public Class ThemePark
     'Returns a feature reference if found, otherwise Nothing
     '****************************************************************************************
     Public Function findFeat(ByVal pFeatId As String) As Feature
-        Dim i As Integer
-
-        Try
-            For i = 0 To _numFeats - 1
-                If _ithFeat(i).featId = pFeatId Then
-                    Return _ithFeat(i)
-                End If
-            Next i
-        Catch ex As Exception
-            MsgBox(mSYS_LOOKUP_ERR_MSG, MsgBoxStyle.Exclamation)
-        End Try
-
-        Return Nothing
+        Return _findFeat(pFeatId)
     End Function 'findFeat(...)
 
     '****************************************************************************************
@@ -642,19 +683,7 @@ Public Class ThemePark
     'Returns a passbook reference if found, otherwise Nothing
     '****************************************************************************************
     Public Function findPassbk(ByVal pPassbkId As String) As Passbook
-        Dim i As Integer
-
-        Try
-            For i = 0 To _numPassbks - 1
-                If _ithPassbk(i).passbkId = pPassbkId Then
-                    Return _ithPassbk(i)
-                End If
-            Next i
-        Catch ex As Exception
-            MsgBox(mSYS_LOOKUP_ERR_MSG, MsgBoxStyle.Exclamation)
-        End Try
-
-        Return Nothing
+        Return _findPassbk(pPassbkId)
     End Function 'findPassbk(...)
 
     '****************************************************************************************
@@ -662,19 +691,7 @@ Public Class ThemePark
     'Returns a passbook feature reference if found, otherwise Nothing
     '****************************************************************************************
     Public Function findPassbkFeat(ByVal pPassbkFeatId As String) As PassbookFeature
-        Dim i As Integer
-
-        Try
-            For i = 0 To _numPassbkFeats - 1
-                If _ithPassbkFeat(i).id = pPassbkFeatId Then
-                    Return _ithPassbkFeat(i)
-                End If
-            Next i
-        Catch ex As Exception
-            MsgBox(mSYS_LOOKUP_ERR_MSG, MsgBoxStyle.Exclamation)
-        End Try
-
-        Return Nothing
+        Return _findPassbkFeat(pPassbkFeatId)
     End Function 'findPassbkFeat(...)
 
     '****************************************************************************************
@@ -682,19 +699,7 @@ Public Class ThemePark
     'Returns a used feature reference if found, otherwise Nothing
     '****************************************************************************************
     Public Function findUsedFeat(ByVal pUsedFeatId As String) As UsedFeature
-        Dim i As Integer
-
-        Try
-            For i = 0 To _numUsedFeats - 1
-                If _ithUsedFeat(i).id = pUsedFeatId Then
-                    Return _ithUsedFeat(i)
-                End If
-            Next i
-        Catch ex As Exception
-            MsgBox(mSYS_LOOKUP_ERR_MSG, MsgBoxStyle.Exclamation)
-        End Try
-
-        Return Nothing
+        Return _findUsedFeat(pUsedFeatId)
     End Function 'findUsedFeat(...)
 
     '****************************************************************************************
@@ -811,6 +816,146 @@ Public Class ThemePark
 
 
     '********** Private Non-Shared Behavioral Methods
+    '****************************************************************************************
+    '_writeTranxRec() is used to format a transaction record and store it in the tranx rec
+    'database.
+    'It is the workhorse method called by writeTranxRec().
+    '****************************************************************************************
+    Private Sub _writeTranxRec(ByVal pType As String,
+                               ByVal pSubTyp As String,
+                               ByVal pObj As Object)
+        Dim now As Date = now
+        Dim tStr As String = ""
+
+        'Depending on the tranx type pObj will be cast approriately to extract the 
+        'specific details of this transaction to be written out
+        Select Case pType
+            Case _tranxCustType
+                Dim cust As Customer = CType(pObj, Customer)
+                Console.WriteLine("WriteTranxRec: " & cust.ToString)
+
+            Case _tranxFeatType
+                Dim feat As Feature = CType(pObj, Feature)
+                Console.WriteLine("WriteTranxRec: " & feat.ToString)
+
+            Case _tranxPassbkType
+                Dim passBk As Passbook = CType(pObj, Passbook)
+                Console.WriteLine("WriteTranxRec: " & passBk.ToString)
+
+            Case _tranxPassbkFeatType
+                Dim passbkFeat As PassbookFeature = CType(pObj, PassbookFeature)
+                Console.WriteLine("WriteTranxRec: " & passbkFeat.ToString)
+
+            Case Else
+                MsgBox(mSYS_TRANX_CREATE_ERR_MSG, MsgBoxStyle.Exclamation)
+        End Select
+    End Sub '_writeTranxRec(...)
+
+    '****************************************************************************************
+    '_findCust() is used to locate a customer by ID from the customer database. 
+    'It is the workhorse function called by findCust().
+    'Returns a customer reference if found, otherwise Nothing.
+    '****************************************************************************************
+    Private Function _findCust(ByVal pCustId As String) As Customer
+        Dim i As Integer
+
+        Try
+            For i = 0 To _numCusts - 1
+                If _ithCust(i).custId = pCustId Then
+                    Return _ithCust(i)
+                End If
+            Next i
+        Catch ex As Exception
+            MsgBox(mSYS_LOOKUP_ERR_MSG, MsgBoxStyle.Exclamation)
+        End Try
+
+        Return Nothing
+    End Function '_findCust(...)
+
+    '****************************************************************************************
+    'findFeat() is used to locate a feature by ID from the feature database.  
+    'It is the workhorse function called by findFeat().
+    'Returns a feature reference if found, otherwise Nothing
+    '****************************************************************************************
+    Private Function _findFeat(ByVal pFeatId As String) As Feature
+        Dim i As Integer
+
+        Try
+            For i = 0 To _numFeats - 1
+                If _ithFeat(i).featId = pFeatId Then
+                    Return _ithFeat(i)
+                End If
+            Next i
+        Catch ex As Exception
+            MsgBox(mSYS_LOOKUP_ERR_MSG, MsgBoxStyle.Exclamation)
+        End Try
+
+        Return Nothing
+    End Function '_findFeat(...)
+
+    '****************************************************************************************
+    'findPassbk() is used to locate a Passbook by ID from the passbook database.  
+    'It is the workhorse function called by findPassbk().
+    'Returns a passbook reference if found, otherwise Nothing
+    '****************************************************************************************
+    Private Function _findPassbk(ByVal pPassbkId As String) As Passbook
+        Dim i As Integer
+
+        Try
+            For i = 0 To _numPassbks - 1
+                If _ithPassbk(i).passbkId = pPassbkId Then
+                    Return _ithPassbk(i)
+                End If
+            Next i
+        Catch ex As Exception
+            MsgBox(mSYS_LOOKUP_ERR_MSG, MsgBoxStyle.Exclamation)
+        End Try
+
+        Return Nothing
+    End Function '_findPassbk(...)
+
+    '****************************************************************************************
+    '_findPassbkFeat() is used to locate a Passbook Feature by ID from the Feature database.  
+    'It is the workhorse function called by findPassbkFeat().
+    'Returns a passbook feature reference if found, otherwise Nothing
+    '****************************************************************************************
+    Private Function _findPassbkFeat(ByVal pPassbkFeatId As String) As PassbookFeature
+        Dim i As Integer
+
+        Try
+            For i = 0 To _numPassbkFeats - 1
+                If _ithPassbkFeat(i).id = pPassbkFeatId Then
+                    Return _ithPassbkFeat(i)
+                End If
+            Next i
+        Catch ex As Exception
+            MsgBox(mSYS_LOOKUP_ERR_MSG, MsgBoxStyle.Exclamation)
+        End Try
+
+        Return Nothing
+    End Function '_findPassbkFeat(...)
+
+    '****************************************************************************************
+    '_findUsedFeat() is used to locate a Used Feature by ID from the Used Feature database.  
+    'It is the workhorse function called by findUsedFeat().
+    'Returns a used feature reference if found, otherwise Nothing
+    '****************************************************************************************
+    Private Function _findUsedFeat(ByVal pUsedFeatId As String) As UsedFeature
+        Dim i As Integer
+
+        Try
+            For i = 0 To _numUsedFeats - 1
+                If _ithUsedFeat(i).id = pUsedFeatId Then
+                    Return _ithUsedFeat(i)
+                End If
+            Next i
+        Catch ex As Exception
+            MsgBox(mSYS_LOOKUP_ERR_MSG, MsgBoxStyle.Exclamation)
+        End Try
+
+        Return Nothing
+    End Function '_findUsedFeat(...)
+
 
     '****************************************************************************************
     '_toString() creates and returns a String version of the data
@@ -847,7 +992,7 @@ Public Class ThemePark
         'Make sure we actually have customer object.  There is the slight chance
         'that the New () could have failed.
         If cust Is Nothing Then
-            MsgBox(mSYS_ERR_MSG, MsgBoxStyle.Critical)
+            MsgBox(mSYS_OBJ_CREATE_ERR_MSG, MsgBoxStyle.Critical)
             Exit Sub
         End If
 
@@ -898,7 +1043,7 @@ Public Class ThemePark
         'Make sure we actually have feature object.  There is the slight chance
         'that the New () could have failed.
         If feat Is Nothing Then
-            MsgBox(mSYS_ERR_MSG, MsgBoxStyle.Critical)
+            MsgBox(mSYS_OBJ_CREATE_ERR_MSG, MsgBoxStyle.Critical)
             Exit Sub
         End If
 
@@ -953,7 +1098,7 @@ Public Class ThemePark
         'Make sure we actually have passbook object.  There is the slight chance
         'that the New () could have failed.
         If passbook Is Nothing Then
-            MsgBox(mSYS_ERR_MSG, MsgBoxStyle.Critical)
+            MsgBox(mSYS_OBJ_CREATE_ERR_MSG, MsgBoxStyle.Critical)
             Exit Sub
         End If
 
@@ -1001,7 +1146,7 @@ Public Class ThemePark
         'Make sure we actually have passbook feature object.  There is the slight chance
         'that the New () could have failed.
         If passbkFeat Is Nothing Then
-            MsgBox(mSYS_ERR_MSG, MsgBoxStyle.Critical)
+            MsgBox(mSYS_OBJ_CREATE_ERR_MSG, MsgBoxStyle.Critical)
             Exit Sub
         End If
 
@@ -1048,7 +1193,7 @@ Public Class ThemePark
         'Make sure we actually have customer object.  There is the slight chance
         'that the New () could have failed.
         If passbkFeat Is Nothing Then
-            MsgBox(mSYS_ERR_MSG, MsgBoxStyle.Critical)
+            MsgBox(mSYS_OBJ_CREATE_ERR_MSG, MsgBoxStyle.Critical)
             Exit Sub
         End If
 
@@ -1081,7 +1226,7 @@ Public Class ThemePark
         'Make sure we actually have used feature object.  There is the slight chance
         'that the New () could have failed.
         If usedFeat Is Nothing Then
-            MsgBox(mSYS_ERR_MSG, MsgBoxStyle.Critical)
+            MsgBox(mSYS_OBJ_CREATE_ERR_MSG, MsgBoxStyle.Critical)
             Exit Sub
         End If
 
