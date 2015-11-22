@@ -228,10 +228,18 @@ Public Class UsedFeature
     '****************************************************************************************
     Private Function _toString() As String
         Dim tmpStr As String = ""
+        Dim passbkFeatStr As String
+
+        'Make sure passbook feature is defined for the object
+        If Not IsNothing(_passbkFeat) Then
+            passbkFeatStr = _passbkFeat.ToString
+        Else
+            passbkFeatStr = "No-Passbook-Feature-Reference-Found"
+        End If
 
         tmpStr = "[UsedFeature] -> " _
             & " Id=" & _id _
-            & ", PassbookFeature=" & _passbkFeat.ToString _
+            & ", PassbookFeature=" & passbkFeatStr _
             & ", Location=" & _loc _
             & ", QtyUsed=" & _qtyUsed
 

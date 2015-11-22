@@ -53,6 +53,9 @@ Public Class ThemePark
     Private Const mTRANX_FEAT_TYPE As String = "FEATURE"
     Private Const mTRANX_PASSBK_TYPE As String = "PASSBOOK"
     Private Const mTRANX_PASSBKFEAT_TYPE As String = "PASSBOOK_FEATURE"
+    Private Const mTRANX_PBF_PURCH_TYPE As String = "PURCHASE"
+    Private Const mTRANX_PBF_USE_TYPE As String = "USE"
+    Private Const mTRANX_PBF_UPDT_TYPE As String = "UPDATE"
 
     'Input/Output file names
     Private Const mINPUT_FILENAME As String = "Transactions-in.txt"
@@ -276,6 +279,24 @@ Public Class ThemePark
         End Get
     End Property
 
+    Public ReadOnly Property tranxPbfPurchType() As String
+        Get
+            Return _tranxPbfPurchType
+        End Get
+    End Property
+
+    Public ReadOnly Property tranxPbfUseType() As String
+        Get
+            Return _tranxPbfUseType
+        End Get
+    End Property
+
+    Public ReadOnly Property tranxPbfUpdtType() As String
+        Get
+            Return _tranxPbfUpdtType
+        End Get
+    End Property
+
     'Customer array accessor
     Public ReadOnly Property ithCust(ByVal pN As Integer) As Customer
         Get
@@ -384,6 +405,24 @@ Public Class ThemePark
     Private ReadOnly Property _tranxPassbkType() As String
         Get
             Return mTRANX_PASSBK_TYPE
+        End Get
+    End Property
+
+    Private ReadOnly Property _tranxPbfPurchType() As String
+        Get
+            Return mTRANX_PBF_PURCH_TYPE
+        End Get
+    End Property
+
+    Private ReadOnly Property _tranxPbfUseType() As String
+        Get
+            Return mTRANX_PBF_USE_TYPE
+        End Get
+    End Property
+
+    Private ReadOnly Property _tranxPbfUpdtType() As String
+        Get
+            Return mTRANX_PBF_UPDT_TYPE
         End Get
     End Property
 
@@ -822,14 +861,14 @@ Public Class ThemePark
     'It is the workhorse method called by writeTranxRec().
     '****************************************************************************************
     Private Sub _writeTranxRec(ByVal pType As String,
-                               ByVal pSubTyp As String,
+                               ByVal pSubType As String,
                                ByVal pObj As Object)
         Dim now As Date = now
         Dim tStr As String = ""
 
         'Depending on the tranx type pObj will be cast approriately to extract the 
         'specific details of this transaction to be written out
-        Select Case pType
+        Select pType
             Case _tranxCustType
                 Dim cust As Customer = CType(pObj, Customer)
                 Console.WriteLine("WriteTranxRec: " & cust.ToString)
@@ -843,9 +882,19 @@ Public Class ThemePark
                 Console.WriteLine("WriteTranxRec: " & passBk.ToString)
 
             Case _tranxPassbkFeatType
-                Dim passbkFeat As PassbookFeature = CType(pObj, PassbookFeature)
-                Console.WriteLine("WriteTranxRec: " & passbkFeat.ToString)
+                Select Case pSubType
+                    Case _tranxPbfPurchType
+                        Dim passbkFeat As PassbookFeature = CType(pObj, PassbookFeature)
+                        Console.WriteLine("WriteTranxRecPurch: " & passbkFeat.ToString)
 
+                    Case _tranxPbfUpdtType
+                        Dim passbkFeat As PassbookFeature = CType(pObj, PassbookFeature)
+                        Console.WriteLine("WriteTranxRecUpdt: " & passbkFeat.ToString)
+
+                    Case _tranxPbfUseType
+                        Dim usedFeat As UsedFeature = CType(pObj, UsedFeature)
+                        Console.WriteLine("WriteTranxRecUse: " & usedFeat.ToString)
+                End Select
             Case Else
                 MsgBox(mSYS_TRANX_CREATE_ERR_MSG, MsgBoxStyle.Exclamation)
         End Select

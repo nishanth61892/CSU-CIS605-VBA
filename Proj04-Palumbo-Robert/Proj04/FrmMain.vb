@@ -2026,7 +2026,9 @@ Public Class FrmMain
         End With
 
         'Write transaction record and log info
-        _theThemePark.writeTranxRec(_theThemePark.tranxPassbkFeatType, Nothing, passbkFeat)
+        _theThemePark.writeTranxRec(_theThemePark.tranxPassbkFeatType,
+                                    _theThemePark.tranxPbfPurchType,
+                                    passbkFeat)
         _writeTransLog("<PURCHASED>: " & passbkFeat.ToString())
 
         'Not needed if object was created from system test data
@@ -2062,7 +2064,6 @@ Public Class FrmMain
             Exit Sub
         End If
 
-
         'Update associated UI components with component values
         With passbkFeat
             '            lstPassbkFeatTabDashboardTbcMain.Items.Add(.id)
@@ -2072,6 +2073,10 @@ Public Class FrmMain
             'lstPassbkTabDashboardTbcMain.Items.Count.ToString()
         End With
 
+        'Write transaction record and log info
+        _theThemePark.writeTranxRec(_theThemePark.tranxPassbkFeatType,
+                                    _theThemePark.tranxPbfUpdtType,
+                                    passbkFeat)
         _writeTransLog("<UPDATED>: " & passbkFeat.id & " temporary place holder for this project")
 
         'Not needed if object was created from system test data
@@ -2115,6 +2120,10 @@ Public Class FrmMain
 
         End With
 
+        'Write transaction record and log info
+        _theThemePark.writeTranxRec(_theThemePark.tranxPassbkFeatType,
+                                    _theThemePark.tranxPbfUseType,
+                                    usedFeat)
         _writeTransLog("<USED>: " & usedFeat.ToString())
 
         'Not needed if object was created from system test data

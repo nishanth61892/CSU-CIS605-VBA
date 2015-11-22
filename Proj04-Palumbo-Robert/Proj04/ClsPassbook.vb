@@ -273,11 +273,19 @@ Public Class Passbook
     'does all the work for ToString().
     '****************************************************************************************
     Private Function _toString() As String
-        Dim tmpStr As String = ""
+        Dim tmpStr As String
+        Dim ownerStr As String
+
+        'Make sure owner is defined for the object
+        If Not IsNothing(_owner) Then
+            ownerStr = _owner.ToString
+        Else
+            ownerStr = "No-Owner-Reference-Found"
+        End If
 
         tmpStr = "[Passbook] -> " _
             & " Id=" & _passbkId _
-            & ", Owner=" & _owner.ToString _
+            & ", Owner=" & ownerStr _
             & ", PurchaseDate=" & _datePurch _
             & ", VisitorName=" & _visName _
             & ", VisitorDOB=" & _visDob _

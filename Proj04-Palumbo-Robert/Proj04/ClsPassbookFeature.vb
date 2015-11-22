@@ -249,17 +249,33 @@ Public Class PassbookFeature
     'stored in the object.  This is the work-horse function that
     'does all the work for ToString().
     Private Function _toString() As String
-        Dim _tmpStr As String = ""
+        Dim tmpStr As String
+        Dim featStr As String
+        Dim passbkStr As String
 
-        _tmpStr = "[PurchaseFeature] -> " _
+        'Make sure feature is defined for the object
+        If Not IsNothing(_feature) Then
+            featStr = _feature.ToString
+        Else
+            featStr = "No-Feature-Reference-Found"
+        End If
+
+        'Make sure passbook is defined for the object
+        If Not IsNothing(_passbk) Then
+            passbkStr = _passbk.ToString
+        Else
+            passbkStr = "No-Passbook-Reference-Found"
+        End If
+
+        tmpStr = "[PurchaseFeature] -> " _
             & " Id=" & _id _
-            & ", Feature=" & _feature.ToString _
-            & ", Passbk=" & _passbk.ToString _
+            & ", Feature=" & featStr _
+            & ", Passbk=" & passbkStr _
             & ", PurchasePrice=" & _purchPrice _
             & ", QtyPurchased=" & _qtyPurch _
             & ", QtyRemain=" & _qtyRemain
 
-        Return _tmpStr
+        Return tmpStr
     End Function
 
 #End Region 'Behavioral Methods
