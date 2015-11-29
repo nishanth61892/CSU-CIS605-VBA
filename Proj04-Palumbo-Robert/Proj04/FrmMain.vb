@@ -42,6 +42,7 @@ Public Class FrmMain
     Private Const mSYS_ERR_MSG As String = "Internal System Error: Object Creation Failed"
     Private Const mSYS_LOOKUP_ERR_MSG As String = "Internal System Error: Object Lookup Failed"
     Private Const mSYS_ERR_CUSTID_EXISTS_MSG As String = "Error: Customer ID already exists, ID="
+    Private Const mSYS_ERR_CUSTOREF_INVALID_MSG As String = "Internal System Error: Customer Object Reference is Invalid"
     Private Const mSYS_ERR_FEATID_EXISTS_MSG As String = "Error: Feature ID already exists, ID="
     Private Const mSYS_ERR_PASSBKID_EXISTS_MSG As String = "Error: Passbook ID already exists, ID="
     Private Const mSYS_ERR_PASSBKFEATID_EXISTS_MSG As String = "Error: Passbook Feature ID already exists, ID="
@@ -81,6 +82,14 @@ Public Class FrmMain
     'up when new objects are added to the system.  No need for this
     'given it is test date that needs to be added
     Private mSysTestActive As Boolean = False
+
+    'Private references to be used during combo/list box processing
+    Private mPassBk As Passbook = Nothing
+    Private mFeat As Feature = Nothing
+    Private mPassbkFeat As PassbookFeature = Nothing
+    Private mUnitPrice As Decimal = 0D
+    Private mQtyPurch As Decimal = 1D
+
 #End Region 'Attributes
 
 #Region "Constructors"
@@ -758,6 +767,15 @@ Public Class FrmMain
             Exit Sub
         End If
 
+        Dim custId As String = custList.SelectedItem.ToString
+        Dim cust As Customer = _theThemePark.findCust(custId)
+        If cust Is Nothing Then
+            Dim s As String = "ERROR: Customer '" & custId & "' is invalid. Please select a different Customer ID"
+            MsgBox(s, MsgBoxStyle.OkOnly)
+            txtCustIdGrpAddCustTabCustTbcMainFrmMain.Focus()
+            Exit Sub
+        End If
+
         If String.IsNullOrEmpty(passbkId) Then
             MsgBox("ERROR: Please enter a unique Passbook ID (ex: 0001)", MsgBoxStyle.OkOnly)
             txtPassbkIdGrpAddPassbkTabPassbkTbcMainFrmMain.SelectAll()
@@ -889,16 +907,20 @@ Public Class FrmMain
                                                   #2/21/2005#, 10, True)
         Dim tempFeat As Feature = New Feature("0001", "Park Pass", "Day", 12.5D, 7.5D)
 
+        'Combo list accessors
+        Dim passbkList As ComboBox = cboPassbkIdTabAddFeatTbcPassbkFeatMainTbcMain
+        Dim featList As ComboBox = cboFeatIdTabAddFeatTbcPassbkFeatMainTbcMain
+
         'Used as shortcut names to access the data
+        Dim passbkId As String = passbkList.Text
+        Dim featId As String = featList.Text
         Dim passbkFeatId As String = txtPassBkFeatIdTabAddFeatTbcPassbkFeatMainTbcMain.Text
-        Dim passbkId As String = cboPassbkIdTabAddFeatTbcPassbkFeatMainTbcMain.Text
-        Dim featId As String = cboFeatIdTabAddFeatTbcPassbkFeatMainTbcMain.Text
-        Dim qtyPurch As String = txtQtyTabAddFeatTbcPassbkFeatMainTbcMain.Text
-        Dim decQtyPurch As Decimal
+        'Dim qtyPurch As String = txtQtyTabAddFeatTbcPassbkFeatMainTbcMain.Text
+        'Dim decQtyPurch As Decimal
         Dim decQtyRemain As Decimal = 0D
 
         'Validate all the fields
-        If cboPassbkIdTabAddFeatTbcPassbkFeatMainTbcMain.Items.Count = 0 Then
+        If passbkList.Items.Count = 0 Then
             MsgBox("ERROR: There are no Passbooks defined, please add a Passbook", MsgBoxStyle.OkOnly)
             cboCustIdGrpCustInfoGrpAddPassbkTabPassbkTbcMainFrmMain.Focus()
             tbcMainFrmMain.SelectTab(mTBC_MAIN_TAB_PASSBK)
@@ -911,7 +933,16 @@ Public Class FrmMain
             Exit Sub
         End If
 
-        If cboFeatIdTabAddFeatTbcPassbkFeatMainTbcMain.Items.Count = 0 Then
+        'Make sure passbook reference is valid
+        Dim passbk As Passbook = _theThemePark.findPassbk(passbkId)
+        If mPassBk Is Nothing Then
+            Dim s As String = "ERROR: Passbook '" & passbkId & "' is invalid. Please select a different Passbook ID"
+            MsgBox(s, MsgBoxStyle.OkOnly)
+            cboPassbkIdTabAddFeatTbcPassbkFeatMainTbcMain.Focus()
+            Exit Sub
+        End If
+
+        If featList.Items.Count = 0 Then
             MsgBox("ERROR: There are no Features defined, please add a Feature", MsgBoxStyle.OkOnly)
             txtFeatIdAddFeatTabFeatTbcMainFrmMain.Focus()
             tbcMainFrmMain.SelectTab(mTBC_MAIN_TAB_FEATURE)
@@ -924,8 +955,27 @@ Public Class FrmMain
             Exit Sub
         End If
 
+        'Make sure the feature reference is valid
+        Dim feat As Feature = _theThemePark.findFeat(featId)
+        If mFeat Is Nothing Then
+            Dim s As String = "ERROR: Feature '" & featId & "' is invalid. Please select a different Feature ID"
+            MsgBox(s, MsgBoxStyle.OkOnly)
+            cboFeatIdTabAddFeatTbcPassbkFeatMainTbcMain.Focus()
+            Exit Sub
+        End If
+
+        ''Determine unit price based on age of Visitor holding the passbook
+        'Dim unitPurchPrice As Decimal
+        'If passbk.visIsChild = True Then
+        '    unitPurchPrice = feat.childPrice
+        'Else
+        '    unitPurchPrice = feat.adultPrice
+        'End If
+
+        'txtUnitPriceTabAddFeatTbcPassbkFeatMainTbcMain.Text = unitPurchPrice.ToString("C")
+
         If String.IsNullOrEmpty(passbkFeatId) Then
-            MsgBox("ERROR: Please enter unique Passbook Feature Id (ex: 0001)", MsgBoxStyle.OkOnly)
+            MsgBox("ERROR: Please enter unique Passbook Feature Id (ex: PBF0001)", MsgBoxStyle.OkOnly)
             txtPassBkFeatIdTabAddFeatTbcPassbkFeatMainTbcMain.SelectAll()
             txtPassBkFeatIdTabAddFeatTbcPassbkFeatMainTbcMain.Focus()
             Exit Sub
@@ -940,7 +990,8 @@ Public Class FrmMain
             Exit Sub
         End If
 
-        If Not Decimal.TryParse(qtyPurch, decQtyPurch) Or decQtyPurch <= 0 Then
+        'If Not Decimal.TryParse(qtyPurch, decQtyPurch) Or decQtyPurch <= 0 Then
+        If mQtyPurch = 0 Then
             MsgBox("ERROR: Please enter a numeric Quantity > 0 to purchase (ex: 3)", MsgBoxStyle.OkOnly)
             txtQtyTabAddFeatTbcPassbkFeatMainTbcMain.SelectAll()
             txtQtyTabAddFeatTbcPassbkFeatMainTbcMain.Focus()
@@ -949,15 +1000,10 @@ Public Class FrmMain
 
         'Calculate total price - based on age 
         Dim totPurchPrice As Decimal
-        Dim unitPurchPrice As Decimal
 
-        If tempPassbk.visIsChild = True Then
-            unitPurchPrice = tempFeat.childPrice
-        Else
-            unitPurchPrice = tempFeat.adultPrice
-        End If
-
-        totPurchPrice = unitPurchPrice * decQtyPurch
+        'Update purchase totals
+        totPurchPrice = mUnitPrice * mQtyPurch
+        txtPriceTabAddFeatTbcPassbkFeatMainTbcMain.Text = totPurchPrice.ToString("C")
 
         'Verify the purchase before committing
         Dim choice As MsgBoxResult = MsgBoxResult.Ok
@@ -966,12 +1012,12 @@ Public Class FrmMain
         If _sysTestActive = False Then
             choice = MsgBox("To purchase the following Passbook Feature Click OK, otherwise Cancel" & vbCrLf & vbCrLf _
                             & "--> PassbookFeatureId=" & passbkFeatId & vbCrLf _
-                            & "--> Feature=" & tempFeat.featName & vbCrLf _
-                            & "--> UnitPrice=" & unitPurchPrice & vbCrLf _
-                            & "--> QtyPurchased=" & decQtyPurch & vbCrLf _
-                            & "--> TotalPurchasePrice=" & totPurchPrice & vbCrLf _
+                            & "--> Feature=" & feat.featName & vbCrLf _
+                            & "--> UnitPrice=" & mUnitPrice & vbCrLf _
+                            & "--> QtyPurchased=" & mQtyPurch & vbCrLf _
+                            & "--> TotalPurchasePrice=" & totPurchPrice.ToString("C") & vbCrLf _
                             & "--> QtyRemain=" & decQtyRemain & vbCrLf _
-                            & "--> Passbook=" & tempPassbk.passbkId & vbCrLf,
+                            & "--> Passbook=" & passbk.passbkId & vbCrLf,
                             MsgBoxStyle.OkCancel
                             )
         End If
@@ -984,9 +1030,9 @@ Public Class FrmMain
             Try
                 'Create a new Passbook Feature
                 _theThemePark.addPassbkFeat(passbkFeatId, _
-                                            tempFeat, _
-                                            tempPassbk, _
-                                            decQtyPurch
+                                            feat, _
+                                            passbk, _
+                                            mQtyPurch
                                             )
             Catch ex As Exception
                 MsgBox(mSYS_ERR_MSG, MsgBoxStyle.Exclamation)
@@ -1010,8 +1056,14 @@ Public Class FrmMain
         txtVisToStringTabAddFeatTbcPassbkFeatMainTbcMain.Text = ""
         txtFeatToStringTabAddFeatTbcPassbkFeatMainTbcMain.Text = ""
         txtPassBkFeatIdTabAddFeatTbcPassbkFeatMainTbcMain.Text = ""
-        txtQtyTabAddFeatTbcPassbkFeatMainTbcMain.Text = ""
+        txtQtyTabAddFeatTbcPassbkFeatMainTbcMain.Text = "1"
         txtPriceTabAddFeatTbcPassbkFeatMainTbcMain.Text = ""
+        txtUnitPriceTabAddFeatTbcPassbkFeatMainTbcMain.Text = ""
+
+        mPassBk = Nothing
+        mFeat = Nothing
+        mQtyPurch = 1
+        mUnitPrice = 0
 
         cboPassbkIdTabAddFeatTbcPassbkFeatMainTbcMain.Focus()
     End Sub '_resetPassbkAddInput()
@@ -1651,6 +1703,7 @@ Public Class FrmMain
             Else
                 txtToStringGrpCustInfoGrpAddPassbkTabPassbkTbcMainFrmMain.Text = _
                     "No customer info found for CustId=" & cboVal & vbCrLf
+                Exit Sub
             End If
         End If
     End Sub '_cboCustIdGrpCustInfoGrpAddPassbkTabPassbkTbcMainFrmMain_SelectedIndexChanged(...)
@@ -1664,18 +1717,65 @@ Public Class FrmMain
     Private Sub _cboPassbkIdGrpPassbkTabAddFeatTbcPassbkFeatMainTbcMain_SelectedIndexChanged(sender As Object, e As EventArgs) _
         Handles cboPassbkIdTabAddFeatTbcPassbkFeatMainTbcMain.SelectedIndexChanged
 
+        'Internal reference needs to be reset first
+        mPassBk = Nothing
+
         'PBO: TEMPORARY AND MUST BE REFACTORED FOR PP04
         If Not cboPassbkIdTabAddFeatTbcPassbkFeatMainTbcMain.SelectedIndex = -1 Then
-            Dim info As String = "Customer-Info: "
             Dim cboVal As String = _
                 cboPassbkIdTabAddFeatTbcPassbkFeatMainTbcMain.SelectedItem.ToString
 
-            txtCustToStringTabAddFeatTbcPassbkFeatMainTbcMain.Text = _
-                info & cboVal & ", completed full info in PP04"
+            Try
+                mPassBk = _theThemePark.findPassbk(cboVal)
+            Catch ex As Exception
+                MsgBox(mSYS_LOOKUP_ERR_MSG, MsgBoxStyle.Exclamation)
+                Exit Sub
+            End Try
 
-            info = "Visitor-Info"
+            If Not mPassBk Is Nothing Then
+                'Double check cust ref is not nothing before using it
+                If Not mPassBk.owner Is Nothing Then
+                    txtCustToStringTabAddFeatTbcPassbkFeatMainTbcMain.Text = _
+                        mPassBk.owner.ToString & vbCrLf
+                Else
+                    txtCustToStringTabAddFeatTbcPassbkFeatMainTbcMain.Text = _
+                        "Passbook contains invalid Customer Reference" & vbCrLf
+                    MsgBox(mSYS_ERR_CUSTOREF_INVALID_MSG, MsgBoxStyle.Critical)
+                    txtVisToStringTabAddFeatTbcPassbkFeatMainTbcMain.Clear()
+                    cboPassbkIdTabAddFeatTbcPassbkFeatMainTbcMain.Focus()
+                    Exit Sub
+                End If
+            Else
+                txtCustToStringTabAddFeatTbcPassbkFeatMainTbcMain.Text = _
+                    "No Passbook info found for PassbookId=" & cboVal & vbCrLf
+                Dim s As String = "ERROR: Passbook '" & cboVal & "' is invalid. Please select a different ID"
+                MsgBox(s, MsgBoxStyle.Exclamation)
+                txtVisToStringTabAddFeatTbcPassbkFeatMainTbcMain.Clear()
+                cboPassbkIdTabAddFeatTbcPassbkFeatMainTbcMain.Focus()
+                Exit Sub
+            End If
+
+            Dim info As String = "Visitor-Info"
             txtVisToStringTabAddFeatTbcPassbkFeatMainTbcMain.Text = _
-                info & cboVal & ", completed full info in PP04"
+                mPassBk.visName & ", DOB: " & mPassBk.visDob & ", Age: " & mPassBk.visAge _
+                & ", IsChild (<13yo): " & IIf(mPassBk.visIsChild, "True", "False").ToString
+
+            'If a feature was selected prior to the passbook being selected we can go
+            'ahead and prefill in data on the Purchase Feature tab
+            If Not mFeat Is Nothing Then
+                'Determine unit price based on age of Visitor holding the passbook
+                If mPassBk.visIsChild = True Then
+                    mUnitPrice = mFeat.childPrice
+                Else
+                    mUnitPrice = mFeat.adultPrice
+                End If
+                txtUnitPriceTabAddFeatTbcPassbkFeatMainTbcMain.Text = mUnitPrice.ToString("C")
+
+                Dim purchPrice As Decimal = mQtyPurch * mUnitPrice
+                txtPriceTabAddFeatTbcPassbkFeatMainTbcMain.Text = purchPrice.ToString("C")
+            Else
+                mUnitPrice = 0D
+            End If
         End If
     End Sub '_cboPassbkIdGrpPassbkTabAddFeatTbcPassbkFeatMainTbcMain_SelectedIndexChanged
 
@@ -1688,24 +1788,46 @@ Public Class FrmMain
     Private Sub _cboFeatIdGrpFeatTabAddFeatTbcPassbkFeatMainTbcMain_SelectedIndexChanged(sender As Object, e As EventArgs) _
         Handles cboFeatIdTabAddFeatTbcPassbkFeatMainTbcMain.SelectedIndexChanged
 
-        'PBO: TEMPORARY AND MUST BE REFACTORED FOR PP04
+        'Internal reference needs to be reset first
+        mFeat = Nothing
+
         If Not cboFeatIdTabAddFeatTbcPassbkFeatMainTbcMain.SelectedIndex = -1 Then
             Dim cboVal As String = _
                 cboFeatIdTabAddFeatTbcPassbkFeatMainTbcMain.SelectedItem.ToString
-            Dim feat As Feature
 
             Try
-                feat = _theThemePark.findFeat(cboVal)
+                mFeat = _theThemePark.findFeat(cboVal)
             Catch ex As Exception
                 MsgBox(mSYS_LOOKUP_ERR_MSG, MsgBoxStyle.Exclamation)
                 Exit Sub
             End Try
 
-            If Not feat Is Nothing Then
-                txtFeatToStringTabAddFeatTbcPassbkFeatMainTbcMain.Text = feat.ToString & vbCrLf
+            If Not mFeat Is Nothing Then
+                txtFeatToStringTabAddFeatTbcPassbkFeatMainTbcMain.Text = mFeat.ToString & vbCrLf
             Else
                 txtFeatToStringTabAddFeatTbcPassbkFeatMainTbcMain.Text = _
                     "No Feature info found for FeatId=" & cboVal & vbCrLf
+                Dim s As String = "ERROR: Feature '" & cboVal & "' is invalid. Please select a different ID"
+                MsgBox(s, MsgBoxStyle.Exclamation)
+                cboFeatIdTabAddFeatTbcPassbkFeatMainTbcMain.Focus()
+                Exit Sub
+            End If
+
+            'If a passbook was selected prior to the feature being selected we can go
+            'ahead and prefill in data on the Purchase Feature tab
+            If Not mPassBk Is Nothing Then
+                'Determine unit price based on age of Visitor holding the passbook
+                If mPassBk.visIsChild = True Then
+                    mUnitPrice = mFeat.childPrice
+                Else
+                    mUnitPrice = mFeat.adultPrice
+                End If
+                txtUnitPriceTabAddFeatTbcPassbkFeatMainTbcMain.Text = mUnitPrice.ToString("C")
+
+                Dim purchPrice As Decimal = mQtyPurch * mUnitPrice
+                txtPriceTabAddFeatTbcPassbkFeatMainTbcMain.Text = purchPrice.ToString("C")
+            Else
+                mUnitPrice = 0D
             End If
         End If
     End Sub '_cboFeatIdGrpFeatTabAddFeatTbcPassbkFeatMainTbcMain_SelectedIndexChanged(...)
@@ -1842,6 +1964,31 @@ Public Class FrmMain
         _writeTransLog(about)
     End Sub '_mnuAboutHelpFrmMain_Click
 
+    '****************************************************************************************
+    '_txtQtyTabAddFeatTbcPassbkFeatMainTbcMain_TextChanged() 
+    'is the event procedure the is called when the enters a value in the Quantity field of
+    'the Purchase Passbook Feature Tab. 
+    '****************************************************************************************
+    Private Sub _txtQtyTabAddFeatTbcPassbkFeatMainTbcMain_TextChanged(sender As Object, e As EventArgs) _
+        Handles txtQtyTabAddFeatTbcPassbkFeatMainTbcMain.TextChanged
+        Dim qtyPurch As String = txtQtyTabAddFeatTbcPassbkFeatMainTbcMain.Text
+
+        'Validate the entered value - it must be an integer value > 0
+        If Not Decimal.TryParse(qtyPurch, mQtyPurch) Or mQtyPurch <= 0 Then
+            MsgBox("ERROR: Please enter a numeric Quantity > 0 to purchase (ex: 3)", MsgBoxStyle.OkOnly)
+            mQtyPurch = 0D
+            txtQtyTabAddFeatTbcPassbkFeatMainTbcMain.SelectAll()
+            txtQtyTabAddFeatTbcPassbkFeatMainTbcMain.Focus()
+            Exit Sub
+        End If
+
+        'Valid quantity was entered so update the unit/purchase price if a feat/passbk have
+        'been selected
+        If Not IsNothing(mPassBk) AndAlso Not IsNothing(mFeat) Then
+            Dim purchPrice As Decimal = mUnitPrice * mQtyPurch
+            txtPriceTabAddFeatTbcPassbkFeatMainTbcMain.Text = purchPrice.ToString("C")
+        End If
+    End Sub '_txtQtyTabAddFeatTbcPassbkFeatMainTbcMain_TextChanged(...)
 
     '********** Business Logic Event Procedures
     '             - Initiated as a result of business logic
