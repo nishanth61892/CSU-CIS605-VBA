@@ -49,13 +49,13 @@ Public Class ThemePark
     Private Const mSYS_TRANX_CREATE_ERR_MSG As String = "Internal System Error: Transaction Creation Failed"
 
     'Transaction Record types
-    Private Const mTRANX_CUST_TYPE As String = "CUSTOMER"
-    Private Const mTRANX_FEAT_TYPE As String = "FEATURE"
-    Private Const mTRANX_PASSBK_TYPE As String = "PASSBOOK"
-    Private Const mTRANX_PASSBKFEAT_TYPE As String = "PASSBOOK_FEATURE"
-    Private Const mTRANX_PBF_PURCH_TYPE As String = "PURCHASE"
-    Private Const mTRANX_PBF_USE_TYPE As String = "USE"
-    Private Const mTRANX_PBF_UPDT_TYPE As String = "UPDATE"
+    Private Const mTRANSX_CUST_TYPE As String = "CUSTOMER"
+    Private Const mTRANSX_FEAT_TYPE As String = "FEATURE"
+    Private Const mTRANSX_PASSBK_TYPE As String = "PASSBOOK"
+    Private Const mTRANSX_PASSBKFEAT_TYPE As String = "PASSBOOK_FEATURE"
+    Private Const mTRANSX_PBF_PURCH_TYPE As String = "PURCHASE"
+    Private Const mTRANSX_PBF_USE_TYPE As String = "USE"
+    Private Const mTRANSX_PBF_UPDT_TYPE As String = "UPDATE"
 
     'Input/Output file names
     Private Const mINPUT_FILENAME As String = "Transactions-in.txt"
@@ -100,6 +100,9 @@ Public Class ThemePark
     'Number of used features in the system
     Private mNumUsedFeats As Integer
 
+    'Number of transactions in the system
+    Private mNumTransx As Integer
+
     'Tracks customer array utilization
     Private mCustArrayMax As Integer
 
@@ -116,7 +119,7 @@ Public Class ThemePark
     Private mUsedFeatureArrayMax As Integer
 
     'Tracks transaction array utilization
-    Private mTranxArrayMax As Integer
+    Private mTransxArrayMax As Integer
 
     '****************************************************************************************
     'Array Definitions
@@ -168,6 +171,8 @@ Public Class ThemePark
         _numPassbks = 0
         _numPassbkFeats = 0
         _numUsedFeats = 0
+        _numTransx = 0
+
 
         'Initialize array attributes
         _custArrayMax = _CUSTOMER_ARRAY_SIZE_DFLT
@@ -175,15 +180,15 @@ Public Class ThemePark
         _passbookArrayMax = _PASSBK_ARRAY_SIZE_DFLT
         _passbookFeatureArrayMax = _PASSBKFEATURE_ARRAY_SIZE_DFLT
         _usedFeatureArrayMax = _USED_FEATURE_ARRAY_SIZE_DFLT
-        _tranxArrayMax = _TRANSX_ARRAY_SIZE_DFLT
+        _transxArrayMax = _TRANSX_ARRAY_SIZE_DFLT
 
         'Array to hold passbooks
-        ReDim mCustomer(_custArrayMax - 1)
-        ReDim mFeature(_featureArrayMax - 1)
-        ReDim mPassbook(_passbookArrayMax - 1)
-        ReDim mPassbookFeature(_passbookArrayMax - 1)
-        ReDim mUsedFeature(_usedFeatureArrayMax - 1)
-        ReDim mTransx(_tranxArrayMax - 1)
+        ReDim Preserve mCustomer(_custArrayMax - 1)
+        ReDim Preserve mFeature(_featureArrayMax - 1)
+        ReDim Preserve mPassbook(_passbookArrayMax - 1)
+        ReDim Preserve mPassbookFeature(_passbookArrayMax - 1)
+        ReDim Preserve mUsedFeature(_usedFeatureArrayMax - 1)
+        ReDim Preserve mTransx(_transxArrayMax - 1)
 
     End Sub 'New()
 
@@ -255,45 +260,54 @@ Public Class ThemePark
         End Set
     End Property
 
-    Public ReadOnly Property tranxCustType() As String
+    Public Property numTransx() As Integer
         Get
-            Return _tranxCustType
+            Return _numTransx
+        End Get
+        Set(pValue As Integer)
+            _numTransx = pValue
+        End Set
+    End Property
+
+    Public ReadOnly Property transxCustType() As String
+        Get
+            Return _transxCustType
         End Get
     End Property
 
-    Public ReadOnly Property tranxFeatType() As String
+    Public ReadOnly Property transxFeatType() As String
         Get
-            Return _tranxFeatType
+            Return _transxFeatType
         End Get
     End Property
 
-    Public ReadOnly Property tranxPassbkType() As String
+    Public ReadOnly Property transxPassbkType() As String
         Get
-            Return _tranxPassbkType
+            Return _transxPassbkType
         End Get
     End Property
 
-    Public ReadOnly Property tranxPassbkFeatType() As String
+    Public ReadOnly Property transxPassbkFeatType() As String
         Get
-            Return _tranxPassbkFeatType
+            Return _transxPassbkFeatType
         End Get
     End Property
 
-    Public ReadOnly Property tranxPbfPurchType() As String
+    Public ReadOnly Property transxPbfPurchType() As String
         Get
-            Return _tranxPbfPurchType
+            Return _transxPbfPurchType
         End Get
     End Property
 
-    Public ReadOnly Property tranxPbfUseType() As String
+    Public ReadOnly Property transxPbfUseType() As String
         Get
-            Return _tranxPbfUseType
+            Return _transxPbfUseType
         End Get
     End Property
 
-    Public ReadOnly Property tranxPbfUpdtType() As String
+    Public ReadOnly Property transxPbfUpdtType() As String
         Get
-            Return _tranxPbfUpdtType
+            Return _transxPbfUpdtType
         End Get
     End Property
 
@@ -332,7 +346,12 @@ Public Class ThemePark
         End Get
     End Property
 
-
+    'Transaction array accessor
+    Public ReadOnly Property ithTransx(ByVal pN As Integer) As String
+        Get
+            Return _ithTransx(pN)
+        End Get
+    End Property
 
     '********** Private Get/Set Methods
     '             - access attributes, begin name with underscore (_)
@@ -390,45 +409,54 @@ Public Class ThemePark
         End Set
     End Property
 
-    Private ReadOnly Property _tranxCustType() As String
+    Private Property _numTransx() As Integer
         Get
-            Return mTRANX_CUST_TYPE
+            Return mNumTransx
+        End Get
+        Set(pValue As Integer)
+            mNumTransx = pValue
+        End Set
+    End Property
+
+    Private ReadOnly Property _transxCustType() As String
+        Get
+            Return mTRANSX_CUST_TYPE
         End Get
     End Property
 
-    Private ReadOnly Property _tranxFeatType() As String
+    Private ReadOnly Property _transxFeatType() As String
         Get
-            Return mTRANX_FEAT_TYPE
+            Return mTRANSX_FEAT_TYPE
         End Get
     End Property
 
-    Private ReadOnly Property _tranxPassbkType() As String
+    Private ReadOnly Property _transxPassbkType() As String
         Get
-            Return mTRANX_PASSBK_TYPE
+            Return mTRANSX_PASSBK_TYPE
         End Get
     End Property
 
-    Private ReadOnly Property _tranxPbfPurchType() As String
+    Private ReadOnly Property _transxPbfPurchType() As String
         Get
-            Return mTRANX_PBF_PURCH_TYPE
+            Return mTRANSX_PBF_PURCH_TYPE
         End Get
     End Property
 
-    Private ReadOnly Property _tranxPbfUseType() As String
+    Private ReadOnly Property _transxPbfUseType() As String
         Get
-            Return mTRANX_PBF_USE_TYPE
+            Return mTRANSX_PBF_USE_TYPE
         End Get
     End Property
 
-    Private ReadOnly Property _tranxPbfUpdtType() As String
+    Private ReadOnly Property _transxPbfUpdtType() As String
         Get
-            Return mTRANX_PBF_UPDT_TYPE
+            Return mTRANSX_PBF_UPDT_TYPE
         End Get
     End Property
 
-    Private ReadOnly Property _tranxPassbkFeatType() As String
+    Private ReadOnly Property _transxPassbkFeatType() As String
         Get
-            Return mTRANX_PASSBKFEAT_TYPE
+            Return mTRANSX_PASSBKFEAT_TYPE
         End Get
     End Property
 
@@ -549,12 +577,12 @@ Public Class ThemePark
         End Set
     End Property
 
-    Private Property _tranxArrayMax As Integer
+    Private Property _transxArrayMax As Integer
         Get
-            Return mTranxArrayMax
+            Return mTransxArrayMax
         End Get
         Set(value As Integer)
-            mTranxArrayMax = value
+            mTransxArrayMax = value
         End Set
     End Property
 
@@ -659,18 +687,18 @@ Public Class ThemePark
     End Property
 
     'Transaction array accessor
-    Private Property _ithTranx(ByVal pN As Integer) As String
+    Private Property _ithTransx(ByVal pN As Integer) As String
         'Assumes: 0 <= pN < _tranxArrayMax
         'Throws an IndexOutOfRangeException if this is not the case.
         Get
-            If pN >= 0 And pN < _tranxArrayMax Then
+            If pN >= 0 And pN < _transxArrayMax Then
                 Return mTransx(pN)
             Else
                 Throw New IndexOutOfRangeException
             End If
         End Get
         Set(ByVal pvalue As String)
-            If pN >= 0 And pN < _tranxArrayMax Then
+            If pN >= 0 And pN < _transxArrayMax Then
                 mTransx(pN) = pvalue
             Else
                 Throw New IndexOutOfRangeException
@@ -868,30 +896,30 @@ Public Class ThemePark
 
         'Depending on the tranx type pObj will be cast approriately to extract the 
         'specific details of this transaction to be written out
-        Select pType
-            Case _tranxCustType
+        Select Case pType
+            Case _transxCustType
                 Dim cust As Customer = CType(pObj, Customer)
                 Console.WriteLine("WriteTranxRec: " & cust.ToString)
 
-            Case _tranxFeatType
+            Case _transxFeatType
                 Dim feat As Feature = CType(pObj, Feature)
                 Console.WriteLine("WriteTranxRec: " & feat.ToString)
 
-            Case _tranxPassbkType
+            Case _transxPassbkType
                 Dim passBk As Passbook = CType(pObj, Passbook)
                 Console.WriteLine("WriteTranxRec: " & passBk.ToString)
 
-            Case _tranxPassbkFeatType
+            Case _transxPassbkFeatType
                 Select Case pSubType
-                    Case _tranxPbfPurchType
+                    Case _transxPbfPurchType
                         Dim passbkFeat As PassbookFeature = CType(pObj, PassbookFeature)
                         Console.WriteLine("WriteTranxRecPurch: " & passbkFeat.ToString)
 
-                    Case _tranxPbfUpdtType
+                    Case _transxPbfUpdtType
                         Dim passbkFeat As PassbookFeature = CType(pObj, PassbookFeature)
                         Console.WriteLine("WriteTranxRecUpdt: " & passbkFeat.ToString)
 
-                    Case _tranxPbfUseType
+                    Case _transxPbfUseType
                         Dim usedFeat As UsedFeature = CType(pObj, UsedFeature)
                         Console.WriteLine("WriteTranxRecUse: " & usedFeat.ToString)
                 End Select

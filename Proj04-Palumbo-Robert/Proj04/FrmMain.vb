@@ -1883,7 +1883,7 @@ Public Class FrmMain
         End With
 
         'Write transaction record and log info
-        _theThemePark.writeTranxRec(_theThemePark.tranxCustType, Nothing, cust)
+        _theThemePark.writeTranxRec(_theThemePark.transxCustType, Nothing, cust)
         _writeTransLog("<CREATED>: " & cust.ToString())
 
         'Not needed if object was created from system test data
@@ -1931,7 +1931,7 @@ Public Class FrmMain
         End With
 
         'Write transaction record and log info
-        _theThemePark.writeTranxRec(_theThemePark.tranxFeatType, Nothing, feat)
+        _theThemePark.writeTranxRec(_theThemePark.transxFeatType, Nothing, feat)
         _writeTransLog("<CREATED>: " & feat.ToString())
 
         'Not needed if object was created from system test data
@@ -1978,7 +1978,7 @@ Public Class FrmMain
         End With
 
         'Write transaction record and log info
-        _theThemePark.writeTranxRec(_theThemePark.tranxPassbkType, Nothing, passbk)
+        _theThemePark.writeTranxRec(_theThemePark.transxPassbkType, Nothing, passbk)
         _writeTransLog("<CREATED>: " & passbk.ToString())
 
         'Not needed if object was created from system test data
@@ -2026,8 +2026,8 @@ Public Class FrmMain
         End With
 
         'Write transaction record and log info
-        _theThemePark.writeTranxRec(_theThemePark.tranxPassbkFeatType,
-                                    _theThemePark.tranxPbfPurchType,
+        _theThemePark.writeTranxRec(_theThemePark.transxPassbkFeatType,
+                                    _theThemePark.transxPbfPurchType,
                                     passbkFeat)
         _writeTransLog("<PURCHASED>: " & passbkFeat.ToString())
 
@@ -2074,8 +2074,8 @@ Public Class FrmMain
         End With
 
         'Write transaction record and log info
-        _theThemePark.writeTranxRec(_theThemePark.tranxPassbkFeatType,
-                                    _theThemePark.tranxPbfUpdtType,
+        _theThemePark.writeTranxRec(_theThemePark.transxPassbkFeatType,
+                                    _theThemePark.transxPbfUpdtType,
                                     passbkFeat)
         _writeTransLog("<UPDATED>: " & passbkFeat.id & " temporary place holder for this project")
 
@@ -2121,8 +2121,8 @@ Public Class FrmMain
         End With
 
         'Write transaction record and log info
-        _theThemePark.writeTranxRec(_theThemePark.tranxPassbkFeatType,
-                                    _theThemePark.tranxPbfUseType,
+        _theThemePark.writeTranxRec(_theThemePark.transxPassbkFeatType,
+                                    _theThemePark.transxPbfUseType,
                                     usedFeat)
         _writeTransLog("<USED>: " & usedFeat.ToString())
 
@@ -2165,8 +2165,11 @@ Public Class FrmMain
     Private Sub _btnDispCustArray_Click(sender As Object, e As EventArgs) _
         Handles btnDispCustArray.Click
 
+        'Clear out old contents
+        txtDebug.Clear()
+
         If _theThemePark.numCusts = 0 Then
-            txtDebug.Text &= "No Customer data to display" & vbCrLf
+            txtDebug.Text = "No Customer data to display" & vbCrLf
         Else
             Dim i As Integer
             For i = 0 To _theThemePark.numCusts - 1
@@ -2178,8 +2181,11 @@ Public Class FrmMain
     Private Sub _btnShowPassbk_Click(sender As Object, e As EventArgs) _
     Handles btnShowPassbk.Click
 
+        'Clear out old contents
+        txtDebug.Clear()
+
         If _theThemePark.numPassbks = 0 Then
-            txtDebug.Text &= "No Passbook data to display" & vbCrLf
+            txtDebug.Text = "No Passbook data to display" & vbCrLf
         Else
             Dim i As Integer
             For i = 0 To _theThemePark.numPassbks - 1
@@ -2191,8 +2197,11 @@ Public Class FrmMain
     Private Sub _btnShowFeat_Click(sender As Object, e As EventArgs) _
         Handles btnShowFeat.Click
 
+        'Clear out old contents
+        txtDebug.Clear()
+
         If _theThemePark.numFeats = 0 Then
-            txtDebug.Text &= "No Feature data to display" & vbCrLf
+            txtDebug.Text = "No Feature data to display" & vbCrLf
         Else
             Dim i As Integer
             For i = 0 To _theThemePark.numFeats - 1
@@ -2204,8 +2213,11 @@ Public Class FrmMain
     Private Sub _btnShowPassbkFeat_Click(sender As Object, e As EventArgs) _
         Handles btnShowPassbkFeat.Click
 
+        'Clear out old contents
+        txtDebug.Clear()
+
         If _theThemePark.numPassbkFeats = 0 Then
-            txtDebug.Text &= "No Passbook Feature data to display" & vbCrLf
+            txtDebug.Text = "No Passbook Feature data to display" & vbCrLf
         Else
             Dim i As Integer
             For i = 0 To _theThemePark.numPassbkFeats - 1
@@ -2217,12 +2229,31 @@ Public Class FrmMain
     Private Sub _btnShowUsedFeat_Click(sender As Object, e As EventArgs) _
         Handles btnShowUsedFeat.Click
 
+        'Clear out old contents
+        txtDebug.Clear()
+
         If _theThemePark.numUsedFeats = 0 Then
-            txtDebug.Text &= "No Used Feature data to display" & vbCrLf
+            txtDebug.Text = "No Used Feature data to display" & vbCrLf
         Else
             Dim i As Integer
             For i = 0 To _theThemePark.numUsedFeats - 1
                 txtDebug.Text &= _theThemePark.ithUsedFeat(i).ToString & vbCrLf
+            Next i
+        End If
+    End Sub
+
+    Private Sub _btnShowTransx_Click(sender As Object, e As EventArgs) _
+        Handles btnShowTransx.Click
+
+        'Clear out old contents
+        txtDebug.Clear()
+
+        If _theThemePark.numTransx = 0 Then
+            txtDebug.Text = "No Transactions to display" & vbCrLf
+        Else
+            Dim i As Integer
+            For i = 0 To _theThemePark.numTransx - 1
+                txtDebug.Text &= _theThemePark.ithTransx(i).ToString & vbCrLf
             Next i
         End If
     End Sub
