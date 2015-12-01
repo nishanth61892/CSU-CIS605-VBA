@@ -99,20 +99,20 @@ Partial Class FrmMain
         Me.Label51 = New System.Windows.Forms.Label()
         Me.tabPostFeatTbcPassbkFeatMainTbcMain = New System.Windows.Forms.TabPage()
         Me.grpAnon1 = New System.Windows.Forms.GroupBox()
-        Me.txtQtyUsedTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain = New System.Windows.Forms.TextBox()
+        Me.txtQtyUsedTabPostFeatTbcPassbkFeatMainTbcMain = New System.Windows.Forms.TextBox()
         Me.Label24 = New System.Windows.Forms.Label()
-        Me.txtRemQuantTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain = New System.Windows.Forms.TextBox()
+        Me.txtQtyRemTabPostFeatTbcPassbkFeatMainTbcMain = New System.Windows.Forms.TextBox()
         Me.Label23 = New System.Windows.Forms.Label()
         Me.Label26 = New System.Windows.Forms.Label()
-        Me.txtLocTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain = New System.Windows.Forms.TextBox()
+        Me.txtLocTabPostFeatTbcPassbkFeatMainTbcMain = New System.Windows.Forms.TextBox()
         Me.btnResetTabPostFeatTbcPassbkFeatMainTbcMain = New System.Windows.Forms.Button()
         Me.grpPassbkTabPostTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain = New System.Windows.Forms.GroupBox()
-        Me.cboPassbkFeatIdTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain = New System.Windows.Forms.ComboBox()
-        Me.txtPrevUsedTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain = New System.Windows.Forms.TextBox()
-        Me.txtVisToStringTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain = New System.Windows.Forms.TextBox()
-        Me.txtFeatToStringTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain = New System.Windows.Forms.TextBox()
+        Me.cboFeatIdTabPostFeatTbcPassbkFeatMainTbcMain = New System.Windows.Forms.ComboBox()
+        Me.txtPrevUsedToStringTabPostUpdtFeatTbcPassbkFeatMainTbcMain = New System.Windows.Forms.TextBox()
+        Me.txtVisToStringTabPostFeatTbcPassbkFeatMainTbcMain = New System.Windows.Forms.TextBox()
+        Me.txtFeatToStringTabPostFeatTbcPassbkFeatMainTbcMain = New System.Windows.Forms.TextBox()
         Me.Label13 = New System.Windows.Forms.Label()
-        Me.txtCustToStringTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain = New System.Windows.Forms.TextBox()
+        Me.txtCustToStringTabPostFeatTbcPassbkFeatMainTbcMain = New System.Windows.Forms.TextBox()
         Me.Label12 = New System.Windows.Forms.Label()
         Me.Label11 = New System.Windows.Forms.Label()
         Me.Label10 = New System.Windows.Forms.Label()
@@ -1023,25 +1023,25 @@ Partial Class FrmMain
         'grpAnon1
         '
         Me.grpAnon1.BackColor = System.Drawing.SystemColors.Control
-        Me.grpAnon1.Controls.Add(Me.txtQtyUsedTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain)
+        Me.grpAnon1.Controls.Add(Me.txtQtyUsedTabPostFeatTbcPassbkFeatMainTbcMain)
         Me.grpAnon1.Controls.Add(Me.Label24)
-        Me.grpAnon1.Controls.Add(Me.txtRemQuantTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain)
+        Me.grpAnon1.Controls.Add(Me.txtQtyRemTabPostFeatTbcPassbkFeatMainTbcMain)
         Me.grpAnon1.Controls.Add(Me.Label23)
         Me.grpAnon1.Controls.Add(Me.Label26)
-        Me.grpAnon1.Controls.Add(Me.txtLocTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain)
+        Me.grpAnon1.Controls.Add(Me.txtLocTabPostFeatTbcPassbkFeatMainTbcMain)
         Me.grpAnon1.Location = New System.Drawing.Point(200, 222)
         Me.grpAnon1.Name = "grpAnon1"
         Me.grpAnon1.Size = New System.Drawing.Size(467, 110)
         Me.grpAnon1.TabIndex = 1
         Me.grpAnon1.TabStop = False
         '
-        'txtQtyUsedTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain
+        'txtQtyUsedTabPostFeatTbcPassbkFeatMainTbcMain
         '
-        Me.txtQtyUsedTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Location = New System.Drawing.Point(153, 45)
-        Me.txtQtyUsedTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Name = "txtQtyUsedTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain"
-        Me.txtQtyUsedTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Size = New System.Drawing.Size(100, 21)
-        Me.txtQtyUsedTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.TabIndex = 3
-        Me.tipTPMS.SetToolTip(Me.txtQtyUsedTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain, "Enter the amount of feature that was used")
+        Me.txtQtyUsedTabPostFeatTbcPassbkFeatMainTbcMain.Location = New System.Drawing.Point(153, 45)
+        Me.txtQtyUsedTabPostFeatTbcPassbkFeatMainTbcMain.Name = "txtQtyUsedTabPostFeatTbcPassbkFeatMainTbcMain"
+        Me.txtQtyUsedTabPostFeatTbcPassbkFeatMainTbcMain.Size = New System.Drawing.Size(100, 21)
+        Me.txtQtyUsedTabPostFeatTbcPassbkFeatMainTbcMain.TabIndex = 3
+        Me.tipTPMS.SetToolTip(Me.txtQtyUsedTabPostFeatTbcPassbkFeatMainTbcMain, "Enter the amount of feature that was used")
         '
         'Label24
         '
@@ -1052,16 +1052,16 @@ Partial Class FrmMain
         Me.Label24.TabIndex = 2
         Me.Label24.Text = "Quantity Used:"
         '
-        'txtRemQuantTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain
+        'txtQtyRemTabPostFeatTbcPassbkFeatMainTbcMain
         '
-        Me.txtRemQuantTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.BackColor = System.Drawing.SystemColors.ControlLight
-        Me.txtRemQuantTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Location = New System.Drawing.Point(153, 19)
-        Me.txtRemQuantTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Name = "txtRemQuantTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain"
-        Me.txtRemQuantTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.ReadOnly = True
-        Me.txtRemQuantTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Size = New System.Drawing.Size(100, 21)
-        Me.txtRemQuantTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.TabIndex = 1
-        Me.txtRemQuantTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.TabStop = False
-        Me.tipTPMS.SetToolTip(Me.txtRemQuantTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain, "Amount of this feature remaining for the specified passbook")
+        Me.txtQtyRemTabPostFeatTbcPassbkFeatMainTbcMain.BackColor = System.Drawing.SystemColors.ControlLight
+        Me.txtQtyRemTabPostFeatTbcPassbkFeatMainTbcMain.Location = New System.Drawing.Point(153, 19)
+        Me.txtQtyRemTabPostFeatTbcPassbkFeatMainTbcMain.Name = "txtQtyRemTabPostFeatTbcPassbkFeatMainTbcMain"
+        Me.txtQtyRemTabPostFeatTbcPassbkFeatMainTbcMain.ReadOnly = True
+        Me.txtQtyRemTabPostFeatTbcPassbkFeatMainTbcMain.Size = New System.Drawing.Size(100, 21)
+        Me.txtQtyRemTabPostFeatTbcPassbkFeatMainTbcMain.TabIndex = 1
+        Me.txtQtyRemTabPostFeatTbcPassbkFeatMainTbcMain.TabStop = False
+        Me.tipTPMS.SetToolTip(Me.txtQtyRemTabPostFeatTbcPassbkFeatMainTbcMain, "Amount of this feature remaining for the specified passbook")
         '
         'Label23
         '
@@ -1082,14 +1082,14 @@ Partial Class FrmMain
         Me.Label26.Text = "Location:"
         Me.tipTPMS.SetToolTip(Me.Label26, "Enter the location where transaction occurred")
         '
-        'txtLocTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain
+        'txtLocTabPostFeatTbcPassbkFeatMainTbcMain
         '
-        Me.txtLocTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.AccessibleRole = System.Windows.Forms.AccessibleRole.None
-        Me.txtLocTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Location = New System.Drawing.Point(153, 74)
-        Me.txtLocTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Name = "txtLocTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain"
-        Me.txtLocTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Size = New System.Drawing.Size(249, 21)
-        Me.txtLocTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.TabIndex = 5
-        Me.tipTPMS.SetToolTip(Me.txtLocTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain, "Enter the location where this feature was used")
+        Me.txtLocTabPostFeatTbcPassbkFeatMainTbcMain.AccessibleRole = System.Windows.Forms.AccessibleRole.None
+        Me.txtLocTabPostFeatTbcPassbkFeatMainTbcMain.Location = New System.Drawing.Point(153, 74)
+        Me.txtLocTabPostFeatTbcPassbkFeatMainTbcMain.Name = "txtLocTabPostFeatTbcPassbkFeatMainTbcMain"
+        Me.txtLocTabPostFeatTbcPassbkFeatMainTbcMain.Size = New System.Drawing.Size(249, 21)
+        Me.txtLocTabPostFeatTbcPassbkFeatMainTbcMain.TabIndex = 5
+        Me.tipTPMS.SetToolTip(Me.txtLocTabPostFeatTbcPassbkFeatMainTbcMain, "Enter the location where this feature was used")
         '
         'btnResetTabPostFeatTbcPassbkFeatMainTbcMain
         '
@@ -1104,12 +1104,12 @@ Partial Class FrmMain
         'grpPassbkTabPostTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain
         '
         Me.grpPassbkTabPostTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.BackColor = System.Drawing.SystemColors.Control
-        Me.grpPassbkTabPostTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Controls.Add(Me.cboPassbkFeatIdTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain)
-        Me.grpPassbkTabPostTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Controls.Add(Me.txtPrevUsedTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain)
-        Me.grpPassbkTabPostTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Controls.Add(Me.txtVisToStringTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain)
-        Me.grpPassbkTabPostTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Controls.Add(Me.txtFeatToStringTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain)
+        Me.grpPassbkTabPostTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Controls.Add(Me.cboFeatIdTabPostFeatTbcPassbkFeatMainTbcMain)
+        Me.grpPassbkTabPostTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Controls.Add(Me.txtPrevUsedToStringTabPostUpdtFeatTbcPassbkFeatMainTbcMain)
+        Me.grpPassbkTabPostTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Controls.Add(Me.txtVisToStringTabPostFeatTbcPassbkFeatMainTbcMain)
+        Me.grpPassbkTabPostTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Controls.Add(Me.txtFeatToStringTabPostFeatTbcPassbkFeatMainTbcMain)
         Me.grpPassbkTabPostTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Controls.Add(Me.Label13)
-        Me.grpPassbkTabPostTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Controls.Add(Me.txtCustToStringTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain)
+        Me.grpPassbkTabPostTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Controls.Add(Me.txtCustToStringTabPostFeatTbcPassbkFeatMainTbcMain)
         Me.grpPassbkTabPostTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Controls.Add(Me.Label12)
         Me.grpPassbkTabPostTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Controls.Add(Me.Label11)
         Me.grpPassbkTabPostTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Controls.Add(Me.Label10)
@@ -1123,58 +1123,58 @@ Partial Class FrmMain
         Me.grpPassbkTabPostTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Text = "Passbook"
         Me.tipTPMS.SetToolTip(Me.grpPassbkTabPostTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain, "Enter feature specific information")
         '
-        'cboPassbkFeatIdTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain
+        'cboFeatIdTabPostFeatTbcPassbkFeatMainTbcMain
         '
-        Me.cboPassbkFeatIdTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cboPassbkFeatIdTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.FormattingEnabled = True
-        Me.cboPassbkFeatIdTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Items.AddRange(New Object() {"PBF9999"})
-        Me.cboPassbkFeatIdTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Location = New System.Drawing.Point(98, 36)
-        Me.cboPassbkFeatIdTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Name = "cboPassbkFeatIdTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain"
-        Me.cboPassbkFeatIdTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Size = New System.Drawing.Size(136, 23)
-        Me.cboPassbkFeatIdTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.TabIndex = 10
-        Me.tipTPMS.SetToolTip(Me.cboPassbkFeatIdTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain, "Select a Passbook Feature from the list")
+        Me.cboFeatIdTabPostFeatTbcPassbkFeatMainTbcMain.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cboFeatIdTabPostFeatTbcPassbkFeatMainTbcMain.FormattingEnabled = True
+        Me.cboFeatIdTabPostFeatTbcPassbkFeatMainTbcMain.Items.AddRange(New Object() {"PBF9999"})
+        Me.cboFeatIdTabPostFeatTbcPassbkFeatMainTbcMain.Location = New System.Drawing.Point(98, 36)
+        Me.cboFeatIdTabPostFeatTbcPassbkFeatMainTbcMain.Name = "cboFeatIdTabPostFeatTbcPassbkFeatMainTbcMain"
+        Me.cboFeatIdTabPostFeatTbcPassbkFeatMainTbcMain.Size = New System.Drawing.Size(136, 23)
+        Me.cboFeatIdTabPostFeatTbcPassbkFeatMainTbcMain.TabIndex = 10
+        Me.tipTPMS.SetToolTip(Me.cboFeatIdTabPostFeatTbcPassbkFeatMainTbcMain, "Select a Passbook Feature from the list")
         '
-        'txtPrevUsedTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain
+        'txtPrevUsedToStringTabPostUpdtFeatTbcPassbkFeatMainTbcMain
         '
-        Me.txtPrevUsedTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.BackColor = System.Drawing.SystemColors.ControlLight
-        Me.txtPrevUsedTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtPrevUsedTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Location = New System.Drawing.Point(590, 38)
-        Me.txtPrevUsedTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Multiline = True
-        Me.txtPrevUsedTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Name = "txtPrevUsedTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain"
-        Me.txtPrevUsedTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.ReadOnly = True
-        Me.txtPrevUsedTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
-        Me.txtPrevUsedTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Size = New System.Drawing.Size(212, 157)
-        Me.txtPrevUsedTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.TabIndex = 9
-        Me.txtPrevUsedTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.TabStop = False
-        Me.tipTPMS.SetToolTip(Me.txtPrevUsedTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain, "Displays information of previously used features")
+        Me.txtPrevUsedToStringTabPostUpdtFeatTbcPassbkFeatMainTbcMain.BackColor = System.Drawing.SystemColors.ControlLight
+        Me.txtPrevUsedToStringTabPostUpdtFeatTbcPassbkFeatMainTbcMain.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtPrevUsedToStringTabPostUpdtFeatTbcPassbkFeatMainTbcMain.Location = New System.Drawing.Point(590, 38)
+        Me.txtPrevUsedToStringTabPostUpdtFeatTbcPassbkFeatMainTbcMain.Multiline = True
+        Me.txtPrevUsedToStringTabPostUpdtFeatTbcPassbkFeatMainTbcMain.Name = "txtPrevUsedToStringTabPostUpdtFeatTbcPassbkFeatMainTbcMain"
+        Me.txtPrevUsedToStringTabPostUpdtFeatTbcPassbkFeatMainTbcMain.ReadOnly = True
+        Me.txtPrevUsedToStringTabPostUpdtFeatTbcPassbkFeatMainTbcMain.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
+        Me.txtPrevUsedToStringTabPostUpdtFeatTbcPassbkFeatMainTbcMain.Size = New System.Drawing.Size(212, 157)
+        Me.txtPrevUsedToStringTabPostUpdtFeatTbcPassbkFeatMainTbcMain.TabIndex = 9
+        Me.txtPrevUsedToStringTabPostUpdtFeatTbcPassbkFeatMainTbcMain.TabStop = False
+        Me.tipTPMS.SetToolTip(Me.txtPrevUsedToStringTabPostUpdtFeatTbcPassbkFeatMainTbcMain, "Displays information of previously used features")
         '
-        'txtVisToStringTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain
+        'txtVisToStringTabPostFeatTbcPassbkFeatMainTbcMain
         '
-        Me.txtVisToStringTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.BackColor = System.Drawing.SystemColors.ControlLight
-        Me.txtVisToStringTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtVisToStringTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Location = New System.Drawing.Point(283, 97)
-        Me.txtVisToStringTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Multiline = True
-        Me.txtVisToStringTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Name = "txtVisToStringTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain"
-        Me.txtVisToStringTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.ReadOnly = True
-        Me.txtVisToStringTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
-        Me.txtVisToStringTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Size = New System.Drawing.Size(268, 38)
-        Me.txtVisToStringTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.TabIndex = 5
-        Me.txtVisToStringTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.TabStop = False
-        Me.tipTPMS.SetToolTip(Me.txtVisToStringTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain, "Displays selected passbook feature visitor information")
+        Me.txtVisToStringTabPostFeatTbcPassbkFeatMainTbcMain.BackColor = System.Drawing.SystemColors.ControlLight
+        Me.txtVisToStringTabPostFeatTbcPassbkFeatMainTbcMain.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtVisToStringTabPostFeatTbcPassbkFeatMainTbcMain.Location = New System.Drawing.Point(283, 97)
+        Me.txtVisToStringTabPostFeatTbcPassbkFeatMainTbcMain.Multiline = True
+        Me.txtVisToStringTabPostFeatTbcPassbkFeatMainTbcMain.Name = "txtVisToStringTabPostFeatTbcPassbkFeatMainTbcMain"
+        Me.txtVisToStringTabPostFeatTbcPassbkFeatMainTbcMain.ReadOnly = True
+        Me.txtVisToStringTabPostFeatTbcPassbkFeatMainTbcMain.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
+        Me.txtVisToStringTabPostFeatTbcPassbkFeatMainTbcMain.Size = New System.Drawing.Size(268, 38)
+        Me.txtVisToStringTabPostFeatTbcPassbkFeatMainTbcMain.TabIndex = 5
+        Me.txtVisToStringTabPostFeatTbcPassbkFeatMainTbcMain.TabStop = False
+        Me.tipTPMS.SetToolTip(Me.txtVisToStringTabPostFeatTbcPassbkFeatMainTbcMain, "Displays selected passbook feature visitor information")
         '
-        'txtFeatToStringTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain
+        'txtFeatToStringTabPostFeatTbcPassbkFeatMainTbcMain
         '
-        Me.txtFeatToStringTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.BackColor = System.Drawing.SystemColors.ControlLight
-        Me.txtFeatToStringTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtFeatToStringTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Location = New System.Drawing.Point(283, 157)
-        Me.txtFeatToStringTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Multiline = True
-        Me.txtFeatToStringTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Name = "txtFeatToStringTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain"
-        Me.txtFeatToStringTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.ReadOnly = True
-        Me.txtFeatToStringTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
-        Me.txtFeatToStringTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Size = New System.Drawing.Size(268, 38)
-        Me.txtFeatToStringTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.TabIndex = 7
-        Me.txtFeatToStringTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.TabStop = False
-        Me.tipTPMS.SetToolTip(Me.txtFeatToStringTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain, "Displays selected passbook feature information")
+        Me.txtFeatToStringTabPostFeatTbcPassbkFeatMainTbcMain.BackColor = System.Drawing.SystemColors.ControlLight
+        Me.txtFeatToStringTabPostFeatTbcPassbkFeatMainTbcMain.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtFeatToStringTabPostFeatTbcPassbkFeatMainTbcMain.Location = New System.Drawing.Point(283, 157)
+        Me.txtFeatToStringTabPostFeatTbcPassbkFeatMainTbcMain.Multiline = True
+        Me.txtFeatToStringTabPostFeatTbcPassbkFeatMainTbcMain.Name = "txtFeatToStringTabPostFeatTbcPassbkFeatMainTbcMain"
+        Me.txtFeatToStringTabPostFeatTbcPassbkFeatMainTbcMain.ReadOnly = True
+        Me.txtFeatToStringTabPostFeatTbcPassbkFeatMainTbcMain.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
+        Me.txtFeatToStringTabPostFeatTbcPassbkFeatMainTbcMain.Size = New System.Drawing.Size(268, 38)
+        Me.txtFeatToStringTabPostFeatTbcPassbkFeatMainTbcMain.TabIndex = 7
+        Me.txtFeatToStringTabPostFeatTbcPassbkFeatMainTbcMain.TabStop = False
+        Me.tipTPMS.SetToolTip(Me.txtFeatToStringTabPostFeatTbcPassbkFeatMainTbcMain, "Displays selected passbook feature information")
         '
         'Label13
         '
@@ -1186,19 +1186,19 @@ Partial Class FrmMain
         Me.Label13.TabIndex = 8
         Me.Label13.Text = "Previously Used"
         '
-        'txtCustToStringTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain
+        'txtCustToStringTabPostFeatTbcPassbkFeatMainTbcMain
         '
-        Me.txtCustToStringTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.BackColor = System.Drawing.SystemColors.ControlLight
-        Me.txtCustToStringTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtCustToStringTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Location = New System.Drawing.Point(283, 37)
-        Me.txtCustToStringTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Multiline = True
-        Me.txtCustToStringTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Name = "txtCustToStringTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain"
-        Me.txtCustToStringTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.ReadOnly = True
-        Me.txtCustToStringTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
-        Me.txtCustToStringTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Size = New System.Drawing.Size(271, 38)
-        Me.txtCustToStringTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.TabIndex = 3
-        Me.txtCustToStringTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.TabStop = False
-        Me.tipTPMS.SetToolTip(Me.txtCustToStringTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain, "Displays selected passbook feature customer information")
+        Me.txtCustToStringTabPostFeatTbcPassbkFeatMainTbcMain.BackColor = System.Drawing.SystemColors.ControlLight
+        Me.txtCustToStringTabPostFeatTbcPassbkFeatMainTbcMain.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtCustToStringTabPostFeatTbcPassbkFeatMainTbcMain.Location = New System.Drawing.Point(283, 37)
+        Me.txtCustToStringTabPostFeatTbcPassbkFeatMainTbcMain.Multiline = True
+        Me.txtCustToStringTabPostFeatTbcPassbkFeatMainTbcMain.Name = "txtCustToStringTabPostFeatTbcPassbkFeatMainTbcMain"
+        Me.txtCustToStringTabPostFeatTbcPassbkFeatMainTbcMain.ReadOnly = True
+        Me.txtCustToStringTabPostFeatTbcPassbkFeatMainTbcMain.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
+        Me.txtCustToStringTabPostFeatTbcPassbkFeatMainTbcMain.Size = New System.Drawing.Size(271, 38)
+        Me.txtCustToStringTabPostFeatTbcPassbkFeatMainTbcMain.TabIndex = 3
+        Me.txtCustToStringTabPostFeatTbcPassbkFeatMainTbcMain.TabStop = False
+        Me.tipTPMS.SetToolTip(Me.txtCustToStringTabPostFeatTbcPassbkFeatMainTbcMain, "Displays selected passbook feature customer information")
         '
         'Label12
         '
@@ -2462,7 +2462,7 @@ Partial Class FrmMain
     Friend WithEvents tabPostFeatTbcPassbkFeatMainTbcMain As TabPage
     Friend WithEvents grpPassbkTabPostTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain As GroupBox
     Friend WithEvents Label22 As Label
-    Private WithEvents txtLocTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain As TextBox
+    Private WithEvents txtLocTabPostFeatTbcPassbkFeatMainTbcMain As TextBox
     Friend WithEvents Label26 As Label
     Friend WithEvents tabTransLogTbcMainFrmMain As TabPage
     Friend WithEvents grpTransLogTabTransLogTbcMain As GroupBox
@@ -2518,15 +2518,15 @@ Partial Class FrmMain
     Friend WithEvents btnResetGrpAddPassbkTabPassbkTbcMainFrmMain As System.Windows.Forms.Button
     Friend WithEvents btnSubmitGrpAddPassbkTabPassbkTbcMainFrmMain As System.Windows.Forms.Button
     Friend WithEvents grpAnon1 As System.Windows.Forms.GroupBox
-    Friend WithEvents txtQtyUsedTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain As System.Windows.Forms.TextBox
+    Friend WithEvents txtQtyUsedTabPostFeatTbcPassbkFeatMainTbcMain As System.Windows.Forms.TextBox
     Friend WithEvents Label24 As System.Windows.Forms.Label
-    Friend WithEvents txtRemQuantTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain As System.Windows.Forms.TextBox
+    Friend WithEvents txtQtyRemTabPostFeatTbcPassbkFeatMainTbcMain As System.Windows.Forms.TextBox
     Friend WithEvents Label23 As System.Windows.Forms.Label
-    Friend WithEvents txtPrevUsedTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain As System.Windows.Forms.TextBox
-    Friend WithEvents txtVisToStringTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain As System.Windows.Forms.TextBox
-    Friend WithEvents txtFeatToStringTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain As System.Windows.Forms.TextBox
+    Friend WithEvents txtPrevUsedToStringTabPostUpdtFeatTbcPassbkFeatMainTbcMain As System.Windows.Forms.TextBox
+    Friend WithEvents txtVisToStringTabPostFeatTbcPassbkFeatMainTbcMain As System.Windows.Forms.TextBox
+    Friend WithEvents txtFeatToStringTabPostFeatTbcPassbkFeatMainTbcMain As System.Windows.Forms.TextBox
     Friend WithEvents Label13 As System.Windows.Forms.Label
-    Friend WithEvents txtCustToStringTabPostFeatTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain As System.Windows.Forms.TextBox
+    Friend WithEvents txtCustToStringTabPostFeatTbcPassbkFeatMainTbcMain As System.Windows.Forms.TextBox
     Friend WithEvents Label12 As System.Windows.Forms.Label
     Friend WithEvents Label11 As System.Windows.Forms.Label
     Friend WithEvents Label10 As System.Windows.Forms.Label
@@ -2610,7 +2610,7 @@ Partial Class FrmMain
     Friend WithEvents cboPassbkIdTabAddFeatTbcPassbkFeatMainTbcMain As System.Windows.Forms.ComboBox
     Friend WithEvents cboFeatIdTabAddFeatTbcPassbkFeatMainTbcMain As System.Windows.Forms.ComboBox
     Friend WithEvents cboFeatIdTabUpdtFeatTbcPassbkFeatMainTbcMain As System.Windows.Forms.ComboBox
-    Friend WithEvents cboPassbkFeatIdTbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain As System.Windows.Forms.ComboBox
+    Friend WithEvents cboFeatIdTabPostFeatTbcPassbkFeatMainTbcMain As System.Windows.Forms.ComboBox
     Friend WithEvents cboCustIdGrpCustInfoGrpAddPassbkTabPassbkTbcMainFrmMain As System.Windows.Forms.ComboBox
     Friend WithEvents chkUseTestParkGrpSysTestTabSysTestTbcMainFrmMain As System.Windows.Forms.CheckBox
     Friend WithEvents mnuUseFeaturesPassbooksFrmMain As System.Windows.Forms.ToolStripMenuItem

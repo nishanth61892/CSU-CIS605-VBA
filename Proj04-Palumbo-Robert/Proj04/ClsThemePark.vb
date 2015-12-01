@@ -188,7 +188,6 @@ Public Class ThemePark
         ReDim Preserve mPassbookFeature(_passbookArrayMax - 1)
         ReDim Preserve mUsedFeature(_usedFeatureArrayMax - 1)
         ReDim Preserve mTransx(_transxArrayMax - 1)
-
     End Sub 'New()
 
     '********** Copy constructor(s)

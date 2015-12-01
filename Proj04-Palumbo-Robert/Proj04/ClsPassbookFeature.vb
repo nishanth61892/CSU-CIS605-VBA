@@ -97,7 +97,7 @@ Public Class PassbookFeature
         End If
 
         _qtyPurch = pQtyPurch
-        _qtyRemain -= pQtyPurch
+        _qtyRemain = _qtyPurch
     End Sub 'New()
 
     '********** Copy constructor(s)
