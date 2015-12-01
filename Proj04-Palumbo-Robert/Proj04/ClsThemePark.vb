@@ -173,7 +173,6 @@ Public Class ThemePark
         _numUsedFeats = 0
         _numTransx = 0
 
-
         'Initialize array attributes
         _custArrayMax = _CUSTOMER_ARRAY_SIZE_DFLT
         _featureArrayMax = _FEATURE_ARRAY_SIZE_DFLT
@@ -311,47 +310,60 @@ Public Class ThemePark
         End Get
     End Property
 
-    'Customer array accessor
-    Public ReadOnly Property ithCust(ByVal pN As Integer) As Customer
-        Get
-            Return _ithCust(pN)
-        End Get
-    End Property
+    'Customer data store iterator 
+    Public Iterator Function iterateCust() As IEnumerable(Of Object)
+        Dim cust As Customer
 
-    'Feature array accessor
-    Public ReadOnly Property ithFeat(ByVal pN As Integer) As Feature
-        Get
-            Return _ithFeat(pN)
-        End Get
-    End Property
+        For Each cust In _iterateCust()
+            Yield cust
+        Next cust
+    End Function 'iterateCust()
 
-    'Passbook array accessor
-    Public ReadOnly Property ithPassbk(ByVal pN As Integer) As Passbook
-        Get
-            Return _ithPassbk(pN)
-        End Get
-    End Property
+    'Feature data store iterator 
+    Public Iterator Function iterateFeat() As IEnumerable(Of Object)
+        Dim feat As Feature
 
-    'Passbook Feature array accessor
-    Public ReadOnly Property ithPassbkFeat(ByVal pN As Integer) As PassbookFeature
-        Get
-            Return _ithPassbkFeat(pN)
-        End Get
-    End Property
+        For Each feat In _iterateFeat()
+            Yield feat
+        Next feat
+    End Function 'iterateFeat()
 
-    'Update Feature array accessor
-    Public ReadOnly Property ithUsedFeat(ByVal pN As Integer) As UsedFeature
-        Get
-            Return _ithUsedFeat(pN)
-        End Get
-    End Property
+    'Passbook data store iterator 
+    Public Iterator Function iteratePassbk() As IEnumerable(Of Object)
+        Dim passbk As Passbook
 
-    'Transaction array accessor
-    Public ReadOnly Property ithTransx(ByVal pN As Integer) As String
-        Get
-            Return _ithTransx(pN)
-        End Get
-    End Property
+        For Each passbk In _iteratePassbk()
+            Yield passbk
+        Next passbk
+    End Function 'iteratePassbk()
+
+    'Passbook Feature data store iterator 
+    Public Iterator Function iteratePassbkFeat() As IEnumerable(Of Object)
+        Dim passbkFeat As PassbookFeature
+
+        For Each passbkFeat In _iteratePassbkFeat()
+            Yield passbkFeat
+        Next passbkFeat
+    End Function 'iteratePassbkFeat()
+
+    'Used Feature data store iterator 
+    Public Iterator Function iterateUsedFeat() As IEnumerable(Of Object)
+        Dim usedFeat As UsedFeature
+
+        For Each usedFeat In _iterateUsedFeat()
+            Yield usedFeat
+        Next usedFeat
+    End Function 'iterateUsedFeat()
+
+    'Transx data store iterator 
+    Public Iterator Function iterateTransx() As IEnumerable(Of Object)
+        Dim transx As String
+
+        For Each transx In _iterateTransx()
+            Yield transx
+        Next transx
+    End Function 'iterateTransx()
+
 
     '********** Private Get/Set Methods
     '             - access attributes, begin name with underscore (_)
@@ -585,6 +597,62 @@ Public Class ThemePark
             mTransxArrayMax = value
         End Set
     End Property
+
+
+    'Customer array iterator 
+    Private Iterator Function _iterateCust() As IEnumerable(Of Object)
+        Dim i As Integer
+
+        For i = 0 To _numCusts - 1
+            Yield _ithCust(i)
+        Next i
+    End Function '_iterateCust()
+
+    'Feature array iterator 
+    Private Iterator Function _iterateFeat() As IEnumerable(Of Object)
+        Dim i As Integer
+
+        For i = 0 To _numFeats - 1
+            Yield _ithFeat(i)
+        Next i
+    End Function '_iterateFeat()
+
+    'Passbook array iterator 
+    Private Iterator Function _iteratePassbk() As IEnumerable(Of Object)
+        Dim i As Integer
+
+        For i = 0 To _numPassbks - 1
+            Yield _ithPassbk(i)
+        Next i
+    End Function '_iteratePassbk()
+
+    'Passbook Feature array iterator 
+    Private Iterator Function _iteratePassbkFeat() As IEnumerable(Of Object)
+        Dim i As Integer
+
+        For i = 0 To _numPassbkFeats - 1
+            Yield _ithPassbkFeat(i)
+        Next i
+    End Function '_iteratePassbkFeat()
+
+    'Used Feature array iterator 
+    Private Iterator Function _iterateUsedFeat() As IEnumerable(Of Object)
+        Dim i As Integer
+
+        For i = 0 To _numUsedFeats - 1
+            Yield _ithUsedFeat(i)
+        Next i
+    End Function '_iterateUsedFeat()
+
+    'Transx array iterator 
+    Private Iterator Function _iterateTransx() As IEnumerable(Of Object)
+        Dim i As Integer
+
+        For i = 0 To _numTransx - 1
+            Yield _ithTransx(i)
+        Next i
+    End Function '_iterateTransx()
+
 
     'Customer array accessor
     Private Property _ithCust(ByVal pN As Integer) As Customer

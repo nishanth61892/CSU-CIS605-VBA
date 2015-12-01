@@ -2340,10 +2340,9 @@ Public Class FrmMain
         If _theThemePark.numCusts = 0 Then
             txtDebug.Text = "No Customer data to display" & vbCrLf
         Else
-            Dim i As Integer
-            For i = 0 To _theThemePark.numCusts - 1
-                txtDebug.Text &= _theThemePark.ithCust(i).ToString & vbCrLf
-            Next i
+            For Each cust As Customer In _theThemePark.iterateCust
+                txtDebug.Text &= cust.ToString & vbCrLf
+            Next cust
         End If
     End Sub
 
@@ -2356,10 +2355,9 @@ Public Class FrmMain
         If _theThemePark.numPassbks = 0 Then
             txtDebug.Text = "No Passbook data to display" & vbCrLf
         Else
-            Dim i As Integer
-            For i = 0 To _theThemePark.numPassbks - 1
-                txtDebug.Text &= _theThemePark.ithPassbk(i).ToString & vbCrLf
-            Next i
+            For Each passbk As Passbook In _theThemePark.iteratePassbk
+                txtDebug.Text &= passbk.ToString & vbCrLf
+            Next passbk
         End If
     End Sub
 
@@ -2372,10 +2370,9 @@ Public Class FrmMain
         If _theThemePark.numFeats = 0 Then
             txtDebug.Text = "No Feature data to display" & vbCrLf
         Else
-            Dim i As Integer
-            For i = 0 To _theThemePark.numFeats - 1
-                txtDebug.Text &= _theThemePark.ithFeat(i).ToString & vbCrLf
-            Next i
+            For Each feat As Feature In _theThemePark.iterateFeat
+                txtDebug.Text &= feat.ToString & vbCrLf
+            Next feat
         End If
     End Sub
 
@@ -2388,10 +2385,9 @@ Public Class FrmMain
         If _theThemePark.numPassbkFeats = 0 Then
             txtDebug.Text = "No Passbook Feature data to display" & vbCrLf
         Else
-            Dim i As Integer
-            For i = 0 To _theThemePark.numPassbkFeats - 1
-                txtDebug.Text &= _theThemePark.ithPassbkFeat(i).ToString & vbCrLf
-            Next i
+            For Each passbkFeat As PassbookFeature In _theThemePark.iteratePassbkFeat
+                txtDebug.Text &= passbkFeat.ToString & vbCrLf
+            Next passbkFeat
         End If
     End Sub
 
@@ -2404,10 +2400,9 @@ Public Class FrmMain
         If _theThemePark.numUsedFeats = 0 Then
             txtDebug.Text = "No Used Feature data to display" & vbCrLf
         Else
-            Dim i As Integer
-            For i = 0 To _theThemePark.numUsedFeats - 1
-                txtDebug.Text &= _theThemePark.ithUsedFeat(i).ToString & vbCrLf
-            Next i
+            For Each usedFeat As UsedFeature In _theThemePark.iterateUsedFeat
+                txtDebug.Text &= usedFeat.ToString & vbCrLf
+            Next usedFeat
         End If
     End Sub
 
@@ -2420,10 +2415,9 @@ Public Class FrmMain
         If _theThemePark.numTransx = 0 Then
             txtDebug.Text = "No Transactions to display" & vbCrLf
         Else
-            Dim i As Integer
-            For i = 0 To _theThemePark.numTransx - 1
-                txtDebug.Text &= _theThemePark.ithTransx(i).ToString & vbCrLf
-            Next i
+            For Each transx As UsedFeature In _theThemePark.iterateTransx
+                txtDebug.Text &= transx.ToString & vbCrLf
+            Next transx
         End If
     End Sub
 
