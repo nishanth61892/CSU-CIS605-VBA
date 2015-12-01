@@ -271,9 +271,9 @@ Public Class PassbookFeature
             & " Id=" & _id _
             & ", Feature=" & featStr _
             & ", Passbk=" & passbkStr _
-            & ", PurchasePrice=" & _purchPrice _
-            & ", QtyPurchased=" & _qtyPurch _
-            & ", QtyRemain=" & _qtyRemain
+            & ", PurchasePrice=" & _purchPrice.ToString("C") _
+            & ", QtyPurchased=" & _qtyPurch.ToString("N0") _
+            & ", QtyRemain=" & _qtyRemain.ToString("N0")
 
         Return tmpStr
     End Function

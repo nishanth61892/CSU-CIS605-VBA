@@ -1704,7 +1704,7 @@ Partial Class FrmMain
         '
         Me.lstUsedFeatTabDashboardTbcMain.FormattingEnabled = True
         Me.lstUsedFeatTabDashboardTbcMain.ItemHeight = 15
-        Me.lstUsedFeatTabDashboardTbcMain.Items.AddRange(New Object() {"UF9999"})
+        Me.lstUsedFeatTabDashboardTbcMain.Items.AddRange(New Object() {"UF9999-Invalid"})
         Me.lstUsedFeatTabDashboardTbcMain.Location = New System.Drawing.Point(517, 44)
         Me.lstUsedFeatTabDashboardTbcMain.Name = "lstUsedFeatTabDashboardTbcMain"
         Me.lstUsedFeatTabDashboardTbcMain.Size = New System.Drawing.Size(103, 199)
@@ -1716,7 +1716,7 @@ Partial Class FrmMain
         '
         Me.lstPassbkFeatTabDashboardTbcMain.FormattingEnabled = True
         Me.lstPassbkFeatTabDashboardTbcMain.ItemHeight = 15
-        Me.lstPassbkFeatTabDashboardTbcMain.Items.AddRange(New Object() {"PBF9999"})
+        Me.lstPassbkFeatTabDashboardTbcMain.Items.AddRange(New Object() {"PBF9999-Invalid"})
         Me.lstPassbkFeatTabDashboardTbcMain.Location = New System.Drawing.Point(393, 44)
         Me.lstPassbkFeatTabDashboardTbcMain.Name = "lstPassbkFeatTabDashboardTbcMain"
         Me.lstPassbkFeatTabDashboardTbcMain.Size = New System.Drawing.Size(103, 199)
@@ -1728,7 +1728,7 @@ Partial Class FrmMain
         '
         Me.lstPassbkTabDashboardTbcMain.FormattingEnabled = True
         Me.lstPassbkTabDashboardTbcMain.ItemHeight = 15
-        Me.lstPassbkTabDashboardTbcMain.Items.AddRange(New Object() {"PB9999"})
+        Me.lstPassbkTabDashboardTbcMain.Items.AddRange(New Object() {"PB9999-Invalid"})
         Me.lstPassbkTabDashboardTbcMain.Location = New System.Drawing.Point(271, 44)
         Me.lstPassbkTabDashboardTbcMain.Name = "lstPassbkTabDashboardTbcMain"
         Me.lstPassbkTabDashboardTbcMain.Size = New System.Drawing.Size(103, 199)
@@ -1740,7 +1740,7 @@ Partial Class FrmMain
         '
         Me.lstFeatTabDashboardTbcMain.FormattingEnabled = True
         Me.lstFeatTabDashboardTbcMain.ItemHeight = 15
-        Me.lstFeatTabDashboardTbcMain.Items.AddRange(New Object() {"F9999"})
+        Me.lstFeatTabDashboardTbcMain.Items.AddRange(New Object() {"F9999-Invalid"})
         Me.lstFeatTabDashboardTbcMain.Location = New System.Drawing.Point(149, 44)
         Me.lstFeatTabDashboardTbcMain.Name = "lstFeatTabDashboardTbcMain"
         Me.lstFeatTabDashboardTbcMain.Size = New System.Drawing.Size(103, 199)
@@ -1752,7 +1752,7 @@ Partial Class FrmMain
         '
         Me.lstCustTabDashboardTbcMain.FormattingEnabled = True
         Me.lstCustTabDashboardTbcMain.ItemHeight = 15
-        Me.lstCustTabDashboardTbcMain.Items.AddRange(New Object() {"C9999"})
+        Me.lstCustTabDashboardTbcMain.Items.AddRange(New Object() {"C9999-Invalid"})
         Me.lstCustTabDashboardTbcMain.Location = New System.Drawing.Point(30, 44)
         Me.lstCustTabDashboardTbcMain.Name = "lstCustTabDashboardTbcMain"
         Me.lstCustTabDashboardTbcMain.Size = New System.Drawing.Size(103, 199)

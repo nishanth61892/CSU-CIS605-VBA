@@ -1261,11 +1261,7 @@ Public Class ThemePark
                                 ByVal pQty As Decimal
                                 )
 
-        Dim passbkFeat As PassbookFeature = New PassbookFeature(pPassbkFeatId, _
-                                                                Nothing, _
-                                                                Nothing, _
-                                                                pQty
-                                                                )
+        Dim passbkFeat As PassbookFeature = _findPassbkFeat(pPassbkFeatId)
 
         'Make sure we actually have customer object.  There is the slight chance
         'that the New () could have failed.
@@ -1273,6 +1269,10 @@ Public Class ThemePark
             MsgBox(mSYS_OBJ_CREATE_ERR_MSG, MsgBoxStyle.Critical)
             Exit Sub
         End If
+
+        'Update the quantity purchased
+        passbkFeat.qtyPurch = pQty
+        passbkFeat.qtyRemain = pQty
 
         'Raise and event to let the listeners of this event it happened
         RaiseEvent ThemePark_UpdtPassbkFeat(Me,

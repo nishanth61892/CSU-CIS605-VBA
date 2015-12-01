@@ -231,8 +231,8 @@ Public Class Feature
             & " Id=" & _featId _
             & ", Name=" & _featName _
             & ", UnitOfMeas=" & _unitOfMeas _
-            & ", AdultPrice=" & _adultPrice _
-            & ", ChildPrice=" & _childPrice
+            & ", AdultPrice=" & _adultPrice.ToString("C") _
+            & ", ChildPrice=" & _childPrice.ToString("C")
 
         Return tmpStr
     End Function '_toString()
