@@ -900,21 +900,21 @@ Public Class ThemePark
     End Sub 'createPassbk(...)
 
     '****************************************************************************************
-    'addPassbkFeat() generates an add passbook feature transaction
+    'purchPassbkFeat() generates a purchase passbook feature transaction
     '****************************************************************************************
-    Public Sub addPassbkFeat(ByVal pPassbkFeatId As String, _
-                             ByVal pFeature As Feature, _
-                             ByVal pPassbk As Passbook, _
-                             ByVal pQtyPurch As Decimal
-                             )
+    Public Sub purchPassbkFeat(ByVal pPassbkFeatId As String, _
+                               ByVal pFeature As Feature, _
+                               ByVal pPassbk As Passbook, _
+                               ByVal pQtyPurch As Decimal
+                               )
 
         'Call the worker procedure to do the work
-        _addPassbkFeat(pPassbkFeatId, _
-                       pFeature, _
-                       pPassbk, _
-                       pQtyPurch
-                       )
-    End Sub 'addPassbkFeat(...)
+        _purchPassbkFeat(pPassbkFeatId, _
+                         pFeature, _
+                         pPassbk, _
+                         pQtyPurch
+                         )
+    End Sub 'purchPassbkFeat(...)
 
     '****************************************************************************************
     'updtPassbkFeat() generates an update passbook feature transaction
@@ -1177,6 +1177,16 @@ Public Class ThemePark
                             ByVal pChildPrice As Decimal
                             )
 
+        'Trap duplicates here and don't create - this can happen from system test data
+        If Not _findFeat(pFeatId) Is Nothing Then
+            Dim logMsg As String = "ERROR: Attempt to create duplicate feature, Id=" & pFeatId
+
+            'Raise and event to let the listeners of this event it happened
+            RaiseEvent ThemePark_LogTran(Me,
+                                         New ThemePark_EventArgs_LogMsg(logMsg))
+            Exit Sub
+        End If
+
         Dim feat As Feature = New Feature(pFeatId, _
                                           pFeatName, _
                                           pUnitOfMeas, _
@@ -1271,16 +1281,16 @@ Public Class ThemePark
     End Sub '_createPassbk(...)
 
     '****************************************************************************************
-    '_addPassbkFeat() 
-    'This is the work-horse function that creates a new passbook feature
+    '_createPassbkFeat() 
+    'This is the work-horse function that creates a new passbook feature purchase
     'and raises an event to alert any listeners to handle the rest
     'of the associated processed based on this event
     '****************************************************************************************
-    Private Sub _addPassbkFeat(ByVal pPassbkFeatId As String, _
-                               ByVal pFeature As Feature, _
-                               ByVal pPassbk As Passbook, _
-                               ByVal pQtyPurch As Decimal
-                               )
+    Private Sub _purchPassbkFeat(ByVal pPassbkFeatId As String, _
+                                 ByVal pFeature As Feature, _
+                                 ByVal pPassbk As Passbook, _
+                                 ByVal pQtyPurch As Decimal
+                                 )
 
         Dim passbkFeat As PassbookFeature = New PassbookFeature(pPassbkFeatId, _
                                                                 pFeature, _
@@ -1314,9 +1324,9 @@ Public Class ThemePark
         _numPassbkFeats += 1
 
         'Raise and event to let the listeners of this event it happened
-        RaiseEvent ThemePark_AddPassbkFeat(Me,
-                                           New ThemePark_EventArgs_AddPassbkFeat(passbkFeat))
-    End Sub '_addPassbkFeat(...)
+        RaiseEvent ThemePark_PurchPassbkFeat(Me,
+                                             New ThemePark_EventArgs_PurchPassbkFeat(passbkFeat))
+    End Sub '_createPassbkFeat(...)
 
     '****************************************************************************************
     '_updtPassbkFeat()
@@ -1444,9 +1454,9 @@ Public Class ThemePark
                                         )
 
     'Define the new purchase passbook feature event
-    Public Event ThemePark_AddPassbkFeat(ByVal sender As Object, _
-                                         ByVal e As System.EventArgs
-                                         )
+    Public Event ThemePark_PurchPassbkFeat(ByVal sender As Object, _
+                                           ByVal e As System.EventArgs
+                                           )
 
     'Define the new purchase passbook feature event
     Public Event ThemePark_UpdtPassbkFeat(ByVal sender As Object, _
@@ -1455,6 +1465,11 @@ Public Class ThemePark
 
     'Define the new purchase passbook feature event
     Public Event ThemePark_UsedFeat(ByVal sender As Object, _
+                                    ByVal e As System.EventArgs
+                                    )
+
+    'Define the log transaction msg event
+    Public Event ThemePark_LogTran(ByVal sender As Object, _
                                     ByVal e As System.EventArgs
                                     )
 

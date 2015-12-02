@@ -230,18 +230,7 @@ Public Class FrmMain
 
         '**** Test Theme Park creation ****
 
-        'Use a temporary local theme park object if the associated check box has been
-        'checked, otherwise use the system theme park object
-        Dim themePark As ThemePark
-
-        If chkUseTestParkGrpSysTestTabSysTestTbcMainFrmMain.CheckState = CheckState.Checked Then
-            themePark = New ThemePark("PALUMBO Test Theme Park")
-            _writeTransLog("[ThemePark]: successfully created ==> " & themePark.ToString())
-        Else
-            themePark = Me._theThemePark
-            _writeTransLog("[ThemePark]: using System Theme Park ==> " & themePark.ToString())
-        End If
-
+        _writeTransLog("[ThemePark]: using System Theme Park ==> " & _theThemePark.ToString())
 
         '**** Test Feature creation ****
         _writeTransLog(Nothing)
@@ -252,12 +241,12 @@ Public Class FrmMain
         Dim f02 As Feature = New Feature("F02", "Early Entry Pass", "Day", 10D, 5D)
         Dim f03 As Feature = New Feature("F03", "Meal Plan", "Meal", 30D, 20D)
 
-        themePark.createFeat(f01.featId, f01.featName, f01.unitOfMeas, f01.adultPrice, f01.childPrice)
-        themePark.createFeat(f02.featId, f02.featName, f02.unitOfMeas, f02.adultPrice, f02.childPrice)
-        themePark.createFeat(f03.featId, f03.featName, f03.unitOfMeas, f03.adultPrice, f03.childPrice)
+        _theThemePark.createFeat(f01.featId, f01.featName, f01.unitOfMeas, f01.adultPrice, f01.childPrice)
+        _theThemePark.createFeat(f02.featId, f02.featName, f02.unitOfMeas, f02.adultPrice, f02.childPrice)
+        _theThemePark.createFeat(f03.featId, f03.featName, f03.unitOfMeas, f03.adultPrice, f03.childPrice)
 
         _writeTransLog(Nothing)
-        _writeTransLog("<CURRENT-PARK-STATUS>: " & themePark.ToString)
+        _writeTransLog("<CURRENT-PARK-STATUS>: " & _theThemePark.ToString)
 
 
         '**** Test Customer creation ****
@@ -269,12 +258,12 @@ Public Class FrmMain
         Dim c02 As Customer = New Customer("C02", "CName02")
         Dim c03 As Customer = New Customer("C03", "Customer Name 03")
 
-        themePark.createCust(c01.custId, c01.custName)
-        themePark.createCust(c02.custId, c02.custName)
-        themePark.createCust(c03.custId, c03.custName)
+        _theThemePark.createCust(c01.custId, c01.custName)
+        _theThemePark.createCust(c02.custId, c02.custName)
+        _theThemePark.createCust(c03.custId, c03.custName)
 
         _writeTransLog(Nothing)
-        _writeTransLog("<CURRENT-PARK-STATUS>: " & themePark.ToString)
+        _writeTransLog("<CURRENT-PARK-STATUS>: " & _theThemePark.ToString)
 
 
         '**** Test Passbook creation ****
@@ -289,21 +278,21 @@ Public Class FrmMain
         Dim pb05 As Passbook = New Passbook("PB05", c03, #9/15/2015#, "CO3 Visitor 1", #10/7/2002#, 13, False)
         Dim pb06 As Passbook = New Passbook("PB06", c03, #10/15/2015#, "CO3 Visitor 2", #10/8/2002#, 13, False)
 
-        themePark.createPassbk(pb01.passbkId, pb01.owner, pb01.datePurch, _
+        _theThemePark.createPassbk(pb01.passbkId, pb01.owner, pb01.datePurch, _
                                pb01.visName, pb01.visDob, pb01.visAge, pb01.visIsChild)
-        themePark.createPassbk(pb02.passbkId, pb02.owner, pb02.datePurch, _
+        _theThemePark.createPassbk(pb02.passbkId, pb02.owner, pb02.datePurch, _
                                pb02.visName, pb02.visDob, pb02.visAge, pb02.visIsChild)
-        themePark.createPassbk(pb03.passbkId, pb03.owner, pb03.datePurch, _
+        _theThemePark.createPassbk(pb03.passbkId, pb03.owner, pb03.datePurch, _
                                pb03.visName, pb03.visDob, pb03.visAge, pb03.visIsChild)
-        themePark.createPassbk(pb04.passbkId, pb04.owner, pb04.datePurch, _
+        _theThemePark.createPassbk(pb04.passbkId, pb04.owner, pb04.datePurch, _
                                pb04.visName, pb04.visDob, pb04.visAge, pb04.visIsChild)
-        themePark.createPassbk(pb05.passbkId, pb05.owner, pb05.datePurch, _
+        _theThemePark.createPassbk(pb05.passbkId, pb05.owner, pb05.datePurch, _
                                pb05.visName, pb05.visDob, pb05.visAge, pb05.visIsChild)
-        themePark.createPassbk(pb06.passbkId, pb06.owner, pb06.datePurch, _
+        _theThemePark.createPassbk(pb06.passbkId, pb06.owner, pb06.datePurch, _
                                pb06.visName, pb06.visDob, pb06.visAge, pb06.visIsChild)
 
         _writeTransLog(Nothing)
-        _writeTransLog("<CURRENT-PARK-STATUS>: " & themePark.ToString)
+        _writeTransLog("<CURRENT-PARK-STATUS>: " & _theThemePark.ToString)
 
 
         '**** Test Passbook Feature purchase ****'
@@ -323,19 +312,19 @@ Public Class FrmMain
         Dim pbf09 As PassbookFeature = New PassbookFeature("PBF09", f01, pb04, 1)
         Dim pbf10 As PassbookFeature = New PassbookFeature("PBF10", f01, pb04, 3)
 
-        themePark.addPassbkFeat(pbf01.id, pbf01.feature, pbf01.passbk, pbf01.qtyPurch)
-        themePark.addPassbkFeat(pbf02.id, pbf02.feature, pbf02.passbk, pbf02.qtyPurch)
-        themePark.addPassbkFeat(pbf03.id, pbf03.feature, pbf03.passbk, pbf03.qtyPurch)
-        themePark.addPassbkFeat(pbf04.id, pbf04.feature, pbf04.passbk, pbf04.qtyPurch)
-        themePark.addPassbkFeat(pbf05.id, pbf05.feature, pbf05.passbk, pbf05.qtyPurch)
-        themePark.addPassbkFeat(pbf06.id, pbf06.feature, pbf06.passbk, pbf06.qtyPurch)
-        themePark.addPassbkFeat(pbf07.id, pbf07.feature, pbf07.passbk, pbf07.qtyPurch)
-        themePark.addPassbkFeat(pbf08.id, pbf08.feature, pbf08.passbk, pbf08.qtyPurch)
-        themePark.addPassbkFeat(pbf09.id, pbf09.feature, pbf09.passbk, pbf09.qtyPurch)
-        themePark.addPassbkFeat(pbf10.id, pbf10.feature, pbf10.passbk, pbf10.qtyPurch)
+        _theThemePark.purchPassbkFeat(pbf01.id, pbf01.feature, pbf01.passbk, pbf01.qtyPurch)
+        _theThemePark.purchPassbkFeat(pbf02.id, pbf02.feature, pbf02.passbk, pbf02.qtyPurch)
+        _theThemePark.purchPassbkFeat(pbf03.id, pbf03.feature, pbf03.passbk, pbf03.qtyPurch)
+        _theThemePark.purchPassbkFeat(pbf04.id, pbf04.feature, pbf04.passbk, pbf04.qtyPurch)
+        _theThemePark.purchPassbkFeat(pbf05.id, pbf05.feature, pbf05.passbk, pbf05.qtyPurch)
+        _theThemePark.purchPassbkFeat(pbf06.id, pbf06.feature, pbf06.passbk, pbf06.qtyPurch)
+        _theThemePark.purchPassbkFeat(pbf07.id, pbf07.feature, pbf07.passbk, pbf07.qtyPurch)
+        _theThemePark.purchPassbkFeat(pbf08.id, pbf08.feature, pbf08.passbk, pbf08.qtyPurch)
+        _theThemePark.purchPassbkFeat(pbf09.id, pbf09.feature, pbf09.passbk, pbf09.qtyPurch)
+        _theThemePark.purchPassbkFeat(pbf10.id, pbf10.feature, pbf10.passbk, pbf10.qtyPurch)
 
         _writeTransLog(Nothing)
-        _writeTransLog("<CURRENT-PARK-STATUS>: " & themePark.ToString)
+        _writeTransLog("<CURRENT-PARK-STATUS>: " & _theThemePark.ToString)
 
 
         '**** Test Use Passbook Feature ****'
@@ -343,13 +332,13 @@ Public Class FrmMain
         _writeTransLog("[SYSTEM-TEST: USE PASSBOOK FEATURE]")
         _writeTransLog(Nothing)
 
-        themePark.usedFeat("UF01", pbf01, #10/20/2015#, 1, "Epcot Center")
-        themePark.usedFeat("UF02", pbf02, #10/20/2015#, 1, "West Parking")
-        themePark.usedFeat("UF03", pbf03, #10/20/2015#, 2, "France")
-        themePark.usedFeat("UF04", pbf03, #10/20/2015#, 1, "American Pavillion")
+        _theThemePark.usedFeat("UF01", pbf01, #10/20/2015#, 1, "Epcot Center")
+        _theThemePark.usedFeat("UF02", pbf02, #10/20/2015#, 1, "West Parking")
+        _theThemePark.usedFeat("UF03", pbf03, #10/20/2015#, 2, "France")
+        _theThemePark.usedFeat("UF04", pbf03, #10/20/2015#, 1, "American Pavillion")
 
         _writeTransLog(Nothing)
-        _writeTransLog("<CURRENT-PARK-STATUS>: " & themePark.ToString)
+        _writeTransLog("<CURRENT-PARK-STATUS>: " & _theThemePark.ToString)
 
 
         '**** Test Update Passbook Feature ****'
@@ -357,7 +346,7 @@ Public Class FrmMain
         _writeTransLog("[SYSTEM-TEST: UPDATE PASSBOOK FEATURE")
         _writeTransLog(Nothing)
 
-        themePark.updtPassbkFeat(pbf03.id, 1)
+        _theThemePark.updtPassbkFeat(pbf03.id, 1)
 
         '**** System Test Completed ****'
         _writeTransLog(Nothing)
@@ -1009,7 +998,7 @@ Public Class FrmMain
             'the state of the system
             Try
                 'Create a new Passbook Feature
-                _theThemePark.addPassbkFeat(passbkFeatId, _
+                _theThemePark.purchPassbkFeat(passbkFeatId, _
                                             mFeat, _
                                             mPassBk, _
                                             mQtyPurch
@@ -1294,7 +1283,7 @@ Public Class FrmMain
         txtCustToStringTabPostFeatTbcPassbkFeatMainTbcMain.Text = ""
         txtVisToStringTabPostFeatTbcPassbkFeatMainTbcMain.Text = ""
         txtFeatToStringTabPostFeatTbcPassbkFeatMainTbcMain.Text = ""
-        txtPrevUsedToStringTabPostUpdtFeatTbcPassbkFeatMainTbcMain.Text = ""
+        txtPrevUsedToStringTabPostFeatTbcPassbkFeatMainTbcMain.Text = ""
         txtQtyRemTabPostFeatTbcPassbkFeatMainTbcMain.Text = "0"
         txtQtyUsedTabPostFeatTbcPassbkFeatMainTbcMain.Text = "0"
         txtLocTabPostFeatTbcPassbkFeatMainTbcMain.Text = ""
@@ -1887,6 +1876,15 @@ Public Class FrmMain
 
                 txtPriceTabUpdtFeatTbcPassbkFeatMainTbcMain.Text = mPassbkFeatUpdt.purchPrice.ToString("C")
                 txtRemQtyTabUpdtFeatTbcPassbkFeatMainTbcMain.Text = mPassbkFeatUpdt.qtyRemain.ToString("N0")
+
+                'Finally populate the previously used text box
+                txtPrevUsedToStringTabUpdtFeatTbcPassbkFeatMainTbcMain.Clear()
+                For Each usedFeat As UsedFeature In _theThemePark.iterateUsedFeat
+                    If usedFeat.passbkFeat.id = mPassbkFeatUpdt.id Then
+                        txtPrevUsedToStringTabUpdtFeatTbcPassbkFeatMainTbcMain.Text &= _
+                            usedFeat.ToString & vbCrLf & vbCrLf
+                    End If
+                Next usedFeat
             Else
                 Dim s As String = "ERROR: PassbookFeature '" & cboVal & "' is invalid. Please select a different ID"
                 MsgBox(s, MsgBoxStyle.Exclamation)
@@ -1923,10 +1921,14 @@ Public Class FrmMain
             If Not mPassbkFeatPost Is Nothing Then
                 'Can't post to an acct that has no quantity remaining, the feature was totally used
                 If mPassbkFeatPost.qtyRemain = 0 Then
-                    Dim s As String = "ERROR: This Feature has been completedly used. Please select a different ID"
+                    Dim s As String = "INFO: This Passbook Feature has been completedly used."
                     MsgBox(s, MsgBoxStyle.OkOnly)
-                    passbkFeatIdList.SelectedIndex = -1
-                    Exit Sub
+                    txtQtyUsedTabPostFeatTbcPassbkFeatMainTbcMain.Enabled = False
+                    txtLocTabPostFeatTbcPassbkFeatMainTbcMain.Enabled = False
+                Else
+                    'Make sure these fields are enabled again in the event they were 
+                    txtQtyUsedTabPostFeatTbcPassbkFeatMainTbcMain.Enabled = True
+                    txtLocTabPostFeatTbcPassbkFeatMainTbcMain.Enabled = True
                 End If
 
                 'Double check passbook ref is not nothing before using it
@@ -1964,6 +1966,15 @@ Public Class FrmMain
                     & ", IsChild (<13yo): " & IIf(mPassbkFeatPost.passbk.visIsChild, "True", "False").ToString
 
                 txtQtyRemTabPostFeatTbcPassbkFeatMainTbcMain.Text = mPassbkFeatPost.qtyRemain.ToString("N0")
+
+                'Finally populate the previously used text box
+                txtPrevUsedToStringTabPostFeatTbcPassbkFeatMainTbcMain.Clear()
+                For Each usedFeat As UsedFeature In _theThemePark.iterateUsedFeat
+                    If usedFeat.passbkFeat.id = mPassbkFeatPost.id Then
+                        txtPrevUsedToStringTabPostFeatTbcPassbkFeatMainTbcMain.Text &= _
+                            usedFeat.ToString & vbCrLf & vbCrLf
+                    End If
+                Next usedFeat
             Else
                 Dim s As String = "ERROR: UsedFeature '" & cboVal & "' is invalid. Please select a different ID"
                 MsgBox(s, MsgBoxStyle.Exclamation)
@@ -2205,20 +2216,20 @@ Public Class FrmMain
     End Sub '_createPassbk(...)
 
     '****************************************************************************************
-    '_addPassbkFeat() handles processing for the ThemePark_PurchFeat
+    '_purchPassbkFeat() handles processing for the ThemePark_PurchFeat
     ' event that is generated when a feature has been purchased fo
     'a specified passbook
     '****************************************************************************************
-    Private Sub _addPassbkFeat(ByVal sender As System.Object, _
-                               ByVal e As System.EventArgs) _
-        Handles mThemePark.ThemePark_AddPassbkFeat
+    Private Sub _purchPassbkFeat(ByVal sender As System.Object, _
+                                 ByVal e As System.EventArgs) _
+        Handles mThemePark.ThemePark_PurchPassbkFeat
 
         'Declare variables
-        Dim themePark_EventArgs_PurchFeat As ThemePark_EventArgs_AddPassbkFeat
+        Dim themePark_EventArgs_PurchFeat As ThemePark_EventArgs_PurchPassbkFeat
         Dim passbkFeat As PassbookFeature
 
         'Get/validate data
-        themePark_EventArgs_PurchFeat = CType(e, ThemePark_EventArgs_AddPassbkFeat)
+        themePark_EventArgs_PurchFeat = CType(e, ThemePark_EventArgs_PurchPassbkFeat)
 
         'Use the past in object to populate the necessary system components
         passbkFeat = themePark_EventArgs_PurchFeat.passbkFeat
@@ -2252,7 +2263,7 @@ Public Class FrmMain
 
             MsgBox("Passbook Feature submission was successful!", MsgBoxStyle.OkOnly)
         End If
-    End Sub '_addPassbkFeat(...)
+    End Sub '_purchPassbkFeat(...)
 
     '****************************************************************************************
     '_updtPassbkFeat() handles processing for the ThemePark_UpdtPassbkFeat
@@ -2340,6 +2351,35 @@ Public Class FrmMain
         End If
     End Sub '_usedFeat(...)
 
+    '****************************************************************************************
+    '_logTran() handles processing for the ThemePark_LogTran
+    ' event that is generated as necessary by the ThemePark object
+    '****************************************************************************************
+    Private Sub _logTran(ByVal sender As System.Object, _
+                         ByVal e As System.EventArgs) _
+        Handles mThemePark.ThemePark_LogTran
+
+        'Declare variables
+        Dim themePark_EventArgs_LogTran As ThemePark_EventArgs_LogMsg
+        Dim logMsg As String
+
+        'Get/validate data
+        themePark_EventArgs_LogTran = CType(e, ThemePark_EventArgs_LogMsg)
+
+        'Use the past in object to populate the necessary system components
+        logMsg = themePark_EventArgs_LogTran.logMsg
+
+        'Make sure we actually have customer object.  There is the slight chance
+        'that the New () could have failed.
+        If logMsg Is Nothing Then
+            MsgBox(mSYS_ERR_MSG, MsgBoxStyle.Critical)
+            Exit Sub
+        End If
+
+        _writeTransLog("<LOGTRAN>: " & logMsg)
+    End Sub '_logTran(...)
+
+
 #End Region 'Event Procedures
 
 #Region "Events"
@@ -2369,7 +2409,7 @@ Public Class FrmMain
     End Sub '_btnResetView_Click
 
     Private Sub _btnDispCustArray_Click(sender As Object, e As EventArgs) _
-        Handles btnDispCustArray.Click
+        Handles btnShowCust.Click
 
         'Clear out old contents
         txtDebug.Clear()

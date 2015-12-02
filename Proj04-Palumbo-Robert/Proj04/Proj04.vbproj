@@ -76,7 +76,7 @@
     <Compile Include="ClsPassbook.vb" />
     <Compile Include="ClsPassbookFeature.vb" />
     <Compile Include="ClsThemePark.vb" />
-    <Compile Include="ClsThemePark_EventArgs_AddPassbkFeat.vb" />
+    <Compile Include="ClsThemePark_EventArgs_PurchPassbkFeat.vb" />
     <Compile Include="ClsThemePark_EventArgs_CreateCust.vb" />
     <Compile Include="ClsThemePark_EventArgs_CreatePassbk.vb" />
     <Compile Include="ClsThemePark_EventArgs_UpdtPassbkFeat.vb" />
@@ -103,6 +103,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="ThemePark_EventArgs_LogMsg.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="FrmMain.resx">

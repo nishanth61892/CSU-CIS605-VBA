@@ -2,9 +2,9 @@
 
 #Region "Class / File Comment Header block"
 'Program:       Proj04 - Theme Park Management System
-'File:          ClsThemePark_EventArgs_AddPassbkFeat.vb
+'File:          ClsThemePark_EventArgs_PurchPassbkFeat.vb
 'Author:        Robert Palumbo
-'Description:   This is the class definiton for the ThemePark_EventArgs_AddPassbkFeat
+'Description:   This is the class definiton for the ThemePark_EventArgs_PurchPassbkFeat
 '               custom event.  This event is raised when a feature is purchased 
 '               for a specific passbook inform any listeners of the event.  It is the 
 '               job of the listener to handle the event and process it.
@@ -32,7 +32,7 @@ Option Explicit On      'Must declare variables before using them
 Option Strict On    'Must perform explicit data type conversions
 #End Region 'Option / Imports
 
-Public Class ThemePark_EventArgs_AddPassbkFeat
+Public Class ThemePark_EventArgs_PurchPassbkFeat
     Inherits System.EventArgs
 
 #Region "Attributes"
@@ -165,4 +165,4 @@ Public Class ThemePark_EventArgs_AddPassbkFeat
 
 #End Region 'Events
 
-End Class 'ThemePark_EventArgs_AddPassbkFeat
+End Class 'ThemePark_EventArgs_PurchPassbkFeat
