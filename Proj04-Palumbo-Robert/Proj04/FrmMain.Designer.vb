@@ -168,6 +168,20 @@ Partial Class FrmMain
         Me.Label28 = New System.Windows.Forms.Label()
         Me.Label27 = New System.Windows.Forms.Label()
         Me.grpKpiTabDashboardTbcMain = New System.Windows.Forms.GroupBox()
+        Me.txtAvgPassbkHolderAgeTabDashboardTbcMain = New System.Windows.Forms.TextBox()
+        Me.txtFeatUsedPctTabDashboardTbcMain = New System.Windows.Forms.TextBox()
+        Me.txtMostPopFeatTabDashboardTbcMain = New System.Windows.Forms.TextBox()
+        Me.txtAvgNumPassbkPerCustTabDashboardTbcMain = New System.Windows.Forms.TextBox()
+        Me.txtTotBalUnusedFeatTabDashboardTbcMain = New System.Windows.Forms.TextBox()
+        Me.txtCurrMonBdaysTabDashboardTbcMain = New System.Windows.Forms.TextBox()
+        Me.txtAvgBalUnusedFeatTabDashboardTbcMain = New System.Windows.Forms.TextBox()
+        Me.Label59 = New System.Windows.Forms.Label()
+        Me.Label58 = New System.Windows.Forms.Label()
+        Me.Label57 = New System.Windows.Forms.Label()
+        Me.Label56 = New System.Windows.Forms.Label()
+        Me.Label55 = New System.Windows.Forms.Label()
+        Me.Label54 = New System.Windows.Forms.Label()
+        Me.Label53 = New System.Windows.Forms.Label()
         Me.tabFeatTbcMainFrmMain = New System.Windows.Forms.TabPage()
         Me.grpAddFeatTabFeatTbcMainFrmMain = New System.Windows.Forms.GroupBox()
         Me.grpAnon7 = New System.Windows.Forms.GroupBox()
@@ -242,6 +256,7 @@ Partial Class FrmMain
         Me.grpAnon6.SuspendLayout()
         Me.tbcMainFrmMain.SuspendLayout()
         Me.tabDashTbcMainFrmMain.SuspendLayout()
+        Me.grpKpiTabDashboardTbcMain.SuspendLayout()
         Me.tabFeatTbcMainFrmMain.SuspendLayout()
         Me.grpAddFeatTabFeatTbcMainFrmMain.SuspendLayout()
         Me.grpAnon7.SuspendLayout()
@@ -1580,7 +1595,7 @@ Partial Class FrmMain
         Me.lstUsedFeatCntTabDashboardTbcMain.Name = "lstUsedFeatCntTabDashboardTbcMain"
         Me.lstUsedFeatCntTabDashboardTbcMain.ReadOnly = True
         Me.lstUsedFeatCntTabDashboardTbcMain.Size = New System.Drawing.Size(57, 20)
-        Me.lstUsedFeatCntTabDashboardTbcMain.TabIndex = 19
+        Me.lstUsedFeatCntTabDashboardTbcMain.TabIndex = 21
         Me.lstUsedFeatCntTabDashboardTbcMain.TabStop = False
         Me.tipTPMS.SetToolTip(Me.lstUsedFeatCntTabDashboardTbcMain, "Number of used features in the system")
         '
@@ -1591,7 +1606,7 @@ Partial Class FrmMain
         Me.txtPassbkFeatCntTabDashboardTbcMain.Name = "txtPassbkFeatCntTabDashboardTbcMain"
         Me.txtPassbkFeatCntTabDashboardTbcMain.ReadOnly = True
         Me.txtPassbkFeatCntTabDashboardTbcMain.Size = New System.Drawing.Size(57, 20)
-        Me.txtPassbkFeatCntTabDashboardTbcMain.TabIndex = 15
+        Me.txtPassbkFeatCntTabDashboardTbcMain.TabIndex = 19
         Me.txtPassbkFeatCntTabDashboardTbcMain.TabStop = False
         Me.tipTPMS.SetToolTip(Me.txtPassbkFeatCntTabDashboardTbcMain, "Number of passbook features in the system")
         '
@@ -1602,7 +1617,7 @@ Partial Class FrmMain
         Me.txtPassbkCntTabDashboardTbcMain.Name = "txtPassbkCntTabDashboardTbcMain"
         Me.txtPassbkCntTabDashboardTbcMain.ReadOnly = True
         Me.txtPassbkCntTabDashboardTbcMain.Size = New System.Drawing.Size(57, 20)
-        Me.txtPassbkCntTabDashboardTbcMain.TabIndex = 11
+        Me.txtPassbkCntTabDashboardTbcMain.TabIndex = 17
         Me.txtPassbkCntTabDashboardTbcMain.TabStop = False
         Me.tipTPMS.SetToolTip(Me.txtPassbkCntTabDashboardTbcMain, "Number of passbooks in the system")
         '
@@ -1613,7 +1628,7 @@ Partial Class FrmMain
         Me.txtFeatCntTabDashboardTbcMain.Name = "txtFeatCntTabDashboardTbcMain"
         Me.txtFeatCntTabDashboardTbcMain.ReadOnly = True
         Me.txtFeatCntTabDashboardTbcMain.Size = New System.Drawing.Size(57, 20)
-        Me.txtFeatCntTabDashboardTbcMain.TabIndex = 7
+        Me.txtFeatCntTabDashboardTbcMain.TabIndex = 15
         Me.txtFeatCntTabDashboardTbcMain.TabStop = False
         Me.tipTPMS.SetToolTip(Me.txtFeatCntTabDashboardTbcMain, "Number of features in the system")
         '
@@ -1624,7 +1639,7 @@ Partial Class FrmMain
         Me.txtCustCntTabDashboardTbcMain.Name = "txtCustCntTabDashboardTbcMain"
         Me.txtCustCntTabDashboardTbcMain.ReadOnly = True
         Me.txtCustCntTabDashboardTbcMain.Size = New System.Drawing.Size(57, 20)
-        Me.txtCustCntTabDashboardTbcMain.TabIndex = 3
+        Me.txtCustCntTabDashboardTbcMain.TabIndex = 13
         Me.txtCustCntTabDashboardTbcMain.TabStop = False
         Me.tipTPMS.SetToolTip(Me.txtCustCntTabDashboardTbcMain, "Number of customers in the system")
         '
@@ -1635,7 +1650,7 @@ Partial Class FrmMain
         Me.Label37.Location = New System.Drawing.Point(519, 264)
         Me.Label37.Name = "Label37"
         Me.Label37.Size = New System.Drawing.Size(38, 13)
-        Me.Label37.TabIndex = 18
+        Me.Label37.TabIndex = 20
         Me.Label37.Text = "Count:"
         '
         'Label36
@@ -1645,7 +1660,7 @@ Partial Class FrmMain
         Me.Label36.Location = New System.Drawing.Point(395, 264)
         Me.Label36.Name = "Label36"
         Me.Label36.Size = New System.Drawing.Size(38, 13)
-        Me.Label36.TabIndex = 14
+        Me.Label36.TabIndex = 18
         Me.Label36.Text = "Count:"
         '
         'Label35
@@ -1655,7 +1670,7 @@ Partial Class FrmMain
         Me.Label35.Location = New System.Drawing.Point(273, 264)
         Me.Label35.Name = "Label35"
         Me.Label35.Size = New System.Drawing.Size(38, 13)
-        Me.Label35.TabIndex = 10
+        Me.Label35.TabIndex = 16
         Me.Label35.Text = "Count:"
         '
         'Label34
@@ -1665,7 +1680,7 @@ Partial Class FrmMain
         Me.Label34.Location = New System.Drawing.Point(151, 264)
         Me.Label34.Name = "Label34"
         Me.Label34.Size = New System.Drawing.Size(38, 13)
-        Me.Label34.TabIndex = 6
+        Me.Label34.TabIndex = 14
         Me.Label34.Text = "Count:"
         '
         'Label33
@@ -1675,7 +1690,7 @@ Partial Class FrmMain
         Me.Label33.Location = New System.Drawing.Point(32, 264)
         Me.Label33.Name = "Label33"
         Me.Label33.Size = New System.Drawing.Size(38, 13)
-        Me.Label33.TabIndex = 2
+        Me.Label33.TabIndex = 12
         Me.Label33.Text = "Count:"
         '
         'Label32
@@ -1684,7 +1699,7 @@ Partial Class FrmMain
         Me.Label32.Location = New System.Drawing.Point(647, 25)
         Me.Label32.Name = "Label32"
         Me.Label32.Size = New System.Drawing.Size(118, 15)
-        Me.Label32.TabIndex = 20
+        Me.Label32.TabIndex = 10
         Me.Label32.Text = "ToString Information"
         '
         'txtToStringTabDashboardTbcMain
@@ -1696,7 +1711,7 @@ Partial Class FrmMain
         Me.txtToStringTabDashboardTbcMain.ReadOnly = True
         Me.txtToStringTabDashboardTbcMain.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
         Me.txtToStringTabDashboardTbcMain.Size = New System.Drawing.Size(235, 199)
-        Me.txtToStringTabDashboardTbcMain.TabIndex = 21
+        Me.txtToStringTabDashboardTbcMain.TabIndex = 11
         Me.txtToStringTabDashboardTbcMain.TabStop = False
         Me.tipTPMS.SetToolTip(Me.txtToStringTabDashboardTbcMain, "Display of specific information of current selected item")
         '
@@ -1708,8 +1723,7 @@ Partial Class FrmMain
         Me.lstUsedFeatTabDashboardTbcMain.Location = New System.Drawing.Point(517, 44)
         Me.lstUsedFeatTabDashboardTbcMain.Name = "lstUsedFeatTabDashboardTbcMain"
         Me.lstUsedFeatTabDashboardTbcMain.Size = New System.Drawing.Size(103, 199)
-        Me.lstUsedFeatTabDashboardTbcMain.TabIndex = 17
-        Me.lstUsedFeatTabDashboardTbcMain.TabStop = False
+        Me.lstUsedFeatTabDashboardTbcMain.TabIndex = 9
         Me.tipTPMS.SetToolTip(Me.lstUsedFeatTabDashboardTbcMain, "System used feature list")
         '
         'lstPassbkFeatTabDashboardTbcMain
@@ -1720,8 +1734,7 @@ Partial Class FrmMain
         Me.lstPassbkFeatTabDashboardTbcMain.Location = New System.Drawing.Point(393, 44)
         Me.lstPassbkFeatTabDashboardTbcMain.Name = "lstPassbkFeatTabDashboardTbcMain"
         Me.lstPassbkFeatTabDashboardTbcMain.Size = New System.Drawing.Size(103, 199)
-        Me.lstPassbkFeatTabDashboardTbcMain.TabIndex = 13
-        Me.lstPassbkFeatTabDashboardTbcMain.TabStop = False
+        Me.lstPassbkFeatTabDashboardTbcMain.TabIndex = 7
         Me.tipTPMS.SetToolTip(Me.lstPassbkFeatTabDashboardTbcMain, "System passbook feature list")
         '
         'lstPassbkTabDashboardTbcMain
@@ -1732,8 +1745,7 @@ Partial Class FrmMain
         Me.lstPassbkTabDashboardTbcMain.Location = New System.Drawing.Point(271, 44)
         Me.lstPassbkTabDashboardTbcMain.Name = "lstPassbkTabDashboardTbcMain"
         Me.lstPassbkTabDashboardTbcMain.Size = New System.Drawing.Size(103, 199)
-        Me.lstPassbkTabDashboardTbcMain.TabIndex = 9
-        Me.lstPassbkTabDashboardTbcMain.TabStop = False
+        Me.lstPassbkTabDashboardTbcMain.TabIndex = 5
         Me.tipTPMS.SetToolTip(Me.lstPassbkTabDashboardTbcMain, "System passbook list")
         '
         'lstFeatTabDashboardTbcMain
@@ -1744,8 +1756,7 @@ Partial Class FrmMain
         Me.lstFeatTabDashboardTbcMain.Location = New System.Drawing.Point(149, 44)
         Me.lstFeatTabDashboardTbcMain.Name = "lstFeatTabDashboardTbcMain"
         Me.lstFeatTabDashboardTbcMain.Size = New System.Drawing.Size(103, 199)
-        Me.lstFeatTabDashboardTbcMain.TabIndex = 5
-        Me.lstFeatTabDashboardTbcMain.TabStop = False
+        Me.lstFeatTabDashboardTbcMain.TabIndex = 3
         Me.tipTPMS.SetToolTip(Me.lstFeatTabDashboardTbcMain, "System feature list")
         '
         'lstCustTabDashboardTbcMain
@@ -1757,7 +1768,6 @@ Partial Class FrmMain
         Me.lstCustTabDashboardTbcMain.Name = "lstCustTabDashboardTbcMain"
         Me.lstCustTabDashboardTbcMain.Size = New System.Drawing.Size(103, 199)
         Me.lstCustTabDashboardTbcMain.TabIndex = 1
-        Me.lstCustTabDashboardTbcMain.TabStop = False
         Me.tipTPMS.SetToolTip(Me.lstCustTabDashboardTbcMain, "System customer list")
         '
         'Label31
@@ -1766,7 +1776,7 @@ Partial Class FrmMain
         Me.Label31.Location = New System.Drawing.Point(514, 9)
         Me.Label31.Name = "Label31"
         Me.Label31.Size = New System.Drawing.Size(71, 30)
-        Me.Label31.TabIndex = 16
+        Me.Label31.TabIndex = 8
         Me.Label31.Text = "Used" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Feature List" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
         '
         'Label30
@@ -1775,7 +1785,7 @@ Partial Class FrmMain
         Me.Label30.Location = New System.Drawing.Point(390, 9)
         Me.Label30.Name = "Label30"
         Me.Label30.Size = New System.Drawing.Size(71, 30)
-        Me.Label30.TabIndex = 12
+        Me.Label30.TabIndex = 6
         Me.Label30.Text = "Passbook" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Feature List" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
         '
         'Label29
@@ -1784,7 +1794,7 @@ Partial Class FrmMain
         Me.Label29.Location = New System.Drawing.Point(268, 25)
         Me.Label29.Name = "Label29"
         Me.Label29.Size = New System.Drawing.Size(83, 15)
-        Me.Label29.TabIndex = 8
+        Me.Label29.TabIndex = 4
         Me.Label29.Text = "Passbook List"
         '
         'Label28
@@ -1793,7 +1803,7 @@ Partial Class FrmMain
         Me.Label28.Location = New System.Drawing.Point(146, 25)
         Me.Label28.Name = "Label28"
         Me.Label28.Size = New System.Drawing.Size(71, 15)
-        Me.Label28.TabIndex = 4
+        Me.Label28.TabIndex = 2
         Me.Label28.Text = "Feature List"
         '
         'Label27
@@ -1808,13 +1818,167 @@ Partial Class FrmMain
         'grpKpiTabDashboardTbcMain
         '
         Me.grpKpiTabDashboardTbcMain.BackColor = System.Drawing.SystemColors.ControlLight
-        Me.grpKpiTabDashboardTbcMain.Location = New System.Drawing.Point(35, 305)
+        Me.grpKpiTabDashboardTbcMain.Controls.Add(Me.txtAvgPassbkHolderAgeTabDashboardTbcMain)
+        Me.grpKpiTabDashboardTbcMain.Controls.Add(Me.txtFeatUsedPctTabDashboardTbcMain)
+        Me.grpKpiTabDashboardTbcMain.Controls.Add(Me.txtMostPopFeatTabDashboardTbcMain)
+        Me.grpKpiTabDashboardTbcMain.Controls.Add(Me.txtAvgNumPassbkPerCustTabDashboardTbcMain)
+        Me.grpKpiTabDashboardTbcMain.Controls.Add(Me.txtTotBalUnusedFeatTabDashboardTbcMain)
+        Me.grpKpiTabDashboardTbcMain.Controls.Add(Me.txtCurrMonBdaysTabDashboardTbcMain)
+        Me.grpKpiTabDashboardTbcMain.Controls.Add(Me.txtAvgBalUnusedFeatTabDashboardTbcMain)
+        Me.grpKpiTabDashboardTbcMain.Controls.Add(Me.Label59)
+        Me.grpKpiTabDashboardTbcMain.Controls.Add(Me.Label58)
+        Me.grpKpiTabDashboardTbcMain.Controls.Add(Me.Label57)
+        Me.grpKpiTabDashboardTbcMain.Controls.Add(Me.Label56)
+        Me.grpKpiTabDashboardTbcMain.Controls.Add(Me.Label55)
+        Me.grpKpiTabDashboardTbcMain.Controls.Add(Me.Label54)
+        Me.grpKpiTabDashboardTbcMain.Controls.Add(Me.Label53)
+        Me.grpKpiTabDashboardTbcMain.Location = New System.Drawing.Point(39, 305)
         Me.grpKpiTabDashboardTbcMain.Name = "grpKpiTabDashboardTbcMain"
-        Me.grpKpiTabDashboardTbcMain.Size = New System.Drawing.Size(850, 122)
+        Me.grpKpiTabDashboardTbcMain.Size = New System.Drawing.Size(850, 139)
         Me.grpKpiTabDashboardTbcMain.TabIndex = 22
         Me.grpKpiTabDashboardTbcMain.TabStop = False
         Me.grpKpiTabDashboardTbcMain.Text = "Key Performance Indicators"
         Me.tipTPMS.SetToolTip(Me.grpKpiTabDashboardTbcMain, "Displays system wide key performance indicators")
+        '
+        'txtAvgPassbkHolderAgeTabDashboardTbcMain
+        '
+        Me.txtAvgPassbkHolderAgeTabDashboardTbcMain.Location = New System.Drawing.Point(609, 95)
+        Me.txtAvgPassbkHolderAgeTabDashboardTbcMain.Name = "txtAvgPassbkHolderAgeTabDashboardTbcMain"
+        Me.txtAvgPassbkHolderAgeTabDashboardTbcMain.ReadOnly = True
+        Me.txtAvgPassbkHolderAgeTabDashboardTbcMain.Size = New System.Drawing.Size(100, 21)
+        Me.txtAvgPassbkHolderAgeTabDashboardTbcMain.TabIndex = 11
+        Me.txtAvgPassbkHolderAgeTabDashboardTbcMain.TabStop = False
+        Me.tipTPMS.SetToolTip(Me.txtAvgPassbkHolderAgeTabDashboardTbcMain, "Avg age of all passbook holders in the system")
+        '
+        'txtFeatUsedPctTabDashboardTbcMain
+        '
+        Me.txtFeatUsedPctTabDashboardTbcMain.Location = New System.Drawing.Point(480, 95)
+        Me.txtFeatUsedPctTabDashboardTbcMain.Name = "txtFeatUsedPctTabDashboardTbcMain"
+        Me.txtFeatUsedPctTabDashboardTbcMain.ReadOnly = True
+        Me.txtFeatUsedPctTabDashboardTbcMain.Size = New System.Drawing.Size(100, 21)
+        Me.txtFeatUsedPctTabDashboardTbcMain.TabIndex = 9
+        Me.txtFeatUsedPctTabDashboardTbcMain.TabStop = False
+        Me.tipTPMS.SetToolTip(Me.txtFeatUsedPctTabDashboardTbcMain, "Pct of features used (# used features / total feature purchased)")
+        '
+        'txtMostPopFeatTabDashboardTbcMain
+        '
+        Me.txtMostPopFeatTabDashboardTbcMain.Location = New System.Drawing.Point(322, 95)
+        Me.txtMostPopFeatTabDashboardTbcMain.Name = "txtMostPopFeatTabDashboardTbcMain"
+        Me.txtMostPopFeatTabDashboardTbcMain.ReadOnly = True
+        Me.txtMostPopFeatTabDashboardTbcMain.Size = New System.Drawing.Size(124, 21)
+        Me.txtMostPopFeatTabDashboardTbcMain.TabIndex = 7
+        Me.txtMostPopFeatTabDashboardTbcMain.TabStop = False
+        Me.tipTPMS.SetToolTip(Me.txtMostPopFeatTabDashboardTbcMain, "Most populate purchased feature in the system")
+        '
+        'txtAvgNumPassbkPerCustTabDashboardTbcMain
+        '
+        Me.txtAvgNumPassbkPerCustTabDashboardTbcMain.Location = New System.Drawing.Point(240, 95)
+        Me.txtAvgNumPassbkPerCustTabDashboardTbcMain.Name = "txtAvgNumPassbkPerCustTabDashboardTbcMain"
+        Me.txtAvgNumPassbkPerCustTabDashboardTbcMain.ReadOnly = True
+        Me.txtAvgNumPassbkPerCustTabDashboardTbcMain.Size = New System.Drawing.Size(40, 21)
+        Me.txtAvgNumPassbkPerCustTabDashboardTbcMain.TabIndex = 5
+        Me.txtAvgNumPassbkPerCustTabDashboardTbcMain.TabStop = False
+        Me.tipTPMS.SetToolTip(Me.txtAvgNumPassbkPerCustTabDashboardTbcMain, "Avg number of passbooks / customer in the system")
+        '
+        'txtTotBalUnusedFeatTabDashboardTbcMain
+        '
+        Me.txtTotBalUnusedFeatTabDashboardTbcMain.Location = New System.Drawing.Point(118, 95)
+        Me.txtTotBalUnusedFeatTabDashboardTbcMain.Name = "txtTotBalUnusedFeatTabDashboardTbcMain"
+        Me.txtTotBalUnusedFeatTabDashboardTbcMain.ReadOnly = True
+        Me.txtTotBalUnusedFeatTabDashboardTbcMain.Size = New System.Drawing.Size(83, 21)
+        Me.txtTotBalUnusedFeatTabDashboardTbcMain.TabIndex = 3
+        Me.txtTotBalUnusedFeatTabDashboardTbcMain.TabStop = False
+        Me.tipTPMS.SetToolTip(Me.txtTotBalUnusedFeatTabDashboardTbcMain, "Total dollar amount of all unused features in the system")
+        '
+        'txtCurrMonBdaysTabDashboardTbcMain
+        '
+        Me.txtCurrMonBdaysTabDashboardTbcMain.Location = New System.Drawing.Point(745, 95)
+        Me.txtCurrMonBdaysTabDashboardTbcMain.Name = "txtCurrMonBdaysTabDashboardTbcMain"
+        Me.txtCurrMonBdaysTabDashboardTbcMain.ReadOnly = True
+        Me.txtCurrMonBdaysTabDashboardTbcMain.Size = New System.Drawing.Size(52, 21)
+        Me.txtCurrMonBdaysTabDashboardTbcMain.TabIndex = 13
+        Me.txtCurrMonBdaysTabDashboardTbcMain.TabStop = False
+        Me.tipTPMS.SetToolTip(Me.txtCurrMonBdaysTabDashboardTbcMain, "Count of the number of passbook holders with birthdays in the current month")
+        '
+        'txtAvgBalUnusedFeatTabDashboardTbcMain
+        '
+        Me.txtAvgBalUnusedFeatTabDashboardTbcMain.Location = New System.Drawing.Point(29, 95)
+        Me.txtAvgBalUnusedFeatTabDashboardTbcMain.Name = "txtAvgBalUnusedFeatTabDashboardTbcMain"
+        Me.txtAvgBalUnusedFeatTabDashboardTbcMain.ReadOnly = True
+        Me.txtAvgBalUnusedFeatTabDashboardTbcMain.Size = New System.Drawing.Size(52, 21)
+        Me.txtAvgBalUnusedFeatTabDashboardTbcMain.TabIndex = 1
+        Me.txtAvgBalUnusedFeatTabDashboardTbcMain.TabStop = False
+        Me.tipTPMS.SetToolTip(Me.txtAvgBalUnusedFeatTabDashboardTbcMain, "Avg dollar amnt of unused features in the system.")
+        '
+        'Label59
+        '
+        Me.Label59.AutoSize = True
+        Me.Label59.Location = New System.Drawing.Point(128, 32)
+        Me.Label59.Name = "Label59"
+        Me.Label59.Size = New System.Drawing.Size(58, 45)
+        Me.Label59.TabIndex = 2
+        Me.Label59.Text = "Total Bal " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Unused " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Features"
+        Me.Label59.TextAlign = System.Drawing.ContentAlignment.TopCenter
+        '
+        'Label58
+        '
+        Me.Label58.AutoSize = True
+        Me.Label58.Location = New System.Drawing.Point(223, 32)
+        Me.Label58.Name = "Label58"
+        Me.Label58.Size = New System.Drawing.Size(73, 45)
+        Me.Label58.TabIndex = 4
+        Me.Label58.Text = "Avg #" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Passbooks /" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Customer"
+        Me.Label58.TextAlign = System.Drawing.ContentAlignment.TopCenter
+        '
+        'Label57
+        '
+        Me.Label57.AutoSize = True
+        Me.Label57.Location = New System.Drawing.Point(352, 32)
+        Me.Label57.Name = "Label57"
+        Me.Label57.Size = New System.Drawing.Size(50, 45)
+        Me.Label57.TabIndex = 6
+        Me.Label57.Text = "Most" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Popular" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Feature"
+        Me.Label57.TextAlign = System.Drawing.ContentAlignment.TopCenter
+        '
+        'Label56
+        '
+        Me.Label56.AutoSize = True
+        Me.Label56.Location = New System.Drawing.Point(742, 32)
+        Me.Label56.Name = "Label56"
+        Me.Label56.Size = New System.Drawing.Size(57, 45)
+        Me.Label56.TabIndex = 12
+        Me.Label56.Text = "Current" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Month" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Birthdays"
+        Me.Label56.TextAlign = System.Drawing.ContentAlignment.TopCenter
+        '
+        'Label55
+        '
+        Me.Label55.AutoSize = True
+        Me.Label55.Location = New System.Drawing.Point(625, 32)
+        Me.Label55.Name = "Label55"
+        Me.Label55.Size = New System.Drawing.Size(61, 45)
+        Me.Label55.TabIndex = 10
+        Me.Label55.Text = "Avg Age" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Passbook" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Holder" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
+        Me.Label55.TextAlign = System.Drawing.ContentAlignment.TopCenter
+        '
+        'Label54
+        '
+        Me.Label54.AutoSize = True
+        Me.Label54.Location = New System.Drawing.Point(488, 32)
+        Me.Label54.Name = "Label54"
+        Me.Label54.Size = New System.Drawing.Size(77, 45)
+        Me.Label54.TabIndex = 8
+        Me.Label54.Text = "Pct Features" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Used" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "(Used/Total) "
+        Me.Label54.TextAlign = System.Drawing.ContentAlignment.TopCenter
+        '
+        'Label53
+        '
+        Me.Label53.AutoSize = True
+        Me.Label53.Location = New System.Drawing.Point(22, 32)
+        Me.Label53.Name = "Label53"
+        Me.Label53.Size = New System.Drawing.Size(55, 45)
+        Me.Label53.TabIndex = 0
+        Me.Label53.Text = "Avg Bal " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Unused " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Features"
+        Me.Label53.TextAlign = System.Drawing.ContentAlignment.TopCenter
         '
         'tabFeatTbcMainFrmMain
         '
@@ -2102,7 +2266,7 @@ Partial Class FrmMain
         Me.tabDebugTbcMainFrmMain.Padding = New System.Windows.Forms.Padding(3)
         Me.tabDebugTbcMainFrmMain.Size = New System.Drawing.Size(919, 468)
         Me.tabDebugTbcMainFrmMain.TabIndex = 8
-        Me.tabDebugTbcMainFrmMain.Text = "Debug"
+        Me.tabDebugTbcMainFrmMain.Text = "Data View"
         '
         'GroupBox2
         '
@@ -2397,6 +2561,8 @@ Partial Class FrmMain
         Me.tbcMainFrmMain.ResumeLayout(False)
         Me.tabDashTbcMainFrmMain.ResumeLayout(False)
         Me.tabDashTbcMainFrmMain.PerformLayout()
+        Me.grpKpiTabDashboardTbcMain.ResumeLayout(False)
+        Me.grpKpiTabDashboardTbcMain.PerformLayout()
         Me.tabFeatTbcMainFrmMain.ResumeLayout(False)
         Me.grpAddFeatTabFeatTbcMainFrmMain.ResumeLayout(False)
         Me.grpAnon7.ResumeLayout(False)
@@ -2615,4 +2781,18 @@ Partial Class FrmMain
     Friend WithEvents btnShowTransx As System.Windows.Forms.Button
     Friend WithEvents txtUnitPriceTabAddFeatTbcPassbkFeatMainTbcMain As System.Windows.Forms.TextBox
     Friend WithEvents Label52 As System.Windows.Forms.Label
+    Friend WithEvents Label59 As System.Windows.Forms.Label
+    Friend WithEvents Label58 As System.Windows.Forms.Label
+    Friend WithEvents Label57 As System.Windows.Forms.Label
+    Friend WithEvents Label56 As System.Windows.Forms.Label
+    Friend WithEvents Label55 As System.Windows.Forms.Label
+    Friend WithEvents Label54 As System.Windows.Forms.Label
+    Friend WithEvents Label53 As System.Windows.Forms.Label
+    Friend WithEvents txtAvgBalUnusedFeatTabDashboardTbcMain As System.Windows.Forms.TextBox
+    Friend WithEvents txtAvgPassbkHolderAgeTabDashboardTbcMain As System.Windows.Forms.TextBox
+    Friend WithEvents txtFeatUsedPctTabDashboardTbcMain As System.Windows.Forms.TextBox
+    Friend WithEvents txtMostPopFeatTabDashboardTbcMain As System.Windows.Forms.TextBox
+    Friend WithEvents txtAvgNumPassbkPerCustTabDashboardTbcMain As System.Windows.Forms.TextBox
+    Friend WithEvents txtTotBalUnusedFeatTabDashboardTbcMain As System.Windows.Forms.TextBox
+    Friend WithEvents txtCurrMonBdaysTabDashboardTbcMain As System.Windows.Forms.TextBox
 End Class

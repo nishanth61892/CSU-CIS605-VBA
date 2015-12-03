@@ -73,6 +73,7 @@
     <Compile Include="ClcThemePark_EventArgs_UsedFeat.vb" />
     <Compile Include="ClsCustomer.vb" />
     <Compile Include="ClsFeature.vb" />
+    <Compile Include="ClsKeyPerfInd.vb" />
     <Compile Include="ClsPassbook.vb" />
     <Compile Include="ClsPassbookFeature.vb" />
     <Compile Include="ClsThemePark.vb" />

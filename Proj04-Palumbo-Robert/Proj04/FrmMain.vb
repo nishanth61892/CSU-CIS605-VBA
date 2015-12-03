@@ -2379,6 +2379,27 @@ Public Class FrmMain
         _writeTransLog("<LOGTRAN>: " & logMsg)
     End Sub '_logTran(...)
 
+    '****************************************************************************************
+    '_updtKeyPerfInd() handles updating the key performance indicators.
+    '****************************************************************************************
+    Private Sub _updtKeyPerfInd()
+        Static Dim keyPrfInd As ThemePark_KeyPerfInd = New ThemePark_KeyPerfInd
+
+        txtAvgBalUnusedFeatTabDashboardTbcMain.Text = _
+            keyPrfInd.calcAvgBalUnusedFeat().ToString("C")
+        txtTotBalUnusedFeatTabDashboardTbcMain.Text = _
+            keyPrfInd.calcTotBalUnusedFeat.ToString("C")
+        txtAvgNumPassbkPerCustTabDashboardTbcMain.Text = _
+            keyPrfInd.calcAvgPassbkPerCust.ToString("N2")
+        txtMostPopFeatTabDashboardTbcMain.Text = _
+            keyPrfInd.calcMostPopFeat
+        txtFeatUsedPctTabDashboardTbcMain.Text = _
+            keyPrfInd.calcPctPassbkFeatUsed.ToString("N2")
+        txtAvgPassbkHolderAgeTabDashboardTbcMain.Text = _
+            keyPrfInd.calcAvgPassbkHolderAge.ToString("N2")
+        txtCurrMonBdaysTabDashboardTbcMain.Text = _
+            keyPrfInd.calcNumPassbkHolderBdaysInCurrMon.ToString
+    End Sub '_updtKeyPerfInd()
 
 #End Region 'Event Procedures
 
