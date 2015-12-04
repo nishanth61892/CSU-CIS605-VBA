@@ -228,20 +228,39 @@ Public Class UsedFeature
     '****************************************************************************************
     Private Function _toString() As String
         Dim tmpStr As String = ""
-        Dim passbkFeatStr As String
+        Dim passbkFeatStr As String = ""
+        Dim passbkId As String = ""
+        Dim passbkOwner As String = ""
+
 
         'Make sure passbook feature is defined for the object
         If Not IsNothing(_passbkFeat) Then
-            passbkFeatStr = _passbkFeat.ToString
+            passbkFeatStr = passbkFeat.feature.featName
+
+            If Not IsNothing(_passbkFeat.passbk) Then
+                passbkId = _passbkFeat.passbk.passbkId
+                passbkOwner = _passbkFeat.passbk.owner.custName
+            Else
+                passbkId = "No-Passbook-Reference-Found"
+            End If
+
+            If Not IsNothing(_passbkFeat.passbk.owner) Then
+                passbkOwner = _passbkFeat.passbk.owner.custName
+            Else
+                passbkOwner = "No-Passbook-Owner-Found"
+            End If
         Else
             passbkFeatStr = "No-Passbook-Feature-Reference-Found"
         End If
 
-        tmpStr = "[UsedFeature] -> " _
+        tmpStr = "[ " _
             & " Id=" & _id _
-            & ", PassbookFeature=" & passbkFeatStr _
+            & ", Feature=" & passbkFeatStr _
+            & ", PassbkID=" & passbkId _
+            & ", PassbkOwner=" & passbkOwner _
             & ", Location=" & _loc _
-            & ", QtyUsed=" & _qtyUsed
+            & ", QtyUsed=" & _qtyUsed _
+            & "]"
 
         Return tmpStr
     End Function

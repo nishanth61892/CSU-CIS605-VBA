@@ -227,12 +227,13 @@ Public Class Feature
     Private Function _toString() As String
         Dim tmpStr As String = ""
 
-        tmpStr = "[Feature] -> " _
+        tmpStr = "[" _
             & " Id=" & _featId _
             & ", Name=" & _featName _
             & ", UnitOfMeas=" & _unitOfMeas _
             & ", AdultPrice=" & _adultPrice.ToString("C") _
-            & ", ChildPrice=" & _childPrice.ToString("C")
+            & ", ChildPrice=" & _childPrice.ToString("C") _
+            & "]"
 
         Return tmpStr
     End Function '_toString()

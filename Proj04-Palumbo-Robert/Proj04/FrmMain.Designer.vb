@@ -80,11 +80,13 @@ Partial Class FrmMain
         Me.btnResetTabUpdtFeatTbcPassbkFeatMainTbcMain = New System.Windows.Forms.Button()
         Me.btnSubmitTabUpdtFeatTbcPassbkFeatMainTbcMain = New System.Windows.Forms.Button()
         Me.grpAnon4 = New System.Windows.Forms.GroupBox()
-        Me.txtPriceTabUpdtFeatTbcPassbkFeatMainTbcMain = New System.Windows.Forms.TextBox()
+        Me.txtTotQtyRemTabUpdtFeatTbcPassbkFeatMainTbcMain = New System.Windows.Forms.TextBox()
+        Me.Label60 = New System.Windows.Forms.Label()
+        Me.txtUnitPriceTabUpdtFeatTbcPassbkFeatMainTbcMain = New System.Windows.Forms.TextBox()
         Me.Label21 = New System.Windows.Forms.Label()
-        Me.txtNewQtyTabUpdtFeatTbcPassbkFeatMainTbcMain = New System.Windows.Forms.TextBox()
+        Me.txtTotUpdtQtyTabUpdtFeatTbcPassbkFeatMainTbcMain = New System.Windows.Forms.TextBox()
         Me.Label19 = New System.Windows.Forms.Label()
-        Me.txtRemQtyTabUpdtFeatTbcPassbkFeatMainTbcMain = New System.Windows.Forms.TextBox()
+        Me.txtTotQtyPurchTabUpdtFeatTbcPassbkFeatMainTbcMain = New System.Windows.Forms.TextBox()
         Me.Label20 = New System.Windows.Forms.Label()
         Me.grpPassbkTabUpdtFeatTbcPassbkFeatMainTbcMain = New System.Windows.Forms.GroupBox()
         Me.cboFeatIdTabUpdtFeatTbcPassbkFeatMainTbcMain = New System.Windows.Forms.ComboBox()
@@ -99,6 +101,8 @@ Partial Class FrmMain
         Me.Label51 = New System.Windows.Forms.Label()
         Me.tabPostFeatTbcPassbkFeatMainTbcMain = New System.Windows.Forms.TabPage()
         Me.grpAnon1 = New System.Windows.Forms.GroupBox()
+        Me.txtPostIdTabPostFeatTbcPassbkFeatMainTbcMain = New System.Windows.Forms.TextBox()
+        Me.Label61 = New System.Windows.Forms.Label()
         Me.txtQtyUsedTabPostFeatTbcPassbkFeatMainTbcMain = New System.Windows.Forms.TextBox()
         Me.Label24 = New System.Windows.Forms.Label()
         Me.txtQtyRemTabPostFeatTbcPassbkFeatMainTbcMain = New System.Windows.Forms.TextBox()
@@ -480,7 +484,7 @@ Partial Class FrmMain
         Me.tabPassbkFeatTbcMainFrmMain.Location = New System.Drawing.Point(4, 27)
         Me.tabPassbkFeatTbcMainFrmMain.Name = "tabPassbkFeatTbcMainFrmMain"
         Me.tabPassbkFeatTbcMainFrmMain.Padding = New System.Windows.Forms.Padding(3)
-        Me.tabPassbkFeatTbcMainFrmMain.Size = New System.Drawing.Size(919, 468)
+        Me.tabPassbkFeatTbcMainFrmMain.Size = New System.Drawing.Size(919, 482)
         Me.tabPassbkFeatTbcMainFrmMain.TabIndex = 3
         Me.tabPassbkFeatTbcMainFrmMain.Text = "Passbook Features"
         Me.tipTPMS.SetToolTip(Me.tabPassbkFeatTbcMainFrmMain, "Passbook feature  options")
@@ -494,7 +498,7 @@ Partial Class FrmMain
         Me.tbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Location = New System.Drawing.Point(20, 14)
         Me.tbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Name = "tbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain"
         Me.tbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.SelectedIndex = 0
-        Me.tbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Size = New System.Drawing.Size(879, 447)
+        Me.tbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.Size = New System.Drawing.Size(879, 449)
         Me.tbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.TabIndex = 0
         Me.tipTPMS.SetToolTip(Me.tbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain, "Update an existing passbook feature")
         '
@@ -511,7 +515,7 @@ Partial Class FrmMain
         Me.tabAddFeatTbcPassbkFeatMainTbcMain.Location = New System.Drawing.Point(4, 27)
         Me.tabAddFeatTbcPassbkFeatMainTbcMain.Name = "tabAddFeatTbcPassbkFeatMainTbcMain"
         Me.tabAddFeatTbcPassbkFeatMainTbcMain.Padding = New System.Windows.Forms.Padding(3)
-        Me.tabAddFeatTbcPassbkFeatMainTbcMain.Size = New System.Drawing.Size(871, 416)
+        Me.tabAddFeatTbcPassbkFeatMainTbcMain.Size = New System.Drawing.Size(871, 418)
         Me.tabAddFeatTbcPassbkFeatMainTbcMain.TabIndex = 0
         Me.tabAddFeatTbcPassbkFeatMainTbcMain.Text = "Purchase "
         Me.tipTPMS.SetToolTip(Me.tabAddFeatTbcPassbkFeatMainTbcMain, "Purchase a feature for the specified passbook")
@@ -783,7 +787,7 @@ Partial Class FrmMain
         Me.tabUpdtFeatTbcPassbkFeatMainTbcMain.Location = New System.Drawing.Point(4, 27)
         Me.tabUpdtFeatTbcPassbkFeatMainTbcMain.Name = "tabUpdtFeatTbcPassbkFeatMainTbcMain"
         Me.tabUpdtFeatTbcPassbkFeatMainTbcMain.Padding = New System.Windows.Forms.Padding(3)
-        Me.tabUpdtFeatTbcPassbkFeatMainTbcMain.Size = New System.Drawing.Size(871, 416)
+        Me.tabUpdtFeatTbcPassbkFeatMainTbcMain.Size = New System.Drawing.Size(871, 418)
         Me.tabUpdtFeatTbcPassbkFeatMainTbcMain.TabIndex = 1
         Me.tabUpdtFeatTbcPassbkFeatMainTbcMain.Text = "Update"
         Me.tabUpdtFeatTbcPassbkFeatMainTbcMain.ToolTipText = "Update passbook feature"
@@ -811,74 +815,96 @@ Partial Class FrmMain
         'grpAnon4
         '
         Me.grpAnon4.BackColor = System.Drawing.SystemColors.Control
-        Me.grpAnon4.Controls.Add(Me.txtPriceTabUpdtFeatTbcPassbkFeatMainTbcMain)
+        Me.grpAnon4.Controls.Add(Me.txtTotQtyRemTabUpdtFeatTbcPassbkFeatMainTbcMain)
+        Me.grpAnon4.Controls.Add(Me.Label60)
+        Me.grpAnon4.Controls.Add(Me.txtUnitPriceTabUpdtFeatTbcPassbkFeatMainTbcMain)
         Me.grpAnon4.Controls.Add(Me.Label21)
-        Me.grpAnon4.Controls.Add(Me.txtNewQtyTabUpdtFeatTbcPassbkFeatMainTbcMain)
+        Me.grpAnon4.Controls.Add(Me.txtTotUpdtQtyTabUpdtFeatTbcPassbkFeatMainTbcMain)
         Me.grpAnon4.Controls.Add(Me.Label19)
-        Me.grpAnon4.Controls.Add(Me.txtRemQtyTabUpdtFeatTbcPassbkFeatMainTbcMain)
+        Me.grpAnon4.Controls.Add(Me.txtTotQtyPurchTabUpdtFeatTbcPassbkFeatMainTbcMain)
         Me.grpAnon4.Controls.Add(Me.Label20)
-        Me.grpAnon4.Location = New System.Drawing.Point(200, 232)
+        Me.grpAnon4.Location = New System.Drawing.Point(198, 221)
         Me.grpAnon4.Name = "grpAnon4"
-        Me.grpAnon4.Size = New System.Drawing.Size(467, 110)
+        Me.grpAnon4.Size = New System.Drawing.Size(467, 138)
         Me.grpAnon4.TabIndex = 1
         Me.grpAnon4.TabStop = False
         '
-        'txtPriceTabUpdtFeatTbcPassbkFeatMainTbcMain
+        'txtTotQtyRemTabUpdtFeatTbcPassbkFeatMainTbcMain
         '
-        Me.txtPriceTabUpdtFeatTbcPassbkFeatMainTbcMain.BackColor = System.Drawing.SystemColors.ControlLight
-        Me.txtPriceTabUpdtFeatTbcPassbkFeatMainTbcMain.Location = New System.Drawing.Point(229, 16)
-        Me.txtPriceTabUpdtFeatTbcPassbkFeatMainTbcMain.Name = "txtPriceTabUpdtFeatTbcPassbkFeatMainTbcMain"
-        Me.txtPriceTabUpdtFeatTbcPassbkFeatMainTbcMain.ReadOnly = True
-        Me.txtPriceTabUpdtFeatTbcPassbkFeatMainTbcMain.Size = New System.Drawing.Size(100, 21)
-        Me.txtPriceTabUpdtFeatTbcPassbkFeatMainTbcMain.TabIndex = 1
-        Me.txtPriceTabUpdtFeatTbcPassbkFeatMainTbcMain.TabStop = False
-        Me.tipTPMS.SetToolTip(Me.txtPriceTabUpdtFeatTbcPassbkFeatMainTbcMain, "Displays price for this feature update")
+        Me.txtTotQtyRemTabUpdtFeatTbcPassbkFeatMainTbcMain.BackColor = System.Drawing.SystemColors.ControlLight
+        Me.txtTotQtyRemTabUpdtFeatTbcPassbkFeatMainTbcMain.Location = New System.Drawing.Point(229, 70)
+        Me.txtTotQtyRemTabUpdtFeatTbcPassbkFeatMainTbcMain.Name = "txtTotQtyRemTabUpdtFeatTbcPassbkFeatMainTbcMain"
+        Me.txtTotQtyRemTabUpdtFeatTbcPassbkFeatMainTbcMain.ReadOnly = True
+        Me.txtTotQtyRemTabUpdtFeatTbcPassbkFeatMainTbcMain.Size = New System.Drawing.Size(100, 21)
+        Me.txtTotQtyRemTabUpdtFeatTbcPassbkFeatMainTbcMain.TabIndex = 5
+        Me.txtTotQtyRemTabUpdtFeatTbcPassbkFeatMainTbcMain.TabStop = False
+        Me.tipTPMS.SetToolTip(Me.txtTotQtyRemTabUpdtFeatTbcPassbkFeatMainTbcMain, "Total amount remaing of all purchased units for this feature")
+        '
+        'Label60
+        '
+        Me.Label60.AutoSize = True
+        Me.Label60.Location = New System.Drawing.Point(105, 73)
+        Me.Label60.Name = "Label60"
+        Me.Label60.Size = New System.Drawing.Size(118, 15)
+        Me.Label60.TabIndex = 4
+        Me.Label60.Text = "Quantity Remaining:"
+        '
+        'txtUnitPriceTabUpdtFeatTbcPassbkFeatMainTbcMain
+        '
+        Me.txtUnitPriceTabUpdtFeatTbcPassbkFeatMainTbcMain.BackColor = System.Drawing.SystemColors.ControlLight
+        Me.txtUnitPriceTabUpdtFeatTbcPassbkFeatMainTbcMain.Location = New System.Drawing.Point(229, 16)
+        Me.txtUnitPriceTabUpdtFeatTbcPassbkFeatMainTbcMain.Name = "txtUnitPriceTabUpdtFeatTbcPassbkFeatMainTbcMain"
+        Me.txtUnitPriceTabUpdtFeatTbcPassbkFeatMainTbcMain.ReadOnly = True
+        Me.txtUnitPriceTabUpdtFeatTbcPassbkFeatMainTbcMain.Size = New System.Drawing.Size(100, 21)
+        Me.txtUnitPriceTabUpdtFeatTbcPassbkFeatMainTbcMain.TabIndex = 1
+        Me.txtUnitPriceTabUpdtFeatTbcPassbkFeatMainTbcMain.TabStop = False
+        Me.tipTPMS.SetToolTip(Me.txtUnitPriceTabUpdtFeatTbcPassbkFeatMainTbcMain, "Displays price for this feature update")
         '
         'Label21
         '
         Me.Label21.AutoSize = True
-        Me.Label21.Location = New System.Drawing.Point(179, 19)
+        Me.Label21.Location = New System.Drawing.Point(160, 19)
         Me.Label21.Name = "Label21"
-        Me.Label21.Size = New System.Drawing.Size(38, 15)
+        Me.Label21.Size = New System.Drawing.Size(63, 15)
         Me.Label21.TabIndex = 0
-        Me.Label21.Text = "Price:"
+        Me.Label21.Text = "Unit Price:"
         '
-        'txtNewQtyTabUpdtFeatTbcPassbkFeatMainTbcMain
+        'txtTotUpdtQtyTabUpdtFeatTbcPassbkFeatMainTbcMain
         '
-        Me.txtNewQtyTabUpdtFeatTbcPassbkFeatMainTbcMain.Location = New System.Drawing.Point(229, 70)
-        Me.txtNewQtyTabUpdtFeatTbcPassbkFeatMainTbcMain.Name = "txtNewQtyTabUpdtFeatTbcPassbkFeatMainTbcMain"
-        Me.txtNewQtyTabUpdtFeatTbcPassbkFeatMainTbcMain.Size = New System.Drawing.Size(100, 21)
-        Me.txtNewQtyTabUpdtFeatTbcPassbkFeatMainTbcMain.TabIndex = 5
-        Me.tipTPMS.SetToolTip(Me.txtNewQtyTabUpdtFeatTbcPassbkFeatMainTbcMain, "Enter the amount of feature that was used")
+        Me.txtTotUpdtQtyTabUpdtFeatTbcPassbkFeatMainTbcMain.Location = New System.Drawing.Point(229, 99)
+        Me.txtTotUpdtQtyTabUpdtFeatTbcPassbkFeatMainTbcMain.Name = "txtTotUpdtQtyTabUpdtFeatTbcPassbkFeatMainTbcMain"
+        Me.txtTotUpdtQtyTabUpdtFeatTbcPassbkFeatMainTbcMain.Size = New System.Drawing.Size(100, 21)
+        Me.txtTotUpdtQtyTabUpdtFeatTbcPassbkFeatMainTbcMain.TabIndex = 7
+        Me.tipTPMS.SetToolTip(Me.txtTotUpdtQtyTabUpdtFeatTbcPassbkFeatMainTbcMain, "Enter TOTAL quantity requested (Qty < original for refund)")
         '
         'Label19
         '
         Me.Label19.AutoSize = True
-        Me.Label19.Location = New System.Drawing.Point(134, 73)
+        Me.Label19.Location = New System.Drawing.Point(89, 102)
         Me.Label19.Name = "Label19"
-        Me.Label19.Size = New System.Drawing.Size(82, 15)
-        Me.Label19.TabIndex = 4
-        Me.Label19.Text = "New Quantity:"
+        Me.Label19.Size = New System.Drawing.Size(134, 15)
+        Me.Label19.TabIndex = 6
+        Me.Label19.Text = "Total Updated Quantity:"
         '
-        'txtRemQtyTabUpdtFeatTbcPassbkFeatMainTbcMain
+        'txtTotQtyPurchTabUpdtFeatTbcPassbkFeatMainTbcMain
         '
-        Me.txtRemQtyTabUpdtFeatTbcPassbkFeatMainTbcMain.BackColor = System.Drawing.SystemColors.ControlLight
-        Me.txtRemQtyTabUpdtFeatTbcPassbkFeatMainTbcMain.Location = New System.Drawing.Point(229, 44)
-        Me.txtRemQtyTabUpdtFeatTbcPassbkFeatMainTbcMain.Name = "txtRemQtyTabUpdtFeatTbcPassbkFeatMainTbcMain"
-        Me.txtRemQtyTabUpdtFeatTbcPassbkFeatMainTbcMain.ReadOnly = True
-        Me.txtRemQtyTabUpdtFeatTbcPassbkFeatMainTbcMain.Size = New System.Drawing.Size(100, 21)
-        Me.txtRemQtyTabUpdtFeatTbcPassbkFeatMainTbcMain.TabIndex = 3
-        Me.txtRemQtyTabUpdtFeatTbcPassbkFeatMainTbcMain.TabStop = False
-        Me.tipTPMS.SetToolTip(Me.txtRemQtyTabUpdtFeatTbcPassbkFeatMainTbcMain, "Amount of this feature remaining for the specified passbook")
+        Me.txtTotQtyPurchTabUpdtFeatTbcPassbkFeatMainTbcMain.BackColor = System.Drawing.SystemColors.ControlLight
+        Me.txtTotQtyPurchTabUpdtFeatTbcPassbkFeatMainTbcMain.Location = New System.Drawing.Point(229, 44)
+        Me.txtTotQtyPurchTabUpdtFeatTbcPassbkFeatMainTbcMain.Name = "txtTotQtyPurchTabUpdtFeatTbcPassbkFeatMainTbcMain"
+        Me.txtTotQtyPurchTabUpdtFeatTbcPassbkFeatMainTbcMain.ReadOnly = True
+        Me.txtTotQtyPurchTabUpdtFeatTbcPassbkFeatMainTbcMain.Size = New System.Drawing.Size(100, 21)
+        Me.txtTotQtyPurchTabUpdtFeatTbcPassbkFeatMainTbcMain.TabIndex = 3
+        Me.txtTotQtyPurchTabUpdtFeatTbcPassbkFeatMainTbcMain.TabStop = False
+        Me.tipTPMS.SetToolTip(Me.txtTotQtyPurchTabUpdtFeatTbcPassbkFeatMainTbcMain, "Original quantity purchase for this passbook feature")
         '
         'Label20
         '
         Me.Label20.AutoSize = True
-        Me.Label20.Location = New System.Drawing.Point(96, 47)
+        Me.Label20.Location = New System.Drawing.Point(107, 47)
         Me.Label20.Name = "Label20"
-        Me.Label20.Size = New System.Drawing.Size(118, 15)
+        Me.Label20.Size = New System.Drawing.Size(116, 15)
         Me.Label20.TabIndex = 2
-        Me.Label20.Text = "Remaining Quantity:"
+        Me.Label20.Text = "Quantity Purchased:"
         '
         'grpPassbkTabUpdtFeatTbcPassbkFeatMainTbcMain
         '
@@ -909,7 +935,7 @@ Partial Class FrmMain
         Me.cboFeatIdTabUpdtFeatTbcPassbkFeatMainTbcMain.Location = New System.Drawing.Point(98, 36)
         Me.cboFeatIdTabUpdtFeatTbcPassbkFeatMainTbcMain.Name = "cboFeatIdTabUpdtFeatTbcPassbkFeatMainTbcMain"
         Me.cboFeatIdTabUpdtFeatTbcPassbkFeatMainTbcMain.Size = New System.Drawing.Size(136, 23)
-        Me.cboFeatIdTabUpdtFeatTbcPassbkFeatMainTbcMain.TabIndex = 10
+        Me.cboFeatIdTabUpdtFeatTbcPassbkFeatMainTbcMain.TabIndex = 1
         Me.tipTPMS.SetToolTip(Me.cboFeatIdTabUpdtFeatTbcPassbkFeatMainTbcMain, "Select a Passbook Feature from the list")
         '
         'txtPrevUsedToStringTabUpdtFeatTbcPassbkFeatMainTbcMain
@@ -1029,7 +1055,7 @@ Partial Class FrmMain
         Me.tabPostFeatTbcPassbkFeatMainTbcMain.Location = New System.Drawing.Point(4, 27)
         Me.tabPostFeatTbcPassbkFeatMainTbcMain.Name = "tabPostFeatTbcPassbkFeatMainTbcMain"
         Me.tabPostFeatTbcPassbkFeatMainTbcMain.Padding = New System.Windows.Forms.Padding(3)
-        Me.tabPostFeatTbcPassbkFeatMainTbcMain.Size = New System.Drawing.Size(871, 416)
+        Me.tabPostFeatTbcPassbkFeatMainTbcMain.Size = New System.Drawing.Size(871, 418)
         Me.tabPostFeatTbcPassbkFeatMainTbcMain.TabIndex = 2
         Me.tabPostFeatTbcPassbkFeatMainTbcMain.Text = "Post "
         Me.tipTPMS.SetToolTip(Me.tabPostFeatTbcPassbkFeatMainTbcMain, "Register use of a specific feature")
@@ -1037,24 +1063,44 @@ Partial Class FrmMain
         'grpAnon1
         '
         Me.grpAnon1.BackColor = System.Drawing.SystemColors.Control
+        Me.grpAnon1.Controls.Add(Me.txtPostIdTabPostFeatTbcPassbkFeatMainTbcMain)
+        Me.grpAnon1.Controls.Add(Me.Label61)
         Me.grpAnon1.Controls.Add(Me.txtQtyUsedTabPostFeatTbcPassbkFeatMainTbcMain)
         Me.grpAnon1.Controls.Add(Me.Label24)
         Me.grpAnon1.Controls.Add(Me.txtQtyRemTabPostFeatTbcPassbkFeatMainTbcMain)
         Me.grpAnon1.Controls.Add(Me.Label23)
         Me.grpAnon1.Controls.Add(Me.Label26)
         Me.grpAnon1.Controls.Add(Me.txtLocTabPostFeatTbcPassbkFeatMainTbcMain)
-        Me.grpAnon1.Location = New System.Drawing.Point(200, 232)
+        Me.grpAnon1.Location = New System.Drawing.Point(200, 221)
         Me.grpAnon1.Name = "grpAnon1"
-        Me.grpAnon1.Size = New System.Drawing.Size(467, 110)
-        Me.grpAnon1.TabIndex = 1
+        Me.grpAnon1.Size = New System.Drawing.Size(467, 146)
+        Me.grpAnon1.TabIndex = 2
         Me.grpAnon1.TabStop = False
+        '
+        'txtPostIdTabPostFeatTbcPassbkFeatMainTbcMain
+        '
+        Me.txtPostIdTabPostFeatTbcPassbkFeatMainTbcMain.Location = New System.Drawing.Point(153, 102)
+        Me.txtPostIdTabPostFeatTbcPassbkFeatMainTbcMain.Name = "txtPostIdTabPostFeatTbcPassbkFeatMainTbcMain"
+        Me.txtPostIdTabPostFeatTbcPassbkFeatMainTbcMain.Size = New System.Drawing.Size(111, 21)
+        Me.txtPostIdTabPostFeatTbcPassbkFeatMainTbcMain.TabIndex = 5
+        Me.tipTPMS.SetToolTip(Me.txtPostIdTabPostFeatTbcPassbkFeatMainTbcMain, "Enter a unqiue identifier to assign to this post transaction")
+        '
+        'Label61
+        '
+        Me.Label61.AutoSize = True
+        Me.Label61.Location = New System.Drawing.Point(89, 105)
+        Me.Label61.Name = "Label61"
+        Me.Label61.Size = New System.Drawing.Size(49, 15)
+        Me.Label61.TabIndex = 4
+        Me.Label61.Text = "Post ID:"
+        Me.tipTPMS.SetToolTip(Me.Label61, "Enter the location where transaction occurred")
         '
         'txtQtyUsedTabPostFeatTbcPassbkFeatMainTbcMain
         '
         Me.txtQtyUsedTabPostFeatTbcPassbkFeatMainTbcMain.Location = New System.Drawing.Point(153, 45)
         Me.txtQtyUsedTabPostFeatTbcPassbkFeatMainTbcMain.Name = "txtQtyUsedTabPostFeatTbcPassbkFeatMainTbcMain"
         Me.txtQtyUsedTabPostFeatTbcPassbkFeatMainTbcMain.Size = New System.Drawing.Size(100, 21)
-        Me.txtQtyUsedTabPostFeatTbcPassbkFeatMainTbcMain.TabIndex = 3
+        Me.txtQtyUsedTabPostFeatTbcPassbkFeatMainTbcMain.TabIndex = 1
         Me.tipTPMS.SetToolTip(Me.txtQtyUsedTabPostFeatTbcPassbkFeatMainTbcMain, "Enter the amount of feature that was used")
         '
         'Label24
@@ -1063,7 +1109,7 @@ Partial Class FrmMain
         Me.Label24.Location = New System.Drawing.Point(52, 48)
         Me.Label24.Name = "Label24"
         Me.Label24.Size = New System.Drawing.Size(86, 15)
-        Me.Label24.TabIndex = 2
+        Me.Label24.TabIndex = 0
         Me.Label24.Text = "Quantity Used:"
         '
         'txtQtyRemTabPostFeatTbcPassbkFeatMainTbcMain
@@ -1073,7 +1119,7 @@ Partial Class FrmMain
         Me.txtQtyRemTabPostFeatTbcPassbkFeatMainTbcMain.Name = "txtQtyRemTabPostFeatTbcPassbkFeatMainTbcMain"
         Me.txtQtyRemTabPostFeatTbcPassbkFeatMainTbcMain.ReadOnly = True
         Me.txtQtyRemTabPostFeatTbcPassbkFeatMainTbcMain.Size = New System.Drawing.Size(100, 21)
-        Me.txtQtyRemTabPostFeatTbcPassbkFeatMainTbcMain.TabIndex = 1
+        Me.txtQtyRemTabPostFeatTbcPassbkFeatMainTbcMain.TabIndex = 7
         Me.txtQtyRemTabPostFeatTbcPassbkFeatMainTbcMain.TabStop = False
         Me.tipTPMS.SetToolTip(Me.txtQtyRemTabPostFeatTbcPassbkFeatMainTbcMain, "Amount of this feature remaining for the specified passbook")
         '
@@ -1083,7 +1129,7 @@ Partial Class FrmMain
         Me.Label23.Location = New System.Drawing.Point(20, 22)
         Me.Label23.Name = "Label23"
         Me.Label23.Size = New System.Drawing.Size(118, 15)
-        Me.Label23.TabIndex = 0
+        Me.Label23.TabIndex = 6
         Me.Label23.Text = "Remaining Quantity:"
         '
         'Label26
@@ -1092,7 +1138,7 @@ Partial Class FrmMain
         Me.Label26.Location = New System.Drawing.Point(82, 77)
         Me.Label26.Name = "Label26"
         Me.Label26.Size = New System.Drawing.Size(57, 15)
-        Me.Label26.TabIndex = 4
+        Me.Label26.TabIndex = 2
         Me.Label26.Text = "Location:"
         Me.tipTPMS.SetToolTip(Me.Label26, "Enter the location where transaction occurred")
         '
@@ -1102,15 +1148,15 @@ Partial Class FrmMain
         Me.txtLocTabPostFeatTbcPassbkFeatMainTbcMain.Location = New System.Drawing.Point(153, 74)
         Me.txtLocTabPostFeatTbcPassbkFeatMainTbcMain.Name = "txtLocTabPostFeatTbcPassbkFeatMainTbcMain"
         Me.txtLocTabPostFeatTbcPassbkFeatMainTbcMain.Size = New System.Drawing.Size(249, 21)
-        Me.txtLocTabPostFeatTbcPassbkFeatMainTbcMain.TabIndex = 5
+        Me.txtLocTabPostFeatTbcPassbkFeatMainTbcMain.TabIndex = 3
         Me.tipTPMS.SetToolTip(Me.txtLocTabPostFeatTbcPassbkFeatMainTbcMain, "Enter the location where this feature was used")
         '
         'btnResetTabPostFeatTbcPassbkFeatMainTbcMain
         '
-        Me.btnResetTabPostFeatTbcPassbkFeatMainTbcMain.Location = New System.Drawing.Point(443, 373)
+        Me.btnResetTabPostFeatTbcPassbkFeatMainTbcMain.Location = New System.Drawing.Point(443, 383)
         Me.btnResetTabPostFeatTbcPassbkFeatMainTbcMain.Name = "btnResetTabPostFeatTbcPassbkFeatMainTbcMain"
         Me.btnResetTabPostFeatTbcPassbkFeatMainTbcMain.Size = New System.Drawing.Size(75, 23)
-        Me.btnResetTabPostFeatTbcPassbkFeatMainTbcMain.TabIndex = 3
+        Me.btnResetTabPostFeatTbcPassbkFeatMainTbcMain.TabIndex = 0
         Me.btnResetTabPostFeatTbcPassbkFeatMainTbcMain.Text = "&Reset"
         Me.tipTPMS.SetToolTip(Me.btnResetTabPostFeatTbcPassbkFeatMainTbcMain, "Click to reset all input fields")
         Me.btnResetTabPostFeatTbcPassbkFeatMainTbcMain.UseVisualStyleBackColor = True
@@ -1146,7 +1192,7 @@ Partial Class FrmMain
         Me.cboFeatIdTabPostFeatTbcPassbkFeatMainTbcMain.Location = New System.Drawing.Point(98, 36)
         Me.cboFeatIdTabPostFeatTbcPassbkFeatMainTbcMain.Name = "cboFeatIdTabPostFeatTbcPassbkFeatMainTbcMain"
         Me.cboFeatIdTabPostFeatTbcPassbkFeatMainTbcMain.Size = New System.Drawing.Size(136, 23)
-        Me.cboFeatIdTabPostFeatTbcPassbkFeatMainTbcMain.TabIndex = 10
+        Me.cboFeatIdTabPostFeatTbcPassbkFeatMainTbcMain.TabIndex = 1
         Me.tipTPMS.SetToolTip(Me.cboFeatIdTabPostFeatTbcPassbkFeatMainTbcMain, "Select a Passbook Feature from the list")
         '
         'txtPrevUsedToStringTabPostFeatTbcPassbkFeatMainTbcMain
@@ -1258,10 +1304,10 @@ Partial Class FrmMain
         '
         'btnSubmitTabPostFeatTbcPassbkFeatMainTbcMain
         '
-        Me.btnSubmitTabPostFeatTbcPassbkFeatMainTbcMain.Location = New System.Drawing.Point(348, 373)
+        Me.btnSubmitTabPostFeatTbcPassbkFeatMainTbcMain.Location = New System.Drawing.Point(348, 383)
         Me.btnSubmitTabPostFeatTbcPassbkFeatMainTbcMain.Name = "btnSubmitTabPostFeatTbcPassbkFeatMainTbcMain"
         Me.btnSubmitTabPostFeatTbcPassbkFeatMainTbcMain.Size = New System.Drawing.Size(75, 23)
-        Me.btnSubmitTabPostFeatTbcPassbkFeatMainTbcMain.TabIndex = 2
+        Me.btnSubmitTabPostFeatTbcPassbkFeatMainTbcMain.TabIndex = 3
         Me.btnSubmitTabPostFeatTbcPassbkFeatMainTbcMain.Text = "&Submit"
         Me.tipTPMS.SetToolTip(Me.btnSubmitTabPostFeatTbcPassbkFeatMainTbcMain, "Click to validate and submit feature information")
         Me.btnSubmitTabPostFeatTbcPassbkFeatMainTbcMain.UseVisualStyleBackColor = True
@@ -1273,7 +1319,7 @@ Partial Class FrmMain
         Me.tabPassbkTbcMainFrmMain.Location = New System.Drawing.Point(4, 27)
         Me.tabPassbkTbcMainFrmMain.Name = "tabPassbkTbcMainFrmMain"
         Me.tabPassbkTbcMainFrmMain.Padding = New System.Windows.Forms.Padding(3)
-        Me.tabPassbkTbcMainFrmMain.Size = New System.Drawing.Size(919, 468)
+        Me.tabPassbkTbcMainFrmMain.Size = New System.Drawing.Size(919, 482)
         Me.tabPassbkTbcMainFrmMain.TabIndex = 2
         Me.tabPassbkTbcMainFrmMain.Text = "Passbook"
         Me.tipTPMS.SetToolTip(Me.tabPassbkTbcMainFrmMain, "Add a new passbook to the system")
@@ -1444,7 +1490,7 @@ Partial Class FrmMain
         Me.tabCustTbcMainFrmMain.Margin = New System.Windows.Forms.Padding(4)
         Me.tabCustTbcMainFrmMain.Name = "tabCustTbcMainFrmMain"
         Me.tabCustTbcMainFrmMain.Padding = New System.Windows.Forms.Padding(4)
-        Me.tabCustTbcMainFrmMain.Size = New System.Drawing.Size(919, 468)
+        Me.tabCustTbcMainFrmMain.Size = New System.Drawing.Size(919, 482)
         Me.tabCustTbcMainFrmMain.TabIndex = 0
         Me.tabCustTbcMainFrmMain.Text = "Customer"
         Me.tipTPMS.SetToolTip(Me.tabCustTbcMainFrmMain, "Add a new customer to the system")
@@ -1551,7 +1597,7 @@ Partial Class FrmMain
         Me.tbcMainFrmMain.Name = "tbcMainFrmMain"
         Me.tbcMainFrmMain.RightToLeftLayout = True
         Me.tbcMainFrmMain.SelectedIndex = 0
-        Me.tbcMainFrmMain.Size = New System.Drawing.Size(927, 499)
+        Me.tbcMainFrmMain.Size = New System.Drawing.Size(927, 513)
         Me.tbcMainFrmMain.TabIndex = 2
         '
         'tabDashTbcMainFrmMain
@@ -1583,7 +1629,7 @@ Partial Class FrmMain
         Me.tabDashTbcMainFrmMain.Location = New System.Drawing.Point(4, 27)
         Me.tabDashTbcMainFrmMain.Name = "tabDashTbcMainFrmMain"
         Me.tabDashTbcMainFrmMain.Padding = New System.Windows.Forms.Padding(3)
-        Me.tabDashTbcMainFrmMain.Size = New System.Drawing.Size(919, 468)
+        Me.tabDashTbcMainFrmMain.Size = New System.Drawing.Size(919, 482)
         Me.tabDashTbcMainFrmMain.TabIndex = 5
         Me.tabDashTbcMainFrmMain.Text = "Dashboard"
         Me.tipTPMS.SetToolTip(Me.tabDashTbcMainFrmMain, "System dashboard")
@@ -1987,7 +2033,7 @@ Partial Class FrmMain
         Me.tabFeatTbcMainFrmMain.Location = New System.Drawing.Point(4, 27)
         Me.tabFeatTbcMainFrmMain.Name = "tabFeatTbcMainFrmMain"
         Me.tabFeatTbcMainFrmMain.Padding = New System.Windows.Forms.Padding(3)
-        Me.tabFeatTbcMainFrmMain.Size = New System.Drawing.Size(919, 468)
+        Me.tabFeatTbcMainFrmMain.Size = New System.Drawing.Size(919, 482)
         Me.tabFeatTbcMainFrmMain.TabIndex = 7
         Me.tabFeatTbcMainFrmMain.Text = "Feature"
         Me.tipTPMS.SetToolTip(Me.tabFeatTbcMainFrmMain, "Add a new feature to the system")
@@ -2141,7 +2187,7 @@ Partial Class FrmMain
         Me.tabTransLogTbcMainFrmMain.Location = New System.Drawing.Point(4, 27)
         Me.tabTransLogTbcMainFrmMain.Name = "tabTransLogTbcMainFrmMain"
         Me.tabTransLogTbcMainFrmMain.Padding = New System.Windows.Forms.Padding(3)
-        Me.tabTransLogTbcMainFrmMain.Size = New System.Drawing.Size(919, 468)
+        Me.tabTransLogTbcMainFrmMain.Size = New System.Drawing.Size(919, 482)
         Me.tabTransLogTbcMainFrmMain.TabIndex = 4
         Me.tabTransLogTbcMainFrmMain.Text = "Transaction Log"
         Me.tipTPMS.SetToolTip(Me.tabTransLogTbcMainFrmMain, "View system transaction log")
@@ -2187,7 +2233,7 @@ Partial Class FrmMain
         Me.tabSysTestTbcMainFrmMain.Location = New System.Drawing.Point(4, 27)
         Me.tabSysTestTbcMainFrmMain.Name = "tabSysTestTbcMainFrmMain"
         Me.tabSysTestTbcMainFrmMain.Padding = New System.Windows.Forms.Padding(3)
-        Me.tabSysTestTbcMainFrmMain.Size = New System.Drawing.Size(919, 468)
+        Me.tabSysTestTbcMainFrmMain.Size = New System.Drawing.Size(919, 482)
         Me.tabSysTestTbcMainFrmMain.TabIndex = 6
         Me.tabSysTestTbcMainFrmMain.Text = "System Test"
         Me.tipTPMS.SetToolTip(Me.tabSysTestTbcMainFrmMain, "Exercise the system with sample test data")
@@ -2264,7 +2310,7 @@ Partial Class FrmMain
         Me.tabDebugTbcMainFrmMain.Location = New System.Drawing.Point(4, 27)
         Me.tabDebugTbcMainFrmMain.Name = "tabDebugTbcMainFrmMain"
         Me.tabDebugTbcMainFrmMain.Padding = New System.Windows.Forms.Padding(3)
-        Me.tabDebugTbcMainFrmMain.Size = New System.Drawing.Size(919, 468)
+        Me.tabDebugTbcMainFrmMain.Size = New System.Drawing.Size(919, 482)
         Me.tabDebugTbcMainFrmMain.TabIndex = 8
         Me.tabDebugTbcMainFrmMain.Text = "Data View"
         '
@@ -2708,9 +2754,9 @@ Partial Class FrmMain
     Friend WithEvents Label25 As System.Windows.Forms.Label
     Friend WithEvents txtQtyTabAddFeatTbcPassbkFeatMainTbcMain As System.Windows.Forms.TextBox
     Friend WithEvents grpAnon4 As System.Windows.Forms.GroupBox
-    Friend WithEvents txtNewQtyTabUpdtFeatTbcPassbkFeatMainTbcMain As System.Windows.Forms.TextBox
+    Friend WithEvents txtTotUpdtQtyTabUpdtFeatTbcPassbkFeatMainTbcMain As System.Windows.Forms.TextBox
     Friend WithEvents Label19 As System.Windows.Forms.Label
-    Friend WithEvents txtRemQtyTabUpdtFeatTbcPassbkFeatMainTbcMain As System.Windows.Forms.TextBox
+    Friend WithEvents txtTotQtyPurchTabUpdtFeatTbcPassbkFeatMainTbcMain As System.Windows.Forms.TextBox
     Friend WithEvents Label20 As System.Windows.Forms.Label
     Friend WithEvents grpPassbkTabUpdtFeatTbcPassbkFeatMainTbcMain As System.Windows.Forms.GroupBox
     Friend WithEvents txtPrevUsedToStringTabUpdtFeatTbcPassbkFeatMainTbcMain As System.Windows.Forms.TextBox
@@ -2724,7 +2770,7 @@ Partial Class FrmMain
     Friend WithEvents Label51 As System.Windows.Forms.Label
     Friend WithEvents btnResetTabUpdtFeatTbcPassbkFeatMainTbcMain As System.Windows.Forms.Button
     Friend WithEvents btnSubmitTabUpdtFeatTbcPassbkFeatMainTbcMain As System.Windows.Forms.Button
-    Friend WithEvents txtPriceTabUpdtFeatTbcPassbkFeatMainTbcMain As System.Windows.Forms.TextBox
+    Friend WithEvents txtUnitPriceTabUpdtFeatTbcPassbkFeatMainTbcMain As System.Windows.Forms.TextBox
     Friend WithEvents Label21 As System.Windows.Forms.Label
     Friend WithEvents tabSysTestTbcMainFrmMain As System.Windows.Forms.TabPage
     Friend WithEvents grpSysTestTabSysTestTbcMainFrmMain As System.Windows.Forms.GroupBox
@@ -2795,4 +2841,8 @@ Partial Class FrmMain
     Friend WithEvents txtAvgNumPassbkPerCustTabDashboardTbcMain As System.Windows.Forms.TextBox
     Friend WithEvents txtTotBalUnusedFeatTabDashboardTbcMain As System.Windows.Forms.TextBox
     Friend WithEvents txtCurrMonBdaysTabDashboardTbcMain As System.Windows.Forms.TextBox
+    Friend WithEvents txtTotQtyRemTabUpdtFeatTbcPassbkFeatMainTbcMain As System.Windows.Forms.TextBox
+    Friend WithEvents Label60 As System.Windows.Forms.Label
+    Friend WithEvents txtPostIdTabPostFeatTbcPassbkFeatMainTbcMain As System.Windows.Forms.TextBox
+    Friend WithEvents Label61 As System.Windows.Forms.Label
 End Class

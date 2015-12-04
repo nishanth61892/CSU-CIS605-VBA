@@ -1335,7 +1335,7 @@ Public Class ThemePark
     'of the associated processed based on this event
     '****************************************************************************************
     Private Sub _updtPassbkFeat(ByVal pPassbkFeatId As String, _
-                                ByVal pQty As Decimal
+                                ByVal pUpdtQty As Decimal
                                 )
 
         Dim passbkFeat As PassbookFeature = _findPassbkFeat(pPassbkFeatId)
@@ -1348,8 +1348,14 @@ Public Class ThemePark
         End If
 
         'Update the quantity purchased
-        passbkFeat.qtyPurch = pQty
-        passbkFeat.qtyRemain = pQty
+        If pUpdtQty >= passbkFeat.qtyRemain Then
+            passbkFeat.qtyPurch = passbkFeat.qtyRemain + pUpdtQty
+        Else
+            passbkFeat.qtyPurch = pUpdtQty
+        End If
+
+        'Update the remaining quantity
+        passbkFeat.qtyRemain = passbkFeat.qtyPurch
 
         'Raise and event to let the listeners of this event it happened
         RaiseEvent ThemePark_UpdtPassbkFeat(Me,

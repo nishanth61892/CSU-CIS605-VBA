@@ -97,7 +97,7 @@ Public Class PassbookFeature
         End If
 
         _qtyPurch = pQtyPurch
-        _qtyRemain = _qtyPurch
+        _qtyRemain += _qtyPurch
     End Sub 'New()
 
     '********** Copy constructor(s)
@@ -251,30 +251,33 @@ Public Class PassbookFeature
     Private Function _toString() As String
         Dim tmpStr As String
         Dim featStr As String
-        Dim passbkStr As String
+        Dim passbkId As String
+        Dim passbkOwner As String = ""
 
         'Make sure feature is defined for the object
         If Not IsNothing(_feature) Then
-            featStr = _feature.ToString
+            featStr = _feature.featName
         Else
             featStr = "No-Feature-Reference-Found"
         End If
 
         'Make sure passbook is defined for the object
         If Not IsNothing(_passbk) Then
-            passbkStr = _passbk.ToString
+            passbkId = _passbk.passbkId
+            passbkOwner = _passbk.owner.custName
         Else
-            passbkStr = "No-Passbook-Reference-Found"
+            passbkId = "No-Passbook-Reference-Found"
         End If
 
-        tmpStr = "[PurchaseFeature] -> " _
+        tmpStr = "[" _
             & " Id=" & _id _
             & ", Feature=" & featStr _
-            & ", Passbk=" & passbkStr _
+            & ", PassbkID=" & passbkId _
+            & ", PassbkOwner=" & passbkOwner _
             & ", PurchasePrice=" & _purchPrice.ToString("C") _
             & ", QtyPurchased=" & _qtyPurch.ToString("N0") _
-            & ", QtyRemain=" & _qtyRemain.ToString("N0")
-
+            & ", QtyRemain=" & _qtyRemain.ToString("N0") _
+            & " ]"
         Return tmpStr
     End Function
 
