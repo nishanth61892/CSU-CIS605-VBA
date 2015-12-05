@@ -41,6 +41,71 @@ Public Class ThemePark_KeyPerfInd
 
     '********** Module-level variables
 
+    'Internal class used to assist with finding the most popular feature
+    Private Class MostPopFeat
+        Private mFeatId As String
+        Private mFeatName As String
+        Private mFeatCnt As Integer
+
+        'Public Getter / setter
+        Public Property featId() As String
+            Get
+                Return _featId
+            End Get
+            Set(value As String)
+                _featId = value
+            End Set
+        End Property
+
+        Public Property featName() As String
+            Get
+                Return _featName
+            End Get
+            Set(value As String)
+                _featName = value
+            End Set
+        End Property
+
+        Public Property featCnt() As Integer
+            Get
+                Return _featCnt
+            End Get
+            Set(value As Integer)
+                _featCnt = value
+            End Set
+        End Property
+
+        'Private Getter / setter
+        Private Property _featId() As String
+            Get
+                Return mFeatId
+            End Get
+            Set(value As String)
+                mFeatId = value
+            End Set
+        End Property
+
+        Private Property _featName() As String
+            Get
+                Return mFeatName
+            End Get
+            Set(value As String)
+                mFeatName = value
+            End Set
+        End Property
+
+        Private Property _featCnt() As Integer
+            Get
+                Return mFeatCnt
+            End Get
+            Set(value As Integer)
+                mFeatCnt = value
+            End Set
+        End Property
+
+
+    End Class
+
     'Avg $ balance of unused features 
     Private mAvgBalUnusedFeat As Decimal
 
@@ -168,7 +233,35 @@ Public Class ThemePark_KeyPerfInd
     '   - workhorse function that calculates the avg unused feature balance
     '   on behalf of calcAvgBalUnusedFeat()
     Public Function _calcAvgBalUnusedFeat() As Decimal
-        Dim val As Decimal = 120.5D
+        Dim val As Decimal = 0
+        Dim bal As Decimal = 0
+        Dim unusedCnt As Integer = 0
+
+        'If there are no passbook features there is nothing to calculate
+        If themePark.numPassbkFeats > 0 Then
+            For Each passbkFeat As PassbookFeature In themePark.iteratePassbkFeat
+                'Make sure passbk reference is valid - skip if error
+                If IsNothing(passbkFeat.passbk) Then
+                    Dim s As String = themePark.sysObjLookupErr
+                    MsgBox(s, MsgBoxStyle.Critical)
+                    Continue For
+                End If
+
+                'Calculate unused amount and skip if all used
+                If passbkFeat.qtyRemain > 0 Then
+                    'Keep track of # of unused feature
+                    unusedCnt = CInt(unusedCnt + passbkFeat.qtyRemain)
+
+                    'Running total of the unused balance
+                    bal += passbkFeat.purchPrice * passbkFeat.qtyRemain
+                    Console.WriteLine("Tot Unused Balance" & bal.ToString("C") & "  UnusedCnt=" & unusedCnt)
+                End If
+            Next passbkFeat
+
+            'Now calculate and return the averge age
+            val = bal / themePark.numPassbkFeats
+        End If
+
         Return val
     End Function '_calcAvgBalUnusedFeat()
 
@@ -176,7 +269,28 @@ Public Class ThemePark_KeyPerfInd
     '   - workhorse function that calculates the total unused feature balance
     '   on behalf of calcTotBalUnusedFeat()
     Public Function _calcTotBalUnusedFeat() As Decimal
-        Dim val As Decimal = 5500.5D
+        Dim val As Decimal = 0D
+        Dim bal As Decimal = 0
+        Dim unusedCnt As Integer = 0
+
+        'If there are no passbook features there is nothing to calculate
+        If themePark.numPassbkFeats > 0 Then
+            For Each passbkFeat As PassbookFeature In themePark.iteratePassbkFeat
+                'Calculate unused amount and skip if all used
+                If passbkFeat.qtyRemain > 0 Then
+                    'Keep track of # of unused feature
+                    unusedCnt = CInt(unusedCnt + passbkFeat.qtyRemain)
+
+                    'Running total of the unused balance
+                    bal += passbkFeat.purchPrice * passbkFeat.qtyRemain
+                    Console.WriteLine("Tot Unused Balance" & bal.ToString("C") & "  UnusedCnt=" & unusedCnt)
+                End If
+            Next passbkFeat
+
+            'Set the calculated balance
+            val = bal
+        End If
+
         Return val
     End Function '_calcTotBalUnusedFeat()
 
@@ -184,23 +298,56 @@ Public Class ThemePark_KeyPerfInd
     '   - workhorse function that calculates the avg number of passbooks per customer
     '   on behalf of calcAvgPassbkPerCust()
     Public Function _calcAvgPassbkPerCust() As Decimal
-        Dim val As Decimal = 3.25D
+        Dim val As Decimal = 0
+
+        'Simply number of passbooks / number of customers
+        'If there are no customers there is nothing to calculate
+        If themePark.numCusts > 0 Then
+            'Now calculate and return the averge age
+            val = CDec(themePark.numPassbks / themePark.numCusts)
+        End If
+
         Return val
     End Function '_calcAvgPassbkPerCust()
-
-    '_calcMostPopFeat()
-    '   - workhorse function that calculates the most popular purchased feature
-    '   on behalf of calcMostPopFeat()
-    Public Function _calcMostPopFeat() As String
-        Dim val As String = "Parking Pass"
-        Return val
-    End Function '_calcMostPopFeat()
 
     '_calcPctPassbkFeatUsed()
     '   - workhorse function that calculates the percent of passbook features 
     '   used (used / total) on behalf of calcPctPassbkFeatUsed()
     Public Function _calcPctPassbkFeatUsed() As Decimal
-        Dim val As Decimal = 37.4D
+        Dim val As Decimal = 0
+        Dim totPurchBal As Decimal = 0
+        Dim totUsedBal As Decimal = 0
+        Dim unusedCnt As Integer = 0
+
+        'If there are no passbook features there is nothing to calculate
+        If themePark.numPassbkFeats > 0 Then
+
+            'First calculate up the total balance of features purchased
+            'Unit price is based on visIsChild at time of purchase
+            For Each passbkFeat As PassbookFeature In themePark.iteratePassbkFeat
+                'Make sure passbk reference is valid since we need visitor info
+                If IsNothing(passbkFeat.passbk) Then
+                    Dim s As String = themePark.sysObjLookupErr
+                    MsgBox(s, MsgBoxStyle.Critical)
+                    Continue For
+                End If
+
+                'Calculate balance for this purchase unused amount and skip if all used
+                'Note - Minor vs Adult pricing was determined at the time of purchase
+                'so the data in the object already has the correct total purchase price
+                'based on age
+                totPurchBal += passbkFeat.purchPrice * passbkFeat.qtyPurch
+                totUsedBal += passbkFeat.purchPrice * (passbkFeat.qtyPurch - passbkFeat.qtyRemain)
+                Console.WriteLine("TotPurchBal=" & totPurchBal.ToString("C") _
+                                  & " QtyPurch=" & passbkFeat.qtyPurch _
+                                  & " TotUsedBal=" & totUsedBal.ToString("C") _
+                                  & " QtyUsed=" & (passbkFeat.qtyPurch - passbkFeat.qtyRemain))
+            Next passbkFeat
+
+            'Set the calculated balance
+            val = (totUsedBal / totPurchBal) * 100D
+        End If
+
         Return val
     End Function '_calcPctPassbkFeatUsed()
 
@@ -238,6 +385,81 @@ Public Class ThemePark_KeyPerfInd
 
         Return val
     End Function '_calcNumPassbkHolderBdaysInCurrMon()
+
+    '_calcMostPopFeat()
+    '   - workhorse function that calculates the most popular purchased feature
+    '   on behalf of calcMostPopFeat()
+    Public Function _calcMostPopFeat() As String
+        Dim val As String = Nothing
+
+        'If there are no features there is nothing to calculate
+        If themePark.numFeats > 0 AndAlso themePark.numPassbkFeats > 0 Then
+            'Allocate an array to keep track of cnt of each unique feature
+            Dim mostPopFeat(themePark.numFeats - 1) As MostPopFeat
+
+            'Now populate the array with the feature ids that are in the system
+            Dim feat As Feature
+            Dim i As Integer
+            Dim j As Integer
+
+            For i = 0 To mostPopFeat.Length - 1
+                'allocate space for the each new feature to add
+                mostPopFeat(i) = New MostPopFeat
+                feat = CType(themePark.iterateFeat.ElementAt(i), Feature)
+                mostPopFeat(i).featId = feat.featId
+                mostPopFeat(i).featName = feat.featName
+                mostPopFeat(i).featCnt = 0
+            Next i
+
+            'Debug
+            For i = 0 To mostPopFeat.Length - 1
+                Console.WriteLine("Filled: mostPop(" & i & ").id=" & mostPopFeat(i).featId & " cnt=" & mostPopFeat(i).featCnt)
+            Next i
+
+            'Now parse thru the passbook feature array and tally up matching features
+            'with the mostPopFeat array.  Require a loop inside a loop
+            Dim passbkFeat As PassbookFeature
+            For i = 0 To mostPopFeat.Length - 1
+                For j = 0 To themePark.numPassbkFeats - 1
+                    passbkFeat = CType(themePark.iteratePassbkFeat.ElementAt(j), PassbookFeature)
+                    feat = passbkFeat.feature
+
+                    'sanity check
+                    If Not IsNothing(feat) Then
+                        If feat.featId = mostPopFeat(i).featId Then
+                            mostPopFeat(i).featCnt = CInt(mostPopFeat(i).featCnt + passbkFeat.qtyPurch)
+                        End If
+                    Else
+                        Console.Error.WriteLine(themePark.sysObjLookupErr)
+                    End If
+                Next j
+            Next i
+
+            'Debug
+            For i = 0 To mostPopFeat.Length - 1
+                Console.WriteLine("Updated: mostPop(" & i & ").id=" & mostPopFeat(i).featId & " cnt=" & mostPopFeat(i).featCnt)
+            Next i
+
+            'Now just find the max of all the feature cnts and that is the most popular 
+            'pick the first feature in case of ties
+            Dim maxVal As Integer = -1
+            For i = 0 To mostPopFeat.Length - 1
+                Console.WriteLine("Max: mostPop(" _
+                                  & i & ").id=" & mostPopFeat(i).featId _
+                                  & " cnt=" & mostPopFeat(i).featCnt _
+                                  & " MaxVal=" & maxVal _
+                                  & " CurrVal=" & val)
+
+                If mostPopFeat(i).featCnt > maxVal Then
+                    maxVal = mostPopFeat(i).featCnt
+                    val = mostPopFeat(i).featName
+                End If
+            Next i
+        End If
+
+        Return val
+    End Function '_calcMostPopFeat()
+
 
     Private Function _kpiAgeCalc(ByVal pVisDoB As Date) As Integer
         Dim age As Integer = 0
