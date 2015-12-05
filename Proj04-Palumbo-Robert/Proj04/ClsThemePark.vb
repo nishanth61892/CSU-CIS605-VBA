@@ -85,6 +85,9 @@ Public Class ThemePark
     'Theme park name for the one theme park instance
     Private mThemeParkName As String
 
+    'Key performance indicator object used to calculate KPIs for the system
+    Private kpi As ThemePark_KeyPerfInd
+
     'Number of customers in the system
     Private mNumCusts As Integer
 
@@ -143,7 +146,6 @@ Public Class ThemePark
     'Array to hold transactions
     Private mTransx() As String
 
-
 #End Region 'Attributes
 
 #Region "Constructors"
@@ -172,6 +174,9 @@ Public Class ThemePark
         _numPassbkFeats = 0
         _numUsedFeats = 0
         _numTransx = 0
+
+        'Key performance indicator object
+        kpi = New ThemePark_KeyPerfInd(Me)
 
         'Initialize array attributes
         _custArrayMax = _CUSTOMER_ARRAY_SIZE_DFLT
@@ -948,6 +953,48 @@ Public Class ThemePark
                   )
     End Sub 'usedFeat(...)
 
+    'calcAvgBalUnusedFeat()
+    '   - calculates the avg unused feature balance
+    Public Function calcAvgBalUnusedFeat() As Decimal
+        Return kpi.calcAvgBalUnusedFeat()
+    End Function 'calcAvgBalUnusedFeat()
+
+    'calcTotBalUnusedFeat()
+    '   - function that calculates the total unused feature balance
+    Public Function calcTotBalUnusedFeat() As Decimal
+        Return kpi.calcTotBalUnusedFeat()
+    End Function 'calcTotBalUnusedFeat()
+
+    'calcAvgPassbkPerCust()
+    '   - function that calculates the total unused feature balance
+    Public Function calcAvgPassbkPerCust() As Decimal
+        Return kpi.calcAvgPassbkHolderAge()
+    End Function 'calcAvgPassbkPerCust()
+
+    'calcMostPopFeat()
+    '   - function that calculates the most popular purchase feature
+    Public Function calcMostPopFeat() As String
+        Return kpi.calcMostPopFeat()
+    End Function 'calcMostPopFeat()
+
+    'calcPctPassbkFeatUsed()
+    '   - Percent of passbook features used (used / total)
+    Public Function calcPctPassbkFeatUsed() As Decimal
+        Return kpi.calcPctPassbkFeatUsed()
+    End Function 'calcPctPassbkFeatUsed()
+
+    'calcAvgPassbkHolderAge()
+    '   - Average age of all passbook holders
+    Public Function calcAvgPassbkHolderAge() As Decimal
+        Return kpi.calcAvgPassbkHolderAge()
+    End Function 'calcAvgPassbkHolderAge()
+
+    'calcNumPassbkHolderBdaysInCurrMon()
+    '   - Average age of all passbook holders
+    Public Function calcNumPassbkHolderBdaysInCurrMon() As Integer
+        Return kpi.calcNumPassbkHolderBdaysInCurrMon()
+    End Function 'calcNumPassbkHolderBdaysInCurrMon()
+
 
     '********** Private Non-Shared Behavioral Methods
     '****************************************************************************************
@@ -1003,36 +1050,40 @@ Public Class ThemePark
     Private Function _findCust(ByVal pCustId As String) As Customer
         Dim i As Integer
 
-        Try
-            For i = 0 To _numCusts - 1
-                If _ithCust(i).custId = pCustId Then
-                    Return _ithCust(i)
-                End If
-            Next i
-        Catch ex As Exception
-            MsgBox(mSYS_LOOKUP_ERR_MSG, MsgBoxStyle.Exclamation)
-        End Try
+        If Not IsNothing(pCustId) Then
+            Try
+                For i = 0 To _numCusts - 1
+                    If _ithCust(i).custId = pCustId Then
+                        Return _ithCust(i)
+                    End If
+                Next i
+            Catch ex As Exception
+                MsgBox(mSYS_LOOKUP_ERR_MSG, MsgBoxStyle.Exclamation)
+            End Try
+        End If
 
         Return Nothing
     End Function '_findCust(...)
 
     '****************************************************************************************
-    'findFeat() is used to locate a feature by ID from the feature database.  
+    '_findFeat() is used to locate a feature by ID from the feature database.  
     'It is the workhorse function called by findFeat().
     'Returns a feature reference if found, otherwise Nothing
     '****************************************************************************************
     Private Function _findFeat(ByVal pFeatId As String) As Feature
         Dim i As Integer
 
-        Try
-            For i = 0 To _numFeats - 1
-                If _ithFeat(i).featId = pFeatId Then
-                    Return _ithFeat(i)
-                End If
-            Next i
-        Catch ex As Exception
-            MsgBox(mSYS_LOOKUP_ERR_MSG, MsgBoxStyle.Exclamation)
-        End Try
+        If Not IsNothing(pFeatId) Then
+            Try
+                For i = 0 To _numFeats - 1
+                    If _ithFeat(i).featId = pFeatId Then
+                        Return _ithFeat(i)
+                    End If
+                Next i
+            Catch ex As Exception
+                MsgBox(mSYS_LOOKUP_ERR_MSG, MsgBoxStyle.Exclamation)
+            End Try
+        End If
 
         Return Nothing
     End Function '_findFeat(...)
@@ -1045,15 +1096,17 @@ Public Class ThemePark
     Private Function _findPassbk(ByVal pPassbkId As String) As Passbook
         Dim i As Integer
 
-        Try
-            For i = 0 To _numPassbks - 1
-                If _ithPassbk(i).passbkId = pPassbkId Then
-                    Return _ithPassbk(i)
-                End If
-            Next i
-        Catch ex As Exception
-            MsgBox(mSYS_LOOKUP_ERR_MSG, MsgBoxStyle.Exclamation)
-        End Try
+        If Not IsNothing(pPassbkId) Then
+            Try
+                For i = 0 To _numPassbks - 1
+                    If _ithPassbk(i).passbkId = pPassbkId Then
+                        Return _ithPassbk(i)
+                    End If
+                Next i
+            Catch ex As Exception
+                MsgBox(mSYS_LOOKUP_ERR_MSG, MsgBoxStyle.Exclamation)
+            End Try
+        End If
 
         Return Nothing
     End Function '_findPassbk(...)
@@ -1066,15 +1119,17 @@ Public Class ThemePark
     Private Function _findPassbkFeat(ByVal pPassbkFeatId As String) As PassbookFeature
         Dim i As Integer
 
-        Try
-            For i = 0 To _numPassbkFeats - 1
-                If _ithPassbkFeat(i).id = pPassbkFeatId Then
-                    Return _ithPassbkFeat(i)
-                End If
-            Next i
-        Catch ex As Exception
-            MsgBox(mSYS_LOOKUP_ERR_MSG, MsgBoxStyle.Exclamation)
-        End Try
+        If Not IsNothing(pPassbkFeatId) Then
+            Try
+                For i = 0 To _numPassbkFeats - 1
+                    If _ithPassbkFeat(i).id = pPassbkFeatId Then
+                        Return _ithPassbkFeat(i)
+                    End If
+                Next i
+            Catch ex As Exception
+                MsgBox(mSYS_LOOKUP_ERR_MSG, MsgBoxStyle.Exclamation)
+            End Try
+        End If
 
         Return Nothing
     End Function '_findPassbkFeat(...)
@@ -1087,15 +1142,17 @@ Public Class ThemePark
     Private Function _findUsedFeat(ByVal pUsedFeatId As String) As UsedFeature
         Dim i As Integer
 
-        Try
-            For i = 0 To _numUsedFeats - 1
-                If _ithUsedFeat(i).id = pUsedFeatId Then
-                    Return _ithUsedFeat(i)
-                End If
-            Next i
-        Catch ex As Exception
-            MsgBox(mSYS_LOOKUP_ERR_MSG, MsgBoxStyle.Exclamation)
-        End Try
+        If Not IsNothing(pUsedFeatId) Then
+            Try
+                For i = 0 To _numUsedFeats - 1
+                    If _ithUsedFeat(i).id = pUsedFeatId Then
+                        Return _ithUsedFeat(i)
+                    End If
+                Next i
+            Catch ex As Exception
+                MsgBox(mSYS_LOOKUP_ERR_MSG, MsgBoxStyle.Exclamation)
+            End Try
+        End If
 
         Return Nothing
     End Function '_findUsedFeat(...)
@@ -1413,6 +1470,7 @@ Public Class ThemePark
         RaiseEvent ThemePark_UsedFeat(Me,
                                       New ThemePark_EventArgs_UsedFeat(usedFeat))
     End Sub '_usedFeat(...)
+
 
 
 #End Region 'Behavioral Methods

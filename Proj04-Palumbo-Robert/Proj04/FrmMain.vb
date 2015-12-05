@@ -447,6 +447,74 @@ Public Class FrmMain
         Return age
     End Function '_calcAge(...)
 
+    '_dispKpi()
+    '   - Used to update the GUI with the current Key Performance Indicators
+    Private Sub _dispKpi()
+
+        'Calculate and display avergage $balance of unused feature 
+        Dim avgBal As Decimal = _theThemePark.calcAvgBalUnusedFeat
+
+        If avgBal > 0 Then
+            txtAvgBalUnusedFeatTabDashboardTbcMain.Text = avgBal.ToString("N2")
+        Else
+            txtAvgBalUnusedFeatTabDashboardTbcMain.Text = "N/A"
+        End If
+
+        'Calculate and display total $balance of unused feature 
+        Dim totBalUnused As Decimal = _theThemePark.calcTotBalUnusedFeat
+
+        If totBalUnused > 0 Then
+            txtTotBalUnusedFeatTabDashboardTbcMain.Text = totBalUnused.ToString("N2")
+        Else
+            txtTotBalUnusedFeatTabDashboardTbcMain.Text = "N/A"
+        End If
+
+        'Calculate and display average number of passbooks per customer 
+        Dim avgNumPbPerCust As Decimal = _theThemePark.calcAvgPassbkPerCust
+
+        If avgNumPbPerCust > 0 Then
+            txtAvgNumPassbkPerCustTabDashboardTbcMain.Text = avgNumPbPerCust.ToString("N2")
+        Else
+            txtAvgNumPassbkPerCustTabDashboardTbcMain.Text = "N/A"
+        End If
+
+        'Calculate and display most popular purchase feature 
+        Dim mostPopFeat As String = _theThemePark.calcMostPopFeat
+
+        If Not IsNothing(mostPopFeat) Then
+            txtMostPopFeatTabDashboardTbcMain.Text = mostPopFeat
+        Else
+            txtMostPopFeatTabDashboardTbcMain.Text = "N/A"
+        End If
+
+        'Calculate and display percentage of unused passbook features 
+        Dim featUsedPct As Decimal = _theThemePark.calcPctPassbkFeatUsed
+
+        If featUsedPct > 0 Then
+            txtFeatUsedPctTabDashboardTbcMain.Text = featUsedPct.ToString("N2")
+        Else
+            txtFeatUsedPctTabDashboardTbcMain.Text = "N/A"
+        End If
+
+        'Calculate and display avergage passbook holder age 
+        Dim avgPbhAge As Decimal = _theThemePark.calcAvgPassbkHolderAge
+
+        If avgPbhAge > 0 Then
+            txtAvgPassbkHolderAgeTabDashboardTbcMain.Text = avgPbhAge.ToString("N2")
+        Else
+            txtAvgPassbkHolderAgeTabDashboardTbcMain.Text = "N/A"
+        End If
+
+        'Calculate and display number of passbook holders with birthdays in the current month 
+        Dim currMonBdays As Integer = _theThemePark.calcNumPassbkHolderBdaysInCurrMon
+
+        If currMonBdays > 0 Then
+            txtCurrMonBdaysTabDashboardTbcMain.Text = currMonBdays.ToString("N0")
+        Else
+            txtCurrMonBdaysTabDashboardTbcMain.Text = "N/A"
+        End If
+
+    End Sub '_dispKpi()
 
 #End Region 'Behavioral Methods
 
@@ -1675,14 +1743,17 @@ Public Class FrmMain
     Private Sub _lstCustTabDashboardTbcMain_SelectedIndexChanged(sender As Object, e As EventArgs) _
         Handles lstCustTabDashboardTbcMain.SelectedIndexChanged
 
-        Dim lstVal As String = lstCustTabDashboardTbcMain.SelectedItem.ToString
-        Dim cust As Customer = _theThemePark.findCust(lstVal)
+        'Only process if selected item is valid
+        If lstCustTabDashboardTbcMain.SelectedIndex <> -1 Then
+            Dim lstVal As String = lstCustTabDashboardTbcMain.SelectedItem.ToString
+            Dim cust As Customer = _theThemePark.findCust(lstVal)
 
-        If Not IsNothing(cust) Then
-            txtToStringTabDashboardTbcMain.Text = cust.ToString & vbCrLf
-        Else
-            txtToStringTabDashboardTbcMain.Text = _
-                "No Customer info found for CustId=" & lstVal & vbCrLf
+            If Not IsNothing(cust) Then
+                txtToStringTabDashboardTbcMain.Text = cust.ToString & vbCrLf
+            Else
+                txtToStringTabDashboardTbcMain.Text = _
+                    "No Customer info found for CustId=" & lstVal & vbCrLf
+            End If
         End If
 
         'unselect the other list choices
@@ -1701,15 +1772,18 @@ Public Class FrmMain
     Private Sub _lstFeatTabDashboardTbcMain_SelectedIndexChanged(sender As Object, e As EventArgs) _
         Handles lstFeatTabDashboardTbcMain.SelectedIndexChanged
 
-        Dim lstVal As String = _
-            lstFeatTabDashboardTbcMain.SelectedItem.ToString
-        Dim feat As Feature = _theThemePark.findFeat(lstVal)
+        'Only process if selected item is valid
+        If lstFeatTabDashboardTbcMain.SelectedIndex <> -1 Then
+            Dim lstVal As String = _
+                  lstFeatTabDashboardTbcMain.SelectedItem.ToString
+            Dim feat As Feature = _theThemePark.findFeat(lstVal)
 
-        If Not IsNothing(feat) Then
-            txtToStringTabDashboardTbcMain.Text = feat.ToString & vbCrLf
-        Else
-            txtToStringTabDashboardTbcMain.Text = _
-                "No Feature info found for FeatId=" & lstVal & vbCrLf
+            If Not IsNothing(feat) Then
+                txtToStringTabDashboardTbcMain.Text = feat.ToString & vbCrLf
+            Else
+                txtToStringTabDashboardTbcMain.Text = _
+                    "No Feature info found for FeatId=" & lstVal & vbCrLf
+            End If
         End If
 
         'unselect the other list choices
@@ -1717,7 +1791,6 @@ Public Class FrmMain
         lstPassbkTabDashboardTbcMain.SelectedIndex = -1
         lstPassbkFeatTabDashboardTbcMain.SelectedIndex = -1
         lstUsedFeatTabDashboardTbcMain.SelectedIndex = -1
-
     End Sub '_lstFeatTabDashboardTbcMain_SelectedIndexChanged
 
     '****************************************************************************************
@@ -1729,15 +1802,18 @@ Public Class FrmMain
     Private Sub _lstPassbkTabDashboardTbcMain_SelectedIndexChanged(sender As Object, e As EventArgs) _
         Handles lstPassbkTabDashboardTbcMain.SelectedIndexChanged
 
-        Dim lstVal As String = _
-            lstPassbkTabDashboardTbcMain.SelectedItem.ToString
-        Dim passbk As Passbook = _theThemePark.findPassbk(lstVal)
+        'Only process if selected item is valid
+        If lstPassbkTabDashboardTbcMain.SelectedIndex <> -1 Then
+            Dim lstVal As String = _
+                   lstPassbkTabDashboardTbcMain.SelectedItem.ToString
+            Dim passbk As Passbook = _theThemePark.findPassbk(lstVal)
 
-        If Not IsNothing(passbk) Then
-            txtToStringTabDashboardTbcMain.Text = passbk.ToString & vbCrLf
-        Else
-            txtToStringTabDashboardTbcMain.Text = _
-                "No Passbook info found for FeatId=" & lstVal & vbCrLf
+            If Not IsNothing(passbk) Then
+                txtToStringTabDashboardTbcMain.Text = passbk.ToString & vbCrLf
+            Else
+                txtToStringTabDashboardTbcMain.Text = _
+                    "No Passbook info found for FeatId=" & lstVal & vbCrLf
+            End If
         End If
 
         'unselect the other list choices
@@ -1757,15 +1833,18 @@ Public Class FrmMain
     Private Sub _lstPassbkFeatTabDashboardTbcMain_SelectedIndexChanged(sender As Object, e As EventArgs) _
         Handles lstPassbkFeatTabDashboardTbcMain.SelectedIndexChanged
 
-        Dim lstVal As String = _
-            lstPassbkFeatTabDashboardTbcMain.SelectedItem.ToString
-        Dim passbkFeat As PassbookFeature = _theThemePark.findPassbkFeat(lstVal)
+        'Only process if selected item is valid
+        If lstPassbkFeatTabDashboardTbcMain.SelectedIndex <> -1 Then
+            Dim lstVal As String = _
+                lstPassbkFeatTabDashboardTbcMain.SelectedItem.ToString
+            Dim passbkFeat As PassbookFeature = _theThemePark.findPassbkFeat(lstVal)
 
-        If Not IsNothing(passbkFeat) Then
-            txtToStringTabDashboardTbcMain.Text = passbkFeat.ToString & vbCrLf
-        Else
-            txtToStringTabDashboardTbcMain.Text = _
-                "No Passbook Feature info found for PassbkFeatId=" & lstVal & vbCrLf
+            If Not IsNothing(passbkFeat) Then
+                txtToStringTabDashboardTbcMain.Text = passbkFeat.ToString & vbCrLf
+            Else
+                txtToStringTabDashboardTbcMain.Text = _
+                    "No Passbook Feature info found for PassbkFeatId=" & lstVal & vbCrLf
+            End If
         End If
 
         'unselect the other list choices
@@ -1784,15 +1863,18 @@ Public Class FrmMain
     Private Sub _lstUsedFeatTabDashboardTbcMain_SelectedIndexChanged(sender As Object, e As EventArgs) _
         Handles lstUsedFeatTabDashboardTbcMain.SelectedIndexChanged
 
-        Dim lstVal As String = _
-            lstUsedFeatTabDashboardTbcMain.SelectedItem.ToString
-        Dim usedFeat As UsedFeature = _theThemePark.findUsedFeat(lstVal)
+        'Only process if selected item is valid
+        If lstUsedFeatTabDashboardTbcMain.SelectedIndex <> -1 Then
+            Dim lstVal As String = _
+                lstUsedFeatTabDashboardTbcMain.SelectedItem.ToString
+            Dim usedFeat As UsedFeature = _theThemePark.findUsedFeat(lstVal)
 
-        If Not IsNothing(usedFeat) Then
-            txtToStringTabDashboardTbcMain.Text = usedFeat.ToString & vbCrLf
-        Else
-            txtToStringTabDashboardTbcMain.Text = _
-                "No Used Feature info found for PassbkFeatId=" & lstVal & vbCrLf
+            If Not IsNothing(usedFeat) Then
+                txtToStringTabDashboardTbcMain.Text = usedFeat.ToString & vbCrLf
+            Else
+                txtToStringTabDashboardTbcMain.Text = _
+                    "No Used Feature info found for PassbkFeatId=" & lstVal & vbCrLf
+            End If
         End If
 
         'unselect the other list choices
@@ -2534,24 +2616,25 @@ Public Class FrmMain
     '****************************************************************************************
     '_updtKeyPerfInd() handles updating the key performance indicators.
     '****************************************************************************************
-    Private Sub _updtKeyPerfInd()
-        Static Dim keyPrfInd As ThemePark_KeyPerfInd = New ThemePark_KeyPerfInd
+    'XRLP - DELETE THIS
+    'Private Sub _updtKeyPerfInd()
+    '    Static Dim keyPrfInd As ThemePark_KeyPerfInd = New ThemePark_KeyPerfInd
 
-        txtAvgBalUnusedFeatTabDashboardTbcMain.Text = _
-            keyPrfInd.calcAvgBalUnusedFeat().ToString("C")
-        txtTotBalUnusedFeatTabDashboardTbcMain.Text = _
-            keyPrfInd.calcTotBalUnusedFeat.ToString("C")
-        txtAvgNumPassbkPerCustTabDashboardTbcMain.Text = _
-            keyPrfInd.calcAvgPassbkPerCust.ToString("N2")
-        txtMostPopFeatTabDashboardTbcMain.Text = _
-            keyPrfInd.calcMostPopFeat
-        txtFeatUsedPctTabDashboardTbcMain.Text = _
-            keyPrfInd.calcPctPassbkFeatUsed.ToString("N2")
-        txtAvgPassbkHolderAgeTabDashboardTbcMain.Text = _
-            keyPrfInd.calcAvgPassbkHolderAge.ToString("N2")
-        txtCurrMonBdaysTabDashboardTbcMain.Text = _
-            keyPrfInd.calcNumPassbkHolderBdaysInCurrMon.ToString
-    End Sub '_updtKeyPerfInd()
+    '    txtAvgBalUnusedFeatTabDashboardTbcMain.Text = _
+    '        keyPrfInd.calcAvgBalUnusedFeat().ToString("C")
+    '    txtTotBalUnusedFeatTabDashboardTbcMain.Text = _
+    '        keyPrfInd.calcTotBalUnusedFeat.ToString("C")
+    '    txtAvgNumPassbkPerCustTabDashboardTbcMain.Text = _
+    '        keyPrfInd.calcAvgPassbkPerCust.ToString("N2")
+    '    txtMostPopFeatTabDashboardTbcMain.Text = _
+    '        keyPrfInd.calcMostPopFeat
+    '    txtFeatUsedPctTabDashboardTbcMain.Text = _
+    '        keyPrfInd.calcPctPassbkFeatUsed.ToString("N2")
+    '    txtAvgPassbkHolderAgeTabDashboardTbcMain.Text = _
+    '        keyPrfInd.calcAvgPassbkHolderAge.ToString("N2")
+    '    txtCurrMonBdaysTabDashboardTbcMain.Text = _
+    '        keyPrfInd.calcNumPassbkHolderBdaysInCurrMon.ToString
+    'End Sub '_updtKeyPerfInd()
 
 #End Region 'Event Procedures
 
@@ -2672,5 +2755,10 @@ Public Class FrmMain
     End Sub
 
 #End Region 'Palumbo-Debug
+
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+        Console.WriteLine("Calculate the KPIs")
+        _dispKpi()
+    End Sub
 
 End Class 'FrmMain

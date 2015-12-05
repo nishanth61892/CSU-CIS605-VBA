@@ -62,6 +62,8 @@ Public Class ThemePark_KeyPerfInd
     'Number of passbook holders with a bday in current month
     Private mNumPassbkHolderBdaysInCurrMon As Integer
 
+    'Themepark reference
+    Private themePark As ThemePark
 #End Region 'Attributes
 
 #Region "Constructors"
@@ -75,6 +77,9 @@ Public Class ThemePark_KeyPerfInd
 
     'Special constructor(s) - typically constructors have parameters 
     '                         that are used to initialize attributes
+    Public Sub New(ByVal pThemePark As ThemePark)
+        themePark = pThemePark
+    End Sub
 
     '********** Copy constructor(s)
     '             - one parameter, an object of the same class
@@ -203,7 +208,19 @@ Public Class ThemePark_KeyPerfInd
     '   - workhorse function that calculates the avg age of all passbook holders
     '   on behalf of calcAvgPassbkHolderAge()
     Public Function _calcAvgPassbkHolderAge() As Decimal
-        Dim val As Decimal = 27.23D
+        Dim val As Decimal = 0D
+        Dim age As Integer = 0
+
+        'If there are no passbook holders there is nothing to calculate
+        If themePark.numPassbks > 0 Then
+            For Each passbk As Passbook In themePark.iteratePassbk
+                age += _kpiAgeCalc(passbk.visDob)
+            Next passbk
+
+            'Now calculate and return the averge age
+            val = CDec(age / themePark.numPassbks)
+        End If
+
         Return val
     End Function '_calcAvgPassbkHolderAge()
 
@@ -211,9 +228,33 @@ Public Class ThemePark_KeyPerfInd
     '   - workhorse function that calculates the number of passbook holders that 
     '   have a birthday in the current month on behalf of calcNumPassbkHolderBdaysInCurrMon()
     Public Function _calcNumPassbkHolderBdaysInCurrMon() As Integer
-        Dim val As Integer = 11
+        Dim val As Integer = 0
+
+        For Each passbk As Passbook In themePark.iteratePassbk
+            If passbk.visDob.Month = Now.Month Then
+                val += 1
+            End If
+        Next passbk
+
         Return val
     End Function '_calcNumPassbkHolderBdaysInCurrMon()
+
+    Private Function _kpiAgeCalc(ByVal pVisDoB As Date) As Integer
+        Dim age As Integer = 0
+        Dim dateNow As Date = Now
+
+        'Need to compensate for DoB in the current year 
+        Dim dobYear As Integer = pVisDoB.Year
+        Dim nowYear As Integer = Now.Year
+
+        age = nowYear - dobYear
+        If pVisDoB.AddYears(age) > dateNow Then
+            age -= 1
+        End If
+
+        Return age
+    End Function '_kpiAgeCalc(...)
+
 
 
     '****************************************************************************************
