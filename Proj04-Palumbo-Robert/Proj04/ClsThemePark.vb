@@ -218,6 +218,18 @@ Public Class ThemePark
         End Set
     End Property
 
+    Public ReadOnly Property sysObjCreateErr() As String
+        Get
+            Return _sysObjCreateErr
+        End Get
+    End Property
+
+    Public ReadOnly Property sysObjLookupErr() As String
+        Get
+            Return _sysObjLookupErr
+        End Get
+    End Property
+
     Public Property numCusts() As Integer
         Get
             Return _numCusts
@@ -379,6 +391,19 @@ Public Class ThemePark
             mThemeParkName = pValue
         End Set
     End Property
+
+    Public ReadOnly Property _sysObjCreateErr() As String
+        Get
+            Return mSYS_OBJ_CREATE_ERR_MSG
+        End Get
+    End Property
+
+    Public ReadOnly Property _sysObjLookupErr() As String
+        Get
+            Return mSYS_LOOKUP_ERR_MSG
+        End Get
+    End Property
+
 
     Private Property _numCusts() As Integer
         Get
@@ -968,7 +993,7 @@ Public Class ThemePark
     'calcAvgPassbkPerCust()
     '   - function that calculates the total unused feature balance
     Public Function calcAvgPassbkPerCust() As Decimal
-        Return kpi.calcAvgPassbkHolderAge()
+        Return kpi.calcAvgPassbkPerCust()
     End Function 'calcAvgPassbkPerCust()
 
     'calcMostPopFeat()
@@ -1297,8 +1322,16 @@ Public Class ThemePark
                               ByVal pVisIsChild As Boolean
                               )
 
+        'Because data can be input into the system in several ways we
+        'have to check that the passbook feature specified is already
+        'in the system.  If so that feature has to be used
+        Dim owner As Customer = _findCust(pOwner.custId)
+        If IsNothing(owner) Then
+            owner = pOwner
+        End If
+
         Dim passbook As Passbook = New Passbook(pPassbkId, _
-                                                pOwner, _
+                                                owner, _
                                                 pDatePurch, _
                                                 pVisName, _
                                                 pVisDob, _
@@ -1348,10 +1381,22 @@ Public Class ThemePark
                                  ByVal pPassbk As Passbook, _
                                  ByVal pQtyPurch As Decimal
                                  )
+        'Because data can be input into the system in several ways we
+        'have to check that the passbook feature specified is already
+        'in the system.  If so that feature has to be used
+        Dim feat As Feature = _findFeat(pFeature.featId)
+        If IsNothing(feat) Then
+            feat = pFeature
+        End If
+
+        Dim passbk As Passbook = _findPassbk(pPassbk.passbkId)
+        If IsNothing(passbk) Then
+            passbk = pPassbk
+        End If
 
         Dim passbkFeat As PassbookFeature = New PassbookFeature(pPassbkFeatId, _
-                                                                pFeature, _
-                                                                pPassbk, _
+                                                                feat, _
+                                                                passbk, _
                                                                 pQtyPurch
                                                                 )
         'Make sure we actually have passbook feature object.  There is the slight chance
@@ -1406,13 +1451,13 @@ Public Class ThemePark
 
         'Update the quantity purchased
         If pUpdtQty >= passbkFeat.qtyRemain Then
-            passbkFeat.qtyPurch = passbkFeat.qtyRemain + pUpdtQty
+            passbkFeat.qtyPurch += (pUpdtQty - passbkFeat.qtyRemain)
         Else
-            passbkFeat.qtyPurch = pUpdtQty
+            passbkFeat.qtyPurch -= (passbkFeat.qtyRemain - pUpdtQty)
         End If
 
         'Update the remaining quantity
-        passbkFeat.qtyRemain = passbkFeat.qtyPurch
+        passbkFeat.qtyRemain = pUpdtQty
 
         'Raise and event to let the listeners of this event it happened
         RaiseEvent ThemePark_UpdtPassbkFeat(Me,
@@ -1427,14 +1472,22 @@ Public Class ThemePark
     'of the associated processed based on this event
     '****************************************************************************************
     Private Sub _usedFeat(ByVal pId As String, _
-                          ByVal pPassbkFeatId As PassbookFeature, _
+                          ByVal pPassbkFeat As PassbookFeature, _
                           ByVal pDateUsed As Date, _
                           ByVal pQtyUsed As Decimal, _
                           ByVal pLoc As String
                           )
 
+        'Because data can be input into the system in several ways we
+        'have to check that the passbook feature specified is already
+        'in the system.  If so that feature has to be used
+        Dim passbkFeat As PassbookFeature = _findPassbkFeat(pPassbkFeat.id)
+        If IsNothing(passbkFeat) Then
+            passbkFeat = pPassbkFeat
+        End If
+
         Dim usedFeat As UsedFeature = New UsedFeature(pId, _
-                                                      pPassbkFeatId, _
+                                                      passbkFeat, _
                                                       pQtyUsed, _
                                                       pLoc, _
                                                       pDateUsed
@@ -1445,6 +1498,14 @@ Public Class ThemePark
         If usedFeat Is Nothing Then
             MsgBox(mSYS_OBJ_CREATE_ERR_MSG, MsgBoxStyle.Critical)
             Exit Sub
+        End If
+
+        'update the passbook feature reference
+        passbkFeat.qtyRemain -= pQtyUsed
+
+        'Sanity check
+        If passbkFeat.qtyRemain < 0 Then
+            passbkFeat.qtyRemain = 0
         End If
 
         'May need to dynamically resize internal passbook feature storage as needed

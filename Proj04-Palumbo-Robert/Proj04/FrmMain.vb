@@ -48,6 +48,7 @@ Public Class FrmMain
     Private Const mSYS_ERR_PASSBKID_EXISTS_MSG As String = "Error: Passbook ID already exists, ID="
     Private Const mSYS_ERR_PASSBKOREF_INVALID_MSG As String = "Internal System Error: Passbook Object Reference is Invalid"
     Private Const mSYS_ERR_PASSBKFEATID_EXISTS_MSG As String = "Error: Passbook Feature ID already exists, ID="
+    Private Const mSYS_ERR_USEDFEATID_EXISTS_MSG As String = "Error: Used Feature ID already exists, ID="
 
     '********** Module-level constants
     'Theme Park Name
@@ -332,10 +333,10 @@ Public Class FrmMain
         _writeTransLog("[SYSTEM-TEST: USE PASSBOOK FEATURE]")
         _writeTransLog(Nothing)
 
-        _theThemePark.usedFeat("UF01", pbf01, #10/20/2015#, 1, "Epcot Center")
-        _theThemePark.usedFeat("UF02", pbf02, #10/20/2015#, 1, "West Parking")
+        '  _theThemePark.usedFeat("UF01", pbf01, #10/20/2015#, 1, "Epcot Center")
+        '     _theThemePark.usedFeat("UF02", pbf02, #10/20/2015#, 1, "West Parking")
         _theThemePark.usedFeat("UF03", pbf03, #10/20/2015#, 2, "France")
-        _theThemePark.usedFeat("UF04", pbf03, #10/20/2015#, 1, "American Pavillion")
+        '     _theThemePark.usedFeat("UF04", pbf03, #10/20/2015#, 1, "American Pavillion")
 
         _writeTransLog(Nothing)
         _writeTransLog("<CURRENT-PARK-STATUS>: " & _theThemePark.ToString)
@@ -407,7 +408,11 @@ Public Class FrmMain
         _writeTransLog("<CREATED>: " & _theThemePark.ToString())
 
         'Run the system test to populate with hard coded data 
-        _runSystemTest(False)
+        '_runSystemTest(False)
+
+
+        'Update the KPI for the first time just to populate the fields with N/A
+        _dispKpi()
     End Sub '_initializeBusinessLogic()
 
     '****************************************************************************************
@@ -455,7 +460,7 @@ Public Class FrmMain
         Dim avgBal As Decimal = _theThemePark.calcAvgBalUnusedFeat
 
         If avgBal > 0 Then
-            txtAvgBalUnusedFeatTabDashboardTbcMain.Text = avgBal.ToString("N2")
+            txtAvgBalUnusedFeatTabDashboardTbcMain.Text = avgBal.ToString("C")
         Else
             txtAvgBalUnusedFeatTabDashboardTbcMain.Text = "N/A"
         End If
@@ -464,7 +469,7 @@ Public Class FrmMain
         Dim totBalUnused As Decimal = _theThemePark.calcTotBalUnusedFeat
 
         If totBalUnused > 0 Then
-            txtTotBalUnusedFeatTabDashboardTbcMain.Text = totBalUnused.ToString("N2")
+            txtTotBalUnusedFeatTabDashboardTbcMain.Text = totBalUnused.ToString("C")
         Else
             txtTotBalUnusedFeatTabDashboardTbcMain.Text = "N/A"
         End If
@@ -476,15 +481,6 @@ Public Class FrmMain
             txtAvgNumPassbkPerCustTabDashboardTbcMain.Text = avgNumPbPerCust.ToString("N2")
         Else
             txtAvgNumPassbkPerCustTabDashboardTbcMain.Text = "N/A"
-        End If
-
-        'Calculate and display most popular purchase feature 
-        Dim mostPopFeat As String = _theThemePark.calcMostPopFeat
-
-        If Not IsNothing(mostPopFeat) Then
-            txtMostPopFeatTabDashboardTbcMain.Text = mostPopFeat
-        Else
-            txtMostPopFeatTabDashboardTbcMain.Text = "N/A"
         End If
 
         'Calculate and display percentage of unused passbook features 
@@ -514,6 +510,14 @@ Public Class FrmMain
             txtCurrMonBdaysTabDashboardTbcMain.Text = "N/A"
         End If
 
+        'Calculate and display most popular purchase feature 
+        Dim mostPopFeat As String = _theThemePark.calcMostPopFeat
+
+        If Not IsNothing(mostPopFeat) Then
+            txtMostPopFeatTabDashboardTbcMain.Text = mostPopFeat
+        Else
+            txtMostPopFeatTabDashboardTbcMain.Text = "N/A"
+        End If
     End Sub '_dispKpi()
 
 #End Region 'Behavioral Methods
@@ -815,23 +819,24 @@ Public Class FrmMain
         Dim visDobValue As Date
 
         'Validate all the fields
-        If custList.Items.Count = 0 Then
-            MsgBox("ERROR: There are no Customers defined, please add a Customer", MsgBoxStyle.OkOnly)
+        If _theThemePark.numCusts = 0 Then
+            MsgBox("ERROR: There are no Customers defined" _
+                   & vbCrLf & "Please add a Customer", MsgBoxStyle.OkOnly)
             txtCustIdGrpAddCustTabCustTbcMainFrmMain.Focus()
             tbcMainFrmMain.SelectTab(mTBC_MAIN_TAB_CUSTOMER)
             Exit Sub
         End If
 
         If String.IsNullOrEmpty(custList.Text) Then
-            MsgBox("ERROR: Please seleect a Customer Id from the list", MsgBoxStyle.OkOnly)
+            MsgBox("ERROR: Please seleect a Customer ID from the list", MsgBoxStyle.OkOnly)
             cboCustIdGrpCustInfoGrpAddPassbkTabPassbkTbcMainFrmMain.Focus()
             Exit Sub
         End If
 
-        Dim custId As String = custList.SelectedItem.ToString
-        Dim cust As Customer = _theThemePark.findCust(custId)
+        Dim cust As Customer = _theThemePark.findCust(custList.SelectedItem.ToString)
         If cust Is Nothing Then
-            Dim s As String = "ERROR: Customer '" & custId & "' is invalid. Please select a different Customer ID"
+            Dim s As String = "ERROR: Customer '" & custList.SelectedItem.ToString & "' is invalid" _
+                                  & vbCrLf & "Please select a different ID"
             MsgBox(s, MsgBoxStyle.OkOnly)
             txtCustIdGrpAddCustTabCustTbcMainFrmMain.Focus()
             Exit Sub
@@ -870,7 +875,8 @@ Public Class FrmMain
         Dim datePurch As Date = DateTime.Now
 
         If DateTime.Compare(visDobValue, datePurch) > 0 Then
-            MsgBox("ERROR: Visitor DOB is in the future, please re-enter date", MsgBoxStyle.OkOnly)
+            MsgBox("ERROR: Visitor DOB is in the future" _
+                   & vbCrLf & "Please re-enter date", MsgBoxStyle.OkOnly)
             txtVisDobGrpAddPassbkTabPassbkTbcMainFrmMain.Focus()
             txtVisDobGrpAddPassbkTabPassbkTbcMainFrmMain.Text = Now.ToString
             Exit Sub
@@ -951,13 +957,13 @@ Public Class FrmMain
     End Sub '_btnResetGrpAddPassbkTabPassbkTbcMainFrmMain_Click
 
     '****************************************************************************************
-    '_btnSubmitTabAddFeatTbcPassbkFeatMainTbcMain_Click() is the event procedure that gets 
-    'called when the user clicks on the Submit button from the Add Passbook Feature tab.  
+    '_btnSubmitTabPurchFeatTbcPassbkFeatMainTbcMain_Click() is the event procedure that gets 
+    'called when the user clicks on the Submit button from the Purchase Passbook Feature tab.  
     'It validates and then submits the data to add a purchased feature to a customer passbook.
     '****************************************************************************************
-    Private Sub _btnSubmitTabAddFeatTbcPassbkFeatMainTbcMain_Click(sender As Object, _
-                                                                   e As EventArgs) _
-        Handles btnSubmitTabAddFeatTbcPassbkFeatMainTbcMain.Click
+    Private Sub _btnSubmitTabPurchFeatTbcPassbkFeatMainTbcMain_Click(sender As Object, _
+                                                                     e As EventArgs) _
+        Handles btnSubmitTabPurchFeatTbcPassbkFeatMainTbcMain.Click
 
         'Combo list accessors
         Dim passbkList As ComboBox = cboPassbkIdTabAddFeatTbcPassbkFeatMainTbcMain
@@ -970,15 +976,16 @@ Public Class FrmMain
         Dim decQtyRemain As Decimal = 0D
 
         'Validate all the fields
-        If passbkList.Items.Count = 0 Then
-            MsgBox("ERROR: There are no Passbooks defined, please add a Passbook", MsgBoxStyle.OkOnly)
+        If _theThemePark.numPassbks = 0 Then
+            MsgBox("ERROR: There are no Passbooks defined" _
+                   & vbCrLf & "Please add a Passbook", MsgBoxStyle.OkOnly)
             cboCustIdGrpCustInfoGrpAddPassbkTabPassbkTbcMainFrmMain.Focus()
             tbcMainFrmMain.SelectTab(mTBC_MAIN_TAB_PASSBK)
             Exit Sub
         End If
 
         If String.IsNullOrEmpty(passbkId) Then
-            MsgBox("ERROR: Please select a Passbook Id from the list", MsgBoxStyle.OkOnly)
+            MsgBox("ERROR: Please select a Passbook ID from the list", MsgBoxStyle.OkOnly)
             cboPassbkIdTabAddFeatTbcPassbkFeatMainTbcMain.Focus()
             Exit Sub
         End If
@@ -986,21 +993,23 @@ Public Class FrmMain
         'Make sure passbook reference is valid
         Dim passbk As Passbook = _theThemePark.findPassbk(passbkId)
         If passbk Is Nothing Then
-            Dim s As String = "ERROR: Passbook '" & passbkId & "' is invalid. Please select a different Passbook ID"
+            Dim s As String = "ERROR: Passbook '" & passbkId & "' is invalid" _
+                              & vbCrLf & "Please select a different ID"
             MsgBox(s, MsgBoxStyle.OkOnly)
             cboPassbkIdTabAddFeatTbcPassbkFeatMainTbcMain.Focus()
             Exit Sub
         End If
 
-        If featList.Items.Count = 0 Then
-            MsgBox("ERROR: There are no Features defined, please add a Feature", MsgBoxStyle.OkOnly)
+        If _theThemePark.numFeats = 0 Then
+            MsgBox("ERROR: There are no Features defined" _
+                   & vbCrLf & "Please add a Feature", MsgBoxStyle.OkOnly)
             txtFeatIdAddFeatTabFeatTbcMainFrmMain.Focus()
             tbcMainFrmMain.SelectTab(mTBC_MAIN_TAB_FEATURE)
             Exit Sub
         End If
 
         If String.IsNullOrEmpty(featId) Then
-            MsgBox("ERROR: Please select a Feature Id from the list", MsgBoxStyle.OkOnly)
+            MsgBox("ERROR: Please select a Feature ID from the list", MsgBoxStyle.OkOnly)
             cboFeatIdTabAddFeatTbcPassbkFeatMainTbcMain.Focus()
             Exit Sub
         End If
@@ -1008,14 +1017,15 @@ Public Class FrmMain
         'Make sure the feature reference is valid
         Dim feat As Feature = _theThemePark.findFeat(featId)
         If feat Is Nothing Then
-            Dim s As String = "ERROR: Feature '" & featId & "' is invalid. Please select a different Feature ID"
+            Dim s As String = "ERROR: Feature '" & featId & "' is invalid" _
+                              & vbCrLf & "Please select a different ID"
             MsgBox(s, MsgBoxStyle.OkOnly)
             cboFeatIdTabAddFeatTbcPassbkFeatMainTbcMain.Focus()
             Exit Sub
         End If
 
         If String.IsNullOrEmpty(passbkFeatId) Then
-            MsgBox("ERROR: Please enter unique Passbook Feature Id (ex: PBF0001)", MsgBoxStyle.OkOnly)
+            MsgBox("ERROR: Please enter unique Passbook Feature ID (ex: PBF001)", MsgBoxStyle.OkOnly)
             txtPassBkFeatIdTabAddFeatTbcPassbkFeatMainTbcMain.SelectAll()
             txtPassBkFeatIdTabAddFeatTbcPassbkFeatMainTbcMain.Focus()
             Exit Sub
@@ -1078,15 +1088,15 @@ Public Class FrmMain
             End Try
 
             'Reset the fields and focus to allow for another feature to be added
-            _resetPassbkAddFeatInput()
+            _resetPassbkPurchFeatInput()
         End If
-    End Sub '_btnSubmitTabAddFeatTbcPassbkFeatMainTbcMain_Click(...)
+    End Sub '_btnSubmitTabPurchFeatTbcPassbkFeatMainTbcMain_Click(...)
 
     '****************************************************************************************
-    '_resetPassbkFeatAddInput() is used to reset all the feature input fields to allow the 
+    '_resetPassbkFeatPurchInput() is used to reset all the feature input fields to allow the 
     'user to start over with input.
     '****************************************************************************************
-    Private Sub _resetPassbkAddFeatInput()
+    Private Sub _resetPassbkPurchFeatInput()
         'Reset the fields and focus to allow for another feature to be added
         cboPassbkIdTabAddFeatTbcPassbkFeatMainTbcMain.SelectedIndex = -1
         cboFeatIdTabAddFeatTbcPassbkFeatMainTbcMain.SelectedIndex = -1
@@ -1105,20 +1115,20 @@ Public Class FrmMain
         mUnitPrice = 0
 
         cboPassbkIdTabAddFeatTbcPassbkFeatMainTbcMain.Focus()
-    End Sub '_resetPassbkAddInput()
+    End Sub '_resetPassbkPurchInput()
 
     '****************************************************************************************
     '_btnResetTabAddFeatTbcPassbkFeatMainTbcMain_Click() is the event procedure that gets 
     'called when the user clicks on the Reset button from the 'Passbook Features | Add' tab. 
     'It clears all input fields to allow the user to reenter the data from scratch.
     '****************************************************************************************
-    Private Sub _btnResetTabAddFeatTbcPassbkFeatMainTbcMain_Click(sender As Object, _
-                                                                  e As EventArgs) _
-        Handles btnResetTabAddFeatTbcPassbkFeatMainTbcMain.Click
+    Private Sub _btnResetTabPurchFeatTbcPassbkFeatMainTbcMain_Click(sender As Object, _
+                                                                    e As EventArgs) _
+        Handles btnResetTabPurchFeatTbcPassbkFeatMainTbcMain.Click
 
         'Reset the fields and focus to allow for another passbook featurd addition
-        _resetPassbkAddFeatInput()
-    End Sub '_btnResetTabAddFeatTbcPassbkFeatMainTbcMain_Click(...)
+        _resetPassbkPurchFeatInput()
+    End Sub '_btnResetTabPurchFeatTbcPassbkFeatMainTbcMain_Click(...)
 
     '****************************************************************************************
     '_btnSubmitTabUpdtFeatTbcPassbkFeatMainTbcMain_Click() is the event procedure that gets 
@@ -1135,8 +1145,9 @@ Public Class FrmMain
         Dim decTotUpdtQty As Decimal = 0D
 
         'Validate all the fields
-        If cboFeatIdTabUpdtFeatTbcPassbkFeatMainTbcMain.Items.Count = 0 Then
-            MsgBox("ERROR: There are no Passbook Features defined, please add a Passbook Feature", MsgBoxStyle.OkOnly)
+        If _theThemePark.numPassbkFeats = 0 Then
+            MsgBox("ERROR: There are no Passbook Features defined" _
+                   & vbCrLf & "Please add a Passbook Feature", MsgBoxStyle.OkOnly)
             cboPassbkIdTabAddFeatTbcPassbkFeatMainTbcMain.Focus()
             tbcMainFrmMain.SelectTab(mTBC_MAIN_TAB_PASSBKFEAT)
             tbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.SelectTab(mTBC_PASSBKFEAT_TAB_ADD)
@@ -1153,7 +1164,15 @@ Public Class FrmMain
         Dim passbkFeat As PassbookFeature = _theThemePark.findPassbkFeat(featId)
 
         If IsNothing(passbkFeat) Then
-            Dim s As String = "ERROR: Passbook Feature Id'" & featId & "' is invalid. Please select a different ID"
+            Dim s As String = "ERROR: Passbook Feature Id'" & featId & "' is invalid" _
+                               & vbCrLf & "Please select a different ID"
+            MsgBox(s, MsgBoxStyle.OkOnly)
+            _resetPassbkUpdtFeatInput()
+            Exit Sub
+        End If
+
+        If IsNothing(passbkFeat.passbk) Then
+            Dim s As String = mSYS_ERR_PASSBKOREF_INVALID_MSG
             MsgBox(s, MsgBoxStyle.OkOnly)
             _resetPassbkUpdtFeatInput()
             Exit Sub
@@ -1171,27 +1190,30 @@ Public Class FrmMain
         Dim refund As Boolean = False
         Dim qtyReturned As Decimal
         Dim qtyAdded As Decimal
+        Dim qtyPurch As Decimal
+
+        'The price to use is based on DOB compared with the current date
+        Dim visAge As Integer = _calcAge(passbkFeat.passbk.visDob)
+        Dim visIsChild As Boolean = visAge < mADULT_MIN_AGE
 
         'Calculate total price - based on unit price by age 
-        If passbkFeat.passbk.visIsChild = True Then
+        If visIsChild = True Then
             unitPrice = passbkFeat.feature.childPrice
         Else
             unitPrice = passbkFeat.feature.adultPrice
         End If
 
+        'Calculate the display values based on the update quantity entered
         If decTotUpdtQty >= passbkFeat.qtyRemain Then
-            qtyAdded = (passbkFeat.qtyRemain - decTotUpdtQty)
-            passbkFeat.qtyPurch = passbkFeat.qtyRemain + decTotUpdtQty
+            qtyAdded = decTotUpdtQty - passbkFeat.qtyRemain
+            qtyPurch = passbkFeat.qtyPurch + qtyAdded
             totQtyPrice = unitPrice * qtyAdded
         Else
             qtyReturned = (passbkFeat.qtyRemain - decTotUpdtQty)
+            qtyPurch = passbkFeat.qtyPurch - qtyReturned
             totQtyPrice = unitPrice * qtyReturned
-            passbkFeat.qtyPurch = decTotUpdtQty
             refund = True
         End If
-
-        'Quantity remaining gets updated based on the new update
-        passbkFeat.qtyRemain = passbkFeat.qtyPurch
 
         'Verify the purchase before committing
         Dim choice As MsgBoxResult = MsgBoxResult.Ok
@@ -1201,10 +1223,10 @@ Public Class FrmMain
             If Not refund Then
                 choice = MsgBox("To update the following Passbook Feature Click OK, otherwise Cancel" & vbCrLf & vbCrLf _
                                 & "--> Passbook-FeatureId=" & featId & vbCrLf _
-                                & "--> New-Purchased-Added=" & qtyAdded.ToString("N0") & vbCrLf _
+                                & "--> New-Quantity-Added=" & qtyAdded.ToString("N0") & vbCrLf _
                                 & "--> Unit-Price=" & unitPrice.ToString("C") & vbCrLf _
                                 & "--> Total-Cost=" & totQtyPrice.ToString("C") & vbCrLf _
-                                & "--> New-Quantity-Remaining=" & passbkFeat.qtyRemain.ToString("N0") & vbCrLf,
+                                & "--> New-Quantity-Remaining=" & decTotUpdtQty.ToString("N0") & vbCrLf,
                                 MsgBoxStyle.OkCancel
                                 )
             Else
@@ -1213,7 +1235,7 @@ Public Class FrmMain
                                 & "--> Quantity-Returned=" & qtyReturned.ToString("N0") & vbCrLf _
                                 & "--> Unit-Price=" & unitPrice.ToString("C") & vbCrLf _
                                 & "--> Refund-Amount-Due=" & totQtyPrice.ToString("C") & vbCrLf _
-                                & "--> New-Quantity-Remaining=" & passbkFeat.qtyRemain.ToString("N0") & vbCrLf,
+                                & "--> New-Quantity-Remaining=" & decTotUpdtQty.ToString("N0") & vbCrLf,
                                 MsgBoxStyle.OkCancel
                                 )
             End If
@@ -1244,7 +1266,6 @@ Public Class FrmMain
         txtFeatToStringTabUpdtFeatTbcPassbkFeatMainTbcMain.Text = ""
         txtPrevUsedToStringTabUpdtFeatTbcPassbkFeatMainTbcMain.Text = ""
         txtUnitPriceTabUpdtFeatTbcPassbkFeatMainTbcMain.Text = ""
-        txtTotQtyPurchTabUpdtFeatTbcPassbkFeatMainTbcMain.Text = "0"
         txtTotUpdtQtyTabUpdtFeatTbcPassbkFeatMainTbcMain.Text = "0"
         txtTotQtyRemTabUpdtFeatTbcPassbkFeatMainTbcMain.Text = "0"
 
@@ -1265,78 +1286,6 @@ Public Class FrmMain
     End Sub '_btnResetTabUpdtFeatTbcPassbkFeatMainTbcMain(...)
 
     '****************************************************************************************
-    '_validatePostData() is used to validate the data collected when a Post is being 
-    'applied to a passbook feature.
-    '****************************************************************************************
-    Private Function _validatePostData(ByVal postid As String,
-                                       ByVal featId As String,
-                                       ByVal qtyUsed As String,
-                                       ByVal loc As String) As Boolean
-        Dim passbkFeatIdList As ComboBox = cboFeatIdTabPostFeatTbcPassbkFeatMainTbcMain
-        Dim decQtyUsed As Decimal
-        Dim decQtyRemain As Decimal = 0D
-
-        'Validate all the fields
-        If passbkFeatIdList.Items.Count = 0 Then
-            MsgBox("ERROR: There are no Passbook Features defined, please add a Passbook Feature", MsgBoxStyle.OkOnly)
-            cboPassbkIdTabAddFeatTbcPassbkFeatMainTbcMain.Focus()
-            tbcMainFrmMain.SelectTab(mTBC_MAIN_TAB_PASSBKFEAT)
-            tbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.SelectTab(mTBC_PASSBKFEAT_TAB_ADD)
-            Return False
-        End If
-
-        If String.IsNullOrEmpty(featId) Then
-            MsgBox("ERROR: Please select a Passbook Feature Id from the list", MsgBoxStyle.OkOnly)
-            cboFeatIdTabPostFeatTbcPassbkFeatMainTbcMain.Focus()
-            Return False
-        End If
-
-        'Make sure passbook feature reference is valid
-        Dim passbkFeat As PassbookFeature = _theThemePark.findPassbkFeat(featId)
-        If IsNothing(passbkFeat) Then
-            Dim s As String = "ERROR: Passbook Feature Id'" & featId & "' is invalid. Please select a different ID"
-            MsgBox(s, MsgBoxStyle.OkOnly)
-            _resetPassbkUsedFeatInput()
-            Return False
-        End If
-
-        'Can't post to an acct that has no quantity remaining, the feature was totally used
-        If passbkFeat.qtyRemain = 0 Then
-            Dim s As String = "ERROR: This Feature has been completedly used. Please select a different ID"
-            MsgBox(s, MsgBoxStyle.OkOnly)
-            passbkFeatIdList.SelectedIndex = -1
-            Return False
-        End If
-
-        If Not Decimal.TryParse(qtyUsed, decQtyUsed) Or decQtyUsed <= 0 Then
-            MsgBox("ERROR: Please enter a numeric Quantity >= 1 (ex: 3)", MsgBoxStyle.OkOnly)
-            txtQtyUsedTabPostFeatTbcPassbkFeatMainTbcMain.SelectAll()
-            txtQtyUsedTabPostFeatTbcPassbkFeatMainTbcMain.Focus()
-            Return False
-        End If
-
-        If decQtyUsed > passbkFeat.qtyRemain Then
-            MsgBox("ERROR: Quantity Used is > Quantity Remaining. Please enter a value <= " _
-                   & passbkFeat.qtyRemain.ToString("N0"), MsgBoxStyle.OkOnly)
-            txtQtyUsedTabPostFeatTbcPassbkFeatMainTbcMain.SelectAll()
-            txtQtyUsedTabPostFeatTbcPassbkFeatMainTbcMain.Focus()
-            Return False
-        End If
-
-        If String.IsNullOrEmpty(loc) Then
-            MsgBox("ERROR: Please specify the location where feature was used", MsgBoxStyle.OkOnly)
-            txtLocTabPostFeatTbcPassbkFeatMainTbcMain.Focus()
-            txtLocTabPostFeatTbcPassbkFeatMainTbcMain.Text = ""
-            Return False
-        End If
-
-        'update the passbook feature reference
-        passbkFeat.qtyRemain -= decQtyUsed
-
-        Return True
-    End Function '_validatePostData(...)
-
-    '****************************************************************************************
     '_btnSubmitTabPostFeatTbcPassbkFeatMainTbcMain_Click() is the event procedure that gets 
     'called when the user clicks on the Submit button from the Post Used Feature tab.  
     'It validates and then submits the data to post a used customer passbook feature.
@@ -1352,100 +1301,117 @@ Public Class FrmMain
         Dim featId As String = cboFeatIdTabPostFeatTbcPassbkFeatMainTbcMain.Text.Trim
         Dim qtyUsed As String = txtQtyUsedTabPostFeatTbcPassbkFeatMainTbcMain.Text.Trim
         Dim loc As String = txtLocTabPostFeatTbcPassbkFeatMainTbcMain.Text.Trim
+
+        'validate all the fields
+        If _theThemePark.numPassbkFeats = 0 Then
+            MsgBox("ERROR: There are no Passbook Features defined" _
+                   & vbCrLf & "Please add a Passbook Feature", MsgBoxStyle.OkOnly)
+            cboPassbkIdTabAddFeatTbcPassbkFeatMainTbcMain.Focus()
+            tbcMainFrmMain.SelectTab(mTBC_MAIN_TAB_PASSBKFEAT)
+            tbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.SelectTab(mTBC_PASSBKFEAT_TAB_ADD)
+            Exit Sub
+        End If
+
+        If String.IsNullOrEmpty(featId) Then
+            MsgBox("ERROR: Please select a Passbook Feature ID from the list", MsgBoxStyle.OkOnly)
+            cboFeatIdTabPostFeatTbcPassbkFeatMainTbcMain.Focus()
+            Exit Sub
+        End If
+
+        'make sure passbook feature reference is valid
+        Dim passbkfeat As PassbookFeature = _theThemePark.findPassbkFeat(featId)
+        If IsNothing(passbkfeat) Then
+            Dim s As String = "ERROR: Passbook Feature ID '" & featId & "' is invalid" _
+                              & vbCrLf & "Please select a different ID"
+            MsgBox(s, MsgBoxStyle.OkOnly)
+            _resetPassbkUsedFeatInput()
+            Exit Sub
+        End If
+
+        'can't post to an acct that has no quantity remaining, the feature was totally used
+        If passbkfeat.qtyRemain = 0 Then
+            Dim s As String = "ERROR: There are no available unit of this Feature remaining" _
+                              & vbCrLf & "Please select a different ID"
+            MsgBox(s, MsgBoxStyle.OkOnly)
+            passbkFeatIdList.SelectedIndex = -1
+            Exit Sub
+        End If
+
         Dim decQtyUsed As Decimal
-        Dim decQtyRemain As Decimal = 0D
 
-        ''Validate all the fields
-        'If passbkFeatIdList.Items.Count = 0 Then
-        '    MsgBox("ERROR: There are no Passbook Features defined, please add a Passbook Feature", MsgBoxStyle.OkOnly)
-        '    cboPassbkIdTabAddFeatTbcPassbkFeatMainTbcMain.Focus()
-        '    tbcMainFrmMain.SelectTab(mTBC_MAIN_TAB_PASSBKFEAT)
-        '    tbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.SelectTab(mTBC_PASSBKFEAT_TAB_ADD)
-        '    Exit Sub
-        'End If
+        If Not Decimal.TryParse(qtyUsed, decQtyUsed) Or decQtyUsed <= 0 Then
+            MsgBox("ERROR:Please enter a numeric quantity >= 1 (ex: 3)", MsgBoxStyle.OkOnly)
+            txtQtyUsedTabPostFeatTbcPassbkFeatMainTbcMain.SelectAll()
+            txtQtyUsedTabPostFeatTbcPassbkFeatMainTbcMain.Focus()
+            Exit Sub
+        End If
 
-        'If String.IsNullOrEmpty(featId) Then
-        '    MsgBox("ERROR: Please select a Passbook Feature Id from the list", MsgBoxStyle.OkOnly)
-        '    cboFeatIdTabPostFeatTbcPassbkFeatMainTbcMain.Focus()
-        '    Exit Sub
-        'End If
+        If decQtyUsed > passbkfeat.qtyRemain Then
+            MsgBox("ERROR: Quantity used is > quantity remaining" _
+                   & vbCrLf & "Please enter a quantity <= " _
+                   & passbkfeat.qtyRemain.ToString("n0"), MsgBoxStyle.OkOnly)
+            txtQtyUsedTabPostFeatTbcPassbkFeatMainTbcMain.SelectAll()
+            txtQtyUsedTabPostFeatTbcPassbkFeatMainTbcMain.Focus()
+            Exit Sub
+        End If
 
-        ''Make sure passbook feature reference is valid
-        'Dim passbkFeat As PassbookFeature = _theThemePark.findPassbkFeat(featId)
-        'If IsNothing(passbkFeat) Then
-        '    Dim s As String = "ERROR: Passbook Feature Id'" & featId & "' is invalid. Please select a different ID"
-        '    MsgBox(s, MsgBoxStyle.OkOnly)
-        '    _resetPassbkUsedFeatInput()
-        '    Exit Sub
-        'End If
+        If String.IsNullOrEmpty(loc) Then
+            MsgBox("ERROR: Please specify the Location where Feature was used (ex: Main Parking Lot)", MsgBoxStyle.OkOnly)
+            txtLocTabPostFeatTbcPassbkFeatMainTbcMain.Focus()
+            txtLocTabPostFeatTbcPassbkFeatMainTbcMain.Text = ""
+            Exit Sub
+        End If
 
-        ''Can't post to an acct that has no quantity remaining, the feature was totally used
-        'If passbkFeat.qtyRemain = 0 Then
-        '    Dim s As String = "ERROR: This Feature has been completedly used. Please select a different ID"
-        '    MsgBox(s, MsgBoxStyle.OkOnly)
-        '    passbkFeatIdList.SelectedIndex = -1
-        '    Exit Sub
-        'End If
+        If String.IsNullOrEmpty(postId) Then
+            MsgBox("ERROR: Please enter a unique Post ID for this transaction (ex: UF001)", MsgBoxStyle.OkOnly)
+            txtPostIdTabPostFeatTbcPassbkFeatMainTbcMain.SelectAll()
+            txtPostIdTabPostFeatTbcPassbkFeatMainTbcMain.Focus()
+            Exit Sub
+        End If
 
-        'If Not Decimal.TryParse(qtyUsed, decQtyUsed) Or decQtyUsed < 0 Then
-        '    MsgBox("ERROR: Please enter a numeric Quantity >= 0 (ex: 3)", MsgBoxStyle.OkOnly)
-        '    txtQtyUsedTabPostFeatTbcPassbkFeatMainTbcMain.SelectAll()
-        '    txtQtyUsedTabPostFeatTbcPassbkFeatMainTbcMain.Focus()
-        '    Exit Sub
-        'End If
+        'Check for duplicate passbook features (by ID of course).  Duplicates are 
+        'not allowed
+        If Not IsNothing(_theThemePark.findUsedFeat(postId)) Then
+            MsgBox(mSYS_ERR_USEDFEATID_EXISTS_MSG, MsgBoxStyle.Critical)
+            txtPostIdTabPostFeatTbcPassbkFeatMainTbcMain.SelectAll()
+            txtPostIdTabPostFeatTbcPassbkFeatMainTbcMain.Focus()
+            Exit Sub
+        End If
 
-        'If decQtyUsed > passbkFeat.qtyRemain Then
-        '    MsgBox("ERROR: Quantity Used is > Quantity Remaining. Please enter a value <= " _
-        '           & passbkFeat.qtyRemain.ToString("N0"), MsgBoxStyle.OkOnly)
-        '    txtQtyUsedTabPostFeatTbcPassbkFeatMainTbcMain.SelectAll()
-        '    txtQtyUsedTabPostFeatTbcPassbkFeatMainTbcMain.Focus()
-        '    Exit Sub
-        'End If
+        'Verify the purchase before committing
+        Dim choice As MsgBoxResult = MsgBoxResult.Ok
 
-        'If String.IsNullOrEmpty(loc) Then
-        '    MsgBox("ERROR: Please specify the location where feature was used", MsgBoxStyle.OkOnly)
-        '    txtLocTabPostFeatTbcPassbkFeatMainTbcMain.Focus()
-        '    txtLocTabPostFeatTbcPassbkFeatMainTbcMain.Text = ""
-        '    Exit Sub
-        'End If
-        'update the passbook feature reference
-        'passbkFeat.qtyRemain -= decQtyUsed
+        'The following is only needed if system test data is NOT being processed
+        If _sysTestActive = False Then
+            Dim newQtyRemain As Decimal = passbkfeat.qtyRemain - decQtyUsed
 
-        'Validate what we can first
-        If _validatePostData(postId, featId, qtyUsed, loc) Then
-            Dim passbkFeat As PassbookFeature = _theThemePark.findPassbkFeat(featId)
 
-            'Verify the purchase before committing
-            Dim choice As MsgBoxResult = MsgBoxResult.Ok
+            choice = MsgBox("To post the following Used Feature Click OK, otherwise Cancel" & vbCrLf & vbCrLf _
+                            & "--> PostId=" & postId & vbCrLf _
+                            & "--> PassbookFeatureId=" & featId & vbCrLf _
+                            & "--> QtyPurchased=" & passbkfeat.qtyPurch.ToString("N0") & vbCrLf _
+                            & "--> QtyUsed=" & decQtyUsed.ToString("N0") & vbCrLf _
+                            & "--> QtyRemain=" & newQtyRemain.ToString("N0") & vbCrLf _
+                            & "--> Location=" & loc & vbCrLf,
+                            MsgBoxStyle.OkCancel
+                            )
+        End If
 
-            'The following is only needed if system test data is NOT being processed
-            If _sysTestActive = False Then
-                choice = MsgBox("To post the following Used Feature Click OK, otherwise Cancel" & vbCrLf & vbCrLf _
-                                & "--> PostId=" & postId & vbCrLf _
-                                & "--> PassbookFeatureId=" & featId & vbCrLf _
-                                & "--> QtyPurchased=" & passbkFeat.qtyPurch.ToString("N0") & vbCrLf _
-                                & "--> QtyUsed=" & decQtyUsed.ToString("N0") & vbCrLf _
-                                & "--> QtyRemain=" & passbkFeat.qtyRemain.ToString("N0") & vbCrLf _
-                                & "--> Location=" & loc & vbCrLf,
-                                MsgBoxStyle.OkCancel
-                                )
-            End If
+        'If OK selected proceed with the submission
+        If choice = MsgBoxResult.Ok And _sysTestActive = False Then
+            'Create a new used feature. It will be persistent within the ThemePark object.
+            'But need to trap any insertion acceptions which could happen based on 
+            'the state of the system
+            Try
+                _theThemePark.usedFeat(featId, passbkfeat, DateTime.Now, decQtyUsed, loc)
+            Catch ex As Exception
+                MsgBox(mSYS_ERR_MSG, MsgBoxStyle.Exclamation)
+            End Try
 
-            'If OK selected proceed with the submission
-            If choice = MsgBoxResult.Ok And _sysTestActive = False Then
-                'Create a new used feature. It will be persistent within the ThemePark object.
-                'But need to trap any insertion acceptions which could happen based on 
-                'the state of the system
-                Try
-                    _theThemePark.usedFeat(featId, passbkFeat, DateTime.Now, decQtyUsed, loc)
-                Catch ex As Exception
-                    MsgBox(mSYS_ERR_MSG, MsgBoxStyle.Exclamation)
-                End Try
-
-                'Reset the fields and focus to allow for another used feature to be submitted
-                _resetPassbkUsedFeatInput()
-            End If
-        End If '_validatePostData()
+            'Reset the fields and focus to allow for another used feature to be submitted
+            _resetPassbkUsedFeatInput()
+        End If
+        '        End If '_validatePostData()
 
     End Sub '_btnSubmitTabPostFeatTbcPassbkFeatMainTbcMain_Click(...)
 
@@ -1541,7 +1507,7 @@ Public Class FrmMain
                 Console.WriteLine("Passbook Feature Tab")
 
                 'Assign AcceptButton to this tab's Submit button for convenience
-                Me.AcceptButton = btnSubmitTabAddFeatTbcPassbkFeatMainTbcMain
+                Me.AcceptButton = btnSubmitTabPurchFeatTbcPassbkFeatMainTbcMain
 
                 'Set the focus to the first input field
                 cboPassbkIdTabAddFeatTbcPassbkFeatMainTbcMain.Focus()
@@ -1947,13 +1913,13 @@ Public Class FrmMain
                         mPassBk.owner.ToString & vbCrLf
                 Else
                     MsgBox(mSYS_ERR_CUSTOREF_INVALID_MSG, MsgBoxStyle.Critical)
-                    _resetPassbkAddFeatInput()
+                    _resetPassbkPurchFeatInput()
                     Exit Sub
                 End If
             Else
                 Dim s As String = "ERROR: Passbook '" & cboVal & "' is invalid. Please select a different ID"
                 MsgBox(s, MsgBoxStyle.Exclamation)
-                _resetPassbkAddFeatInput()
+                _resetPassbkPurchFeatInput()
                 Exit Sub
             End If
 
@@ -2104,7 +2070,6 @@ Public Class FrmMain
                     & ", IsChild (<13yo): " & IIf(passbkFeat.passbk.visIsChild, "True", "False").ToString
 
                 txtUnitPriceTabUpdtFeatTbcPassbkFeatMainTbcMain.Text = passbkFeat.purchPrice.ToString("C")
-                txtTotQtyPurchTabUpdtFeatTbcPassbkFeatMainTbcMain.Text = passbkFeat.qtyPurch.ToString("N0")
                 txtTotQtyRemTabUpdtFeatTbcPassbkFeatMainTbcMain.Text = passbkFeat.qtyRemain.ToString("N0")
 
                 'Finally populate the previously used text box
@@ -2338,6 +2303,9 @@ Public Class FrmMain
             cboCustIdGrpCustInfoGrpAddPassbkTabPassbkTbcMainFrmMain.Items.Add(.custId)
         End With
 
+        'Update the KPI - not really needed here but do it anyway
+        _dispKpi()
+
         'Write transaction record and log info
         _theThemePark.writeTranxRec(_theThemePark.transxCustType, Nothing, cust)
         _writeTransLog("<CREATED>: " & cust.ToString())
@@ -2386,6 +2354,9 @@ Public Class FrmMain
             cboFeatIdTabAddFeatTbcPassbkFeatMainTbcMain.Items.Add(.featId)
         End With
 
+        'Update the KPI - not really needed here but do it anyway
+        _dispKpi()
+
         'Write transaction record and log info
         _theThemePark.writeTranxRec(_theThemePark.transxFeatType, Nothing, feat)
         _writeTransLog("<CREATED>: " & feat.ToString())
@@ -2432,6 +2403,9 @@ Public Class FrmMain
 
             cboPassbkIdTabAddFeatTbcPassbkFeatMainTbcMain.Items.Add(.passbkId)
         End With
+
+        'Update the KPI
+        _dispKpi()
 
         'Write transaction record and log info
         _theThemePark.writeTranxRec(_theThemePark.transxPassbkType, Nothing, passbk)
@@ -2481,6 +2455,9 @@ Public Class FrmMain
             cboFeatIdTabPostFeatTbcPassbkFeatMainTbcMain.Items.Add(.id)
         End With
 
+        'Update the KPI
+        _dispKpi()
+
         'Write transaction record and log info
         _theThemePark.writeTranxRec(_theThemePark.transxPassbkFeatType,
                                     _theThemePark.transxPbfPurchType,
@@ -2519,6 +2496,9 @@ Public Class FrmMain
             MsgBox(mSYS_ERR_MSG, MsgBoxStyle.Critical)
             Exit Sub
         End If
+
+        'Update the KPI
+        _dispKpi()
 
         'Write transaction record and log info
         _theThemePark.writeTranxRec(_theThemePark.transxPassbkFeatType,
@@ -2560,28 +2540,31 @@ Public Class FrmMain
         End If
 
         'Validate the input
-        If _validatePostData(usedFeat.id, usedFeat.passbkFeat.id, _
-                             usedFeat.qtyUsed.ToString, usedFeat.loc) Then
-            'Update associated UI components with component values
-            With usedFeat
-                lstUsedFeatTabDashboardTbcMain.Items.Add(.id)
-                lstUsedFeatCntTabDashboardTbcMain.Text =
-                    lstUsedFeatTabDashboardTbcMain.Items.Count.ToString
-            End With
+        'If _validatePostData(usedFeat.id, usedFeat.passbkFeat.id, _
+        '                     usedFeat.qtyUsed.ToString, usedFeat.loc) Then
+        '    'Update associated UI components with component values
+        With usedFeat
+            lstUsedFeatTabDashboardTbcMain.Items.Add(.id)
+            lstUsedFeatCntTabDashboardTbcMain.Text =
+                lstUsedFeatTabDashboardTbcMain.Items.Count.ToString
+        End With
 
-            'Write transaction record and log info
-            _theThemePark.writeTranxRec(_theThemePark.transxPassbkFeatType,
-                                        _theThemePark.transxPbfUseType,
-                                        usedFeat)
-            _writeTransLog("<USED>: " & usedFeat.ToString())
+        'Update the KPI
+        _dispKpi()
 
-            'Not needed if object was created from system test data
-            If _sysTestActive = False Then
-                _writeTransLog("<STATUS>: " & _theThemePark.ToString())
+        'Write transaction record and log info
+        _theThemePark.writeTranxRec(_theThemePark.transxPassbkFeatType,
+                                    _theThemePark.transxPbfUseType,
+                                    usedFeat)
+        _writeTransLog("<USED>: " & usedFeat.ToString())
 
-                MsgBox("Used Passbook Feature submission was successful!", MsgBoxStyle.OkOnly)
-            End If
+        'Not needed if object was created from system test data
+        If _sysTestActive = False Then
+            _writeTransLog("<STATUS>: " & _theThemePark.ToString())
+
+            MsgBox("Used Passbook Feature submission was successful!", MsgBoxStyle.OkOnly)
         End If
+        '       End If
 
     End Sub '_usedFeat(...)
 
