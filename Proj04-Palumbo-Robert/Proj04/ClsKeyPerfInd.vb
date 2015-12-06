@@ -253,7 +253,7 @@ Public Class ThemePark_KeyPerfInd
                     unusedCnt = CInt(unusedCnt + passbkFeat.qtyRemain)
 
                     'Running total of the unused balance
-                    bal += passbkFeat.purchPrice * passbkFeat.qtyRemain
+                    bal += passbkFeat.unitPrice * passbkFeat.qtyRemain
                     Console.WriteLine("Tot Unused Balance" & bal.ToString("C") & "  UnusedCnt=" & unusedCnt)
                 End If
             Next passbkFeat
@@ -282,7 +282,7 @@ Public Class ThemePark_KeyPerfInd
                     unusedCnt = CInt(unusedCnt + passbkFeat.qtyRemain)
 
                     'Running total of the unused balance
-                    bal += passbkFeat.purchPrice * passbkFeat.qtyRemain
+                    bal += passbkFeat.unitPrice * passbkFeat.qtyRemain
                     Console.WriteLine("Tot Unused Balance" & bal.ToString("C") & "  UnusedCnt=" & unusedCnt)
                 End If
             Next passbkFeat
@@ -336,8 +336,8 @@ Public Class ThemePark_KeyPerfInd
                 'Note - Minor vs Adult pricing was determined at the time of purchase
                 'so the data in the object already has the correct total purchase price
                 'based on age
-                totPurchBal += passbkFeat.purchPrice * passbkFeat.qtyPurch
-                totUsedBal += passbkFeat.purchPrice * (passbkFeat.qtyPurch - passbkFeat.qtyRemain)
+                totPurchBal += passbkFeat.unitPrice * passbkFeat.qtyPurch
+                totUsedBal += passbkFeat.unitPrice * (passbkFeat.qtyPurch - passbkFeat.qtyRemain)
                 Console.WriteLine("TotPurchBal=" & totPurchBal.ToString("C") _
                                   & " QtyPurch=" & passbkFeat.qtyPurch _
                                   & " TotUsedBal=" & totUsedBal.ToString("C") _

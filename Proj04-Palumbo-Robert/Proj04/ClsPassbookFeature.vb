@@ -47,8 +47,8 @@ Public Class PassbookFeature
     'Unique passbook feature ID
     Private mId As String
 
-    'Total purchase price
-    Private mPurchPrice As Decimal
+    'Unit purchase price
+    Private mUnitPrice As Decimal
 
     'Passbook to add feature to
     Private mPassbk As Passbook
@@ -92,7 +92,7 @@ Public Class PassbookFeature
         _passbk = pPassbk
 
         If Not pFeature Is Nothing Then
-            _purchPrice = CDec(IIf(pPassbk.visIsChild = False, _
+            _unitPrice = CDec(IIf(pPassbk.visIsChild = False, _
                                    pFeature.adultPrice, pFeature.childPrice))
         End If
 
@@ -119,12 +119,12 @@ Public Class PassbookFeature
         End Get
     End Property
 
-    Public Property purchPrice() As Decimal
+    Public Property unitPrice() As Decimal
         Get
-            Return _purchPrice
+            Return _unitPrice
         End Get
         Set(pValue As Decimal)
-            _purchPrice = pValue
+            _unitPrice = pValue
         End Set
     End Property
 
@@ -176,12 +176,12 @@ Public Class PassbookFeature
         End Set
     End Property
 
-    Private Property _purchPrice() As Decimal
+    Private Property _unitPrice() As Decimal
         Get
-            Return mPurchPrice
+            Return mUnitPrice
         End Get
         Set(pValue As Decimal)
-            mPurchPrice = pValue
+            mUnitPrice = pValue
         End Set
     End Property
 
@@ -269,14 +269,17 @@ Public Class PassbookFeature
             passbkId = "No-Passbook-Reference-Found"
         End If
 
+        Dim totPurchPrice As Decimal = _qtyPurch * _unitPrice
+
         tmpStr = "[" _
             & " Id=" & _id _
             & ", Feature=" & featStr _
             & ", PassbkID=" & passbkId _
             & ", PassbkOwner=" & passbkOwner _
-            & ", PurchasePrice=" & _purchPrice.ToString("C") _
+            & ", UnitPrice=" & _unitPrice.ToString("C") _
             & ", QtyPurchased=" & _qtyPurch.ToString("N0") _
             & ", QtyRemain=" & _qtyRemain.ToString("N0") _
+            & ", TotPurchPrice=" & totPurchPrice.ToString("C") _
             & " ]"
         Return tmpStr
     End Function

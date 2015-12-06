@@ -1403,7 +1403,7 @@ Public Class FrmMain
             'But need to trap any insertion acceptions which could happen based on 
             'the state of the system
             Try
-                _theThemePark.usedFeat(featId, passbkfeat, DateTime.Now, decQtyUsed, loc)
+                _theThemePark.usedFeat(postId, passbkfeat, DateTime.Now, decQtyUsed, loc)
             Catch ex As Exception
                 MsgBox(mSYS_ERR_MSG, MsgBoxStyle.Exclamation)
             End Try
@@ -1430,6 +1430,7 @@ Public Class FrmMain
         txtQtyRemTabPostFeatTbcPassbkFeatMainTbcMain.Text = "0"
         txtQtyUsedTabPostFeatTbcPassbkFeatMainTbcMain.Text = "0"
         txtLocTabPostFeatTbcPassbkFeatMainTbcMain.Text = ""
+        txtPostIdTabPostFeatTbcPassbkFeatMainTbcMain.Text = ""
 
         cboFeatIdTabPostFeatTbcPassbkFeatMainTbcMain.Focus()
     End Sub '_resetPassbkPostFeatInput()
@@ -2069,7 +2070,7 @@ Public Class FrmMain
                     & ", Age: " & passbkFeat.passbk.visAge _
                     & ", IsChild (<13yo): " & IIf(passbkFeat.passbk.visIsChild, "True", "False").ToString
 
-                txtUnitPriceTabUpdtFeatTbcPassbkFeatMainTbcMain.Text = passbkFeat.purchPrice.ToString("C")
+                txtUnitPriceTabUpdtFeatTbcPassbkFeatMainTbcMain.Text = passbkFeat.unitPrice.ToString("C")
                 txtTotQtyRemTabUpdtFeatTbcPassbkFeatMainTbcMain.Text = passbkFeat.qtyRemain.ToString("N0")
 
                 'Finally populate the previously used text box
