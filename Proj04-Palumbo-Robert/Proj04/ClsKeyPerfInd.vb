@@ -254,7 +254,7 @@ Public Class ThemePark_KeyPerfInd
 
                     'Running total of the unused balance
                     bal += passbkFeat.unitPrice * passbkFeat.qtyRemain
-                    Console.WriteLine("Tot Unused Balance" & bal.ToString("C") & "  UnusedCnt=" & unusedCnt)
+                    'Console.WriteLine("Tot Unused Balance" & bal.ToString("C") & "  UnusedCnt=" & unusedCnt)
                 End If
             Next passbkFeat
 
@@ -283,7 +283,7 @@ Public Class ThemePark_KeyPerfInd
 
                     'Running total of the unused balance
                     bal += passbkFeat.unitPrice * passbkFeat.qtyRemain
-                    Console.WriteLine("Tot Unused Balance" & bal.ToString("C") & "  UnusedCnt=" & unusedCnt)
+                    'Console.WriteLine("Tot Unused Balance" & bal.ToString("C") & "  UnusedCnt=" & unusedCnt)
                 End If
             Next passbkFeat
 
@@ -338,10 +338,7 @@ Public Class ThemePark_KeyPerfInd
                 'based on age
                 totPurchBal += passbkFeat.unitPrice * passbkFeat.qtyPurch
                 totUsedBal += passbkFeat.unitPrice * (passbkFeat.qtyPurch - passbkFeat.qtyRemain)
-                Console.WriteLine("TotPurchBal=" & totPurchBal.ToString("C") _
-                                  & " QtyPurch=" & passbkFeat.qtyPurch _
-                                  & " TotUsedBal=" & totUsedBal.ToString("C") _
-                                  & " QtyUsed=" & (passbkFeat.qtyPurch - passbkFeat.qtyRemain))
+                'Console.WriteLine("TotPurchBal=" & totPurchBal.ToString("C") & " QtyPurch=" & passbkFeat.qtyPurch & " TotUsedBal=" & totUsedBal.ToString("C")                       & " QtyUsed=" & (passbkFeat.qtyPurch - passbkFeat.qtyRemain))
             Next passbkFeat
 
             'Set the calculated balance
@@ -413,7 +410,7 @@ Public Class ThemePark_KeyPerfInd
 
             'Debug
             For i = 0 To mostPopFeat.Length - 1
-                Console.WriteLine("Filled: mostPop(" & i & ").id=" & mostPopFeat(i).featId & " cnt=" & mostPopFeat(i).featCnt)
+                'Console.WriteLine("Filled: mostPop(" & i & ").id=" & mostPopFeat(i).featId & " cnt=" & mostPopFeat(i).featCnt)
             Next i
 
             'Now parse thru the passbook feature array and tally up matching features
@@ -430,25 +427,21 @@ Public Class ThemePark_KeyPerfInd
                             mostPopFeat(i).featCnt = CInt(mostPopFeat(i).featCnt + passbkFeat.qtyPurch)
                         End If
                     Else
-                        Console.Error.WriteLine(themePark.sysObjLookupErr)
+                        'Console.Error.WriteLine(themePark.sysObjLookupErr)
                     End If
                 Next j
             Next i
 
             'Debug
             For i = 0 To mostPopFeat.Length - 1
-                Console.WriteLine("Updated: mostPop(" & i & ").id=" & mostPopFeat(i).featId & " cnt=" & mostPopFeat(i).featCnt)
+                'Console.WriteLine("Updated: mostPop(" & i & ").id=" & mostPopFeat(i).featId & " cnt=" & mostPopFeat(i).featCnt)
             Next i
 
             'Now just find the max of all the feature cnts and that is the most popular 
             'pick the first feature in case of ties
             Dim maxVal As Integer = -1
             For i = 0 To mostPopFeat.Length - 1
-                Console.WriteLine("Max: mostPop(" _
-                                  & i & ").id=" & mostPopFeat(i).featId _
-                                  & " cnt=" & mostPopFeat(i).featCnt _
-                                  & " MaxVal=" & maxVal _
-                                  & " CurrVal=" & val)
+                'Console.WriteLine("Max: mostPop(" & i & ").id=" & mostPopFeat(i).featId & " cnt=" & mostPopFeat(i).featCnt & " MaxVal=" & maxVal                             & " CurrVal=" & val)
 
                 If mostPopFeat(i).featCnt > maxVal Then
                     maxVal = mostPopFeat(i).featCnt

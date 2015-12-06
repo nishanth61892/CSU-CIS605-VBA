@@ -1340,7 +1340,7 @@ Public Class FrmMain
         Dim decQtyUsed As Decimal
 
         If Not Decimal.TryParse(qtyUsed, decQtyUsed) Or decQtyUsed <= 0 Then
-            MsgBox("ERROR:Please enter a numeric quantity >= 1 (ex: 3)", MsgBoxStyle.OkOnly)
+            MsgBox("ERROR: Please enter a numeric quantity >= 1 (ex: 3)", MsgBoxStyle.OkOnly)
             txtQtyUsedTabPostFeatTbcPassbkFeatMainTbcMain.SelectAll()
             txtQtyUsedTabPostFeatTbcPassbkFeatMainTbcMain.Focus()
             Exit Sub
@@ -1469,16 +1469,16 @@ Public Class FrmMain
                                                      e As EventArgs) _
         Handles tbcMainFrmMain.SelectedIndexChanged
 
-        Console.WriteLine("Calling Main tab control")
+        'Console.WriteLine("Calling Main tab control")
 
         Select Case tbcMainFrmMain.SelectedIndex
             Case mTBC_MAIN_TAB_DASHBOARD
-                Console.WriteLine("Dashboard Tab")
+                'Console.WriteLine("Dashboard Tab")
 
                 'Nothing to do for this tab
 
             Case mTBC_MAIN_TAB_CUSTOMER
-                Console.WriteLine("Customer Tab")
+                'Console.WriteLine("Customer Tab")
 
                 'Assign AcceptButton to this tab's Submit button for convenience
                 Me.AcceptButton = btnSubmitGrpCustInfoTabCustTbcMainFrmMain
@@ -1487,7 +1487,7 @@ Public Class FrmMain
                 txtCustIdGrpAddCustTabCustTbcMainFrmMain.Focus()
 
             Case mTBC_MAIN_TAB_FEATURE
-                Console.WriteLine("Feature Tab")
+                'Console.WriteLine("Feature Tab")
 
                 'Assign AcceptButton to this tab's Submit button for convenience
                 Me.AcceptButton = btnSubmitGrpAddFeatTabFeatTbcMainFrmMain
@@ -1496,7 +1496,7 @@ Public Class FrmMain
                 txtFeatIdAddFeatTabFeatTbcMainFrmMain.Focus()
 
             Case mTBC_MAIN_TAB_PASSBK
-                Console.WriteLine("Passbook Tab")
+                'Console.WriteLine("Passbook Tab")
 
                 'Assign AcceptButton to this tab's Submit button for convenience
                 Me.AcceptButton = btnSubmitGrpAddPassbkTabPassbkTbcMainFrmMain
@@ -1505,7 +1505,7 @@ Public Class FrmMain
                 cboCustIdGrpCustInfoGrpAddPassbkTabPassbkTbcMainFrmMain.Focus()
 
             Case mTBC_MAIN_TAB_PASSBKFEAT
-                Console.WriteLine("Passbook Feature Tab")
+                'Console.WriteLine("Passbook Feature Tab")
 
                 'Assign AcceptButton to this tab's Submit button for convenience
                 Me.AcceptButton = btnSubmitTabPurchFeatTbcPassbkFeatMainTbcMain
@@ -1514,7 +1514,7 @@ Public Class FrmMain
                 cboPassbkIdTabAddFeatTbcPassbkFeatMainTbcMain.Focus()
 
             Case mTBC_MAIN_TAB_TRANSLOG
-                Console.WriteLine("Transaction Log Tab")
+                'Console.WriteLine("Transaction Log Tab")
 
                 'Assign AcceptButton to this tab's Submit button for convenience
                 Me.AcceptButton = btnClearTabTransLogTbcMainFrmMain
@@ -1523,7 +1523,7 @@ Public Class FrmMain
                 _txtTransLogTabTransLogTbcMainFrmMain_TextChanged(Me, Nothing)
 
             Case mTBC_MAIN_TAB_SYSTEST
-                Console.WriteLine("System Test Tab")
+                'Console.WriteLine("System Test Tab")
 
                 'Assign AcceptButton to this tab's Submit button for convenience
                 Me.AcceptButton = btnProcTestDataGrpSysTestTabSysTestTbcMainFrmMain
@@ -1539,23 +1539,23 @@ Public Class FrmMain
                                                                                    e As EventArgs) _
         Handles tbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.SelectedIndexChanged
 
-        Console.WriteLine("Calling Passbook Feature tab control")
+        'Console.WriteLine("Calling Passbook Feature tab control")
 
         Select Case tbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.SelectedIndex
             Case mTBC_PASSBKFEAT_TAB_ADD
-                Console.WriteLine("Add Tab")
+                'Console.WriteLine("Add Tab")
 
                 'Set the focus to the first input field
                 cboPassbkIdTabAddFeatTbcPassbkFeatMainTbcMain.Focus()
 
             Case mTBC_PASSBKFEAT_TAB_UPDT
-                Console.WriteLine("Update Tab")
+                'Console.WriteLine("Update Tab")
 
                 'Set the focus to the first input field
                 cboFeatIdTabUpdtFeatTbcPassbkFeatMainTbcMain.Focus()
 
             Case mTBC_PASSBKFEAT_TAB_POST
-                Console.WriteLine("Post Tab")
+                'Console.WriteLine("Post Tab")
 
                 'Set the focus to the first input field
                 cboFeatIdTabPostFeatTbcPassbkFeatMainTbcMain.Focus()
@@ -2741,7 +2741,7 @@ Public Class FrmMain
 #End Region 'Palumbo-Debug
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
-        Console.WriteLine("Calculate the KPIs")
+        '.WriteLine("Calculate the KPIs")
         _dispKpi()
     End Sub
 
