@@ -57,10 +57,6 @@ Public Class ThemePark
     Private Const mTRANSX_PBF_USE_TYPE As String = "USE"
     Private Const mTRANSX_PBF_UPDT_TYPE As String = "UPDATE"
 
-    'Input/Output file names
-    Private Const mINPUT_FILENAME As String = "Transactions-in.txt"
-    Private Const mOUTPUT_FILENAME As String = "Transactions-out.txt"
-
     'Array constants
     Private Const mCUSTOMER_ARRAY_SIZE_DFLT As Integer = 100
     Private Const mCUSTOMER_ARRAY_INC_DFLT As Integer = 50
@@ -86,7 +82,10 @@ Public Class ThemePark
     Private mThemeParkName As String
 
     'Key performance indicator object used to calculate KPIs for the system
-    Private kpi As ThemePark_KeyPerfInd
+    Private kpi As KeyPerfInd
+
+    'FileIO object to import/export of data
+    Private fileIO As FileIO
 
     'Number of customers in the system
     Private mNumCusts As Integer
@@ -176,7 +175,10 @@ Public Class ThemePark
         _numTransx = 0
 
         'Key performance indicator object
-        kpi = New ThemePark_KeyPerfInd(Me)
+        kpi = New KeyPerfInd(Me)
+
+        'Key performance indicator object
+        fileIO = New FileIO(Me)
 
         'Initialize array attributes
         _custArrayMax = _CUSTOMER_ARRAY_SIZE_DFLT
@@ -815,6 +817,23 @@ Public Class ThemePark
     '********** Private Shared Behavioral Methods
 
     '********** Public Non-Shared Behavioral Methods
+
+    'importData() imports data records from the transactions-in.txt
+    'data file.  It is used to populate the system with a predefined  
+    'data set and is invoked from the 'Process Test Data' button on
+    'the System Test tab.
+    Public Function importData(ByVal pFileName As String) As String
+        Return fileIO.importData(pFileName)
+    End Function 'importData()
+
+    '_importData() exports data records from the transactions array
+    'to the output data file transactions-out.txt.  It is invoked 
+    'from the 'Process Test Data' button on the System Test tab.
+    Public Function exportData(ByVal pFileName As String,
+                                 ByVal pAppend As Boolean) As String
+        Return fileIO.exportData(pFileName, pAppend)
+    End Function 'exportData()
+
 
     '****************************************************************************************
     'writeTranxRec() is used to format a transaction record and store it in the tranx rec

@@ -2,10 +2,10 @@
 
 #Region "Class / File Comment Header block"
 'Program:       Proj04 - Theme Park Management System
-'File:          ClsThemePark_KeyPerfInd.vb
+'File:          ClsKeyPerfInd.vb
 'Author:        Robert Palumbo
-'Description:   This is the class definiton for the ThemePark_KeyPerfInd which
-'               is used to calculate key performance indicators within the system
+'Description:   This is the class definiton for the KeyPerfInd which is used
+'               to calculate key performance indicators within the system
 '               which are displayed on the main form.
 '
 'Date:          10/05/2015
@@ -30,7 +30,7 @@ Option Explicit On      'Must declare variables before using them
 Option Strict On    'Must perform explicit data type conversions
 #End Region 'Option / Imports
 
-Public Class ThemePark_KeyPerfInd
+Public Class KeyPerfInd
 
 #Region "Attributes"
     '****************************************************************************************
@@ -513,4 +513,4 @@ Public Class ThemePark_KeyPerfInd
 
 #End Region 'Events
 
-End Class 'ThemePark_KeyPerfInd
+End Class 'KeyPerfInd

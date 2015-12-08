@@ -208,10 +208,11 @@ Partial Class FrmMain
         Me.txtTransLogTabTransLogTbcMainFrmMain = New System.Windows.Forms.TextBox()
         Me.tabSysTestTbcMainFrmMain = New System.Windows.Forms.TabPage()
         Me.grpSysTestTabSysTestTbcMainFrmMain = New System.Windows.Forms.GroupBox()
+        Me.Label20 = New System.Windows.Forms.Label()
         Me.grpAnon5 = New System.Windows.Forms.GroupBox()
-        Me.btnWriteFileGrpSysTestTabSysTestTbcMainFrmMain = New System.Windows.Forms.Button()
+        Me.btnExportDataGrpSysTestTabSysTestTbcMainFrmMain = New System.Windows.Forms.Button()
         Me.chkAppendTabSysTestTbcMainFrmMain = New System.Windows.Forms.CheckBox()
-        Me.btnReadFileTabSysTestTbcMainFrmMain = New System.Windows.Forms.Button()
+        Me.btnImportDataTabSysTestTbcMainFrmMain = New System.Windows.Forms.Button()
         Me.btnProcTestDataGrpSysTestTabSysTestTbcMainFrmMain = New System.Windows.Forms.Button()
         Me.tabDebugTbcMainFrmMain = New System.Windows.Forms.TabPage()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
@@ -2257,6 +2258,7 @@ Partial Class FrmMain
         'grpSysTestTabSysTestTbcMainFrmMain
         '
         Me.grpSysTestTabSysTestTbcMainFrmMain.BackColor = System.Drawing.Color.LightGray
+        Me.grpSysTestTabSysTestTbcMainFrmMain.Controls.Add(Me.Label20)
         Me.grpSysTestTabSysTestTbcMainFrmMain.Controls.Add(Me.grpAnon5)
         Me.grpSysTestTabSysTestTbcMainFrmMain.Controls.Add(Me.btnProcTestDataGrpSysTestTabSysTestTbcMainFrmMain)
         Me.grpSysTestTabSysTestTbcMainFrmMain.Location = New System.Drawing.Point(215, 41)
@@ -2266,32 +2268,41 @@ Partial Class FrmMain
         Me.grpSysTestTabSysTestTbcMainFrmMain.TabStop = False
         Me.grpSysTestTabSysTestTbcMainFrmMain.Text = "System Test"
         '
+        'Label20
+        '
+        Me.Label20.AutoSize = True
+        Me.Label20.Location = New System.Drawing.Point(226, 53)
+        Me.Label20.Name = "Label20"
+        Me.Label20.Size = New System.Drawing.Size(130, 15)
+        Me.Label20.TabIndex = 2
+        Me.Label20.Text = "(Can only be run once)"
+        '
         'grpAnon5
         '
         Me.grpAnon5.BackColor = System.Drawing.SystemColors.Control
-        Me.grpAnon5.Controls.Add(Me.btnWriteFileGrpSysTestTabSysTestTbcMainFrmMain)
+        Me.grpAnon5.Controls.Add(Me.btnExportDataGrpSysTestTabSysTestTbcMainFrmMain)
         Me.grpAnon5.Controls.Add(Me.chkAppendTabSysTestTbcMainFrmMain)
-        Me.grpAnon5.Controls.Add(Me.btnReadFileTabSysTestTbcMainFrmMain)
-        Me.grpAnon5.Enabled = False
+        Me.grpAnon5.Controls.Add(Me.btnImportDataTabSysTestTbcMainFrmMain)
         Me.grpAnon5.Location = New System.Drawing.Point(58, 89)
         Me.grpAnon5.Name = "grpAnon5"
         Me.grpAnon5.Size = New System.Drawing.Size(344, 92)
         Me.grpAnon5.TabIndex = 1
         Me.grpAnon5.TabStop = False
         '
-        'btnWriteFileGrpSysTestTabSysTestTbcMainFrmMain
+        'btnExportDataGrpSysTestTabSysTestTbcMainFrmMain
         '
-        Me.btnWriteFileGrpSysTestTabSysTestTbcMainFrmMain.Location = New System.Drawing.Point(22, 50)
-        Me.btnWriteFileGrpSysTestTabSysTestTbcMainFrmMain.Name = "btnWriteFileGrpSysTestTabSysTestTbcMainFrmMain"
-        Me.btnWriteFileGrpSysTestTabSysTestTbcMainFrmMain.Size = New System.Drawing.Size(75, 23)
-        Me.btnWriteFileGrpSysTestTabSysTestTbcMainFrmMain.TabIndex = 1
-        Me.btnWriteFileGrpSysTestTabSysTestTbcMainFrmMain.Text = "&Write File"
-        Me.btnWriteFileGrpSysTestTabSysTestTbcMainFrmMain.UseVisualStyleBackColor = True
+        Me.btnExportDataGrpSysTestTabSysTestTbcMainFrmMain.Location = New System.Drawing.Point(22, 50)
+        Me.btnExportDataGrpSysTestTabSysTestTbcMainFrmMain.Name = "btnExportDataGrpSysTestTabSysTestTbcMainFrmMain"
+        Me.btnExportDataGrpSysTestTabSysTestTbcMainFrmMain.Size = New System.Drawing.Size(89, 23)
+        Me.btnExportDataGrpSysTestTabSysTestTbcMainFrmMain.TabIndex = 1
+        Me.btnExportDataGrpSysTestTabSysTestTbcMainFrmMain.Text = "E&xport Data"
+        Me.tipTPMS.SetToolTip(Me.btnExportDataGrpSysTestTabSysTestTbcMainFrmMain, "Click to export data to 'Transactions-out.txt'")
+        Me.btnExportDataGrpSysTestTabSysTestTbcMainFrmMain.UseVisualStyleBackColor = True
         '
         'chkAppendTabSysTestTbcMainFrmMain
         '
         Me.chkAppendTabSysTestTbcMainFrmMain.AutoSize = True
-        Me.chkAppendTabSysTestTbcMainFrmMain.Location = New System.Drawing.Point(115, 52)
+        Me.chkAppendTabSysTestTbcMainFrmMain.Location = New System.Drawing.Point(143, 53)
         Me.chkAppendTabSysTestTbcMainFrmMain.Name = "chkAppendTabSysTestTbcMainFrmMain"
         Me.chkAppendTabSysTestTbcMainFrmMain.Size = New System.Drawing.Size(187, 19)
         Me.chkAppendTabSysTestTbcMainFrmMain.TabIndex = 2
@@ -2299,14 +2310,15 @@ Partial Class FrmMain
         Me.tipTPMS.SetToolTip(Me.chkAppendTabSysTestTbcMainFrmMain, "Check this box to append output data to file")
         Me.chkAppendTabSysTestTbcMainFrmMain.UseVisualStyleBackColor = True
         '
-        'btnReadFileTabSysTestTbcMainFrmMain
+        'btnImportDataTabSysTestTbcMainFrmMain
         '
-        Me.btnReadFileTabSysTestTbcMainFrmMain.Location = New System.Drawing.Point(22, 21)
-        Me.btnReadFileTabSysTestTbcMainFrmMain.Name = "btnReadFileTabSysTestTbcMainFrmMain"
-        Me.btnReadFileTabSysTestTbcMainFrmMain.Size = New System.Drawing.Size(75, 23)
-        Me.btnReadFileTabSysTestTbcMainFrmMain.TabIndex = 0
-        Me.btnReadFileTabSysTestTbcMainFrmMain.Text = "&Read File"
-        Me.btnReadFileTabSysTestTbcMainFrmMain.UseVisualStyleBackColor = True
+        Me.btnImportDataTabSysTestTbcMainFrmMain.Location = New System.Drawing.Point(22, 21)
+        Me.btnImportDataTabSysTestTbcMainFrmMain.Name = "btnImportDataTabSysTestTbcMainFrmMain"
+        Me.btnImportDataTabSysTestTbcMainFrmMain.Size = New System.Drawing.Size(89, 23)
+        Me.btnImportDataTabSysTestTbcMainFrmMain.TabIndex = 0
+        Me.btnImportDataTabSysTestTbcMainFrmMain.Text = "&Import Data"
+        Me.tipTPMS.SetToolTip(Me.btnImportDataTabSysTestTbcMainFrmMain, "Click to import data from 'Transactions-in.txt'")
+        Me.btnImportDataTabSysTestTbcMainFrmMain.UseVisualStyleBackColor = True
         '
         'btnProcTestDataGrpSysTestTabSysTestTbcMainFrmMain
         '
@@ -2634,6 +2646,7 @@ Partial Class FrmMain
         Me.grpTransLogTabTransLogTbcMain.PerformLayout()
         Me.tabSysTestTbcMainFrmMain.ResumeLayout(False)
         Me.grpSysTestTabSysTestTbcMainFrmMain.ResumeLayout(False)
+        Me.grpSysTestTabSysTestTbcMainFrmMain.PerformLayout()
         Me.grpAnon5.ResumeLayout(False)
         Me.grpAnon5.PerformLayout()
         Me.tabDebugTbcMainFrmMain.ResumeLayout(False)
@@ -2789,9 +2802,9 @@ Partial Class FrmMain
     Friend WithEvents tabSysTestTbcMainFrmMain As System.Windows.Forms.TabPage
     Friend WithEvents grpSysTestTabSysTestTbcMainFrmMain As System.Windows.Forms.GroupBox
     Friend WithEvents grpAnon5 As System.Windows.Forms.GroupBox
-    Friend WithEvents btnWriteFileGrpSysTestTabSysTestTbcMainFrmMain As System.Windows.Forms.Button
+    Friend WithEvents btnExportDataGrpSysTestTabSysTestTbcMainFrmMain As System.Windows.Forms.Button
     Friend WithEvents chkAppendTabSysTestTbcMainFrmMain As System.Windows.Forms.CheckBox
-    Friend WithEvents btnReadFileTabSysTestTbcMainFrmMain As System.Windows.Forms.Button
+    Friend WithEvents btnImportDataTabSysTestTbcMainFrmMain As System.Windows.Forms.Button
     Friend WithEvents btnProcTestDataGrpSysTestTabSysTestTbcMainFrmMain As System.Windows.Forms.Button
     Friend WithEvents Label45 As System.Windows.Forms.Label
     Friend WithEvents Label44 As System.Windows.Forms.Label
@@ -2862,4 +2875,5 @@ Partial Class FrmMain
     Friend WithEvents Button2 As System.Windows.Forms.Button
     Friend WithEvents Label62 As System.Windows.Forms.Label
     Friend WithEvents Label63 As System.Windows.Forms.Label
+    Friend WithEvents Label20 As System.Windows.Forms.Label
 End Class

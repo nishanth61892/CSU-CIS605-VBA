@@ -50,6 +50,11 @@ Public Class FrmMain
     Private Const mSYS_ERR_PASSBKFEATID_EXISTS_MSG As String = "Error: Passbook Feature ID already exists, ID="
     Private Const mSYS_ERR_USEDFEATID_EXISTS_MSG As String = "Error: Used Feature ID already exists, ID="
 
+    'Input/Output file names
+    Private Const mIMPORT_FILENAME As String = "Transactions-in.txt"
+    Private Const mEXPORT_FILENAME As String = "Transactions-out.txt"
+    Private Const mERROR_FILENAME As String = "Transactions-error.txt"
+
     '********** Module-level constants
     'Theme Park Name
     Private Const mTHEME_PARK_NAME As String = "CIS605 Theme Park"
@@ -131,6 +136,24 @@ Public Class FrmMain
         End Get
     End Property
 
+    Public ReadOnly Property IMPORT_FILENAME() As String
+        Get
+            Return _IMPORT_FILENAME
+        End Get
+    End Property
+
+    Public ReadOnly Property EXPORT_FILENAME() As String
+        Get
+            Return _EXPORT_FILENAME
+        End Get
+    End Property
+
+    Public ReadOnly Property ERROR_FILENAME() As String
+        Get
+            Return _ERROR_FILENAME
+        End Get
+    End Property
+
     Private ReadOnly Property sysTestActive() As Boolean
         Get
             Return mSysTestActive
@@ -146,6 +169,24 @@ Public Class FrmMain
         Set(pValue As ThemePark)
             mThemePark = pValue
         End Set
+    End Property
+
+    Private ReadOnly Property _IMPORT_FILENAME() As String
+        Get
+            Return mIMPORT_FILENAME
+        End Get
+    End Property
+
+    Private ReadOnly Property _EXPORT_FILENAME() As String
+        Get
+            Return mEXPORT_FILENAME
+        End Get
+    End Property
+
+    Private ReadOnly Property _ERROR_FILENAME() As String
+        Get
+            Return mERROR_FILENAME
+        End Get
     End Property
 
     Private Property _themeParkName() As String
@@ -363,6 +404,9 @@ Public Class FrmMain
 
         'Indicate the system test has completed
         _sysTestActive = False
+
+        'don't allow multiple runs of the system test data
+        btnProcTestDataGrpSysTestTabSysTestTbcMainFrmMain.Enabled = False
     End Sub '_runSystemTest()
 
     '****************************************************************************************
@@ -2248,13 +2292,6 @@ Public Class FrmMain
           Handles txtQtyUsedTabPostFeatTbcPassbkFeatMainTbcMain.TextChanged
         Dim qtyUsed As String = txtQtyUsedTabPostFeatTbcPassbkFeatMainTbcMain.Text
 
-        ''Need to have a passbook feature selected first
-        'If mPassbkFeatPost Is Nothing Then
-        '    MsgBox("INFO: Please select a Passbook Feature from the list", MsgBoxStyle.Information)
-        '    cboFeatIdTabPostFeatTbcPassbkFeatMainTbcMain.Focus()
-        '    Exit Sub
-        'End If
-
         'Validate the entered value - it must be an integer value > 0
         If Not Decimal.TryParse(qtyUsed, mQtyUsed) Or mQtyUsed < 0 Then
             MsgBox("ERROR: Please enter a numeric Quantity > 0 to post (ex: 3)", MsgBoxStyle.OkOnly)
@@ -2264,6 +2301,28 @@ Public Class FrmMain
             Exit Sub
         End If
     End Sub '_txtQtyUsedTabPostFeatTbcPassbkFeatMainTbcMain_TextChanged(...)
+
+    '****************************************************************************************
+    '_btnImportDataTabSysTestTbcMainFrmMain_Click() 
+    'is the event procedure the is called when the clicks on the 'Import Data' button from
+    'the System Test tab. It is used to import a predefined data set into the system.
+    '****************************************************************************************
+    Private Sub _btnImportDataTabSysTestTbcMainFrmMain_Click(sender As Object, e As EventArgs) _
+        Handles btnImportDataTabSysTestTbcMainFrmMain.Click
+        _theThemePark.importData(IMPORT_FILENAME)
+    End Sub '_btnImportDataTabSysTestTbcMainFrmMain_Click(...)
+
+    '****************************************************************************************
+    '_btnExportDataGrpSysTestTabSysTestTbcMainFrmMain_Click() 
+    'is the event procedure the is called when the clicks on the 'Export Data' button from
+    'the System Test tab. It is used to export the current set of transactions to a file.
+    '****************************************************************************************
+    Private Sub _btnExportDataGrpSysTestTabSysTestTbcMainFrmMain_Click(sender As Object, e As EventArgs) _
+        Handles btnExportDataGrpSysTestTabSysTestTbcMainFrmMain.Click
+        Dim append As Boolean = chkAppendTabSysTestTbcMainFrmMain.Checked
+
+        _theThemePark.exportData(EXPORT_FILENAME, append)
+    End Sub '_btnExportDataGrpSysTestTabSysTestTbcMainFrmMain_Click(...)
 
     '********** Business Logic Event Procedures
     '             - Initiated as a result of business logic
@@ -2318,7 +2377,6 @@ Public Class FrmMain
             MsgBox("Customer creation submission was successful!", MsgBoxStyle.OkOnly)
         End If
     End Sub '_createCust(...)
-
 
     '****************************************************************************************
     '_createFeat() handles processing for the ThemePark_CreateFeat
@@ -2565,8 +2623,6 @@ Public Class FrmMain
 
             MsgBox("Used Passbook Feature submission was successful!", MsgBoxStyle.OkOnly)
         End If
-        '       End If
-
     End Sub '_usedFeat(...)
 
     '****************************************************************************************
