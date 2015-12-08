@@ -47,6 +47,16 @@ Public Class FileIO
     Private mSYS_FILEWRITE_ERR_MSG As String = _
         "ERROR: File WRITE Error, file="
 
+    'Input file stream object
+    Private mInFile As StreamReader
+
+    'Output transaction file stream object
+    Private mOutFile As StreamWriter
+
+    'Output error file stream object
+    Private mErrFile As StreamWriter
+
+
     '********** Module-level variables
     'Themepark reference
     Private themePark As ThemePark
@@ -111,6 +121,33 @@ Public Class FileIO
             Return mSYS_FILEWRITE_ERR_MSG
         End Get
     End Property
+
+    Private Property _inFile As StreamReader
+        Get
+            Return mInFile
+        End Get
+        Set(value As StreamReader)
+            mInFile = value
+        End Set
+    End Property
+
+    Private Property _outFile As StreamWriter
+        Get
+            Return mOutFile
+        End Get
+        Set(value As StreamWriter)
+            mOutFile = value
+        End Set
+    End Property
+
+    Private Property _errFile As StreamWriter
+        Get
+            Return mErrFile
+        End Get
+        Set(value As StreamWriter)
+            mErrFile = value
+        End Set
+    End Property
 #End Region 'Get/Set Methods
 
 #Region "Behavioral Methods"
@@ -128,15 +165,16 @@ Public Class FileIO
     'data file.  It is used to populate the system with a predefined  
     'data set and is invoked from the 'Process Test Data' button on
     'the System Test tab.
-    Public Sub importData(ByVal pFileName As String)
-        _importData(pFileName)
+    Public Sub importData(ByVal pInpFileName As String,
+                          ByVal pErrFileName As String)
+        _importData(pInpFileName, pErrFileName)
     End Sub 'importData()
 
     '_importData() exports data records from the transactions array
     'to the output data file transactions-out.txt.  It is invoked 
     'from the 'Process Test Data' button on the System Test tab.
     Public Sub exportData(ByVal pFileName As String,
-                                 ByVal pAppend As Boolean)
+                          ByVal pAppend As Boolean)
         _exportData(pFileName, pAppend)
     End Sub 'exportData()
 
@@ -148,20 +186,82 @@ Public Class FileIO
 
     '********** Private Non-Shared Behavioral Methods
 
+    '_parseInpLineFmt() processes each line per the format that is
+    'reflected by the data type and action fields
+    Private Sub _parseInpLineFmt(ByVal pInpLine As String,
+                                 ByVal pSary() As String)
+
+    End Sub '_parseInpLineFmt(...)
+
+    '_parseInpLine() processes the current input line by parsing it
+    'out per data file format requirements.
+    Private Sub _parseInpLine(ByVal pInpLine As String)
+        Console.WriteLine("INP=" & pInpLine)
+        Dim inpFields() As String
+
+        If Not String.IsNullOrEmpty(pInpLine) Then
+            inpFields = Split(pInpLine, ";")
+
+            'String leading/trailing whitespace off each element
+            For Each f In inpFields
+                f = f.Trim
+                Console.WriteLine(f)
+            Next
+
+            'We can skip comments (1st char=#) but write trans rec
+            If pInpLine(0) = "#" Then
+                themePark.writeTransxRec(themePark.transxObjType,
+                                           Nothing,
+                                           pInpLine)
+                Exit Sub
+            End If
+
+            'Now handle each data line format
+            _parseInpLineFmt(pInpLine, inpFields)
+        End If
+    End Sub '_processInputLine(...)
+
     '_importData() imports data records from the transactions-in.txt
     'data file.  It is used to populate the system with a predefined  
     'data set.
-    Private Sub _importData(ByVal pFileName As String)
-        Dim inF As StreamReader
-
-        MsgBox("ImportData: file=" & pFileName)
-
+    Private Sub _importData(ByVal pInpFileName As String,
+                            ByVal pErrFileName As String)
+        'Open the input data file
         Try
-            inF = New StreamReader(pFileName)
-        Catch ex As Exception
-            MsgBox(_FILEOPEN_ERR & "'" & pFileName & "'", MsgBoxStyle.Exclamation)
-
+            _inFile = New StreamReader(pInpFileName)
+        Catch ex As IOException
+            'MsgBox(ex.Message, MsgBoxStyle.Exclamation)
+            Throw ex
+            Exit Sub
         End Try
+
+        'Open the transaction error file
+        Try
+            _errFile = New StreamWriter(pErrFileName)
+        Catch ex As IOException
+            'MsgBox(ex.Message, MsgBoxStyle.Exclamation)
+            Throw ex
+            _inFile.Close()
+            Exit Sub
+        End Try
+
+        'Start parse the input data file line by line
+        While Not _inFile.EndOfStream
+            Try
+                _parseInpLine(_inFile.ReadLine)
+            Catch ex As Exception
+                Throw ex
+                _inFile.Close()
+                _errFile.Close()
+                Exit Sub
+            End Try
+        End While
+
+        'Close both files before exiting else we can't reopen them on
+        'another pass through this method
+        _inFile.Close()
+        _errFile.Close()
+
     End Sub '_importData()
 
     '_importData() exports data records from the transactions array

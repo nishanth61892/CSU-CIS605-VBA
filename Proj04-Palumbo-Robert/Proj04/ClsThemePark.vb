@@ -44,16 +44,17 @@ Public Class ThemePark
     'Attributes + Module-level Constants+Variables
     '****************************************************************************************
     'System level error message
-    Private Const mSYS_OBJ_CREATE_ERR_MSG As String = _
-        "Internal System Error: Object Creation Failed"
-    Private Const mSYS_LOOKUP_ERR_MSG As String = _
-        "Internal System Error: Object Lookup Failed"
-    Private Const mSYS_TRANX_CREATE_ERR_MSG As String = _
-        "Internal System Error: Transaction Creation Failed"
-    Private Const mSYS_ARRAY_IDX_ERR_MSG As String = _
-        "Internal System Error: Array index out of range"
+    Private Const mSYS_ERR_OBJ_CREATE_MSG As String = _
+        "Error: Object Creation Failed"
+    Private Const mSYS_ERR_OBJ_LOOKUP_MSG As String = _
+        "Error: Object Lookup Failed"
+    Private Const mSYS_ERR_TRANX_CREATE_MSG As String = _
+        "Error: Transaction Creation Failed"
+    Private Const mSYS_ERR_DATASTORE_ACCESS_MSG As String = _
+        "Error: Internal data store access error"
 
     'Transaction Record types
+    Private Const mTRANSX_OBJECT_TYPE As String = "OBJECT"
     Private Const mTRANSX_CUST_TYPE As String = "CUSTOMER"
     Private Const mTRANSX_FEAT_TYPE As String = "FEATURE"
     Private Const mTRANSX_PASSBK_TYPE As String = "PASSBOOK"
@@ -233,7 +234,7 @@ Public Class ThemePark
 
     Public ReadOnly Property sysObjLookupErr() As String
         Get
-            Return _SYS_ARRAY_IDX_ERR_MSG
+            Return _SYS_LOOKUP_ERR_MSG
         End Get
     End Property
 
@@ -289,6 +290,12 @@ Public Class ThemePark
         Set(pValue As Integer)
             _numTransx = pValue
         End Set
+    End Property
+
+    Public ReadOnly Property transxObjType() As String
+        Get
+            Return _transxObjType
+        End Get
     End Property
 
     Public ReadOnly Property transxCustType() As String
@@ -390,7 +397,7 @@ Public Class ThemePark
 
     '********** Private Get/Set Methods
     '             - access attributes, begin name with underscore (_)
-    Private Property _themeParkName() As String
+    Private Property _themeParkName As String
         Get
             Return mThemeParkName
         End Get
@@ -399,31 +406,31 @@ Public Class ThemePark
         End Set
     End Property
 
-    Private ReadOnly Property _SYS_OBJ_CREATE_ERR_MSG() As String
+    Private ReadOnly Property _SYS_OBJ_CREATE_ERR_MSG As String
         Get
-            Return mSYS_OBJ_CREATE_ERR_MSG
+            Return mSYS_ERR_OBJ_CREATE_MSG
         End Get
     End Property
 
-    Private ReadOnly Property _SYS_LOOKUP_ERR_MSG() As String
+    Private ReadOnly Property _SYS_LOOKUP_ERR_MSG As String
         Get
-            Return mSYS_LOOKUP_ERR_MSG
+            Return mSYS_ERR_OBJ_LOOKUP_MSG
         End Get
     End Property
 
-    Private ReadOnly Property _SYS_ARRAY_IDX_ERR_MSG() As String
+    Private ReadOnly Property _SYS_ERR_DATASTORE_ACCESS_MSG As String
         Get
-            Return mSYS_ARRAY_IDX_ERR_MSG
+            Return mSYS_ERR_DATASTORE_ACCESS_MSG
         End Get
     End Property
 
-    Private ReadOnly Property _SYS_TRANX_CREATE_ERR_MSG() As String
+    Private ReadOnly Property _SYS_TRANX_CREATE_ERR_MSG As String
         Get
-            Return mSYS_TRANX_CREATE_ERR_MSG
+            Return mSYS_ERR_TRANX_CREATE_MSG
         End Get
     End Property
 
-    Private Property _numCusts() As Integer
+    Private Property _numCusts As Integer
         Get
             Return mNumCusts
         End Get
@@ -432,7 +439,7 @@ Public Class ThemePark
         End Set
     End Property
 
-    Private Property _numPassbks() As Integer
+    Private Property _numPassbks As Integer
         Get
             Return mNumPassbks
         End Get
@@ -441,7 +448,7 @@ Public Class ThemePark
         End Set
     End Property
 
-    Private Property _numFeats() As Integer
+    Private Property _numFeats As Integer
         Get
             Return mNumFeats
         End Get
@@ -450,7 +457,7 @@ Public Class ThemePark
         End Set
     End Property
 
-    Private Property _numPassbkFeats() As Integer
+    Private Property _numPassbkFeats As Integer
         Get
             Return mNumPassbkFeats
         End Get
@@ -459,7 +466,7 @@ Public Class ThemePark
         End Set
     End Property
 
-    Private Property _numUsedFeats() As Integer
+    Private Property _numUsedFeats As Integer
         Get
             Return mNumUsedFeats
         End Get
@@ -468,7 +475,7 @@ Public Class ThemePark
         End Set
     End Property
 
-    Private Property _numTransx() As Integer
+    Private Property _numTransx As Integer
         Get
             Return mNumTransx
         End Get
@@ -477,43 +484,49 @@ Public Class ThemePark
         End Set
     End Property
 
-    Private ReadOnly Property _transxCustType() As String
+    Private ReadOnly Property _transxObjType As String
+        Get
+            Return mTRANSX_OBJECT_TYPE
+        End Get
+    End Property
+
+    Private ReadOnly Property _transxCustType As String
         Get
             Return mTRANSX_CUST_TYPE
         End Get
     End Property
 
-    Private ReadOnly Property _transxFeatType() As String
+    Private ReadOnly Property _transxFeatType As String
         Get
             Return mTRANSX_FEAT_TYPE
         End Get
     End Property
 
-    Private ReadOnly Property _transxPassbkType() As String
+    Private ReadOnly Property _transxPassbkType As String
         Get
             Return mTRANSX_PASSBK_TYPE
         End Get
     End Property
 
-    Private ReadOnly Property _transxPbfPurchType() As String
+    Private ReadOnly Property _transxPbfPurchType As String
         Get
             Return mTRANSX_PBF_PURCH_TYPE
         End Get
     End Property
 
-    Private ReadOnly Property _transxPbfUseType() As String
+    Private ReadOnly Property _transxPbfUseType As String
         Get
             Return mTRANSX_PBF_USE_TYPE
         End Get
     End Property
 
-    Private ReadOnly Property _transxPbfUpdtType() As String
+    Private ReadOnly Property _transxPbfUpdtType As String
         Get
             Return mTRANSX_PBF_UPDT_TYPE
         End Get
     End Property
 
-    Private ReadOnly Property _transxPassbkFeatType() As String
+    Private ReadOnly Property _transxPassbkFeatType As String
         Get
             Return mTRANSX_PASSBKFEAT_TYPE
         End Get
@@ -838,8 +851,9 @@ Public Class ThemePark
     'data file.  It is used to populate the system with a predefined  
     'data set and is invoked from the 'Process Test Data' button on
     'the System Test tab.
-    Public Sub importData(ByVal pFileName As String)
-        fileIO.importData(pFileName)
+    Public Sub importData(ByVal pInpFileName As String,
+                          ByVal pErrFileName As String)
+        fileIO.importData(pInpFileName, pErrFileName)
     End Sub 'importData()
 
     '_importData() exports data records from the transactions array
@@ -852,14 +866,14 @@ Public Class ThemePark
 
 
     '****************************************************************************************
-    'writeTranxRec() is used to format a transaction record and store it in the tranx rec
+    'writeTransxRec() is used to format a transaction record and store it in the tranx rec
     'database.
     '****************************************************************************************
-    Public Sub writeTranxRec(ByVal pType As String,
-                             ByVal pSubType As String,
-                             ByVal pObj As Object)
-        _writeTranxRec(pType, pSubType, pObj)
-    End Sub 'writeTranxRec(...)
+    Public Sub writeTransxRec(ByVal pType As String,
+                              ByVal pSubType As String,
+                              ByVal pObj As Object)
+        _writeTransxRec(pType, pSubType, pObj)
+    End Sub 'writeTransxRec(...)
 
     '****************************************************************************************
     'findCust() is used to locate a customer by ID from the customer database.  
@@ -1013,64 +1027,102 @@ Public Class ThemePark
                   )
     End Sub 'usedFeat(...)
 
+    '****************************************************************************************
     'calcAvgBalUnusedFeat()
     '   - calculates the avg unused feature balance
+    '****************************************************************************************
     Public Function calcAvgBalUnusedFeat() As Decimal
         Return kpi.calcAvgBalUnusedFeat()
     End Function 'calcAvgBalUnusedFeat()
 
+    '****************************************************************************************
     'calcTotBalUnusedFeat()
     '   - function that calculates the total unused feature balance
+    '****************************************************************************************
     Public Function calcTotBalUnusedFeat() As Decimal
         Return kpi.calcTotBalUnusedFeat()
     End Function 'calcTotBalUnusedFeat()
 
+    '****************************************************************************************
     'calcAvgPassbkPerCust()
     '   - function that calculates the total unused feature balance
+    '****************************************************************************************
     Public Function calcAvgPassbkPerCust() As Decimal
         Return kpi.calcAvgPassbkPerCust()
     End Function 'calcAvgPassbkPerCust()
 
+    '****************************************************************************************
     'calcMostPopFeat()
     '   - function that calculates the most popular purchase feature
+    '****************************************************************************************
     Public Function calcMostPopFeat() As String
         Return kpi.calcMostPopFeat()
     End Function 'calcMostPopFeat()
 
+    '****************************************************************************************
     'calcPctPassbkFeatUsed()
     '   - Percent of passbook features used (used / total)
+    '****************************************************************************************
     Public Function calcPctPassbkFeatUsed() As Decimal
         Return kpi.calcPctPassbkFeatUsed()
     End Function 'calcPctPassbkFeatUsed()
 
+    '****************************************************************************************
     'calcAvgPassbkHolderAge()
     '   - Average age of all passbook holders
+    '****************************************************************************************
     Public Function calcAvgPassbkHolderAge() As Decimal
         Return kpi.calcAvgPassbkHolderAge()
     End Function 'calcAvgPassbkHolderAge()
 
+    '****************************************************************************************
     'calcNumPassbkHolderBdaysInCurrMon()
     '   - Average age of all passbook holders
+    '****************************************************************************************
     Public Function calcNumPassbkHolderBdaysInCurrMon() As Integer
         Return kpi.calcNumPassbkHolderBdaysInCurrMon()
     End Function 'calcNumPassbkHolderBdaysInCurrMon()
 
 
-    '********** Private Non-Shared Behavioral Methods
+
+    '****************************************************************************************
+    '_postTransx() is used to post the specified transaction to the transaction data 
+    ' store.
+    '****************************************************************************************
+    Private Sub _postTransx(ByVal obj As Object)
+
+        If _numTransx >= _transxArrayMax Then
+            _transxArrayMax += _TRANSX_ARRAY_INC_DFLT
+            ReDim Preserve mTransx(_passbookArrayMax - 1)
+        End If
+
+        Try
+            _ithTransx(_numTransx) = obj.ToString
+            _numTransx += 1
+        Catch ex As Exception
+            MsgBox(ex.Message, MsgBoxStyle.Exclamation)
+        End Try
+    End Sub '_postTransx(...)
+
     '****************************************************************************************
     '_writeTranxRec() is used to format a transaction record and store it in the tranx rec
-    'database.
-    'It is the workhorse method called by writeTranxRec().
+    'database.  It is the workhorse method called by writeTranxRec().
     '****************************************************************************************
-    Private Sub _writeTranxRec(ByVal pType As String,
-                               ByVal pSubType As String,
-                               ByVal pObj As Object)
+    Private Sub _writeTransxRec(ByVal pType As String,
+                                ByVal pSubType As String,
+                                ByVal pObj As Object)
         Dim now As Date = now
         Dim tStr As String = ""
 
         'Depending on the tranx type pObj will be cast approriately to extract the 
         'specific details of this transaction to be written out
         Select Case pType
+            Case _transxObjType
+                Dim obj As String = CType(pObj, String)
+                _postTransx(obj)
+
+                Console.WriteLine("WriteTranxRec: " & obj.ToString)
+
             Case _transxCustType
                 Dim cust As Customer = CType(pObj, Customer)
                 Console.WriteLine("WriteTranxRec: " & cust.ToString)
@@ -1098,7 +1150,7 @@ Public Class ThemePark
                         Console.WriteLine("WriteTranxRecUse: " & usedFeat.ToString)
                 End Select
             Case Else
-                MsgBox(mSYS_TRANX_CREATE_ERR_MSG, MsgBoxStyle.Exclamation)
+                MsgBox(mSYS_ERR_TRANX_CREATE_MSG, MsgBoxStyle.Exclamation)
         End Select
     End Sub '_writeTranxRec(...)
 
@@ -1279,7 +1331,7 @@ Public Class ThemePark
         'Make sure we actually have customer object.  There is the slight chance
         'that the New () could have failed.
         If cust Is Nothing Then
-            MsgBox(mSYS_OBJ_CREATE_ERR_MSG, MsgBoxStyle.Critical)
+            MsgBox(mSYS_ERR_OBJ_CREATE_MSG, MsgBoxStyle.Critical)
             Exit Sub
         End If
 
@@ -1346,7 +1398,7 @@ Public Class ThemePark
         'Make sure we actually have feature object.  There is the slight chance
         'that the New () could have failed.
         If feat Is Nothing Then
-            MsgBox(mSYS_OBJ_CREATE_ERR_MSG, MsgBoxStyle.Critical)
+            MsgBox(mSYS_ERR_OBJ_CREATE_MSG, MsgBoxStyle.Critical)
             Exit Sub
         End If
 
@@ -1424,7 +1476,7 @@ Public Class ThemePark
         'Make sure we actually have passbook object.  There is the slight chance
         'that the New () could have failed.
         If passbook Is Nothing Then
-            MsgBox(mSYS_OBJ_CREATE_ERR_MSG, MsgBoxStyle.Critical)
+            MsgBox(mSYS_ERR_OBJ_CREATE_MSG, MsgBoxStyle.Critical)
             Exit Sub
         End If
 
@@ -1541,7 +1593,7 @@ Public Class ThemePark
         Try
             passbkFeat = _findPassbkFeat(pPassbkFeatId)
         Catch ex As Exception
-            MsgBox(mSYS_OBJ_CREATE_ERR_MSG, MsgBoxStyle.Critical)
+            MsgBox(mSYS_ERR_OBJ_CREATE_MSG, MsgBoxStyle.Critical)
             Exit Sub
         End Try
 
@@ -1720,8 +1772,8 @@ Public Class ThemePark
 
     'Define the log transaction msg event
     Public Event ThemePark_LogTran(ByVal sender As Object, _
-                                    ByVal e As System.EventArgs
-                                    )
+                                   ByVal e As System.EventArgs
+                                   )
 
 #End Region 'Events
 

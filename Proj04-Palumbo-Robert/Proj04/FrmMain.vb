@@ -40,27 +40,29 @@ Public Class FrmMain
     '****************************************************************************************
     'System level error message
     Private Const mSYS_ERR_MSG As String = _
-        "Internal System Error: Object Creation Failed"
-    Private Const mSYS_LOOKUP_ERR_MSG As String = _
-        "Internal System Error: Object Lookup Failed"
+        "Error: Object Creation Failed"
+    Private Const mSYS_ERR_LOOKUP_MSG As String = _
+        "Error: Object Lookup Failed"
     Private Const mSYS_ERR_CUSTID_EXISTS_MSG As String = _
         "Error: Customer ID already exists, ID="
     Private Const mSYS_ERR_CUSTOREF_INVALID_MSG As String = _
-        "Internal System Error: Customer Object Reference is Invalid"
+        "Error: Customer Object Reference is Invalid"
     Private Const mSYS_ERR_FEATID_EXISTS_MSG As String = _
         "Error: Feature ID already exists, ID="
     Private Const mSYS_ERR_FEATOREF_INVALID_MSG As String = _
-        "Internal System Error: Feature Object Reference is Invalid"
+        "Error: Feature Object Reference is Invalid"
     Private Const mSYS_ERR_PASSBKID_EXISTS_MSG As String = _
         "Error: Passbook ID already exists, ID="
     Private Const mSYS_ERR_PASSBKOREF_INVALID_MSG As String = _
-        "Internal System Error: Passbook Object Reference is Invalid"
+        "Error: Passbook Object Reference is Invalid"
     Private Const mSYS_ERR_PASSBKFEATID_EXISTS_MSG As String = _
         "Error: Passbook Feature ID already exists, ID="
     Private Const mSYS_ERR_USEDFEATID_EXISTS_MSG As String = _
         "Error: Used Feature ID already exists, ID="
-    Private Const mSYS_ERR_DATASTORE_ACCESS_ERR_MSG As String = _
-        "Internal System Error: Error accessing internal data store"
+    Private Const mSYS_ERR_DATASTORE_ACCESS_MSG As String = _
+        "Error: Internal data store access error"
+    Private Const mSYS_ERR_FILEIO_MSG As String = _
+        "Error: File I/O Error"
 
     'Input/Output file names
     Private Const mIMPORT_FILENAME As String = "Transactions-in.txt"
@@ -205,15 +207,15 @@ Public Class FrmMain
         End Get
     End Property
 
-    Private ReadOnly Property _SYS_LOOKUP_ERR_MSG As String
+    Private ReadOnly Property _SYS_ERR_LOOKUP_MSG As String
         Get
-            Return mSYS_LOOKUP_ERR_MSG
+            Return mSYS_ERR_LOOKUP_MSG
         End Get
     End Property
 
-    Private ReadOnly Property _SYS_ERR_DATASTORE_ACCESS_ERR_MSG As String
+    Private ReadOnly Property _SYS_ERR_DATASTORE_ACCESS_MSG As String
         Get
-            Return mSYS_ERR_DATASTORE_ACCESS_ERR_MSG
+            Return mSYS_ERR_DATASTORE_ACCESS_MSG
         End Get
     End Property
 
@@ -262,6 +264,12 @@ Public Class FrmMain
     Private ReadOnly Property _SYS_ERR_USEDFEATID_EXISTS_MSG As String
         Get
             Return mSYS_ERR_USEDFEATID_EXISTS_MSG
+        End Get
+    End Property
+
+    Private ReadOnly Property _SYS_ERR_FILEIO_MSG As String
+        Get
+            Return mSYS_ERR_FILEIO_MSG
         End Get
     End Property
 
@@ -706,7 +714,7 @@ Public Class FrmMain
                 Exit Sub
             End If
         Catch
-            MsgBox(_SYS_ERR_DATASTORE_ACCESS_ERR_MSG, MsgBoxStyle.Critical)
+            MsgBox(_SYS_ERR_DATASTORE_ACCESS_MSG, MsgBoxStyle.Critical)
             Exit Sub
         End Try
 
@@ -2026,7 +2034,7 @@ Public Class FrmMain
             Try
                 cust = _theThemePark.findCust(cboVal)
             Catch ex As Exception
-                MsgBox(_SYS_LOOKUP_ERR_MSG, MsgBoxStyle.Exclamation)
+                MsgBox(_SYS_ERR_LOOKUP_MSG, MsgBoxStyle.Exclamation)
                 Exit Sub
             End Try
 
@@ -2061,7 +2069,7 @@ Public Class FrmMain
             Try
                 mPassBk = _theThemePark.findPassbk(cboVal)
             Catch ex As Exception
-                MsgBox(_SYS_LOOKUP_ERR_MSG, MsgBoxStyle.Exclamation)
+                MsgBox(_SYS_ERR_LOOKUP_MSG, MsgBoxStyle.Exclamation)
                 Exit Sub
             End Try
 
@@ -2128,7 +2136,7 @@ Public Class FrmMain
             Try
                 mFeat = _theThemePark.findFeat(cboVal)
             Catch ex As Exception
-                MsgBox(_SYS_LOOKUP_ERR_MSG, MsgBoxStyle.Exclamation)
+                MsgBox(_SYS_ERR_LOOKUP_MSG, MsgBoxStyle.Exclamation)
                 Exit Sub
             End Try
 
@@ -2185,7 +2193,7 @@ Public Class FrmMain
             Try
                 passbkFeat = _theThemePark.findPassbkFeat(cboVal)
             Catch ex As Exception
-                MsgBox(_SYS_LOOKUP_ERR_MSG, MsgBoxStyle.Exclamation)
+                MsgBox(_SYS_ERR_LOOKUP_MSG, MsgBoxStyle.Exclamation)
                 Exit Sub
             End Try
 
@@ -2244,7 +2252,7 @@ Public Class FrmMain
                         End If
                     Next usedFeat
                 Catch ex As Exception
-                    MsgBox(_SYS_ERR_DATASTORE_ACCESS_ERR_MSG, MsgBoxStyle.Critical)
+                    MsgBox(_SYS_ERR_DATASTORE_ACCESS_MSG, MsgBoxStyle.Critical)
                     Exit Sub
                 End Try
 
@@ -2344,7 +2352,7 @@ Public Class FrmMain
                         End If
                     Next usedFeat
                 Catch ex As Exception
-                    MsgBox(_SYS_ERR_DATASTORE_ACCESS_ERR_MSG, MsgBoxStyle.Critical)
+                    MsgBox(_SYS_ERR_DATASTORE_ACCESS_MSG, MsgBoxStyle.Critical)
                     Exit Sub
                 End Try
 
@@ -2447,7 +2455,13 @@ Public Class FrmMain
     '****************************************************************************************
     Private Sub _btnImportDataTabSysTestTbcMainFrmMain_Click(sender As Object, e As EventArgs) _
         Handles btnImportDataTabSysTestTbcMainFrmMain.Click
-        _theThemePark.importData(IMPORT_FILENAME)
+
+        Try
+            _theThemePark.importData(IMPORT_FILENAME, ERROR_FILENAME)
+        Catch ex As Exception
+            MsgBox(ex.Message, MsgBoxStyle.Exclamation)
+            Exit Sub
+        End Try
     End Sub '_btnImportDataTabSysTestTbcMainFrmMain_Click(...)
 
     '****************************************************************************************
@@ -2505,7 +2519,7 @@ Public Class FrmMain
         _dispKpi()
 
         'Write transaction record and log info
-        _theThemePark.writeTranxRec(_theThemePark.transxCustType, Nothing, cust)
+        _theThemePark.writeTransxRec(_theThemePark.transxCustType, Nothing, cust)
         _writeTransLog("<CREATED>: " & cust.ToString())
 
         'Not needed if object was created from system test data
@@ -2555,7 +2569,7 @@ Public Class FrmMain
         _dispKpi()
 
         'Write transaction record and log info
-        _theThemePark.writeTranxRec(_theThemePark.transxFeatType, Nothing, feat)
+        _theThemePark.writeTransxRec(_theThemePark.transxFeatType, Nothing, feat)
         _writeTransLog("<CREATED>: " & feat.ToString())
 
         'Not needed if object was created from system test data
@@ -2605,7 +2619,7 @@ Public Class FrmMain
         _dispKpi()
 
         'Write transaction record and log info
-        _theThemePark.writeTranxRec(_theThemePark.transxPassbkType, Nothing, passbk)
+        _theThemePark.writeTransxRec(_theThemePark.transxPassbkType, Nothing, passbk)
         _writeTransLog("<CREATED>: " & passbk.ToString())
 
         'Not needed if object was created from system test data
@@ -2656,7 +2670,7 @@ Public Class FrmMain
         _dispKpi()
 
         'Write transaction record and log info
-        _theThemePark.writeTranxRec(_theThemePark.transxPassbkFeatType,
+        _theThemePark.writeTransxRec(_theThemePark.transxPassbkFeatType,
                                     _theThemePark.transxPbfPurchType,
                                     passbkFeat)
         _writeTransLog("<PURCHASED>: " & passbkFeat.ToString())
@@ -2698,7 +2712,7 @@ Public Class FrmMain
         _dispKpi()
 
         'Write transaction record and log info
-        _theThemePark.writeTranxRec(_theThemePark.transxPassbkFeatType,
+        _theThemePark.writeTransxRec(_theThemePark.transxPassbkFeatType,
                                     _theThemePark.transxPbfUpdtType,
                                     passbkFeat)
         _writeTransLog("<UPDATED>: " & passbkFeat.ToString)
@@ -2750,7 +2764,7 @@ Public Class FrmMain
         _dispKpi()
 
         'Write transaction record and log info
-        _theThemePark.writeTranxRec(_theThemePark.transxPassbkFeatType,
+        _theThemePark.writeTransxRec(_theThemePark.transxPassbkFeatType,
                                     _theThemePark.transxPbfUseType,
                                     usedFeat)
         _writeTransLog("<USED>: " & usedFeat.ToString())
@@ -2833,7 +2847,7 @@ Public Class FrmMain
                     txtDebug.Text &= cust.ToString & vbCrLf
                 Next cust
             Catch ex As Exception
-                MsgBox(_SYS_ERR_DATASTORE_ACCESS_ERR_MSG, MsgBoxStyle.Critical)
+                MsgBox(_SYS_ERR_DATASTORE_ACCESS_MSG, MsgBoxStyle.Critical)
                 Exit Sub
             End Try
         End If
@@ -2853,7 +2867,7 @@ Public Class FrmMain
                     txtDebug.Text &= passbk.ToString & vbCrLf
                 Next passbk
             Catch ex As Exception
-                MsgBox(_SYS_ERR_DATASTORE_ACCESS_ERR_MSG, MsgBoxStyle.Critical)
+                MsgBox(_SYS_ERR_DATASTORE_ACCESS_MSG, MsgBoxStyle.Critical)
                 Exit Sub
             End Try
         End If
@@ -2873,7 +2887,7 @@ Public Class FrmMain
                     txtDebug.Text &= feat.ToString & vbCrLf
                 Next feat
             Catch ex As Exception
-                MsgBox(_SYS_ERR_DATASTORE_ACCESS_ERR_MSG, MsgBoxStyle.Critical)
+                MsgBox(_SYS_ERR_DATASTORE_ACCESS_MSG, MsgBoxStyle.Critical)
                 Exit Sub
             End Try
         End If
@@ -2893,7 +2907,7 @@ Public Class FrmMain
                     txtDebug.Text &= passbkFeat.ToString & vbCrLf
                 Next passbkFeat
             Catch ex As Exception
-                MsgBox(_SYS_ERR_DATASTORE_ACCESS_ERR_MSG, MsgBoxStyle.Critical)
+                MsgBox(_SYS_ERR_DATASTORE_ACCESS_MSG, MsgBoxStyle.Critical)
                 Exit Sub
             End Try
         End If
@@ -2913,7 +2927,7 @@ Public Class FrmMain
                     txtDebug.Text &= usedFeat.ToString & vbCrLf
                 Next usedFeat
             Catch ex As Exception
-                MsgBox(_SYS_ERR_DATASTORE_ACCESS_ERR_MSG, MsgBoxStyle.Critical)
+                MsgBox(_SYS_ERR_DATASTORE_ACCESS_MSG, MsgBoxStyle.Critical)
                 Exit Sub
             End Try
         End If
@@ -2929,11 +2943,11 @@ Public Class FrmMain
             txtDebug.Text = "No Transactions to display" & vbCrLf
         Else
             Try
-                For Each transx As UsedFeature In _theThemePark.iterateTransx
+                For Each transx As String In _theThemePark.iterateTransx
                     txtDebug.Text &= transx.ToString & vbCrLf
                 Next transx
             Catch ex As Exception
-                MsgBox(_SYS_ERR_DATASTORE_ACCESS_ERR_MSG, MsgBoxStyle.Critical)
+                MsgBox(_SYS_ERR_DATASTORE_ACCESS_MSG, MsgBoxStyle.Critical)
                 Exit Sub
             End Try
         End If
