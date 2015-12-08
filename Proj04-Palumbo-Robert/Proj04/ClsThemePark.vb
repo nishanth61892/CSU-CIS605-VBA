@@ -44,9 +44,14 @@ Public Class ThemePark
     'Attributes + Module-level Constants+Variables
     '****************************************************************************************
     'System level error message
-    Private Const mSYS_OBJ_CREATE_ERR_MSG As String = "Internal System Error: Object Creation Failed"
-    Private Const mSYS_LOOKUP_ERR_MSG As String = "Internal System Error: Object Lookup Failed"
-    Private Const mSYS_TRANX_CREATE_ERR_MSG As String = "Internal System Error: Transaction Creation Failed"
+    Private Const mSYS_OBJ_CREATE_ERR_MSG As String = _
+        "Internal System Error: Object Creation Failed"
+    Private Const mSYS_LOOKUP_ERR_MSG As String = _
+        "Internal System Error: Object Lookup Failed"
+    Private Const mSYS_TRANX_CREATE_ERR_MSG As String = _
+        "Internal System Error: Transaction Creation Failed"
+    Private Const mSYS_ARRAY_IDX_ERR_MSG As String = _
+        "Internal System Error: Array index out of range"
 
     'Transaction Record types
     Private Const mTRANSX_CUST_TYPE As String = "CUSTOMER"
@@ -222,13 +227,13 @@ Public Class ThemePark
 
     Public ReadOnly Property sysObjCreateErr() As String
         Get
-            Return _sysObjCreateErr
+            Return _SYS_OBJ_CREATE_ERR_MSG
         End Get
     End Property
 
     Public ReadOnly Property sysObjLookupErr() As String
         Get
-            Return _sysObjLookupErr
+            Return _SYS_ARRAY_IDX_ERR_MSG
         End Get
     End Property
 
@@ -394,18 +399,29 @@ Public Class ThemePark
         End Set
     End Property
 
-    Public ReadOnly Property _sysObjCreateErr() As String
+    Private ReadOnly Property _SYS_OBJ_CREATE_ERR_MSG() As String
         Get
             Return mSYS_OBJ_CREATE_ERR_MSG
         End Get
     End Property
 
-    Public ReadOnly Property _sysObjLookupErr() As String
+    Private ReadOnly Property _SYS_LOOKUP_ERR_MSG() As String
         Get
             Return mSYS_LOOKUP_ERR_MSG
         End Get
     End Property
 
+    Private ReadOnly Property _SYS_ARRAY_IDX_ERR_MSG() As String
+        Get
+            Return mSYS_ARRAY_IDX_ERR_MSG
+        End Get
+    End Property
+
+    Private ReadOnly Property _SYS_TRANX_CREATE_ERR_MSG() As String
+        Get
+            Return mSYS_TRANX_CREATE_ERR_MSG
+        End Get
+    End Property
 
     Private Property _numCusts() As Integer
         Get
@@ -822,17 +838,17 @@ Public Class ThemePark
     'data file.  It is used to populate the system with a predefined  
     'data set and is invoked from the 'Process Test Data' button on
     'the System Test tab.
-    Public Function importData(ByVal pFileName As String) As String
-        Return fileIO.importData(pFileName)
-    End Function 'importData()
+    Public Sub importData(ByVal pFileName As String)
+        fileIO.importData(pFileName)
+    End Sub 'importData()
 
     '_importData() exports data records from the transactions array
     'to the output data file transactions-out.txt.  It is invoked 
     'from the 'Process Test Data' button on the System Test tab.
-    Public Function exportData(ByVal pFileName As String,
-                                 ByVal pAppend As Boolean) As String
-        Return fileIO.exportData(pFileName, pAppend)
-    End Function 'exportData()
+    Public Sub exportData(ByVal pFileName As String,
+                                 ByVal pAppend As Boolean)
+        fileIO.exportData(pFileName, pAppend)
+    End Sub 'exportData()
 
 
     '****************************************************************************************
@@ -1097,12 +1113,14 @@ Public Class ThemePark
         If Not IsNothing(pCustId) Then
             Try
                 For i = 0 To _numCusts - 1
-                    If _ithCust(i).custId = pCustId Then
+                    If _ithCust(i).custId.ToUpper = pCustId.ToUpper Then
                         Return _ithCust(i)
                     End If
                 Next i
             Catch ex As Exception
-                MsgBox(mSYS_LOOKUP_ERR_MSG, MsgBoxStyle.Exclamation)
+                'XRLP - MsgBox(mSYS_LOOKUP_ERR_MSG, MsgBoxStyle.Exclamation)
+                Throw New IndexOutOfRangeException
+                Exit Function
             End Try
         End If
 
@@ -1120,12 +1138,14 @@ Public Class ThemePark
         If Not IsNothing(pFeatId) Then
             Try
                 For i = 0 To _numFeats - 1
-                    If _ithFeat(i).featId = pFeatId Then
+                    If _ithFeat(i).featId.ToUpper = pFeatId.ToUpper Then
                         Return _ithFeat(i)
                     End If
                 Next i
             Catch ex As Exception
-                MsgBox(mSYS_LOOKUP_ERR_MSG, MsgBoxStyle.Exclamation)
+                'XRLP - MsgBox(mSYS_LOOKUP_ERR_MSG, MsgBoxStyle.Exclamation)
+                Throw New IndexOutOfRangeException
+                Exit Function
             End Try
         End If
 
@@ -1143,12 +1163,14 @@ Public Class ThemePark
         If Not IsNothing(pPassbkId) Then
             Try
                 For i = 0 To _numPassbks - 1
-                    If _ithPassbk(i).passbkId = pPassbkId Then
+                    If _ithPassbk(i).passbkId.ToUpper = pPassbkId.ToUpper Then
                         Return _ithPassbk(i)
                     End If
                 Next i
             Catch ex As Exception
-                MsgBox(mSYS_LOOKUP_ERR_MSG, MsgBoxStyle.Exclamation)
+                'XRLP - MsgBox(mSYS_LOOKUP_ERR_MSG, MsgBoxStyle.Exclamation)
+                Throw New IndexOutOfRangeException
+                Exit Function
             End Try
         End If
 
@@ -1166,12 +1188,14 @@ Public Class ThemePark
         If Not IsNothing(pPassbkFeatId) Then
             Try
                 For i = 0 To _numPassbkFeats - 1
-                    If _ithPassbkFeat(i).id = pPassbkFeatId Then
+                    If _ithPassbkFeat(i).id.ToUpper = pPassbkFeatId.ToUpper Then
                         Return _ithPassbkFeat(i)
                     End If
                 Next i
             Catch ex As Exception
-                MsgBox(mSYS_LOOKUP_ERR_MSG, MsgBoxStyle.Exclamation)
+                'XRLP - MsgBox(mSYS_LOOKUP_ERR_MSG, MsgBoxStyle.Exclamation)
+                Throw New IndexOutOfRangeException
+                Exit Function
             End Try
         End If
 
@@ -1189,12 +1213,14 @@ Public Class ThemePark
         If Not IsNothing(pUsedFeatId) Then
             Try
                 For i = 0 To _numUsedFeats - 1
-                    If _ithUsedFeat(i).id = pUsedFeatId Then
+                    If _ithUsedFeat(i).id.ToUpper = pUsedFeatId.ToUpper Then
                         Return _ithUsedFeat(i)
                     End If
                 Next i
             Catch ex As Exception
-                MsgBox(mSYS_LOOKUP_ERR_MSG, MsgBoxStyle.Exclamation)
+                ''XRLP - MsgBox(mSYS_LOOKUP_ERR_MSG, MsgBoxStyle.Exclamation)
+                Throw New IndexOutOfRangeException
+                Exit Function
             End Try
         End If
 
@@ -1228,11 +1254,27 @@ Public Class ThemePark
     'of the associated processed based on this event
     '****************************************************************************************
     Private Sub _createCust(ByVal pCustId As String, _
-                            ByVal pCustName As String
-                            )
-        Dim cust As Customer = New Customer(pCustId,
-                                            pCustName
-                                            )
+                            ByVal pCustName As String)
+        'Trap duplicates here and don't create - this can happen from system test data
+        Dim cust As Customer
+        Try
+            cust = _findCust(pCustId)
+        Catch ex As Exception
+            Throw New IndexOutOfRangeException
+            Exit Sub
+        End Try
+
+        If Not IsNothing(cust) Then
+            Dim logMsg As String = "ERROR: Attempt to create duplicate Customer, ID=" & pCustId
+
+            'Raise and event to let the listeners of this event it happened
+            RaiseEvent ThemePark_LogTran(Me,
+                                         New ThemePark_EventArgs_LogMsg(logMsg))
+            Exit Sub
+        End If
+
+        cust = New Customer(pCustId,
+                            pCustName)
 
         'Make sure we actually have customer object.  There is the slight chance
         'that the New () could have failed.
@@ -1275,11 +1317,18 @@ Public Class ThemePark
                             ByVal pFeatName As String, _
                             ByVal pUnitOfMeas As String, _
                             ByVal pAdultPrice As Decimal, _
-                            ByVal pChildPrice As Decimal
-                            )
+                            ByVal pChildPrice As Decimal)
 
         'Trap duplicates here and don't create - this can happen from system test data
-        If Not _findFeat(pFeatId) Is Nothing Then
+        Dim feat As Feature
+        Try
+            feat = _findFeat(pFeatId)
+        Catch ex As Exception
+            Throw New IndexOutOfRangeException
+            Exit Sub
+        End Try
+
+        If Not IsNothing(feat) Then
             Dim logMsg As String = "ERROR: Attempt to create duplicate feature, Id=" & pFeatId
 
             'Raise and event to let the listeners of this event it happened
@@ -1288,12 +1337,11 @@ Public Class ThemePark
             Exit Sub
         End If
 
-        Dim feat As Feature = New Feature(pFeatId, _
-                                          pFeatName, _
-                                          pUnitOfMeas, _
-                                          pAdultPrice, _
-                                          pChildPrice
-                                          )
+        feat = New Feature(pFeatId, _
+                           pFeatName, _
+                           pUnitOfMeas, _
+                           pAdultPrice, _
+                           pChildPrice)
 
         'Make sure we actually have feature object.  There is the slight chance
         'that the New () could have failed.
@@ -1338,8 +1386,24 @@ Public Class ThemePark
                               ByVal pVisName As String, _
                               ByVal pVisDob As Date, _
                               ByVal pVisAge As Integer, _
-                              ByVal pVisIsChild As Boolean
-                              )
+                              ByVal pVisIsChild As Boolean)
+        'Trap duplicates here and don't create - this can happen from system test data
+        Dim passbk As Passbook
+        Try
+            passbk = _findPassbk(pPassbkId)
+        Catch ex As Exception
+            Throw New IndexOutOfRangeException
+            Exit Sub
+        End Try
+
+        If Not IsNothing(passbk) Then
+            Dim logMsg As String = "ERROR: Attempt to create duplicate Passbook, ID=" & pPassbkId
+
+            'Raise and event to let the listeners of this event it happened
+            RaiseEvent ThemePark_LogTran(Me,
+                                         New ThemePark_EventArgs_LogMsg(logMsg))
+            Exit Sub
+        End If
 
         'Because data can be input into the system in several ways we
         'have to check that the passbook feature specified is already
@@ -1355,8 +1419,7 @@ Public Class ThemePark
                                                 pVisName, _
                                                 pVisDob, _
                                                 pVisAge, _
-                                                pVisIsChild
-                                                )
+                                                pVisIsChild)
 
         'Make sure we actually have passbook object.  There is the slight chance
         'that the New () could have failed.
@@ -1398,8 +1461,25 @@ Public Class ThemePark
     Private Sub _purchPassbkFeat(ByVal pPassbkFeatId As String, _
                                  ByVal pFeature As Feature, _
                                  ByVal pPassbk As Passbook, _
-                                 ByVal pQtyPurch As Decimal
-                                 )
+                                 ByVal pQtyPurch As Decimal)
+        'Trap duplicates here and don't create - this can happen from system test data
+        Dim passbkFeat As PassbookFeature
+        Try
+            passbkFeat = _findPassbkFeat(pPassbkFeatId)
+        Catch ex As Exception
+            Throw New IndexOutOfRangeException
+            Exit Sub
+        End Try
+
+        If Not IsNothing(passbkFeat) Then
+            Dim logMsg As String = "ERROR: Attempt to create duplicate Passbook Feature, ID=" & pPassbkFeatId
+
+            'Raise and event to let the listeners of this event it happened
+            RaiseEvent ThemePark_LogTran(Me,
+                                         New ThemePark_EventArgs_LogMsg(logMsg))
+            Exit Sub
+        End If
+
         'Because data can be input into the system in several ways we
         'have to check that the passbook feature specified is already
         'in the system.  If so that feature has to be used
@@ -1413,15 +1493,14 @@ Public Class ThemePark
             passbk = pPassbk
         End If
 
-        Dim passbkFeat As PassbookFeature = New PassbookFeature(pPassbkFeatId, _
-                                                                feat, _
-                                                                passbk, _
-                                                                pQtyPurch
-                                                                )
+        passbkFeat = New PassbookFeature(pPassbkFeatId, _
+                                         feat, _
+                                         passbk, _
+                                         pQtyPurch)
         'Make sure we actually have passbook feature object.  There is the slight chance
         'that the New () could have failed.
         If passbkFeat Is Nothing Then
-            MsgBox(mSYS_OBJ_CREATE_ERR_MSG, MsgBoxStyle.Critical)
+            MsgBox(_SYS_OBJ_CREATE_ERR_MSG, MsgBoxStyle.Critical)
             Exit Sub
         End If
 
@@ -1456,15 +1535,20 @@ Public Class ThemePark
     'of the associated processed based on this event
     '****************************************************************************************
     Private Sub _updtPassbkFeat(ByVal pPassbkFeatId As String, _
-                                ByVal pUpdtQty As Decimal
-                                )
+                                ByVal pUpdtQty As Decimal)
+        Dim passbkFeat As PassbookFeature
 
-        Dim passbkFeat As PassbookFeature = _findPassbkFeat(pPassbkFeatId)
+        Try
+            passbkFeat = _findPassbkFeat(pPassbkFeatId)
+        Catch ex As Exception
+            MsgBox(mSYS_OBJ_CREATE_ERR_MSG, MsgBoxStyle.Critical)
+            Exit Sub
+        End Try
 
-        'Make sure we actually have customer object.  There is the slight chance
+        'Make sure we actually have passbook feature object.  There is the slight chance
         'that the New () could have failed.
         If passbkFeat Is Nothing Then
-            MsgBox(mSYS_OBJ_CREATE_ERR_MSG, MsgBoxStyle.Critical)
+            MsgBox(_SYS_LOOKUP_ERR_MSG, MsgBoxStyle.Critical)
             Exit Sub
         End If
 
@@ -1490,32 +1574,54 @@ Public Class ThemePark
     'and raises an event to alert any listeners to handle the rest
     'of the associated processed based on this event
     '****************************************************************************************
-    Private Sub _usedFeat(ByVal pId As String, _
+    Private Sub _usedFeat(ByVal pUsedFeatId As String, _
                           ByVal pPassbkFeat As PassbookFeature, _
                           ByVal pDateUsed As Date, _
                           ByVal pQtyUsed As Decimal, _
-                          ByVal pLoc As String
-                          )
+                          ByVal pLoc As String)
+        'Trap duplicates here and don't create - this can happen from system test data
+        Dim usedFeat As UsedFeature
+        Try
+            usedFeat = _findUsedFeat(pUsedFeatId)
+        Catch ex As Exception
+            Throw New IndexOutOfRangeException
+            Exit Sub
+        End Try
+
+        If Not IsNothing(usedFeat) Then
+            Dim logMsg As String = "ERROR: Attempt to create duplicate Used Feature, ID=" & pUsedFeatId
+
+            'Raise and event to let the listeners of this event it happened
+            RaiseEvent ThemePark_LogTran(Me,
+                                         New ThemePark_EventArgs_LogMsg(logMsg))
+            Exit Sub
+        End If
 
         'Because data can be input into the system in several ways we
         'have to check that the passbook feature specified is already
         'in the system.  If so that feature has to be used
-        Dim passbkFeat As PassbookFeature = _findPassbkFeat(pPassbkFeat.id)
+        Dim passbkFeat As PassbookFeature
+        Try
+            passbkFeat = _findPassbkFeat(pPassbkFeat.id)
+        Catch ex As Exception
+            Throw New IndexOutOfRangeException
+            Exit Sub
+        End Try
+
         If IsNothing(passbkFeat) Then
             passbkFeat = pPassbkFeat
         End If
 
-        Dim usedFeat As UsedFeature = New UsedFeature(pId, _
-                                                      passbkFeat, _
-                                                      pQtyUsed, _
-                                                      pLoc, _
-                                                      pDateUsed
-                                                      )
+        usedFeat = New UsedFeature(pUsedFeatId, _
+                                   passbkFeat, _
+                                   pQtyUsed, _
+                                   pLoc, _
+                                   pDateUsed)
 
         'Make sure we actually have used feature object.  There is the slight chance
         'that the New () could have failed.
-        If usedFeat Is Nothing Then
-            MsgBox(mSYS_OBJ_CREATE_ERR_MSG, MsgBoxStyle.Critical)
+        If IsNothing(usedFeat) Then
+            MsgBox(_SYS_OBJ_CREATE_ERR_MSG, MsgBoxStyle.Critical)
             Exit Sub
         End If
 

@@ -1,0 +1,69 @@
+# REMEMBER REMEMBER REMEMBER REMEMBER to rename this file to Transactions.txt
+# REMEMBER REMEMBER REMEMBER REMEMBER   and to put it in the bin\Debug
+# REMEMBER REMEMBER REMEMBER REMEMBER   directory of your project.
+#
+# This is a sample transaction file for the CIS605 project for Fall 2015.
+# When reading the file, your program should process lines starting with a "#" as comment lines.
+# Comment lines and blank lines should not be processed as "transactions".
+# While the sample transactions in this file show all UPPERCASE for the types and actions
+# of the transactions, your program should be able to process transaction files that
+# do not use all UPPERCASE.  They should handle MixedCase or all lowercase just as well.
+# The fields within a transaction are semicolon (";") delimited.  While the examples
+# in this file show a single space after each semicolon, your program should work
+# equally well when there are any number of spaces (including none) before and/or 
+# after each semicolon.
+
+# Normal/GOOD transactions (these are examples, other combinations need to be handled, too):
+
+20151116; 0800; FEATURE; CREATE; F001(f); Park Pass; Day; 100; 80
+20151116; 0801; FEATURE; CREATE; F002(f); Early Entry Pass; Day; 10; 5
+20151116; 0802; FEATURE; CREATE; F003(f); Meal Plan; Meal; 30; 20
+
+20151116; 0815; CUSTOMER; CREATE; C001(f); CName01
+20151116; 0816; CUSTOMER; CREATE; C002(f); CName 02
+20151116; 0817; CUSTOMER; CREATE; C003(f); Customer Name 03
+
+20151116; 0830; PASSBOOK; CREATE; PB001(f); C001(f); 20150915; self; 19800101
+20151116; 0831; PASSBOOK; CREATE; PB002(f); c002(F); 20150916; self; 19850601
+20151116; 0832; PASSBOOK; CREATE; PB003(f); c002(f); 20150917; C002(f) Visitor Name”; 20021209
+20151116; 0833; PASSBOOK; CREATE; PB004(f); C003(F); 20150815; self; 19750101
+20151116; 0834; PASSBOOK; CREATE; PB005(f); C003(f); 20150915; C03 Visitor 1; 20021210
+20151116; 0835; PASSBOOK; CREATE; PB006(f); C003(f); 20151015; C03 Visitor 2; 20021211
+20151116; 0836; PASSBOOK; CREATE; PB007(f); C003(f); 20151015; C03 Visitor 3; 20031225
+
+20151116; 0845; PASSBOOK_FEATURE; PURCHASE; PBF001(f); 1; PB001(f); F001(f)
+20151116; 0846; PASSBOOK_FEATURE; PURCHASE; PBF002(f); 2; PB002(f); F001(f)
+20151116; 0847; PASSBOOK_FEATURE; PURCHASE; PBF003(f); 3; PB003(f); F001(f)
+20151116; 0848; PASSBOOK_FEATURE; PURCHASE; PBF004(f); 1; PB004(f); F001(f)
+20151116; 0849; PASSBOOK_FEATURE; PURCHASE; PBF005(f); 1; PB005(f); F001(f)
+20151116; 0850; PASSBOOK_FEATURE; PURCHASE; PBF006(f); 1; PB006(f); F001(f)
+20151116; 0851; PASSBOOK_FEATURE; PURCHASE; PBF007(f); 3; PB003(f); F002(f)
+20151116; 0852; PASSBOOK_FEATURE; PURCHASE; PBF008(f); 9; PB003(f); F003(f)
+20151116; 0853; PASSBOOK_FEATURE; PURCHASE; PBF009(f); 1; PB004(f); F001(f)
+20151116; 0854; PASSBOOK_FEATURE; PURCHASE; PBF010(f); 3; PB004(f); F001(f)
+20151116; 0855; PASSBOOK_FEATURE; PURCHASE; PBF011(f); 3; PB005(f); F001(f)
+20151116; 0856; PASSBOOK_FEATURE; PURCHASE; PBF012(f); 5; PB005(f); F003(f)
+20151116; 0857; PASSBOOK_FEATURE; PURCHASE; PBF013(f); 2; PB006(f); F001(f)
+20151116; 0857; PASSBOOK_FEATURE; PURCHASE; PBF014(f); 2; PB006(f); F003(f)
+20151116; 0859; PASSBOOK_FEATURE; PURCHASE; PBF015(f); 2; PB007(f); F001(f)
+
+20151116; 0900; PASSBOOK_FEATURE; USE; UF001(f); PBF001(f); 20151020; Epcot Center; 1
+20151116; 0901; PASSBOOK_FEATURE; USE; UF002(f); PBF002(f); 20151020; West Parking; 1
+20151116; 0902; PASSBOOK_FEATURE; USE; UF003(f); PBF003(f); 20151020; France; 2
+20151116; 0903; PASSBOOK_FEATURE; USE; UF004(f); PBF003(f); 20151020; American Pavilion; 1
+
+20151116; 0915; PASSBOOK_FEATURE; UPDATE; PBF003(f); 20151021; 7
+
+# Other example transactions will be provided during the course of the final 3-4 weeks of classes.  Some possible variations are identified below:
+
+#      Adults:
+#      Children:
+#      Children at purchase, but Adults at Use and/or Update:
+# BAD transactions (these are examples, other combinations need to be handled, too):
+
+#      IDs already exist when they shouldn’t:
+#      IDs don’t exist that should:
+#      BDays in the future:
+#     Trying to use a quantity of a PassbookFeature for which we have already used all of our remaining quantity or do not have the amount remaining that we want to use:
+#     Trying to update the quantity on a PassbookFeature to be less than what we have remaining:
+#     Etc:

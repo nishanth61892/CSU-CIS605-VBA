@@ -144,7 +144,7 @@ Partial Class FrmMain
         Me.txtCustIdGrpAddCustTabCustTbcMainFrmMain = New System.Windows.Forms.TextBox()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.btnResetGrpCustInfoTabCustTbcMainFrmMain = New System.Windows.Forms.Button()
-        Me.btnSubmitGrpCustInfoTabCustTbcMainFrmMain = New System.Windows.Forms.Button()
+        Me.btnSubmitGrpAddCustTabFeatTbcMainFrmMain = New System.Windows.Forms.Button()
         Me.tbcMainFrmMain = New System.Windows.Forms.TabControl()
         Me.tabDashTbcMainFrmMain = New System.Windows.Forms.TabPage()
         Me.lstUsedFeatCntTabDashboardTbcMain = New System.Windows.Forms.TextBox()
@@ -172,7 +172,7 @@ Partial Class FrmMain
         Me.grpKpiTabDashboardTbcMain = New System.Windows.Forms.GroupBox()
         Me.Label63 = New System.Windows.Forms.Label()
         Me.Label62 = New System.Windows.Forms.Label()
-        Me.Button2 = New System.Windows.Forms.Button()
+        Me.btnRecalcCntTabDashboardTbcMain = New System.Windows.Forms.Button()
         Me.txtAvgPassbkHolderAgeTabDashboardTbcMain = New System.Windows.Forms.TextBox()
         Me.txtFeatUsedPctTabDashboardTbcMain = New System.Windows.Forms.TextBox()
         Me.txtMostPopFeatTabDashboardTbcMain = New System.Windows.Forms.TextBox()
@@ -1480,7 +1480,7 @@ Partial Class FrmMain
         Me.grpAddCustTabCustTbcMainFrmMain.BackColor = System.Drawing.Color.LightGray
         Me.grpAddCustTabCustTbcMainFrmMain.Controls.Add(Me.grpAnon6)
         Me.grpAddCustTabCustTbcMainFrmMain.Controls.Add(Me.btnResetGrpCustInfoTabCustTbcMainFrmMain)
-        Me.grpAddCustTabCustTbcMainFrmMain.Controls.Add(Me.btnSubmitGrpCustInfoTabCustTbcMainFrmMain)
+        Me.grpAddCustTabCustTbcMainFrmMain.Controls.Add(Me.btnSubmitGrpAddCustTabFeatTbcMainFrmMain)
         Me.grpAddCustTabCustTbcMainFrmMain.FlatStyle = System.Windows.Forms.FlatStyle.Popup
         Me.grpAddCustTabCustTbcMainFrmMain.Location = New System.Drawing.Point(198, 68)
         Me.grpAddCustTabCustTbcMainFrmMain.Margin = New System.Windows.Forms.Padding(4)
@@ -1550,15 +1550,15 @@ Partial Class FrmMain
         Me.tipTPMS.SetToolTip(Me.btnResetGrpCustInfoTabCustTbcMainFrmMain, "Click to reset input fields")
         Me.btnResetGrpCustInfoTabCustTbcMainFrmMain.UseVisualStyleBackColor = True
         '
-        'btnSubmitGrpCustInfoTabCustTbcMainFrmMain
+        'btnSubmitGrpAddCustTabFeatTbcMainFrmMain
         '
-        Me.btnSubmitGrpCustInfoTabCustTbcMainFrmMain.Location = New System.Drawing.Point(178, 288)
-        Me.btnSubmitGrpCustInfoTabCustTbcMainFrmMain.Name = "btnSubmitGrpCustInfoTabCustTbcMainFrmMain"
-        Me.btnSubmitGrpCustInfoTabCustTbcMainFrmMain.Size = New System.Drawing.Size(75, 23)
-        Me.btnSubmitGrpCustInfoTabCustTbcMainFrmMain.TabIndex = 1
-        Me.btnSubmitGrpCustInfoTabCustTbcMainFrmMain.Text = "&Submit"
-        Me.tipTPMS.SetToolTip(Me.btnSubmitGrpCustInfoTabCustTbcMainFrmMain, "Click to validate and submit customer information")
-        Me.btnSubmitGrpCustInfoTabCustTbcMainFrmMain.UseVisualStyleBackColor = True
+        Me.btnSubmitGrpAddCustTabFeatTbcMainFrmMain.Location = New System.Drawing.Point(178, 288)
+        Me.btnSubmitGrpAddCustTabFeatTbcMainFrmMain.Name = "btnSubmitGrpAddCustTabFeatTbcMainFrmMain"
+        Me.btnSubmitGrpAddCustTabFeatTbcMainFrmMain.Size = New System.Drawing.Size(75, 23)
+        Me.btnSubmitGrpAddCustTabFeatTbcMainFrmMain.TabIndex = 1
+        Me.btnSubmitGrpAddCustTabFeatTbcMainFrmMain.Text = "&Submit"
+        Me.tipTPMS.SetToolTip(Me.btnSubmitGrpAddCustTabFeatTbcMainFrmMain, "Click to validate and submit customer information")
+        Me.btnSubmitGrpAddCustTabFeatTbcMainFrmMain.UseVisualStyleBackColor = True
         '
         'tbcMainFrmMain
         '
@@ -1846,7 +1846,7 @@ Partial Class FrmMain
         Me.grpKpiTabDashboardTbcMain.BackColor = System.Drawing.SystemColors.ControlLight
         Me.grpKpiTabDashboardTbcMain.Controls.Add(Me.Label63)
         Me.grpKpiTabDashboardTbcMain.Controls.Add(Me.Label62)
-        Me.grpKpiTabDashboardTbcMain.Controls.Add(Me.Button2)
+        Me.grpKpiTabDashboardTbcMain.Controls.Add(Me.btnRecalcCntTabDashboardTbcMain)
         Me.grpKpiTabDashboardTbcMain.Controls.Add(Me.txtAvgPassbkHolderAgeTabDashboardTbcMain)
         Me.grpKpiTabDashboardTbcMain.Controls.Add(Me.txtFeatUsedPctTabDashboardTbcMain)
         Me.grpKpiTabDashboardTbcMain.Controls.Add(Me.txtMostPopFeatTabDashboardTbcMain)
@@ -1887,14 +1887,14 @@ Partial Class FrmMain
         Me.Label62.TabIndex = 15
         Me.Label62.Text = "%"
         '
-        'Button2
+        'btnRecalcCntTabDashboardTbcMain
         '
-        Me.Button2.Location = New System.Drawing.Point(29, 129)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(75, 23)
-        Me.Button2.TabIndex = 14
-        Me.Button2.Text = "Test"
-        Me.Button2.UseVisualStyleBackColor = True
+        Me.btnRecalcCntTabDashboardTbcMain.Location = New System.Drawing.Point(29, 129)
+        Me.btnRecalcCntTabDashboardTbcMain.Name = "btnRecalcCntTabDashboardTbcMain"
+        Me.btnRecalcCntTabDashboardTbcMain.Size = New System.Drawing.Size(75, 23)
+        Me.btnRecalcCntTabDashboardTbcMain.TabIndex = 14
+        Me.btnRecalcCntTabDashboardTbcMain.Text = "Recalc"
+        Me.btnRecalcCntTabDashboardTbcMain.UseVisualStyleBackColor = True
         '
         'txtAvgPassbkHolderAgeTabDashboardTbcMain
         '
@@ -2739,7 +2739,7 @@ Partial Class FrmMain
     Friend WithEvents btnSubmitGrpAddFeatTabFeatTbcMainFrmMain As System.Windows.Forms.Button
     Friend WithEvents grpAddCustTabCustTbcMainFrmMain As System.Windows.Forms.GroupBox
     Friend WithEvents btnResetGrpCustInfoTabCustTbcMainFrmMain As System.Windows.Forms.Button
-    Friend WithEvents btnSubmitGrpCustInfoTabCustTbcMainFrmMain As System.Windows.Forms.Button
+    Friend WithEvents btnSubmitGrpAddCustTabFeatTbcMainFrmMain As System.Windows.Forms.Button
     Friend WithEvents grpAddPassbkTabPassbkTbcMainFrmMain As System.Windows.Forms.GroupBox
     Friend WithEvents grpCustInfoGrpAddPassbkTabPassbkTbcMainFrmMain As System.Windows.Forms.GroupBox
     Friend WithEvents Label3 As System.Windows.Forms.Label
@@ -2872,7 +2872,7 @@ Partial Class FrmMain
     Friend WithEvents Label60 As System.Windows.Forms.Label
     Friend WithEvents txtPostIdTabPostFeatTbcPassbkFeatMainTbcMain As System.Windows.Forms.TextBox
     Friend WithEvents Label61 As System.Windows.Forms.Label
-    Friend WithEvents Button2 As System.Windows.Forms.Button
+    Friend WithEvents btnRecalcCntTabDashboardTbcMain As System.Windows.Forms.Button
     Friend WithEvents Label62 As System.Windows.Forms.Label
     Friend WithEvents Label63 As System.Windows.Forms.Label
     Friend WithEvents Label20 As System.Windows.Forms.Label

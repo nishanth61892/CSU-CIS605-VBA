@@ -162,7 +162,7 @@ Public Class Customer
         Dim tmpStr As String
 
         tmpStr = "[" _
-            & " Id=" & _custId _
+            & "Id=" & _custId _
             & ", Name=" & _custName _
             & "]"
 

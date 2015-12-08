@@ -39,16 +39,28 @@ Public Class FrmMain
     'Attributes + Module-level Constants+Variables
     '****************************************************************************************
     'System level error message
-    Private Const mSYS_ERR_MSG As String = "Internal System Error: Object Creation Failed"
-    Private Const mSYS_LOOKUP_ERR_MSG As String = "Internal System Error: Object Lookup Failed"
-    Private Const mSYS_ERR_CUSTID_EXISTS_MSG As String = "Error: Customer ID already exists, ID="
-    Private Const mSYS_ERR_CUSTOREF_INVALID_MSG As String = "Internal System Error: Customer Object Reference is Invalid"
-    Private Const mSYS_ERR_FEATID_EXISTS_MSG As String = "Error: Feature ID already exists, ID="
-    Private Const mSYS_ERR_FEATOREF_INVALID_MSG As String = "Internal System Error: Feature Object Reference is Invalid"
-    Private Const mSYS_ERR_PASSBKID_EXISTS_MSG As String = "Error: Passbook ID already exists, ID="
-    Private Const mSYS_ERR_PASSBKOREF_INVALID_MSG As String = "Internal System Error: Passbook Object Reference is Invalid"
-    Private Const mSYS_ERR_PASSBKFEATID_EXISTS_MSG As String = "Error: Passbook Feature ID already exists, ID="
-    Private Const mSYS_ERR_USEDFEATID_EXISTS_MSG As String = "Error: Used Feature ID already exists, ID="
+    Private Const mSYS_ERR_MSG As String = _
+        "Internal System Error: Object Creation Failed"
+    Private Const mSYS_LOOKUP_ERR_MSG As String = _
+        "Internal System Error: Object Lookup Failed"
+    Private Const mSYS_ERR_CUSTID_EXISTS_MSG As String = _
+        "Error: Customer ID already exists, ID="
+    Private Const mSYS_ERR_CUSTOREF_INVALID_MSG As String = _
+        "Internal System Error: Customer Object Reference is Invalid"
+    Private Const mSYS_ERR_FEATID_EXISTS_MSG As String = _
+        "Error: Feature ID already exists, ID="
+    Private Const mSYS_ERR_FEATOREF_INVALID_MSG As String = _
+        "Internal System Error: Feature Object Reference is Invalid"
+    Private Const mSYS_ERR_PASSBKID_EXISTS_MSG As String = _
+        "Error: Passbook ID already exists, ID="
+    Private Const mSYS_ERR_PASSBKOREF_INVALID_MSG As String = _
+        "Internal System Error: Passbook Object Reference is Invalid"
+    Private Const mSYS_ERR_PASSBKFEATID_EXISTS_MSG As String = _
+        "Error: Passbook Feature ID already exists, ID="
+    Private Const mSYS_ERR_USEDFEATID_EXISTS_MSG As String = _
+        "Error: Used Feature ID already exists, ID="
+    Private Const mSYS_ERR_DATASTORE_ACCESS_ERR_MSG As String = _
+        "Internal System Error: Error accessing internal data store"
 
     'Input/Output file names
     Private Const mIMPORT_FILENAME As String = "Transactions-in.txt"
@@ -94,8 +106,6 @@ Public Class FrmMain
     'Private references to be used during combo/list box processing
     Private mPassBk As Passbook = Nothing
     Private mFeat As Feature = Nothing
-    'Private mPassbkFeatUpdt As PassbookFeature = Nothing
-    'Private mPassbkFeatPost As PassbookFeature = Nothing
     Private mUnitPrice As Decimal = 0D
     Private mQtyPurch As Decimal = 1D
     Private mQtyUsed As Decimal = 0D
@@ -171,25 +181,91 @@ Public Class FrmMain
         End Set
     End Property
 
-    Private ReadOnly Property _IMPORT_FILENAME() As String
+    Private ReadOnly Property _IMPORT_FILENAME As String
         Get
             Return mIMPORT_FILENAME
         End Get
     End Property
 
-    Private ReadOnly Property _EXPORT_FILENAME() As String
+    Private ReadOnly Property _EXPORT_FILENAME As String
         Get
             Return mEXPORT_FILENAME
         End Get
     End Property
 
-    Private ReadOnly Property _ERROR_FILENAME() As String
+    Private ReadOnly Property _ERROR_FILENAME As String
         Get
             Return mERROR_FILENAME
         End Get
     End Property
 
-    Private Property _themeParkName() As String
+    Private ReadOnly Property _SYS_ERR_MSG As String
+        Get
+            Return mSYS_ERR_MSG
+        End Get
+    End Property
+
+    Private ReadOnly Property _SYS_LOOKUP_ERR_MSG As String
+        Get
+            Return mSYS_LOOKUP_ERR_MSG
+        End Get
+    End Property
+
+    Private ReadOnly Property _SYS_ERR_DATASTORE_ACCESS_ERR_MSG As String
+        Get
+            Return mSYS_ERR_DATASTORE_ACCESS_ERR_MSG
+        End Get
+    End Property
+
+    Private ReadOnly Property _SYS_ERR_CUSTID_EXISTS_MSG As String
+        Get
+            Return mSYS_ERR_CUSTID_EXISTS_MSG
+        End Get
+    End Property
+
+    Private ReadOnly Property _SYS_ERR_CUSTOREF_INVALID_MSG As String
+        Get
+            Return mSYS_ERR_CUSTOREF_INVALID_MSG
+        End Get
+    End Property
+
+    Private ReadOnly Property _SYS_ERR_FEATID_EXISTS_MSG As String
+        Get
+            Return mSYS_ERR_FEATID_EXISTS_MSG
+        End Get
+    End Property
+
+    Private ReadOnly Property _SYS_ERR_FEATOREF_INVALID_MSG As String
+        Get
+            Return mSYS_ERR_FEATOREF_INVALID_MSG
+        End Get
+    End Property
+
+    Private ReadOnly Property _SYS_ERR_PASSBKID_EXISTS_MSG As String
+        Get
+            Return mSYS_ERR_PASSBKID_EXISTS_MSG
+        End Get
+    End Property
+
+    Private ReadOnly Property _SYS_ERR_PASSBKOREF_INVALID_MSG As String
+        Get
+            Return mSYS_ERR_PASSBKOREF_INVALID_MSG
+        End Get
+    End Property
+
+    Private ReadOnly Property _SYS_ERR_PASSBKFEATID_EXISTS_MSG As String
+        Get
+            Return mSYS_ERR_PASSBKFEATID_EXISTS_MSG
+        End Get
+    End Property
+
+    Private ReadOnly Property _SYS_ERR_USEDFEATID_EXISTS_MSG As String
+        Get
+            Return mSYS_ERR_USEDFEATID_EXISTS_MSG
+        End Get
+    End Property
+
+    Private Property _themeParkName As String
         Get
             Return mThemeParkName
         End Get
@@ -198,7 +274,7 @@ Public Class FrmMain
         End Set
     End Property
 
-    Private Property _sysTestActive() As Boolean
+    Private Property _sysTestActive As Boolean
         Get
             Return mSysTestActive
         End Get
@@ -246,17 +322,17 @@ Public Class FrmMain
     'Returns a customer reference if found, otherwise Nothing.  
     'If exception is caught display a UI message and return Nothing
     '****************************************************************************************
-    Private Function _findCust(ByVal pCustId As String) As Customer
-        Dim cust As Customer = Nothing
+    'Private Function _findCust(ByVal pCustId As String) As Customer
+    '    Dim cust As Customer = Nothing
 
-        Try
-            cust = _theThemePark.findCust(pCustId)
-        Catch ex As Exception
-            MsgBox(mSYS_LOOKUP_ERR_MSG, MsgBoxStyle.Exclamation)
-        End Try
+    '    Try
+    '        cust = _theThemePark.findCust(pCustId)
+    '    Catch ex As Exception
+    '        MsgBox(_SYS_LOOKUP_ERR_MSG, MsgBoxStyle.Exclamation)
+    '    End Try
 
-        Return cust
-    End Function '_findCust(...)
+    '    Return cust
+    'End Function '_findCust(...)
 
     '****************************************************************************************
     '_runSystemTest() is the procedure that executes the applications automated test logic.
@@ -279,9 +355,9 @@ Public Class FrmMain
         _writeTransLog("[SYSTEM-TEST: CREATE FEATURES]")
         _writeTransLog(Nothing)
 
-        Dim f01 As Feature = New Feature("F01", "Park Pass", "Day", 100D, 80D)
-        Dim f02 As Feature = New Feature("F02", "Early Entry Pass", "Day", 10D, 5D)
-        Dim f03 As Feature = New Feature("F03", "Meal Plan", "Meal", 30D, 20D)
+        Dim f01 As Feature = New Feature("F01(t)", "Park Pass", "Day", 100D, 80D)
+        Dim f02 As Feature = New Feature("F02(t)", "Early Entry Pass", "Day", 10D, 5D)
+        Dim f03 As Feature = New Feature("F03(t)", "Meal Plan", "Meal", 30D, 20D)
 
         _theThemePark.createFeat(f01.featId, f01.featName, f01.unitOfMeas, f01.adultPrice, f01.childPrice)
         _theThemePark.createFeat(f02.featId, f02.featName, f02.unitOfMeas, f02.adultPrice, f02.childPrice)
@@ -296,9 +372,9 @@ Public Class FrmMain
         _writeTransLog("[SYSTEM-TEST: CREATE CUSTOMERS]")
         _writeTransLog(Nothing)
 
-        Dim c01 As Customer = New Customer("C01", "CName01")
-        Dim c02 As Customer = New Customer("C02", "CName02")
-        Dim c03 As Customer = New Customer("C03", "Customer Name 03")
+        Dim c01 As Customer = New Customer("C01(t)", "CName01")
+        Dim c02 As Customer = New Customer("C02(t)", "CName02")
+        Dim c03 As Customer = New Customer("C03(t)", "Customer Name 03")
 
         _theThemePark.createCust(c01.custId, c01.custName)
         _theThemePark.createCust(c02.custId, c02.custName)
@@ -313,12 +389,12 @@ Public Class FrmMain
         _writeTransLog("[SYSTEM-TEST: CREATE PASSBOOKS]")
         _writeTransLog(Nothing)
 
-        Dim pb01 As Passbook = New Passbook("PB01", c01, #9/15/2015#, "self", #1/1/1980#, 35, False)
-        Dim pb02 As Passbook = New Passbook("PB02", c02, #9/16/2015#, "self", #6/1/1985#, 30, False)
-        Dim pb03 As Passbook = New Passbook("PB03", c02, #9/17/2015#, "CO2 Visitor", #12/1/2003#, 12, True)
-        Dim pb04 As Passbook = New Passbook("PB04", c03, #8/15/2015#, "self", #1/1/1975#, 40, False)
-        Dim pb05 As Passbook = New Passbook("PB05", c03, #9/15/2015#, "CO3 Visitor 1", #10/7/2002#, 13, False)
-        Dim pb06 As Passbook = New Passbook("PB06", c03, #10/15/2015#, "CO3 Visitor 2", #10/8/2002#, 13, False)
+        Dim pb01 As Passbook = New Passbook("PB01(t)", c01, #9/15/2015#, "self", #1/1/1980#, 35, False)
+        Dim pb02 As Passbook = New Passbook("PB02(t)", c02, #9/16/2015#, "self", #6/1/1985#, 30, False)
+        Dim pb03 As Passbook = New Passbook("PB03(t)", c02, #9/17/2015#, "CO2 Visitor", #12/1/2003#, 12, True)
+        Dim pb04 As Passbook = New Passbook("PB04(t)", c03, #8/15/2015#, "self", #1/1/1975#, 40, False)
+        Dim pb05 As Passbook = New Passbook("PB05(t)", c03, #9/15/2015#, "CO3 Visitor 1", #10/7/2002#, 13, False)
+        Dim pb06 As Passbook = New Passbook("PB06(t)", c03, #10/15/2015#, "CO3 Visitor 2", #10/8/2002#, 13, False)
 
         _theThemePark.createPassbk(pb01.passbkId, pb01.owner, pb01.datePurch, _
                                pb01.visName, pb01.visDob, pb01.visAge, pb01.visIsChild)
@@ -343,16 +419,16 @@ Public Class FrmMain
         _writeTransLog(Nothing)
 
 
-        Dim pbf01 As PassbookFeature = New PassbookFeature("PBF01", f01, pb01, 1)
-        Dim pbf02 As PassbookFeature = New PassbookFeature("PBF02", f01, pb02, 2)
-        Dim pbf03 As PassbookFeature = New PassbookFeature("PBF03", f01, pb03, 3)
-        Dim pbf04 As PassbookFeature = New PassbookFeature("PBF04", f01, pb04, 1)
-        Dim pbf05 As PassbookFeature = New PassbookFeature("PBF05", f01, pb05, 1)
-        Dim pbf06 As PassbookFeature = New PassbookFeature("PBF06", f01, pb06, 1)
-        Dim pbf07 As PassbookFeature = New PassbookFeature("PBF07", f02, pb03, 3)
-        Dim pbf08 As PassbookFeature = New PassbookFeature("PBF08", f03, pb03, 9)
-        Dim pbf09 As PassbookFeature = New PassbookFeature("PBF09", f01, pb04, 1)
-        Dim pbf10 As PassbookFeature = New PassbookFeature("PBF10", f01, pb04, 3)
+        Dim pbf01 As PassbookFeature = New PassbookFeature("PBF01(t)", f01, pb01, 1)
+        Dim pbf02 As PassbookFeature = New PassbookFeature("PBF02(t)", f01, pb02, 2)
+        Dim pbf03 As PassbookFeature = New PassbookFeature("PBF03(t)", f01, pb03, 3)
+        Dim pbf04 As PassbookFeature = New PassbookFeature("PBF04(t)", f01, pb04, 1)
+        Dim pbf05 As PassbookFeature = New PassbookFeature("PBF05(t)", f01, pb05, 1)
+        Dim pbf06 As PassbookFeature = New PassbookFeature("PBF06(t)", f01, pb06, 1)
+        Dim pbf07 As PassbookFeature = New PassbookFeature("PBF07(t)", f02, pb03, 3)
+        Dim pbf08 As PassbookFeature = New PassbookFeature("PBF08(t)", f03, pb03, 9)
+        Dim pbf09 As PassbookFeature = New PassbookFeature("PBF09(t)", f01, pb04, 1)
+        Dim pbf10 As PassbookFeature = New PassbookFeature("PBF10(t)", f01, pb04, 3)
 
         _theThemePark.purchPassbkFeat(pbf01.id, pbf01.feature, pbf01.passbk, pbf01.qtyPurch)
         _theThemePark.purchPassbkFeat(pbf02.id, pbf02.feature, pbf02.passbk, pbf02.qtyPurch)
@@ -374,10 +450,10 @@ Public Class FrmMain
         _writeTransLog("[SYSTEM-TEST: USE PASSBOOK FEATURE]")
         _writeTransLog(Nothing)
 
-        '  _theThemePark.usedFeat("UF01", pbf01, #10/20/2015#, 1, "Epcot Center")
-        '     _theThemePark.usedFeat("UF02", pbf02, #10/20/2015#, 1, "West Parking")
-        _theThemePark.usedFeat("UF03", pbf03, #10/20/2015#, 2, "France")
-        '     _theThemePark.usedFeat("UF04", pbf03, #10/20/2015#, 1, "American Pavillion")
+        _theThemePark.usedFeat("UF01(t)", pbf01, #10/20/2015#, 1, "Epcot Center")
+        _theThemePark.usedFeat("UF02(t)", pbf02, #10/20/2015#, 1, "West Parking")
+        _theThemePark.usedFeat("UF03(t)", pbf03, #10/20/2015#, 2, "France")
+        _theThemePark.usedFeat("UF04(t)", pbf03, #10/20/2015#, 1, "American Pavillion")
 
         _writeTransLog(Nothing)
         _writeTransLog("<CURRENT-PARK-STATUS>: " & _theThemePark.ToString)
@@ -443,17 +519,13 @@ Public Class FrmMain
         _theThemePark = New ThemePark(mTHEME_PARK_NAME)
 
         If _theThemePark Is Nothing Then
-            MsgBox(mSYS_ERR_MSG & ", Theme Park could not be instantiated")
+            MsgBox(_SYS_ERR_MSG & ", Theme Park could not be instantiated")
 
             'Terminate the program
             _closeAppl()
         End If
 
         _writeTransLog("<CREATED>: " & _theThemePark.ToString())
-
-        'Run the system test to populate with hard coded data 
-        '_runSystemTest(False)
-
 
         'Update the KPI for the first time just to populate the fields with N/A
         _dispKpi()
@@ -602,13 +674,13 @@ Public Class FrmMain
     End Sub '_mnuExitFileFrmMain_Click(...) 
 
     '****************************************************************************************
-    '_btnSubmitGrpCustInfoTabCustTbcMainFrmMain_Click() is the event procedure that gets called 
+    '_btnSubmitGrpAddCustTabFeatTbcMainFrmMain_Click() is the event procedure that gets called 
     'when the user click on the Submit button from the Customer tab. It validates and then
     'submits the data to create a new customer.
     '****************************************************************************************
-    Private Sub _btnSubmitGrpCustInfoTabCustTbcMainFrmMain_Click(sender As Object, _
-                                                                 e As EventArgs) _
-        Handles btnSubmitGrpCustInfoTabCustTbcMainFrmMain.Click
+    Private Sub _btnSubmitGrpAddCustTabFeatTbcMainFrmMain_Click(sender As Object, _
+                                                                e As EventArgs) _
+        Handles btnSubmitGrpAddCustTabFeatTbcMainFrmMain.Click
 
         Dim custId As String
         Dim custName As String
@@ -626,12 +698,17 @@ Public Class FrmMain
 
         'Check for duplicate customer (by ID of course).  Duplicates are 
         'not allowed
-        If Not IsNothing(_theThemePark.findCust(custId)) Then
-            MsgBox(mSYS_ERR_CUSTID_EXISTS_MSG & custId, MsgBoxStyle.Critical)
-            txtCustIdGrpAddCustTabCustTbcMainFrmMain.SelectAll()
-            txtCustIdGrpAddCustTabCustTbcMainFrmMain.Focus()
+        Try
+            If Not IsNothing(_theThemePark.findCust(custId)) Then
+                MsgBox(_SYS_ERR_CUSTID_EXISTS_MSG & custId, MsgBoxStyle.Exclamation)
+                txtCustIdGrpAddCustTabCustTbcMainFrmMain.SelectAll()
+                txtCustIdGrpAddCustTabCustTbcMainFrmMain.Focus()
+                Exit Sub
+            End If
+        Catch
+            MsgBox(_SYS_ERR_DATASTORE_ACCESS_ERR_MSG, MsgBoxStyle.Critical)
             Exit Sub
-        End If
+        End Try
 
         If String.IsNullOrEmpty(custName) Then
             MsgBox("ERROR: Please enter a valid Customer Name (ex: Doe, John)", MsgBoxStyle.OkOnly)
@@ -659,13 +736,13 @@ Public Class FrmMain
             Try
                 _theThemePark.createCust(custId, custName)
             Catch ex As Exception
-                MsgBox(mSYS_ERR_MSG, MsgBoxStyle.Exclamation)
+                MsgBox(_SYS_ERR_MSG, MsgBoxStyle.Exclamation)
             End Try
 
             'Reset the input fields to allow for another possible customer entry
             _resetCustomerInput()
         End If
-    End Sub '_btnSubmitGrpCustInfoTabCustTbcMainFrmMain_Click(...)
+    End Sub '_btnSubmitGrpAddCustTabFeatTbcMainFrmMain_Click(...)
 
     '****************************************************************************************
     '_resetCustomerInput() is used to reset all the customer input fields to allow the user 
@@ -722,12 +799,17 @@ Public Class FrmMain
 
         'Check for duplicate feature (by ID of course).  Duplicates are 
         'not allowed
-        If Not IsNothing(_theThemePark.findFeat(featId)) Then
-            MsgBox(mSYS_ERR_FEATID_EXISTS_MSG & featId, MsgBoxStyle.Critical)
-            txtFeatIdAddFeatTabFeatTbcMainFrmMain.SelectAll()
-            txtFeatIdAddFeatTabFeatTbcMainFrmMain.Focus()
+        Try
+            If Not IsNothing(_theThemePark.findFeat(featId)) Then
+                MsgBox(_SYS_ERR_FEATID_EXISTS_MSG & featId, MsgBoxStyle.Exclamation)
+                txtFeatIdAddFeatTabFeatTbcMainFrmMain.SelectAll()
+                txtFeatIdAddFeatTabFeatTbcMainFrmMain.Focus()
+                Exit Sub
+            End If
+        Catch ex As Exception
+            MsgBox(_SYS_ERR_MSG, MsgBoxStyle.Exclamation)
             Exit Sub
-        End If
+        End Try
 
         If String.IsNullOrEmpty(featName) Then
             MsgBox("ERROR: Please enter a valid Feature Name (ex: Park Pass)", MsgBoxStyle.OkOnly)
@@ -807,7 +889,7 @@ Public Class FrmMain
                                          decChildPrice
                                          )
             Catch ex As Exception
-                MsgBox(mSYS_ERR_MSG, MsgBoxStyle.Exclamation)
+                MsgBox(_SYS_ERR_MSG, MsgBoxStyle.Exclamation)
             End Try
 
             'Reset the input fields to allow for another possible feature entry
@@ -877,7 +959,15 @@ Public Class FrmMain
             Exit Sub
         End If
 
-        Dim cust As Customer = _theThemePark.findCust(custList.SelectedItem.ToString)
+        'Make sure customer id is valid
+        Dim cust As Customer
+        Try
+            cust = _theThemePark.findCust(custList.SelectedItem.ToString)
+        Catch ex As Exception
+            MsgBox(_SYS_ERR_MSG, MsgBoxStyle.Exclamation)
+            Exit Sub
+        End Try
+
         If cust Is Nothing Then
             Dim s As String = "ERROR: Customer '" & custList.SelectedItem.ToString & "' is invalid" _
                                   & vbCrLf & "Please select a different ID"
@@ -896,7 +986,7 @@ Public Class FrmMain
         'Check for duplicate passbook (by ID of course).  Duplicates are 
         'not allowed
         If Not IsNothing(_theThemePark.findPassbk(passbkId)) Then
-            MsgBox(mSYS_ERR_PASSBKID_EXISTS_MSG & passbkId, MsgBoxStyle.Critical)
+            MsgBox(_SYS_ERR_PASSBKID_EXISTS_MSG & passbkId, MsgBoxStyle.Exclamation)
             txtPassbkIdGrpAddPassbkTabPassbkTbcMainFrmMain.SelectAll()
             txtPassbkIdGrpAddPassbkTabPassbkTbcMainFrmMain.Focus()
             Exit Sub
@@ -962,7 +1052,7 @@ Public Class FrmMain
                                            visIsChild
                                            )
             Catch ex As Exception
-                MsgBox(mSYS_ERR_MSG, MsgBoxStyle.Exclamation)
+                MsgBox(_SYS_ERR_MSG, MsgBoxStyle.Exclamation)
             End Try
 
             'Reset the input fields to allow for another possible feature entry
@@ -1035,7 +1125,14 @@ Public Class FrmMain
         End If
 
         'Make sure passbook reference is valid
-        Dim passbk As Passbook = _theThemePark.findPassbk(passbkId)
+        Dim passbk As Passbook
+        Try
+            passbk = _theThemePark.findPassbk(passbkId)
+        Catch
+            MsgBox(_SYS_ERR_MSG, MsgBoxStyle.Exclamation)
+            Exit Sub
+        End Try
+
         If passbk Is Nothing Then
             Dim s As String = "ERROR: Passbook '" & passbkId & "' is invalid" _
                               & vbCrLf & "Please select a different ID"
@@ -1059,7 +1156,14 @@ Public Class FrmMain
         End If
 
         'Make sure the feature reference is valid
-        Dim feat As Feature = _theThemePark.findFeat(featId)
+        Dim feat As Feature
+        Try
+            feat = _theThemePark.findFeat(featId)
+        Catch ex As Exception
+            MsgBox(_SYS_ERR_MSG, MsgBoxStyle.Exclamation)
+            Exit Sub
+        End Try
+
         If feat Is Nothing Then
             Dim s As String = "ERROR: Feature '" & featId & "' is invalid" _
                               & vbCrLf & "Please select a different ID"
@@ -1078,7 +1182,7 @@ Public Class FrmMain
         'Check for duplicate passbook features (by ID of course).  Duplicates are 
         'not allowed
         If Not IsNothing(_theThemePark.findPassbkFeat(passbkFeatId)) Then
-            MsgBox(mSYS_ERR_PASSBKFEATID_EXISTS_MSG & passbkFeatId, MsgBoxStyle.Critical)
+            MsgBox(_SYS_ERR_PASSBKFEATID_EXISTS_MSG & passbkFeatId, MsgBoxStyle.Exclamation)
             txtPassBkFeatIdTabAddFeatTbcPassbkFeatMainTbcMain.SelectAll()
             txtPassBkFeatIdTabAddFeatTbcPassbkFeatMainTbcMain.Focus()
             Exit Sub
@@ -1128,7 +1232,7 @@ Public Class FrmMain
                                               mQtyPurch
                                               )
             Catch ex As Exception
-                MsgBox(mSYS_ERR_MSG, MsgBoxStyle.Exclamation)
+                MsgBox(_SYS_ERR_MSG, MsgBoxStyle.Exclamation)
             End Try
 
             'Reset the fields and focus to allow for another feature to be added
@@ -1205,7 +1309,13 @@ Public Class FrmMain
         End If
 
         'Make sure passbook feature reference is valid
-        Dim passbkFeat As PassbookFeature = _theThemePark.findPassbkFeat(featId)
+        Dim passbkFeat As PassbookFeature
+        Try
+            passbkFeat = _theThemePark.findPassbkFeat(featId)
+        Catch ex As Exception
+            MsgBox(_SYS_ERR_MSG, MsgBoxStyle.Exclamation)
+            Exit Sub
+        End Try
 
         If IsNothing(passbkFeat) Then
             Dim s As String = "ERROR: Passbook Feature Id'" & featId & "' is invalid" _
@@ -1216,7 +1326,7 @@ Public Class FrmMain
         End If
 
         If IsNothing(passbkFeat.passbk) Then
-            Dim s As String = mSYS_ERR_PASSBKOREF_INVALID_MSG
+            Dim s As String = _SYS_ERR_PASSBKOREF_INVALID_MSG
             MsgBox(s, MsgBoxStyle.OkOnly)
             _resetPassbkUpdtFeatInput()
             Exit Sub
@@ -1342,7 +1452,7 @@ Public Class FrmMain
 
         'Used as shortcut names to access the data
         Dim postId As String = txtPostIdTabPostFeatTbcPassbkFeatMainTbcMain.Text.Trim
-        Dim featId As String = cboFeatIdTabPostFeatTbcPassbkFeatMainTbcMain.Text.Trim
+        Dim passbkFeatId As String = cboFeatIdTabPostFeatTbcPassbkFeatMainTbcMain.Text.Trim
         Dim qtyUsed As String = txtQtyUsedTabPostFeatTbcPassbkFeatMainTbcMain.Text.Trim
         Dim loc As String = txtLocTabPostFeatTbcPassbkFeatMainTbcMain.Text.Trim
 
@@ -1356,16 +1466,23 @@ Public Class FrmMain
             Exit Sub
         End If
 
-        If String.IsNullOrEmpty(featId) Then
+        If String.IsNullOrEmpty(passbkFeatId) Then
             MsgBox("ERROR: Please select a Passbook Feature ID from the list", MsgBoxStyle.OkOnly)
             cboFeatIdTabPostFeatTbcPassbkFeatMainTbcMain.Focus()
             Exit Sub
         End If
 
         'make sure passbook feature reference is valid
-        Dim passbkfeat As PassbookFeature = _theThemePark.findPassbkFeat(featId)
+        Dim passbkfeat As PassbookFeature
+        Try
+            passbkfeat = _theThemePark.findPassbkFeat(passbkFeatId)
+        Catch ex As Exception
+            MsgBox(_SYS_ERR_MSG, MsgBoxStyle.Exclamation)
+            Exit Sub
+        End Try
+
         If IsNothing(passbkfeat) Then
-            Dim s As String = "ERROR: Passbook Feature ID '" & featId & "' is invalid" _
+            Dim s As String = "ERROR: Passbook Feature ID '" & passbkFeatId & "' is invalid" _
                               & vbCrLf & "Please select a different ID"
             MsgBox(s, MsgBoxStyle.OkOnly)
             _resetPassbkUsedFeatInput()
@@ -1413,10 +1530,10 @@ Public Class FrmMain
             Exit Sub
         End If
 
-        'Check for duplicate passbook features (by ID of course).  Duplicates are 
+        'Check for duplicate used feature (by ID of course).  Duplicates are 
         'not allowed
         If Not IsNothing(_theThemePark.findUsedFeat(postId)) Then
-            MsgBox(mSYS_ERR_USEDFEATID_EXISTS_MSG, MsgBoxStyle.Critical)
+            MsgBox(_SYS_ERR_USEDFEATID_EXISTS_MSG, MsgBoxStyle.Exclamation)
             txtPostIdTabPostFeatTbcPassbkFeatMainTbcMain.SelectAll()
             txtPostIdTabPostFeatTbcPassbkFeatMainTbcMain.Focus()
             Exit Sub
@@ -1429,10 +1546,9 @@ Public Class FrmMain
         If _sysTestActive = False Then
             Dim newQtyRemain As Decimal = passbkfeat.qtyRemain - decQtyUsed
 
-
             choice = MsgBox("To post the following Used Feature Click OK, otherwise Cancel" & vbCrLf & vbCrLf _
                             & "--> PostId=" & postId & vbCrLf _
-                            & "--> PassbookFeatureId=" & featId & vbCrLf _
+                            & "--> PassbookFeatureId=" & passbkFeatId & vbCrLf _
                             & "--> QtyPurchased=" & passbkfeat.qtyPurch.ToString("N0") & vbCrLf _
                             & "--> QtyUsed=" & decQtyUsed.ToString("N0") & vbCrLf _
                             & "--> QtyRemain=" & newQtyRemain.ToString("N0") & vbCrLf _
@@ -1449,14 +1565,12 @@ Public Class FrmMain
             Try
                 _theThemePark.usedFeat(postId, passbkfeat, DateTime.Now, decQtyUsed, loc)
             Catch ex As Exception
-                MsgBox(mSYS_ERR_MSG, MsgBoxStyle.Exclamation)
+                MsgBox(_SYS_ERR_MSG, MsgBoxStyle.Exclamation)
             End Try
 
             'Reset the fields and focus to allow for another used feature to be submitted
             _resetPassbkUsedFeatInput()
         End If
-        '        End If '_validatePostData()
-
     End Sub '_btnSubmitTabPostFeatTbcPassbkFeatMainTbcMain_Click(...)
 
     '****************************************************************************************
@@ -1525,7 +1639,7 @@ Public Class FrmMain
                 'Console.WriteLine("Customer Tab")
 
                 'Assign AcceptButton to this tab's Submit button for convenience
-                Me.AcceptButton = btnSubmitGrpCustInfoTabCustTbcMainFrmMain
+                Me.AcceptButton = btnSubmitGrpAddCustTabFeatTbcMainFrmMain
 
                 'Set the focus to the first input field
                 txtCustIdGrpAddCustTabCustTbcMainFrmMain.Focus()
@@ -1763,7 +1877,7 @@ Public Class FrmMain
                 txtToStringTabDashboardTbcMain.Text = cust.ToString & vbCrLf
             Else
                 txtToStringTabDashboardTbcMain.Text = _
-                    "No Customer info found for CustId=" & lstVal & vbCrLf
+                    "No Customer info found for ID=" & lstVal & vbCrLf
             End If
         End If
 
@@ -1793,7 +1907,7 @@ Public Class FrmMain
                 txtToStringTabDashboardTbcMain.Text = feat.ToString & vbCrLf
             Else
                 txtToStringTabDashboardTbcMain.Text = _
-                    "No Feature info found for FeatId=" & lstVal & vbCrLf
+                    "No Feature info found for ID=" & lstVal & vbCrLf
             End If
         End If
 
@@ -1823,7 +1937,7 @@ Public Class FrmMain
                 txtToStringTabDashboardTbcMain.Text = passbk.ToString & vbCrLf
             Else
                 txtToStringTabDashboardTbcMain.Text = _
-                    "No Passbook info found for FeatId=" & lstVal & vbCrLf
+                    "No Passbook info found for ID=" & lstVal & vbCrLf
             End If
         End If
 
@@ -1854,7 +1968,7 @@ Public Class FrmMain
                 txtToStringTabDashboardTbcMain.Text = passbkFeat.ToString & vbCrLf
             Else
                 txtToStringTabDashboardTbcMain.Text = _
-                    "No Passbook Feature info found for PassbkFeatId=" & lstVal & vbCrLf
+                    "No Passbook Feature info found for ID=" & lstVal & vbCrLf
             End If
         End If
 
@@ -1884,7 +1998,7 @@ Public Class FrmMain
                 txtToStringTabDashboardTbcMain.Text = usedFeat.ToString & vbCrLf
             Else
                 txtToStringTabDashboardTbcMain.Text = _
-                    "No Used Feature info found for PassbkFeatId=" & lstVal & vbCrLf
+                    "No Used Feature info found for ID=" & lstVal & vbCrLf
             End If
         End If
 
@@ -1912,7 +2026,7 @@ Public Class FrmMain
             Try
                 cust = _theThemePark.findCust(cboVal)
             Catch ex As Exception
-                MsgBox(mSYS_LOOKUP_ERR_MSG, MsgBoxStyle.Exclamation)
+                MsgBox(_SYS_LOOKUP_ERR_MSG, MsgBoxStyle.Exclamation)
                 Exit Sub
             End Try
 
@@ -1947,7 +2061,7 @@ Public Class FrmMain
             Try
                 mPassBk = _theThemePark.findPassbk(cboVal)
             Catch ex As Exception
-                MsgBox(mSYS_LOOKUP_ERR_MSG, MsgBoxStyle.Exclamation)
+                MsgBox(_SYS_LOOKUP_ERR_MSG, MsgBoxStyle.Exclamation)
                 Exit Sub
             End Try
 
@@ -1957,7 +2071,7 @@ Public Class FrmMain
                     txtCustToStringTabAddFeatTbcPassbkFeatMainTbcMain.Text = _
                         mPassBk.owner.ToString & vbCrLf
                 Else
-                    MsgBox(mSYS_ERR_CUSTOREF_INVALID_MSG, MsgBoxStyle.Critical)
+                    MsgBox(_SYS_ERR_CUSTOREF_INVALID_MSG, MsgBoxStyle.Critical)
                     _resetPassbkPurchFeatInput()
                     Exit Sub
                 End If
@@ -2014,7 +2128,7 @@ Public Class FrmMain
             Try
                 mFeat = _theThemePark.findFeat(cboVal)
             Catch ex As Exception
-                MsgBox(mSYS_LOOKUP_ERR_MSG, MsgBoxStyle.Exclamation)
+                MsgBox(_SYS_LOOKUP_ERR_MSG, MsgBoxStyle.Exclamation)
                 Exit Sub
             End Try
 
@@ -2071,7 +2185,7 @@ Public Class FrmMain
             Try
                 passbkFeat = _theThemePark.findPassbkFeat(cboVal)
             Catch ex As Exception
-                MsgBox(mSYS_LOOKUP_ERR_MSG, MsgBoxStyle.Exclamation)
+                MsgBox(_SYS_LOOKUP_ERR_MSG, MsgBoxStyle.Exclamation)
                 Exit Sub
             End Try
 
@@ -2083,9 +2197,9 @@ Public Class FrmMain
                 Else
                     Dim s As String
                     If IsNothing(passbkFeat.passbk) Then
-                        s = mSYS_ERR_PASSBKOREF_INVALID_MSG
+                        s = _SYS_ERR_PASSBKOREF_INVALID_MSG
                     Else
-                        s = mSYS_ERR_CUSTOREF_INVALID_MSG
+                        s = _SYS_ERR_CUSTOREF_INVALID_MSG
                     End If
                     MsgBox(s, MsgBoxStyle.Critical)
                     'Reset the fields and focus to allow for another passbook feature update
@@ -2097,7 +2211,7 @@ Public Class FrmMain
                 If Not IsNothing(passbkFeat.feature) Then
                     txtFeatToStringTabUpdtFeatTbcPassbkFeatMainTbcMain.Text = passbkFeat.feature.ToString & vbCrLf
                 Else
-                    MsgBox(mSYS_ERR_FEATOREF_INVALID_MSG, MsgBoxStyle.Critical)
+                    MsgBox(_SYS_ERR_FEATOREF_INVALID_MSG, MsgBoxStyle.Critical)
                     'Reset the fields and focus to allow for another passbook feature update
                     _resetPassbkUpdtFeatInput()
                     Exit Sub
@@ -2120,12 +2234,25 @@ Public Class FrmMain
                 'Finally populate the previously used text box
                 txtPrevUsedToStringTabUpdtFeatTbcPassbkFeatMainTbcMain.Clear()
 
-                For Each usedFeat As UsedFeature In _theThemePark.iterateUsedFeat
-                    If usedFeat.passbkFeat.id = passbkFeat.id Then
-                        txtPrevUsedToStringTabUpdtFeatTbcPassbkFeatMainTbcMain.Text &= _
-                            usedFeat.ToString & vbCrLf & vbCrLf
-                    End If
-                Next usedFeat
+                Try
+                    For Each usedFeat As UsedFeature In _theThemePark.iterateUsedFeat
+                        If Not IsNothing(usedFeat.passbkFeat) Then
+                            If usedFeat.passbkFeat.id.ToUpper = passbkFeat.id.ToUpper Then
+                                txtPrevUsedToStringTabUpdtFeatTbcPassbkFeatMainTbcMain.Text &= _
+                                    usedFeat.ToString & vbCrLf & vbCrLf
+                            End If
+                        End If
+                    Next usedFeat
+                Catch ex As Exception
+                    MsgBox(_SYS_ERR_DATASTORE_ACCESS_ERR_MSG, MsgBoxStyle.Critical)
+                    Exit Sub
+                End Try
+
+                'If no previously used features were found then just display a default msg
+                If txtPrevUsedToStringTabUpdtFeatTbcPassbkFeatMainTbcMain.Text = "" Then
+                    txtPrevUsedToStringTabUpdtFeatTbcPassbkFeatMainTbcMain.Text = _
+                        "No previously used features have been found"
+                End If
             Else
                 Dim s As String = "ERROR: PassbookFeature '" & cboVal & "' is invalid. Please select a different ID"
                 MsgBox(s, MsgBoxStyle.Exclamation)
@@ -2178,9 +2305,9 @@ Public Class FrmMain
                 Else
                     Dim s As String
                     If IsNothing(passbkFeat.passbk) Then
-                        s = mSYS_ERR_PASSBKOREF_INVALID_MSG
+                        s = _SYS_ERR_PASSBKOREF_INVALID_MSG
                     Else
-                        s = mSYS_ERR_CUSTOREF_INVALID_MSG
+                        s = _SYS_ERR_CUSTOREF_INVALID_MSG
                     End If
                     MsgBox(s, MsgBoxStyle.Critical)
                     'Reset the fields and focus to allow for another passbook feature update
@@ -2192,7 +2319,7 @@ Public Class FrmMain
                 If Not IsNothing(passbkFeat.feature) Then
                     txtFeatToStringTabPostFeatTbcPassbkFeatMainTbcMain.Text = passbkFeat.feature.ToString & vbCrLf
                 Else
-                    MsgBox(mSYS_ERR_FEATOREF_INVALID_MSG, MsgBoxStyle.Critical)
+                    MsgBox(_SYS_ERR_FEATOREF_INVALID_MSG, MsgBoxStyle.Critical)
                     'Reset the fields and focus to allow for another passbook feature update
                     _resetPassbkUsedFeatInput()
                     Exit Sub
@@ -2209,12 +2336,23 @@ Public Class FrmMain
 
                 'Finally populate the previously used text box
                 txtPrevUsedToStringTabPostFeatTbcPassbkFeatMainTbcMain.Clear()
-                For Each usedFeat As UsedFeature In _theThemePark.iterateUsedFeat
-                    If usedFeat.passbkFeat.id = passbkFeat.id Then
-                        txtPrevUsedToStringTabPostFeatTbcPassbkFeatMainTbcMain.Text &= _
-                            usedFeat.ToString & vbCrLf & vbCrLf
-                    End If
-                Next usedFeat
+                Try
+                    For Each usedFeat As UsedFeature In _theThemePark.iterateUsedFeat
+                        If usedFeat.passbkFeat.id = passbkFeat.id Then
+                            txtPrevUsedToStringTabPostFeatTbcPassbkFeatMainTbcMain.Text &= _
+                                usedFeat.ToString & vbCrLf & vbCrLf
+                        End If
+                    Next usedFeat
+                Catch ex As Exception
+                    MsgBox(_SYS_ERR_DATASTORE_ACCESS_ERR_MSG, MsgBoxStyle.Critical)
+                    Exit Sub
+                End Try
+
+                'If no previously used features were found then just display a default msg
+                If txtPrevUsedToStringTabPostFeatTbcPassbkFeatMainTbcMain.Text = "" Then
+                    txtPrevUsedToStringTabPostFeatTbcPassbkFeatMainTbcMain.Text = _
+                       "No previously used features have been found"
+                End If
             Else
                 Dim s As String = "ERROR: UsedFeature '" & cboVal & "' is invalid. Please select a different ID"
                 MsgBox(s, MsgBoxStyle.Exclamation)
@@ -2350,7 +2488,7 @@ Public Class FrmMain
         'Make sure we actually have customer object.  There is the slight chance
         'that the New () could have failed.
         If IsNothing(cust) Then
-            MsgBox(mSYS_ERR_MSG, MsgBoxStyle.Critical)
+            MsgBox(_SYS_ERR_MSG, MsgBoxStyle.Critical)
             Exit Sub
         End If
 
@@ -2400,7 +2538,7 @@ Public Class FrmMain
         'Make sure we actually have customer object.  There is the slight chance
         'that the New () could have failed.
         If IsNothing(feat) Then
-            MsgBox(mSYS_ERR_MSG, MsgBoxStyle.Critical)
+            MsgBox(_SYS_ERR_MSG, MsgBoxStyle.Critical)
             Exit Sub
         End If
 
@@ -2450,7 +2588,7 @@ Public Class FrmMain
         'Make sure we actually have customer object.  There is the slight chance
         'that the New () could have failed.
         If IsNothing(passbk) Then
-            MsgBox(mSYS_ERR_MSG, MsgBoxStyle.Critical)
+            MsgBox(_SYS_ERR_MSG, MsgBoxStyle.Critical)
             Exit Sub
         End If
 
@@ -2500,7 +2638,7 @@ Public Class FrmMain
         'Make sure we actually have customer object.  There is the slight chance
         'that the New () could have failed.
         If IsNothing(passbkFeat) Then
-            MsgBox(mSYS_ERR_MSG, MsgBoxStyle.Critical)
+            MsgBox(_SYS_ERR_MSG, MsgBoxStyle.Critical)
             Exit Sub
         End If
 
@@ -2552,7 +2690,7 @@ Public Class FrmMain
         'Make sure we actually have passbk object.  There is the slight chance
         'that the New () could have failed.
         If IsNothing(passbkFeat) Then
-            MsgBox(mSYS_ERR_MSG, MsgBoxStyle.Critical)
+            MsgBox(_SYS_ERR_MSG, MsgBoxStyle.Critical)
             Exit Sub
         End If
 
@@ -2594,7 +2732,7 @@ Public Class FrmMain
         'Make sure we actually have customer object.  There is the slight chance
         'that the New () could have failed.
         If IsNothing(usedFeat) AndAlso IsNothing(usedFeat.passbkFeat) Then
-            MsgBox(mSYS_ERR_MSG, MsgBoxStyle.Critical)
+            MsgBox(_SYS_ERR_MSG, MsgBoxStyle.Critical)
             Exit Sub
         End If
 
@@ -2646,35 +2784,12 @@ Public Class FrmMain
         'Make sure we actually have customer object.  There is the slight chance
         'that the New () could have failed.
         If IsNothing(logMsg) Then
-            MsgBox(mSYS_ERR_MSG, MsgBoxStyle.Critical)
+            MsgBox(_SYS_ERR_MSG, MsgBoxStyle.Critical)
             Exit Sub
         End If
 
         _writeTransLog("<LOGTRAN>: " & logMsg)
     End Sub '_logTran(...)
-
-    '****************************************************************************************
-    '_updtKeyPerfInd() handles updating the key performance indicators.
-    '****************************************************************************************
-    'XRLP - DELETE THIS
-    'Private Sub _updtKeyPerfInd()
-    '    Static Dim keyPrfInd As ThemePark_KeyPerfInd = New ThemePark_KeyPerfInd
-
-    '    txtAvgBalUnusedFeatTabDashboardTbcMain.Text = _
-    '        keyPrfInd.calcAvgBalUnusedFeat().ToString("C")
-    '    txtTotBalUnusedFeatTabDashboardTbcMain.Text = _
-    '        keyPrfInd.calcTotBalUnusedFeat.ToString("C")
-    '    txtAvgNumPassbkPerCustTabDashboardTbcMain.Text = _
-    '        keyPrfInd.calcAvgPassbkPerCust.ToString("N2")
-    '    txtMostPopFeatTabDashboardTbcMain.Text = _
-    '        keyPrfInd.calcMostPopFeat
-    '    txtFeatUsedPctTabDashboardTbcMain.Text = _
-    '        keyPrfInd.calcPctPassbkFeatUsed.ToString("N2")
-    '    txtAvgPassbkHolderAgeTabDashboardTbcMain.Text = _
-    '        keyPrfInd.calcAvgPassbkHolderAge.ToString("N2")
-    '    txtCurrMonBdaysTabDashboardTbcMain.Text = _
-    '        keyPrfInd.calcNumPassbkHolderBdaysInCurrMon.ToString
-    'End Sub '_updtKeyPerfInd()
 
 #End Region 'Event Procedures
 
@@ -2713,9 +2828,14 @@ Public Class FrmMain
         If _theThemePark.numCusts = 0 Then
             txtDebug.Text = "No Customer data to display" & vbCrLf
         Else
-            For Each cust As Customer In _theThemePark.iterateCust
-                txtDebug.Text &= cust.ToString & vbCrLf
-            Next cust
+            Try
+                For Each cust As Customer In _theThemePark.iterateCust
+                    txtDebug.Text &= cust.ToString & vbCrLf
+                Next cust
+            Catch ex As Exception
+                MsgBox(_SYS_ERR_DATASTORE_ACCESS_ERR_MSG, MsgBoxStyle.Critical)
+                Exit Sub
+            End Try
         End If
     End Sub
 
@@ -2728,9 +2848,14 @@ Public Class FrmMain
         If _theThemePark.numPassbks = 0 Then
             txtDebug.Text = "No Passbook data to display" & vbCrLf
         Else
-            For Each passbk As Passbook In _theThemePark.iteratePassbk
-                txtDebug.Text &= passbk.ToString & vbCrLf
-            Next passbk
+            Try
+                For Each passbk As Passbook In _theThemePark.iteratePassbk
+                    txtDebug.Text &= passbk.ToString & vbCrLf
+                Next passbk
+            Catch ex As Exception
+                MsgBox(_SYS_ERR_DATASTORE_ACCESS_ERR_MSG, MsgBoxStyle.Critical)
+                Exit Sub
+            End Try
         End If
     End Sub
 
@@ -2743,9 +2868,14 @@ Public Class FrmMain
         If _theThemePark.numFeats = 0 Then
             txtDebug.Text = "No Feature data to display" & vbCrLf
         Else
-            For Each feat As Feature In _theThemePark.iterateFeat
-                txtDebug.Text &= feat.ToString & vbCrLf
-            Next feat
+            Try
+                For Each feat As Feature In _theThemePark.iterateFeat
+                    txtDebug.Text &= feat.ToString & vbCrLf
+                Next feat
+            Catch ex As Exception
+                MsgBox(_SYS_ERR_DATASTORE_ACCESS_ERR_MSG, MsgBoxStyle.Critical)
+                Exit Sub
+            End Try
         End If
     End Sub
 
@@ -2758,9 +2888,14 @@ Public Class FrmMain
         If _theThemePark.numPassbkFeats = 0 Then
             txtDebug.Text = "No Passbook Feature data to display" & vbCrLf
         Else
-            For Each passbkFeat As PassbookFeature In _theThemePark.iteratePassbkFeat
-                txtDebug.Text &= passbkFeat.ToString & vbCrLf
-            Next passbkFeat
+            Try
+                For Each passbkFeat As PassbookFeature In _theThemePark.iteratePassbkFeat
+                    txtDebug.Text &= passbkFeat.ToString & vbCrLf
+                Next passbkFeat
+            Catch ex As Exception
+                MsgBox(_SYS_ERR_DATASTORE_ACCESS_ERR_MSG, MsgBoxStyle.Critical)
+                Exit Sub
+            End Try
         End If
     End Sub
 
@@ -2773,9 +2908,14 @@ Public Class FrmMain
         If _theThemePark.numUsedFeats = 0 Then
             txtDebug.Text = "No Used Feature data to display" & vbCrLf
         Else
-            For Each usedFeat As UsedFeature In _theThemePark.iterateUsedFeat
-                txtDebug.Text &= usedFeat.ToString & vbCrLf
-            Next usedFeat
+            Try
+                For Each usedFeat As UsedFeature In _theThemePark.iterateUsedFeat
+                    txtDebug.Text &= usedFeat.ToString & vbCrLf
+                Next usedFeat
+            Catch ex As Exception
+                MsgBox(_SYS_ERR_DATASTORE_ACCESS_ERR_MSG, MsgBoxStyle.Critical)
+                Exit Sub
+            End Try
         End If
     End Sub
 
@@ -2788,17 +2928,23 @@ Public Class FrmMain
         If _theThemePark.numTransx = 0 Then
             txtDebug.Text = "No Transactions to display" & vbCrLf
         Else
-            For Each transx As UsedFeature In _theThemePark.iterateTransx
-                txtDebug.Text &= transx.ToString & vbCrLf
-            Next transx
+            Try
+                For Each transx As UsedFeature In _theThemePark.iterateTransx
+                    txtDebug.Text &= transx.ToString & vbCrLf
+                Next transx
+            Catch ex As Exception
+                MsgBox(_SYS_ERR_DATASTORE_ACCESS_ERR_MSG, MsgBoxStyle.Critical)
+                Exit Sub
+            End Try
         End If
     End Sub
 
-#End Region 'Palumbo-Debug
-
-    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+    Private Sub _btnRecalcCntTabDashboardTbcMain_Click(sender As Object, e As EventArgs) _
+        Handles btnRecalcCntTabDashboardTbcMain.Click
         '.WriteLine("Calculate the KPIs")
         _dispKpi()
-    End Sub
+    End Sub '_btnRecalcCntTabDashboardTbcMain_Click(...)
+
+#End Region 'Palumbo-Debug
 
 End Class 'FrmMain

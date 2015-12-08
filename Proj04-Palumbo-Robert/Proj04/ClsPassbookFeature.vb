@@ -251,35 +251,33 @@ Public Class PassbookFeature
     Private Function _toString() As String
         Dim tmpStr As String
         Dim featStr As String
-        Dim passbkId As String
+        Dim passbkStr As String
         Dim passbkOwner As String = ""
 
         'Make sure feature is defined for the object
         If Not IsNothing(_feature) Then
-            featStr = _feature.featName
+            featStr = _feature.ToString
         Else
             featStr = "No-Feature-Reference-Found"
         End If
 
         'Make sure passbook is defined for the object
         If Not IsNothing(_passbk) Then
-            passbkId = _passbk.passbkId
-            passbkOwner = _passbk.owner.custName
+            passbkStr = _passbk.ToString
         Else
-            passbkId = "No-Passbook-Reference-Found"
+            passbkStr = "No-Passbook-Reference-Found"
         End If
 
         Dim totPurchPrice As Decimal = _qtyPurch * _unitPrice
 
         tmpStr = "[" _
-            & " Id=" & _id _
-            & ", Feature=" & featStr _
-            & ", PassbkID=" & passbkId _
-            & ", PassbkOwner=" & passbkOwner _
+            & "Id=" & _id _
             & ", UnitPrice=" & _unitPrice.ToString("C") _
             & ", QtyPurchased=" & _qtyPurch.ToString("N0") _
             & ", QtyRemain=" & _qtyRemain.ToString("N0") _
             & ", TotPurchPrice=" & totPurchPrice.ToString("C") _
+            & ", Feature=" & featStr _
+            & ", Passbook=" & passbkStr _
             & " ]"
         Return tmpStr
     End Function

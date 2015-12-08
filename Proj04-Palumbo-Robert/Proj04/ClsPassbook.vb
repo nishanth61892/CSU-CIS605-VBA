@@ -278,19 +278,19 @@ Public Class Passbook
 
         'Make sure owner is defined for the object
         If Not IsNothing(_owner) Then
-            ownerStr = _owner.custName
+            ownerStr = _owner.ToString
         Else
             ownerStr = "No-Owner-Reference-Found"
         End If
 
-        tmpStr = "[ " _
-            & " Id=" & _passbkId _
-            & ", Owner=" & ownerStr _
+        tmpStr = "[" _
+            & "Id=" & _passbkId _
             & ", PurchaseDate=" & _datePurch _
             & ", VisitorName=" & _visName _
             & ", VisitorDOB=" & _visDob _
             & ", VisitorAge=" & _visAge _
             & ", VisitorIsChild? " & _visIsChild _
+            & ", Owner=" & ownerStr _
             & "]"
 
         Return tmpStr

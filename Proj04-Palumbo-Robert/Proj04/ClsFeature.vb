@@ -228,7 +228,7 @@ Public Class Feature
         Dim tmpStr As String = ""
 
         tmpStr = "[" _
-            & " Id=" & _featId _
+            & "Id=" & _featId _
             & ", Name=" & _featName _
             & ", UnitOfMeas=" & _unitOfMeas _
             & ", AdultPrice=" & _adultPrice.ToString("C") _

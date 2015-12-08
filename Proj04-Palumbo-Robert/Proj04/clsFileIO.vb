@@ -25,6 +25,7 @@
 #Region "Option / Imports"
 Option Explicit On      'Must declare variables before using them
 Option Strict On        'Must perform explicit data type conversions
+Imports System.IO       'File I/O processing'
 #End Region 'Option / Imports
 
 Public Class FileIO
@@ -37,6 +38,14 @@ Public Class FileIO
     'No Attributes are currently defined.
 
     '********** Module-level constants
+    Private mSYS_FILEOPEN_ERR_MSG As String = _
+        "ERROR: File OPEN Error, file="
+    Private mSYS_FILECLOSE_ERR_MSG As String = _
+        "ERROR: File CLOSE Error, file="
+    Private mSYS_FILEREAD_ERR_MSG As String = _
+        "ERROR: File READ Error, file="
+    Private mSYS_FILEWRITE_ERR_MSG As String = _
+        "ERROR: File WRITE Error, file="
 
     '********** Module-level variables
     'Themepark reference
@@ -79,7 +88,29 @@ Public Class FileIO
 
     '********** Private Get/Set Methods
     '             - access attributes, begin name with underscore (_)
+    Private ReadOnly Property _FILEOPEN_ERR As String
+        Get
+            Return mSYS_FILEOPEN_ERR_MSG
+        End Get
+    End Property
 
+    Private ReadOnly Property _FILECLOSE_ERR As String
+        Get
+            Return mSYS_FILECLOSE_ERR_MSG
+        End Get
+    End Property
+
+    Private ReadOnly Property _FILEREAD_ERR As String
+        Get
+            Return mSYS_FILEREAD_ERR_MSG
+        End Get
+    End Property
+
+    Private ReadOnly Property _FILEWRITE_ERR As String
+        Get
+            Return mSYS_FILEWRITE_ERR_MSG
+        End Get
+    End Property
 #End Region 'Get/Set Methods
 
 #Region "Behavioral Methods"
@@ -97,17 +128,17 @@ Public Class FileIO
     'data file.  It is used to populate the system with a predefined  
     'data set and is invoked from the 'Process Test Data' button on
     'the System Test tab.
-    Public Function importData(ByVal pFileName As String) As String
-        Return _importData(pFileName)
-    End Function 'importData()
+    Public Sub importData(ByVal pFileName As String)
+        _importData(pFileName)
+    End Sub 'importData()
 
     '_importData() exports data records from the transactions array
     'to the output data file transactions-out.txt.  It is invoked 
     'from the 'Process Test Data' button on the System Test tab.
-    Public Function exportData(ByVal pFileName As String,
-                                 ByVal pAppend As Boolean) As String
-        Return _exportData(pFileName, pAppend)
-    End Function 'exportData()
+    Public Sub exportData(ByVal pFileName As String,
+                                 ByVal pAppend As Boolean)
+        _exportData(pFileName, pAppend)
+    End Sub 'exportData()
 
     'ToString() overrides the parent object function to return a 
     'string representation of this object.
@@ -120,21 +151,26 @@ Public Class FileIO
     '_importData() imports data records from the transactions-in.txt
     'data file.  It is used to populate the system with a predefined  
     'data set.
-    Private Function _importData(ByVal pFileName As String) As String
-        Dim _tmpStr As String = ""
+    Private Sub _importData(ByVal pFileName As String)
+        Dim inF As StreamReader
+
         MsgBox("ImportData: file=" & pFileName)
-        Return _tmpStr
-    End Function '_importData()
+
+        Try
+            inF = New StreamReader(pFileName)
+        Catch ex As Exception
+            MsgBox(_FILEOPEN_ERR & "'" & pFileName & "'", MsgBoxStyle.Exclamation)
+
+        End Try
+    End Sub '_importData()
 
     '_importData() exports data records from the transactions array
     'to the output data file transactions-out.txt.  This data file
     'can be used as an input file as well.
-    Private Function _exportData(ByVal pFileName As String,
-                                 ByVal pAppend As Boolean) As String
-        Dim _tmpStr As String = ""
+    Private Sub _exportData(ByVal pFileName As String,
+                                 ByVal pAppend As Boolean)
         MsgBox("ExportData: file=" & pFileName & ", Append=" & pAppend.ToString)
-        Return _tmpStr
-    End Function ''_importData()
+    End Sub ''_importData()
 
     '_toString() creates and returns a String version of the data
     'stored in the object.  This is the work-horse function that
