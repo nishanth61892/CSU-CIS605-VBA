@@ -203,7 +203,7 @@ Partial Class FrmMain
         Me.btnResetGrpAddFeatTabFeatTbcMainFrmMain = New System.Windows.Forms.Button()
         Me.btnSubmitGrpAddFeatTabFeatTbcMainFrmMain = New System.Windows.Forms.Button()
         Me.tabTransLogTbcMainFrmMain = New System.Windows.Forms.TabPage()
-        Me.btnClearTabTransLogTbcMainFrmMain = New System.Windows.Forms.Button()
+        Me.btnClearTabTransLogTbcMain = New System.Windows.Forms.Button()
         Me.grpTransLogTabTransLogTbcMain = New System.Windows.Forms.GroupBox()
         Me.txtTransLogTabTransLogTbcMainFrmMain = New System.Windows.Forms.TextBox()
         Me.tabSysTestTbcMainFrmMain = New System.Windows.Forms.TabPage()
@@ -240,6 +240,7 @@ Partial Class FrmMain
         Me.Label44 = New System.Windows.Forms.Label()
         Me.Label38 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
+        Me.btnParkStatTabTransLogTbcMain = New System.Windows.Forms.Button()
         Me.mnuMainApplMenu.SuspendLayout()
         Me.tabPassbkFeatTbcMainFrmMain.SuspendLayout()
         Me.tbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.SuspendLayout()
@@ -2199,7 +2200,8 @@ Partial Class FrmMain
         'tabTransLogTbcMainFrmMain
         '
         Me.tabTransLogTbcMainFrmMain.BackColor = System.Drawing.Color.LightGray
-        Me.tabTransLogTbcMainFrmMain.Controls.Add(Me.btnClearTabTransLogTbcMainFrmMain)
+        Me.tabTransLogTbcMainFrmMain.Controls.Add(Me.btnParkStatTabTransLogTbcMain)
+        Me.tabTransLogTbcMainFrmMain.Controls.Add(Me.btnClearTabTransLogTbcMain)
         Me.tabTransLogTbcMainFrmMain.Controls.Add(Me.grpTransLogTabTransLogTbcMain)
         Me.tabTransLogTbcMainFrmMain.Location = New System.Drawing.Point(4, 27)
         Me.tabTransLogTbcMainFrmMain.Name = "tabTransLogTbcMainFrmMain"
@@ -2209,15 +2211,15 @@ Partial Class FrmMain
         Me.tabTransLogTbcMainFrmMain.Text = "Transaction Log"
         Me.tipTPMS.SetToolTip(Me.tabTransLogTbcMainFrmMain, "View system transaction log")
         '
-        'btnClearTabTransLogTbcMainFrmMain
+        'btnClearTabTransLogTbcMain
         '
-        Me.btnClearTabTransLogTbcMainFrmMain.Location = New System.Drawing.Point(422, 423)
-        Me.btnClearTabTransLogTbcMainFrmMain.Name = "btnClearTabTransLogTbcMainFrmMain"
-        Me.btnClearTabTransLogTbcMainFrmMain.Size = New System.Drawing.Size(75, 23)
-        Me.btnClearTabTransLogTbcMainFrmMain.TabIndex = 1
-        Me.btnClearTabTransLogTbcMainFrmMain.Text = "&Clear"
-        Me.tipTPMS.SetToolTip(Me.btnClearTabTransLogTbcMainFrmMain, "Click to Clear transaction log")
-        Me.btnClearTabTransLogTbcMainFrmMain.UseVisualStyleBackColor = True
+        Me.btnClearTabTransLogTbcMain.Location = New System.Drawing.Point(490, 423)
+        Me.btnClearTabTransLogTbcMain.Name = "btnClearTabTransLogTbcMain"
+        Me.btnClearTabTransLogTbcMain.Size = New System.Drawing.Size(75, 23)
+        Me.btnClearTabTransLogTbcMain.TabIndex = 1
+        Me.btnClearTabTransLogTbcMain.Text = "&Clear"
+        Me.tipTPMS.SetToolTip(Me.btnClearTabTransLogTbcMain, "Click to Clear transaction log")
+        Me.btnClearTabTransLogTbcMain.UseVisualStyleBackColor = True
         '
         'grpTransLogTabTransLogTbcMain
         '
@@ -2586,6 +2588,16 @@ Partial Class FrmMain
         Me.Label4.Size = New System.Drawing.Size(98, 16)
         Me.Label4.TabIndex = 0
         '
+        'btnParkStatTabTransLogTbcMain
+        '
+        Me.btnParkStatTabTransLogTbcMain.Location = New System.Drawing.Point(353, 423)
+        Me.btnParkStatTabTransLogTbcMain.Name = "btnParkStatTabTransLogTbcMain"
+        Me.btnParkStatTabTransLogTbcMain.Size = New System.Drawing.Size(88, 23)
+        Me.btnParkStatTabTransLogTbcMain.TabIndex = 2
+        Me.btnParkStatTabTransLogTbcMain.Text = "&Park Status"
+        Me.tipTPMS.SetToolTip(Me.btnParkStatTabTransLogTbcMain, "Click to view current Theme Park Status")
+        Me.btnParkStatTabTransLogTbcMain.UseVisualStyleBackColor = True
+        '
         'FrmMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
@@ -2705,7 +2717,7 @@ Partial Class FrmMain
     Friend WithEvents btnSubmitTabPostFeatTbcPassbkFeatMainTbcMain As Button
     Friend WithEvents btnResetTabPurchFeatTbcPassbkFeatMainTbcMain As Button
     Friend WithEvents btnSubmitTabPurchFeatTbcPassbkFeatMainTbcMain As Button
-    Friend WithEvents btnClearTabTransLogTbcMainFrmMain As Button
+    Friend WithEvents btnClearTabTransLogTbcMain As Button
     Friend WithEvents lblCustIdTabAddCustTbcCustomerMainTabCustomerTbcMain As Label
     Friend WithEvents lblCustNameTabAddCustTbcCustomerMainTabCustomerTbcMain As Label
     Friend WithEvents txtCustNameTabAddCustTbcCustomerMainTabCustomerTbcMain As TextBox
@@ -2876,4 +2888,5 @@ Partial Class FrmMain
     Friend WithEvents Label62 As System.Windows.Forms.Label
     Friend WithEvents Label63 As System.Windows.Forms.Label
     Friend WithEvents Label20 As System.Windows.Forms.Label
+    Friend WithEvents btnParkStatTabTransLogTbcMain As System.Windows.Forms.Button
 End Class

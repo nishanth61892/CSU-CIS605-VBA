@@ -238,7 +238,7 @@ Public Class UsedFeature
             passbkFeatStr = "No-Passbook-Feature-Reference-Found"
         End If
 
-        tmpStr = "[" _
+        tmpStr = "[UsedFeat::" _
             & "Id=" & _id _
             & ", Location=" & _loc _
             & ", QtyUsed=" & _qtyUsed _

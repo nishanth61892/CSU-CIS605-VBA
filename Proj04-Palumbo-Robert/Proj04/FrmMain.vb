@@ -371,10 +371,6 @@ Public Class FrmMain
         _theThemePark.createFeat(f02.featId, f02.featName, f02.unitOfMeas, f02.adultPrice, f02.childPrice)
         _theThemePark.createFeat(f03.featId, f03.featName, f03.unitOfMeas, f03.adultPrice, f03.childPrice)
 
-        _writeTransLog(Nothing)
-        _writeTransLog("<CURRENT-PARK-STATUS>: " & _theThemePark.ToString)
-
-
         '**** Test Customer creation ****
         _writeTransLog(Nothing)
         _writeTransLog("[SYSTEM-TEST: CREATE CUSTOMERS]")
@@ -387,10 +383,6 @@ Public Class FrmMain
         _theThemePark.createCust(c01.custId, c01.custName)
         _theThemePark.createCust(c02.custId, c02.custName)
         _theThemePark.createCust(c03.custId, c03.custName)
-
-        _writeTransLog(Nothing)
-        _writeTransLog("<CURRENT-PARK-STATUS>: " & _theThemePark.ToString)
-
 
         '**** Test Passbook creation ****
         _writeTransLog(Nothing)
@@ -417,15 +409,10 @@ Public Class FrmMain
         _theThemePark.createPassbk(pb06.passbkId, pb06.owner, pb06.datePurch, _
                                pb06.visName, pb06.visDob, pb06.visAge, pb06.visIsChild)
 
-        _writeTransLog(Nothing)
-        _writeTransLog("<CURRENT-PARK-STATUS>: " & _theThemePark.ToString)
-
-
         '**** Test Passbook Feature purchase ****'
         _writeTransLog(Nothing)
         _writeTransLog("[SYSTEM-TEST: PURCHASE FEATURE]")
         _writeTransLog(Nothing)
-
 
         Dim pbf01 As PassbookFeature = New PassbookFeature("PBF01(t)", f01, pb01, 1)
         Dim pbf02 As PassbookFeature = New PassbookFeature("PBF02(t)", f01, pb02, 2)
@@ -449,10 +436,6 @@ Public Class FrmMain
         _theThemePark.purchPassbkFeat(pbf09.id, pbf09.feature, pbf09.passbk, pbf09.qtyPurch)
         _theThemePark.purchPassbkFeat(pbf10.id, pbf10.feature, pbf10.passbk, pbf10.qtyPurch)
 
-        _writeTransLog(Nothing)
-        _writeTransLog("<CURRENT-PARK-STATUS>: " & _theThemePark.ToString)
-
-
         '**** Test Use Passbook Feature ****'
         _writeTransLog(Nothing)
         _writeTransLog("[SYSTEM-TEST: USE PASSBOOK FEATURE]")
@@ -463,16 +446,12 @@ Public Class FrmMain
         _theThemePark.usedFeat("UF03(t)", pbf03, #10/20/2015#, 2, "France")
         _theThemePark.usedFeat("UF04(t)", pbf03, #10/20/2015#, 1, "American Pavillion")
 
-        _writeTransLog(Nothing)
-        _writeTransLog("<CURRENT-PARK-STATUS>: " & _theThemePark.ToString)
-
-
         '**** Test Update Passbook Feature ****'
         _writeTransLog(Nothing)
         _writeTransLog("[SYSTEM-TEST: UPDATE PASSBOOK FEATURE")
         _writeTransLog(Nothing)
 
-        '_theThemePark.updtPassbkFeat(pbf03.id, 1)
+        _theThemePark.updtPassbkFeat(pbf03.id, 1)
 
         '**** System Test Completed ****'
         _writeTransLog(Nothing)
@@ -1621,7 +1600,7 @@ Public Class FrmMain
     '****************************************************************************************
     Private Sub _btnClearTabTransLogTbcMainFrmMain_Click(sender As Object, _
                                                          e As EventArgs) _
-        Handles btnClearTabTransLogTbcMainFrmMain.Click
+        Handles btnClearTabTransLogTbcMain.Click
 
         'Reset the transaction log
         txtTransLogTabTransLogTbcMainFrmMain.Text = ""
@@ -1683,7 +1662,7 @@ Public Class FrmMain
                 'Console.WriteLine("Transaction Log Tab")
 
                 'Assign AcceptButton to this tab's Submit button for convenience
-                Me.AcceptButton = btnClearTabTransLogTbcMainFrmMain
+                Me.AcceptButton = btnClearTabTransLogTbcMain
 
                 'Push the caret to the end of the log file
                 _txtTransLogTabTransLogTbcMainFrmMain_TextChanged(Me, Nothing)
@@ -2456,11 +2435,31 @@ Public Class FrmMain
     Private Sub _btnImportDataTabSysTestTbcMainFrmMain_Click(sender As Object, e As EventArgs) _
         Handles btnImportDataTabSysTestTbcMainFrmMain.Click
 
+        'Give user the option to abort the import
+        Dim choice As MsgBoxResult = MsgBoxResult.Ok
+
+        'The following is only needed if system test data is NOT being processed
+        If _sysTestActive = False Then
+            choice = MsgBox("To continue with the Import from '" & IMPORT_FILENAME _
+                            & "' Click OK, otherwise Cancel", MsgBoxStyle.OkCancel)
+
+            'If OK selected proceed with the submission assuming not test data
+            If choice = MsgBoxResult.Cancel Then
+                Exit Sub
+            End If
+        End If
+
         Try
+            'Indicate to that the system test is running
+            _sysTestActive = True
+
             _theThemePark.importData(IMPORT_FILENAME, ERROR_FILENAME)
         Catch ex As Exception
             MsgBox(ex.Message, MsgBoxStyle.Exclamation)
-            Exit Sub
+
+        Finally
+            'Indicate to that the system test is complete
+            _sysTestActive = False
         End Try
     End Sub '_btnImportDataTabSysTestTbcMainFrmMain_Click(...)
 
@@ -2473,8 +2472,35 @@ Public Class FrmMain
         Handles btnExportDataGrpSysTestTabSysTestTbcMainFrmMain.Click
         Dim append As Boolean = chkAppendTabSysTestTbcMainFrmMain.Checked
 
+        'Give user the option to abort the import
+        Dim choice As MsgBoxResult = MsgBoxResult.Ok
+
+        'The following is only needed if system test data is NOT being processed
+        If _sysTestActive = False Then
+            choice = MsgBox("To continue with the Export to '" & EXPORT_FILENAME _
+                            & "' Click OK, otherwise Cancel", MsgBoxStyle.OkCancel)
+
+            'If OK selected proceed with the submission assuming not test data
+            If choice = MsgBoxResult.Cancel Then
+                Exit Sub
+            End If
+        End If
+
         _theThemePark.exportData(EXPORT_FILENAME, append)
     End Sub '_btnExportDataGrpSysTestTabSysTestTbcMainFrmMain_Click(...)
+
+
+    '****************************************************************************************
+    '_btnParkStatTabTransLogTbcMain_Click() 
+    'is the event procedure the is called when the clicks on the 'Park Status' button from
+    'the Transaction Log tab. It is used to show the current park status.
+    '****************************************************************************************
+    Private Sub _btnParkStatTabTransLogTbcMain_Click(sender As Object, e As EventArgs) _
+        Handles btnParkStatTabTransLogTbcMain.Click
+        _writeTransLog(_theThemePark.ToString)
+    End Sub '_btnParkStatTabTransLogTbcMain_Click(...)
+
+
 
     '********** Business Logic Event Procedures
     '             - Initiated as a result of business logic

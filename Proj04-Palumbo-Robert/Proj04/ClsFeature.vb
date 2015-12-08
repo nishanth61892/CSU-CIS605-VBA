@@ -227,7 +227,7 @@ Public Class Feature
     Private Function _toString() As String
         Dim tmpStr As String = ""
 
-        tmpStr = "[" _
+        tmpStr = "[Feature::" _
             & "Id=" & _featId _
             & ", Name=" & _featName _
             & ", UnitOfMeas=" & _unitOfMeas _

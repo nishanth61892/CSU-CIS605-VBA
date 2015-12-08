@@ -1084,7 +1084,6 @@ Public Class ThemePark
     End Function 'calcNumPassbkHolderBdaysInCurrMon()
 
 
-
     '****************************************************************************************
     '_postTransx() is used to post the specified transaction to the transaction data 
     ' store.
@@ -1307,6 +1306,16 @@ Public Class ThemePark
     '****************************************************************************************
     Private Sub _createCust(ByVal pCustId As String, _
                             ByVal pCustName As String)
+
+        If String.IsNullOrEmpty(pCustId) Then
+            Dim logMsg As String = "[InputDataError]: Customer ID not specified"
+
+            'Raise and event to let the listeners of this event it happened
+            RaiseEvent ThemePark_LogTran(Me,
+                                         New ThemePark_EventArgs_LogMsg(logMsg))
+            Exit Sub
+        End If
+
         'Trap duplicates here and don't create - this can happen from system test data
         Dim cust As Customer
         Try
@@ -1317,7 +1326,16 @@ Public Class ThemePark
         End Try
 
         If Not IsNothing(cust) Then
-            Dim logMsg As String = "ERROR: Attempt to create duplicate Customer, ID=" & pCustId
+            Dim logMsg As String = "[InputDataError]: Attempt to create duplicate Customer, ID=" & pCustId
+
+            'Raise and event to let the listeners of this event it happened
+            RaiseEvent ThemePark_LogTran(Me,
+                                         New ThemePark_EventArgs_LogMsg(logMsg))
+            Exit Sub
+        End If
+
+        If String.IsNullOrEmpty(pCustName) Then
+            Dim logMsg As String = "[InputDataError]: Customer Name not specified, ID=" & pCustId
 
             'Raise and event to let the listeners of this event it happened
             RaiseEvent ThemePark_LogTran(Me,
@@ -1371,6 +1389,15 @@ Public Class ThemePark
                             ByVal pAdultPrice As Decimal, _
                             ByVal pChildPrice As Decimal)
 
+        If String.IsNullOrEmpty(pFeatId) Then
+            Dim logMsg As String = "[InputDataError]: Feature ID not specified"
+
+            'Raise and event to let the listeners of this event it happened
+            RaiseEvent ThemePark_LogTran(Me,
+                                         New ThemePark_EventArgs_LogMsg(logMsg))
+            Exit Sub
+        End If
+
         'Trap duplicates here and don't create - this can happen from system test data
         Dim feat As Feature
         Try
@@ -1381,7 +1408,43 @@ Public Class ThemePark
         End Try
 
         If Not IsNothing(feat) Then
-            Dim logMsg As String = "ERROR: Attempt to create duplicate feature, Id=" & pFeatId
+            Dim logMsg As String = "[InputDataError]: Attempt to create duplicate Feature, ID=" & pFeatId
+
+            'Raise and event to let the listeners of this event it happened
+            RaiseEvent ThemePark_LogTran(Me,
+                                         New ThemePark_EventArgs_LogMsg(logMsg))
+            Exit Sub
+        End If
+
+        If String.IsNullOrEmpty(pFeatName) Then
+            Dim logMsg As String = "[InputDataError]: Feature Name not specified, ID=" & pFeatId
+
+            'Raise and event to let the listeners of this event it happened
+            RaiseEvent ThemePark_LogTran(Me,
+                                         New ThemePark_EventArgs_LogMsg(logMsg))
+            Exit Sub
+        End If
+
+        If String.IsNullOrEmpty(pUnitOfMeas) Then
+            Dim logMsg As String = "[InputDataError]: Unit of Measure not specified, ID=" & pFeatId
+
+            'Raise and event to let the listeners of this event it happened
+            RaiseEvent ThemePark_LogTran(Me,
+                                         New ThemePark_EventArgs_LogMsg(logMsg))
+            Exit Sub
+        End If
+
+        If pAdultPrice <= 0 Then
+            Dim logMsg As String = "[InputDataError]: Invalid Adult Price, ID=" & pFeatId
+
+            'Raise and event to let the listeners of this event it happened
+            RaiseEvent ThemePark_LogTran(Me,
+                                         New ThemePark_EventArgs_LogMsg(logMsg))
+            Exit Sub
+        End If
+
+        If pChildPrice < 0 Then
+            Dim logMsg As String = "[InputDataError]: Invalid Child Price, ID=" & pFeatId
 
             'Raise and event to let the listeners of this event it happened
             RaiseEvent ThemePark_LogTran(Me,

@@ -283,7 +283,7 @@ Public Class Passbook
             ownerStr = "No-Owner-Reference-Found"
         End If
 
-        tmpStr = "[" _
+        tmpStr = "[Passbk::" _
             & "Id=" & _passbkId _
             & ", PurchaseDate=" & _datePurch _
             & ", VisitorName=" & _visName _

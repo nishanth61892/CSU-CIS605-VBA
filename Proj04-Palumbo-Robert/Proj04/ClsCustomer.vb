@@ -161,7 +161,7 @@ Public Class Customer
     Private Function _toString() As String
         Dim tmpStr As String
 
-        tmpStr = "[" _
+        tmpStr = "[Customer::" _
             & "Id=" & _custId _
             & ", Name=" & _custName _
             & "]"

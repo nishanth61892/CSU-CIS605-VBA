@@ -270,7 +270,7 @@ Public Class PassbookFeature
 
         Dim totPurchPrice As Decimal = _qtyPurch * _unitPrice
 
-        tmpStr = "[" _
+        tmpStr = "[PassbkFeat::" _
             & "Id=" & _id _
             & ", UnitPrice=" & _unitPrice.ToString("C") _
             & ", QtyPurchased=" & _qtyPurch.ToString("N0") _
