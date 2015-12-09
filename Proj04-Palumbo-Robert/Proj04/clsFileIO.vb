@@ -352,12 +352,22 @@ Public Class FileIO
             End If
 
             Dim pDate As Date = Nothing
-            If Date.TryParse(purchDate & "00:00:00", pDate) = False Then
+            If Not String.IsNullOrEmpty(purchDate) Then
+                purchDate = DateTime.ParseExact(purchDate, "yyyyMMdd", Nothing).ToString("MM\/dd\/yyyy")
+                If Date.TryParse(purchDate, pDate) = False Then
+                    errFlag = True
+                End If
+            Else
                 errFlag = True
             End If
 
             Dim bDate As Date = Nothing
-            If Date.TryParse(visDob & "00:00:00", bDate) = False Then
+            If Not String.IsNullOrEmpty(visDob) Then
+                visDob = DateTime.ParseExact(visDob, "yyyyMMdd", Nothing).ToString("MM\/dd\/yyyy")
+                If Date.TryParse(visDob, bDate) = False Then
+                    errFlag = True
+                End If
+            Else
                 errFlag = True
             End If
 

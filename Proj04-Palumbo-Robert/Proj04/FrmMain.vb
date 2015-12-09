@@ -465,7 +465,7 @@ Public Class FrmMain
         _sysTestActive = False
 
         'don't allow multiple runs of the system test data
-        btnProcTestDataGrpSysTestTabSysTestTbcMainFrmMain.Enabled = False
+        btnProcTestDataGrpSysTestTabSysTestTbcMain.Enabled = False
     End Sub '_runSystemTest()
 
     '****************************************************************************************
@@ -1647,7 +1647,7 @@ Public Class FrmMain
                 'Console.WriteLine("System Test Tab")
 
                 'Assign AcceptButton to this tab's Submit button for convenience
-                Me.AcceptButton = btnProcTestDataGrpSysTestTabSysTestTbcMainFrmMain
+                Me.AcceptButton = btnProcTestDataGrpSysTestTabSysTestTbcMain
         End Select
     End Sub 'tbcMainFrmMain_SelectedIndexChanged(...)
 
@@ -1691,7 +1691,7 @@ Public Class FrmMain
     '****************************************************************************************
     Private Sub _btnProcTestDataGrpSysTestTabSysTestTbcMainFrmMain_Click(sender As Object, _
                                                                          e As EventArgs) _
-        Handles btnProcTestDataGrpSysTestTabSysTestTbcMainFrmMain.Click
+        Handles btnProcTestDataGrpSysTestTabSysTestTbcMain.Click
 
         'Execute the system test procedure
         _runSystemTest(True)
@@ -2430,6 +2430,8 @@ Public Class FrmMain
             _sysTestActive = True
 
             _theThemePark.importData(IMPORT_FILENAME, ERROR_FILENAME)
+
+            MsgBox("Data Import from '" & IMPORT_FILENAME & "' has Completed", MsgBoxStyle.OkOnly)
         Catch ex As Exception
             MsgBox(ex.Message, MsgBoxStyle.Exclamation)
 
@@ -2437,6 +2439,7 @@ Public Class FrmMain
             'Indicate to that the system test is complete
             _sysTestActive = False
         End Try
+
     End Sub '_btnImportDataTabSysTestTbcMainFrmMain_Click(...)
 
     '****************************************************************************************
@@ -2462,7 +2465,20 @@ Public Class FrmMain
             End If
         End If
 
-        _theThemePark.exportData(EXPORT_FILENAME, append)
+        Try
+            'Indicate to that the system test is running
+            _sysTestActive = True
+
+            _theThemePark.exportData(EXPORT_FILENAME, append)
+
+            MsgBox("Data Export to '" & EXPORT_FILENAME & "' has Completed", MsgBoxStyle.OkOnly)
+        Catch ex As Exception
+            MsgBox(ex.Message, MsgBoxStyle.Exclamation)
+
+        Finally
+            'Indicate to that the system test is complete
+            _sysTestActive = False
+        End Try
     End Sub '_btnExportDataGrpSysTestTabSysTestTbcMainFrmMain_Click(...)
 
 
@@ -2476,6 +2492,53 @@ Public Class FrmMain
         _writeTransLog(_theThemePark.ToString)
     End Sub '_btnParkStatTabTransLogTbcMain_Click(...)
 
+    '****************************************************************************************
+    '_btnResetSysGrpSysTestTabSysTestTbcMain_Click() 
+    'is the event procedure the is called when the clicks on the 'Reset System' button from
+    'the System Test tab. It is used to reinitialize the system from startup.
+    '****************************************************************************************
+    Private Sub _btnResetSysGrpSysTestTabSysTestTbcMain_Click(sender As Object, e As EventArgs) _
+        Handles btnResetSysGrpSysTestTabSysTestTbcMain.Click
+
+        'Give user the option to abort the import
+        Dim choice As MsgBoxResult = MsgBoxResult.Ok
+
+        'The following is only needed if system test data is NOT being processed
+        If _sysTestActive = False Then
+            choice = MsgBox("WARNING:  All System Data will be deleted!!!" _
+                            & "  To continue with System Reset to Click OK, otherwise Cancel", _
+                            MsgBoxStyle.OkCancel)
+
+            'If OK selected proceed with the submission assuming not test data
+            If choice = MsgBoxResult.Cancel Then
+                Exit Sub
+            End If
+        End If
+
+        lstCustTabDashboardTbcMain.Items.Clear()
+        lstFeatTabDashboardTbcMain.Items.Clear()
+        lstPassbkTabDashboardTbcMain.Items.Clear()
+        lstPassbkFeatTabDashboardTbcMain.Items.Clear()
+        lstUsedFeatTabDashboardTbcMain.Items.Clear()
+
+        cboCustIdGrpCustInfoGrpAddPassbkTabPassbkTbcMainFrmMain.Items.Clear()
+        cboFeatIdTabAddFeatTbcPassbkFeatMainTbcMain.Items.Clear()
+        cboFeatIdTabUpdtFeatTbcPassbkFeatMainTbcMain.Items.Clear()
+        cboFeatIdTabPostFeatTbcPassbkFeatMainTbcMain.Items.Clear()
+
+        txtCustCntTabDashboardTbcMain.Text = "0"
+        txtFeatCntTabDashboardTbcMain.Text = "0"
+        txtPassbkCntTabDashboardTbcMain.Text = "0"
+        txtPassbkFeatCntTabDashboardTbcMain.Text = "0"
+        txtUsedFeatCntTabDashboardTbcMain.Text = "0"
+
+        txtTransLogTabTransLogTbcMainFrmMain.Text = ""
+        txtToStringTabDashboardTbcMain.Text = ""
+
+        _initializeBusinessLogic()
+
+        MsgBox("System has be Reset!", MsgBoxStyle.OkOnly)
+    End Sub '_btnResetSysGrpSysTestTabSysTestTbcMain_Click(...)
 
 
     '********** Business Logic Event Procedures
@@ -2758,7 +2821,7 @@ Public Class FrmMain
         '    'Update associated UI components with component values
         With usedFeat
             lstUsedFeatTabDashboardTbcMain.Items.Add(.id)
-            lstUsedFeatCntTabDashboardTbcMain.Text =
+            txtUsedFeatCntTabDashboardTbcMain.Text =
                 lstUsedFeatTabDashboardTbcMain.Items.Count.ToString
         End With
 

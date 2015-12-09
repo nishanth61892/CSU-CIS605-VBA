@@ -147,7 +147,7 @@ Partial Class FrmMain
         Me.btnSubmitGrpAddCustTabFeatTbcMainFrmMain = New System.Windows.Forms.Button()
         Me.tbcMainFrmMain = New System.Windows.Forms.TabControl()
         Me.tabDashTbcMainFrmMain = New System.Windows.Forms.TabPage()
-        Me.lstUsedFeatCntTabDashboardTbcMain = New System.Windows.Forms.TextBox()
+        Me.txtUsedFeatCntTabDashboardTbcMain = New System.Windows.Forms.TextBox()
         Me.txtPassbkFeatCntTabDashboardTbcMain = New System.Windows.Forms.TextBox()
         Me.txtPassbkCntTabDashboardTbcMain = New System.Windows.Forms.TextBox()
         Me.txtFeatCntTabDashboardTbcMain = New System.Windows.Forms.TextBox()
@@ -203,17 +203,20 @@ Partial Class FrmMain
         Me.btnResetGrpAddFeatTabFeatTbcMainFrmMain = New System.Windows.Forms.Button()
         Me.btnSubmitGrpAddFeatTabFeatTbcMainFrmMain = New System.Windows.Forms.Button()
         Me.tabTransLogTbcMainFrmMain = New System.Windows.Forms.TabPage()
+        Me.btnParkStatTabTransLogTbcMain = New System.Windows.Forms.Button()
         Me.btnClearTabTransLogTbcMain = New System.Windows.Forms.Button()
         Me.grpTransLogTabTransLogTbcMain = New System.Windows.Forms.GroupBox()
         Me.txtTransLogTabTransLogTbcMainFrmMain = New System.Windows.Forms.TextBox()
         Me.tabSysTestTbcMainFrmMain = New System.Windows.Forms.TabPage()
         Me.grpSysTestTabSysTestTbcMainFrmMain = New System.Windows.Forms.GroupBox()
+        Me.GroupBox3 = New System.Windows.Forms.GroupBox()
+        Me.btnResetSysGrpSysTestTabSysTestTbcMain = New System.Windows.Forms.Button()
+        Me.btnProcTestDataGrpSysTestTabSysTestTbcMain = New System.Windows.Forms.Button()
         Me.Label20 = New System.Windows.Forms.Label()
         Me.grpAnon5 = New System.Windows.Forms.GroupBox()
         Me.btnExportDataGrpSysTestTabSysTestTbcMainFrmMain = New System.Windows.Forms.Button()
         Me.chkAppendTabSysTestTbcMainFrmMain = New System.Windows.Forms.CheckBox()
         Me.btnImportDataTabSysTestTbcMainFrmMain = New System.Windows.Forms.Button()
-        Me.btnProcTestDataGrpSysTestTabSysTestTbcMainFrmMain = New System.Windows.Forms.Button()
         Me.tabDebugTbcMainFrmMain = New System.Windows.Forms.TabPage()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.txtDebug = New System.Windows.Forms.TextBox()
@@ -240,7 +243,6 @@ Partial Class FrmMain
         Me.Label44 = New System.Windows.Forms.Label()
         Me.Label38 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
-        Me.btnParkStatTabTransLogTbcMain = New System.Windows.Forms.Button()
         Me.mnuMainApplMenu.SuspendLayout()
         Me.tabPassbkFeatTbcMainFrmMain.SuspendLayout()
         Me.tbcPassbkFeatMainTabPassbkFeatTbcMainFrmMain.SuspendLayout()
@@ -271,6 +273,7 @@ Partial Class FrmMain
         Me.grpTransLogTabTransLogTbcMain.SuspendLayout()
         Me.tabSysTestTbcMainFrmMain.SuspendLayout()
         Me.grpSysTestTabSysTestTbcMainFrmMain.SuspendLayout()
+        Me.GroupBox3.SuspendLayout()
         Me.grpAnon5.SuspendLayout()
         Me.tabDebugTbcMainFrmMain.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
@@ -1584,7 +1587,7 @@ Partial Class FrmMain
         'tabDashTbcMainFrmMain
         '
         Me.tabDashTbcMainFrmMain.BackColor = System.Drawing.Color.LightGray
-        Me.tabDashTbcMainFrmMain.Controls.Add(Me.lstUsedFeatCntTabDashboardTbcMain)
+        Me.tabDashTbcMainFrmMain.Controls.Add(Me.txtUsedFeatCntTabDashboardTbcMain)
         Me.tabDashTbcMainFrmMain.Controls.Add(Me.txtPassbkFeatCntTabDashboardTbcMain)
         Me.tabDashTbcMainFrmMain.Controls.Add(Me.txtPassbkCntTabDashboardTbcMain)
         Me.tabDashTbcMainFrmMain.Controls.Add(Me.txtFeatCntTabDashboardTbcMain)
@@ -1615,16 +1618,16 @@ Partial Class FrmMain
         Me.tabDashTbcMainFrmMain.Text = "Dashboard"
         Me.tipTPMS.SetToolTip(Me.tabDashTbcMainFrmMain, "System dashboard")
         '
-        'lstUsedFeatCntTabDashboardTbcMain
+        'txtUsedFeatCntTabDashboardTbcMain
         '
-        Me.lstUsedFeatCntTabDashboardTbcMain.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lstUsedFeatCntTabDashboardTbcMain.Location = New System.Drawing.Point(563, 261)
-        Me.lstUsedFeatCntTabDashboardTbcMain.Name = "lstUsedFeatCntTabDashboardTbcMain"
-        Me.lstUsedFeatCntTabDashboardTbcMain.ReadOnly = True
-        Me.lstUsedFeatCntTabDashboardTbcMain.Size = New System.Drawing.Size(57, 20)
-        Me.lstUsedFeatCntTabDashboardTbcMain.TabIndex = 21
-        Me.lstUsedFeatCntTabDashboardTbcMain.TabStop = False
-        Me.tipTPMS.SetToolTip(Me.lstUsedFeatCntTabDashboardTbcMain, "Number of used features in the system")
+        Me.txtUsedFeatCntTabDashboardTbcMain.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtUsedFeatCntTabDashboardTbcMain.Location = New System.Drawing.Point(563, 261)
+        Me.txtUsedFeatCntTabDashboardTbcMain.Name = "txtUsedFeatCntTabDashboardTbcMain"
+        Me.txtUsedFeatCntTabDashboardTbcMain.ReadOnly = True
+        Me.txtUsedFeatCntTabDashboardTbcMain.Size = New System.Drawing.Size(57, 20)
+        Me.txtUsedFeatCntTabDashboardTbcMain.TabIndex = 21
+        Me.txtUsedFeatCntTabDashboardTbcMain.TabStop = False
+        Me.tipTPMS.SetToolTip(Me.txtUsedFeatCntTabDashboardTbcMain, "Number of used features in the system")
         '
         'txtPassbkFeatCntTabDashboardTbcMain
         '
@@ -2211,6 +2214,16 @@ Partial Class FrmMain
         Me.tabTransLogTbcMainFrmMain.Text = "Transaction Log"
         Me.tipTPMS.SetToolTip(Me.tabTransLogTbcMainFrmMain, "View system transaction log")
         '
+        'btnParkStatTabTransLogTbcMain
+        '
+        Me.btnParkStatTabTransLogTbcMain.Location = New System.Drawing.Point(353, 423)
+        Me.btnParkStatTabTransLogTbcMain.Name = "btnParkStatTabTransLogTbcMain"
+        Me.btnParkStatTabTransLogTbcMain.Size = New System.Drawing.Size(88, 23)
+        Me.btnParkStatTabTransLogTbcMain.TabIndex = 2
+        Me.btnParkStatTabTransLogTbcMain.Text = "&Park Status"
+        Me.tipTPMS.SetToolTip(Me.btnParkStatTabTransLogTbcMain, "Click to view current Theme Park Status")
+        Me.btnParkStatTabTransLogTbcMain.UseVisualStyleBackColor = True
+        '
         'btnClearTabTransLogTbcMain
         '
         Me.btnClearTabTransLogTbcMain.Location = New System.Drawing.Point(490, 423)
@@ -2260,20 +2273,51 @@ Partial Class FrmMain
         'grpSysTestTabSysTestTbcMainFrmMain
         '
         Me.grpSysTestTabSysTestTbcMainFrmMain.BackColor = System.Drawing.Color.LightGray
-        Me.grpSysTestTabSysTestTbcMainFrmMain.Controls.Add(Me.Label20)
+        Me.grpSysTestTabSysTestTbcMainFrmMain.Controls.Add(Me.GroupBox3)
         Me.grpSysTestTabSysTestTbcMainFrmMain.Controls.Add(Me.grpAnon5)
-        Me.grpSysTestTabSysTestTbcMainFrmMain.Controls.Add(Me.btnProcTestDataGrpSysTestTabSysTestTbcMainFrmMain)
-        Me.grpSysTestTabSysTestTbcMainFrmMain.Location = New System.Drawing.Point(215, 41)
+        Me.grpSysTestTabSysTestTbcMainFrmMain.Location = New System.Drawing.Point(215, 72)
         Me.grpSysTestTabSysTestTbcMainFrmMain.Name = "grpSysTestTabSysTestTbcMainFrmMain"
-        Me.grpSysTestTabSysTestTbcMainFrmMain.Size = New System.Drawing.Size(489, 239)
+        Me.grpSysTestTabSysTestTbcMainFrmMain.Size = New System.Drawing.Size(489, 301)
         Me.grpSysTestTabSysTestTbcMainFrmMain.TabIndex = 0
         Me.grpSysTestTabSysTestTbcMainFrmMain.TabStop = False
         Me.grpSysTestTabSysTestTbcMainFrmMain.Text = "System Test"
         '
+        'GroupBox3
+        '
+        Me.GroupBox3.BackColor = System.Drawing.SystemColors.Control
+        Me.GroupBox3.Controls.Add(Me.btnResetSysGrpSysTestTabSysTestTbcMain)
+        Me.GroupBox3.Controls.Add(Me.btnProcTestDataGrpSysTestTabSysTestTbcMain)
+        Me.GroupBox3.Controls.Add(Me.Label20)
+        Me.GroupBox3.Location = New System.Drawing.Point(72, 151)
+        Me.GroupBox3.Name = "GroupBox3"
+        Me.GroupBox3.Size = New System.Drawing.Size(344, 117)
+        Me.GroupBox3.TabIndex = 3
+        Me.GroupBox3.TabStop = False
+        '
+        'btnResetSysGrpSysTestTabSysTestTbcMain
+        '
+        Me.btnResetSysGrpSysTestTabSysTestTbcMain.Location = New System.Drawing.Point(19, 63)
+        Me.btnResetSysGrpSysTestTabSysTestTbcMain.Name = "btnResetSysGrpSysTestTabSysTestTbcMain"
+        Me.btnResetSysGrpSysTestTabSysTestTbcMain.Size = New System.Drawing.Size(117, 27)
+        Me.btnResetSysGrpSysTestTabSysTestTbcMain.TabIndex = 3
+        Me.btnResetSysGrpSysTestTabSysTestTbcMain.Text = "&Reset System"
+        Me.tipTPMS.SetToolTip(Me.btnResetSysGrpSysTestTabSysTestTbcMain, "Click to Reset the system.   All data is cleared.")
+        Me.btnResetSysGrpSysTestTabSysTestTbcMain.UseVisualStyleBackColor = True
+        '
+        'btnProcTestDataGrpSysTestTabSysTestTbcMain
+        '
+        Me.btnProcTestDataGrpSysTestTabSysTestTbcMain.Location = New System.Drawing.Point(19, 20)
+        Me.btnProcTestDataGrpSysTestTabSysTestTbcMain.Name = "btnProcTestDataGrpSysTestTabSysTestTbcMain"
+        Me.btnProcTestDataGrpSysTestTabSysTestTbcMain.Size = New System.Drawing.Size(117, 27)
+        Me.btnProcTestDataGrpSysTestTabSysTestTbcMain.TabIndex = 0
+        Me.btnProcTestDataGrpSysTestTabSysTestTbcMain.Text = "Process &Test Data"
+        Me.tipTPMS.SetToolTip(Me.btnProcTestDataGrpSysTestTabSysTestTbcMain, "Click to enable automated testing")
+        Me.btnProcTestDataGrpSysTestTabSysTestTbcMain.UseVisualStyleBackColor = True
+        '
         'Label20
         '
         Me.Label20.AutoSize = True
-        Me.Label20.Location = New System.Drawing.Point(226, 53)
+        Me.Label20.Location = New System.Drawing.Point(153, 26)
         Me.Label20.Name = "Label20"
         Me.Label20.Size = New System.Drawing.Size(130, 15)
         Me.Label20.TabIndex = 2
@@ -2285,7 +2329,7 @@ Partial Class FrmMain
         Me.grpAnon5.Controls.Add(Me.btnExportDataGrpSysTestTabSysTestTbcMainFrmMain)
         Me.grpAnon5.Controls.Add(Me.chkAppendTabSysTestTbcMainFrmMain)
         Me.grpAnon5.Controls.Add(Me.btnImportDataTabSysTestTbcMainFrmMain)
-        Me.grpAnon5.Location = New System.Drawing.Point(58, 89)
+        Me.grpAnon5.Location = New System.Drawing.Point(72, 30)
         Me.grpAnon5.Name = "grpAnon5"
         Me.grpAnon5.Size = New System.Drawing.Size(344, 92)
         Me.grpAnon5.TabIndex = 1
@@ -2321,16 +2365,6 @@ Partial Class FrmMain
         Me.btnImportDataTabSysTestTbcMainFrmMain.Text = "&Import Data"
         Me.tipTPMS.SetToolTip(Me.btnImportDataTabSysTestTbcMainFrmMain, "Click to import data from 'Transactions-in.txt'")
         Me.btnImportDataTabSysTestTbcMainFrmMain.UseVisualStyleBackColor = True
-        '
-        'btnProcTestDataGrpSysTestTabSysTestTbcMainFrmMain
-        '
-        Me.btnProcTestDataGrpSysTestTabSysTestTbcMainFrmMain.Location = New System.Drawing.Point(58, 47)
-        Me.btnProcTestDataGrpSysTestTabSysTestTbcMainFrmMain.Name = "btnProcTestDataGrpSysTestTabSysTestTbcMainFrmMain"
-        Me.btnProcTestDataGrpSysTestTabSysTestTbcMainFrmMain.Size = New System.Drawing.Size(149, 27)
-        Me.btnProcTestDataGrpSysTestTabSysTestTbcMainFrmMain.TabIndex = 0
-        Me.btnProcTestDataGrpSysTestTabSysTestTbcMainFrmMain.Text = "Process &Test Data"
-        Me.tipTPMS.SetToolTip(Me.btnProcTestDataGrpSysTestTabSysTestTbcMainFrmMain, "Click to enable automated testing")
-        Me.btnProcTestDataGrpSysTestTabSysTestTbcMainFrmMain.UseVisualStyleBackColor = True
         '
         'tabDebugTbcMainFrmMain
         '
@@ -2588,16 +2622,6 @@ Partial Class FrmMain
         Me.Label4.Size = New System.Drawing.Size(98, 16)
         Me.Label4.TabIndex = 0
         '
-        'btnParkStatTabTransLogTbcMain
-        '
-        Me.btnParkStatTabTransLogTbcMain.Location = New System.Drawing.Point(353, 423)
-        Me.btnParkStatTabTransLogTbcMain.Name = "btnParkStatTabTransLogTbcMain"
-        Me.btnParkStatTabTransLogTbcMain.Size = New System.Drawing.Size(88, 23)
-        Me.btnParkStatTabTransLogTbcMain.TabIndex = 2
-        Me.btnParkStatTabTransLogTbcMain.Text = "&Park Status"
-        Me.tipTPMS.SetToolTip(Me.btnParkStatTabTransLogTbcMain, "Click to view current Theme Park Status")
-        Me.btnParkStatTabTransLogTbcMain.UseVisualStyleBackColor = True
-        '
         'FrmMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
@@ -2658,7 +2682,8 @@ Partial Class FrmMain
         Me.grpTransLogTabTransLogTbcMain.PerformLayout()
         Me.tabSysTestTbcMainFrmMain.ResumeLayout(False)
         Me.grpSysTestTabSysTestTbcMainFrmMain.ResumeLayout(False)
-        Me.grpSysTestTabSysTestTbcMainFrmMain.PerformLayout()
+        Me.GroupBox3.ResumeLayout(False)
+        Me.GroupBox3.PerformLayout()
         Me.grpAnon5.ResumeLayout(False)
         Me.grpAnon5.PerformLayout()
         Me.tabDebugTbcMainFrmMain.ResumeLayout(False)
@@ -2723,7 +2748,7 @@ Partial Class FrmMain
     Friend WithEvents txtCustNameTabAddCustTbcCustomerMainTabCustomerTbcMain As TextBox
     Friend WithEvents btnAddGrpCustInfoTcbMain As Button
     Friend WithEvents btnResetGrpCustInfoTcbMain As Button
-    Friend WithEvents lstUsedFeatCntTabDashboardTbcMain As System.Windows.Forms.TextBox
+    Friend WithEvents txtUsedFeatCntTabDashboardTbcMain As System.Windows.Forms.TextBox
     Friend WithEvents txtPassbkFeatCntTabDashboardTbcMain As System.Windows.Forms.TextBox
     Friend WithEvents txtPassbkCntTabDashboardTbcMain As System.Windows.Forms.TextBox
     Friend WithEvents txtFeatCntTabDashboardTbcMain As System.Windows.Forms.TextBox
@@ -2817,7 +2842,7 @@ Partial Class FrmMain
     Friend WithEvents btnExportDataGrpSysTestTabSysTestTbcMainFrmMain As System.Windows.Forms.Button
     Friend WithEvents chkAppendTabSysTestTbcMainFrmMain As System.Windows.Forms.CheckBox
     Friend WithEvents btnImportDataTabSysTestTbcMainFrmMain As System.Windows.Forms.Button
-    Friend WithEvents btnProcTestDataGrpSysTestTabSysTestTbcMainFrmMain As System.Windows.Forms.Button
+    Friend WithEvents btnProcTestDataGrpSysTestTabSysTestTbcMain As System.Windows.Forms.Button
     Friend WithEvents Label45 As System.Windows.Forms.Label
     Friend WithEvents Label44 As System.Windows.Forms.Label
     Friend WithEvents ListBox2 As System.Windows.Forms.ListBox
@@ -2889,4 +2914,6 @@ Partial Class FrmMain
     Friend WithEvents Label63 As System.Windows.Forms.Label
     Friend WithEvents Label20 As System.Windows.Forms.Label
     Friend WithEvents btnParkStatTabTransLogTbcMain As System.Windows.Forms.Button
+    Friend WithEvents GroupBox3 As System.Windows.Forms.GroupBox
+    Friend WithEvents btnResetSysGrpSysTestTabSysTestTbcMain As System.Windows.Forms.Button
 End Class
