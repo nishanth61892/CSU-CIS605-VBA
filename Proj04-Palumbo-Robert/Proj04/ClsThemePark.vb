@@ -1660,7 +1660,7 @@ Public Class ThemePark
     End Sub '_createPassbk(...)
 
     '****************************************************************************************
-    '_createPassbkFeat() 
+    '_purchPassbkFeat() 
     'This is the work-horse function that creates a new passbook feature purchase
     'and raises an event to alert any listeners to handle the rest
     'of the associated processed based on this event
@@ -1670,6 +1670,15 @@ Public Class ThemePark
                                  ByVal pPassbk As Passbook, _
                                  ByVal pQtyPurch As Decimal)
         'Trap duplicates here and don't create - this can happen from system test data
+        If String.IsNullOrEmpty(pPassbkFeatId) Then
+            Dim logMsg As String = "[InputDataError]: Passbook Feature ID not specified"
+
+            'Raise and event to let the listeners of this event it happened
+            RaiseEvent ThemePark_LogTran(Me,
+                                         New ThemePark_EventArgs_LogMsg(logMsg))
+            Exit Sub
+        End If
+
         Dim passbkFeat As PassbookFeature
         Try
             passbkFeat = _findPassbkFeat(pPassbkFeatId)
@@ -1679,7 +1688,7 @@ Public Class ThemePark
         End Try
 
         If Not IsNothing(passbkFeat) Then
-            Dim logMsg As String = "ERROR: Attempt to create duplicate Passbook Feature, ID=" & pPassbkFeatId
+            Dim logMsg As String = "[InputDataError]: Attempt to create duplicate Passbook Feature, ID=" & pPassbkFeatId
 
             'Raise and event to let the listeners of this event it happened
             RaiseEvent ThemePark_LogTran(Me,
@@ -1688,11 +1697,30 @@ Public Class ThemePark
         End If
 
         'Because data can be input into the system in several ways we
-        'have to check that the passbook feature specified is already
-        'in the system.  If so that feature has to be used
+        'have to check that the passbook and feature specified are already
+        'in the system.  If so we have to use those - but there actually
+        'has to be an object first.
+        If IsNothing(pFeature) Then
+            Dim logMsg As String = "[InputDataError]: No Feature specified, ID=" & pPassbkFeatId
+
+            'Raise and event to let the listeners of this event it happened
+            RaiseEvent ThemePark_LogTran(Me,
+                                         New ThemePark_EventArgs_LogMsg(logMsg))
+            Exit Sub
+        End If
+
         Dim feat As Feature = _findFeat(pFeature.featId)
         If IsNothing(feat) Then
             feat = pFeature
+        End If
+
+        If IsNothing(pPassbk) Then
+            Dim logMsg As String = "[InputDataError]: No Passbook specified, ID=" & pPassbkFeatId
+
+            'Raise and event to let the listeners of this event it happened
+            RaiseEvent ThemePark_LogTran(Me,
+                                         New ThemePark_EventArgs_LogMsg(logMsg))
+            Exit Sub
         End If
 
         Dim passbk As Passbook = _findPassbk(pPassbk.passbkId)
@@ -1733,7 +1761,7 @@ Public Class ThemePark
         'Raise and event to let the listeners of this event it happened
         RaiseEvent ThemePark_PurchPassbkFeat(Me,
                                              New ThemePark_EventArgs_PurchPassbkFeat(passbkFeat))
-    End Sub '_createPassbkFeat(...)
+    End Sub '_purchPassbkFeat(...)
 
     '****************************************************************************************
     '_updtPassbkFeat()
