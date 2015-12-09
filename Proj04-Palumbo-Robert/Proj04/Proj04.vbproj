@@ -84,6 +84,7 @@
     <Compile Include="ClsThemePark_EventArgs_UpdtPassbkFeat.vb" />
     <Compile Include="ClsThemePark_EventsArgs_CreateFeat.vb" />
     <Compile Include="ClsUsedFeature.vb" />
+    <Compile Include="ClsUtils.vb" />
     <Compile Include="FrmMain.Designer.vb">
       <DependentUpon>FrmMain.vb</DependentUpon>
     </Compile>

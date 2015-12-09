@@ -73,10 +73,6 @@ Public Class FrmMain
     'Theme Park Name
     Private Const mTHEME_PARK_NAME As String = "CIS605 Theme Park"
 
-    'Minimum age to be considered an adult. Less than this age is 
-    'thusly considered a child
-    Private Const mADULT_MIN_AGE As Integer = (13)
-
     'Used to reference the main UI tab control tabs
     Private Const mTBC_MAIN_TAB_DASHBOARD As Integer = 0
     Private Const mTBC_MAIN_TAB_CUSTOMER As Integer = 1
@@ -535,26 +531,6 @@ Public Class FrmMain
     End Sub 'initializeUserInterface()
 
 
-    '****************************************************************************************
-    '_calcAge() is used to calculate the age in years for a visitor being added to a 
-    'passbook purchase - age is calculate relative to the current system time (i.e. Now)
-    '****************************************************************************************
-    Private Function _calcAge(ByVal pVisDoB As Date) As Integer
-        Dim age As Integer = 0
-        Dim dateNow As Date = Now
-
-        'Need to compensate for DoB in the current year 
-        Dim dobYear As Integer = pVisDoB.Year
-        Dim nowYear As Integer = Now.Year
-
-        age = nowYear - dobYear
-        If pVisDoB.AddYears(age) > dateNow Then
-            age -= 1
-        End If
-
-        Return age
-    End Function '_calcAge(...)
-
     '_dispKpi()
     '   - Used to update the GUI with the current Key Performance Indicators
     Private Sub _dispKpi()
@@ -1004,8 +980,8 @@ Public Class FrmMain
         End If
 
         'Determine if the visitor is a child (< 13 years old)
-        Dim visAge As Integer = _calcAge(visDobValue)
-        Dim visIsChild As Boolean = visAge < mADULT_MIN_AGE
+        Dim visAge As Integer = Utils.calcAge(visDobValue)
+        Dim visIsChild As Boolean = Utils.isAdult(visAge)
 
         'Verify the purchase before committing
         Dim choice As MsgBoxResult = MsgBoxResult.Ok
@@ -1334,8 +1310,8 @@ Public Class FrmMain
         Dim qtyPurch As Decimal
 
         'The price to use is based on DOB compared with the current date
-        Dim visAge As Integer = _calcAge(passbkFeat.passbk.visDob)
-        Dim visIsChild As Boolean = visAge < mADULT_MIN_AGE
+        Dim visAge As Integer = Utils.calcAge(passbkFeat.passbk.visDob)
+        Dim visIsChild As Boolean = Utils.isAdult(visAge)
 
         'Calculate total price - based on unit price by age 
         If visIsChild = True Then
@@ -2070,8 +2046,8 @@ Public Class FrmMain
             End If
 
             'Determine if the visitor is a child (< 13 years old) based on the current date/time
-            mPassBk.visAge = _calcAge(mPassBk.visDob)
-            mPassBk.visIsChild = mPassBk.visAge < mADULT_MIN_AGE
+            mPassBk.visAge = Utils.calcAge(mPassBk.visDob)
+            mPassBk.visIsChild = Utils.isAdult(mPassBk.visAge)
 
             txtVisToStringTabAddFeatTbcPassbkFeatMainTbcMain.Text = "[Visitor] -> " _
                 & mPassBk.visName & ", DOB: " & mPassBk.visDob & ", Age: " & mPassBk.visAge _
@@ -2205,8 +2181,8 @@ Public Class FrmMain
                 End If
 
                 'Determine if the visitor is a child (< 13 years old) based on the current date/time
-                passbkFeat.passbk.visAge = _calcAge(passbkFeat.passbk.visDob)
-                passbkFeat.passbk.visIsChild = passbkFeat.passbk.visAge < mADULT_MIN_AGE
+                passbkFeat.passbk.visAge = Utils.calcAge(passbkFeat.passbk.visDob)
+                passbkFeat.passbk.visIsChild = Utils.isAdult(passbkFeat.passbk.visAge)
 
                 'Populate the visitor text field
                 txtVisToStringTabUpdtFeatTbcPassbkFeatMainTbcMain.Text = _

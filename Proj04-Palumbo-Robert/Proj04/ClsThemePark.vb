@@ -1083,7 +1083,6 @@ Public Class ThemePark
         Return kpi.calcNumPassbkHolderBdaysInCurrMon()
     End Function 'calcNumPassbkHolderBdaysInCurrMon()
 
-
     '****************************************************************************************
     '_postTransx() is used to post the specified transaction to the transaction data 
     ' store.
@@ -1306,7 +1305,7 @@ Public Class ThemePark
     '****************************************************************************************
     Private Sub _createCust(ByVal pCustId As String, _
                             ByVal pCustName As String)
-
+        'Trap duplicates here and don't create - this can happen from system test data
         If String.IsNullOrEmpty(pCustId) Then
             Dim logMsg As String = "[InputDataError]: Customer ID not specified"
 
@@ -1316,7 +1315,6 @@ Public Class ThemePark
             Exit Sub
         End If
 
-        'Trap duplicates here and don't create - this can happen from system test data
         Dim cust As Customer
         Try
             cust = _findCust(pCustId)
@@ -1388,7 +1386,7 @@ Public Class ThemePark
                             ByVal pUnitOfMeas As String, _
                             ByVal pAdultPrice As Decimal, _
                             ByVal pChildPrice As Decimal)
-
+        'Trap duplicates here and don't create - this can happen from system test data
         If String.IsNullOrEmpty(pFeatId) Then
             Dim logMsg As String = "[InputDataError]: Feature ID not specified"
 
@@ -1398,7 +1396,6 @@ Public Class ThemePark
             Exit Sub
         End If
 
-        'Trap duplicates here and don't create - this can happen from system test data
         Dim feat As Feature
         Try
             feat = _findFeat(pFeatId)
@@ -1503,6 +1500,15 @@ Public Class ThemePark
                               ByVal pVisAge As Integer, _
                               ByVal pVisIsChild As Boolean)
         'Trap duplicates here and don't create - this can happen from system test data
+        If String.IsNullOrEmpty(pPassbkId) Then
+            Dim logMsg As String = "[InputDataError]: Passbook ID not specified"
+
+            'Raise and event to let the listeners of this event it happened
+            RaiseEvent ThemePark_LogTran(Me,
+                                         New ThemePark_EventArgs_LogMsg(logMsg))
+            Exit Sub
+        End If
+
         Dim passbk As Passbook
         Try
             passbk = _findPassbk(pPassbkId)
@@ -1512,7 +1518,7 @@ Public Class ThemePark
         End Try
 
         If Not IsNothing(passbk) Then
-            Dim logMsg As String = "ERROR: Attempt to create duplicate Passbook, ID=" & pPassbkId
+            Dim logMsg As String = "[InputDataError]: Attempt to create duplicate Passbook, ID=" & pPassbkId
 
             'Raise and event to let the listeners of this event it happened
             RaiseEvent ThemePark_LogTran(Me,
@@ -1523,13 +1529,86 @@ Public Class ThemePark
         'Because data can be input into the system in several ways we
         'have to check that the passbook feature specified is already
         'in the system.  If so that feature has to be used
-        Dim owner As Customer = _findCust(pOwner.custId)
-        If IsNothing(owner) Then
-            owner = pOwner
+        If IsNothing(pOwner) Then
+            Dim logMsg As String = "[InputDataError]: No Passbook Owner specified, ID=" & pPassbkId
+
+            'Raise and event to let the listeners of this event it happened
+            RaiseEvent ThemePark_LogTran(Me,
+                                         New ThemePark_EventArgs_LogMsg(logMsg))
+            Exit Sub
+        End If
+
+        If String.IsNullOrEmpty(pVisName) Then
+            Dim logMsg As String = "[InputDataError]: Passbook Visitor Name not specified" & pPassbkId
+
+            'Raise and event to let the listeners of this event it happened
+            RaiseEvent ThemePark_LogTran(Me,
+                                         New ThemePark_EventArgs_LogMsg(logMsg))
+            Exit Sub
+        End If
+
+        If IsNothing(pVisDob) Then
+            Dim logMsg As String = "[InputDataError]: Passbook Visitor-DOB not specified" & pPassbkId
+
+            'Raise and event to let the listeners of this event it happened
+            RaiseEvent ThemePark_LogTran(Me,
+                                         New ThemePark_EventArgs_LogMsg(logMsg))
+            Exit Sub
+        End If
+
+        'Verify DOB not in future
+        If Date.Compare(pVisDob, Now) > 0 Then
+            Dim logMsg As String = "[InputDataError]: Passbook Visitor-DOB cannot be in the future" & pPassbkId
+
+            'Raise and event to let the listeners of this event it happened
+            RaiseEvent ThemePark_LogTran(Me,
+                                         New ThemePark_EventArgs_LogMsg(logMsg))
+            Exit Sub
+        End If
+
+        If IsNothing(pDatePurch) Then
+            Dim logMsg As String = "[InputDataError]: Passbook Date Purchased not specified" & pPassbkId
+
+            'Raise and event to let the listeners of this event it happened
+            RaiseEvent ThemePark_LogTran(Me,
+                                         New ThemePark_EventArgs_LogMsg(logMsg))
+            Exit Sub
+        End If
+
+        'Verify Purchase date not in future
+        If Date.Compare(pDatePurch, Now) > 0 Then
+            Dim logMsg As String = "[InputDataError]: Passbook Date Purchase cannot be in the future" & pPassbkId
+
+            'Raise and event to let the listeners of this event it happened
+            RaiseEvent ThemePark_LogTran(Me,
+                                         New ThemePark_EventArgs_LogMsg(logMsg))
+            Exit Sub
+        End If
+
+        'Verify validate DOB not in future
+        'The price to use is based on DOB compared with the current date
+        Dim visAge As Integer = Utils.calcAge(pVisDob)
+        If visAge <> pVisAge Then
+            Dim logMsg As String = "[InputDataError]: Passbook Visitor Age is incorrect for DOB" & pPassbkId
+
+            'Raise and event to let the listeners of this event it happened
+            RaiseEvent ThemePark_LogTran(Me,
+                                         New ThemePark_EventArgs_LogMsg(logMsg))
+            Exit Sub
+        End If
+
+        Dim visIsChild As Boolean = Utils.isAdult(visAge)
+        If visIsChild <> pVisIsChild Then
+            Dim logMsg As String = "[InputDataError]: Passbook Visitor isChild flag" & pPassbkId
+
+            'Raise and event to let the listeners of this event it happened
+            RaiseEvent ThemePark_LogTran(Me,
+                                         New ThemePark_EventArgs_LogMsg(logMsg))
+            Exit Sub
         End If
 
         Dim passbook As Passbook = New Passbook(pPassbkId, _
-                                                owner, _
+                                                pOwner, _
                                                 pDatePurch, _
                                                 pVisName, _
                                                 pVisDob, _

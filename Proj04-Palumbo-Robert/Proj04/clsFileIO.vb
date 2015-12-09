@@ -226,10 +226,9 @@ Public Class FileIO
             Dim custId As String = field(4)
             Dim custName As String = field(5)
 
-            'Validation is complete - if no errors we can add the customer
-            '          If errFlag = False Then
+            'Simple Validation is complete - go ahead and add the customer
+            'detailed validation will take place in the event handler
             _themePark.createCust(custId, custName)
-            'End If
         Else
             errFlag = True
         End If
@@ -286,13 +285,13 @@ Public Class FileIO
                 End If
             End If
 
-            'Validation is complete - if no errors we can add the customer
-            '          If errFlag = False Then
+            'Simple Validation is complete - go ahead and add the feature
+            'detailed validation will take place in the event handler
             _themePark.createFeat(featId,
-                                   featName,
-                                   featUnit,
-                                   adultPrice,
-                                   childPrice)
+                                  featName,
+                                  featUnit,
+                                  adultPrice,
+                                  childPrice)
         Else
             errFlag = True
         End If
@@ -320,9 +319,60 @@ Public Class FileIO
         '1st 4 fields are always valid according to Dr. Turks 
         'requirements.  For a customer record there must be 6
         'fields
-        If field.Length = 6 Then
-            'Validation is complete - if no errors we can add the customer
-            '          If errFlag = False Then
+        If field.Length = 9 Then
+            Dim passbkId As String = field(4)
+            Dim custId As String = field(5)
+            Dim purchDate As String = field(6)
+            Dim visName As String = field(7)
+            Dim visDob As String = field(8)
+
+            If String.IsNullOrEmpty(passbkId) Then
+                errFlag = True
+            End If
+
+            Dim cust As Customer = Nothing
+
+            If String.IsNullOrEmpty(custId) Then
+                errFlag = True
+            Else
+                Try
+                    cust = _themePark.findCust(custId)
+                Catch ex As Exception
+                    Throw ex
+                    Exit Sub
+                End Try
+            End If
+
+            If String.IsNullOrEmpty(purchDate) Then
+                errFlag = True
+            End If
+
+            If String.IsNullOrEmpty(visName) Then
+                errFlag = True
+            End If
+
+            Dim pDate As Date = Nothing
+            If Date.TryParse(purchDate & "00:00:00", pDate) = False Then
+                errFlag = True
+            End If
+
+            Dim bDate As Date = Nothing
+            If Date.TryParse(visDob & "00:00:00", bDate) = False Then
+                errFlag = True
+            End If
+
+            Dim visAge As Integer = Utils.calcAge(bDate)
+            Dim visIsChild As Boolean = Utils.isAdult(visAge)
+
+            'Simple Validation is complete - go ahead and add the passbook
+            'detailed validation will take place in the event handler
+            _themePark.createPassbk(passbkId,
+                                     cust,
+                                     pDate,
+                                     visName,
+                                     bDate,
+                                     visAge,
+                                     visIsChild)
         Else
             errFlag = True
         End If
@@ -341,14 +391,60 @@ Public Class FileIO
     Private Sub _parsePassbkFeat(ByVal pInpLine As String,
                                  ByVal pLineCnt As Integer,
                                  ByVal field() As String)
+        Dim errFlag As Boolean = False
 
+        Dim trxDate As String = field(0)
+        Dim trxTime As String = field(1)
+        Dim trxType As String = field(2)
+        Dim trxAction As String = field(3)
+
+        '1st 4 fields are always valid according to Dr. Turks 
+        'requirements.  For a customer record there must be 6
+        'fields
+        If field.Length = 6 Then
+            'Validation is complete - if no errors we can add the customer
+            '          If errFlag = False Then
+        Else
+            errFlag = True
+        End If
+
+        'If any error were detected write an error to the transaction error
+        'log file.
+        If errFlag = True Then
+            Dim errStr As String = _
+                "Line=" & pLineCnt & ", " & pInpLine & vbCrLf
+            _writeTransxErrRec(errStr)
+        End If
     End Sub '_parsePassbkFeat(...)
 
     '_parseUsedFeat() processes a used feature data record
     Private Sub _parseUsedFeat(ByVal pInpLine As String,
                                ByVal pLineCnt As Integer,
                                ByVal field() As String)
+        Dim errFlag As Boolean = False
 
+        Dim trxDate As String = field(0)
+        Dim trxTime As String = field(1)
+        Dim trxType As String = field(2)
+        Dim trxAction As String = field(3)
+
+        '1st 4 fields are always valid according to Dr. Turks 
+        'requirements.  For a customer record there must be 6
+        'fields
+        If field.Length = 6 Then
+            'Validation is complete - if no errors we can add the customer
+            '          If errFlag = False Then
+        Else
+            errFlag = True
+        End If
+
+        'If any error were detected write an error to the transaction error
+        'log file.
+        If errFlag = True Then
+            Dim errStr As String = _
+                "Line=" & pLineCnt & ", " & pInpLine & vbCrLf
+            _writeTransxErrRec(errStr)
+        End If
     End Sub '_parseUsedFeat(...)
 
 
