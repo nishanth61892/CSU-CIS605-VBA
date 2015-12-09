@@ -219,6 +219,10 @@ Public Class FileIO
         Dim trxType As String = field(2)
         Dim trxAction As String = field(3)
 
+        If trxAction.ToUpper <> _themePark.TRANSX_ACTION_CREATE Then
+            errFlag = True
+        End If
+
         '1st 4 fields are always valid according to Dr. Turks 
         'requirements.  For a customer record there must be 6
         'fields
@@ -253,6 +257,10 @@ Public Class FileIO
         Dim trxTime As String = field(1)
         Dim trxType As String = field(2)
         Dim trxAction As String = field(3)
+
+        If trxAction.ToUpper <> _themePark.TRANSX_ACTION_CREATE Then
+            errFlag = True
+        End If
 
         '1st 4 fields are always valid according to Dr. Turks 
         'requirements.  For a customer record there must be 6
@@ -315,6 +323,10 @@ Public Class FileIO
         Dim trxTime As String = field(1)
         Dim trxType As String = field(2)
         Dim trxAction As String = field(3)
+
+        If trxAction.ToUpper <> _themePark.TRANSX_ACTION_CREATE Then
+            errFlag = True
+        End If
 
         '1st 4 fields are always valid according to Dr. Turks 
         'requirements.  For a customer record there must be 6
@@ -466,21 +478,21 @@ Public Class FileIO
 
         'We can skip comments (1st char=#) but write trans rec
         If pInpLine(0) = "#" Then
-            _themePark.writeTransxRec(_themePark.transxObjType,
+            _themePark.writeTransxRec(_themePark.TRANSX_OBJECT_TYPE,
                                        Nothing,
                                        pInpLine)
         Else
             Select Case field(2).ToUpper
-                Case _themePark.transxCustType
+                Case _themePark.TRANSX_CUST_TYPE
                     Console.WriteLine("CUSTOMER INPUT DATA")
                     _parseCust(pInpLine, pLineCnt, field)
-                Case _themePark.transxFeatType
+                Case _themePark.TRANSX_FEAT_TYPE
                     Console.WriteLine("FEATURE INPUT DATA")
                     _parseFeat(pInpLine, pLineCnt, field)
-                Case _themePark.transxPassbkType
+                Case _themePark.TRANSX_PASSBK_TYPE
                     Console.WriteLine("PASSBOOK INPUT DATA")
                     _parsePassbk(pInpLine, pLineCnt, field)
-                Case _themePark.transxPassbkFeatType
+                Case _themePark.TRANSX_PASSBKFEAT_TYPE
                     Console.WriteLine("PASSBOOK FEATURE INPUT DATA")
                     _parsePassbkFeat(pInpLine, pLineCnt, field)
             End Select

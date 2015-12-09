@@ -130,7 +130,7 @@ Partial Class FrmMain
         Me.txtPassbkIdGrpAddPassbkTabPassbkTbcMainFrmMain = New System.Windows.Forms.TextBox()
         Me.Label8 = New System.Windows.Forms.Label()
         Me.grpCustInfoGrpAddPassbkTabPassbkTbcMainFrmMain = New System.Windows.Forms.GroupBox()
-        Me.cboCustIdGrpCustInfoGrpAddPassbkTabPassbkTbcMainFrmMain = New System.Windows.Forms.ComboBox()
+        Me.cboCustIdGrpCustInfoGrpAddPassbkTabPassbkTbcMain = New System.Windows.Forms.ComboBox()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.txtToStringGrpCustInfoGrpAddPassbkTabPassbkTbcMainFrmMain = New System.Windows.Forms.TextBox()
         Me.Label6 = New System.Windows.Forms.Label()
@@ -637,7 +637,6 @@ Partial Class FrmMain
         '
         Me.cboFeatIdTabAddFeatTbcPassbkFeatMainTbcMain.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cboFeatIdTabAddFeatTbcPassbkFeatMainTbcMain.FormattingEnabled = True
-        Me.cboFeatIdTabAddFeatTbcPassbkFeatMainTbcMain.Items.AddRange(New Object() {"F9999"})
         Me.cboFeatIdTabAddFeatTbcPassbkFeatMainTbcMain.Location = New System.Drawing.Point(109, 23)
         Me.cboFeatIdTabAddFeatTbcPassbkFeatMainTbcMain.Name = "cboFeatIdTabAddFeatTbcPassbkFeatMainTbcMain"
         Me.cboFeatIdTabAddFeatTbcPassbkFeatMainTbcMain.Size = New System.Drawing.Size(136, 23)
@@ -697,7 +696,6 @@ Partial Class FrmMain
         'cboPassbkIdTabAddFeatTbcPassbkFeatMainTbcMain
         '
         Me.cboPassbkIdTabAddFeatTbcPassbkFeatMainTbcMain.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cboPassbkIdTabAddFeatTbcPassbkFeatMainTbcMain.Items.AddRange(New Object() {"PB9999"})
         Me.cboPassbkIdTabAddFeatTbcPassbkFeatMainTbcMain.Location = New System.Drawing.Point(110, 29)
         Me.cboPassbkIdTabAddFeatTbcPassbkFeatMainTbcMain.Name = "cboPassbkIdTabAddFeatTbcPassbkFeatMainTbcMain"
         Me.cboPassbkIdTabAddFeatTbcPassbkFeatMainTbcMain.Size = New System.Drawing.Size(135, 23)
@@ -915,7 +913,6 @@ Partial Class FrmMain
         '
         Me.cboFeatIdTabUpdtFeatTbcPassbkFeatMainTbcMain.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cboFeatIdTabUpdtFeatTbcPassbkFeatMainTbcMain.FormattingEnabled = True
-        Me.cboFeatIdTabUpdtFeatTbcPassbkFeatMainTbcMain.Items.AddRange(New Object() {"PBF9999"})
         Me.cboFeatIdTabUpdtFeatTbcPassbkFeatMainTbcMain.Location = New System.Drawing.Point(98, 36)
         Me.cboFeatIdTabUpdtFeatTbcPassbkFeatMainTbcMain.Name = "cboFeatIdTabUpdtFeatTbcPassbkFeatMainTbcMain"
         Me.cboFeatIdTabUpdtFeatTbcPassbkFeatMainTbcMain.Size = New System.Drawing.Size(136, 23)
@@ -1172,7 +1169,6 @@ Partial Class FrmMain
         Me.cboFeatIdTabPostFeatTbcPassbkFeatMainTbcMain.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cboFeatIdTabPostFeatTbcPassbkFeatMainTbcMain.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cboFeatIdTabPostFeatTbcPassbkFeatMainTbcMain.FormattingEnabled = True
-        Me.cboFeatIdTabPostFeatTbcPassbkFeatMainTbcMain.Items.AddRange(New Object() {"PBF9999"})
         Me.cboFeatIdTabPostFeatTbcPassbkFeatMainTbcMain.Location = New System.Drawing.Point(98, 36)
         Me.cboFeatIdTabPostFeatTbcPassbkFeatMainTbcMain.Name = "cboFeatIdTabPostFeatTbcPassbkFeatMainTbcMain"
         Me.cboFeatIdTabPostFeatTbcPassbkFeatMainTbcMain.Size = New System.Drawing.Size(136, 23)
@@ -1393,7 +1389,7 @@ Partial Class FrmMain
         'grpCustInfoGrpAddPassbkTabPassbkTbcMainFrmMain
         '
         Me.grpCustInfoGrpAddPassbkTabPassbkTbcMainFrmMain.BackColor = System.Drawing.SystemColors.Control
-        Me.grpCustInfoGrpAddPassbkTabPassbkTbcMainFrmMain.Controls.Add(Me.cboCustIdGrpCustInfoGrpAddPassbkTabPassbkTbcMainFrmMain)
+        Me.grpCustInfoGrpAddPassbkTabPassbkTbcMainFrmMain.Controls.Add(Me.cboCustIdGrpCustInfoGrpAddPassbkTabPassbkTbcMain)
         Me.grpCustInfoGrpAddPassbkTabPassbkTbcMainFrmMain.Controls.Add(Me.Label3)
         Me.grpCustInfoGrpAddPassbkTabPassbkTbcMainFrmMain.Controls.Add(Me.txtToStringGrpCustInfoGrpAddPassbkTabPassbkTbcMainFrmMain)
         Me.grpCustInfoGrpAddPassbkTabPassbkTbcMainFrmMain.Controls.Add(Me.Label6)
@@ -1404,16 +1400,15 @@ Partial Class FrmMain
         Me.grpCustInfoGrpAddPassbkTabPassbkTbcMainFrmMain.TabStop = False
         Me.grpCustInfoGrpAddPassbkTabPassbkTbcMainFrmMain.Text = "Customer Info"
         '
-        'cboCustIdGrpCustInfoGrpAddPassbkTabPassbkTbcMainFrmMain
+        'cboCustIdGrpCustInfoGrpAddPassbkTabPassbkTbcMain
         '
-        Me.cboCustIdGrpCustInfoGrpAddPassbkTabPassbkTbcMainFrmMain.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cboCustIdGrpCustInfoGrpAddPassbkTabPassbkTbcMainFrmMain.FormattingEnabled = True
-        Me.cboCustIdGrpCustInfoGrpAddPassbkTabPassbkTbcMainFrmMain.Items.AddRange(New Object() {"C9999"})
-        Me.cboCustIdGrpCustInfoGrpAddPassbkTabPassbkTbcMainFrmMain.Location = New System.Drawing.Point(117, 43)
-        Me.cboCustIdGrpCustInfoGrpAddPassbkTabPassbkTbcMainFrmMain.Name = "cboCustIdGrpCustInfoGrpAddPassbkTabPassbkTbcMainFrmMain"
-        Me.cboCustIdGrpCustInfoGrpAddPassbkTabPassbkTbcMainFrmMain.Size = New System.Drawing.Size(144, 23)
-        Me.cboCustIdGrpCustInfoGrpAddPassbkTabPassbkTbcMainFrmMain.TabIndex = 1
-        Me.tipTPMS.SetToolTip(Me.cboCustIdGrpCustInfoGrpAddPassbkTabPassbkTbcMainFrmMain, "Select a Customer from the list")
+        Me.cboCustIdGrpCustInfoGrpAddPassbkTabPassbkTbcMain.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cboCustIdGrpCustInfoGrpAddPassbkTabPassbkTbcMain.FormattingEnabled = True
+        Me.cboCustIdGrpCustInfoGrpAddPassbkTabPassbkTbcMain.Location = New System.Drawing.Point(117, 43)
+        Me.cboCustIdGrpCustInfoGrpAddPassbkTabPassbkTbcMain.Name = "cboCustIdGrpCustInfoGrpAddPassbkTabPassbkTbcMain"
+        Me.cboCustIdGrpCustInfoGrpAddPassbkTabPassbkTbcMain.Size = New System.Drawing.Size(144, 23)
+        Me.cboCustIdGrpCustInfoGrpAddPassbkTabPassbkTbcMain.TabIndex = 1
+        Me.tipTPMS.SetToolTip(Me.cboCustIdGrpCustInfoGrpAddPassbkTabPassbkTbcMain, "Select a Customer from the list")
         '
         'Label3
         '
@@ -1749,7 +1744,6 @@ Partial Class FrmMain
         '
         Me.lstUsedFeatTabDashboardTbcMain.FormattingEnabled = True
         Me.lstUsedFeatTabDashboardTbcMain.ItemHeight = 15
-        Me.lstUsedFeatTabDashboardTbcMain.Items.AddRange(New Object() {"UF9999-Invalid"})
         Me.lstUsedFeatTabDashboardTbcMain.Location = New System.Drawing.Point(517, 44)
         Me.lstUsedFeatTabDashboardTbcMain.Name = "lstUsedFeatTabDashboardTbcMain"
         Me.lstUsedFeatTabDashboardTbcMain.Size = New System.Drawing.Size(103, 199)
@@ -1760,7 +1754,6 @@ Partial Class FrmMain
         '
         Me.lstPassbkFeatTabDashboardTbcMain.FormattingEnabled = True
         Me.lstPassbkFeatTabDashboardTbcMain.ItemHeight = 15
-        Me.lstPassbkFeatTabDashboardTbcMain.Items.AddRange(New Object() {"PBF9999-Invalid"})
         Me.lstPassbkFeatTabDashboardTbcMain.Location = New System.Drawing.Point(393, 44)
         Me.lstPassbkFeatTabDashboardTbcMain.Name = "lstPassbkFeatTabDashboardTbcMain"
         Me.lstPassbkFeatTabDashboardTbcMain.Size = New System.Drawing.Size(103, 199)
@@ -1771,7 +1764,6 @@ Partial Class FrmMain
         '
         Me.lstPassbkTabDashboardTbcMain.FormattingEnabled = True
         Me.lstPassbkTabDashboardTbcMain.ItemHeight = 15
-        Me.lstPassbkTabDashboardTbcMain.Items.AddRange(New Object() {"PB9999-Invalid"})
         Me.lstPassbkTabDashboardTbcMain.Location = New System.Drawing.Point(271, 44)
         Me.lstPassbkTabDashboardTbcMain.Name = "lstPassbkTabDashboardTbcMain"
         Me.lstPassbkTabDashboardTbcMain.Size = New System.Drawing.Size(103, 199)
@@ -1782,7 +1774,6 @@ Partial Class FrmMain
         '
         Me.lstFeatTabDashboardTbcMain.FormattingEnabled = True
         Me.lstFeatTabDashboardTbcMain.ItemHeight = 15
-        Me.lstFeatTabDashboardTbcMain.Items.AddRange(New Object() {"F9999-Invalid"})
         Me.lstFeatTabDashboardTbcMain.Location = New System.Drawing.Point(149, 44)
         Me.lstFeatTabDashboardTbcMain.Name = "lstFeatTabDashboardTbcMain"
         Me.lstFeatTabDashboardTbcMain.Size = New System.Drawing.Size(103, 199)
@@ -1793,7 +1784,6 @@ Partial Class FrmMain
         '
         Me.lstCustTabDashboardTbcMain.FormattingEnabled = True
         Me.lstCustTabDashboardTbcMain.ItemHeight = 15
-        Me.lstCustTabDashboardTbcMain.Items.AddRange(New Object() {"C9999-Invalid"})
         Me.lstCustTabDashboardTbcMain.Location = New System.Drawing.Point(30, 44)
         Me.lstCustTabDashboardTbcMain.Name = "lstCustTabDashboardTbcMain"
         Me.lstCustTabDashboardTbcMain.Size = New System.Drawing.Size(103, 199)
@@ -2876,7 +2866,7 @@ Partial Class FrmMain
     Friend WithEvents cboFeatIdTabAddFeatTbcPassbkFeatMainTbcMain As System.Windows.Forms.ComboBox
     Friend WithEvents cboFeatIdTabUpdtFeatTbcPassbkFeatMainTbcMain As System.Windows.Forms.ComboBox
     Friend WithEvents cboFeatIdTabPostFeatTbcPassbkFeatMainTbcMain As System.Windows.Forms.ComboBox
-    Friend WithEvents cboCustIdGrpCustInfoGrpAddPassbkTabPassbkTbcMainFrmMain As System.Windows.Forms.ComboBox
+    Friend WithEvents cboCustIdGrpCustInfoGrpAddPassbkTabPassbkTbcMain As System.Windows.Forms.ComboBox
     Friend WithEvents mnuUseFeaturesPassbooksFrmMain As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents tabDebugTbcMainFrmMain As System.Windows.Forms.TabPage
     Friend WithEvents GroupBox2 As System.Windows.Forms.GroupBox

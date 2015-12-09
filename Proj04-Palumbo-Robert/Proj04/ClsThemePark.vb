@@ -59,9 +59,10 @@ Public Class ThemePark
     Private Const mTRANSX_FEAT_TYPE As String = "FEATURE"
     Private Const mTRANSX_PASSBK_TYPE As String = "PASSBOOK"
     Private Const mTRANSX_PASSBKFEAT_TYPE As String = "PASSBOOK_FEATURE"
-    Private Const mTRANSX_PBF_PURCH_TYPE As String = "PURCHASE"
-    Private Const mTRANSX_PBF_USE_TYPE As String = "USE"
-    Private Const mTRANSX_PBF_UPDT_TYPE As String = "UPDATE"
+    Private Const mTRANSX_ACTION_CREATE As String = "CREATE"
+    Private Const mTRANSX_ACTION_PURCH As String = "PURCHASE"
+    Private Const mTRANSX_ACTION_USE As String = "USE"
+    Private Const mTRANSX_ACTION_UPDATE As String = "UPDATE"
 
     'Array constants
     Private Const mCUSTOMER_ARRAY_SIZE_DFLT As Integer = 100
@@ -292,51 +293,57 @@ Public Class ThemePark
         End Set
     End Property
 
-    Public ReadOnly Property transxObjType() As String
+    Public ReadOnly Property TRANSX_OBJECT_TYPE As String
         Get
-            Return _transxObjType
+            Return _TRANSX_OBJECT_TYPE
         End Get
     End Property
 
-    Public ReadOnly Property transxCustType() As String
+    Public ReadOnly Property TRANSX_CUST_TYPE As String
         Get
-            Return _transxCustType
+            Return _TRANSX_CUST_TYPE
         End Get
     End Property
 
-    Public ReadOnly Property transxFeatType() As String
+    Public ReadOnly Property TRANSX_FEAT_TYPE As String
         Get
-            Return _transxFeatType
+            Return _TRANSX_FEAT_TYPE
         End Get
     End Property
 
-    Public ReadOnly Property transxPassbkType() As String
+    Public ReadOnly Property TRANSX_PASSBK_TYPE As String
         Get
-            Return _transxPassbkType
+            Return _TRANSX_PASSBK_TYPE
         End Get
     End Property
 
-    Public ReadOnly Property transxPassbkFeatType() As String
+    Public ReadOnly Property TRANSX_PASSBKFEAT_TYPE As String
         Get
-            Return _transxPassbkFeatType
+            Return _TRANSX_PASSBKFEAT_TYPE
         End Get
     End Property
 
-    Public ReadOnly Property transxPbfPurchType() As String
+    Public ReadOnly Property TRANSX_ACTION_CREATE As String
         Get
-            Return _transxPbfPurchType
+            Return _TRANSX_ACTION_CREATE
         End Get
     End Property
 
-    Public ReadOnly Property transxPbfUseType() As String
+    Public ReadOnly Property TRANSX_ACTION_PURCH As String
         Get
-            Return _transxPbfUseType
+            Return _TRANSX_ACTION_PURCH
         End Get
     End Property
 
-    Public ReadOnly Property transxPbfUpdtType() As String
+    Public ReadOnly Property TRANSX_ACTION_USE As String
         Get
-            Return _transxPbfUpdtType
+            Return _TRANSX_ACTION_USE
+        End Get
+    End Property
+
+    Public ReadOnly Property TRANSX_ACTION_UPDATE As String
+        Get
+            Return _TRANSX_ACTION_UPDATE
         End Get
     End Property
 
@@ -484,51 +491,57 @@ Public Class ThemePark
         End Set
     End Property
 
-    Private ReadOnly Property _transxObjType As String
+    Private ReadOnly Property _TRANSX_OBJECT_TYPE As String
         Get
             Return mTRANSX_OBJECT_TYPE
         End Get
     End Property
 
-    Private ReadOnly Property _transxCustType As String
+    Private ReadOnly Property _TRANSX_CUST_TYPE As String
         Get
             Return mTRANSX_CUST_TYPE
         End Get
     End Property
 
-    Private ReadOnly Property _transxFeatType As String
+    Private ReadOnly Property _TRANSX_FEAT_TYPE As String
         Get
             Return mTRANSX_FEAT_TYPE
         End Get
     End Property
 
-    Private ReadOnly Property _transxPassbkType As String
+    Private ReadOnly Property _TRANSX_PASSBK_TYPE As String
         Get
             Return mTRANSX_PASSBK_TYPE
         End Get
     End Property
 
-    Private ReadOnly Property _transxPbfPurchType As String
-        Get
-            Return mTRANSX_PBF_PURCH_TYPE
-        End Get
-    End Property
-
-    Private ReadOnly Property _transxPbfUseType As String
-        Get
-            Return mTRANSX_PBF_USE_TYPE
-        End Get
-    End Property
-
-    Private ReadOnly Property _transxPbfUpdtType As String
-        Get
-            Return mTRANSX_PBF_UPDT_TYPE
-        End Get
-    End Property
-
-    Private ReadOnly Property _transxPassbkFeatType As String
+    Private ReadOnly Property _TRANSX_PASSBKFEAT_TYPE As String
         Get
             Return mTRANSX_PASSBKFEAT_TYPE
+        End Get
+    End Property
+
+    Private ReadOnly Property _TRANSX_ACTION_CREATE As String
+        Get
+            Return mTRANSX_ACTION_CREATE
+        End Get
+    End Property
+
+    Private ReadOnly Property _TRANSX_ACTION_PURCH As String
+        Get
+            Return mTRANSX_ACTION_PURCH
+        End Get
+    End Property
+
+    Private ReadOnly Property _TRANSX_ACTION_USE As String
+        Get
+            Return mTRANSX_ACTION_USE
+        End Get
+    End Property
+
+    Private ReadOnly Property _TRANSX_ACTION_UPDATE As String
+        Get
+            Return mTRANSX_ACTION_UPDATE
         End Get
     End Property
 
@@ -1115,35 +1128,35 @@ Public Class ThemePark
         'Depending on the tranx type pObj will be cast approriately to extract the 
         'specific details of this transaction to be written out
         Select Case pType
-            Case _transxObjType
+            Case _TRANSX_OBJECT_TYPE
                 Dim obj As String = CType(pObj, String)
                 _postTransx(obj)
 
                 Console.WriteLine("WriteTranxRec: " & obj.ToString)
 
-            Case _transxCustType
+            Case _TRANSX_CUST_TYPE
                 Dim cust As Customer = CType(pObj, Customer)
                 Console.WriteLine("WriteTranxRec: " & cust.ToString)
 
-            Case _transxFeatType
+            Case _TRANSX_FEAT_TYPE
                 Dim feat As Feature = CType(pObj, Feature)
                 Console.WriteLine("WriteTranxRec: " & feat.ToString)
 
-            Case _transxPassbkType
+            Case _TRANSX_PASSBK_TYPE
                 Dim passBk As Passbook = CType(pObj, Passbook)
                 Console.WriteLine("WriteTranxRec: " & passBk.ToString)
 
-            Case _transxPassbkFeatType
+            Case _TRANSX_PASSBKFEAT_TYPE
                 Select Case pSubType
-                    Case _transxPbfPurchType
+                    Case _TRANSX_ACTION_PURCH
                         Dim passbkFeat As PassbookFeature = CType(pObj, PassbookFeature)
                         Console.WriteLine("WriteTranxRecPurch: " & passbkFeat.ToString)
 
-                    Case _transxPbfUpdtType
+                    Case _TRANSX_ACTION_UPDATE
                         Dim passbkFeat As PassbookFeature = CType(pObj, PassbookFeature)
                         Console.WriteLine("WriteTranxRecUpdt: " & passbkFeat.ToString)
 
-                    Case _transxPbfUseType
+                    Case _TRANSX_ACTION_USE
                         Dim usedFeat As UsedFeature = CType(pObj, UsedFeature)
                         Console.WriteLine("WriteTranxRecUse: " & usedFeat.ToString)
                 End Select

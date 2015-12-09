@@ -528,6 +528,19 @@ Public Class FrmMain
 
         lblThemeParkMgmtSysFrmMain.Text = _theThemePark.themeParkName
         Me.Text = _theThemePark.themeParkName
+
+        'Invalid data is required
+        lstCustTabDashboardTbcMain.Items.Add("C9999-Invalid")
+        lstFeatTabDashboardTbcMain.Items.Add("F9999-Invalid")
+        lstPassbkTabDashboardTbcMain.Items.Add("PB9999-Invalid")
+        lstPassbkFeatTabDashboardTbcMain.Items.Add("PBF9999-Invalid")
+        lstUsedFeatTabDashboardTbcMain.Items.Add("UF9999-Invalid")
+
+        cboCustIdGrpCustInfoGrpAddPassbkTabPassbkTbcMain.Items.Add("C9999-Invalid")
+        cboFeatIdTabAddFeatTbcPassbkFeatMainTbcMain.Items.Add("F9999-Invalid")
+        cboPassbkIdTabAddFeatTbcPassbkFeatMainTbcMain.Items.Add("PB9999-Invalid")
+        cboFeatIdTabUpdtFeatTbcPassbkFeatMainTbcMain.Items.Add("PBF9999-Invalid")
+        cboFeatIdTabPostFeatTbcPassbkFeatMainTbcMain.Items.Add("PBF9999-Invalid")
     End Sub 'initializeUserInterface()
 
 
@@ -901,7 +914,7 @@ Public Class FrmMain
         Dim newPassbk As Passbook = Nothing
 
         'Used as shortcut names to access the data
-        Dim custList As ComboBox = cboCustIdGrpCustInfoGrpAddPassbkTabPassbkTbcMainFrmMain
+        Dim custList As ComboBox = cboCustIdGrpCustInfoGrpAddPassbkTabPassbkTbcMain
         Dim passbkId As String = txtPassbkIdGrpAddPassbkTabPassbkTbcMainFrmMain.Text.Trim
         Dim visName As String = txtVisNameGrpAddPassbkTabPassbkTbcMainFrmMain.Text.Trim
         Dim visDob As String = txtVisDobGrpAddPassbkTabPassbkTbcMainFrmMain.Text.Trim
@@ -918,7 +931,7 @@ Public Class FrmMain
 
         If String.IsNullOrEmpty(custList.Text) Then
             MsgBox("ERROR: Please seleect a Customer ID from the list", MsgBoxStyle.OkOnly)
-            cboCustIdGrpCustInfoGrpAddPassbkTabPassbkTbcMainFrmMain.Focus()
+            cboCustIdGrpCustInfoGrpAddPassbkTabPassbkTbcMain.Focus()
             Exit Sub
         End If
 
@@ -1029,7 +1042,7 @@ Public Class FrmMain
     '****************************************************************************************
     Private Sub _resetPassbkInput()
         'Reset the fields and focus to allow for another feature to be added
-        cboCustIdGrpCustInfoGrpAddPassbkTabPassbkTbcMainFrmMain.SelectedIndex = -1
+        cboCustIdGrpCustInfoGrpAddPassbkTabPassbkTbcMain.SelectedIndex = -1
 
         txtPassbkIdGrpAddPassbkTabPassbkTbcMainFrmMain.Text = ""
         txtVisNameGrpAddPassbkTabPassbkTbcMainFrmMain.Text = ""
@@ -1037,7 +1050,7 @@ Public Class FrmMain
         txtToStringGrpCustInfoGrpAddPassbkTabPassbkTbcMainFrmMain.Text = ""
         txtCustToStringTabAddFeatTbcPassbkFeatMainTbcMain.Text = ""
 
-        cboCustIdGrpCustInfoGrpAddPassbkTabPassbkTbcMainFrmMain.Focus()
+        cboCustIdGrpCustInfoGrpAddPassbkTabPassbkTbcMain.Focus()
     End Sub '_resetPassbkInput()
 
     '****************************************************************************************
@@ -1076,7 +1089,7 @@ Public Class FrmMain
         If _theThemePark.numPassbks = 0 Then
             MsgBox("ERROR: There are no Passbooks defined" _
                    & vbCrLf & "Please add a Passbook", MsgBoxStyle.OkOnly)
-            cboCustIdGrpCustInfoGrpAddPassbkTabPassbkTbcMainFrmMain.Focus()
+            cboCustIdGrpCustInfoGrpAddPassbkTabPassbkTbcMain.Focus()
             tbcMainFrmMain.SelectTab(mTBC_MAIN_TAB_PASSBK)
             Exit Sub
         End If
@@ -1623,7 +1636,7 @@ Public Class FrmMain
                 Me.AcceptButton = btnSubmitGrpAddPassbkTabPassbkTbcMainFrmMain
 
                 'Set the focus to the first input field
-                cboCustIdGrpCustInfoGrpAddPassbkTabPassbkTbcMainFrmMain.Focus()
+                cboCustIdGrpCustInfoGrpAddPassbkTabPassbkTbcMain.Focus()
 
             Case mTBC_MAIN_TAB_PASSBKFEAT
                 'Console.WriteLine("Passbook Feature Tab")
@@ -1979,11 +1992,11 @@ Public Class FrmMain
     'the associated text field.
     '****************************************************************************************
     Private Sub _cboCustIdGrpCustInfoGrpAddPassbkTabPassbkTbcMainFrmMain_SelectedIndexChanged(sender As Object, e As EventArgs) _
-        Handles cboCustIdGrpCustInfoGrpAddPassbkTabPassbkTbcMainFrmMain.SelectedIndexChanged
+        Handles cboCustIdGrpCustInfoGrpAddPassbkTabPassbkTbcMain.SelectedIndexChanged
 
-        If Not cboCustIdGrpCustInfoGrpAddPassbkTabPassbkTbcMainFrmMain.SelectedIndex = -1 Then
+        If Not cboCustIdGrpCustInfoGrpAddPassbkTabPassbkTbcMain.SelectedIndex = -1 Then
             Dim cboVal As String = _
-                cboCustIdGrpCustInfoGrpAddPassbkTabPassbkTbcMainFrmMain.SelectedItem.ToString
+                cboCustIdGrpCustInfoGrpAddPassbkTabPassbkTbcMain.SelectedItem.ToString
             Dim cust As Customer
 
             Try
@@ -2521,7 +2534,7 @@ Public Class FrmMain
         lstPassbkFeatTabDashboardTbcMain.Items.Clear()
         lstUsedFeatTabDashboardTbcMain.Items.Clear()
 
-        cboCustIdGrpCustInfoGrpAddPassbkTabPassbkTbcMainFrmMain.Items.Clear()
+        cboCustIdGrpCustInfoGrpAddPassbkTabPassbkTbcMain.Items.Clear()
         cboFeatIdTabAddFeatTbcPassbkFeatMainTbcMain.Items.Clear()
         cboFeatIdTabUpdtFeatTbcPassbkFeatMainTbcMain.Items.Clear()
         cboFeatIdTabPostFeatTbcPassbkFeatMainTbcMain.Items.Clear()
@@ -2536,6 +2549,18 @@ Public Class FrmMain
         txtToStringTabDashboardTbcMain.Text = ""
 
         _initializeBusinessLogic()
+
+        lstCustTabDashboardTbcMain.Items.Add("C9999-Invalid")
+        lstFeatTabDashboardTbcMain.Items.Add("F9999-Invalid")
+        lstPassbkTabDashboardTbcMain.Items.Add("PB9999-Invalid")
+        lstPassbkFeatTabDashboardTbcMain.Items.Add("PBF9999-Invalid")
+        lstUsedFeatTabDashboardTbcMain.Items.Add("UF9999-Invalid")
+
+        cboCustIdGrpCustInfoGrpAddPassbkTabPassbkTbcMain.Items.Add("C9999-Invalid")
+        cboFeatIdTabAddFeatTbcPassbkFeatMainTbcMain.Items.Add("F9999-Invalid")
+        cboPassbkIdTabAddFeatTbcPassbkFeatMainTbcMain.Items.Add("PB9999-Invalid")
+        cboFeatIdTabUpdtFeatTbcPassbkFeatMainTbcMain.Items.Add("PBF9999-Invalid")
+        cboFeatIdTabPostFeatTbcPassbkFeatMainTbcMain.Items.Add("PBF9999-Invalid")
 
         MsgBox("System has be Reset!", MsgBoxStyle.OkOnly)
     End Sub '_btnResetSysGrpSysTestTabSysTestTbcMain_Click(...)
@@ -2577,14 +2602,14 @@ Public Class FrmMain
             txtCustCntTabDashboardTbcMain.Text = _
                 lstCustTabDashboardTbcMain.Items.Count.ToString
 
-            cboCustIdGrpCustInfoGrpAddPassbkTabPassbkTbcMainFrmMain.Items.Add(.custId)
+            cboCustIdGrpCustInfoGrpAddPassbkTabPassbkTbcMain.Items.Add(.custId)
         End With
 
         'Update the KPI - not really needed here but do it anyway
         _dispKpi()
 
         'Write transaction record and log info
-        _theThemePark.writeTransxRec(_theThemePark.transxCustType, Nothing, cust)
+        _theThemePark.writeTransxRec(_theThemePark.TRANSX_CUST_TYPE, Nothing, cust)
         _writeTransLog("<CREATED>: " & cust.ToString())
 
         'Not needed if object was created from system test data
@@ -2634,7 +2659,7 @@ Public Class FrmMain
         _dispKpi()
 
         'Write transaction record and log info
-        _theThemePark.writeTransxRec(_theThemePark.transxFeatType, Nothing, feat)
+        _theThemePark.writeTransxRec(_theThemePark.TRANSX_FEAT_TYPE, Nothing, feat)
         _writeTransLog("<CREATED>: " & feat.ToString())
 
         'Not needed if object was created from system test data
@@ -2684,7 +2709,7 @@ Public Class FrmMain
         _dispKpi()
 
         'Write transaction record and log info
-        _theThemePark.writeTransxRec(_theThemePark.transxPassbkType, Nothing, passbk)
+        _theThemePark.writeTransxRec(_theThemePark.TRANSX_PASSBK_TYPE, Nothing, passbk)
         _writeTransLog("<CREATED>: " & passbk.ToString())
 
         'Not needed if object was created from system test data
@@ -2735,8 +2760,8 @@ Public Class FrmMain
         _dispKpi()
 
         'Write transaction record and log info
-        _theThemePark.writeTransxRec(_theThemePark.transxPassbkFeatType,
-                                    _theThemePark.transxPbfPurchType,
+        _theThemePark.writeTransxRec(_theThemePark.TRANSX_PASSBKFEAT_TYPE,
+                                    _theThemePark.TRANSX_ACTION_PURCH,
                                     passbkFeat)
         _writeTransLog("<PURCHASED>: " & passbkFeat.ToString())
 
@@ -2777,8 +2802,8 @@ Public Class FrmMain
         _dispKpi()
 
         'Write transaction record and log info
-        _theThemePark.writeTransxRec(_theThemePark.transxPassbkFeatType,
-                                    _theThemePark.transxPbfUpdtType,
+        _theThemePark.writeTransxRec(_theThemePark.TRANSX_PASSBKFEAT_TYPE,
+                                    _theThemePark.TRANSX_ACTION_UPDATE,
                                     passbkFeat)
         _writeTransLog("<UPDATED>: " & passbkFeat.ToString)
 
@@ -2829,9 +2854,9 @@ Public Class FrmMain
         _dispKpi()
 
         'Write transaction record and log info
-        _theThemePark.writeTransxRec(_theThemePark.transxPassbkFeatType,
-                                    _theThemePark.transxPbfUseType,
-                                    usedFeat)
+        _theThemePark.writeTransxRec(_theThemePark.TRANSX_PASSBKFEAT_TYPE,
+                                     _theThemePark.TRANSX_ACTION_USE,
+                                     usedFeat)
         _writeTransLog("<USED>: " & usedFeat.ToString())
 
         'Not needed if object was created from system test data
