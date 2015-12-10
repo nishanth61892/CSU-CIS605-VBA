@@ -322,23 +322,6 @@ Public Class FrmMain
     End Sub '_closeAppl()
 
     '****************************************************************************************
-    'findCust() is used to locate a customer by ID from the ThemePark customer database.  
-    'Returns a customer reference if found, otherwise Nothing.  
-    'If exception is caught display a UI message and return Nothing
-    '****************************************************************************************
-    'Private Function _findCust(ByVal pCustId As String) As Customer
-    '    Dim cust As Customer = Nothing
-
-    '    Try
-    '        cust = _theThemePark.findCust(pCustId)
-    '    Catch ex As Exception
-    '        MsgBox(_SYS_LOOKUP_ERR_MSG, MsgBoxStyle.Exclamation)
-    '    End Try
-
-    '    Return cust
-    'End Function '_findCust(...)
-
-    '****************************************************************************************
     '_runSystemTest() is the procedure that executes the applications automated test logic.
     'It is invoked either from the main UI menu or from the System Test tab.
     '****************************************************************************************
@@ -482,7 +465,6 @@ Public Class FrmMain
 
     '_initializeToolTips to assist the user
     Private Sub _initializeToolTips()
-
         'Create a tooltip object shared for each control
         Dim toolTip As New ToolTip()
 
@@ -544,8 +526,10 @@ Public Class FrmMain
     End Sub 'initializeUserInterface()
 
 
+    '****************************************************************************************
     '_dispKpi()
     '   - Used to update the GUI with the current Key Performance Indicators
+    '****************************************************************************************
     Private Sub _dispKpi()
 
         'Calculate and display avergage $balance of unused feature 
@@ -2599,8 +2583,7 @@ Public Class FrmMain
         'Update associated UI components with component values
         With cust
             lstCustTabDashboardTbcMain.Items.Add(.custId)
-            txtCustCntTabDashboardTbcMain.Text = _
-                lstCustTabDashboardTbcMain.Items.Count.ToString
+            txtCustCntTabDashboardTbcMain.Text = _theThemePark.numCusts.ToString
 
             cboCustIdGrpCustInfoGrpAddPassbkTabPassbkTbcMain.Items.Add(.custId)
         End With
@@ -2649,8 +2632,7 @@ Public Class FrmMain
         'Update associated UI components with component values
         With feat
             lstFeatTabDashboardTbcMain.Items.Add(.featId)
-            txtFeatCntTabDashboardTbcMain.Text = _
-                lstFeatTabDashboardTbcMain.Items.Count.ToString
+            txtFeatCntTabDashboardTbcMain.Text = _theThemePark.numFeats.ToString
 
             cboFeatIdTabAddFeatTbcPassbkFeatMainTbcMain.Items.Add(.featId)
         End With
@@ -2699,8 +2681,7 @@ Public Class FrmMain
         'Update associated UI components with component values
         With passbk
             lstPassbkTabDashboardTbcMain.Items.Add(.passbkId)
-            txtPassbkCntTabDashboardTbcMain.Text =
-                lstPassbkTabDashboardTbcMain.Items.Count.ToString
+            txtPassbkCntTabDashboardTbcMain.Text = _theThemePark.numPassbks.ToString
 
             cboPassbkIdTabAddFeatTbcPassbkFeatMainTbcMain.Items.Add(.passbkId)
         End With
@@ -2749,8 +2730,7 @@ Public Class FrmMain
         'Update associated UI components with component values
         With passbkFeat
             lstPassbkFeatTabDashboardTbcMain.Items.Add(.id)
-            txtPassbkFeatCntTabDashboardTbcMain.Text =
-                lstPassbkFeatTabDashboardTbcMain.Items.Count.ToString()
+            txtPassbkFeatCntTabDashboardTbcMain.Text = _theThemePark.numPassbkFeats.ToString
 
             cboFeatIdTabUpdtFeatTbcPassbkFeatMainTbcMain.Items.Add(.id)
             cboFeatIdTabPostFeatTbcPassbkFeatMainTbcMain.Items.Add(.id)
@@ -2840,14 +2820,9 @@ Public Class FrmMain
             Exit Sub
         End If
 
-        'Validate the input
-        'If _validatePostData(usedFeat.id, usedFeat.passbkFeat.id, _
-        '                     usedFeat.qtyUsed.ToString, usedFeat.loc) Then
-        '    'Update associated UI components with component values
         With usedFeat
             lstUsedFeatTabDashboardTbcMain.Items.Add(.id)
-            txtUsedFeatCntTabDashboardTbcMain.Text =
-                lstUsedFeatTabDashboardTbcMain.Items.Count.ToString
+            txtUsedFeatCntTabDashboardTbcMain.Text = _theThemePark.numUsedFeats.ToString
         End With
 
         'Update the KPI
@@ -2903,7 +2878,6 @@ Public Class FrmMain
     '****************************************************************************************
 
     'No Events are currently defined.
-    'These are all public.
 
 #End Region 'Events
 
